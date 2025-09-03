@@ -95,7 +95,7 @@
         const teamsData = [
             {
                 rank: 1, teamName: "Bullish", grade: "A+", gradeValue: 12, tier: 1,
-                keyPlayers: [ { name: "Tyreek Hill", cost: 30 }, { name: "Saquon Barkley", cost: 62 }, { name: "Travis Kelce", cost: 14 }, { name: "Jaxon Smith-Njigba", cost: 30 }, { name: "Tony Pollard", cost: 19 }],
+                keyPlayers: [ { name: "Tyreek Hill", cost: 30 }, { name: "Saquon Barkley", cost: 62 }, { name: "Travis Kelce", cost: 14 }, { name: "Tony Pollard", cost: 19 }],
                 good: "Getting Tyreek Hill ($30) and Travis Kelce ($14) for a combined $44 is not a 'good value,' it's a federal crime. We need to audit your internet connection for lag switching.",
                 bad: "Your only weakness is starting a rookie QB. But let's be honest, your roster is so stacked you could start a traffic cone in that spot and still win the 'ship.",
                 burn: "Congratulations on assembling a team that could only be beaten by an act of God or a season-ending injury to every single one of your players. And even then, I'd still have you favored.",
@@ -104,12 +104,12 @@
             },
             {
                 rank: 2, teamName: "Kim Jong Nate", grade: "A", gradeValue: 11, tier: 1,
-                keyPlayers: [ { name: "Christian McCaffrey", cost: 55 }, { name: "De'Von Achane", cost: 41 }, { name: "Mike Evans", cost: 28 }, { name: "Joe Burrow", cost: 10 }],
-                good: "You secured Christian McCaffrey for a shockingly low $55 and then stole Joe Burrow for a ten-spot.",
+                keyPlayers: [ { name: "Christian McCaffrey", cost: 55 }, { name: "De'Von Achane", cost: 41 }, { name: "Mike Evans", cost: 28 }, { name: "Joe Burrow", cost: 18 }],
+                good: "You secured Christian McCaffrey for a shockingly low $55 and got a franchise QB in Joe Burrow for a fair price.",
                 bad: "You set the bar so high that anything less than a championship will be a catastrophic failure. No pressure.",
                 burn: "Your team name is fitting, because you executed your draft with the ruthless, flawless precision of a totalitarian regime. We are all your subjects now.",
-                spending: { QB: 18, RB: 121, WR: 44, TE: 7, K: 2, DEF: 2, D: 1},
-                totalSpent: 195,
+                spending: { QB: 18, RB: 114, WR: 48, TE: 7, K: 2, DEF: 2, D: 1},
+                totalSpent: 192,
             },
             {
                 rank: 3, teamName: "ShakeNBake", grade: "A-", gradeValue: 10, tier: 1,
@@ -126,8 +126,8 @@
                 good: "A great RB in Bijan and fantastic value with Garrett Wilson ($20) and Austin Ekeler ($10). A very respectable team.",
                 bad: "Your season hinges on a rookie QB.",
                 burn: "Your team is like a beautiful, brand-new car with a student driver behind the wheel. It looks great in the driveway, but we're all just waiting for you to merge into traffic and cause a 10-car pileup.",
-                spending: { QB: 22, RB: 82, WR: 65, TE: 8, DEF: 3, D: 1},
-                totalSpent: 181,
+                spending: { QB: 22, RB: 83, WR: 66, TE: 8, DEF: 3, D: 1},
+                totalSpent: 183,
             },
             {
                 rank: 5, teamName: "Bend The Knee", grade: "B+", gradeValue: 9, tier: 2,
@@ -144,8 +144,8 @@
                 good: "Your WR corps is a murderer's row. Chase, Higgins, Moore, Pittman... it's just plain unfair.",
                 bad: "You spent so much on receivers that your running back depth chart consists of Kyren Williams and a group of guys who look like they're about to ask for spare change.",
                 burn: "I've seen more depth in a puddle. If your starting RB gets hurt, your season is over faster than a free agent's career after signing with the Jets.",
-                spending: { QB: 4, RB: 67, WR: 125, TE: 4, DEF: 2, D: 1},
-                totalSpent: 203,
+                spending: { QB: 4, RB: 63, WR: 125, TE: 4, DEF: 2, D: 1},
+                totalSpent: 199,
             },
             {
                 rank: 7, teamName: "Mac Daddy", grade: "B", gradeValue: 8, tier: 2,
@@ -162,8 +162,8 @@
                 good: "An elite QB/TE combo with Lamar Jackson and Sam LaPorta.",
                 bad: "Where are the wide receivers? Did you forget they were part of the game?",
                 burn: "Your WR room is so thin, it makes a supermodel look bloated. You’re going to need Lamar to break the single-season QB rushing record just to have a shot at a .500 record.",
-                spending: { QB: 32, RB: 64, WR: 57, TE: 15, DEF: 3, D: 1 },
-                totalSpent: 172,
+                spending: { QB: 32, RB: 74, WR: 52, TE: 15, DEF: 3, D: 1 },
+                totalSpent: 177,
             },
             {
                 rank: 9, teamName: "Shut Up", grade: "C+", gradeValue: 6, tier: 3,
@@ -171,8 +171,17 @@
                 good: "You got Patrick Mahomes for a measly $16.",
                 bad: "You paid for everyone else like you were using a company credit card. $40 on a rookie RB? $44 on Jonathan Taylor?",
                 burn: "Your team motto is clearly 'Why buy it for less when you can overpay?' You’ve built a roster with the financial acumen of a lottery winner who just bought a solid gold jet ski.",
-                spending: { QB: 18, RB: 87, WR: 53, TE: 28, K: 2, DEF: 2, D: 1},
-                totalSpent: 181,
+                spending: { QB: 18, RB: 86, WR: 53, TE: 28, K: 2, DEF: 2, D: 1},
+                totalSpent: 180,
+            },
+            {
+                rank: 10, teamName: "Hail Mary", grade: "C+", gradeValue: 6, tier: 3,
+                keyPlayers: [ { name: "Ladd McConkey", cost: 36 }, { name: "Jalen Hurts", cost: 22 }, { name: "David Montgomery", cost: 20 }, { name: "James Cook", cost: 31 }, { name: "Trey McBride", cost: 30 }],
+                good: "Acquired a high-upside QB and good RBs.",
+                bad: "The roster feels top-heavy and lacks depth after the main starters.",
+                burn: "Your team name is fitting, because you’ll need one every week to have a chance. You paid a premium for a rookie WR, and your bench has all the depth of a kiddie pool.",
+                spending: { QB: 22, RB: 79, WR: 55, TE: 30, K: 1, DEF: 1, D: 3},
+                totalSpent: 191,
             },
             {
                 rank: 11, teamName: "Good Will Hunting", grade: "C", gradeValue: 5, tier: 3,
@@ -180,12 +189,12 @@
                 good: "Chris Olave for $8 and Nick Chubb for $5 are moves of a genius.",
                 bad: "Spending $46 on rookie Ashton Jeanty is a move of... something else.",
                 burn: "Your draft was a beautiful mess. It was like watching someone solve a Rubik's Cube with one hand while setting their hair on fire with the other. Baffling, yet I can't look away.",
-                spending: { QB: 33, RB: 63, WR: 72, TE: 7, K: 4, DEF: 4, D: 1},
-                totalSpent: 184,
+                spending: { QB: 33, RB: 68, WR: 66, TE: 7, K: 4, DEF: 4, D: 1},
+                totalSpent: 183,
             },
             {
                 rank: 12, teamName: "INDIAN JONES 👳...", grade: "C", gradeValue: 5, tier: 4,
-                keyPlayers: [ { name: "TreVeyon Henderson", cost: 28 }, { name: "Brian Thomas Jr.", cost: 50 }, { name: "A.J. Brown", cost: 42 }, { name: "Breece Hall", cost: 19 }],
+                keyPlayers: [ { name: "Brian Thomas Jr.", cost: 50 }, { name: "A.J. Brown", cost: 42 }, { name: "Breece Hall", cost: 19 }, { name: "TreVeyon Henderson", cost: 28 }],
                 good: "Breece Hall for $19 was a fantastic pick.",
                 bad: "You spent FIFTY DOLLARS ($50) on Brian Thomas Jr. I had to type that out to believe it.",
                 burn: "You named your team after a legendary treasure hunter, but you spent your draft digging in the wrong place and came back with a bag of rocks. That $50 belongs in a museum for how badly you spent it.",
@@ -194,31 +203,22 @@
             },
             {
                 rank: 13, teamName: "Miley Landslide", grade: "C-", gradeValue: 4, tier: 4,
-                keyPlayers: [ { name: "Brock Bowers", cost: 35 }, { name: "CeeDee Lamb", cost: 59 }, { name: "Alvin Kamara", cost: 29 }, { name: "James Conner", cost: 30 }, { name: "Dak Prescott", cost: 10 }],
+                keyPlayers: [ { name: "CeeDee Lamb", cost: 59 }, { name: "Brock Bowers", cost: 35 }, { name: "Alvin Kamara", cost: 29 }, { name: "James Conner", cost: 30 }, { name: "Dak Prescott", cost: 10 }],
                 good: "You have CeeDee Lamb.",
                 bad: "...and that's about it. Your bench is a ghost town.",
                 burn: "Your team is going to come in like a wrecking ball... directly into your own hopes and dreams for the season. You have less depth than a political debate on Twitter.",
-                spending: { QB: 11, RB: 60, WR: 87, TE: 36, K: 1, DEF: 1, D: 1},
-                totalSpent: 197,
+                spending: { QB: 11, RB: 61, WR: 87, TE: 36, K: 1, DEF: 1, D: 1},
+                totalSpent: 198,
             },
             {
                 rank: 14, teamName: "The Injured Reserved", grade: "D+", gradeValue: 3, tier: 4,
-                keyPlayers: [ { name: "Travis Hunter", cost: 16 }, { name: "Chase Brown", cost: 40 }, { name: "Rome Odunze", cost: 16 }, { name: "Davante Adams", cost: 26 }],
+                keyPlayers: [ { name: "Chase Brown", cost: 40 }, { name: "Davante Adams", cost: 26 }, { name: "Courtland Sutton", cost: 27 }, { name: "Chuba Hubbard", cost: 23 }],
                 good: "...I'm thinking... give me a minute...",
                 bad: "Spending $40 on Chase Brown is a choice. A truly, deeply confusing choice.",
                 burn: "Your team name is a self-fulfilling prophecy. Your roster is a collection of question marks and lottery tickets that have already been scratched off. On the bright side, you'll have a great shot at the first overall pick next year. Oh, wait...",
                 spending: { QB: 2, RB: 70, WR: 85, TE: 6, DEF: 1},
                 totalSpent: 164,
-            },
-             {
-                rank: 10, teamName: "Hail Mary", grade: "C+", gradeValue: 6, tier: 3,
-                keyPlayers: [ { name: "Ladd McConkey", cost: 36 }, { name: "Jalen Hurts", cost: 22 }, { name: "David Montgomery", cost: 20 }, { name: "James Cook", cost: 31 }, { name: "Trey McBride", cost: 30 }],
-                good: "Acquired a high-upside QB and good RBs.",
-                bad: "The roster feels top-heavy and lacks depth after the main starters.",
-                burn: "Your team name is fitting, because you’ll need one every week to have a chance. You paid a premium for a rookie WR, and your bench has all the depth of a kiddie pool.",
-                spending: { QB: 22, RB: 60, WR: 55, TE: 30, K: 1, DEF: 1, D: 3},
-                totalSpent: 172,
-            },
+            }
         ];
         
         const allPlayers = [
@@ -296,7 +296,8 @@
 
         const init = () => {
             teamsData.sort((a, b) => a.rank - b.rank);
-            teamsData.forEach((team, index) => {
+            teamListEl.innerHTML = '';
+            teamsData.forEach((team) => {
                 const teamEl = document.createElement('div');
                 teamEl.className = 'team-card flex items-center justify-between p-3 rounded-lg border-2 border-transparent cursor-pointer hover:bg-slate-100 transition-all duration-200';
                 teamEl.innerHTML = `
@@ -315,9 +316,12 @@
             });
             renderCharts();
         };
+        
+        let gradeVsSpendingChart, positionalSpendingChart, topSpendersChart;
 
         const renderCharts = () => {
-            new Chart(document.getElementById('gradeVsSpendingChart'), {
+            if(gradeVsSpendingChart) gradeVsSpendingChart.destroy();
+            gradeVsSpendingChart = new Chart(document.getElementById('gradeVsSpendingChart'), {
                 type: 'scatter',
                 data: {
                     datasets: [{
@@ -354,14 +358,16 @@
                     }
                 }
             });
-
-            new Chart(document.getElementById('positionalSpendingChart'), {
+            
+            if(positionalSpendingChart) positionalSpendingChart.destroy();
+            const sortedByTotalSpent = [...teamsData].sort((a,b) => a.totalSpent - b.totalSpent);
+            positionalSpendingChart = new Chart(document.getElementById('positionalSpendingChart'), {
                 type: 'bar',
                 data: {
-                    labels: teamsData.map(t => t.teamName),
+                    labels: sortedByTotalSpent.map(t => t.teamName),
                     datasets: Object.keys(posColors).map(pos => ({
                         label: pos,
-                        data: teamsData.map(t => t.spending[pos] || 0),
+                        data: sortedByTotalSpent.map(t => t.spending[pos] || 0),
                         backgroundColor: posColors[pos],
                     }))
                 },
@@ -384,7 +390,8 @@
                 }
             });
             
-             new Chart(document.getElementById('topSpendersChart'), {
+            if(topSpendersChart) topSpendersChart.destroy();
+            topSpendersChart = new Chart(document.getElementById('topSpendersChart'), {
                 type: 'bar',
                 data: {
                     labels: allPlayers.map(p => `${p.name} (${p.team})`),
