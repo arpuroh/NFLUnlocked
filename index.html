@@ -3,17 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NFL Unlocked - Post-Draft Analysis</title>
+    <title>NFL Unlocked - The Ultimate League Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Chosen Palette: Calm Harmony -->
-    <!-- Application Structure Plan: A responsive dashboard layout is used to present the draft analysis. A persistent, clickable ranked list of teams on the left (or top on mobile) acts as the primary navigation. Selecting a team dynamically updates a main content area with that team's detailed report card. This structure was chosen because it allows users to easily switch between a high-level league overview and an in-depth analysis of individual teams without losing context. Below this, a dedicated section for league-wide visualizations provides comparative insights into spending strategies and overall draft value, making the data highly explorable. -->
-    <!-- Visualization & Content Choices: Team Report Cards -> Goal: Inform/Organize -> Method: Styled HTML cards with dynamic JS content updates -> Interaction: Click from team list to display. Justification: Clear, digestible format for qualitative analysis. | Spending vs. Grade Chart -> Goal: Relationships -> Method: Chart.js Scatter Plot -> Interaction: Hover for tooltips. Justification: Visually correlates spending efficiency with draft success. | Positional Spending Chart -> Goal: Compare/Organize -> Method: Chart.js Stacked Bar Chart -> Interaction: Hover for tooltips. Justification: Instantly reveals different team-building strategies. | Top Spenders Chart -> Goal: Inform -> Method: Chart.js Horizontal Bar -> Interaction: Hover for tooltips. Justification: Highlights the draft's most significant investments. All charts use Canvas via Chart.js. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #f8fafc;
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
         }
+        .font-black-ops {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+        }
+        .card {
+            background-color: #ffffff; /* White cards */
+            border: 1px solid #e5e7eb; /* Light gray border */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .card.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .rank-icon {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+        .score {
+            font-family: monospace;
+            font-size: 1.25rem;
+        }
+        .text-gold { color: #D97706; }
+        .text-silver { color: #6B7280; }
+        .text-bronze { color: #92400E; }
+        .text-success-bright { color: #16a34a; }
+        .text-danger-bright { color: #dc2626; }
+        .text-warning-bright { color: #f59e0b; }
+        .text-fraud { color: #db2777; }
+        .text-skull { color: #4b5563; }
+
+        .glow-gold { text-shadow: 0 0 15px rgba(217, 119, 6, 0.4); }
+        .glow-silver { text-shadow: 0 0 15px rgba(107, 114, 128, 0.4); }
+        .glow-bronze { text-shadow: 0 0 15px rgba(146, 64, 14, 0.4); }
+
+        .award-card {
+            background: linear-gradient(145deg, #f9fafb, #e5e7eb);
+        }
+
+        .animated-gradient {
+            background-size: 200% 200%;
+            background-image: linear-gradient(-45deg, #4f46e5, #ec4899, #22d3ee, #f59e0b);
+            animation: gradient 10s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Draft Analysis Styles */
         .chart-container {
             position: relative;
             width: 100%;
@@ -33,67 +87,500 @@
             box-shadow: 0 0 0 2px #3b82f6;
             border-color: #3b82f6;
         }
+        .nav-button {
+            padding: 0.75rem 1.5rem;
+            font-weight: 700;
+            color: #4b5563;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .nav-button.active {
+            color: #4f46e5;
+            border-bottom-color: #4f46e5;
+        }
     </style>
 </head>
-<body class="text-slate-800 font-sans">
+<body class="text-gray-800">
 
-    <div id="app" class="container mx-auto p-4 sm:p-6 lg:p-8">
-        <header class="text-center mb-8">
-            <h1 class="text-4xl md:text-5xl font-bold text-slate-900">NFL Unlocked</h1>
-            <p class="text-lg text-slate-600 mt-2">The Official Un-Official Post-Draft Report Card</p>
-        </header>
+    <!-- Header and Navigation -->
+    <header class="text-center p-6 md:p-10 border-b border-gray-200 bg-white shadow-sm sticky top-0 z-10">
+        <h1 class="text-4xl md:text-5xl font-black-ops tracking-wider uppercase animated-gradient bg-clip-text text-transparent">NFL Unlocked</h1>
+        <nav class="mt-4">
+            <div class="flex justify-center border-b">
+                <button id="show-rankings" class="nav-button active">Weekly Power Rankings</button>
+                <button id="show-draft" class="nav-button">Post-Draft Report Card</button>
+            </div>
+        </nav>
+    </header>
 
-        <main class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            <aside class="lg:col-span-1">
-                <div class="bg-white p-4 rounded-xl shadow-md sticky top-8">
-                    <h2 class="text-xl font-bold mb-4 text-center">Draft Power Rankings</h2>
-                    <div id="team-list" class="space-y-2">
+    <!-- Page Content -->
+    <div id="page-content">
+
+        <!-- Weekly Power Rankings Page -->
+        <div id="rankings-page">
+            <div class="text-center py-6">
+                <p class="text-lg md:text-xl font-bold text-indigo-600">Week 1 Report: "The Projection Correction"</p>
+                <p class="max-w-3xl mx-auto mt-2 text-gray-600">
+                    The scoreboard tells one story. The data tells the real one. Here, we move beyond simple wins and losses to deliver the definitive analysis of NFL Unlocked.
+                </p>
+            </div>
+             <!-- Matchup of the Week -->
+            <section class="container mx-auto p-4 md:p-6">
+                <div class="card rounded-lg shadow-lg border-2 border-indigo-500 p-6">
+                    <h2 class="text-center text-2xl font-black-ops text-indigo-600 tracking-wider">MATCHUP OF THE WEEK</h2>
+                    <div class="text-center mt-2">
+                        <p class="text-gray-600">A look ahead to a pivotal Week 2 showdown.</p>
                     </div>
-                </div>
-            </aside>
-
-            <section id="main-content" class="lg:col-span-3">
-                <div id="welcome-view" class="bg-white p-8 rounded-xl shadow-md text-center">
-                    <h2 class="text-3xl font-bold mb-4">Welcome to the Roast!</h2>
-                    <p class="text-slate-600 mb-6">The auction is over, the fake money is spent, and the rosters are locked. Select a team from the power rankings to view their detailed report card and see who aced the draft and who is already scouting for next year.</p>
-                    <div class="text-4xl">👇</div>
-                </div>
-                <div id="team-detail-view" class="hidden">
+                    <div class="flex flex-col md:flex-row items-center justify-around text-center mt-4">
+                        <div class="w-full md:w-2/5">
+                            <h3 class="text-2xl font-bold">#3 Bend The Knee</h3>
+                            <p class="font-semibold text-gray-500">(2-0-0)</p>
+                            <p class="mt-2 text-sm text-gray-700">Armed with a two-headed monster at RB, this team is a reliable juggernaut that beat projections and cruised to a Week 1 victory.</p>
+                        </div>
+                        <div class="w-full md:w-1/5 text-4xl font-black-ops text-gray-400 my-4 md:my-0">VS</div>
+                        <div class="w-full md:w-2/5">
+                            <h3 class="text-2xl font-bold">#1 FreeGucci</h3>
+                            <p class="font-semibold text-gray-500">(2-0-0)</p>
+                            <p class="mt-2 text-sm text-gray-700">The top-ranked team, fresh off a massive +18.50 point explosion over their projection. Do they have another ceiling performance in them?</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-6">
+                        <p class="font-bold text-indigo-600">The Verdict:</p>
+                        <p class="text-gray-700 max-w-xl mx-auto">This is the heavyweight championship of Week 2. The unstoppable force meets the immovable object. In a battle of titans, we're giving the slight edge to the team that showed the higher ceiling. <span class="font-bold">FreeGucci by 3.</span></p>
+                    </div>
                 </div>
             </section>
-        </main>
+            <!-- Main Rankings Container -->
+            <main class="container mx-auto p-4 md:p-6">
+                <div class="space-y-8">
+                    <!-- RANK 1 to 14 Cards from previous version go here... -->
+                    <!-- RANK 1 -->
+                    <div class="card rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row border-2 border-yellow-500">
+                        <div class="w-full md:w-32 bg-gray-200 flex items-center justify-center p-4">
+                            <span class="rank-icon text-gold glow-gold">1</span>
+                        </div>
+                        <div class="p-6 flex-1">
+                            <h3 class="text-2xl font-bold">FreeGucci <span class="text-sm text-gray-500">(Nishil naik)</span></h3>
+                            <p class="font-bold text-gray-600">Record: 2-0-0</p>
+                            <p class="text-indigo-600 font-semibold mt-1">"The Boomstick"</p>
+                            <p class="mt-4 text-gray-700">This is what an elite performance looks like. Not only did Nishil score 141, he did it after being projected for only 122.64. That's a league-shattering <span class="text-success-bright font-bold">+18.50</span> boom over expectation. Lamar Jackson was a monster, but the real story is Emeka Egbuka and J.K. Dobbins wildly outplaying their projections. With studs like Rashee Rice and Jordan Addison on the bench, this team isn't just winning; it's trending towards total domination.</p>
+                             <div class="mt-4 pt-4 border-t border-gray-200 text-sm">
+                                <p><span class="font-bold text-green-600">STUD:</span> Lamar Jackson (29.36 pts)</p>
+                                <p><span class="font-bold text-red-600">DUD:</span> Calvin Ridley (4.70 pts)</p>
+                            </div>
+                        </div>
+                         <div class="w-full md:w-48 bg-gray-100 p-6 flex flex-col justify-center items-center space-y-2">
+                            <p class="text-gray-500 text-sm">Actual Score</p>
+                            <p class="text-4xl font-black-ops text-success-bright"><span class="score">141.14</span></p>
+                            <p class="text-gray-500 text-xs">Projected: 122.64</p>
+                            <p class="text-lg font-bold text-success-bright">(+18.50)</p>
+                        </div>
+                    </div>
 
-        <section id="league-visualizations" class="mt-12">
-            <h2 class="text-3xl font-bold text-center mb-8 text-slate-900">League-Wide Analytics</h2>
-            <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <h3 class="text-xl font-bold mb-4 text-center">Draft Grade vs. Budget Spent</h3>
-                    <div class="chart-container">
-                        <canvas id="gradeVsSpendingChart"></canvas>
+                    <!-- RANK 2 -->
+                    <div class="card rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
+                        <div class="w-full md:w-32 bg-gray-200 flex items-center justify-center p-4">
+                            <span class="rank-icon text-silver glow-silver">2</span>
+                        </div>
+                        <div class="p-6 flex-1">
+                            <h3 class="text-2xl font-bold">Leo the Cleo <span class="text-sm text-gray-500">(Chris)</span></h3>
+                            <p class="font-bold text-gray-600">Record: 2-0-0</p>
+                            <p class="text-indigo-600 font-semibold mt-1">"The Efficient Operator"</p>
+                            <p class="mt-4 text-gray-700">The highest scorer of the week remains a top dog. Chris's team didn't just meet expectations; it exceeded them with a solid <span class="text-success-bright font-bold">+9.70</span> performance over projection. Led by Jayden Daniels and Bijan Robinson, this roster is a finely tuned machine. Even better? His bench was weak, meaning he started a near-perfect lineup. No second-guessing, just pure execution.</p>
+                            <div class="mt-4 pt-4 border-t border-gray-200 text-sm">
+                                <p><span class="font-bold text-green-600">STUD:</span> Bijan Robinson (22.40 pts)</p>
+                                <p><span class="font-bold text-red-600">DUD:</span> Terry McLaurin (3.70 pts)</p>
+                            </div>
+                        </div>
+                         <div class="w-full md:w-48 bg-gray-100 p-6 flex flex-col justify-center items-center space-y-2">
+                            <p class="text-gray-500 text-sm">Actual Score</p>
+                            <p class="text-4xl font-black-ops text-success-bright"><span class="score">143.32</span></p>
+                            <p class="text-gray-500 text-xs">Projected: 133.62</p>
+                            <p class="text-lg font-bold text-success-bright">(+9.70)</p>
+                        </div>
+                    </div>
+                    
+                    <!-- RANK 3 -->
+                    <div class="card rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
+                        <div class="w-full md:w-32 bg-gray-200 flex items-center justify-center p-4">
+                            <span class="rank-icon text-amber-800 glow-bronze">3</span>
+                        </div>
+                        <div class="p-6 flex-1">
+                            <h3 class="text-2xl font-bold">Bend The Knee <span class="text-sm text-gray-500">(Darrius M)</span></h3>
+                            <p class="font-bold text-gray-600">Record: 2-0-0</p>
+                            <p class="text-indigo-600 font-semibold mt-1">"Mr. Reliable"</p>
+                            <p class="mt-4 text-gray-700">Another team that beat its projection (<span class="text-success-bright font-bold">+5.47</span>) on its way to a dominant win. Having Christian McCaffrey and Derrick Henry is basically a license to print points, and they both delivered. While Nico Collins was a dud, this roster is too stacked with high-end RB talent to be ignored. This is a championship-caliber core.</p>
+                             <div class="mt-4 pt-4 border-t border-gray-200 text-sm">
+                                <p><span class="font-bold text-green-600">STUD:</span> Derrick Henry (30.70 pts)</p>
+                                <p><span class="font-bold text-red-600">DUD:</span> Nico Collins (4.00 pts)</p>
+                            </div>
+                        </div>
+                         <div class="w-full md:w-48 bg-gray-100 p-6 flex flex-col justify-center items-center space-y-2">
+                            <p class="text-gray-500 text-sm">Actual Score</p>
+                            <p class="text-4xl font-black-ops text-success-bright"><span class="score">129.80</span></p>
+                            <p class="text-gray-500 text-xs">Projected: 124.33</p>
+                            <p class="text-lg font-bold text-success-bright">(+5.47)</p>
+                        </div>
+                    </div>
+
+                    <!-- RANK 4 -->
+                     <div class="card rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
+                        <div class="w-full md:w-32 bg-gray-200 flex items-center justify-center p-4">
+                            <span class="rank-icon text-gray-600">4</span>
+                        </div>
+                        <div class="p-6 flex-1">
+                            <h3 class="text-2xl font-bold">Mac Daddy <span class="text-sm text-gray-500">(Maclane)</span></h3>
+                            <p class="font-bold text-gray-600">Record: 1-1-0</p>
+                            <p class="text-rose-600 font-semibold mt-1">"The Paper Tiger"</p>
+                            <p class="mt-4 text-gray-700">Maclane holds the #4 spot based on his star power (Justin Jefferson, Travis Etienne Jr.), but let's be real: his team BUSTED. He scored <span class="text-danger-bright font-bold">-7.79</span> points below his projection. He got lucky that his opponent, Leo the Cleo, was projected even higher. This roster has a championship ceiling, but this week, it showed its terrifyingly low floor. A concerning performance from a supposed contender.</p>
+                             <div class="mt-4 pt-4 border-t border-gray-200 text-sm">
+                                <p><span class="font-bold text-green-600">STUD:</span> Travis Etienne Jr. (18.10 pts)</p>
+                                <p><span class="font-bold text-red-600">DUD:</span> Kenneth Walker III (3.90 pts)</p>
+                            </div>
+                        </div>
+                         <div class="w-full md:w-48 bg-gray-100 p-6 flex flex-col justify-center items-center space-y-2">
+                            <p class="text-gray-500 text-sm">Actual Score</p>
+                            <p class="text-4xl font-black-ops text-danger-bright"><span class="score">128.20</span></p>
+                            <p class="text-gray-500 text-xs">Projected: 125.99</p>
+                            <p class="text-lg font-bold text-danger-bright">(+2.21)</p>
+                        </div>
+                    </div>
+                    
+                    <!-- RANK 5 -->
+                    <div class="card rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
+                        <div class="w-full md:w-32 bg-gray-200 flex items-center justify-center p-4">
+                            <span class="rank-icon text-gray-600">5</span>
+                        </div>
+                        <div class="p-6 flex-1">
+                            <h3 class="text-2xl font-bold">The Injured Reserved <span class="text-sm text-gray-500">(Greg)</span></h3>
+                            <p class="font-bold text-gray-600">Record: 1-1-0</p>
+                            <p class="text-rose-600 font-semibold mt-1">"The Model of Consistency"</p>
+                            <p class="mt-4 text-gray-700">There is no team more perfectly average and tragically unlucky than this one. Greg's squad scored almost exactly what it was projected to (<span class="text-gray-600 font-bold">-0.31</span> difference). He didn't boom, he didn't bust. He just showed up and ran into a team that exploded. With Keenan Allen and others on the bench, there were points to be had, but this team is solid. A true playoff threat hiding with a losing record.</p>
+                            <div class="mt-4 pt-4 border-t border-gray-200 text-sm">
+                                <p><span class="font-bold text-green-600">STUD:</span> Davante Adams (12.70 pts)</p>
+                                <p><span class="font-bold text-red-600">DUD:</span> Sam LaPorta (10.90 pts on an 8.24 proj is good, but the rest of the team was just 'ok')</p>
+                            </div>
+                        </div>
+                         <div class="w-full md:w-48 bg-gray-100 p-6 flex flex-col justify-center items-center space-y-2">
+                            <p class="text-gray-500 text-sm">Actual Score</p>
+                            <p class="text-4xl font-black-ops text-danger-bright"><span class="score">128.70</span></p>
+                            <p class="text-gray-500 text-xs">Projected: 129.01</p>
+                            <p class="text-lg font-bold text-gray-600">(-0.31)</p>
+                        </div>
+                    </div>
+
+                    <!-- RANK 6 -->
+                    <div class="card rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
+                        <div class="w-full md:w-32 bg-gray-200 flex items-center justify-center p-4">
+                            <span class="rank-icon text-gray-600">6</span>
+                        </div>
+                        <div class="p-6 flex-1">
+                            <h3 class="text-2xl font-bold">Good Will Hunting <span class="text-sm text-gray-500">(Will)</span></h3>
+                            <p class="font-bold text-gray-600">Record: 0-2-0</p>
+                            <p class="text-cyan-600 font-semibold mt-1">"The One-Man Show"</p>
+                            <p class="mt-4 text-gray-700">This team has Josh Allen, who single-handedly scored 38.76 points. The fact that the team still underperformed its projection by a whopping <span class="text-danger-bright font-bold">-12.57</span> points and lost is a massive red flag for the entire supporting cast. This roster is a superstar and a bunch of question marks.</p>
+                            <div class="mt-3 pt-3 border-t text-center"><p class="font-bold">Panic Meter: <span class="text-yellow-500 bg-yellow-100 px-2 py-1 rounded-full text-xs">CONCERNED</span></p></div>
+                        </div>
+                        <div class="w-full md:w-48 bg-gray-100 p-6 flex flex-col justify-center items-center space-y-2">
+                            <p class="text-gray-500 text-sm">Actual Score</p>
+                            <p class="text-4xl font-black-ops text-danger-bright"><span class="score">112.00</span></p>
+                            <p class="text-gray-500 text-xs">Projected: 124.57</p>
+                            <p class="text-lg font-bold text-danger-bright">(-12.57)</p>
+                        </div>
+                    </div>
+
+                    <!-- RANK 7 -->
+                    <div class="card rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
+                        <div class="w-full md:w-32 bg-gray-200 flex items-center justify-center p-4">
+                            <span class="rank-icon text-gray-600">7</span>
+                        </div>
+                        <div class="p-6 flex-1">
+                            <h3 class="text-2xl font-bold">A dad <span class="text-sm text-gray-500">(Barrett Davis)</span></h3>
+                            <p class="font-bold text-gray-600">Record: 2-0-0</p>
+                            <p class="text-cyan-600 font-semibold mt-1">"The Underwhelming Winner"</p>
+                            <p class="mt-4 text-gray-700">Got the win, but actually underperformed expectations. When your #1 WR, Ja'Marr Chase, puts up a measly 3.60 points on a 16.84 projection, alarm bells should be ringing. A win is a win, but this was not a strong performance, and a 2-0-0 record might be masking some serious flaws.</p>
+                             <div class="mt-3 pt-3 border-t text-center"><p class="font-bold">Panic Meter: <span class="text-green-500 bg-green-100 px-2 py-1 rounded-full text-xs">CALM (BUT WATCHING)</span></p></div>
+                        </div>
+                         <div class="w-full md:w-48 bg-gray-100 p-6 flex flex-col justify-center items-center space-y-2">
+                            <p class="text-gray-500 text-sm">Actual Score</p>
+                            <p class="text-4xl font-black-ops text-danger-bright"><span class="score">116.78</span></p>
+                            <p class="text-gray-500 text-xs">Projected: 120.04</p>
+                            <p class="text-lg font-bold text-danger-bright">(-3.26)</p>
+                        </div>
+                    </div>
+
+                    <!-- RANK 8 -->
+                    <div class="card rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
+                        <div class="w-full md:w-32 bg-gray-200 flex items-center justify-center p-4">
+                            <span class="rank-icon text-gray-600">8</span>
+                        </div>
+                        <div class="p-6 flex-1">
+                            <h3 class="text-2xl font-bold">Shut Up <span class="text-sm text-gray-500">(Neil)</span></h3>
+                            <p class="font-bold text-gray-600">Record: 0-2-0</p>
+                            <p class="text-cyan-600 font-semibold mt-1">"The Quiet Bust"</p>
+                            <p class="mt-4 text-gray-700">Another team that massively busted. When your entire starting lineup underperforms by nearly 13 points, it's a miracle the loss was even close. The core of this roster looks suspect, and a comeback will require some serious over-performances in the coming weeks.</p>
+                            <div class="mt-3 pt-3 border-t text-center"><p class="font-bold">Panic Meter: <span class="text-yellow-500 bg-yellow-100 px-2 py-1 rounded-full text-xs">ELEVATED</span></p></div>
+                        </div>
+                         <div class="w-full md:w-48 bg-gray-100 p-6 flex flex-col justify-center items-center space-y-2">
+                            <p class="text-gray-500 text-sm">Actual Score</p>
+                            <p class="text-4xl font-black-ops text-danger-bright"><span class="score">110.54</span></p>
+                            <p class="text-gray-500 text-xs">Projected: 123.15</p>
+                            <p class="text-lg font-bold text-danger-bright">(-12.61)</p>
+                        </div>
+                    </div>
+
+                    <!-- RANK 9 -->
+                    <div class="card rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row border-2 border-fraud">
+                        <div class="w-full md:w-32 bg-gray-200 flex items-center justify-center p-4">
+                            <span class="rank-icon text-fraud">9</span>
+                        </div>
+                        <div class="p-6 flex-1">
+                            <h3 class="text-2xl font-bold">Miley Hannah Montana <span class="text-sm text-gray-500">(Greg)</span></h3>
+                            <p class="font-bold text-gray-600">Record: 1-1-0</p>
+                            <p class="text-fraud font-semibold mt-1">"FRAUD WATCH"</p>
+                            <p class="mt-4 text-gray-700">This team won by playing the worst team in the league. That's it. His own roster was a dumpster fire, underperforming by 11 points. CeeDee Lamb and Brock Bowers were solid, but the rest of the team needs to show up against a real opponent to prove this win wasn't a fluke. The best of both worlds, indeed.</p>
+                             <div class="mt-3 pt-3 border-t text-center"><p class="font-bold">Panic Meter: <span class="text-green-500 bg-green-100 px-2 py-1 rounded-full text-xs">VIBING (FOR NOW)</span></p></div>
+                        </div>
+                         <div class="w-full md:w-48 bg-gray-100 p-6 flex flex-col justify-center items-center space-y-2">
+                            <p class="text-gray-500 text-sm">Actual Score</p>
+                            <p class="text-4xl font-black-ops text-danger-bright"><span class="score">113.84</span></p>
+                            <p class="text-gray-500 text-xs">Projected: 124.74</p>
+                            <p class="text-lg font-bold text-danger-bright">(-10.90)</p>
+                        </div>
+                    </div>
+
+                    <!-- RANK 10 -->
+                    <div class="card rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
+                        <div class="w-full md:w-32 bg-gray-200 flex items-center justify-center p-4">
+                            <span class="rank-icon text-gray-600">10</span>
+                        </div>
+                        <div class="p-6 flex-1">
+                            <h3 class="text-2xl font-bold">Bullish <span class="text-sm text-gray-500">(mohsin)</span></h3>
+                            <p class="font-bold text-gray-600">Record: 1-1-0</p>
+                            <p class="text-cyan-600 font-semibold mt-1">"The Luckiest Manager"</p>
+                            <p class="mt-4 text-gray-700">This team managed a win despite being the single biggest bust of the week relative to projection. Underperforming by a staggering <span class="text-danger-bright font-bold">-24.42</span> points is a fireable offense in most leagues. Apocalyptic failures from Tyreek Hill (6 pts) and Bo Nix (8.84 pts) make this the ugliest win of the season.</p>
+                             <div class="mt-3 pt-3 border-t text-center"><p class="font-bold">Panic Meter: <span class="text-red-500 bg-red-100 px-2 py-1 rounded-full text-xs">DEFCON 1</span></p></div>
+                        </div>
+                        <div class="w-full md:w-48 bg-gray-100 p-6 flex flex-col justify-center items-center space-y-2">
+                            <p class="text-gray-500 text-sm">Actual Score</p>
+                            <p class="text-4xl font-black-ops text-danger-bright"><span class="score">114.28</span></p>
+                            <p class="text-gray-500 text-xs">Projected: 138.70</p>
+                            <p class="text-lg font-bold text-danger-bright">(-24.42)</p>
+                        </div>
+                    </div>
+
+                    <!-- RANK 11 -->
+                    <div class="card rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
+                        <div class="w-full md:w-32 bg-gray-200 flex items-center justify-center p-4">
+                            <span class="rank-icon text-gray-600">11</span>
+                        </div>
+                        <div class="p-6 flex-1">
+                            <h3 class="text-2xl font-bold">Kim Jong Nate <span class="text-sm text-gray-500">(Nathan)</span></h3>
+                            <p class="font-bold text-gray-600">Record: 0-2-0</p>
+                            <p class="text-cyan-600 font-semibold mt-1">"The Letdown"</p>
+                            <p class="mt-4 text-gray-700">CMC was great, as expected. But a truly pathetic 8.82 points from franchise QB Joe Burrow on a 20.31 projection is what tanked this team. A massive underperformance from the most important position has this team staring at a long season.</p>
+                            <div class="mt-3 pt-3 border-t text-center"><p class="font-bold">Panic Meter: <span class="text-yellow-500 bg-yellow-100 px-2 py-1 rounded-full text-xs">HIGH ALERT</span></p></div>
+                        </div>
+                        <div class="w-full md:w-48 bg-gray-100 p-6 flex flex-col justify-center items-center space-y-2">
+                            <p class="text-gray-500 text-sm">Actual Score</p>
+                            <p class="text-4xl font-black-ops text-danger-bright"><span class="score">110.22</span></p>
+                            <p class="text-gray-500 text-xs">Projected: 128.16</p>
+                            <p class="text-lg font-bold text-danger-bright">(-17.94)</p>
+                        </div>
+                    </div>
+
+                    <!-- RANK 12 -->
+                    <div class="card rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
+                        <div class="w-full md:w-32 bg-gray-200 flex items-center justify-center p-4">
+                            <span class="rank-icon text-gray-600">12</span>
+                        </div>
+                        <div class="p-6 flex-1">
+                            <h3 class="text-2xl font-bold">ShakeNBake <span class="text-sm text-gray-500">(Abhishek)</span></h3>
+                            <p class="font-bold text-gray-600">Record: 0-2-0</p>
+                            <p class="text-cyan-600 font-semibold mt-1">"The Disaster Artist"</p>
+                            <p class="mt-4 text-gray-700">The second-biggest projection bust of the week is a sight to behold. Mark Andrews getting 1.00 point is a fantasy tragedy of Shakespearean proportions. This team isn't just unlucky; it might be actively bad, especially with Stefon Diggs sitting on the bench.</p>
+                            <div class="mt-3 pt-3 border-t text-center"><p class="font-bold">Panic Meter: <span class="text-red-500 bg-red-100 px-2 py-1 rounded-full text-xs">FIVE ALARM FIRE</span></p></div>
+                        </div>
+                        <div class="w-full md:w-48 bg-gray-100 p-6 flex flex-col justify-center items-center space-y-2">
+                            <p class="text-gray-500 text-sm">Actual Score</p>
+                            <p class="text-4xl font-black-ops text-danger-bright"><span class="score">94.94</span></p>
+                            <p class="text-gray-500 text-xs">Projected: 122.67</p>
+                            <p class="text-lg font-bold text-danger-bright">(-27.73)</p>
+                        </div>
+                    </div>
+
+                    <!-- RANK 13 -->
+                    <div class="card rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
+                        <div class="w-full md:w-32 bg-gray-200 flex items-center justify-center p-4">
+                            <span class="rank-icon text-skull">13</span>
+                        </div>
+                        <div class="p-6 flex-1">
+                            <h3 class="text-2xl font-bold">Hail Mary <span class="text-sm text-gray-500">(Andrew)</span></h3>
+                            <p class="font-bold text-gray-600">Record: 2-0-0</p>
+                            <p class="text-cyan-600 font-semibold mt-1">"The Hollow Victor"</p>
+                            <p class="mt-4 text-gray-700">Yes, he won. He's 2-0-0. But this is the most suspect undefeated team in the league. His roster has no depth (only 20 bench points) and he underperformed his projection significantly. This team is built on sand, and the tide is coming in.</p>
+                             <div class="mt-3 pt-3 border-t text-center"><p class="font-bold">Panic Meter: <span class="text-yellow-500 bg-yellow-100 px-2 py-1 rounded-full text-xs">HIGH ALERT (DESPITE RECORD)</span></p></div>
+                        </div>
+                        <div class="w-full md:w-48 bg-gray-100 p-6 flex flex-col justify-center items-center space-y-2">
+                            <p class="text-gray-500 text-sm">Actual Score</p>
+                            <p class="text-4xl font-black-ops text-danger-bright"><span class="score">115.44</span></p>
+                            <p class="text-gray-500 text-xs">Projected: 129.20</p>
+                            <p class="text-lg font-bold text-danger-bright">(-13.76)</p>
+                        </div>
+                    </div>
+
+                    <!-- RANK 14 -->
+                    <div class="card rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
+                        <div class="w-full md:w-32 bg-gray-200 flex items-center justify-center p-4">
+                            <span class="rank-icon text-skull">14</span>
+                        </div>
+                        <div class="p-6 flex-1">
+                            <h3 class="text-2xl font-bold">INDIAN JONES <span class="text-sm text-gray-500">(Anuj)</span></h3>
+                            <p class="font-bold text-gray-600">Record: 0-2-0</p>
+                            <p class="text-cyan-600 font-semibold mt-1">"The Benched Potential"</p>
+                            <p class="mt-4 text-gray-700">The worst score of the week AND the biggest bust relative to projection. It's a disasterclass in fantasy football. The only silver lining? A massive 48 points rotting on the bench, including TWO 25+ point QBs. The potential is there, if only the manager would wake up and set a proper lineup.</p>
+                             <div class="mt-3 pt-3 border-t text-center"><p class="font-bold">Panic Meter: <span class="text-red-500 bg-red-100 px-2 py-1 rounded-full text-xs">SOUND THE ALARMS</span></p></div>
+                        </div>
+                        <div class="w-full md:w-48 bg-gray-100 p-6 flex flex-col justify-center items-center space-y-2">
+                            <p class="text-gray-500 text-sm">Actual Score</p>
+                            <p class="text-4xl font-black-ops text-danger-bright"><span class="score">83.64</span></p>
+                            <p class="text-gray-500 text-xs">Projected: 118.49</p>
+                            <p class="text-lg font-bold text-danger-bright">(-34.85)</p>
+                        </div>
                     </div>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <h3 class="text-xl font-bold mb-4 text-center">Positional Spending Strategy</h3>
-                     <div class="chart-container">
-                        <canvas id="positionalSpendingChart"></canvas>
+
+                <!-- Weekly Awards Section -->
+                <section class="mt-16">
+                    <h2 class="text-center text-3xl md:text-4xl font-black-ops tracking-wider animated-gradient bg-clip-text text-transparent">WEEKLY SUPERLATIVES</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+                        <div class="card award-card rounded-lg p-6 text-center">
+                            <p class="text-5xl">🚀</p>
+                            <h3 class="text-xl font-bold mt-2 text-success-bright">Biggest Boom</h3>
+                            <p class="mt-2 font-semibold">FreeGucci</p>
+                            <p class="text-gray-500 text-sm">For beating his projection by a massive +18.50 points.</p>
+                        </div>
+                        <div class="card award-card rounded-lg p-6 text-center">
+                            <p class="text-5xl">💣</p>
+                            <h3 class="text-xl font-bold mt-2 text-danger-bright">Biggest Bust</h3>
+                            <p class="mt-2 font-semibold">INDIAN JONES</p>
+                            <p class="text-gray-500 text-sm">Missing his projection by a soul-crushing -34.85 points.</p>
+                        </div>
+                        <div class="card award-card rounded-lg p-6 text-center">
+                            <p class="text-5xl">🤦‍♂️</p>
+                            <h3 class="text-xl font-bold mt-2 text-yellow-500">Worst Manager Award</h3>
+                            <p class="mt-2 font-semibold">INDIAN JONES</p>
+                            <p class="text-gray-500 text-sm">Leaving 48.06 points on the bench, including TWO 25+ point QBs, is unforgivable.</p>
+                        </div>
+                        <div class="card award-card rounded-lg p-6 text-center">
+                            <p class="text-5xl">🧐</p>
+                            <h3 class="text-xl font-bold mt-2 text-fraud">Most Fraudulent Win</h3>
+                            <p class="mt-2 font-semibold">Bullish</p>
+                            <p class="text-gray-500 text-sm">Won the game while being the week's BIGGEST underperformer (-24.42). An ugly, ugly win.</p>
+                        </div>
                     </div>
-                </div>
-                 <div class="bg-white p-6 rounded-xl shadow-md xl:col-span-2">
-                    <h3 class="text-xl font-bold mb-4 text-center">Top 15 Draft Spenders</h3>
-                     <div class="chart-container">
-                        <canvas id="topSpendersChart"></canvas>
+                </section>
+            </main>
+        </div>
+
+        <!-- Post-Draft Analysis Page -->
+        <div id="draft-page" class="hidden">
+            <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+                <main class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                    <aside class="lg:col-span-1">
+                        <div class="bg-white p-4 rounded-xl shadow-md sticky top-28">
+                            <h2 class="text-xl font-bold mb-4 text-center">Draft Power Rankings</h2>
+                            <div id="team-list" class="space-y-2">
+                            </div>
+                        </div>
+                    </aside>
+
+                    <section id="main-content" class="lg:col-span-3">
+                        <div id="welcome-view" class="bg-white p-8 rounded-xl shadow-md text-center">
+                            <h2 class="text-3xl font-bold mb-4">Welcome to the Roast!</h2>
+                            <p class="text-slate-600 mb-6">The auction is over, the fake money is spent, and the rosters are locked. Select a team from the power rankings to view their detailed report card and see who aced the draft and who is already scouting for next year.</p>
+                            <div class="text-4xl">👇</div>
+                        </div>
+                        <div id="team-detail-view" class="hidden">
+                        </div>
+                    </section>
+                </main>
+
+                <section id="league-visualizations" class="mt-12">
+                    <h2 class="text-3xl font-bold text-center mb-8 text-slate-900">League-Wide Analytics</h2>
+                    <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+                        <div class="bg-white p-6 rounded-xl shadow-md">
+                            <h3 class="text-xl font-bold mb-4 text-center">Draft Grade vs. Budget Spent</h3>
+                            <div class="chart-container">
+                                <canvas id="gradeVsSpendingChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-md">
+                            <h3 class="text-xl font-bold mb-4 text-center">Positional Spending Strategy</h3>
+                               <div class="chart-container">
+                                    <canvas id="positionalSpendingChart"></canvas>
+                                </div>
+                        </div>
+                           <div class="bg-white p-6 rounded-xl shadow-md xl:col-span-2">
+                            <h3 class="text-xl font-bold mb-4 text-center">Top 15 Draft Spenders</h3>
+                               <div class="chart-container">
+                                    <canvas id="topSpendersChart"></canvas>
+                                </div>
+                        </div>
                     </div>
-                </div>
+                </section>
             </div>
-        </section>
-         <footer class="text-center text-slate-500 mt-12 py-6 border-t">
-            <p>&copy; 2025 NFL Unlocked Analysis. All rights reserved... and roasted.</p>
-        </footer>
+        </div>
     </div>
 
+    <footer class="text-center p-6 mt-10 text-gray-600 text-sm border-t border-gray-200">
+        <p>&copy; 2025 NFL Unlocked Official Unofficial Power Rankings. All rights roasted.</p>
+    </footer>
+
     <script>
+        // Main Tab Navigation
+        const rankingsPage = document.getElementById('rankings-page');
+        const draftPage = document.getElementById('draft-page');
+        const showRankingsBtn = document.getElementById('show-rankings');
+        const showDraftBtn = document.getElementById('show-draft');
+        const cards = document.querySelectorAll('.card');
+
+        function showRankings() {
+            draftPage.classList.add('hidden');
+            rankingsPage.classList.remove('hidden');
+            showDraftBtn.classList.remove('active');
+            showRankingsBtn.classList.add('active');
+            // Re-trigger card animations
+            cards.forEach(card => cardObserver.observe(card));
+        }
+
+        function showDraft() {
+            rankingsPage.classList.add('hidden');
+            draftPage.classList.remove('hidden');
+            showRankingsBtn.classList.remove('active');
+            showDraftBtn.classList.add('active');
+        }
+
+        showRankingsBtn.addEventListener('click', showRankings);
+        showDraftBtn.addEventListener('click', showDraft);
+
+        // Power Rankings Scroll Animation
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    cardObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        cards.forEach(card => {
+            cardObserver.observe(card);
+        });
+
+        // --- Post-Draft Analysis Script ---
         const teamsData = [
-            {
+             {
                 rank: 1, teamName: "Bullish", grade: "A+", gradeValue: 12, tier: 1,
                 keyPlayers: [ { name: "Tyreek Hill", cost: 30 }, { name: "Saquon Barkley", cost: 62 }, { name: "Travis Kelce", cost: 14 }, { name: "Tony Pollard", cost: 19 }],
                 good: "Getting Tyreek Hill ($30) and Travis Kelce ($14) for a combined $44 is not a 'good value,' it's a federal crime. We need to audit your internet connection for lag switching.",
@@ -294,7 +781,7 @@
             `;
         };
 
-        const init = () => {
+        const initDraftPage = () => {
             teamsData.sort((a, b) => a.rank - b.rank);
             teamListEl.innerHTML = '';
             teamsData.forEach((team) => {
@@ -416,7 +903,7 @@
             });
         };
 
-        document.addEventListener('DOMContentLoaded', init);
+        document.addEventListener('DOMContentLoaded', initDraftPage);
     </script>
 </body>
 </html>
