@@ -272,6 +272,9 @@
                 const teamDetailViewEl = document.getElementById('team-detail-view');
                 if (!teamListEl) return;
                 
+                const gradeColors = { 'A+': '#10b981', 'A': '#22c55e', 'A-': '#84cc16', 'B+': '#a3e635', 'B': '#eab308', 'B-': '#f59e0b', 'C+': '#f97316', 'C': '#ef4444', 'C-': '#dc2626', 'D+': '#b91c1c', };
+                const posColors = { QB: 'rgba(54, 162, 235, 0.8)', RB: 'rgba(75, 192, 192, 0.8)', WR: 'rgba(255, 99, 132, 0.8)', TE: 'rgba(255, 159, 64, 0.8)', K: 'rgba(153, 102, 255, 0.8)', DEF: 'rgba(255, 206, 86, 0.8)', D: 'rgba(201, 203, 207, 0.8)' };
+
                 const displayTeamDetails = (team) => {
                     welcomeViewEl.classList.add('hidden');
                     teamDetailViewEl.classList.remove('hidden');
@@ -293,8 +296,6 @@
                     teamListEl.appendChild(teamEl);
                 });
                 
-                const gradeColors = { 'A+': '#10b981', 'A': '#22c55e', 'A-': '#84cc16', 'B+': '#a3e635', 'B': '#eab308', 'B-': '#f59e0b', 'C+': '#f97316', 'C': '#ef4444', 'C-': '#dc2626', 'D+': '#b91c1c', };
-                const posColors = { QB: 'rgba(54, 162, 235, 0.8)', RB: 'rgba(75, 192, 192, 0.8)', WR: 'rgba(255, 99, 132, 0.8)', TE: 'rgba(255, 159, 64, 0.8)', K: 'rgba(153, 102, 255, 0.8)', DEF: 'rgba(255, 206, 86, 0.8)', D: 'rgba(201, 203, 207, 0.8)' };
                 let gradeVsSpendingChart, positionalSpendingChart, topSpendersChart;
                 const renderCharts = () => {
                     if(gradeVsSpendingChart) gradeVsSpendingChart.destroy();
