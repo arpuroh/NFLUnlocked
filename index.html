@@ -10,99 +10,35 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6; /* Light gray background */
-        }
-        .font-black-ops {
-            font-family: 'Inter', sans-serif;
-            font-weight: 900;
-        }
-        .card {
-            background-color: #ffffff; /* White cards */
-            border: 1px solid #e5e7eb; /* Light gray border */
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .card.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .rank-icon {
-            font-size: 3rem;
-            font-weight: 900;
-            line-height: 1;
-        }
-        .score {
-            font-family: monospace;
-            font-size: 1.25rem;
-        }
-        .text-gold { color: #D97706; }
-        .text-silver { color: #6B7280; }
-        .text-bronze { color: #92400E; }
-        .text-success-bright { color: #16a34a; }
-        .text-danger-bright { color: #dc2626; }
-        .text-warning-bright { color: #f59e0b; }
-        .text-fraud { color: #db2777; }
-        .text-skull { color: #4b5563; }
-
-        .glow-gold { text-shadow: 0 0 15px rgba(217, 119, 6, 0.4); }
-        .glow-silver { text-shadow: 0 0 15px rgba(107, 114, 128, 0.4); }
-        .glow-bronze { text-shadow: 0 0 15px rgba(146, 64, 14, 0.4); }
-
-        .award-card {
-            background: linear-gradient(145deg, #f9fafb, #e5e7eb);
-        }
-
-        .animated-gradient {
-            background-size: 200% 200%;
-            background-image: linear-gradient(-45deg, #4f46e5, #ec4899, #22d3ee, #f59e0b);
-            animation: gradient 10s ease infinite;
-        }
-
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Draft Analysis Styles */
-        .chart-container {
-            position: relative;
-            width: 100%;
-            height: 400px;
-            max-height: 50vh;
-        }
-        .tier-1-bg { background-color: #dcfce7; }
-        .tier-1-border { border-color: #22c55e; }
-        .tier-2-bg { background-color: #fef9c3; }
-        .tier-2-border { border-color: #eab308; }
-        .tier-3-bg { background-color: #ffedd5; }
-        .tier-3-border { border-color: #f97316; }
-        .tier-4-bg { background-color: #fee2e2; }
-        .tier-4-border { border-color: #ef4444; }
-        .team-card.active {
-            transform: scale(1.02);
-            box-shadow: 0 0 0 2px #3b82f6;
-            border-color: #3b82f6;
-        }
-        .nav-button {
-            padding: 0.75rem 1.5rem;
-            font-weight: 700;
-            color: #4b5563;
-            border-bottom: 3px solid transparent;
-            transition: all 0.3s ease;
-        }
-        .nav-button.active {
-            color: #4f46e5;
-            border-bottom-color: #4f46e5;
-        }
+        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
+        .font-black-ops { font-family: 'Inter', sans-serif; font-weight: 900; }
+        .card { background-color: #ffffff; border: 1px solid #e5e7eb; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .card.is-visible { opacity: 1; transform: translateY(0); }
+        .rank-icon { font-size: 3rem; font-weight: 900; line-height: 1; }
+        .score { font-family: monospace; font-size: 1.25rem; }
+        .text-gold { color: #D97706; } .text-silver { color: #6B7280; } .text-bronze { color: #92400E; }
+        .text-success-bright { color: #16a34a; } .text-danger-bright { color: #dc2626; }
+        .text-fraud { color: #db2777; } .text-skull { color: #4b5563; }
+        .glow-gold { text-shadow: 0 0 15px rgba(217, 119, 6, 0.4); } .glow-silver { text-shadow: 0 0 15px rgba(107, 114, 128, 0.4); } .glow-bronze { text-shadow: 0 0 15px rgba(146, 64, 14, 0.4); }
+        .award-card { background: linear-gradient(145deg, #f9fafb, #e5e7eb); }
+        .animated-gradient { background-size: 200% 200%; background-image: linear-gradient(-45deg, #4f46e5, #ec4899, #22d3ee, #f59e0b); animation: gradient 10s ease infinite; }
+        @keyframes gradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        .chart-container { position: relative; width: 100%; height: 400px; max-height: 50vh; }
+        .tier-1-bg { background-color: #dcfce7; } .tier-1-border { border-color: #22c55e; }
+        .tier-2-bg { background-color: #fef9c3; } .tier-2-border { border-color: #eab308; }
+        .tier-3-bg { background-color: #ffedd5; } .tier-3-border { border-color: #f97316; }
+        .tier-4-bg { background-color: #fee2e2; } .tier-4-border { border-color: #ef4444; }
+        .team-card.active { transform: scale(1.02); box-shadow: 0 0 0 2px #3b82f6; border-color: #3b82f6; }
+        .nav-button { padding: 0.75rem 1.5rem; font-weight: 700; color: #4b5563; border-bottom: 3px solid transparent; transition: all 0.3s ease; }
+        .nav-button.active { color: #4f46e5; border-bottom-color: #4f46e5; }
+        .rank-change { font-size: 1rem; font-weight: 700; margin-left: 8px; }
+        .rank-up { color: #16a34a; }
+        .rank-down { color: #dc2626; }
+        .rank-same { color: #6b7280; }
     </style>
 </head>
 <body class="text-gray-800">
 
-    <!-- Header and Navigation -->
     <header class="text-center p-6 md:p-10 border-b border-gray-200 bg-white shadow-sm sticky top-0 z-10">
         <h1 class="text-4xl md:text-5xl font-black-ops tracking-wider uppercase animated-gradient bg-clip-text text-transparent">NFL Unlocked</h1>
         <nav class="mt-4">
@@ -113,419 +49,39 @@
         </nav>
     </header>
 
-    <!-- Page Content -->
     <div id="page-content">
-
-        <!-- Weekly Power Rankings Page -->
         <div id="rankings-page">
             <div class="text-center py-6">
-                <p class="text-lg md:text-xl font-bold text-indigo-600">Week 1 Report: The Scorch Trials</p>
+                <p id="week-title" class="text-lg md:text-xl font-bold text-indigo-600"></p>
+                <div class="mt-4">
+                    <label for="week-selector" class="font-bold">Select Week:</label>
+                    <select id="week-selector" class="p-2 rounded-md border border-gray-300 shadow-sm"></select>
+                </div>
                 <p class="max-w-3xl mx-auto mt-2 text-gray-600">
                     Welcome to the only page that matters. The standings are for the weak. This is a weekly evisceration of every manager's hopes and dreams, backed by cold, hard data. Let's begin.
                 </p>
             </div>
-             <!-- Matchup of the Week -->
-            <section class="container mx-auto p-4 md:p-6">
-                <div class="card rounded-lg shadow-lg border-2 border-indigo-500 p-6">
-                    <h2 class="text-center text-2xl font-black-ops text-indigo-600 tracking-wider">MATCHUP OF THE WEEK</h2>
-                    <div class="text-center mt-2">
-                        <p class="text-gray-600">A look ahead to the clash that will shake the league.</p>
-                    </div>
-                    <div class="flex flex-col md:flex-row items-center justify-around text-center mt-4">
-                        <div class="w-full md:w-2/5">
-                            <h3 class="text-2xl font-bold">#3 Bend The Knee</h3>
-                            <p class="font-semibold text-gray-500">(2-0-0)</p>
-                            <p class="mt-2 text-sm text-gray-700">A kingdom built on the legs of a rejuvenated Derrick Henry. Can this old-school dynasty survive against the new-age firepower?</p>
-                        </div>
-                        <div class="w-full md:w-1/5 text-4xl font-black-ops text-gray-400 my-4 md:my-0">VS</div>
-                        <div class="w-full md:w-2/5">
-                            <h3 class="text-2xl font-bold">#1 FreeGucci</h3>
-                            <p class="font-semibold text-gray-500">(2-0-0)</p>
-                            <p class="mt-2 text-sm text-gray-700">The league's final boss. Fresh off a Week 1 performance so dominant it should be illegal. Can lightning strike twice?</p>
-                        </div>
-                    </div>
-                    <div class="text-center mt-6">
-                        <p class="font-bold text-indigo-600">The Verdict:</p>
-                        <p class="text-gray-700 max-w-xl mx-auto">This is the heavyweight championship of Week 2. It’s strength vs. strength, ego vs. ego. We’re giving the slight edge to the team that showed a higher, more explosive ceiling. Bend The Knee will put up a fight, but FreeGucci's firepower is too much. <span class="font-bold">FreeGucci by 3.</span></p>
-                    </div>
-                </div>
-            </section>
-            <!-- Main Rankings Container -->
+            <section id="matchup-container" class="container mx-auto p-4 md:p-6"></section>
+            <section id="superlatives-container" class="container mx-auto p-4 md:p-6"></section>
             <main class="container mx-auto p-4 md:p-6">
-                <div class="space-y-8">
-                    <!-- RANK 1 -->
-                    <div class="card rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row border-2 border-yellow-500">
-                        <div class="w-full md:w-32 bg-gray-200 flex items-center justify-center p-4">
-                            <span class="rank-icon text-gold glow-gold">1</span>
-                        </div>
-                        <div class="p-6 flex-1">
-                            <h3 class="text-2xl font-bold">FreeGucci <span class="text-sm text-gray-500">(Nishil naik)</span></h3>
-                            <p class="font-bold text-gray-600">Record: 2-0-0</p>
-                            <p class="text-indigo-600 font-semibold mt-1">"The League's Final Boss"</p>
-                            <p class="mt-4 text-gray-700">Let's be clear: this wasn't just a win, it was a declaration of war. Annihilating your projection by <span class="text-success-bright font-bold">+18.50</span> points is the fantasy equivalent of planting your flag on the smoking ruins of your opponent's season. With an army of studs waiting on the bench (Rice, Addison), this team isn't just the one to beat; it's the one to fear. Enjoy the view from the top; the fall will be spectacular.</p>
-                             <div class="mt-4 pt-4 border-t border-gray-200 text-sm">
-                                <p><span class="font-bold text-green-600">STUD:</span> Lamar Jackson (29.36 pts), who played like a man possessed.</p>
-                                <p><span class="font-bold text-red-600">DUD:</span> Calvin Ridley (4.70 pts), who was thankfully a passenger in this beatdown.</p>
-                            </div>
-                        </div>
-                         <div class="w-full md:w-48 bg-gray-100 p-6 flex flex-col justify-center items-center space-y-2">
-                            <p class="text-gray-500 text-sm">Actual Score</p>
-                            <p class="text-4xl font-black-ops text-success-bright"><span class="score">141.14</span></p>
-                            <p class="text-gray-500 text-xs">Projected: 122.64</p>
-                            <p class="text-lg font-bold text-success-bright">(+18.50)</p>
-                        </div>
-                    </div>
-
-                    <!-- RANK 2 -->
-                    <div class="card rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
-                        <div class="w-full md:w-32 bg-gray-200 flex items-center justify-center p-4">
-                            <span class="rank-icon text-silver glow-silver">2</span>
-                        </div>
-                        <div class="p-6 flex-1">
-                            <h3 class="text-2xl font-bold">Leo the Cleo <span class="text-sm text-gray-500">(Chris)</span></h3>
-                            <p class="font-bold text-gray-600">Record: 2-0-0</p>
-                            <p class="text-indigo-600 font-semibold mt-1">"The Silent Assassin"</p>
-                            <p class="mt-4 text-gray-700">The highest scorer of the week, and he made it look easy. While FreeGucci was dropping bombs, Leo the Cleo was quietly and efficiently dismantling his opponent with a <span class="text-success-bright font-bold">+9.70</span> performance over projection. The fact that his bench was a wasteland means he started the perfect lineup. That’s not luck; that’s terrifyingly good management.</p>
-                            <div class="mt-4 pt-4 border-t border-gray-200 text-sm">
-                                <p><span class="font-bold text-green-600">STUD:</span> Bijan Robinson (22.40 pts), looking every bit the part of a league-winner.</p>
-                                <p><span class="font-bold text-red-600">DUD:</span> Terry McLaurin (3.70 pts), who apparently decided to take the week off.</p>
-                            </div>
-                        </div>
-                         <div class="w-full md:w-48 bg-gray-100 p-6 flex flex-col justify-center items-center space-y-2">
-                            <p class="text-gray-500 text-sm">Actual Score</p>
-                            <p class="text-4xl font-black-ops text-success-bright"><span class="score">143.32</span></p>
-                            <p class="text-gray-500 text-xs">Projected: 133.62</p>
-                            <p class="text-lg font-bold text-success-bright">(+9.70)</p>
-                        </div>
-                    </div>
-                    
-                    <!-- RANK 3 -->
-                    <div class="card rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
-                        <div class="w-full md:w-32 bg-gray-200 flex items-center justify-center p-4">
-                            <span class="rank-icon text-amber-800 glow-bronze">3</span>
-                        </div>
-                        <div class="p-6 flex-1">
-                            <h3 class="text-2xl font-bold">Bend The Knee <span class="text-sm text-gray-500">(Darrius M)</span></h3>
-                            <p class="font-bold text-gray-600">Record: 2-0-0</p>
-                            <p class="text-indigo-600 font-semibold mt-1">"The Titan"</p>
-                            <p class="mt-4 text-gray-700">This team is a throwback powerhouse built on the back of one monster: Derrick Henry. It’s a simple, brutal strategy: run the ball down your opponent’s throat until they beg for mercy. While Nico Collins laid an egg, it didn't matter when Henry single-handedly outscored him by 26. This team is a force of nature, and everyone else is just standing in the way of the storm.</p>
-                             <div class="mt-4 pt-4 border-t border-gray-200 text-sm">
-                                <p><span class="font-bold text-green-600">STUD:</span> Derrick Henry (30.70 pts), who drank from the fountain of youth.</p>
-                                <p><span class="font-bold text-red-600">DUD:</span> Nico Collins (4.00 pts), a certified milk-carton performance.</p>
-                            </div>
-                        </div>
-                         <div class="w-full md:w-48 bg-gray-100 p-6 flex flex-col justify-center items-center space-y-2">
-                            <p class="text-gray-500 text-sm">Actual Score</p>
-                            <p class="text-4xl font-black-ops text-success-bright"><span class="score">129.80</span></p>
-                            <p class="text-gray-500 text-xs">Projected: 124.33</p>
-                            <p class="text-lg font-bold text-success-bright">(+5.47)</p>
-                        </div>
-                    </div>
-
-                    <!-- RANK 4 -->
-                     <div class="card rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
-                        <div class="w-full md:w-32 bg-gray-200 flex items-center justify-center p-4">
-                            <span class="rank-icon text-gray-600">4</span>
-                        </div>
-                        <div class="p-6 flex-1">
-                            <h3 class="text-2xl font-bold">Mac Daddy <span class="text-sm text-gray-500">(Maclane)</span></h3>
-                            <p class="font-bold text-gray-600">Record: 1-1-0</p>
-                            <p class="text-rose-600 font-semibold mt-1">"The Ferrari with Flat Tires"</p>
-                            <p class="mt-4 text-gray-700">This team has the names, the hype, and the championship ceiling. But in Week 1, it performed like a luxury car running on fumes, sputtering to a <span class="text-danger-bright font-bold">-7.79</span> point underperformance. Having Justin Jefferson is great, but it doesn't mean much when the rest of your roster plays like they've never seen a football before. This team is all sizzle, no steak... for now.</p>
-                             <div class="mt-4 pt-4 border-t border-gray-200 text-sm">
-                                <p><span class="font-bold text-green-600">STUD:</span> Travis Etienne Jr. (18.10 pts), the only one who showed up.</p>
-                                <p><span class="font-bold text-red-600">DUD:</span> Kenneth Walker III (3.90 pts), a truly pathetic output.</p>
-                            </div>
-                        </div>
-                         <div class="w-full md:w-48 bg-gray-100 p-6 flex flex-col justify-center items-center space-y-2">
-                            <p class="text-gray-500 text-sm">Actual Score</p>
-                            <p class="text-4xl font-black-ops text-danger-bright"><span class="score">128.20</span></p>
-                            <p class="text-gray-500 text-xs">Projected: 125.99</p>
-                            <p class="text-lg font-bold text-danger-bright">(+2.21)</p>
-                        </div>
-                    </div>
-                    
-                    <!-- RANK 5 -->
-                    <div class="card rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
-                        <div class="w-full md:w-32 bg-gray-200 flex items-center justify-center p-4">
-                            <span class="rank-icon text-gray-600">5</span>
-                        </div>
-                        <div class="p-6 flex-1">
-                            <h3 class="text-2xl font-bold">The Injured Reserved <span class="text-sm text-gray-500">(Greg)</span></h3>
-                            <p class="font-bold text-gray-600">Record: 1-1-0</p>
-                            <p class="text-rose-600 font-semibold mt-1">"Mr. Perfectly Mid"</p>
-                            <p class="mt-4 text-gray-700">This team is an art form of average. Scoring almost exactly what you were projected to (<span class="text-gray-600 font-bold">-0.31</span> difference) is both impressive and soul-crushingly boring. He didn't boom, he didn't bust. He just showed up, did his job, and got steamrolled by a team that actually has a pulse. A playoff threat destined for a 7-7 record and a first-round exit.</p>
-                            <div class="mt-4 pt-4 border-t border-gray-200 text-sm">
-                                <p><span class="font-bold text-green-600">STUD:</span> Davante Adams (12.70 pts), the lone bright spot.</p>
-                                <p><span class="font-bold text-red-600">DUD:</span> The schedule-maker, who should be fired immediately.</p>
-                            </div>
-                        </div>
-                         <div class="w-full md:w-48 bg-gray-100 p-6 flex flex-col justify-center items-center space-y-2">
-                            <p class="text-gray-500 text-sm">Actual Score</p>
-                            <p class="text-4xl font-black-ops text-danger-bright"><span class="score">128.70</span></p>
-                            <p class="text-gray-500 text-xs">Projected: 129.01</p>
-                            <p class="text-lg font-bold text-gray-600">(-0.31)</p>
-                        </div>
-                    </div>
-
-                    <!-- RANK 6 -->
-                    <div class="card rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
-                        <div class="w-full md:w-32 bg-gray-200 flex items-center justify-center p-4">
-                            <span class="rank-icon text-gray-600">6</span>
-                        </div>
-                        <div class="p-6 flex-1">
-                            <h3 class="text-2xl font-bold">Good Will Hunting <span class="text-sm text-gray-500">(Will)</span></h3>
-                            <p class="font-bold text-gray-600">Record: 0-2-0</p>
-                            <p class="text-cyan-600 font-semibold mt-1">"Superman and the Civilians"</p>
-                            <p class="mt-4 text-gray-700">This team is Josh Allen and a group of terrified bystanders he has to save every week. He put up a heroic 38.76 points, and his team *still* managed to underperform by <span class="text-danger-bright font-bold">-12.57</span> points and lose. This isn't a football team; it's a superhero movie where the hero is about to get tired of saving everyone.</p>
-                            <div class="mt-3 pt-3 border-t text-center"><p class="font-bold">Panic Meter: <span class="text-yellow-500 bg-yellow-100 px-2 py-1 rounded-full text-xs">CONCERNED</span></p></div>
-                        </div>
-                        <div class="w-full md:w-48 bg-gray-100 p-6 flex flex-col justify-center items-center space-y-2">
-                            <p class="text-gray-500 text-sm">Actual Score</p>
-                            <p class="text-4xl font-black-ops text-danger-bright"><span class="score">112.00</span></p>
-                            <p class="text-gray-500 text-xs">Projected: 124.57</p>
-                            <p class="text-lg font-bold text-danger-bright">(-12.57)</p>
-                        </div>
-                    </div>
-
-                    <!-- RANK 7 -->
-                    <div class="card rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
-                        <div class="w-full md:w-32 bg-gray-200 flex items-center justify-center p-4">
-                            <span class="rank-icon text-gray-600">7</span>
-                        </div>
-                        <div class="p-6 flex-1">
-                            <h3 class="text-2xl font-bold">A dad <span class="text-sm text-gray-500">(Barrett Davis)</span></h3>
-                            <p class="font-bold text-gray-600">Record: 2-0-0</p>
-                            <p class="text-cyan-600 font-semibold mt-1">"Winning By Accident"</p>
-                            <p class="mt-4 text-gray-700">This team won a boxing match because its opponent tripped over their own feet on the way to the ring. Getting a win while your first-round pick, Ja'Marr Chase, drops a 3.60-point dud is not a sign of skill; it's a sign that the fantasy gods have a sick sense of humor. This 2-0-0 record is a mirage in the desert of mediocrity.</p>
-                             <div class="mt-3 pt-3 border-t text-center"><p class="font-bold">Panic Meter: <span class="text-green-500 bg-green-100 px-2 py-1 rounded-full text-xs">CALM (BUT WATCHING)</span></p></div>
-                        </div>
-                         <div class="w-full md:w-48 bg-gray-100 p-6 flex flex-col justify-center items-center space-y-2">
-                            <p class="text-gray-500 text-sm">Actual Score</p>
-                            <p class="text-4xl font-black-ops text-danger-bright"><span class="score">116.78</span></p>
-                            <p class="text-gray-500 text-xs">Projected: 120.04</p>
-                            <p class="text-lg font-bold text-danger-bright">(-3.26)</p>
-                        </div>
-                    </div>
-
-                    <!-- RANK 8 -->
-                    <div class="card rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
-                        <div class="w-full md:w-32 bg-gray-200 flex items-center justify-center p-4">
-                            <span class="rank-icon text-gray-600">8</span>
-                        </div>
-                        <div class="p-6 flex-1">
-                            <h3 class="text-2xl font-bold">Shut Up <span class="text-sm text-gray-500">(Neil)</span></h3>
-                            <p class="font-bold text-gray-600">Record: 0-2-0</p>
-                            <p class="text-cyan-600 font-semibold mt-1">"The Ghost"</p>
-                            <p class="mt-4 text-gray-700">This team is the vanilla ice cream of the league: bland, forgettable, and melting fast. Underperforming by almost 13 points is not just a loss; it's a complete lack of presence. This roster needs a spark before it fades into total irrelevance.</p>
-                            <div class="mt-3 pt-3 border-t text-center"><p class="font-bold">Panic Meter: <span class="text-yellow-500 bg-yellow-100 px-2 py-1 rounded-full text-xs">ELEVATED</span></p></div>
-                        </div>
-                         <div class="w-full md:w-48 bg-gray-100 p-6 flex flex-col justify-center items-center space-y-2">
-                            <p class="text-gray-500 text-sm">Actual Score</p>
-                            <p class="text-4xl font-black-ops text-danger-bright"><span class="score">110.54</span></p>
-                            <p class="text-gray-500 text-xs">Projected: 123.15</p>
-                            <p class="text-lg font-bold text-danger-bright">(-12.61)</p>
-                        </div>
-                    </div>
-
-                    <!-- RANK 9 -->
-                    <div class="card rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row border-2 border-fraud">
-                        <div class="w-full md:w-32 bg-gray-200 flex items-center justify-center p-4">
-                            <span class="rank-icon text-fraud">9</span>
-                        </div>
-                        <div class="p-6 flex-1">
-                            <h3 class="text-2xl font-bold">Miley Hannah Montana <span class="text-sm text-gray-500">(Greg)</span></h3>
-                            <p class="font-bold text-gray-600">Record: 1-1-0</p>
-                            <p class="text-fraud font-semibold mt-1">"FRAUD WATCH"</p>
-                            <p class="mt-4 text-gray-700">Let's be crystal clear: this team is not good. It won by feasting on the carcass of the league's worst team. That's it. His own roster was a dumpster fire that underperformed by 11 points. This win is a lie, and the truth will come out as soon as he plays a team with a pulse.</p>
-                             <div class="mt-3 pt-3 border-t text-center"><p class="font-bold">Panic Meter: <span class="text-green-500 bg-green-100 px-2 py-1 rounded-full text-xs">VIBING (FOR NOW)</span></p></div>
-                        </div>
-                         <div class="w-full md:w-48 bg-gray-100 p-6 flex flex-col justify-center items-center space-y-2">
-                            <p class="text-gray-500 text-sm">Actual Score</p>
-                            <p class="text-4xl font-black-ops text-danger-bright"><span class="score">113.84</span></p>
-                            <p class="text-gray-500 text-xs">Projected: 124.74</p>
-                            <p class="text-lg font-bold text-danger-bright">(-10.90)</p>
-                        </div>
-                    </div>
-
-                    <!-- RANK 10 -->
-                    <div class="card rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
-                        <div class="w-full md:w-32 bg-gray-200 flex items-center justify-center p-4">
-                            <span class="rank-icon text-gray-600">10</span>
-                        </div>
-                        <div class="p-6 flex-1">
-                            <h3 class="text-2xl font-bold">Bullish <span class="text-sm text-gray-500">(mohsin)</span></h3>
-                            <p class="font-bold text-gray-600">Record: 1-1-0</p>
-                            <p class="text-cyan-600 font-semibold mt-1">"Stumbling to Victory"</p>
-                            <p class="mt-4 text-gray-700">This team stumbled backwards into a win. Underperforming by a league-worst <span class="text-danger-bright font-bold">-24.42</span> points and still winning is not skill; it’s a statistical anomaly. Apocalyptic failures from Tyreek Hill and Bo Nix make this the ugliest, most undeserved win of the season. Send your opponent a gift basket and an apology.</p>
-                             <div class="mt-3 pt-3 border-t text-center"><p class="font-bold">Panic Meter: <span class="text-red-500 bg-red-100 px-2 py-1 rounded-full text-xs">DEFCON 1</span></p></div>
-                        </div>
-                        <div class="w-full md:w-48 bg-gray-100 p-6 flex flex-col justify-center items-center space-y-2">
-                            <p class="text-gray-500 text-sm">Actual Score</p>
-                            <p class="text-4xl font-black-ops text-danger-bright"><span class="score">114.28</span></p>
-                            <p class="text-gray-500 text-xs">Projected: 138.70</p>
-                            <p class="text-lg font-bold text-danger-bright">(-24.42)</p>
-                        </div>
-                    </div>
-
-                    <!-- RANK 11 -->
-                    <div class="card rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
-                        <div class="w-full md:w-32 bg-gray-200 flex items-center justify-center p-4">
-                            <span class="rank-icon text-gray-600">11</span>
-                        </div>
-                        <div class="p-6 flex-1">
-                            <h3 class="text-2xl font-bold">Kim Jong Nate <span class="text-sm text-gray-500">(Nathan)</span></h3>
-                            <p class="font-bold text-gray-600">Record: 0-2-0</p>
-                            <p class="text-cyan-600 font-semibold mt-1">"The Sleeping Giant"</p>
-                            <p class="mt-4 text-gray-700">This team is a paradox. It has the best player in fantasy football, Christian McCaffrey, who was solid. It also has Joe Burrow, who played like he was throwing a wet loaf of bread. A truly pathetic 8.82 points from a supposed franchise QB didn't just lose the week; it's masking the terrifying potential of this roster. This is a dangerous team with a QB problem.</p>
-                            <div class="mt-3 pt-3 border-t text-center"><p class="font-bold">Panic Meter: <span class="text-yellow-500 bg-yellow-100 px-2 py-1 rounded-full text-xs">HIGH ALERT</span></p></div>
-                        </div>
-                        <div class="w-full md:w-48 bg-gray-100 p-6 flex flex-col justify-center items-center space-y-2">
-                            <p class="text-gray-500 text-sm">Actual Score</p>
-                            <p class="text-4xl font-black-ops text-danger-bright"><span class="score">110.22</span></p>
-                            <p class="text-gray-500 text-xs">Projected: 128.16</p>
-                            <p class="text-lg font-bold text-danger-bright">(-17.94)</p>
-                        </div>
-                    </div>
-
-                    <!-- RANK 12 -->
-                    <div class="card rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
-                        <div class="w-full md:w-32 bg-gray-200 flex items-center justify-center p-4">
-                            <span class="rank-icon text-gray-600">12</span>
-                        </div>
-                        <div class="p-6 flex-1">
-                            <h3 class="text-2xl font-bold">ShakeNBake <span class="text-sm text-gray-500">(Abhishek)</span></h3>
-                            <p class="font-bold text-gray-600">Record: 0-2-0</p>
-                            <p class="text-cyan-600 font-semibold mt-1">"A Shakespearean Tragedy"</p>
-                            <p class="mt-4 text-gray-700">The second-biggest projection bust of the week is a sight to behold. Watching your first-round TE, Mark Andrews, deliver a single point is a fantasy tragedy of Shakespearean proportions. It's a tale told by an idiot, full of sound and fury, signifying nothing... except a crushing loss. Leaving Stefon Diggs on the bench was the final act of this tragic comedy.</p>
-                            <div class="mt-3 pt-3 border-t text-center"><p class="font-bold">Panic Meter: <span class="text-red-500 bg-red-100 px-2 py-1 rounded-full text-xs">FIVE ALARM FIRE</span></p></div>
-                        </div>
-                        <div class="w-full md:w-48 bg-gray-100 p-6 flex flex-col justify-center items-center space-y-2">
-                            <p class="text-gray-500 text-sm">Actual Score</p>
-                            <p class="text-4xl font-black-ops text-danger-bright"><span class="score">94.94</span></p>
-                            <p class="text-gray-500 text-xs">Projected: 122.67</p>
-                            <p class="text-lg font-bold text-danger-bright">(-27.73)</p>
-                        </div>
-                    </div>
-
-                    <!-- RANK 13 -->
-                    <div class="card rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
-                        <div class="w-full md:w-32 bg-gray-200 flex items-center justify-center p-4">
-                            <span class="rank-icon text-skull">13</span>
-                        </div>
-                        <div class="p-6 flex-1">
-                            <h3 class="text-2xl font-bold">Hail Mary <span class="text-sm text-gray-500">(Andrew)</span></h3>
-                            <p class="font-bold text-gray-600">Record: 2-0-0</p>
-                            <p class="text-cyan-600 font-semibold mt-1">"The Biggest Lie in the League"</p>
-                            <p class="mt-4 text-gray-700">This team's 2-0-0 record is the biggest fraud since the Fyre Festival. Winning while your roster implodes and underperforms by nearly 14 points isn't a strategy; it's a fluke. With no depth and a negative performance, this team is a paper-thin contender about to be exposed.</p>
-                             <div class="mt-3 pt-3 border-t text-center"><p class="font-bold">Panic Meter: <span class="text-yellow-500 bg-yellow-100 px-2 py-1 rounded-full text-xs">HIGH ALERT (DESPITE RECORD)</span></p></div>
-                        </div>
-                        <div class="w-full md:w-48 bg-gray-100 p-6 flex flex-col justify-center items-center space-y-2">
-                            <p class="text-gray-500 text-sm">Actual Score</p>
-                            <p class="text-4xl font-black-ops text-danger-bright"><span class="score">115.44</span></p>
-                            <p class="text-gray-500 text-xs">Projected: 129.20</p>
-                            <p class="text-lg font-bold text-danger-bright">(-13.76)</p>
-                        </div>
-                    </div>
-
-                    <!-- RANK 14 -->
-                    <div class="card rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
-                        <div class="w-full md:w-32 bg-gray-200 flex items-center justify-center p-4">
-                            <span class="rank-icon text-skull">14</span>
-                        </div>
-                        <div class="p-6 flex-1">
-                            <h3 class="text-2xl font-bold">INDIAN JONES <span class="text-sm text-gray-500">(Anuj)</span></h3>
-                            <p class="font-bold text-gray-600">Record: 0-2-0</p>
-                            <p class="text-cyan-600 font-semibold mt-1">"Wasting a Goldmine"</p>
-                            <p class="mt-4 text-gray-700">This isn't a team; it's a crime scene. The worst score and the biggest bust of the week. But the real tragedy is the 48 points rotting on the bench. Your bench could beat your starters. It's time to fire the manager and hire someone who actually checks their lineup before kickoff.</p>
-                             <div class="mt-3 pt-3 border-t text-center"><p class="font-bold">Panic Meter: <span class="text-red-500 bg-red-100 px-2 py-1 rounded-full text-xs">SOUND THE ALARMS</span></p></div>
-                        </div>
-                        <div class="w-full md:w-48 bg-gray-100 p-6 flex flex-col justify-center items-center space-y-2">
-                            <p class="text-gray-500 text-sm">Actual Score</p>
-                            <p class="text-4xl font-black-ops text-danger-bright"><span class="score">83.64</span></p>
-                            <p class="text-gray-500 text-xs">Projected: 118.49</p>
-                            <p class="text-lg font-bold text-danger-bright">(-34.85)</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Weekly Awards Section -->
-                <section class="mt-16">
-                    <h2 class="text-center text-3xl md:text-4xl font-black-ops tracking-wider animated-gradient bg-clip-text text-transparent">WEEKLY SUPERLATIVES</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
-                        <div class="card award-card rounded-lg p-6 text-center">
-                            <p class="text-5xl">🚀</p>
-                            <h3 class="text-xl font-bold mt-2 text-success-bright">Biggest Boom</h3>
-                            <p class="mt-2 font-semibold">FreeGucci</p>
-                            <p class="text-gray-500 text-sm">For treating his projection like a speed bump on the way to a blowout.</p>
-                        </div>
-                        <div class="card award-card rounded-lg p-6 text-center">
-                            <p class="text-5xl">💣</p>
-                            <h3 class="text-xl font-bold mt-2 text-danger-bright">Biggest Bust</h3>
-                            <p class="mt-2 font-semibold">INDIAN JONES</p>
-                            <p class="text-gray-500 text-sm">For missing his projection so badly, we had to check if he submitted a lineup at all.</p>
-                        </div>
-                        <div class="card award-card rounded-lg p-6 text-center">
-                            <p class="text-5xl">🤦‍♂️</p>
-                            <h3 class="text-xl font-bold mt-2 text-yellow-500">Worst Manager Award</h3>
-                            <p class="mt-2 font-semibold">INDIAN JONES</p>
-                            <p class="text-gray-500 text-sm">Leaving two 25+ point QBs on the bench is a fireable offense. Unforgivable.</p>
-                        </div>
-                        <div class="card award-card rounded-lg p-6 text-center">
-                            <p class="text-5xl">🧐</p>
-                            <h3 class="text-xl font-bold mt-2 text-fraud">Most Fraudulent Win</h3>
-                            <p class="mt-2 font-semibold">Bullish</p>
-                            <p class="text-gray-500 text-sm">For winning while his team performed like it was actively trying to lose. An absolute fluke.</p>
-                        </div>
-                    </div>
-                </section>
+                <div id="rankings-container" class="space-y-8"></div>
             </main>
         </div>
-
-        <!-- Post-Draft Analysis Page -->
         <div id="draft-page" class="hidden">
             <div class="container mx-auto p-4 sm:p-6 lg:p-8">
                 <main class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-                    <aside class="lg:col-span-1">
-                        <div class="bg-white p-4 rounded-xl shadow-md sticky top-28">
-                            <h2 class="text-xl font-bold mb-4 text-center">Draft Power Rankings</h2>
-                            <div id="team-list" class="space-y-2">
-                            </div>
-                        </div>
-                    </aside>
-
+                    <aside class="lg:col-span-1"><div class="bg-white p-4 rounded-xl shadow-md sticky top-28"><h2 class="text-xl font-bold mb-4 text-center">Draft Power Rankings</h2><div id="team-list" class="space-y-2"></div></div></aside>
                     <section id="main-content" class="lg:col-span-3">
-                        <div id="welcome-view" class="bg-white p-8 rounded-xl shadow-md text-center">
-                            <h2 class="text-3xl font-bold mb-4">Welcome to the Roast!</h2>
-                            <p class="text-slate-600 mb-6">The auction is over, the fake money is spent, and the rosters are locked. Select a team from the power rankings to view their detailed report card and see who aced the draft and who is already scouting for next year.</p>
-                            <div class="text-4xl">👇</div>
-                        </div>
-                        <div id="team-detail-view" class="hidden">
-                        </div>
+                        <div id="welcome-view" class="bg-white p-8 rounded-xl shadow-md text-center"><h2 class="text-3xl font-bold mb-4">Welcome to the Roast!</h2><p class="text-slate-600 mb-6">The auction is over, the fake money is spent, and the rosters are locked. Select a team from the power rankings to view their detailed report card and see who aced the draft and who is already scouting for next year.</p><div class="text-4xl">👇</div></div>
+                        <div id="team-detail-view" class="hidden"></div>
                     </section>
                 </main>
-
                 <section id="league-visualizations" class="mt-12">
                     <h2 class="text-3xl font-bold text-center mb-8 text-slate-900">League-Wide Analytics</h2>
                     <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
-                        <div class="bg-white p-6 rounded-xl shadow-md">
-                            <h3 class="text-xl font-bold mb-4 text-center">Draft Grade vs. Budget Spent</h3>
-                            <div class="chart-container">
-                                <canvas id="gradeVsSpendingChart"></canvas>
-                            </div>
-                        </div>
-                        <div class="bg-white p-6 rounded-xl shadow-md">
-                            <h3 class="text-xl font-bold mb-4 text-center">Positional Spending Strategy</h3>
-                               <div class="chart-container">
-                                    <canvas id="positionalSpendingChart"></canvas>
-                                </div>
-                        </div>
-                           <div class="bg-white p-6 rounded-xl shadow-md xl:col-span-2">
-                            <h3 class="text-xl font-bold mb-4 text-center">Top 15 Draft Spenders</h3>
-                               <div class="chart-container">
-                                    <canvas id="topSpendersChart"></canvas>
-                                </div>
-                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-md"><h3 class="text-xl font-bold mb-4 text-center">Draft Grade vs. Budget Spent</h3><div class="chart-container"><canvas id="gradeVsSpendingChart"></canvas></div></div>
+                        <div class="bg-white p-6 rounded-xl shadow-md"><h3 class="text-xl font-bold mb-4 text-center">Positional Spending Strategy</h3><div class="chart-container"><canvas id="positionalSpendingChart"></canvas></div></div>
+                        <div class="bg-white p-6 rounded-xl shadow-md xl:col-span-2"><h3 class="text-xl font-bold mb-4 text-center">Top 15 Draft Spenders</h3><div class="chart-container"><canvas id="topSpendersChart"></canvas></div></div>
                     </div>
                 </section>
             </div>
@@ -537,372 +93,225 @@
     </footer>
 
     <script>
-        // Main Tab Navigation
-        const rankingsPage = document.getElementById('rankings-page');
-        const draftPage = document.getElementById('draft-page');
-        const showRankingsBtn = document.getElementById('show-rankings');
-        const showDraftBtn = document.getElementById('show-draft');
-        const cards = document.querySelectorAll('.card');
-
-        function showRankings() {
-            draftPage.classList.add('hidden');
-            rankingsPage.classList.remove('hidden');
-            showDraftBtn.classList.remove('active');
-            showRankingsBtn.classList.add('active');
-            // Re-trigger card animations
-            cards.forEach(card => cardObserver.observe(card));
-        }
-
-        function showDraft() {
-            rankingsPage.classList.add('hidden');
-            draftPage.classList.remove('hidden');
-            showRankingsBtn.classList.remove('active');
-            showDraftBtn.classList.add('active');
-        }
-
-        showRankingsBtn.addEventListener('click', showRankings);
-        showDraftBtn.addEventListener('click', showDraft);
-
-        // Power Rankings Scroll Animation
-        const cardObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    cardObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        cards.forEach(card => {
-            cardObserver.observe(card);
-        });
-
-        // --- Post-Draft Analysis Script ---
-        const teamsData = [
-             {
-                rank: 1, teamName: "Bullish", grade: "A+", gradeValue: 12, tier: 1,
-                keyPlayers: [ { name: "Tyreek Hill", cost: 30 }, { name: "Saquon Barkley", cost: 62 }, { name: "Travis Kelce", cost: 14 }, { name: "Tony Pollard", cost: 19 }],
-                good: "Getting Tyreek Hill ($30) and Travis Kelce ($14) for a combined $44 is not a 'good value,' it's a federal crime. We need to audit your internet connection for lag switching.",
-                bad: "Your only weakness is starting a rookie QB. But let's be honest, your roster is so stacked you could start a traffic cone in that spot and still win the 'ship.",
-                burn: "Congratulations on assembling a team that could only be beaten by an act of God or a season-ending injury to every single one of your players. And even then, I'd still have you favored.",
-                spending: { QB: 7, RB: 98, WR: 77, TE: 15, K: 1, DEF: 1, D: 1 },
-                totalSpent: 200,
+        // --- ALL SITE DATA IS NOW INSIDE THIS FILE ---
+        const allRankingsData = {
+            "1": { /* Week 1 Data remains unchanged */
+                title: "Week 1 Report: The Scorch Trials",
+                matchup: { team1Name: "#3 Bend The Knee", team1Record: "(2-0-0)", team1Blurb: "A kingdom built on the legs of a rejuvenated Derrick Henry. Can this old-school dynasty survive against the new-age firepower?", team2Name: "#1 FreeGucci", team2Record: "(2-0-0)", team2Blurb: "The league's final boss. Fresh off a Week 1 performance so dominant it should be illegal. Can lightning strike twice?", verdict: "This is the heavyweight championship of Week 2. It’s strength vs. strength, ego vs. ego. We’re giving the slight edge to the team that showed a higher, more explosive ceiling. Bend The Knee will put up a fight, but FreeGucci's firepower is too much. <span class='font-bold'>FreeGucci by 3.</span>" },
+                superlatives: { boom: { team: "FreeGucci", reason: "For treating his projection like a speed bump on the way to a blowout." }, bust: { team: "INDIAN JONES", reason: "For missing his projection so badly, we had to check if he submitted a lineup at all." }, manager: { team: "INDIAN JONES", reason: "Leaving two 25+ point QBs on the bench is a fireable offense. Unforgivable." }, fraud: { team: "Bullish", reason: "For winning while his team performed like it was actively trying to lose. An absolute fluke." } },
+                rankings: [
+                    { rank: 1, teamName: "FreeGucci", manager: "Nishil naik", record: "2-0-0", tagline: "The League's Final Boss", blurb: "Let's be clear: this wasn't just a win, it was a declaration of war. Annihilating your projection by <span class='text-success-bright font-bold'>+18.50</span> points is the fantasy equivalent of planting your flag on the smoking ruins of your opponent's season. With an army of studs waiting on the bench (Rice, Addison), this team isn't just the one to beat; it's the one to fear. Enjoy the view from the top; the fall will be spectacular.", stud: "Lamar Jackson (29.36 pts), who played like a man possessed.", dud: "Calvin Ridley (4.70 pts), who was thankfully a passenger in this beatdown.", score: { actual: 141.14, projected: 122.64 }},
+                    { rank: 2, teamName: "Leo the Cleo", manager: "Chris", record: "2-0-0", tagline: "The Silent Assassin", blurb: "The highest scorer of the week, and he made it look easy. While FreeGucci was dropping bombs, Leo the Cleo was quietly and efficiently dismantling his opponent with a <span class='text-success-bright font-bold'>+9.70</span> performance over projection. The fact that his bench was a wasteland means he started the perfect lineup. That’s not luck; that’s terrifyingly good management.", stud: "Bijan Robinson (22.40 pts), looking every bit the part of a league-winner.", dud: "Terry McLaurin (3.70 pts), who apparently decided to take the week off.", score: { actual: 143.32, projected: 133.62 }},
+                    { rank: 3, teamName: "Bend The Knee", manager: "Darrius M", record: "2-0-0", tagline: "The Titan", blurb: "This team is a throwback powerhouse built on the back of one monster: Derrick Henry. It’s a simple, brutal strategy: run the ball down your opponent’s throat until they beg for mercy. While Nico Collins laid an egg, it didn't matter when Henry single-handedly outscored him by 26. This team is a force of nature, and everyone else is just standing in the way of the storm.", stud: "Derrick Henry (30.70 pts), who drank from the fountain of youth.", dud: "Nico Collins (4.00 pts), a certified milk-carton performance.", score: { actual: 129.80, projected: 124.33 }},
+                    { rank: 4, teamName: "Mac Daddy", manager: "Maclane", record: "1-1-0", tagline: "The Ferrari with Flat Tires", blurb: "This team has the names, the hype, and the championship ceiling. But in Week 1, it performed like a luxury car running on fumes, sputtering to a <span class='text-danger-bright font-bold'>-7.79</span> point underperformance. Having Justin Jefferson is great, but it doesn't mean much when the rest of your roster plays like they've never seen a football before. This team is all sizzle, no steak... for now.", stud: "Travis Etienne Jr. (18.10 pts), the only one who showed up.", dud: "Kenneth Walker III (3.90 pts), a truly pathetic output.", score: { actual: 128.20, projected: 125.99 }},
+                    { rank: 5, teamName: "The Injured Reserved", manager: "Greg", record: "1-1-0", tagline: "Mr. Perfectly Mid", blurb: "This team is an art form of average. Scoring almost exactly what you were projected to (<span class='text-gray-600 font-bold'>-0.31</span> difference) is both impressive and soul-crushingly boring. He didn't boom, he didn't bust. He just showed up, did his job, and got steamrolled by a team that actually has a pulse. A playoff threat destined for a 7-7 record and a first-round exit.", stud: "Davante Adams (12.70 pts), the lone bright spot.", dud: "The schedule-maker, who should be fired immediately.", score: { actual: 128.70, projected: 129.01 }},
+                    { rank: 6, teamName: "Good Will Hunting", manager: "Will", record: "0-2-0", tagline: "Superman and the Civilians", blurb: "This team is Josh Allen and a group of terrified bystanders he has to save every week. He put up a heroic 38.76 points, and his team *still* managed to underperform by <span class='text-danger-bright font-bold'>-12.57</span> points and lose. This isn't a football team; it's a superhero movie where the hero is about to get tired of saving everyone.", panicMeter: { level: "CONCERNED", color: "text-yellow-500 bg-yellow-100" }, score: { actual: 112.00, projected: 124.57 }},
+                    { rank: 7, teamName: "A dad", manager: "Barrett Davis", record: "2-0-0", tagline: "Winning By Accident", blurb: "This team won a boxing match because its opponent tripped over their own feet on the way to the ring. Getting a win while your first-round pick, Ja'Marr Chase, drops a 3.60-point dud is not a sign of skill; it's a sign that the fantasy gods have a sick sense of humor. This 2-0-0 record is a mirage in the desert of mediocrity.", panicMeter: { level: "CALM (BUT WATCHING)", color: "text-green-500 bg-green-100" }, score: { actual: 116.78, projected: 120.04 }},
+                    { rank: 8, teamName: "Shut Up", manager: "Neil", record: "0-2-0", tagline: "The Ghost", blurb: "This team is the vanilla ice cream of the league: bland, forgettable, and melting fast. Underperforming by almost 13 points is not just a loss; it's a complete lack of presence. This roster needs a spark before it fades into total irrelevance.", panicMeter: { level: "ELEVATED", color: "text-yellow-500 bg-yellow-100" }, score: { actual: 110.54, projected: 123.15 }},
+                    { rank: 9, teamName: "Miley Hannah Montana", manager: "Greg", record: "1-1-0", tagline: "FRAUD WATCH", blurb: "Let's be crystal clear: this team is not good. It won by feasting on the carcass of the league's worst team. That's it. His own roster was a dumpster fire that underperformed by 11 points. This win is a lie, and the truth will come out as soon as he plays a team with a pulse.", panicMeter: { level: "VIBING (FOR NOW)", color: "text-green-500 bg-green-100" }, score: { actual: 113.84, projected: 124.74 }},
+                    { rank: 10, teamName: "Bullish", manager: "mohsin", record: "1-1-0", tagline: "Stumbling to Victory", blurb: "This team stumbled backwards into a win. Underperforming by a league-worst <span class='text-danger-bright font-bold'>-24.42</span> points and still winning is not skill; it’s a statistical anomaly. Apocalyptic failures from Tyreek Hill and Bo Nix make this the ugliest, most undeserved win of the season. Send your opponent a gift basket and an apology.", panicMeter: { level: "DEFCON 1", color: "text-red-500 bg-red-100" }, score: { actual: 114.28, projected: 138.70 }},
+                    { rank: 11, teamName: "Kim Jong Nate", manager: "Nathan", record: "0-2-0", tagline: "The Sleeping Giant", blurb: "This team is a paradox. It has the best player in fantasy football, Christian McCaffrey, who was solid. It also has Joe Burrow, who played like he was throwing a wet loaf of bread. A truly pathetic 8.82 points from a supposed franchise QB didn't just lose the week; it's masking the terrifying potential of this roster. This is a dangerous team with a QB problem.", panicMeter: { level: "HIGH ALERT", color: "text-yellow-500 bg-yellow-100" }, score: { actual: 110.22, projected: 128.16 }},
+                    { rank: 12, teamName: "ShakeNBake", manager: "Abhishek", record: "0-2-0", tagline: "A Shakespearean Tragedy", blurb: "The second-biggest projection bust of the week is a sight to behold. Watching your first-round TE, Mark Andrews, deliver a single point is a fantasy tragedy of Shakespearean proportions. It's a tale told by an idiot, full of sound and fury, signifying nothing... except a crushing loss. Leaving Stefon Diggs on the bench was the final act of this tragic comedy.", panicMeter: { level: "FIVE ALARM FIRE", color: "text-red-500 bg-red-100" }, score: { actual: 94.94, projected: 122.67 }},
+                    { rank: 13, teamName: "Hail Mary", manager: "Andrew", record: "2-0-0", tagline: "The Biggest Lie in the League", blurb: "This team's 2-0-0 record is the biggest fraud since the Fyre Festival. Winning while your roster implodes and underperforms by nearly 14 points isn't a strategy; it's a fluke. With no depth and a negative performance, this team is a paper-thin contender about to be exposed.", panicMeter: { level: "HIGH ALERT (DESPITE RECORD)", color: "text-yellow-500 bg-yellow-100" }, score: { actual: 115.44, projected: 129.20 }},
+                    { rank: 14, teamName: "INDIAN JONES", manager: "Anuj", record: "0-2-0", tagline: "Wasting a Goldmine", blurb: "This isn't a team; it's a crime scene. The worst score and the biggest bust of the week. But the real tragedy is the 48 points rotting on the bench. Your bench could beat your starters. It's time to fire the manager and hire someone who actually checks their lineup before kickoff.", panicMeter: { level: "SOUND THE ALARMS", color: "text-red-500 bg-red-100" }, score: { actual: 83.64, projected: 118.49 }}
+                ]
             },
-            {
-                rank: 2, teamName: "Kim Jong Nate", grade: "A", gradeValue: 11, tier: 1,
-                keyPlayers: [ { name: "Christian McCaffrey", cost: 55 }, { name: "De'Von Achane", cost: 41 }, { name: "Mike Evans", cost: 28 }, { name: "Joe Burrow", cost: 18 }],
-                good: "You secured Christian McCaffrey for a shockingly low $55 and got a franchise QB in Joe Burrow for a fair price.",
-                bad: "You set the bar so high that anything less than a championship will be a catastrophic failure. No pressure.",
-                burn: "Your team name is fitting, because you executed your draft with the ruthless, flawless precision of a totalitarian regime. We are all your subjects now.",
-                spending: { QB: 18, RB: 114, WR: 48, TE: 7, K: 2, DEF: 2, D: 1},
-                totalSpent: 192,
-            },
-            {
-                rank: 3, teamName: "ShakeNBake", grade: "A-", gradeValue: 10, tier: 1,
-                keyPlayers: [ { name: "Jahmyr Gibbs", cost: 56 }, { name: "Puka Nacua", cost: 49 }, { name: "DK Metcalf", cost: 17 }, { name: "Mark Andrews", cost: 6 }, { name: "Jordan Love", cost: 7 }, { name: "Stefon Diggs", cost: 8 }],
-                good: "You found the cheat codes. Mark Andrews for $6, Jordan Love for $7, and Stefon Diggs for $8.",
-                bad: "Your two top players (Gibbs and Nacua) cost a pretty penny, but who cares when the rest of your roster was practically free?",
-                burn: "Your team name is 'ShakeNBake' and you absolutely cooked this draft. You served up a championship contender while the rest of us are eating ramen noodles for the rest of the season. It's not just that you won; it's that you made it look so easy.",
-                spending: { QB: 9, RB: 70, WR: 95, TE: 6, K: 1, DEF: 1, D: 1},
-                totalSpent: 183,
-            },
-            {
-                rank: 4, teamName: "Leo the Cleo", grade: "B+", gradeValue: 9, tier: 2,
-                keyPlayers: [ { name: "Bijan Robinson", cost: 66 }, { name: "Jayden Daniels", cost: 21 }, { name: "Terry McLaurin", cost: 30 }, { name: "Garrett Wilson", cost: 20 }, { name: "Austin Ekeler", cost: 10 }],
-                good: "A great RB in Bijan and fantastic value with Garrett Wilson ($20) and Austin Ekeler ($10). A very respectable team.",
-                bad: "Your season hinges on a rookie QB.",
-                burn: "Your team is like a beautiful, brand-new car with a student driver behind the wheel. It looks great in the driveway, but we're all just waiting for you to merge into traffic and cause a 10-car pileup.",
-                spending: { QB: 22, RB: 83, WR: 66, TE: 8, DEF: 3, D: 1},
-                totalSpent: 183,
-            },
-            {
-                rank: 5, teamName: "Bend The Knee", grade: "B+", gradeValue: 9, tier: 2,
-                keyPlayers: [ { name: "Nico Collins", cost: 49 }, { name: "Derrick Henry", cost: 53 }, { name: "Malik Nabers", cost: 49 }, { name: "Cooper Kupp", cost: 11 }, { name: "Brock Purdy", cost: 10 }],
-                good: "Snagging Cooper Kupp for $11 and Brock Purdy for $10 were strokes of genius.",
-                bad: "You spent a fortune on Malik Nabers, a guy who has never taken an NFL snap.",
-                burn: "You named your team 'Bend The Knee,' but with your high-risk, high-reward strategy, you'll either be on the throne or in the gallows by Week 6. There is no in-between.",
-                spending: { QB: 11, RB: 67, WR: 115, TE: 2, K: 1, DEF: 2 },
-                totalSpent: 198,
-            },
-            {
-                rank: 6, teamName: "A dad", grade: "B", gradeValue: 8, tier: 2,
-                keyPlayers: [ { name: "Ja'Marr Chase", cost: 70 }, { name: "Kyren Williams", cost: 38 }, { name: "Tee Higgins", cost: 28 }, { name: "DJ Moore", cost: 19 }, { name: "Michael Pittman Jr.", cost: 5 }],
-                good: "Your WR corps is a murderer's row. Chase, Higgins, Moore, Pittman... it's just plain unfair.",
-                bad: "You spent so much on receivers that your running back depth chart consists of Kyren Williams and a group of guys who look like they're about to ask for spare change.",
-                burn: "I've seen more depth in a puddle. If your starting RB gets hurt, your season is over faster than a free agent's career after signing with the Jets.",
-                spending: { QB: 4, RB: 63, WR: 125, TE: 4, DEF: 2, D: 1},
-                totalSpent: 199,
-            },
-            {
-                rank: 7, teamName: "Mac Daddy", grade: "B", gradeValue: 8, tier: 2,
-                keyPlayers: [ { name: "Justin Jefferson", cost: 60 }, { name: "Josh Jacobs", cost: 43 }, { name: "Kenneth Walker III", cost: 25 }, { name: "Marvin Harrison Jr.", cost: 25 }, { name: "Kyler Murray", cost: 2 }],
-                good: "Kyler Murray for $2 is the steal of the century. You have Justin Jefferson. You have solid RBs.",
-                bad: "Your team is aggressively... fine.",
-                burn: "Your roster is the fantasy equivalent of a beige Toyota Camry. It’s reliable, it will get you from point A to point B, but absolutely no one is getting excited about it.",
-                spending: { QB: 2, RB: 78, WR: 99, TE: 7, K: 1, DEF: 1, D: 1},
-                totalSpent: 189,
-            },
-            {
-                rank: 8, teamName: "FreeGucci", grade: "B-", gradeValue: 7, tier: 3,
-                keyPlayers: [ { name: "Lamar Jackson", cost: 32 }, { name: "Omarion Hampton", cost: 31 }, { name: "Calvin Ridley", cost: 26 }, { name: "D'Andre Swift", cost: 19 }, { name: "Sam LaPorta", cost: 15 }],
-                good: "An elite QB/TE combo with Lamar Jackson and Sam LaPorta.",
-                bad: "Where are the wide receivers? Did you forget they were part of the game?",
-                burn: "Your WR room is so thin, it makes a supermodel look bloated. You’re going to need Lamar to break the single-season QB rushing record just to have a shot at a .500 record.",
-                spending: { QB: 32, RB: 74, WR: 52, TE: 15, DEF: 3, D: 1 },
-                totalSpent: 177,
-            },
-            {
-                rank: 9, teamName: "Shut Up", grade: "C+", gradeValue: 6, tier: 3,
-                keyPlayers: [ { name: "Amon-Ra St. Brown", cost: 51 }, { name: "George Kittle", cost: 22 }, { name: "Bucky Irving", cost: 40 }, { name: "Patrick Mahomes", cost: 16 }, { name: "Jonathan Taylor", cost: 44 }],
-                good: "You got Patrick Mahomes for a measly $16.",
-                bad: "You paid for everyone else like you were using a company credit card. $40 on a rookie RB? $44 on Jonathan Taylor?",
-                burn: "Your team motto is clearly 'Why buy it for less when you can overpay?' You’ve built a roster with the financial acumen of a lottery winner who just bought a solid gold jet ski.",
-                spending: { QB: 18, RB: 86, WR: 53, TE: 28, K: 2, DEF: 2, D: 1},
-                totalSpent: 180,
-            },
-            {
-                rank: 10, teamName: "Hail Mary", grade: "C+", gradeValue: 6, tier: 3,
-                keyPlayers: [ { name: "Ladd McConkey", cost: 36 }, { name: "Jalen Hurts", cost: 22 }, { name: "David Montgomery", cost: 20 }, { name: "James Cook", cost: 31 }, { name: "Trey McBride", cost: 30 }],
-                good: "Acquired a high-upside QB and good RBs.",
-                bad: "The roster feels top-heavy and lacks depth after the main starters.",
-                burn: "Your team name is fitting, because you’ll need one every week to have a chance. You paid a premium for a rookie WR, and your bench has all the depth of a kiddie pool.",
-                spending: { QB: 22, RB: 79, WR: 55, TE: 30, K: 1, DEF: 1, D: 3},
-                totalSpent: 191,
-            },
-            {
-                rank: 11, teamName: "Good Will Hunting", grade: "C", gradeValue: 5, tier: 3,
-                keyPlayers: [ { name: "Drake London", cost: 41 }, { name: "Josh Allen", cost: 31 }, { name: "Ashton Jeanty", cost: 46 }, { name: "DeVonta Smith", cost: 17 }, { name: "Chris Olave", cost: 8 }, { name: "Nick Chubb", cost: 5 }],
-                good: "Chris Olave for $8 and Nick Chubb for $5 are moves of a genius.",
-                bad: "Spending $46 on rookie Ashton Jeanty is a move of... something else.",
-                burn: "Your draft was a beautiful mess. It was like watching someone solve a Rubik's Cube with one hand while setting their hair on fire with the other. Baffling, yet I can't look away.",
-                spending: { QB: 33, RB: 68, WR: 66, TE: 7, K: 4, DEF: 4, D: 1},
-                totalSpent: 183,
-            },
-            {
-                rank: 12, teamName: "INDIAN JONES 👳...", grade: "C", gradeValue: 5, tier: 4,
-                keyPlayers: [ { name: "Brian Thomas Jr.", cost: 50 }, { name: "A.J. Brown", cost: 42 }, { name: "Breece Hall", cost: 19 }, { name: "TreVeyon Henderson", cost: 28 }],
-                good: "Breece Hall for $19 was a fantastic pick.",
-                bad: "You spent FIFTY DOLLARS ($50) on Brian Thomas Jr. I had to type that out to believe it.",
-                burn: "You named your team after a legendary treasure hunter, but you spent your draft digging in the wrong place and came back with a bag of rocks. That $50 belongs in a museum for how badly you spent it.",
-                spending: { QB: 2, RB: 52, WR: 108, TE: 8, K: 1, DEF: 3, D: 1},
-                totalSpent: 175,
-            },
-            {
-                rank: 13, teamName: "Miley Landslide", grade: "C-", gradeValue: 4, tier: 4,
-                keyPlayers: [ { name: "CeeDee Lamb", cost: 59 }, { name: "Brock Bowers", cost: 35 }, { name: "Alvin Kamara", cost: 29 }, { name: "James Conner", cost: 30 }, { name: "Dak Prescott", cost: 10 }],
-                good: "You have CeeDee Lamb.",
-                bad: "...and that's about it. Your bench is a ghost town.",
-                burn: "Your team is going to come in like a wrecking ball... directly into your own hopes and dreams for the season. You have less depth than a political debate on Twitter.",
-                spending: { QB: 11, RB: 61, WR: 87, TE: 36, K: 1, DEF: 1, D: 1},
-                totalSpent: 198,
-            },
-            {
-                rank: 14, teamName: "The Injured Reserved", grade: "D+", gradeValue: 3, tier: 4,
-                keyPlayers: [ { name: "Chase Brown", cost: 40 }, { name: "Davante Adams", cost: 26 }, { name: "Courtland Sutton", cost: 27 }, { name: "Chuba Hubbard", cost: 23 }],
-                good: "...I'm thinking... give me a minute...",
-                bad: "Spending $40 on Chase Brown is a choice. A truly, deeply confusing choice.",
-                burn: "Your team name is a self-fulfilling prophecy. Your roster is a collection of question marks and lottery tickets that have already been scratched off. On the bright side, you'll have a great shot at the first overall pick next year. Oh, wait...",
-                spending: { QB: 2, RB: 70, WR: 85, TE: 6, DEF: 1},
-                totalSpent: 164,
+            "2": {
+                title: "Week 2 Report: The Reckoning",
+                matchup: {
+                    team1Name: "#1 Bend The Knee", team1Record: "(4-0-0)", team1Blurb: "The undisputed king. After dismantling the former #1, this team looks like a freight train with no brakes. Can anyone stop the onslaught?",
+                    team2Name: "#2 The Injured Reserved", team2Record: "(3-1-0)", team2Blurb: "Forget 'Mr. Mid,' this team is a certified powerhouse, dropping a 155-point bomb. This is a clash of titans for the top spot.",
+                    verdict: "This is the true championship preview. It's the irresistible force vs. the immovable object. The Injured Reserved has the higher ceiling, but Bend The Knee hasn't made a single mistake. This will be a photo finish, but we're giving the slightest edge to the undefeated team. <span class='font-bold'>Bend The Knee by 2.5.</span>"
+                },
+                superlatives: {
+                    boom: { team: "Shut Up", reason: "For rising from the dead with a league-high 157.96 points. A truly legendary 'shut up and watch this' performance." },
+                    bust: { team: "Good Will Hunting", reason: "For scoring 85.58 points in a week where the median score was 125. A spectacular failure of epic proportions." },
+                    manager: { team: "Underdog Jones", reason: "For changing his team name more often than his starting lineup. Going from 'INDIAN JONES' to 'Underdog Jones' isn't a strategy; it's a witness protection program for a manager trying to hide from his 0-4 record." },
+                    fraud: { team: "A dad", reason: "For winning with 112 points thanks to one heroic performance. The 3-1 record is built on luck and prayers, not quality." }
+                },
+                rankings: [
+                    { rank: 1, rankChange: 2, teamName: "Bend The Knee", manager: "Darrius M", record: "4-0-0", tagline: "The New Final Boss", blurb: "This is what a #1 team looks like. In the heavyweight title fight against the former top dog, he didn't just win; he dominated with a massive 152.52 points. The scary part? His first-round pick, Derrick Henry, only scored 2.30 points. This team is carried by depth, highlighted by rookie Malik Nabers' 36.20-point explosion. They are deep, powerful, undefeated, and the undisputed top team in the league. Everyone else is playing for second place.", stud: "Malik Nabers (36.20 pts), who is already a top-5 WR in this league.", dud: "Derrick Henry (2.30 pts), proving the team can win even when their titan takes a nap.", score: { actual: 152.52, projected: 130.46 }},
+                    { rank: 2, rankChange: 3, teamName: "The Injured Reserved", manager: "Greg", record: "3-1-0", tagline: "The Juggernaut", blurb: "The 'Mr. Mid' slander is officially dead and buried. This team unleashed a 155.52-point nuclear bomb, the second-highest score of the week, and demolished Underdog Jones by 62 points. This wasn't just a win; it was a public execution. He's making savvy moves, like grabbing Zamir White off waivers, and his starters are firing on all cylinders. This isn't just a playoff team; it's a championship favorite, and the leap to #2 is more than earned.", stud: "Drake Maye (26.30 pts), the rookie QB playing like a 10-year vet.", dud: "His bench, who combined for a paltry 13.42 points. He started the perfect lineup.", score: { actual: 155.52, projected: 133.50 }},
+                    { rank: 3, rankChange: 5, teamName: "Shut Up", manager: "Neil", record: "2-2-0", tagline: "The Phoenix", blurb: "From the ashes of a ghostly Week 1, a monster has risen. After being dismissed as irrelevant, this team responded by dropping a league-shattering 157.96 points—the highest score of the week. This wasn't a win; it was a statement. Amon-Ra St. Brown (35.70) and Jonathan Taylor (30.50) looked like the best 1-2 punch in the league. Even more impressive, he achieved this while rostering a TE graveyard of Goedert, Kittle, and Loveland, who combined for a heroic 0.00 points. He's so good, he doesn't even need a tight end.", stud: "The entire damn roster. A perfect lineup that fired on all cylinders.", dud: "The haters and doubters. They are all quiet now.", score: { actual: 157.96, projected: 119.63 }},
+                    { rank: 4, rankChange: 0, teamName: "Mac Daddy", manager: "Maclane", record: "3-1-0", tagline: "The Quiet Contender", blurb: "While other teams are making noise with 150-point explosions, Mac Daddy is quietly stacking wins and holding steady in the rankings. A professional 130.58 points against a tough opponent shows this team knows how to handle business. They're consistent, well-managed (snagging Evan Engram for a measly $3 is a robbery), and flying under the radar. This is the disciplined, high-floor team that no one wants to face in a must-win game.", stud: "Roquan Smith (19.50 pts), an absolute tackling machine leading the defense.", dud: "Marvin Harrison Jr. (3.70 pts), a rare quiet week for the prized rookie.", score: { actual: 130.58, projected: 136.87 }},
+                    { rank: 5, rankChange: 7, teamName: "ShakeNBake", manager: "Abhishek", record: "2-2-0", tagline: "The Offensive Juggernaut", blurb: "Let's set the record straight: this was no accident. This was a statement. After a disastrous Week 1, this team has come roaring back. A massive 143.12 point performance where every starter pulled their weight proves this offense is for real. Led by his QB Jordan Love (20.88) and a monster game from Puka Nacua (23.60), this team is a threat to put up the highest score any given week. This is a massive jump in the rankings, and it's fully deserved.", stud: "Puka Nacua (23.60 pts), who is simply unguardable right now.", dud: "Stefon Diggs (5.20 pts), who was the only player not invited to the party.", score: { actual: 143.12, projected: 126.76 }},
+                    { rank: 6, rankChange: 3, teamName: "Miley Hannah Montana", manager: "Greg", record: "3-1-0", tagline: "The Gatekeeper", blurb: "The Fraud Watch is on high alert, but the wins keep piling up. A convincing 137.64 point performance proves this team can hang with the middle of the pack. They aren't elite, but they are good enough to punish bad teams and are quietly building a strong record. The 3-1 start is looking more legitimate, especially after making smart waiver moves for Dallas Goedert and Kyle Hamilton. A solid climb into the top half of the league.", stud: "CeeDee Lamb (24.70 pts), who is the consistent, beating heart of this team.", dud: "Pat Freiermuth (3.80 pts), who was thankfully bailed out by the rest of the roster.", score: { actual: 137.64, projected: 130.71 }},
+                    { rank: 7, rankChange: -6, teamName: "FreeGucci", manager: "Nishil naik", record: "2-2-0", tagline: "The Fallen King", blurb: "How the mighty have fallen. From 'Final Boss' to a 35-point loss in the clash of titans. After a historic Week 1, FreeGucci has come crashing back to reality. Scoring only 117 points is a major disappointment for a team with this much firepower. The crown is heavy, and it has been passed to Bend The Knee. This is a precipitous drop from the top spot, and it's a brutal reminder that one week doesn't make a season.", stud: "Lamar Jackson (26.30 pts), who remains elite even when his team falters.", dud: "The RB duo of D'Andre Swift & J.K. Dobbins (15.40 pts combined). You can't win with that.", score: { actual: 117.36, projected: 134.87 }},
+                    { rank: 8, rankChange: 3, teamName: "Kim Jong Nate", manager: "Nathan", record: "1-3-0", tagline: "The Unluckiest Team Alive", blurb: "You have to feel for this manager. He finally gets the offensive explosion he was waiting for, dropping a massive 136.00 points... only to run into the highest scorer of the week. That's a soul-crushing, season-breaking kind of loss. This team is a playoff contender masquerading as a 1-3 team, and they climb the rankings even in defeat because everyone knows they are dangerous. His luck has to turn around eventually... right?", stud: "De'Von Achane (22.20 pts), who is a certified league-winner.", dud: "His schedule. It's just cruel and unusual punishment at this point.", score: { actual: 136.00, projected: 116.73 }},
+                    { rank: 9, rankChange: -2, teamName: "A dad", manager: "Barrett Davis", record: "3-1-0", tagline: "The Great Pretender", blurb: "This team's 3-1 record is the biggest fraud since Milli Vanilli. They 'won' this week with 112 points, a QB who scored 4.82, and a -16 point projection bust. They are actively trying to lose and the fantasy gods keep rewarding them. It's a statistical anomaly that cannot last. They drop in the rankings despite a win, because nobody is buying what they're selling.", panicMeter: { level: "HIGH ALERT (DESPITE RECORD)", color: "text-yellow-500 bg-yellow-100" }, stud: "Ja'Marr Chase (32.50 pts), who single-handedly dragged this corpse of a team across the finish line.", dud: "J.J. McCarthy (4.82 pts), a truly pathetic QB performance.", score: { actual: 112.02, projected: 128.99 }},
+                    { rank: 10, rankChange: -8, teamName: "Leo the Cleo", manager: "Chris", record: "2-2-0", tagline: "The Mid-Off Loser", blurb: "After a dominant Week 1, the silent assassin was silenced. Losing a close, low-scoring affair to a fraudulent 'A dad' team is a tough pill to swallow, and it sends him plummeting down the rankings. This team is solid, but this week they showed they don't have the explosive upside of the top contenders. A perfectly average team settling into a perfectly average 2-2 record. Welcome to the middle.", stud: "Jayden Daniels (19.70 pts), who did his job while everyone else failed.", dud: "The entire WR corps, who combined for a pitiful 14.30 points.", score: { actual: 105.94, projected: 123.12 }},
+                    { rank: 11, rankChange: 2, teamName: "Hail Mary", manager: "Andrew", record: "2-2-0", tagline: "Exposed", blurb: "The fraudulent 2-0 start has officially ended. A 17-point loss where the team failed to impress. This roster is thin, and it's starting to show. The manager is trying to make moves, adding DJ Giddens, but it might be too little, too late. The panic is setting in, but at least they're showing signs of life, which is more than can be said for the teams below them.", panicMeter: { level: "ELEVATED", color: "text-yellow-500 bg-yellow-100" }, stud: "Kyren Williams (20.30 pts), the only bright spot in a dim week.", dud: "James Cook (6.50 pts), who completely disappeared.", score: { actual: 120.66, projected: 131.99 }},
+                    { rank: 12, rankChange: -2, teamName: "Bullish", manager: "mohsin", record: "1-3-0", tagline: "Consistently Inconsistent", blurb: "At least they're consistent. Consistently mediocre. Another week, another loss, and another failure to crack 120 points. Saquon Barkley was solid, but Tyreek Hill can't save this team every week. The 1-3 hole is getting deep and the walls are closing in. A drop in the rankings was inevitable.", panicMeter: { level: "DEFCON 2", color: "text-red-500 bg-red-100" }, stud: "Saquon Barkley (16.40 pts), a lone warrior fighting a losing battle.", dud: "Tony Pollard (9.20 pts), who is looking like a major bust.", score: { actual: 117.88, projected: 136.21 }},
+                    { rank: 13, rankChange: -7, teamName: "Good Will Hunting", manager: "Will", record: "0-4-0", tagline: "The Titanic", blurb: "85.58 points. That's not a score; it's a cry for help. This is, without a doubt, the worst team in the league. They are now the sole winless team for a reason, and they've earned this massive drop to the bottom. It's time to blow it up, start trading, and pray for next year. This season is a certified disaster.", panicMeter: { level: "ABANDON SHIP", color: "text-red-500 bg-red-100" }, stud: "Josh Allen (23.94 pts), a hero on a sinking ship.", dud: "Literally everyone else. An entire roster of duds.", score: { actual: 85.58, projected: 130.80 }},
+                    { rank: 14, rankChange: 0, teamName: "Underdog Jones", manager: "Anuj", record: "0-4-0", tagline: "The Cellar Dweller", blurb: "After getting publicly executed by 'The Injured Reserved,' this manager did the only thing he could: he changed his identity. The rebrand from 'INDIAN JONES' to 'Underdog Jones' is a desperate, brilliant attempt to get ahead of the narrative. He's not losing; he's just living up to his name. At 0-4, he's not just an underdog; he's building a brand.", panicMeter: { level: "SOUND THE ALARMS", color: "text-red-500 bg-red-100" }, stud: "Fred Warner (14.00 pts), a lone bright spot on defense.", dud: "His starting WRs, Brian Thomas Jr. and A.J. Brown (13.10 pts combined).", score: { actual: 93.40, projected: 118.19 }}
+                ]
             }
-        ];
-        
-        const allPlayers = [
-            { name: "Ja'Marr Chase", cost: 70, team: "A dad", pos: 'WR' }, { name: "Bijan Robinson", cost: 66, team: "Leo the Cleo", pos: 'RB' }, { name: "Saquon Barkley", cost: 62, team: "Bullish", pos: 'RB' }, { name: "Justin Jefferson", cost: 60, team: "Mac Daddy", pos: 'WR' }, { name: "CeeDee Lamb", cost: 59, team: "Miley Landslide", pos: 'WR' }, { name: "Jahmyr Gibbs", cost: 56, team: "ShakeNBake", pos: 'RB' }, { name: "Christian McCaffrey", cost: 55, team: "Kim Jong Nate", pos: 'RB' }, { name: "Derrick Henry", cost: 53, team: "Bend The Knee", pos: 'RB' }, { name: "Amon-Ra St. Brown", cost: 51, team: "Shut Up", pos: 'WR' }, { name: "Brian Thomas Jr.", cost: 50, team: "INDIAN JONES 👳...", pos: 'WR' }, { name: "Puka Nacua", cost: 49, team: "ShakeNBake", pos: 'WR' }, { name: "Nico Collins", cost: 49, team: "Bend The Knee", pos: 'WR' }, { name: "Malik Nabers", cost: 49, team: "Bend The Knee", pos: 'WR' }, { name: "Ashton Jeanty", cost: 46, team: "Good Will Hunting", pos: 'RB' }, { name: "Jonathan Taylor", cost: 44, team: "Shut Up", pos: 'RB' },
-        ];
-
-
-        const gradeColors = {
-            'A+': '#10b981', 'A': '#22c55e', 'A-': '#84cc16',
-            'B+': '#a3e635', 'B': '#eab308', 'B-': '#f59e0b',
-            'C+': '#f97316', 'C': '#ef4444', 'C-': '#dc2626',
-            'D+': '#b91c1c',
-        };
-        
-        const posColors = {
-            QB: 'rgba(54, 162, 235, 0.8)',
-            RB: 'rgba(75, 192, 192, 0.8)',
-            WR: 'rgba(255, 99, 132, 0.8)',
-            TE: 'rgba(255, 159, 64, 0.8)',
-            K: 'rgba(153, 102, 255, 0.8)',
-            DEF: 'rgba(255, 206, 86, 0.8)',
-            D: 'rgba(201, 203, 207, 0.8)'
         };
 
-        const teamListEl = document.getElementById('team-list');
-        const welcomeViewEl = document.getElementById('welcome-view');
-        const teamDetailViewEl = document.getElementById('team-detail-view');
-        
-        const displayTeamDetails = (team) => {
-            welcomeViewEl.classList.add('hidden');
-            teamDetailViewEl.classList.remove('hidden');
+        // --- UNIFIED SCRIPT FOR ENTIRE SITE ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const rankingsPage = document.getElementById('rankings-page');
+            const draftPage = document.getElementById('draft-page');
+            const showRankingsBtn = document.getElementById('show-rankings');
+            const showDraftBtn = document.getElementById('show-draft');
+            
+            function observeCards() {
+                const cards = document.querySelectorAll('.card');
+                const cardObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            cardObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                cards.forEach(card => cardObserver.observe(card));
+            }
 
-            const keyPlayersHtml = team.keyPlayers.map(p => `
-                <div class="flex justify-between items-center text-sm p-2 rounded bg-slate-100">
-                    <span class="font-semibold">${p.name}</span>
-                    <span class="font-bold text-slate-600">$${p.cost}</span>
-                </div>
-            `).join('');
+            function showRankings() {
+                draftPage.classList.add('hidden');
+                rankingsPage.classList.remove('hidden');
+                showDraftBtn.classList.remove('active');
+                showRankingsBtn.classList.add('active');
+                observeCards(); 
+            }
 
-            teamDetailViewEl.innerHTML = `
-                <div class="bg-white p-6 sm:p-8 rounded-xl shadow-md tier-${team.tier}-bg border-l-4 tier-${team.tier}-border">
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
-                        <div>
-                           <p class="text-sm font-semibold tier-${team.tier}-border text-opacity-80">TIER ${team.tier}</p>
-                            <h2 class="text-3xl md:text-4xl font-bold">${team.teamName}</h2>
-                        </div>
-                        <div class="text-4xl md:text-5xl font-black mt-2 sm:mt-0" style="color: ${gradeColors[team.grade] || '#333'}">
-                            ${team.grade}
-                        </div>
-                    </div>
+            function showDraft() {
+                rankingsPage.classList.add('hidden');
+                draftPage.classList.remove('hidden');
+                showRankingsBtn.classList.remove('active');
+                showDraftBtn.classList.add('active');
+            }
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <h3 class="font-bold text-lg mb-2">Key Players & Cost</h3>
-                            <div class="space-y-2">${keyPlayersHtml}</div>
-                        </div>
-                        <div class="space-y-4">
-                            <div>
-                                <h3 class="font-bold text-lg mb-2 flex items-center"><span class="text-green-500 mr-2">👍</span>The Good</h3>
-                                <p class="text-slate-700 text-sm">${team.good}</p>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-lg mb-2 flex items-center"><span class="text-yellow-500 mr-2">👎</span>The Bad</h3>
-                                <p class="text-slate-700 text-sm">${team.bad}</p>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-lg mb-2 flex items-center"><span class="text-red-500 mr-2">🔥</span>The Burn</h3>
-                                <p class="text-slate-700 text-sm">${team.burn}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        };
+            showRankingsBtn.addEventListener('click', showRankings);
+            showDraftBtn.addEventListener('click', showDraft);
 
-        const initDraftPage = () => {
-            teamsData.sort((a, b) => a.rank - b.rank);
-            teamListEl.innerHTML = '';
-            teamsData.forEach((team) => {
-                const teamEl = document.createElement('div');
-                teamEl.className = 'team-card flex items-center justify-between p-3 rounded-lg border-2 border-transparent cursor-pointer hover:bg-slate-100 transition-all duration-200';
-                teamEl.innerHTML = `
-                    <div class="flex items-center">
-                        <span class="font-bold text-slate-500 w-8 text-center">${team.rank}.</span>
-                        <span class="font-semibold ml-2">${team.teamName}</span>
-                    </div>
-                    <span class="font-bold text-sm px-2 py-1 rounded" style="background-color: ${gradeColors[team.grade] || '#ccc'}; color: white;">${team.grade}</span>
-                `;
-                teamEl.addEventListener('click', () => {
-                    document.querySelectorAll('.team-card').forEach(el => el.classList.remove('active'));
-                    teamEl.classList.add('active');
-                    displayTeamDetails(team);
+            const weekSelector = document.getElementById('week-selector');
+            const weekTitleEl = document.getElementById('week-title');
+            const matchupContainer = document.getElementById('matchup-container');
+            const rankingsContainer = document.getElementById('rankings-container');
+            const superlativesContainer = document.getElementById('superlatives-container');
+            
+            if (weekSelector) {
+                const availableWeeks = Object.keys(allRankingsData).sort((a, b) => b - a);
+                availableWeeks.forEach(week => {
+                    if (allRankingsData[week].rankings && allRankingsData[week].rankings.length > 0) {
+                        const option = document.createElement('option');
+                        option.value = week;
+                        option.textContent = `Week ${week}`;
+                        weekSelector.appendChild(option);
+                    }
                 });
-                teamListEl.appendChild(teamEl);
-            });
-            renderCharts();
-        };
-        
-        let gradeVsSpendingChart, positionalSpendingChart, topSpendersChart;
 
-        const renderCharts = () => {
-            if(gradeVsSpendingChart) gradeVsSpendingChart.destroy();
-            gradeVsSpendingChart = new Chart(document.getElementById('gradeVsSpendingChart'), {
-                type: 'scatter',
-                data: {
-                    datasets: [{
-                        label: 'Team Grade vs. Spending',
-                        data: teamsData.map(t => ({ x: t.totalSpent, y: t.gradeValue, team: t.teamName })),
-                        backgroundColor: teamsData.map(t => gradeColors[t.grade]),
-                        pointRadius: 8,
-                        pointHoverRadius: 12,
-                    }]
-                },
-                options: {
-                    maintainAspectRatio: false,
-                    scales: {
-                        x: { title: { display: true, text: 'Total Budget Spent ($)' } },
-                        y: { 
-                            title: { display: true, text: 'Draft Grade' },
-                            ticks: {
-                                callback: function(value) {
-                                    const gradeMap = { 12: 'A+', 11: 'A', 10: 'A-', 9: 'B+', 8: 'B', 7: 'B-', 6: 'C+', 5: 'C', 4: 'C-', 3: 'D+'};
-                                    return gradeMap[value];
-                                }
-                            }
-                        }
-                    },
-                    plugins: {
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    const dataPoint = context.raw;
-                                    return `${dataPoint.team}: Grade ${Object.keys(gradeColors).find(key => gradeColors[key] === context.dataset.backgroundColor[context.dataIndex])}, Spent $${dataPoint.x}`;
-                                }
-                            }
-                        }
-                    }
+                function getRankClasses(rank, week) {
+                    if (rank === 1) return { border: 'border-2 border-yellow-500', icon: 'text-gold glow-gold' };
+                    if (rank === 2) return { border: '', icon: 'text-silver glow-silver' };
+                    if (rank === 3) return { border: '', icon: 'text-bronze glow-bronze' };
+                    if (rank === 9 && week === "1") return { border: 'border-2 border-fraud', icon: 'text-fraud' };
+                    if (rank >= 13) return { border: '', icon: 'text-skull' }; 
+                    return { border: '', icon: 'text-gray-600' };
                 }
-            });
-            
-            if(positionalSpendingChart) positionalSpendingChart.destroy();
-            const sortedByTotalSpent = [...teamsData].sort((a,b) => a.totalSpent - b.totalSpent);
-            positionalSpendingChart = new Chart(document.getElementById('positionalSpendingChart'), {
-                type: 'bar',
-                data: {
-                    labels: sortedByTotalSpent.map(t => t.teamName),
-                    datasets: Object.keys(posColors).map(pos => ({
-                        label: pos,
-                        data: sortedByTotalSpent.map(t => t.spending[pos] || 0),
-                        backgroundColor: posColors[pos],
-                    }))
-                },
-                options: {
-                    maintainAspectRatio: false,
-                    indexAxis: 'y',
-                    scales: {
-                        x: { stacked: true, title: { display: true, text: 'Amount Spent ($)' } },
-                        y: { stacked: true }
-                    },
-                    plugins: {
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return `${context.dataset.label}: $${context.raw}`;
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-            
-            if(topSpendersChart) topSpendersChart.destroy();
-            topSpendersChart = new Chart(document.getElementById('topSpendersChart'), {
-                type: 'bar',
-                data: {
-                    labels: allPlayers.map(p => `${p.name} (${p.team})`),
-                    datasets: [{
-                        label: 'Amount Spent ($)',
-                        data: allPlayers.map(p => p.cost),
-                        backgroundColor: '#3b82f6',
-                        borderColor: '#1e40af',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    maintainAspectRatio: false,
-                    indexAxis: 'y',
-                    scales: {
-                        x: { title: { display: true, text: 'Cost ($)' } },
-                    },
-                    plugins: {
-                        legend: { display: false }
-                    }
-                }
-            });
-        };
 
-        document.addEventListener('DOMContentLoaded', initDraftPage);
+                function renderPageForWeek(week) {
+                    const weekData = allRankingsData[week];
+                    if (!weekData || !weekData.rankings || weekData.rankings.length === 0) {
+                        weekTitleEl.textContent = allRankingsData[week]?.title || `Week ${week} Report`;
+                        matchupContainer.innerHTML = '<p class="text-center font-bold text-gray-600 py-8">No data available for this week yet.</p>';
+                        rankingsContainer.innerHTML = '';
+                        superlativesContainer.innerHTML = '';
+                        return;
+                    };
+                    
+                    weekTitleEl.textContent = weekData.title;
+                    const matchup = weekData.matchup;
+                    matchupContainer.innerHTML = `<div class="card rounded-lg shadow-lg border-2 border-indigo-500 p-6"><h2 class="text-center text-2xl font-black-ops text-indigo-600 tracking-wider">MATCHUP OF THE WEEK</h2><div class="flex flex-col md:flex-row items-center justify-around text-center mt-4"><div class="w-full md:w-2/5"><h3 class="text-2xl font-bold">${matchup.team1Name}</h3><p class="font-semibold text-gray-500">${matchup.team1Record}</p><p class="mt-2 text-sm text-gray-700">${matchup.team1Blurb}</p></div><div class="w-full md:w-1/5 text-4xl font-black-ops text-gray-400 my-4 md:my-0">VS</div><div class="w-full md:w-2/5"><h3 class="text-2xl font-bold">${matchup.team2Name}</h3><p class="font-semibold text-gray-500">${matchup.team2Record}</p><p class="mt-2 text-sm text-gray-700">${matchup.team2Blurb}</p></div></div><div class="text-center mt-6"><p class="font-bold text-indigo-600">The Verdict:</p><p class="text-gray-700 max-w-xl mx-auto">${matchup.verdict}</p></div></div>`;
+                    
+                    const sup = weekData.superlatives;
+                    superlativesContainer.innerHTML = `<h2 class="text-center text-3xl md:text-4xl font-black-ops tracking-wider animated-gradient bg-clip-text text-transparent">WEEKLY SUPERLATIVES</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8"><div class="card award-card rounded-lg p-6 text-center"><p class="text-5xl">🚀</p><h3 class="text-xl font-bold mt-2 text-success-bright">Biggest Boom</h3><p class="mt-2 font-semibold">${sup.boom.team}</p><p class="text-gray-500 text-sm">${sup.boom.reason}</p></div><div class="card award-card rounded-lg p-6 text-center"><p class="text-5xl">💣</p><h3 class="text-xl font-bold mt-2 text-danger-bright">Biggest Bust</h3><p class="mt-2 font-semibold">${sup.bust.team}</p><p class="text-gray-500 text-sm">${sup.bust.reason}</p></div><div class="card award-card rounded-lg p-6 text-center"><p class="text-5xl">🤦‍♂️</p><h3 class="text-xl font-bold mt-2 text-yellow-500">Worst Manager Award</h3><p class="mt-2 font-semibold">${sup.manager.team}</p><p class="text-gray-500 text-sm">${sup.manager.reason}</p></div><div class="card award-card rounded-lg p-6 text-center"><p class="text-5xl">🧐</p><h3 class="text-xl font-bold mt-2 text-fraud">Most Fraudulent Win</h3><p class="mt-2 font-semibold">${sup.fraud.team}</p><p class="text-gray-500 text-sm">${sup.fraud.reason}</p></div></div>`;
+
+                    rankingsContainer.innerHTML = ''; 
+                    weekData.rankings.forEach(team => {
+                        const scoreDiff = (team.score.actual - team.score.projected).toFixed(2);
+                        const scoreDiffColor = scoreDiff >= 0 ? 'text-success-bright' : 'text-danger-bright';
+                        const scoreSign = scoreDiff >= 0 ? '+' : '';
+                        const rankClasses = getRankClasses(team.rank, week);
+                        
+                        let rankChangeHtml = '';
+                        if (team.rankChange) {
+                            const change = team.rankChange;
+                            const changeClass = change > 0 ? 'rank-up' : 'rank-down';
+                            const arrow = change > 0 ? '▲' : '▼';
+                            const displayChange = change > 0 ? `+${change}` : change;
+                            rankChangeHtml = `<span class="rank-change ${changeClass}">${arrow} ${Math.abs(change)}</span>`;
+                        } else if (week > 1) {
+                             rankChangeHtml = `<span class="rank-change rank-same">-</span>`;
+                        }
+
+                        let studDudHtml = '';
+                        if (team.stud && team.dud) studDudHtml = `<div class="mt-4 pt-4 border-t border-gray-200 text-sm"><p><span class="font-bold text-green-600">STUD:</span> ${team.stud}</p><p><span class="font-bold text-red-600">DUD:</span> ${team.dud}</p></div>`;
+                        let panicMeterHtml = '';
+                        if (team.panicMeter) panicMeterHtml = `<div class="mt-3 pt-3 border-t text-center"><p class="font-bold">Panic Meter: <span class="${team.panicMeter.color} px-2 py-1 rounded-full text-xs">${team.panicMeter.level}</span></p></div>`;
+                        
+                        rankingsContainer.innerHTML += `<div class="card rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row ${rankClasses.border}"><div class="w-full md:w-32 bg-gray-200 flex items-center justify-center p-4"><span class="rank-icon ${rankClasses.icon}">${team.rank}</span></div><div class="p-6 flex-1"><h3 class="text-2xl font-bold flex items-center">${team.teamName} ${rankChangeHtml}</h3><p class="text-sm text-gray-500 -mt-1">(${team.manager})</p><p class="font-bold text-gray-600">Record: ${team.record}</p><p class="text-indigo-600 font-semibold mt-1">"${team.tagline}"</p><p class="mt-4 text-gray-700">${team.blurb}</p>${studDudHtml}${panicMeterHtml}</div><div class="w-full md:w-48 bg-gray-100 p-6 flex flex-col justify-center items-center space-y-2"><p class="text-gray-500 text-sm">Actual Score</p><p class="text-4xl font-black-ops ${scoreDiffColor}"><span class="score">${team.score.actual.toFixed(2)}</span></p><p class="text-gray-500 text-xs">Projected: ${team.score.projected.toFixed(2)}</p><p class="text-lg font-bold ${scoreDiffColor}">(${scoreSign}${scoreDiff})</p></div></div>`;
+                    });
+                    
+                    observeCards();
+                }
+
+                weekSelector.addEventListener('change', (e) => renderPageForWeek(e.target.value));
+                if (availableWeeks.length > 0) renderPageForWeek(availableWeeks[0]);
+            }
+            
+            // --- POST-DRAFT REPORT CARD LOGIC ---
+            const teamsData = [ { rank: 1, teamName: "Bullish", grade: "A+", gradeValue: 12, tier: 1, keyPlayers: [ { name: "Tyreek Hill", cost: 30 }, { name: "Saquon Barkley", cost: 62 }, { name: "Travis Kelce", cost: 14 }, { name: "Tony Pollard", cost: 19 }], good: "Getting Tyreek Hill ($30) and Travis Kelce ($14) for a combined $44 is not a 'good value,' it's a federal crime. We need to audit your internet connection for lag switching.", bad: "Your only weakness is starting a rookie QB. But let's be honest, your roster is so stacked you could start a traffic cone in that spot and still win the 'ship.", burn: "Congratulations on assembling a team that could only be beaten by an act of God or a season-ending injury to every single one of your players. And even then, I'd still have you favored.", spending: { QB: 7, RB: 98, WR: 77, TE: 15, K: 1, DEF: 1, D: 1 }, totalSpent: 200, }, { rank: 2, teamName: "Kim Jong Nate", grade: "A", gradeValue: 11, tier: 1, keyPlayers: [ { name: "Christian McCaffrey", cost: 55 }, { name: "De'Von Achane", cost: 41 }, { name: "Mike Evans", cost: 28 }, { name: "Joe Burrow", cost: 18 }], good: "You secured Christian McCaffrey for a shockingly low $55 and got a franchise QB in Joe Burrow for a fair price.", bad: "You set the bar so high that anything less than a championship will be a catastrophic failure. No pressure.", burn: "Your team name is fitting, because you executed your draft with the ruthless, flawless precision of a totalitarian regime. We are all your subjects now.", spending: { QB: 18, RB: 114, WR: 48, TE: 7, K: 2, DEF: 2, D: 1}, totalSpent: 192, }, { rank: 3, teamName: "ShakeNBake", grade: "A-", gradeValue: 10, tier: 1, keyPlayers: [ { name: "Jahmyr Gibbs", cost: 56 }, { name: "Puka Nacua", cost: 49 }, { name: "DK Metcalf", cost: 17 }, { name: "Mark Andrews", cost: 6 }, { name: "Jordan Love", cost: 7 }, { name: "Stefon Diggs", cost: 8 }], good: "You found the cheat codes. Mark Andrews for $6, Jordan Love for $7, and Stefon Diggs for $8.", bad: "Your two top players (Gibbs and Nacua) cost a pretty penny, but who cares when the rest of your roster was practically free?", burn: "Your team name is 'ShakeNBake' and you absolutely cooked this draft. You served up a championship contender while the rest of us are eating ramen noodles for the rest of the season. It's not just that you won; it's that you made it look so easy.", spending: { QB: 9, RB: 70, WR: 95, TE: 6, K: 1, DEF: 1, D: 1}, totalSpent: 183, }, { rank: 4, teamName: "Leo the Cleo", grade: "B+", gradeValue: 9, tier: 2, keyPlayers: [ { name: "Bijan Robinson", cost: 66 }, { name: "Jayden Daniels", cost: 21 }, { name: "Terry McLaurin", cost: 30 }, { name: "Garrett Wilson", cost: 20 }, { name: "Austin Ekeler", cost: 10 }], good: "A great RB in Bijan and fantastic value with Garrett Wilson ($20) and Austin Ekeler ($10). A very respectable team.", bad: "Your season hinges on a rookie QB.", burn: "Your team is like a beautiful, brand-new car with a student driver behind the wheel. It looks great in the driveway, but we're all just waiting for you to merge into traffic and cause a 10-car pileup.", spending: { QB: 22, RB: 83, WR: 66, TE: 8, DEF: 3, D: 1}, totalSpent: 183, }, { rank: 5, teamName: "Bend The Knee", grade: "B+", gradeValue: 9, tier: 2, keyPlayers: [ { name: "Nico Collins", cost: 49 }, { name: "Derrick Henry", cost: 53 }, { name: "Malik Nabers", cost: 49 }, { name: "Cooper Kupp", cost: 11 }, { name: "Brock Purdy", cost: 10 }], good: "Snagging Cooper Kupp for $11 and Brock Purdy for $10 were strokes of genius.", bad: "You spent a fortune on Malik Nabers, a guy who has never taken an NFL snap.", burn: "You named your team 'Bend The Knee,' but with your high-risk, high-reward strategy, you'll either be on the throne or in the gallows by Week 6. There is no in-between.", spending: { QB: 11, RB: 67, WR: 115, TE: 2, K: 1, DEF: 2 }, totalSpent: 198, }, { rank: 6, teamName: "A dad", grade: "B", gradeValue: 8, tier: 2, keyPlayers: [ { name: "Ja'Marr Chase", cost: 70 }, { name: "Kyren Williams", cost: 38 }, { name: "Tee Higgins", cost: 28 }, { name: "DJ Moore", cost: 19 }, { name: "Michael Pittman Jr.", cost: 5 }], good: "Your WR corps is a murderer's row. Chase, Higgins, Moore, Pittman... it's just plain unfair.", bad: "You spent so much on receivers that your running back depth chart consists of Kyren Williams and a group of guys who look like they're about to ask for spare change.", burn: "I've seen more depth in a puddle. If your starting RB gets hurt, your season is over faster than a free agent's career after signing with the Jets.", spending: { QB: 4, RB: 63, WR: 125, TE: 4, DEF: 2, D: 1}, totalSpent: 199, }, { rank: 7, teamName: "Mac Daddy", grade: "B", gradeValue: 8, tier: 2, keyPlayers: [ { name: "Justin Jefferson", cost: 60 }, { name: "Josh Jacobs", cost: 43 }, { name: "Kenneth Walker III", cost: 25 }, { name: "Marvin Harrison Jr.", cost: 25 }, { name: "Kyler Murray", cost: 2 }], good: "Kyler Murray for $2 is the steal of the century. You have Justin Jefferson. You have solid RBs.", bad: "Your team is aggressively... fine.", burn: "Your roster is the fantasy equivalent of a beige Toyota Camry. It’s reliable, it will get you from point A to point B, but absolutely no one is getting excited about it.", spending: { QB: 2, RB: 78, WR: 99, TE: 7, K: 1, DEF: 1, D: 1}, totalSpent: 189, }, { rank: 8, teamName: "FreeGucci", grade: "B-", gradeValue: 7, tier: 3, keyPlayers: [ { name: "Lamar Jackson", cost: 32 }, { name: "Omarion Hampton", cost: 31 }, { name: "Calvin Ridley", cost: 26 }, { name: "D'Andre Swift", cost: 19 }, { name: "Sam LaPorta", cost: 15 }], good: "An elite QB/TE combo with Lamar Jackson and Sam LaPorta.", bad: "Where are the wide receivers? Did you forget they were part of the game?", burn: "Your WR room is so thin, it makes a supermodel look bloated. You’re going to need Lamar to break the single-season QB rushing record just to have a shot at a .500 record.", spending: { QB: 32, RB: 74, WR: 52, TE: 15, DEF: 3, D: 1 }, totalSpent: 177, }, { rank: 9, teamName: "Shut Up", grade: "C+", gradeValue: 6, tier: 3, keyPlayers: [ { name: "Amon-Ra St. Brown", cost: 51 }, { name: "George Kittle", cost: 22 }, { name: "Bucky Irving", cost: 40 }, { name: "Patrick Mahomes", cost: 16 }, { name: "Jonathan Taylor", cost: 44 }], good: "You got Patrick Mahomes for a measly $16.", bad: "You paid for everyone else like you were using a company credit card. $40 on a rookie RB? $44 on Jonathan Taylor?", burn: "Your team motto is clearly 'Why buy it for less when you can overpay?' You’ve built a roster with the financial acumen of a lottery winner who just bought a solid gold jet ski.", spending: { QB: 18, RB: 86, WR: 53, TE: 28, K: 2, DEF: 2, D: 1}, totalSpent: 180, }, { rank: 10, teamName: "Hail Mary", grade: "C+", gradeValue: 6, tier: 3, keyPlayers: [ { name: "Ladd McConkey", cost: 36 }, { name: "Jalen Hurts", cost: 22 }, { name: "David Montgomery", cost: 20 }, { name: "James Cook", cost: 31 }, { name: "Trey McBride", cost: 30 }], good: "Acquired a high-upside QB and good RBs.", bad: "The roster feels top-heavy and lacks depth after the main starters.", burn: "Your team name is fitting, because you’ll need one every week to have a chance. You paid a premium for a rookie WR, and your bench has all the depth of a kiddie pool.", spending: { QB: 22, RB: 79, WR: 55, TE: 30, K: 1, DEF: 1, D: 3}, totalSpent: 191, }, { rank: 11, teamName: "Good Will Hunting", grade: "C", gradeValue: 5, tier: 3, keyPlayers: [ { name: "Drake London", cost: 41 }, { name: "Josh Allen", cost: 31 }, { name: "Ashton Jeanty", cost: 46 }, { name: "DeVonta Smith", cost: 17 }, { name: "Chris Olave", cost: 8 }, { name: "Nick Chubb", cost: 5 }], good: "Chris Olave for $8 and Nick Chubb for $5 are moves of a genius.", bad: "Spending $46 on rookie Ashton Jeanty is a move of... something else.", burn: "Your draft was a beautiful mess. It was like watching someone solve a Rubik's Cube with one hand while setting their hair on fire with the other. Baffling, yet I can't look away.", spending: { QB: 33, RB: 68, WR: 66, TE: 7, K: 4, DEF: 4, D: 1}, totalSpent: 183, }, { rank: 12, teamName: "INDIAN JONES 👳...", grade: "C", gradeValue: 5, tier: 4, keyPlayers: [ { name: "Brian Thomas Jr.", cost: 50 }, { name: "A.J. Brown", cost: 42 }, { name: "Breece Hall", cost: 19 }, { name: "TreVeyon Henderson", cost: 28 }], good: "Breece Hall for $19 was a fantastic pick.", bad: "You spent FIFTY DOLLARS ($50) on Brian Thomas Jr. I had to type that out to believe it.", burn: "You named your team after a legendary treasure hunter, but you spent your draft digging in the wrong place and came back with a bag of rocks. That $50 belongs in a museum for how badly you spent it.", spending: { QB: 2, RB: 52, WR: 108, TE: 8, K: 1, DEF: 3, D: 1}, totalSpent: 175, }, { rank: 13, teamName: "Miley Landslide", grade: "C-", gradeValue: 4, tier: 4, keyPlayers: [ { name: "CeeDee Lamb", cost: 59 }, { name: "Brock Bowers", cost: 35 }, { name: "Alvin Kamara", cost: 29 }, { name: "James Conner", cost: 30 }, { name: "Dak Prescott", cost: 10 }], good: "You have CeeDee Lamb.", bad: "...and that's about it. Your bench is a ghost town.", burn: "Your team is going to come in like a wrecking ball... directly into your own hopes and dreams for the season. You have less depth than a political debate on Twitter.", spending: { QB: 11, RB: 61, WR: 87, TE: 36, K: 1, DEF: 1, D: 1}, totalSpent: 198, }, { rank: 14, teamName: "The Injured Reserved", grade: "D+", gradeValue: 3, tier: 4, keyPlayers: [ { name: "Chase Brown", cost: 40 }, { name: "Davante Adams", cost: 26 }, { name: "Courtland Sutton", cost: 27 }, { name: "Chuba Hubbard", cost: 23 }], good: "...I'm thinking... give me a minute...", bad: "Spending $40 on Chase Brown is a choice. A truly, deeply confusing choice.", burn: "Your team name is a self-fulfilling prophecy. Your roster is a collection of question marks and lottery tickets that have already been scratched off. On the bright side, you'll have a great shot at the first overall pick next year. Oh, wait...", spending: { QB: 2, RB: 70, WR: 85, TE: 6, DEF: 1}, totalSpent: 164, } ];
+            const allPlayers = [ { name: "Ja'Marr Chase", cost: 70, team: "A dad", pos: 'WR' }, { name: "Bijan Robinson", cost: 66, team: "Leo the Cleo", pos: 'RB' }, { name: "Saquon Barkley", cost: 62, team: "Bullish", pos: 'RB' }, { name: "Justin Jefferson", cost: 60, team: "Mac Daddy", pos: 'WR' }, { name: "CeeDee Lamb", cost: 59, team: "Miley Landslide", pos: 'WR' }, { name: "Jahmyr Gibbs", cost: 56, team: "ShakeNBake", pos: 'RB' }, { name: "Christian McCaffrey", cost: 55, team: "Kim Jong Nate", pos: 'RB' }, { name: "Derrick Henry", cost: 53, team: "Bend The Knee", pos: 'RB' }, { name: "Amon-Ra St. Brown", cost: 51, team: "Shut Up", pos: 'WR' }, { name: "Brian Thomas Jr.", cost: 50, team: "INDIAN JONES 👳...", pos: 'WR' }, { name: "Puka Nacua", cost: 49, team: "ShakeNBake", pos: 'WR' }, { name: "Nico Collins", cost: 49, team: "Bend The Knee", pos: 'WR' }, { name: "Malik Nabers", cost: 49, team: "Bend The Knee", pos: 'WR' }, { name: "Ashton Jeanty", cost: 46, team: "Good Will Hunting", pos: 'RB' }, { name: "Jonathan Taylor", cost: 44, team: "Shut Up", pos: 'RB' }, ];
+            
+            const initDraftPage = () => {
+                const teamListEl = document.getElementById('team-list');
+                const welcomeViewEl = document.getElementById('welcome-view');
+                const teamDetailViewEl = document.getElementById('team-detail-view');
+                if (!teamListEl) return;
+                
+                const displayTeamDetails = (team) => {
+                    welcomeViewEl.classList.add('hidden');
+                    teamDetailViewEl.classList.remove('hidden');
+                    const keyPlayersHtml = team.keyPlayers.map(p => `<div class="flex justify-between items-center text-sm p-2 rounded bg-slate-100"><span class="font-semibold">${p.name}</span><span class="font-bold text-slate-600">$${p.cost}</span></div>`).join('');
+                    teamDetailViewEl.innerHTML = `<div class="bg-white p-6 sm:p-8 rounded-xl shadow-md tier-${team.tier}-bg border-l-4 tier-${team.tier}-border"><div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6"><div><p class="text-sm font-semibold tier-${team.tier}-border text-opacity-80">TIER ${team.tier}</p><h2 class="text-3xl md:text-4xl font-bold">${team.teamName}</h2></div><div class="text-4xl md:text-5xl font-black mt-2 sm:mt-0" style="color: ${gradeColors[team.grade] || '#333'}">${team.grade}</div></div><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div><h3 class="font-bold text-lg mb-2">Key Players & Cost</h3><div class="space-y-2">${keyPlayersHtml}</div></div><div class="space-y-4"><div><h3 class="font-bold text-lg mb-2 flex items-center"><span class="text-green-500 mr-2">👍</span>The Good</h3><p class="text-slate-700 text-sm">${team.good}</p></div><div><h3 class="font-bold text-lg mb-2 flex items-center"><span class="text-yellow-500 mr-2">👎</span>The Bad</h3><p class="text-slate-700 text-sm">${team.bad}</p></div><div><h3 class="font-bold text-lg mb-2 flex items-center"><span class="text-red-500 mr-2">🔥</span>The Burn</h3><p class="text-slate-700 text-sm">${team.burn}</p></div></div></div></div>`;
+                };
+
+                teamsData.sort((a, b) => a.rank - b.rank);
+                teamListEl.innerHTML = '';
+                teamsData.forEach((team) => {
+                    const teamEl = document.createElement('div');
+                    teamEl.className = 'team-card flex items-center justify-between p-3 rounded-lg border-2 border-transparent cursor-pointer hover:bg-slate-100 transition-all duration-200';
+                    teamEl.innerHTML = `<div class="flex items-center"><span class="font-bold text-slate-500 w-8 text-center">${team.rank}.</span><span class="font-semibold ml-2">${team.teamName}</span></div><span class="font-bold text-sm px-2 py-1 rounded" style="background-color: ${gradeColors[team.grade] || '#ccc'}; color: white;">${team.grade}</span>`;
+                    teamEl.addEventListener('click', () => {
+                        document.querySelectorAll('.team-card').forEach(el => el.classList.remove('active'));
+                        teamEl.classList.add('active');
+                        displayTeamDetails(team);
+                    });
+                    teamListEl.appendChild(teamEl);
+                });
+                
+                const gradeColors = { 'A+': '#10b981', 'A': '#22c55e', 'A-': '#84cc16', 'B+': '#a3e635', 'B': '#eab308', 'B-': '#f59e0b', 'C+': '#f97316', 'C': '#ef4444', 'C-': '#dc2626', 'D+': '#b91c1c', };
+                const posColors = { QB: 'rgba(54, 162, 235, 0.8)', RB: 'rgba(75, 192, 192, 0.8)', WR: 'rgba(255, 99, 132, 0.8)', TE: 'rgba(255, 159, 64, 0.8)', K: 'rgba(153, 102, 255, 0.8)', DEF: 'rgba(255, 206, 86, 0.8)', D: 'rgba(201, 203, 207, 0.8)' };
+                let gradeVsSpendingChart, positionalSpendingChart, topSpendersChart;
+                const renderCharts = () => {
+                    if(gradeVsSpendingChart) gradeVsSpendingChart.destroy();
+                    gradeVsSpendingChart = new Chart(document.getElementById('gradeVsSpendingChart'), { type: 'scatter', data: { datasets: [{ label: 'Team Grade vs. Spending', data: teamsData.map(t => ({ x: t.totalSpent, y: t.gradeValue, team: t.teamName })), backgroundColor: teamsData.map(t => gradeColors[t.grade]), pointRadius: 8, pointHoverRadius: 12, }] }, options: { maintainAspectRatio: false, scales: { x: { title: { display: true, text: 'Total Budget Spent ($)' } }, y: { title: { display: true, text: 'Draft Grade' }, ticks: { callback: function(value) { const gradeMap = { 12: 'A+', 11: 'A', 10: 'A-', 9: 'B+', 8: 'B', 7: 'B-', 6: 'C+', 5: 'C', 4: 'C-', 3: 'D+'}; return gradeMap[value]; } } } }, plugins: { tooltip: { callbacks: { label: function(context) { const dataPoint = context.raw; return `${dataPoint.team}: Grade ${Object.keys(gradeColors).find(key => gradeColors[key] === context.dataset.backgroundColor[context.dataIndex])}, Spent $${dataPoint.x}`; } } } } } });
+                    if(positionalSpendingChart) positionalSpendingChart.destroy();
+                    const sortedByTotalSpent = [...teamsData].sort((a,b) => a.totalSpent - b.totalSpent);
+                    positionalSpendingChart = new Chart(document.getElementById('positionalSpendingChart'), { type: 'bar', data: { labels: sortedByTotalSpent.map(t => t.teamName), datasets: Object.keys(posColors).map(pos => ({ label: pos, data: sortedByTotalSpent.map(t => t.spending[pos] || 0), backgroundColor: posColors[pos], })) }, options: { maintainAspectRatio: false, indexAxis: 'y', scales: { x: { stacked: true, title: { display: true, text: 'Amount Spent ($)' } }, y: { stacked: true } }, plugins: { tooltip: { callbacks: { label: function(context) { return `${context.dataset.label}: $${context.raw}`; } } } } } });
+                    if(topSpendersChart) topSpendersChart.destroy();
+                    topSpendersChart = new Chart(document.getElementById('topSpendersChart'), { type: 'bar', data: { labels: allPlayers.map(p => `${p.name} (${p.team})`), datasets: [{ label: 'Amount Spent ($)', data: allPlayers.map(p => p.cost), backgroundColor: '#3b82f6', borderColor: '#1e40af', borderWidth: 1 }] }, options: { maintainAspectRatio: false, indexAxis: 'y', scales: { x: { title: { display: true, text: 'Cost ($)' } }, }, plugins: { legend: { display: false } } } });
+                };
+                renderCharts();
+            };
+            
+            // --- INITIALIZATION ---
+            initDraftPage();
+        });
     </script>
+
 </body>
 </html>
