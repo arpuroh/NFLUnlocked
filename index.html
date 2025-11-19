@@ -17,26 +17,26 @@
     <style>
         :root {
             /* Light Mode Vars */
-            --bg-primary: #f3f4f6;
+            --bg-primary: #f8f9fa;
             --bg-secondary: #ffffff;
-            --text-primary: #111827;
-            --text-secondary: #4b5563;
-            --accent: #4f46e5;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --accent: #6366f1;
             --border: #e5e7eb;
-            --chart-fill: rgba(79, 70, 229, 0.1);
+            --chart-fill: rgba(99, 102, 241, 0.1);
             --chart-line: #1f2937;
             --chart-median: #9ca3af;
         }
 
         .dark {
             /* Dark Mode Vars */
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --accent: #6366f1;
-            --border: #334155;
-            --chart-fill: rgba(99, 102, 241, 0.1);
+            --bg-primary: #111827;
+            --bg-secondary: #1f2937;
+            --text-primary: #f9fafb;
+            --text-secondary: #9ca3af;
+            --accent: #818cf8;
+            --border: #374151;
+            --chart-fill: rgba(129, 140, 248, 0.1);
             --chart-line: #e5e7eb;
             --chart-median: #6b7280;
         }
@@ -64,7 +64,7 @@
             box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
         }
 
-        /* Animations */
+        /* Ranking Entrance Animation */
         .card-enter {
             opacity: 0;
             transform: translateY(20px);
@@ -75,6 +75,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Intro Animation */
         .intro-enter {
             opacity: 0;
             animation: fadeIn 1s forwards;
@@ -86,54 +87,31 @@
 
         /* Rank Number Styling */
         .rank-number {
-            font-size: 3.5rem;
+            font-size: 4rem;
             line-height: 1;
             font-weight: 900;
             font-family: 'Inter', sans-serif;
             transition: color 0.3s;
         }
-        
-        @media (min-width: 768px) {
-            .rank-number { font-size: 4rem; }
-        }
 
         /* Gradient Colors for Ranks */
-        .rank-gold { color: #fbbf24; text-shadow: 0 2px 10px rgba(251, 191, 36, 0.3); }
-        .rank-green { color: #10b981; }
-        .rank-neutral { color: #6b7280; }
-        .rank-red { color: #ef4444; }
+        .rank-gold { color: #fbbf24; text-shadow: 0 2px 10px rgba(251, 191, 36, 0.3); } /* #1 */
+        .rank-green { color: #10b981; } /* Top Tier */
+        .rank-neutral { color: #6b7280; } /* Mid Tier */
+        .rank-red { color: #ef4444; }   /* Bottom Tier */
 
-        /* Chart */
+        /* Chart Container */
         .chart-wrapper {
             position: relative;
             height: 80px;
             width: 100%;
         }
-        
-        /* Superlatives Grid */
-        .superlative-grid {
-            display: grid;
-            grid-template-columns: repeat(1, 1fr);
-            gap: 1rem;
-            margin-bottom: 3rem;
-        }
-        
-        @media (min-width: 640px) { .superlative-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (min-width: 1024px) { .superlative-grid { grid-template-columns: repeat(4, 1fr); } }
-
-        .superlative-emoji { font-size: 2.5rem; margin-bottom: 0.5rem; }
-        .superlative-title { font-weight: 800; font-size: 0.85rem; margin-bottom: 0.25rem; text-transform: uppercase; letter-spacing: -0.02em; }
-        
-        .text-boom { color: #10b981; }
-        .text-bust { color: #ef4444; }
-        .text-fraud { color: #ec4899; }
-        .text-worst { color: #f59e0b; }
 
         /* Trend Indicators */
         .trend-up { color: #10b981; font-weight: 700; }
         .trend-down { color: #ef4444; font-weight: 700; }
         .trend-flat { color: var(--text-secondary); font-weight: 700; }
-
+        
         /* Badges */
         .badge {
             font-size: 0.65rem;
@@ -146,6 +124,41 @@
             background-color: var(--bg-primary);
             color: var(--text-secondary);
         }
+
+        /* Superlatives Grid - Responsive and Fit */
+        .superlative-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Compact min-width */
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        /* Force 4 columns on desktop to fit panel nicely */
+        @media (min-width: 1024px) {
+            .superlative-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .superlative-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .superlative-title {
+            font-weight: 800;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+        
+        /* Specific Text Colors for Superlatives */
+        .text-boom { color: #10b981; }
+        .text-bust { color: #ef4444; }
+        .text-fraud { color: #ec4899; }
+        .text-worst { color: #f59e0b; }
+
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
@@ -178,16 +191,16 @@
                 </p>
                 
                 <div>
-                    <h3 class="text-xl font-bold text-[var(--text-primary)] mb-2">👑 Hail Mary: The Evil Empire</h3>
+                    <h3 class="text-xl font-bold text-[var(--text-primary)] mb-2">👑 Hail Mary: The Dictator</h3>
                     <p>
-                        Let's start with <strong>Hail Mary</strong> (Andrew). Sitting at 18-4, this team is less of a fantasy squad and more of a buzzsaw. Andrew has been running the league like a dictator for weeks, consistently putting up 130+ points while hoarding FAAB like it's gold bullion ($662!). He casually dropped 137 points this week while the rest of us fight for scraps.
+                        Let's start with <strong>Hail Mary</strong> (Andrew). Sitting at 18-4, this isn't just a fantasy team; it's a regime. Andrew is running this league like a dictator who rigs his own elections. While the rest of us are clawing for waiver wire scraps and praying for 8 points from a flex, he's casually dropping 137 points in his sleep. It’s dominant, it’s terrifying, and frankly, we should probably check if he's paying off the Yahoo! admins.
                     </p>
                 </div>
 
                 <div>
                     <h3 class="text-xl font-bold text-[var(--text-primary)] mb-2">💩 The Poop Squad Miracle</h3>
                     <p>
-                        On the flip side, we have the feel-good story of the year. <strong>Poop Squad</strong> is on a winning streak! Yes, the team that spent the first two months as a glorified bye week has won two in a row, including a "fraudulent but glorious" 91-point win to humiliate Kim Jong Nate. Anuj has rallied the troops from the depths of the standings (4-18). The basement is no longer a prison; it's a launchpad.
+                        On the flip side, we have the feel-good story of the year. <strong>Poop Squad</strong> is on a winning streak! Yes, the team that spent the first two months as a glorified bye week has won two in a row, including a 91-point "fraudulent" victory to humiliate Kim Jong Nate. Anuj has rallied the troops from the depths of the standings (4-18). The basement is no longer a prison; it's a launchpad.
                     </p>
                 </div>
 
@@ -206,42 +219,42 @@
             <div class="superlative-grid">
                 
                 <!-- Biggest Boom -->
-                <div class="superlative-card p-5 text-center">
+                <div class="superlative-card p-4 text-center">
                     <div class="superlative-emoji">🚀</div>
                     <div class="superlative-title text-boom">Biggest Boom</div>
-                    <div class="font-bold text-lg text-[var(--text-primary)] mb-1">The Injured Reserved</div>
+                    <div class="font-bold text-md text-[var(--text-primary)] mb-1">The Injured Reserved</div>
                     <p class="text-xs text-[var(--text-secondary)] leading-snug mt-2">
                         Dropped a massive <strong>145.00 points</strong> to obliterate Leo the Cleo. Beating the median by nearly 32 points isn't just a win; it's a statement. With CMC and Zay Flowers, this team is a nuclear weapon.
                     </p>
                 </div>
 
                 <!-- Biggest Bust -->
-                <div class="superlative-card p-5 text-center">
+                <div class="superlative-card p-4 text-center">
                     <div class="superlative-emoji">💣</div>
                     <div class="superlative-title text-bust">Biggest Bust</div>
-                    <div class="font-bold text-lg text-[var(--text-primary)] mb-1">Kim Jong Nate</div>
+                    <div class="font-bold text-md text-[var(--text-primary)] mb-1">Kim Jong Nate</div>
                     <p class="text-xs text-[var(--text-secondary)] leading-snug mt-2">
                         Scored a pathetic <strong>89.16 points</strong>. You managed to lose to the 14th place team while owning De'Von Achane (29.8 pts). The rest of your roster didn't just underperform; they went on strike.
                     </p>
                 </div>
 
                 <!-- Worst Manager Award -->
-                <div class="superlative-card p-5 text-center">
+                <div class="superlative-card p-4 text-center">
                     <div class="superlative-emoji">🤦‍♂️</div>
                     <div class="superlative-title text-worst">Worst Manager Award</div>
-                    <div class="font-bold text-lg text-[var(--text-primary)] mb-1">Good Will Hunting</div>
+                    <div class="font-bold text-md text-[var(--text-primary)] mb-1">Good Will Hunting</div>
                     <p class="text-xs text-[var(--text-secondary)] leading-snug mt-2">
                         For losing despite <strong>Josh Allen</strong> scoring 44.68 points. How do you waste a legendary QB performance like that? It takes a special kind of roster mismanagement to fumble a 40-point head start.
                     </p>
                 </div>
 
                 <!-- Most Fraudulent Win -->
-                <div class="superlative-card p-5 text-center">
+                <div class="superlative-card p-4 text-center">
                     <div class="superlative-emoji">🧐</div>
                     <div class="superlative-title text-fraud">Most Fraudulent Win</div>
-                    <div class="font-bold text-lg text-[var(--text-primary)] mb-1">Poop Squad</div>
+                    <div class="font-bold text-md text-[var(--text-primary)] mb-1">Poop Squad</div>
                     <p class="text-xs text-[var(--text-secondary)] leading-snug mt-2">
-                        You scored <strong>91.26 points</strong>. That is well under 100 and well under the league median (113.08). You only won because Kim Jong Nate scored 89. This wasn't a victory; it was a survival horror movie.
+                        You scored <strong>91.26 points</strong>. That is well under 100 and under the league median (113.08). You only won because Kim Jong Nate scored 89. This wasn't a victory; it was a survival horror movie.
                     </p>
                 </div>
 
@@ -288,7 +301,7 @@
                 rank: 4, prevRank: 6, name: "FreeGucci", record: "14-8-0", points: 1417.56,
                 trend: [141.14, 117.36, 117.96, 153.64, 154.82, 121.34, 143.30, 103.52, 130.68, 121.00, 112.80],
                 badges: ["Hot Streak", "54 Moves"],
-                desc: "Nishil moves up to #4, leaping over Mac Daddy. He's on fire, winning 3 in a row. Even with <strong>Lamar Jackson</strong> (17.79 pts) looking merely mortal this week, the team found a way to win (112.80 pts). The roster churn is absolutely insane—he has made <strong>54 moves</strong> this season! He just dropped a massive <strong>$151 on Michael Carter</strong> and another <strong>$25 on Xavier Legette</strong>, treating the waiver wire like an open bar. The constant tinkering is finally paying dividends."
+                desc: "Nishil moves up to #4, leaping over Mac Daddy. Why? Momentum. He's on fire, winning 3 in a row. Even with <strong>Lamar Jackson</strong> (17.79 pts) looking merely mortal this week, the team found a way to win. The roster churn is absolutely insane—he has made <strong>54 moves</strong> this season! He just dropped a massive <strong>$151 on Michael Carter</strong> (why?!) and another <strong>$25 on Xavier Legette</strong>, treating the waiver wire like an open bar. The constant tinkering is finally paying dividends."
             },
             {
                 rank: 5, prevRank: 5, name: "Mac Daddy", record: "15-7-0", points: 1430.06,
