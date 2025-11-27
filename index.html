@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NFL Unlocked - Brown vs. White Showdown</title>
+    <title>NFL Unlocked - Cowboys vs. Indians Showdown</title>
     
-    <meta property="og:title" content="NFL Unlocked - Brown vs. White Showdown" />
+    <meta property="og:title" content="NFL Unlocked - Cowboys vs. Indians Showdown" />
     <meta property="og:description" content="The Annual Thanksgiving Tradition. Pick your side." />
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Black+Ops+One&family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Black+Ops+One&family=Russo+One&family=Rye&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -21,10 +21,9 @@
             --bg-secondary: #ffffff;
             --text-primary: #1f2937;
             --text-secondary: #4b5563;
-            --accent-brown: #78350f; /* Amber 900 */
-            --accent-white: #e5e7eb; /* Gray 200 */
+            --accent-cowboy: #1e3a8a; /* Navy Blue */
+            --accent-indian: #b91c1c; /* Red */
             --border: #e5e7eb;
-            --chart-fill: rgba(120, 53, 15, 0.1);
             --chart-line: #1f2937;
         }
 
@@ -34,10 +33,9 @@
             --bg-secondary: #1f2937;
             --text-primary: #f9fafb;
             --text-secondary: #9ca3af;
-            --accent-brown: #d97706; /* Amber 600 */
-            --accent-white: #f3f4f6;
+            --accent-cowboy: #60a5fa; /* Blue */
+            --accent-indian: #f87171; /* Red */
             --border: #374151;
-            --chart-fill: rgba(217, 119, 6, 0.1);
             --chart-line: #e5e7eb;
         }
 
@@ -49,13 +47,14 @@
         }
 
         .font-russo { font-family: 'Russo One', sans-serif; }
+        .font-rye { font-family: 'Rye', serif; }
 
-        /* Brown vs White Banner */
+        /* Cowboys vs Indians Banner */
         .vs-banner {
-            background: linear-gradient(135deg, #451a03 0%, #78350f 45%, #ffffff 55%, #f3f4f6 100%);
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 45%, #ffffff 55%, #b91c1c 100%);
         }
         .dark .vs-banner {
-            background: linear-gradient(135deg, #451a03 0%, #92400e 45%, #1f2937 55%, #374151 100%);
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 45%, #1f2937 55%, #7f1d1d 100%);
         }
 
         /* Card Styling */
@@ -93,14 +92,14 @@
             border-radius: 4px;
             border: 1px solid var(--border);
         }
-        .badge-brown { background-color: #fffbeb; color: #92400e; border-color: #fcd34d; }
-        .badge-white { background-color: #f3f4f6; color: #374151; border-color: #d1d5db; }
-        .dark .badge-brown { background-color: #451a03; color: #fcd34d; border-color: #92400e; }
-        .dark .badge-white { background-color: #374151; color: #e5e7eb; border-color: #4b5563; }
+        .badge-cowboy { background-color: #eff6ff; color: #1e40af; border-color: #bfdbfe; }
+        .badge-indian { background-color: #fef2f2; color: #991b1b; border-color: #fecaca; }
+        .dark .badge-cowboy { background-color: #172554; color: #bfdbfe; border-color: #1e40af; }
+        .dark .badge-indian { background-color: #450a0a; color: #fecaca; border-color: #991b1b; }
 
         /* Team Colors */
-        .team-brown { border-left: 4px solid #92400e; }
-        .team-white { border-left: 4px solid #9ca3af; }
+        .team-cowboy { border-left: 4px solid #1e40af; }
+        .team-indian { border-left: 4px solid #b91c1c; }
 
         /* Superlative Text */
         .text-boom { color: #10b981; }
@@ -122,7 +121,7 @@
         <div class="container mx-auto px-4 py-4">
             <div class="flex justify-between items-center">
                 <div class="flex items-center space-x-3">
-                    <span class="text-3xl font-black tracking-tighter text-[var(--text-primary)]">NFL <span class="text-amber-700 dark:text-amber-500">UNLOCKED</span></span>
+                    <span class="text-3xl font-black tracking-tighter text-[var(--text-primary)]">NFL <span class="text-blue-800 dark:text-blue-500">UNLOCKED</span></span>
                 </div>
                 
                 <button id="theme-toggle" class="p-2 rounded-full bg-[var(--bg-primary)] hover:bg-[var(--border)] transition-colors focus:outline-none">
@@ -135,14 +134,14 @@
 
     <main class="flex-grow">
         
-        <!-- BROWN VS WHITE HERO SECTION -->
+        <!-- COWBOYS VS INDIANS HERO SECTION -->
         <div class="vs-banner py-16 px-4 mb-8 text-white relative overflow-hidden">
             <div class="absolute inset-0 bg-black/20"></div>
             <div class="container mx-auto max-w-6xl relative z-10">
                 <div class="text-center mb-10">
                     <h2 class="text-sm font-bold uppercase tracking-[0.3em] mb-2 opacity-90">Thanksgiving Special</h2>
-                    <h1 class="text-5xl md:text-7xl font-russo uppercase drop-shadow-lg">
-                        <span class="text-amber-300">Brown</span> <span class="text-white/60 text-3xl mx-2 align-middle font-sans font-light">vs</span> <span class="text-white">White</span>
+                    <h1 class="text-5xl md:text-7xl font-rye uppercase drop-shadow-lg">
+                        <span class="text-blue-200">Cowboys</span> <span class="text-white/60 text-3xl mx-2 align-middle font-sans font-light">vs</span> <span class="text-red-200">Indians</span>
                     </h1>
                     <p class="mt-4 text-lg font-medium opacity-90 max-w-2xl mx-auto">The annual tradition returns. Choose your allegiance.</p>
                 </div>
@@ -150,10 +149,10 @@
                 <!-- Scoreboard -->
                 <div class="bg-black/40 backdrop-blur-sm rounded-2xl p-6 md:p-8 max-w-4xl mx-auto border border-white/10 mb-12">
                     <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-                        <!-- Brown Side -->
+                        <!-- Indians Side (Formerly Brown) -->
                         <div class="text-center w-full md:w-1/3">
-                            <div class="text-amber-400 font-black text-6xl tabular-nums">862.9</div>
-                            <div class="text-amber-200 font-bold uppercase tracking-widest mt-1">Browns Proj.</div>
+                            <div class="text-red-400 font-black text-6xl tabular-nums">862.9</div>
+                            <div class="text-red-200 font-bold uppercase tracking-widest mt-1">Indians Proj.</div>
                         </div>
 
                         <div class="text-center">
@@ -161,46 +160,46 @@
                             <div class="text-2xl font-bold text-white mt-1">Week 13</div>
                         </div>
 
-                        <!-- White Side -->
+                        <!-- Cowboys Side (Formerly White) -->
                         <div class="text-center w-full md:w-1/3">
-                            <div class="text-white font-black text-6xl tabular-nums">828.4</div>
-                            <div class="text-gray-300 font-bold uppercase tracking-widest mt-1">Whites Proj.</div>
+                            <div class="text-blue-400 font-black text-6xl tabular-nums">828.4</div>
+                            <div class="text-blue-200 font-bold uppercase tracking-widest mt-1">Cowboys Proj.</div>
                         </div>
                     </div>
                     <div class="mt-6 text-center">
-                        <span class="inline-block bg-amber-600/90 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                            Spread: Browns -34.5
+                        <span class="inline-block bg-red-700/90 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                            Spread: Indians -34.5
                         </span>
                     </div>
                 </div>
 
                 <!-- Rosters -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Browns Roster -->
-                    <div class="bg-[#451a03]/80 rounded-xl p-6 border border-amber-900/50">
-                        <h3 class="text-amber-400 font-russo text-2xl uppercase mb-4 border-b border-amber-800 pb-2">The Browns</h3>
-                        <ul class="space-y-3 text-sm">
-                            <li class="flex justify-between items-center"><span class="font-bold">Neil (Shut Up)</span> <span class="font-mono text-amber-200">133.99 proj</span></li>
-                            <li class="flex justify-between items-center"><span class="font-bold">Shake (ShakeNBake)</span> <span class="font-mono text-amber-200">129.69 proj</span></li>
-                            <li class="flex justify-between items-center"><span class="font-bold">Mohsin (Bullish)</span> <span class="font-mono text-amber-200">128.26 proj</span></li>
-                            <li class="flex justify-between items-center"><span class="font-bold">Anuj (Poop Squad)</span> <span class="font-mono text-amber-200">124.63 proj</span></li>
-                            <li class="flex justify-between items-center"><span class="font-bold">Mac (Mac Daddy)</span> <span class="font-mono text-amber-200">121.15 proj</span></li>
-                            <li class="flex justify-between items-center"><span class="font-bold">Nish (FreeGucci)</span> <span class="font-mono text-amber-200">115.68 proj</span></li>
-                            <li class="flex justify-between items-center"><span class="font-bold">Darrius (Bend The Knee)</span> <span class="font-mono text-amber-200">109.48 proj</span></li>
+                    <!-- Indians Roster -->
+                    <div class="bg-[#450a0a]/80 rounded-xl p-6 border border-red-900/50">
+                        <h3 class="text-red-300 font-rye text-2xl uppercase mb-4 border-b border-red-800 pb-2">The Indians</h3>
+                        <ul class="space-y-3 text-sm text-white">
+                            <li class="flex justify-between items-center"><span class="font-bold">Neil (Shut Up)</span> <span class="font-mono text-red-200">133.99 proj</span></li>
+                            <li class="flex justify-between items-center"><span class="font-bold">Abhishek (ShakeNBake)</span> <span class="font-mono text-red-200">129.69 proj</span></li>
+                            <li class="flex justify-between items-center"><span class="font-bold">Mohsin (Bullish)</span> <span class="font-mono text-red-200">128.26 proj</span></li>
+                            <li class="flex justify-between items-center"><span class="font-bold">Anuj (Poop Squad)</span> <span class="font-mono text-red-200">124.63 proj</span></li>
+                            <li class="flex justify-between items-center"><span class="font-bold">Mac (Mac Daddy)</span> <span class="font-mono text-red-200">121.15 proj</span></li>
+                            <li class="flex justify-between items-center"><span class="font-bold">Nish (FreeGucci)</span> <span class="font-mono text-red-200">115.68 proj</span></li>
+                            <li class="flex justify-between items-center"><span class="font-bold">Darrius (Bend The Knee)</span> <span class="font-mono text-red-200">109.48 proj</span></li>
                         </ul>
                     </div>
 
-                    <!-- Whites Roster -->
-                    <div class="bg-[#1f2937]/80 rounded-xl p-6 border border-gray-600/50">
-                        <h3 class="text-white font-russo text-2xl uppercase mb-4 border-b border-gray-600 pb-2">The Whites</h3>
-                        <ul class="space-y-3 text-sm">
-                            <li class="flex justify-between items-center"><span class="font-bold">Greg Gagne (Injured Reserved)</span> <span class="font-mono text-gray-300">138.97 proj</span></li>
-                            <li class="flex justify-between items-center"><span class="font-bold">Andrew Barnhart (Hail Mary)</span> <span class="font-mono text-gray-300">127.99 proj</span></li>
-                            <li class="flex justify-between items-center"><span class="font-bold">Will (Good Will Hunting)</span> <span class="font-mono text-gray-300">126.53 proj</span></li>
-                            <li class="flex justify-between items-center"><span class="font-bold">Nate (Kim Jong Nate)</span> <span class="font-mono text-gray-300">124.07 proj</span></li>
-                            <li class="flex justify-between items-center"><span class="font-bold">Greg Gokey (Hannah Montana)</span> <span class="font-mono text-gray-300">107.68 proj</span></li>
-                            <li class="flex justify-between items-center"><span class="font-bold">Bean (A dad)</span> <span class="font-mono text-gray-300">104.42 proj</span></li>
-                            <li class="flex justify-between items-center"><span class="font-bold">Leo (Leo the Cleo)</span> <span class="font-mono text-gray-300">98.76 proj</span></li>
+                    <!-- Cowboys Roster -->
+                    <div class="bg-[#172554]/80 rounded-xl p-6 border border-blue-900/50">
+                        <h3 class="text-blue-300 font-rye text-2xl uppercase mb-4 border-b border-blue-800 pb-2">The Cowboys</h3>
+                        <ul class="space-y-3 text-sm text-white">
+                            <li class="flex justify-between items-center"><span class="font-bold">Greg Gagne (Injured Reserved)</span> <span class="font-mono text-blue-200">138.97 proj</span></li>
+                            <li class="flex justify-between items-center"><span class="font-bold">Andrew Barnhart (Hail Mary)</span> <span class="font-mono text-blue-200">127.99 proj</span></li>
+                            <li class="flex justify-between items-center"><span class="font-bold">Will (Good Will Hunting)</span> <span class="font-mono text-blue-200">126.53 proj</span></li>
+                            <li class="flex justify-between items-center"><span class="font-bold">Nate (Kim Jong Nate)</span> <span class="font-mono text-blue-200">124.07 proj</span></li>
+                            <li class="flex justify-between items-center"><span class="font-bold">Greg Gokey (Hannah Montana)</span> <span class="font-mono text-blue-200">107.68 proj</span></li>
+                            <li class="flex justify-between items-center"><span class="font-bold">Bean (A dad)</span> <span class="font-mono text-blue-200">104.42 proj</span></li>
+                            <li class="flex justify-between items-center"><span class="font-bold">Leo (Leo the Cleo)</span> <span class="font-mono text-blue-200">98.76 proj</span></li>
                         </ul>
                     </div>
                 </div>
@@ -209,9 +208,9 @@
                 <div class="mt-8 text-center">
                      <h3 class="text-white/80 font-bold uppercase tracking-wider text-xs mb-4">Key H2H Battles This Week</h3>
                      <div class="flex flex-wrap justify-center gap-3">
-                         <span class="bg-black/50 px-3 py-2 rounded text-xs border border-white/10">Shake (B) vs Greg Gokey (W)</span>
-                         <span class="bg-black/50 px-3 py-2 rounded text-xs border border-white/10">Mac (B) vs Will (W)</span>
-                         <span class="bg-black/50 px-3 py-2 rounded text-xs border border-white/10">Neil (B) vs Leo (W)</span>
+                         <span class="bg-black/50 px-3 py-2 rounded text-xs border border-white/10">Abhishek (I) vs Greg Gokey (C)</span>
+                         <span class="bg-black/50 px-3 py-2 rounded text-xs border border-white/10">Mac (I) vs Will (C)</span>
+                         <span class="bg-black/50 px-3 py-2 rounded text-xs border border-white/10">Neil (I) vs Leo (C)</span>
                      </div>
                 </div>
             </div>
@@ -221,13 +220,13 @@
             
             <!-- Week 12 Recap Intro -->
             <div class="mb-12 space-y-4">
-                <h2 class="text-3xl font-bold text-[var(--text-primary)]">Week 12: The Gibbs Explosion & The Civil War Begins</h2>
+                <h2 class="text-3xl font-bold text-[var(--text-primary)]">Week 12: The Gibbs Explosion & The War Begins</h2>
                 <div class="prose prose-lg text-[var(--text-secondary)] leading-relaxed max-w-4xl">
                     <p>
-                        Week 12 will be remembered for exactly one thing: <strong>Jahmyr Gibbs</strong> going absolutely nuclear for <strong>ShakeNBake</strong>. In a performance that will be talked about for years, Gibbs dropped a staggering <strong>52.90 points</strong> (219 rushing yards, multiple TDs), propelling ShakeNBake to a league-high 166.30 points. It wasn't just a fantasy performance; it was a hostile takeover. This single-handedly ended Poop Squad's brief flicker of hope and served notice to the rest of the league that the Brown faction is bringing heavy artillery to the Thanksgiving showdown.
+                        Week 12 will be remembered for exactly one thing: <strong>Jahmyr Gibbs</strong> going absolutely nuclear for <strong>ShakeNBake</strong>. In a performance that will be talked about for years, Gibbs dropped a staggering <strong>52.90 points</strong> (219 rushing yards, multiple TDs), propelling ShakeNBake to a league-high 166.30 points. It wasn't just a fantasy performance; it was a hostile takeover. This single-handedly ended Poop Squad's brief flicker of hope and served notice to the rest of the league that the Indian faction is bringing heavy artillery to the Thanksgiving showdown.
                     </p>
                     <p>
-                         Meanwhile, <strong>The Injured Reserved</strong> (Greg Gagne) continued his dominant march, posting 146 points to remain the league's points leader. <strong>Hail Mary</strong> (Andrew Barnhart) casually dropped another 150-burger to stay atop the standings at 20-4. But the most surprising development might be <strong>Bend The Knee</strong> (Darrius), who seems to have finally woken up, scoring nearly 149 points to play spoiler. As we head into Week 13, the lines are drawn. Brown vs. White. The projections favor the Browns by over 30 points, but if we learned anything from Week 12, it's that chaos is the only constant.
+                         Meanwhile, <strong>The Injured Reserved</strong> (Greg Gagne) continued his dominant march, posting 146 points to remain the league's points leader. <strong>Hail Mary</strong> (Andrew Barnhart) casually dropped another 150-burger to stay atop the standings at 20-4. But the most surprising development might be <strong>Bend The Knee</strong> (Darrius), who seems to have finally woken up, scoring nearly 149 points to play spoiler. As we head into Week 13, the lines are drawn. Cowboys vs. Indians. The projections favor the Indians by over 30 points, but if we learned anything from Week 12, it's that chaos is the only constant.
                     </p>
                 </div>
             </div>
@@ -291,7 +290,7 @@
 
     <footer class="mt-12 py-8 text-center text-[var(--text-secondary)] text-sm border-t border-[var(--border)] bg-[var(--bg-secondary)]">
         <p class="font-bold">© 2025 NFL Unlocked</p>
-        <p class="text-xs mt-1 opacity-70">Brown vs. White: Choose your side.</p>
+        <p class="text-xs mt-1 opacity-70">Cowboys vs. Indians: Choose your side.</p>
     </footer>
 
     <script>
@@ -302,85 +301,85 @@
         
         const teams = [
             {
-                rank: 1, prevRank: 1, name: "Hail Mary", manager: "Andrew Barnhart", faction: "White", record: "20-4-0", points: 1659.84,
+                rank: 1, prevRank: 1, name: "Hail Mary", manager: "Andrew Barnhart", faction: "Cowboy", record: "20-4-0", points: 1659.84,
                 trend: [115, 120, 163, 140, 130, 145, 137, 152, 123, 140, 137, 152.88],
                 badges: ["20 Wins", "The Empire"],
                 desc: "Andrew Barnhart is simply inevitable. Another week, another 150+ point performance (152.88). <strong>George Pickens</strong> (17.13) and <strong>Trey McBride</strong> (26.10) are playing like league-winners. He sits comfortably at #1 with a 20-4 record."
             },
             {
-                rank: 2, prevRank: 2, name: "Injured Reserved", manager: "Greg Gagne", faction: "White", record: "17-7-0", points: 1693.58,
+                rank: 2, prevRank: 2, name: "Injured Reserved", manager: "Greg Gagne", faction: "Cowboy", record: "17-7-0", points: 1693.58,
                 trend: [128, 155, 144, 125, 117, 121, 184, 157, 150, 116, 145, 146.34],
                 badges: ["Points Leader", "High Floor"],
                 desc: "Greg Gagne is flexing. He crushed Bullish with 146.34 points thanks to <strong>Breece Hall</strong> and <strong>Puka Nacua</strong> both showing up big. Leading the league in total points (1693), this team is a buzzsaw that just keeps scoring."
             },
             {
-                rank: 3, prevRank: 3, name: "Shut Up", manager: "Neil", faction: "Brown", record: "18-6-0", points: 1654.92,
+                rank: 3, prevRank: 3, name: "Shut Up", manager: "Neil", faction: "Indian", record: "18-6-0", points: 1654.92,
                 trend: [110, 157, 123, 134, 169, 157, 139, 142, 108, 164, 103, 133.85],
                 badges: ["Rich", "Consistent"],
                 desc: "Neil bounced back nicely with 133.85 points. <strong>Josh Allen</strong> and the squad did enough to beat Good Will Hunting. He still sits on a mountain of FAAB, waiting to strike if a league-winner emerges in December. Safe, scary, and secure at #3."
             },
             {
-                rank: 4, prevRank: 6, name: "ShakeNBake", manager: "Shake", faction: "Brown", record: "15-9-0", points: 1569.16,
+                rank: 4, prevRank: 6, name: "ShakeNBake", manager: "Abhishek", faction: "Indian", record: "15-9-0", points: 1569.16,
                 trend: [94, 143, 114, 167, 130, 108, 138, 132, 105, 134, 133, 166.30],
                 badges: ["Top Score", "Gibbs"],
                 desc: "Abhishek rockets up to #4 after posting the league-high <strong>166.30 points</strong>. <strong>Jahmyr Gibbs</strong> dropped a 50-burger (52.90 pts) which is absolutely disgusting. He also snagged CJ Stroud. This team has the highest ceiling outside of the top 2 right now."
             },
             {
-                rank: 5, prevRank: 5, name: "Mac Daddy", manager: "Mac", faction: "Brown", record: "15-9-0", points: 1537.12,
+                rank: 5, prevRank: 5, name: "Mac Daddy", manager: "Mac", faction: "Indian", record: "15-9-0", points: 1537.12,
                 trend: [128, 130, 132, 164, 125, 111, 119, 118, 146, 140, 113, 107.06],
                 badges: ["Tough Luck", "Solid Core"],
                 desc: "Maclane stays at #5 despite a tough 0-2 week (scoring 107.06, below median). He ran into the Hail Mary juggernaut (152 pts). <strong>Justin Jefferson</strong> and <strong>Josh Jacobs</strong> are delivering, but the matchups haven't been kind."
             },
             {
-                rank: 6, prevRank: 7, name: "A dad", manager: "Bean", faction: "White", record: "15-9-0", points: 1492.38,
+                rank: 6, prevRank: 7, name: "A dad", manager: "Bean", faction: "Cowboy", record: "15-9-0", points: 1492.38,
                 trend: [116, 112, 103, 141, 161, 98, 142, 124, 159, 97, 117, 117.16],
                 badges: ["Survived", "Kyren"],
                 desc: "Bean moves up a spot simply by winning. 117.16 points isn't flashy, but it got the job done. <strong>Matthew Stafford</strong> (19.01) and <strong>Kyren Williams</strong> stacked up points. A solid, if unspectacular, week."
             },
             {
-                rank: 7, prevRank: 4, name: "FreeGucci", manager: "Nish", faction: "Brown", record: "14-10-0", points: 1510.40,
+                rank: 7, prevRank: 4, name: "FreeGucci", manager: "Nish", faction: "Indian", record: "14-10-0", points: 1510.40,
                 trend: [141, 117, 117, 153, 154, 121, 143, 103, 130, 121, 112, 92.84],
                 badges: ["Low Score", "Lamar"],
                 desc: "Nishil slides down to #7. A disastrous 92.84 points resulted in an 0-2 week. <strong>Lamar Jackson</strong> scored 6 points and the team collapsed. He needs Lamar to wake up for the stretch run."
             },
             {
-                rank: 8, prevRank: 10, name: "Bend The Knee", manager: "Darrius", faction: "Brown", record: "9-15-0", points: 1441.82,
+                rank: 8, prevRank: 10, name: "Bend The Knee", manager: "Darrius", faction: "Indian", record: "9-15-0", points: 1441.82,
                 trend: [129, 153, 110, 97, 138, 105, 97, 116, 107, 96, 139, 148.80],
                 badges: ["Explosion", "Spoiler"],
                 desc: "Darrius is the agent of chaos. He dropped <strong>148.80 points</strong> this week (3rd highest). <strong>Jared Goff</strong> and <strong>Nico Collins</strong> went off. While the record isn't pretty, this team is averaging 144 points over the last two weeks."
             },
             {
-                rank: 9, prevRank: 9, name: "Good Will Hunting", manager: "Will", faction: "White", record: "12-12-0", points: 1413.00,
+                rank: 9, prevRank: 9, name: "Good Will Hunting", manager: "Will", faction: "Cowboy", record: "12-12-0", points: 1413.00,
                 trend: [112, 85, 133, 163, 105, 119, 103, 103, 126, 141, 117, 102.84],
                 badges: ["Sub-Median", "Average"],
                 desc: "Will is the definition of .500 right now at 12-12. He put up 102.84 points (below median) and lost to Shut Up. <strong>Josh Allen</strong> cooled off slightly. He's hovering right on that median line every single week."
             },
             {
-                rank: 10, prevRank: 11, name: "Kim Jong Nate", manager: "Nate", faction: "White", record: "10-14-0", points: 1463.12,
+                rank: 10, prevRank: 11, name: "Kim Jong Nate", manager: "Nate", faction: "Cowboy", record: "10-14-0", points: 1463.12,
                 trend: [110, 136, 109, 135, 128, 129, 123, 104, 119, 165, 89, 112.08],
                 badges: ["Close Win", "Sam Darnold"],
                 desc: "Nate scraped by with 112.08 points to beat FreeGucci, but missed the median (114.8). <strong>Sam Darnold</strong> actually played well, but <strong>Kareem Hunt</strong> couldn't find the endzone enough. A 1-1 week keeps him afloat."
             },
             {
-                rank: 11, prevRank: 13, name: "Poop Squad", manager: "Anuj", faction: "Brown", record: "5-19-0", points: 1255.56,
+                rank: 11, prevRank: 13, name: "Poop Squad", manager: "Anuj", faction: "Indian", record: "5-19-0", points: 1255.56,
                 trend: [83, 93, 127, 126, 90, 101, 95, 100, 111, 98, 91, 136.60],
                 badges: ["Heartbreak", "Alive"],
                 desc: "Anuj moves up because he scored a massive <strong>136.60 points</strong>. He suffered the worst beat of the week losing to ShakeNBake (166), but beating the median counts for something. The streak of wins ended, but the dignity is back."
             },
             {
-                rank: 12, prevRank: 12, name: "Bullish", manager: "Mohsin", faction: "Brown", record: "8-16-0", points: 1433.12,
+                rank: 12, prevRank: 12, name: "Bullish", manager: "Mohsin", faction: "Indian", record: "8-16-0", points: 1433.12,
                 trend: [114, 117, 112, 120, 155, 128, 103, 151, 115, 96, 104, 112.44],
                 badges: ["L-3", "Saquon"],
                 desc: "Mohsin has lost 3 in a row. 112.44 points won't cut it against the top dogs. He actually had <strong>Saquon Barkley</strong> (23.70 pts - wait, no, Saquon is on ShakeNBake according to recap. Mohsin has Caleb Williams). Caleb was okay, but the explosive plays are missing."
             },
             {
-                rank: 13, prevRank: 14, name: "Hannah Montana", manager: "Greg Gokey", faction: "White", record: "6-18-0", points: 1254.70,
+                rank: 13, prevRank: 14, name: "Hannah Montana", manager: "Greg Gokey", faction: "Cowboy", record: "6-18-0", points: 1254.70,
                 trend: [113, 137, 75, 119, 75, 94, 91, 106, 135, 116, 94, 93.38],
                 badges: ["Sub-100", "Tanking"],
                 desc: "Greg Gokey put up 93.38 points. That is... not good. <strong>CeeDee Lamb</strong> scored 18.98, but when your second highest scorer is a kicker or defense, you're in trouble. He has 0 FAAB dollars and seemingly 0 hope. Firmly in the tank for the #1 pick."
             },
             {
-                rank: 14, prevRank: 14, name: "Leo the Cleo", manager: "Leo", faction: "White", record: "4-20-0", points: 1326.74,
+                rank: 14, prevRank: 14, name: "Leo the Cleo", manager: "Leo", faction: "Cowboy", record: "4-20-0", points: 1326.74,
                 trend: [143, 105, 113, 108, 93, 108, 120, 120, 110, 95, 112, 93.28],
                 badges: ["Basement", "L-5"],
                 desc: "Leo holds onto the last spot. 93.28 points marks another low week. <strong>Bijan Robinson</strong> (10.80) was underwhelming. At 4-20, the season is purely about avoiding last place punishments now."
@@ -404,11 +403,11 @@
                 }
 
                 const card = document.createElement('div');
-                card.className = `ranking-card p-6 card-enter ${team.faction === 'Brown' ? 'team-brown' : 'team-white'}`;
+                card.className = `ranking-card p-6 card-enter ${team.faction === 'Indian' ? 'team-indian' : 'team-cowboy'}`;
                 card.style.animationDelay = `${(index + 2) * 0.05}s`;
                 
                 const badgesHtml = team.badges.map(b => 
-                    `<span class="badge ${team.faction === 'Brown' ? 'badge-brown' : 'badge-white'}">${b}</span>`
+                    `<span class="badge ${team.faction === 'Indian' ? 'badge-indian' : 'badge-cowboy'}">${b}</span>`
                 ).join('');
 
                 card.innerHTML = `
@@ -445,8 +444,8 @@
 
         function renderSparkline(canvasId, data, faction) {
             const ctx = document.getElementById(canvasId).getContext('2d');
-            const color = faction === 'Brown' ? '#92400e' : '#6b7280';
-            const bg = faction === 'Brown' ? 'rgba(146, 64, 14, 0.1)' : 'rgba(107, 114, 128, 0.1)';
+            const color = faction === 'Indian' ? '#b91c1c' : '#1e40af';
+            const bg = faction === 'Indian' ? 'rgba(185, 28, 28, 0.1)' : 'rgba(30, 64, 175, 0.1)';
             const medianColor = document.documentElement.classList.contains('dark') ? '#9ca3af' : '#6b7280';
 
             new Chart(ctx, {
