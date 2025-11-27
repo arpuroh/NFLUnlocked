@@ -3,29 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NFL Unlocked - Week 11 Power Rankings</title>
+    <title>NFL Unlocked - Brown vs. White Showdown</title>
     
-    <meta property="og:title" content="NFL Unlocked - Week 11 Power Rankings" />
-    <meta property="og:description" content="Week 11 Update: The Heist, The Streak, and The Commish." />
+    <meta property="og:title" content="NFL Unlocked - Brown vs. White Showdown" />
+    <meta property="og:description" content="The Annual Thanksgiving Tradition. Pick your side." />
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Black+Ops+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Black+Ops+One&family=Russo+One&display=swap" rel="stylesheet">
     
     <style>
         :root {
             /* Light Mode Vars */
-            --bg-primary: #f8f9fa;
+            --bg-primary: #f3f4f6;
             --bg-secondary: #ffffff;
             --text-primary: #1f2937;
-            --text-secondary: #6b7280;
-            --accent: #6366f1;
+            --text-secondary: #4b5563;
+            --accent-brown: #78350f; /* Amber 900 */
+            --accent-white: #e5e7eb; /* Gray 200 */
             --border: #e5e7eb;
-            --chart-fill: rgba(99, 102, 241, 0.1);
+            --chart-fill: rgba(120, 53, 15, 0.1);
             --chart-line: #1f2937;
-            --chart-median: #9ca3af;
         }
 
         .dark {
@@ -34,11 +34,11 @@
             --bg-secondary: #1f2937;
             --text-primary: #f9fafb;
             --text-secondary: #9ca3af;
-            --accent: #818cf8;
+            --accent-brown: #d97706; /* Amber 600 */
+            --accent-white: #f3f4f6;
             --border: #374151;
-            --chart-fill: rgba(129, 140, 248, 0.1);
+            --chart-fill: rgba(217, 119, 6, 0.1);
             --chart-line: #e5e7eb;
-            --chart-median: #6b7280;
         }
 
         body {
@@ -48,10 +48,18 @@
             transition: all 0.3s ease;
         }
 
-        .font-black-ops { font-family: 'Black Ops One', cursive; }
+        .font-russo { font-family: 'Russo One', sans-serif; }
+
+        /* Brown vs White Banner */
+        .vs-banner {
+            background: linear-gradient(135deg, #451a03 0%, #78350f 45%, #ffffff 55%, #f3f4f6 100%);
+        }
+        .dark .vs-banner {
+            background: linear-gradient(135deg, #451a03 0%, #92400e 45%, #1f2937 55%, #374151 100%);
+        }
 
         /* Card Styling */
-        .ranking-card, .superlative-card {
+        .ranking-card, .superlative-card, .roster-card {
             background-color: var(--bg-secondary);
             border: 1px solid var(--border);
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
@@ -64,7 +72,7 @@
             box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
         }
 
-        /* Ranking Entrance Animation */
+        /* Animations */
         .card-enter {
             opacity: 0;
             transform: translateY(20px);
@@ -75,43 +83,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Intro Animation */
-        .intro-enter {
-            opacity: 0;
-            animation: fadeIn 1s forwards;
-        }
-
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-
-        /* Rank Number Styling */
-        .rank-number {
-            font-size: 4rem;
-            line-height: 1;
-            font-weight: 900;
-            font-family: 'Inter', sans-serif;
-            transition: color 0.3s;
-        }
-
-        /* Gradient Colors for Ranks */
-        .rank-gold { color: #fbbf24; text-shadow: 0 2px 10px rgba(251, 191, 36, 0.3); } /* #1 */
-        .rank-green { color: #10b981; } /* Top Tier */
-        .rank-neutral { color: #6b7280; } /* Mid Tier */
-        .rank-red { color: #ef4444; }   /* Bottom Tier */
-
-        /* Chart Container */
-        .chart-wrapper {
-            position: relative;
-            height: 80px;
-            width: 100%;
-        }
-
-        /* Trend Indicators */
-        .trend-up { color: #10b981; font-weight: 700; }
-        .trend-down { color: #ef4444; font-weight: 700; }
-        .trend-flat { color: var(--text-secondary); font-weight: 700; }
-        
         /* Badges */
         .badge {
             font-size: 0.65rem;
@@ -121,43 +92,26 @@
             padding: 0.25rem 0.5rem;
             border-radius: 4px;
             border: 1px solid var(--border);
-            background-color: var(--bg-primary);
-            color: var(--text-secondary);
         }
+        .badge-brown { background-color: #fffbeb; color: #92400e; border-color: #fcd34d; }
+        .badge-white { background-color: #f3f4f6; color: #374151; border-color: #d1d5db; }
+        .dark .badge-brown { background-color: #451a03; color: #fcd34d; border-color: #92400e; }
+        .dark .badge-white { background-color: #374151; color: #e5e7eb; border-color: #4b5563; }
 
-        /* Superlatives Grid - Responsive and Fit */
-        .superlative-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Compact min-width */
-            gap: 1rem;
-            margin-bottom: 3rem;
-        }
-        
-        /* Force 4 columns on desktop to fit panel nicely */
-        @media (min-width: 1024px) {
-            .superlative-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
+        /* Team Colors */
+        .team-brown { border-left: 4px solid #92400e; }
+        .team-white { border-left: 4px solid #9ca3af; }
 
-        .superlative-emoji {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .superlative-title {
-            font-weight: 800;
-            font-size: 0.9rem;
-            margin-bottom: 0.25rem;
-            text-transform: uppercase;
-            letter-spacing: -0.02em;
-        }
-        
-        /* Specific Text Colors for Superlatives */
+        /* Superlative Text */
         .text-boom { color: #10b981; }
         .text-bust { color: #ef4444; }
         .text-fraud { color: #ec4899; }
         .text-worst { color: #f59e0b; }
+
+        /* Movement Arrows */
+        .move-up { color: #10b981; }
+        .move-down { color: #ef4444; }
+        .move-flat { color: #9ca3af; }
 
     </style>
 </head>
@@ -168,7 +122,7 @@
         <div class="container mx-auto px-4 py-4">
             <div class="flex justify-between items-center">
                 <div class="flex items-center space-x-3">
-                    <span class="text-3xl font-black tracking-tighter text-[var(--text-primary)]">NFL <span class="text-[var(--accent)]">UNLOCKED</span></span>
+                    <span class="text-3xl font-black tracking-tighter text-[var(--text-primary)]">NFL <span class="text-amber-700 dark:text-amber-500">UNLOCKED</span></span>
                 </div>
                 
                 <button id="theme-toggle" class="p-2 rounded-full bg-[var(--bg-primary)] hover:bg-[var(--border)] transition-colors focus:outline-none">
@@ -179,300 +133,334 @@
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="flex-grow container mx-auto px-4 py-8 max-w-6xl">
+    <main class="flex-grow">
         
-        <!-- Intro -->
-        <div class="mb-12 text-left space-y-6 intro-enter">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight">Week 11: The Heist & The Streak</h1>
-            <div class="prose prose-lg text-[var(--text-secondary)] leading-relaxed space-y-4 max-w-4xl">
-                <p>
-                    Ladies and gentlemen, welcome back to <strong>NFL Unlocked</strong>. It has been five weeks since our last update—an eternity in fantasy football years—and in that time, the landscape of our league has shifted dramatically. We have witnessed tyranny, we have witnessed miracles, and we have witnessed one of the most lopsided trades in the history of organized sports.
-                </p>
+        <!-- BROWN VS WHITE HERO SECTION -->
+        <div class="vs-banner py-16 px-4 mb-8 text-white relative overflow-hidden">
+            <div class="absolute inset-0 bg-black/20"></div>
+            <div class="container mx-auto max-w-6xl relative z-10">
+                <div class="text-center mb-10">
+                    <h2 class="text-sm font-bold uppercase tracking-[0.3em] mb-2 opacity-90">Thanksgiving Special</h2>
+                    <h1 class="text-5xl md:text-7xl font-russo uppercase drop-shadow-lg">
+                        <span class="text-amber-300">Brown</span> <span class="text-white/60 text-3xl mx-2 align-middle font-sans font-light">vs</span> <span class="text-white">White</span>
+                    </h1>
+                    <p class="mt-4 text-lg font-medium opacity-90 max-w-2xl mx-auto">The annual tradition returns. Choose your allegiance.</p>
+                </div>
+
+                <!-- Scoreboard -->
+                <div class="bg-black/40 backdrop-blur-sm rounded-2xl p-6 md:p-8 max-w-4xl mx-auto border border-white/10 mb-12">
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                        <!-- Brown Side -->
+                        <div class="text-center w-full md:w-1/3">
+                            <div class="text-amber-400 font-black text-6xl tabular-nums">862.9</div>
+                            <div class="text-amber-200 font-bold uppercase tracking-widest mt-1">Browns Proj.</div>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="text-white/50 font-bold text-sm uppercase">Total Projected Points</div>
+                            <div class="text-2xl font-bold text-white mt-1">Week 13</div>
+                        </div>
+
+                        <!-- White Side -->
+                        <div class="text-center w-full md:w-1/3">
+                            <div class="text-white font-black text-6xl tabular-nums">828.4</div>
+                            <div class="text-gray-300 font-bold uppercase tracking-widest mt-1">Whites Proj.</div>
+                        </div>
+                    </div>
+                    <div class="mt-6 text-center">
+                        <span class="inline-block bg-amber-600/90 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                            Spread: Browns -34.5
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Rosters -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Browns Roster -->
+                    <div class="bg-[#451a03]/80 rounded-xl p-6 border border-amber-900/50">
+                        <h3 class="text-amber-400 font-russo text-2xl uppercase mb-4 border-b border-amber-800 pb-2">The Browns</h3>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex justify-between items-center"><span class="font-bold">Neil (Shut Up)</span> <span class="font-mono text-amber-200">133.99 proj</span></li>
+                            <li class="flex justify-between items-center"><span class="font-bold">Shake (ShakeNBake)</span> <span class="font-mono text-amber-200">129.69 proj</span></li>
+                            <li class="flex justify-between items-center"><span class="font-bold">Mohsin (Bullish)</span> <span class="font-mono text-amber-200">128.26 proj</span></li>
+                            <li class="flex justify-between items-center"><span class="font-bold">Anuj (Poop Squad)</span> <span class="font-mono text-amber-200">124.63 proj</span></li>
+                            <li class="flex justify-between items-center"><span class="font-bold">Mac (Mac Daddy)</span> <span class="font-mono text-amber-200">121.15 proj</span></li>
+                            <li class="flex justify-between items-center"><span class="font-bold">Nish (FreeGucci)</span> <span class="font-mono text-amber-200">115.68 proj</span></li>
+                            <li class="flex justify-between items-center"><span class="font-bold">Darrius (Bend The Knee)</span> <span class="font-mono text-amber-200">109.48 proj</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Whites Roster -->
+                    <div class="bg-[#1f2937]/80 rounded-xl p-6 border border-gray-600/50">
+                        <h3 class="text-white font-russo text-2xl uppercase mb-4 border-b border-gray-600 pb-2">The Whites</h3>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex justify-between items-center"><span class="font-bold">Greg Gagne (Injured Reserved)</span> <span class="font-mono text-gray-300">138.97 proj</span></li>
+                            <li class="flex justify-between items-center"><span class="font-bold">Andrew Barnhart (Hail Mary)</span> <span class="font-mono text-gray-300">127.99 proj</span></li>
+                            <li class="flex justify-between items-center"><span class="font-bold">Will (Good Will Hunting)</span> <span class="font-mono text-gray-300">126.53 proj</span></li>
+                            <li class="flex justify-between items-center"><span class="font-bold">Nate (Kim Jong Nate)</span> <span class="font-mono text-gray-300">124.07 proj</span></li>
+                            <li class="flex justify-between items-center"><span class="font-bold">Greg Gokey (Hannah Montana)</span> <span class="font-mono text-gray-300">107.68 proj</span></li>
+                            <li class="flex justify-between items-center"><span class="font-bold">Bean (A dad)</span> <span class="font-mono text-gray-300">104.42 proj</span></li>
+                            <li class="flex justify-between items-center"><span class="font-bold">Leo (Leo the Cleo)</span> <span class="font-mono text-gray-300">98.76 proj</span></li>
+                        </ul>
+                    </div>
+                </div>
                 
-                <div>
-                    <h3 class="text-xl font-bold text-[var(--text-primary)] mb-2">👑 Hail Mary: The Dictator</h3>
-                    <p>
-                        Let's start with <strong>Hail Mary</strong> (Andrew). Sitting at 18-4, this isn't just a fantasy team; it's a regime. Andrew is running this league like a dictator who rigs his own elections. While the rest of us are clawing for waiver wire scraps and praying for 8 points from a flex, he's casually dropping 137 points in his sleep. It’s dominant, it’s terrifying, and frankly, we should probably check if he's paying off the Yahoo! admins.
-                    </p>
-                </div>
-
-                <div>
-                    <h3 class="text-xl font-bold text-[var(--text-primary)] mb-2">💩 The Poop Squad Miracle</h3>
-                    <p>
-                        On the flip side, we have the feel-good story of the year. <strong>Poop Squad</strong> is on a winning streak! Yes, the team that spent the first two months as a glorified bye week has won two in a row, including a 91-point "fraudulent" victory to humiliate Kim Jong Nate. Anuj has rallied the troops from the depths of the standings (4-18). The basement is no longer a prison; it's a launchpad.
-                    </p>
-                </div>
-
-                <div>
-                    <h3 class="text-xl font-bold text-[var(--text-primary)] mb-2">🚔 The "Injured Reserve" Heist</h3>
-                    <p>
-                        Finally, we need to discuss the elephant in the room. <strong>The Injured Reserved</strong> (Greg) pulled off a heist last month. Trading for <em>Christian McCaffrey</em> and <em>Brian Robinson Jr.</em> from Kim Jong Nate was highway robbery. Kim Jong Nate, blink twice if you need help. That trade has turned Greg's team into a nuclear weapon, leading the league in total points (1547 PF). The authorities have been notified.
-                    </p>
+                <!-- Matchups -->
+                <div class="mt-8 text-center">
+                     <h3 class="text-white/80 font-bold uppercase tracking-wider text-xs mb-4">Key H2H Battles This Week</h3>
+                     <div class="flex flex-wrap justify-center gap-3">
+                         <span class="bg-black/50 px-3 py-2 rounded text-xs border border-white/10">Shake (B) vs Greg Gokey (W)</span>
+                         <span class="bg-black/50 px-3 py-2 rounded text-xs border border-white/10">Mac (B) vs Will (W)</span>
+                         <span class="bg-black/50 px-3 py-2 rounded text-xs border border-white/10">Neil (B) vs Leo (W)</span>
+                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- SUPERLATIVES SECTION -->
-        <div class="mb-12 intro-enter" style="animation-delay: 0.2s;">
-            <h2 class="text-3xl font-black text-center mb-8 text-[var(--text-primary)] tracking-tight uppercase">Weekly Superlatives</h2>
-            <div class="superlative-grid">
-                
-                <!-- Biggest Boom -->
-                <div class="superlative-card p-4 text-center">
-                    <div class="superlative-emoji">🚀</div>
-                    <div class="superlative-title text-boom">Biggest Boom</div>
-                    <div class="font-bold text-md text-[var(--text-primary)] mb-1">The Injured Reserved</div>
-                    <p class="text-xs text-[var(--text-secondary)] leading-snug mt-2">
-                        Dropped a massive <strong>145.00 points</strong> to obliterate Leo the Cleo. Beating the median by nearly 32 points isn't just a win; it's a statement. With CMC and Zay Flowers, this team is a nuclear weapon.
+        <div class="container mx-auto px-4 max-w-6xl">
+            
+            <!-- Week 12 Recap Intro -->
+            <div class="mb-12 space-y-4">
+                <h2 class="text-3xl font-bold text-[var(--text-primary)]">Week 12: The Gibbs Explosion & The Civil War Begins</h2>
+                <div class="prose prose-lg text-[var(--text-secondary)] leading-relaxed max-w-4xl">
+                    <p>
+                        Week 12 will be remembered for exactly one thing: <strong>Jahmyr Gibbs</strong> going absolutely nuclear for <strong>ShakeNBake</strong>. In a performance that will be talked about for years, Gibbs dropped a staggering <strong>52.90 points</strong> (219 rushing yards, multiple TDs), propelling ShakeNBake to a league-high 166.30 points. It wasn't just a fantasy performance; it was a hostile takeover. This single-handedly ended Poop Squad's brief flicker of hope and served notice to the rest of the league that the Brown faction is bringing heavy artillery to the Thanksgiving showdown.
+                    </p>
+                    <p>
+                         Meanwhile, <strong>The Injured Reserved</strong> (Greg Gagne) continued his dominant march, posting 146 points to remain the league's points leader. <strong>Hail Mary</strong> (Andrew Barnhart) casually dropped another 150-burger to stay atop the standings at 20-4. But the most surprising development might be <strong>Bend The Knee</strong> (Darrius), who seems to have finally woken up, scoring nearly 149 points to play spoiler. As we head into Week 13, the lines are drawn. Brown vs. White. The projections favor the Browns by over 30 points, but if we learned anything from Week 12, it's that chaos is the only constant.
                     </p>
                 </div>
-
-                <!-- Biggest Bust -->
-                <div class="superlative-card p-4 text-center">
-                    <div class="superlative-emoji">💣</div>
-                    <div class="superlative-title text-bust">Biggest Bust</div>
-                    <div class="font-bold text-md text-[var(--text-primary)] mb-1">Kim Jong Nate</div>
-                    <p class="text-xs text-[var(--text-secondary)] leading-snug mt-2">
-                        Scored a pathetic <strong>89.16 points</strong>. You managed to lose to the 14th place team while owning De'Von Achane (29.8 pts). The rest of your roster didn't just underperform; they went on strike.
-                    </p>
-                </div>
-
-                <!-- Worst Manager Award -->
-                <div class="superlative-card p-4 text-center">
-                    <div class="superlative-emoji">🤦‍♂️</div>
-                    <div class="superlative-title text-worst">Worst Manager Award</div>
-                    <div class="font-bold text-md text-[var(--text-primary)] mb-1">Good Will Hunting</div>
-                    <p class="text-xs text-[var(--text-secondary)] leading-snug mt-2">
-                        For losing despite <strong>Josh Allen</strong> scoring 44.68 points. How do you waste a legendary QB performance like that? It takes a special kind of roster mismanagement to fumble a 40-point head start.
-                    </p>
-                </div>
-
-                <!-- Most Fraudulent Win -->
-                <div class="superlative-card p-4 text-center">
-                    <div class="superlative-emoji">🧐</div>
-                    <div class="superlative-title text-fraud">Most Fraudulent Win</div>
-                    <div class="font-bold text-md text-[var(--text-primary)] mb-1">Poop Squad</div>
-                    <p class="text-xs text-[var(--text-secondary)] leading-snug mt-2">
-                        You scored <strong>91.26 points</strong>. That is well under 100 and under the league median (113.08). You only won because Kim Jong Nate scored 89. This wasn't a victory; it was a survival horror movie.
-                    </p>
-                </div>
-
             </div>
-        </div>
 
-        <!-- Rankings Grid -->
-        <div id="rankings-grid" class="space-y-6 max-w-4xl mx-auto">
-            <!-- Content injected via JS -->
+            <!-- SUPERLATIVES SECTION -->
+            <div class="mb-12">
+                <h3 class="text-sm font-black text-[var(--text-secondary)] uppercase tracking-wider mb-6">Week 12 Superlatives</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    
+                    <!-- Biggest Boom -->
+                    <div class="superlative-card p-5 text-center">
+                        <div class="text-4xl mb-2">🚀</div>
+                        <div class="text-xs font-bold uppercase text-boom mb-1">Gibbs Giving</div>
+                        <div class="font-bold text-lg text-[var(--text-primary)]">ShakeNBake</div>
+                        <p class="text-xs text-[var(--text-secondary)] mt-2 leading-snug">
+                            <strong>Jahmyr Gibbs</strong> scored 52.90 points. Fifty. Two. That single player outscored half of Leo's starting lineup combined.
+                        </p>
+                    </div>
+
+                    <!-- Biggest Bust -->
+                    <div class="superlative-card p-5 text-center">
+                        <div class="text-4xl mb-2">🥶</div>
+                        <div class="text-xs font-bold uppercase text-bust mb-1">Leftovers</div>
+                        <div class="font-bold text-lg text-[var(--text-primary)]">Leo the Cleo</div>
+                        <p class="text-xs text-[var(--text-secondary)] mt-2 leading-snug">
+                            Scored a meager <strong>93.28 points</strong>. Bijan tried his best, but the rest of the team was already in a food coma.
+                        </p>
+                    </div>
+
+                    <!-- Unlucky Award -->
+                    <div class="superlative-card p-5 text-center">
+                        <div class="text-4xl mb-2">💔</div>
+                        <div class="text-xs font-bold uppercase text-worst mb-1">Bad Beat</div>
+                        <div class="font-bold text-lg text-[var(--text-primary)]">Poop Squad</div>
+                        <p class="text-xs text-[var(--text-secondary)] mt-2 leading-snug">
+                            Scored <strong>136.60 points</strong> and lost. Anuj posted the 6th highest score of the week but ran into the Gibbs buzzsaw (166 pts).
+                        </p>
+                    </div>
+
+                    <!-- Close Call -->
+                    <div class="superlative-card p-5 text-center">
+                        <div class="text-4xl mb-2">😅</div>
+                        <div class="text-xs font-bold uppercase text-fraud mb-1">Close Call</div>
+                        <div class="font-bold text-lg text-[var(--text-primary)]">Kim Jong Nate</div>
+                        <p class="text-xs text-[var(--text-secondary)] mt-2 leading-snug">
+                            Nate (112.08) beat FreeGucci (92.84) to survive, despite a middling score. Sometimes you just need your opponent to implode.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Rankings Grid -->
+            <h3 class="text-sm font-black text-[var(--text-secondary)] uppercase tracking-wider mb-6">Power Rankings</h3>
+            <div id="rankings-grid" class="space-y-4 max-w-4xl mx-auto pb-12">
+                <!-- Content injected via JS -->
+            </div>
         </div>
 
     </main>
 
-    <footer class="mt-12 py-8 text-center text-[var(--text-secondary)] text-sm border-t border-[var(--border)]">
-        <p class="italic">© 2025 NFL Unlocked. If you're not first, you're last.</p>
+    <footer class="mt-12 py-8 text-center text-[var(--text-secondary)] text-sm border-t border-[var(--border)] bg-[var(--bg-secondary)]">
+        <p class="font-bold">© 2025 NFL Unlocked</p>
+        <p class="text-xs mt-1 opacity-70">Brown vs. White: Choose your side.</p>
     </footer>
 
     <script>
-        // --- CONFIGURATION & DATA ---
+        // --- DATA ---
         
-        // MEDIAN SCORES (W1 - W11)
-        const MEDIAN_SCORES = [114.86, 125.62, 116.38, 134.98, 129.53, 115.22, 122.07, 119.48, 121.29, 118.88, 113.08];
+        // Est. Median Scores history - W12 Median was 114.8
+        const MEDIAN_SCORES = [114.86, 125.62, 116.38, 134.98, 129.53, 115.22, 122.07, 119.48, 121.29, 118.88, 113.08, 114.80];
         
         const teams = [
             {
-                rank: 1, prevRank: 1, name: "Hail Mary", record: "18-4-0", points: 1506.96,
-                trend: [115.44, 120.66, 163.30, 140.64, 130.52, 145.22, 137.54, 152.66, 123.14, 140.76, 137.08],
-                badges: ["The Empire", "Title Favorite"],
-                desc: "The Commissioner continues to rule with an iron fist. It's been a season of pure dominance for Andrew. After a slightly mortal start (115 pts in Week 1), he exploded in Week 3 with 163 points and hasn't looked back. He's consistently crushed the median line for 10 straight weeks. A comfortable win this week (137.08 pts) solidified his spot at the top. <strong>George Pickens</strong> went absolutely nuclear with <strong>25.90 points</strong>, and <strong>Trey McBride</strong> added <strong>23.50 points</strong> just for fun. He is currently valued perfectly as the league's final boss."
+                rank: 1, prevRank: 1, name: "Hail Mary", manager: "Andrew Barnhart", faction: "White", record: "20-4-0", points: 1659.84,
+                trend: [115, 120, 163, 140, 130, 145, 137, 152, 123, 140, 137, 152.88],
+                badges: ["20 Wins", "The Empire"],
+                desc: "Andrew Barnhart is simply inevitable. Another week, another 150+ point performance (152.88). <strong>George Pickens</strong> (17.13) and <strong>Trey McBride</strong> (26.10) are playing like league-winners. He sits comfortably at #1 with a 20-4 record."
             },
             {
-                rank: 2, prevRank: 3, name: "The Injured Reserved", record: "15-7-0", points: 1547.24,
-                trend: [128.70, 155.52, 144.56, 125.06, 117.56, 121.94, 184.48, 157.12, 150.54, 116.76, 145.00],
-                badges: ["Points Leader", "Trade Winner"],
-                desc: "Greg jumps to #2 in the Power Rankings despite being the #3 seed, simply because this team is a nuclear weapon right now. Leading the league in total points (1547), they just dropped a massive 145.00 points. The season chart shows a team peaking at the perfect time. The controversial trade for <strong>Christian McCaffrey</strong> is looking like the steal of the century. Plus, he's active on waivers, just grabbing the Buccaneers DEF for $55. This is the team nobody wants to face."
+                rank: 2, prevRank: 2, name: "Injured Reserved", manager: "Greg Gagne", faction: "White", record: "17-7-0", points: 1693.58,
+                trend: [128, 155, 144, 125, 117, 121, 184, 157, 150, 116, 145, 146.34],
+                badges: ["Points Leader", "High Floor"],
+                desc: "Greg Gagne is flexing. He crushed Bullish with 146.34 points thanks to <strong>Breece Hall</strong> and <strong>Puka Nacua</strong> both showing up big. Leading the league in total points (1693), this team is a buzzsaw that just keeps scoring."
             },
             {
-                rank: 3, prevRank: 2, name: "Shut Up", record: "16-6-0", points: 1512.68,
-                trend: [110.54, 157.96, 123.56, 134.92, 169.84, 157.02, 139.94, 142.40, 108.26, 164.74, 103.50],
-                badges: ["Rich ($990)", "Stumbled"],
-                desc: "Neil drops slightly to #3 after finally looking mortal this week (season-low 103.50 pts). It's a rare blip on an otherwise stellar season where he's consistently crushed the median. The scariest part? Neil still has <strong>$990 in FAAB</strong>. He basically has unlimited funds to fix any hole in his roster before the playoffs. The sleeping giant is just resting, but the offense needs to wake up before the playoffs."
+                rank: 3, prevRank: 3, name: "Shut Up", manager: "Neil", faction: "Brown", record: "18-6-0", points: 1654.92,
+                trend: [110, 157, 123, 134, 169, 157, 139, 142, 108, 164, 103, 133.85],
+                badges: ["Rich", "Consistent"],
+                desc: "Neil bounced back nicely with 133.85 points. <strong>Josh Allen</strong> and the squad did enough to beat Good Will Hunting. He still sits on a mountain of FAAB, waiting to strike if a league-winner emerges in December. Safe, scary, and secure at #3."
             },
             {
-                rank: 4, prevRank: 6, name: "FreeGucci", record: "14-8-0", points: 1417.56,
-                trend: [141.14, 117.36, 117.96, 153.64, 154.82, 121.34, 143.30, 103.52, 130.68, 121.00, 112.80],
-                badges: ["Hot Streak", "54 Moves"],
-                desc: "Nishil moves up to #4, leaping over Mac Daddy. Why? Momentum. He's on fire, winning 3 in a row. Even with <strong>Lamar Jackson</strong> putting up a measly <strong>6.72 points</strong> this week, the team found a way to win (112.80 pts). The roster churn is absolutely insane—he has made <strong>54 moves</strong> this season! He just dropped a massive <strong>$151 on Michael Carter</strong> (why?!) and another <strong>$25 on Xavier Legette</strong>, treating the waiver wire like an open bar. The constant tinkering is finally paying dividends."
+                rank: 4, prevRank: 6, name: "ShakeNBake", manager: "Shake", faction: "Brown", record: "15-9-0", points: 1569.16,
+                trend: [94, 143, 114, 167, 130, 108, 138, 132, 105, 134, 133, 166.30],
+                badges: ["Top Score", "Gibbs"],
+                desc: "Abhishek rockets up to #4 after posting the league-high <strong>166.30 points</strong>. <strong>Jahmyr Gibbs</strong> dropped a 50-burger (52.90 pts) which is absolutely disgusting. He also snagged CJ Stroud. This team has the highest ceiling outside of the top 2 right now."
             },
             {
-                rank: 5, prevRank: 5, name: "Mac Daddy", record: "15-7-0", points: 1430.06,
-                trend: [128.20, 130.58, 132.24, 164.04, 125.14, 111.28, 119.78, 118.28, 146.72, 140.44, 113.36],
-                badges: ["Quietly Good", "Consistent"],
-                desc: "Maclane slides a spot not because he's bad, but because FreeGucci is hotter. Mac Daddy flies under the radar, winning consistently but rarely exploding (except for Week 4's 164 pts). He's the model of consistency, rarely having a true 'bust' week. A solid 113.36 point outing secured another W this week. <strong>Travis Etienne Jr.</strong> and <strong>Josh Jacobs</strong> formed a dynamic backfield duo. Solid, safe, but maybe lacks the ceiling of the top 3."
+                rank: 5, prevRank: 5, name: "Mac Daddy", manager: "Mac", faction: "Brown", record: "15-9-0", points: 1537.12,
+                trend: [128, 130, 132, 164, 125, 111, 119, 118, 146, 140, 113, 107.06],
+                badges: ["Tough Luck", "Solid Core"],
+                desc: "Maclane stays at #5 despite a tough 0-2 week (scoring 107.06, below median). He ran into the Hail Mary juggernaut (152 pts). <strong>Justin Jefferson</strong> and <strong>Josh Jacobs</strong> are delivering, but the matchups haven't been kind."
             },
             {
-                rank: 6, prevRank: 7, name: "ShakeNBake", record: "13-9-0", points: 1402.86,
-                trend: [94.94, 143.12, 114.80, 167.10, 130.54, 108.48, 138.14, 132.36, 105.82, 134.04, 133.52],
-                badges: ["Survivor", "Gritty"],
-                desc: "Abhishek refuses to die. His season chart is the definition of volatile—huge peaks (167 pts in Week 4) and valleys (94 pts in Week 1). But he finds ways to win when it matters. He started <strong>J.J. McCarthy</strong> (8.00 pts) at QB this week and <em>still</em> put up 133.52 points to get the win. That is absurd. <strong>Jahmyr Gibbs</strong> was the hero. He wisely cut McCarthy this morning, realizing that luck only goes so far."
+                rank: 6, prevRank: 7, name: "A dad", manager: "Bean", faction: "White", record: "15-9-0", points: 1492.38,
+                trend: [116, 112, 103, 141, 161, 98, 142, 124, 159, 97, 117, 117.16],
+                badges: ["Survived", "Kyren"],
+                desc: "Bean moves up a spot simply by winning. 117.16 points isn't flashy, but it got the job done. <strong>Matthew Stafford</strong> (19.01) and <strong>Kyren Williams</strong> stacked up points. A solid, if unspectacular, week."
             },
             {
-                rank: 7, prevRank: 4, name: "A dad", record: "13-9-0", points: 1375.22,
-                trend: [116.78, 112.02, 103.88, 141.12, 161.80, 98.96, 142.66, 124.10, 159.42, 97.08, 117.40],
-                badges: ["Sliding", "Panic Spender"],
-                desc: "Barrett is sliding in the wrong direction with back-to-back losses. After peaking in Week 5 (161 pts) and Week 9 (159 pts), the offense has stalled significantly. Desperation might be setting in—he just dropped a massive <strong>$511</strong> on waiver wire RB <strong>Emanuel Wilson</strong>. That is either a stroke of genius or the sign of a manager tilting off the face of the earth. Time will tell."
+                rank: 7, prevRank: 4, name: "FreeGucci", manager: "Nish", faction: "Brown", record: "14-10-0", points: 1510.40,
+                trend: [141, 117, 117, 153, 154, 121, 143, 103, 130, 121, 112, 92.84],
+                badges: ["Low Score", "Lamar"],
+                desc: "Nishil slides down to #7. A disastrous 92.84 points resulted in an 0-2 week. <strong>Lamar Jackson</strong> scored 6 points and the team collapsed. He needs Lamar to wake up for the stretch run."
             },
             {
-                rank: 8, prevRank: 11, name: "Bend The Knee", record: "7-15-0", points: 1293.02,
-                trend: [129.30, 153.52, 110.80, 97.12, 138.66, 105.94, 97.74, 116.34, 107.64, 96.76, 139.20],
-                badges: ["Spoiler", "Explosive"],
-                desc: "Major jump for Darrius M in the Power Rankings! While his record is poor (7-15), his recent performance says otherwise. He woke up feeling dangerous and dropped 139.20 points to play spoiler this week. The shock of the week: <strong>Sean Tucker</strong> scored a mind-boggling <strong>34.00 points</strong>. He's actively churning the roster too (added Cairo Santos). This is a dangerous team that can beat anyone on their day."
+                rank: 8, prevRank: 10, name: "Bend The Knee", manager: "Darrius", faction: "Brown", record: "9-15-0", points: 1441.82,
+                trend: [129, 153, 110, 97, 138, 105, 97, 116, 107, 96, 139, 148.80],
+                badges: ["Explosion", "Spoiler"],
+                desc: "Darrius is the agent of chaos. He dropped <strong>148.80 points</strong> this week (3rd highest). <strong>Jared Goff</strong> and <strong>Nico Collins</strong> went off. While the record isn't pretty, this team is averaging 144 points over the last two weeks."
             },
             {
-                rank: 9, prevRank: 8, name: "Good Will Hunting", record: "12-10-0", points: 1310.16,
-                trend: [112.50, 85.58, 133.12, 163.06, 105.12, 119.16, 103.18, 103.14, 126.54, 141.26, 117.50],
-                badges: ["Unlucky", "Josh Allen"],
-                desc: "Will posted 117.50 points and lost, a recurring theme in his frustrating 12-10 season. He consistently scores well but runs into opponents having career days. His chart shows he's mostly hovered around the median. But this week? <strong>Josh Allen</strong> put the team on his back with an incredible <strong>44.68 points</strong>, and they <em>still</em> lost. When your QB scores 44 and you take an L, you know the fantasy gods are against you."
+                rank: 9, prevRank: 9, name: "Good Will Hunting", manager: "Will", faction: "White", record: "12-12-0", points: 1413.00,
+                trend: [112, 85, 133, 163, 105, 119, 103, 103, 126, 141, 117, 102.84],
+                badges: ["Sub-Median", "Average"],
+                desc: "Will is the definition of .500 right now at 12-12. He put up 102.84 points (below median) and lost to Shut Up. <strong>Josh Allen</strong> cooled off slightly. He's hovering right on that median line every single week."
             },
             {
-                rank: 10, prevRank: 9, name: "Kim Jong Nate", record: "9-13-0", points: 1351.04,
-                trend: [110.22, 136.00, 109.88, 135.04, 128.54, 129.28, 123.72, 104.62, 119.44, 165.14, 89.16],
-                badges: ["Fleeced", "Rock Bottom"],
-                desc: "It has been a rough month for Nathan. After a monster Week 10 performance (165 pts) that looked like a turning point, the wheels completely fell off. He hit a season-low this week: losing to Poop Squad with a pitiful 89.16 points. He finally dropped the ghost of <strong>Calvin Ridley</strong> this morning, trying to exorcise the demons of the CMC trade. He also added Nick Cross and AJ Barner, looking for answers."
+                rank: 10, prevRank: 11, name: "Kim Jong Nate", manager: "Nate", faction: "White", record: "10-14-0", points: 1463.12,
+                trend: [110, 136, 109, 135, 128, 129, 123, 104, 119, 165, 89, 112.08],
+                badges: ["Close Win", "Sam Darnold"],
+                desc: "Nate scraped by with 112.08 points to beat FreeGucci, but missed the median (114.8). <strong>Sam Darnold</strong> actually played well, but <strong>Kareem Hunt</strong> couldn't find the endzone enough. A 1-1 week keeps him afloat."
             },
             {
-                rank: 11, prevRank: 10, name: "Bullish", record: "8-14-0", points: 1320.18,
-                trend: [114.28, 117.88, 112.98, 120.12, 155.64, 128.06, 103.06, 151.14, 115.76, 96.76, 104.50],
-                badges: ["Bear Market", "Low Energy"],
-                desc: "Mohsin is in a bear market. After a massive spike in Week 5 (155 pts) and another in Week 8 (151 pts), the team has been on a slow, painful decline, failing to break 115 points for three straight weeks. Another loss keeps him near the bottom. <strong>Romeo Doubs</strong> and <strong>Rachaad White</strong> were bright spots, but <strong>Caleb Williams</strong> crashed hard. The portfolio is bleeding value, and the team is rightfully ranked low."
+                rank: 11, prevRank: 13, name: "Poop Squad", manager: "Anuj", faction: "Brown", record: "5-19-0", points: 1255.56,
+                trend: [83, 93, 127, 126, 90, 101, 95, 100, 111, 98, 91, 136.60],
+                badges: ["Heartbreak", "Alive"],
+                desc: "Anuj moves up because he scored a massive <strong>136.60 points</strong>. He suffered the worst beat of the week losing to ShakeNBake (166), but beating the median counts for something. The streak of wins ended, but the dignity is back."
             },
             {
-                rank: 12, prevRank: 13, name: "Leo the Cleo", record: "4-18-0", points: 1233.46,
-                trend: [143.32, 105.94, 113.68, 108.58, 93.78, 108.18, 120.42, 120.68, 110.80, 95.38, 112.70],
-                badges: ["Unlucky", "Bijan or Bust"],
-                desc: "Chris moves up one spot purely on potential. Despite a 4-game slide, he actually played well this week (112.70 pts), nearly hitting the median. He ran into the buzzsaw that was The Injured Reserved (145 pts). Sometimes you just can't catch a break. <strong>Bijan Robinson</strong> is doing everything he can, but he needs help. The Waffle House is calling, but at least the effort is there."
+                rank: 12, prevRank: 12, name: "Bullish", manager: "Mohsin", faction: "Brown", record: "8-16-0", points: 1433.12,
+                trend: [114, 117, 112, 120, 155, 128, 103, 151, 115, 96, 104, 112.44],
+                badges: ["L-3", "Saquon"],
+                desc: "Mohsin has lost 3 in a row. 112.44 points won't cut it against the top dogs. He actually had <strong>Saquon Barkley</strong> (23.70 pts - wait, no, Saquon is on ShakeNBake according to recap. Mohsin has Caleb Williams). Caleb was okay, but the explosive plays are missing."
             },
             {
-                rank: 13, prevRank: 14, name: "Poop Squad", record: "4-18-0", points: 1118.96,
-                trend: [83.64, 93.40, 127.54, 126.26, 90.76, 101.00, 95.06, 100.20, 111.02, 98.82, 91.26],
-                badges: ["THE STREAK", "Alive"],
-                desc: "THE STREAK IS ALIVE! Poop Squad jumps out of the cellar to #13. Winning two games in a row changes everything. After looking dead in the water for 10 weeks—often failing to break 100 points—Anuj's squad has found a pulse. They put up a fraudulent 91.26 points to beat Kim Jong Nate, but a win is a win. <strong>TreVeyon Henderson</strong> went berserk. He just added kicker <strong>Jake Bates</strong>, clearly loading up for a late-season push to respectability."
+                rank: 13, prevRank: 14, name: "Hannah Montana", manager: "Greg Gokey", faction: "White", record: "6-18-0", points: 1254.70,
+                trend: [113, 137, 75, 119, 75, 94, 91, 106, 135, 116, 94, 93.38],
+                badges: ["Sub-100", "Tanking"],
+                desc: "Greg Gokey put up 93.38 points. That is... not good. <strong>CeeDee Lamb</strong> scored 18.98, but when your second highest scorer is a kicker or defense, you're in trouble. He has 0 FAAB dollars and seemingly 0 hope. Firmly in the tank for the #1 pick."
             },
             {
-                rank: 14, prevRank: 12, name: "Miley Hannah Montana", record: "6-16-0", points: 1161.32,
-                trend: [113.84, 137.64, 75.42, 119.96, 75.96, 94.04, 91.24, 106.60, 135.76, 116.40, 94.46],
-                badges: ["Wrecking Ball", "Tanking?"],
-                desc: "Greg falls to the absolute bottom. While his record (6-16) is better than the teams above him, his trajectory is a disaster. He hasn't consistently broken the median threshold since Week 2. Scoring just 94.46 points this week extends his losing streak. <strong>CeeDee Lamb</strong> is trying, but <strong>Justin Herbert</strong> was an absolute disaster. This team has no momentum, no FAAB ($0), and no hope."
+                rank: 14, prevRank: 14, name: "Leo the Cleo", manager: "Leo", faction: "White", record: "4-20-0", points: 1326.74,
+                trend: [143, 105, 113, 108, 93, 108, 120, 120, 110, 95, 112, 93.28],
+                badges: ["Basement", "L-5"],
+                desc: "Leo holds onto the last spot. 93.28 points marks another low week. <strong>Bijan Robinson</strong> (10.80) was underwhelming. At 4-20, the season is purely about avoiding last place punishments now."
             }
         ];
-
-        // --- Logic ---
-
-        function getRankColorClass(rank, totalTeams) {
-            if (rank === 1) return 'rank-gold';
-            if (rank <= 5) return 'rank-green';
-            if (rank >= totalTeams - 3) return 'rank-red'; // Bottom 4
-            return 'rank-neutral';
-        }
-
-        function animateValue(obj, start, end, duration) {
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                const easeProgress = 1 - Math.pow(1 - progress, 3);
-                obj.innerHTML = Math.floor(progress * (end - start) + start);
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                } else {
-                    obj.innerHTML = end;
-                }
-            };
-            window.requestAnimationFrame(step);
-        }
 
         function renderRankings() {
             const container = document.getElementById('rankings-grid');
             container.innerHTML = '';
 
             teams.forEach((team, index) => {
-                const isRising = team.rank < team.prevRank;
-                const isFalling = team.rank > team.prevRank;
+                const isRising = team.prevRank > team.rank;
+                const isFalling = team.prevRank < team.rank;
                 const diff = Math.abs(team.prevRank - team.rank);
                 
-                let trendClass = 'trend-flat';
-                let trendText = '-';
-                if (isRising) { trendClass = 'trend-up'; trendText = `▲ ${diff}`; }
-                else if (isFalling) { trendClass = 'trend-down'; trendText = `▼ ${diff}`; }
+                let arrowHtml = '<span class="move-flat text-xl font-bold">-</span>';
+                if (isRising) {
+                    arrowHtml = `<span class="move-up text-xl font-bold">▲ ${diff}</span>`;
+                } else if (isFalling) {
+                    arrowHtml = `<span class="move-down text-xl font-bold">▼ ${diff}</span>`;
+                }
 
                 const card = document.createElement('div');
-                card.className = 'ranking-card p-6 card-enter';
-                card.style.animationDelay = `${(index + 4) * 0.05}s`; // Stagger after superlatives
+                card.className = `ranking-card p-6 card-enter ${team.faction === 'Brown' ? 'team-brown' : 'team-white'}`;
+                card.style.animationDelay = `${(index + 2) * 0.05}s`;
                 
-                const badgesHtml = team.badges.map(b => `<span class="badge">${b}</span>`).join('');
-                const rankColorClass = getRankColorClass(team.rank, teams.length);
+                const badgesHtml = team.badges.map(b => 
+                    `<span class="badge ${team.faction === 'Brown' ? 'badge-brown' : 'badge-white'}">${b}</span>`
+                ).join('');
 
                 card.innerHTML = `
-                    <div class="flex flex-row items-start gap-6">
+                    <div class="flex flex-row items-start gap-5">
                         <div class="flex-shrink-0 w-16 text-center pt-1">
-                            <span class="rank-number ${rankColorClass}" id="rank-num-${index}">0</span>
-                            <div class="text-xs mt-1 ${trendClass} font-bold uppercase tracking-wider">${trendText}</div>
+                            <div class="text-3xl font-black text-[var(--text-secondary)] opacity-30 leading-none">#${team.rank}</div>
+                            <div class="mt-1">${arrowHtml}</div>
                         </div>
                         <div class="flex-grow w-full min-w-0">
                             <div class="flex flex-wrap justify-between items-baseline mb-1">
-                                <div class="flex items-center gap-3">
-                                    <h2 class="text-2xl font-bold text-[var(--text-primary)] leading-none tracking-tight">${team.name}</h2>
+                                <div class="flex items-center gap-2">
+                                    <h2 class="text-xl font-bold text-[var(--text-primary)]">${team.name}</h2>
+                                    <span class="text-xs font-bold uppercase tracking-wide opacity-50">(${team.manager})</span>
                                 </div>
-                                <div class="font-mono text-sm text-[var(--text-secondary)]">
-                                    <span class="font-bold text-[var(--text-primary)]">${team.record}</span> 
-                                    <span class="opacity-70 ml-1">(${team.points.toFixed(2)} PF)</span>
+                                <div class="font-mono text-sm font-bold text-[var(--text-primary)]">
+                                    ${team.record}
                                 </div>
                             </div>
                             <div class="flex flex-wrap gap-2 mb-3">${badgesHtml}</div>
                             <p class="text-[var(--text-secondary)] text-sm leading-relaxed mb-4 font-medium">${team.desc}</p>
-                            <div class="mt-4 pt-4 border-t border-[var(--border)]">
-                                <div class="flex justify-between items-end mb-2">
-                                    <p class="text-[10px] font-bold text-[var(--text-secondary)] uppercase tracking-wider">Scoring Trend vs League Median</p>
-                                </div>
-                                <div class="chart-wrapper"><canvas id="chart-${team.rank}"></canvas></div>
+                            
+                            <!-- Sparkline Canvas -->
+                            <div class="h-16 w-full relative">
+                                <canvas id="chart-${team.rank}"></canvas>
                             </div>
                         </div>
                     </div>
                 `;
                 
                 container.appendChild(card);
-                
-                setTimeout(() => {
-                    const rankEl = document.getElementById(`rank-num-${index}`);
-                    animateValue(rankEl, 0, team.rank, 1000);
-                }, (index + 4) * 100);
-
-                renderSparkline(`chart-${team.rank}`, team.trend);
+                renderSparkline(`chart-${team.rank}`, team.trend, team.faction);
             });
         }
 
-        function renderSparkline(canvasId, data) {
+        function renderSparkline(canvasId, data, faction) {
             const ctx = document.getElementById(canvasId).getContext('2d');
-            const isDark = document.documentElement.classList.contains('dark');
-            const lineColor = getComputedStyle(document.documentElement).getPropertyValue('--chart-line').trim();
-            const fillColor = getComputedStyle(document.documentElement).getPropertyValue('--chart-fill').trim();
-            const medianColor = getComputedStyle(document.documentElement).getPropertyValue('--chart-median').trim();
+            const color = faction === 'Brown' ? '#92400e' : '#6b7280';
+            const bg = faction === 'Brown' ? 'rgba(146, 64, 14, 0.1)' : 'rgba(107, 114, 128, 0.1)';
+            const medianColor = document.documentElement.classList.contains('dark') ? '#9ca3af' : '#6b7280';
 
             new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: ['W1', 'W2', 'W3', 'W4', 'W5', 'W6', 'W7', 'W8', 'W9', 'W10', 'W11'],
+                    labels: data.map((_, i) => i + 1),
                     datasets: [
                         {
                             data: data,
-                            borderColor: lineColor,
-                            backgroundColor: fillColor,
+                            borderColor: color,
+                            backgroundColor: bg,
                             borderWidth: 2,
                             tension: 0.4,
-                            pointBackgroundColor: lineColor,
-                            pointBorderColor: '#fff',
-                            pointBorderWidth: 2,
-                            pointRadius: 0, 
-                            pointHoverRadius: 6,
+                            pointRadius: 0,
                             fill: 'origin',
                             order: 1
                         },
@@ -485,21 +473,21 @@
                             pointHoverRadius: 0,
                             fill: false,
                             tension: 0.4,
-                            order: 2
+                            order: 0 // Draw behind line
                         }
                     ]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: { legend: { display: false }, tooltip: { enabled: true, mode: 'index', intersect: false, displayColors: false } },
+                    plugins: { legend: { display: false }, tooltip: { enabled: false } },
                     scales: { x: { display: false }, y: { display: false, min: 50 } },
-                    interaction: { mode: 'nearest', axis: 'x', intersect: false },
-                    layout: { padding: { top: 10, bottom: 5, left: 5, right: 5 } }
+                    layout: { padding: 0 }
                 }
             });
         }
 
+        // Theme Toggle
         const themeToggle = document.getElementById('theme-toggle');
         const html = document.documentElement;
 
@@ -518,9 +506,6 @@
         themeToggle.addEventListener('click', () => {
             html.classList.toggle('dark');
             updateThemeIcons();
-            const container = document.getElementById('rankings-grid');
-            container.innerHTML = '';
-            renderRankings();
         });
 
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
