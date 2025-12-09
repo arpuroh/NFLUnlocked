@@ -1,1 +1,463 @@
-758fbe81262b9c7627875fd8b6ac172faf0e5159
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFL Unlocked - Playoff Preview</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Black+Ops+One&family=Bangers&family=Rye&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-gold: #fbbf24;
+            --accent-danger: #ef4444;
+            --accent-neon: #06b6d4;
+            --cowboy-blue: #3b82f6;
+            --indian-red: #ef4444;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        .font-bangers { font-family: 'Bangers', system-ui; letter-spacing: 0.1em; }
+        .font-rye { font-family: 'Rye', serif; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+
+        /* Neon Glow Effects */
+        .neon-text {
+            text-shadow: 0 0 10px rgba(6, 182, 212, 0.5), 0 0 20px rgba(6, 182, 212, 0.3);
+        }
+        
+        .playoff-bracket {
+            background: linear-gradient(180deg, rgba(30,41,59,0.7) 0%, rgba(15,23,42,1) 100%);
+            border: 1px solid #334155;
+        }
+
+        /* Card Hover Effects */
+        .team-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-left: 4px solid transparent;
+        }
+        .team-card:hover {
+            transform: translateX(4px);
+            background-color: #27354f;
+        }
+
+        /* Faction Borders */
+        .border-cowboy { border-left-color: var(--cowboy-blue); }
+        .border-indian { border-left-color: var(--indian-red); }
+
+        /* Sacco Zone */
+        .sacco-zone {
+            background: repeating-linear-gradient(
+                45deg,
+                #1e1b4b,
+                #1e1b4b 10px,
+                #312e81 10px,
+                #312e81 20px
+            );
+        }
+
+        /* Sparkline Container */
+        .sparkline-container { height: 60px; width: 100%; }
+
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- HERO SECTION -->
+    <header class="relative overflow-hidden py-12 border-b border-gray-800">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-900/20 via-transparent to-red-900/20 pointer-events-none"></div>
+        
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h1 class="text-6xl md:text-8xl font-bangers text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-400 mb-2 drop-shadow-2xl">
+                PLAYOFFS
+            </h1>
+            <p class="text-xl text-[var(--accent-gold)] font-bold tracking-widest uppercase mb-8">
+                The Regular Season is Dead. Long Live the Champions.
+            </p>
+
+            <!-- Cowboys vs Indians Scoreboard (WEEK 13) -->
+            <div class="max-w-4xl mx-auto bg-gray-900/80 backdrop-blur rounded-2xl border border-gray-700 p-6 shadow-2xl relative overflow-hidden">
+                <!-- Winner Banner -->
+                <div class="absolute top-4 right-[-35px] rotate-45 bg-blue-600 text-white text-[10px] font-bold py-1 px-10 shadow-lg z-20">
+                    WINNER
+                </div>
+
+                <div class="text-center mb-4">
+                    <span class="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] bg-gray-800 px-3 py-1 rounded-full">Week 13 Showdown Results</span>
+                </div>
+                <div class="flex items-center justify-between gap-4 md:gap-12 relative z-10">
+                    <div class="flex-1 text-right">
+                        <h3 class="text-3xl font-rye text-blue-400">Cowboys</h3>
+                        <div class="text-5xl font-black text-white tabular-nums">841.4</div>
+                        <div class="text-xs text-green-400 font-bold uppercase mt-1">VICTORY (+49.2)</div>
+                    </div>
+                    
+                    <div class="flex flex-col items-center">
+                        <span class="text-2xl font-bold text-gray-600 font-rye">VS</span>
+                        <div class="h-12 w-[1px] bg-gray-700 my-2"></div>
+                    </div>
+
+                    <div class="flex-1 text-left">
+                        <h3 class="text-3xl font-rye text-red-500">Indians</h3>
+                        <div class="text-5xl font-black text-white tabular-nums">792.2</div>
+                        <div class="text-xs text-red-400 font-bold uppercase mt-1">DEFEAT</div>
+                    </div>
+                </div>
+                <div class="mt-4 pt-4 border-t border-gray-800 text-sm text-gray-400">
+                    <p><strong>Recap:</strong> The Cowboys ride again! <strong>Hail Mary</strong> dropped a nuke (155 pts) and even <strong>Hannah Montana</strong> (124 pts) showed up to play. <strong>FreeGucci</strong> (141 pts) tried to save the tribe, but the Indians collapsed under the pressure.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-12 space-y-16">
+
+        <!-- PLAYOFF BRACKET -->
+        <section>
+            <div class="flex items-center gap-4 mb-8">
+                <div class="h-10 w-2 bg-[var(--accent-gold)]"></div>
+                <h2 class="text-4xl font-black uppercase italic tracking-tighter">The Bracket</h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center justify-center">
+                
+                <!-- Quarterfinals -->
+                <div class="space-y-8">
+                    <div class="text-center text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">Quarterfinals (Week 15)</div>
+                    
+                    <!-- Matchup 1 -->
+                    <div class="bg-gray-800 rounded-xl p-4 border border-gray-700 relative overflow-hidden group hover:border-[var(--accent-neon)] transition-colors">
+                        <div class="absolute top-0 right-0 bg-gray-700 text-[10px] font-bold px-2 py-1 rounded-bl text-gray-300">#4 vs #5</div>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center gap-3">
+                                    <span class="font-bold text-gray-400">4</span>
+                                    <img src="https://ui-avatars.com/api/?name=A+dad&background=3b82f6&color=fff&rounded=true&bold=true" class="w-8 h-8 rounded-full">
+                                    <span class="font-bold">A dad</span>
+                                </div>
+                                <span class="text-sm text-blue-400 font-mono">18-10</span>
+                            </div>
+                            <div class="h-[1px] bg-gray-700"></div>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center gap-3">
+                                    <span class="font-bold text-gray-400">5</span>
+                                    <img src="https://ui-avatars.com/api/?name=S+B&background=ef4444&color=fff&rounded=true&bold=true" class="w-8 h-8 rounded-full">
+                                    <span class="font-bold text-[var(--accent-neon)] animate-pulse">ShakeNBake</span>
+                                </div>
+                                <span class="text-sm text-red-400 font-mono">17-11</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-400 mt-3 italic border-t border-gray-700 pt-2">
+                            "THE MAIN EVENT. ShakeNBake (Love, Puka, Gibbs) vs A dad (Stafford, Kyren, Chase). This is a heavyweight title fight in the first round."
+                        </p>
+                    </div>
+
+                    <!-- Matchup 2 -->
+                    <div class="bg-gray-800 rounded-xl p-4 border border-gray-700 relative overflow-hidden group hover:border-[var(--accent-neon)] transition-colors">
+                        <div class="absolute top-0 right-0 bg-gray-700 text-[10px] font-bold px-2 py-1 rounded-bl text-gray-300">#3 vs #6</div>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center gap-3">
+                                    <span class="font-bold text-gray-400">3</span>
+                                    <img src="https://ui-avatars.com/api/?name=I+R&background=3b82f6&color=fff&rounded=true&bold=true" class="w-8 h-8 rounded-full">
+                                    <span class="font-bold">Injured Reserved</span>
+                                </div>
+                                <span class="text-sm text-blue-400 font-mono">21-7</span>
+                            </div>
+                            <div class="h-[1px] bg-gray-700"></div>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center gap-3">
+                                    <span class="font-bold text-gray-400">6</span>
+                                    <img src="https://ui-avatars.com/api/?name=M+D&background=ef4444&color=fff&rounded=true&bold=true" class="w-8 h-8 rounded-full">
+                                    <span class="font-bold">Mac Daddy</span>
+                                </div>
+                                <span class="text-sm text-red-400 font-mono">17-11</span>
+                            </div>
+                        </div>
+                         <p class="text-xs text-gray-400 mt-3 italic border-t border-gray-700 pt-2">
+                            "Gagne's Joe Burrow & Davante Adams vs Mac's Justin Jefferson & Jacobs. Can the underdog bite back?"
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Semis Waiting Room -->
+                <div class="flex flex-col justify-center items-center space-y-12 opacity-80">
+                    <div class="text-center text-sm font-bold text-gray-500 uppercase tracking-widest">Semis (Bye Weeks)</div>
+                    
+                    <div class="bg-gradient-to-r from-gray-800 to-gray-900 rounded-xl p-6 border border-[var(--accent-gold)] w-full text-center shadow-[0_0_15px_rgba(251,191,36,0.2)]">
+                        <div class="text-[10px] text-[var(--accent-gold)] font-bold uppercase mb-2">#1 Seed</div>
+                        <h3 class="text-2xl font-black text-white">Shut Up</h3>
+                        <p class="text-xs text-gray-400 mt-1">22-6 Record. Taylor & ARSB Resting.</p>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-gray-800 to-gray-900 rounded-xl p-6 border border-[var(--accent-gold)] w-full text-center shadow-[0_0_15px_rgba(251,191,36,0.2)]">
+                        <div class="text-[10px] text-[var(--accent-gold)] font-bold uppercase mb-2">#2 Seed</div>
+                        <h3 class="text-2xl font-black text-white">Hail Mary</h3>
+                        <p class="text-xs text-gray-400 mt-1">Limping in (101 pts). Hurts needs a nap.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- THE SACCO ZONE -->
+        <section class="rounded-3xl overflow-hidden border-2 border-red-900 relative">
+            <div class="sacco-zone absolute inset-0 opacity-20"></div>
+            <div class="relative z-10 p-8 md:p-12 text-center">
+                <div class="inline-block bg-red-600 text-white font-black text-xs px-3 py-1 rounded uppercase mb-4 animate-bounce">
+                    Warning: Extreme Sadness
+                </div>
+                <h2 class="text-4xl md:text-5xl font-black text-red-500 mb-2 font-bangers tracking-widest drop-shadow-md">THE SACCO BOWL</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto mb-10 text-lg">
+                    The race to the bottom. Winner is safe. Loser faces the Final Boss.
+                </p>
+
+                <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+                    
+                    <!-- The Matchup -->
+                    <div class="bg-gray-900 p-6 rounded-2xl border border-red-800 w-full max-w-md shadow-2xl">
+                        <h3 class="text-red-400 font-bold uppercase text-sm mb-4 border-b border-red-900 pb-2">The Toilet Semi-Final</h3>
+                        <div class="flex justify-between items-center mb-6">
+                            <div class="text-center">
+                                <div class="w-16 h-16 bg-gray-800 rounded-full mx-auto mb-2 flex items-center justify-center border-2 border-gray-600">
+                                    <img src="https://ui-avatars.com/api/?name=G+G&background=3b82f6&color=fff" class="rounded-full w-full h-full">
+                                </div>
+                                <div class="font-bold text-white">Greg Gokey</div>
+                                <div class="text-xs text-gray-500">#12 | 8-20</div>
+                            </div>
+                            <div class="text-2xl font-black text-red-600 font-bangers">VS</div>
+                            <div class="text-center">
+                                <div class="w-16 h-16 bg-gray-800 rounded-full mx-auto mb-2 flex items-center justify-center border-2 border-gray-600">
+                                    <img src="https://ui-avatars.com/api/?name=A+S&background=ef4444&color=fff" class="rounded-full w-full h-full">
+                                </div>
+                                <div class="font-bold text-white">Poop Squad</div>
+                                <div class="text-xs text-gray-500">#13 | 7-21</div>
+                            </div>
+                        </div>
+                        <div class="bg-red-900/20 p-3 rounded text-xs text-red-300">
+                            <strong>The Stakes:</strong> Winner keeps their dignity. Loser advances to the Sacco Finals.
+                        </div>
+                    </div>
+
+                    <!-- The Final Boss -->
+                    <div class="bg-black p-6 rounded-2xl border-4 border-red-600 w-full max-w-xs relative transform rotate-1 hover:rotate-0 transition-transform">
+                        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-red-600 text-white font-bold text-[10px] px-2 rounded uppercase">
+                            Waiting in Hell (Bye)
+                        </div>
+                        <div class="text-6xl mb-2 text-center">💀</div>
+                        <h3 class="text-xl font-black text-white text-center">Leo the Cleo</h3>
+                        <p class="text-xs text-gray-500 text-center mt-1">#14 | 4-24 Record</p>
+                        <p class="text-sm text-red-400 text-center mt-4 font-bold italic">
+                            "I'll see one of you next week."
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- POWER RANKINGS -->
+        <section>
+            <div class="flex items-center gap-4 mb-8">
+                <div class="h-10 w-2 bg-blue-500"></div>
+                <h2 class="text-4xl font-black uppercase italic tracking-tighter">Final Power Rankings</h2>
+            </div>
+            
+            <div id="rankings-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Injected via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-900 border-t border-gray-800 py-12 text-center">
+        <p class="text-gray-500 font-bold">NFL Unlocked © 2025</p>
+        <p class="text-xs text-gray-400 mt-2 uppercase tracking-widest hover:text-red-500 transition-colors cursor-help">There are no participation trophies. Only shame for the Sacco loser.</p>
+    </footer>
+
+    <script>
+        // Data derived from final regular season standings & stats - VERIFIED ROSTERS
+        const teams = [
+            {
+                rank: 1, name: "Shut Up", manager: "Neil", record: "22-6-0", pf: 1941,
+                faction: "Indian",
+                trend: [123, 134, 169, 157, 139, 142, 108, 164, 103, 142, 124, 162],
+                desc: "The King of the North. Ended the season crushing Bullish with 162 points. <strong>Jonathan Taylor</strong> and <strong>Amon-Ra St. Brown</strong> are locked in. The team to beat. Sitting pretty on a mountain of FAAB and a 22-6 record, Neil is basically playing a different game than the rest of us. Enjoy the bye week while the peasants fight for their lives."
+            },
+            {
+                rank: 2, name: "Hail Mary", manager: "Andrew", record: "22-6-0", pf: 1916,
+                faction: "Cowboy",
+                trend: [140, 130, 145, 137, 152, 123, 140, 137, 152, 154, 101],
+                desc: "Limped into the bye week with a pathetic 101 pts. <strong>Jalen Hurts</strong> needs to wake up, and <strong>James Cook</strong> has to stay hot. Andrew spent the whole season looking inevitable, only to end looking incredibly mortal. If Hurts doesn't drop 30 in the semis, this empire might crumble faster than a stale cookie."
+            },
+            {
+                rank: 3, name: "Injured Reserved", manager: "Gagne", record: "21-7-0", pf: 1936,
+                faction: "Cowboy",
+                trend: [125, 117, 121, 184, 157, 150, 116, 145, 146, 123, 119],
+                desc: "Quietly dominant. Won 4 straight to close the season. <strong>Joe Burrow</strong> and <strong>Davante Adams</strong> are clicking at the right time. Gagne has turned consistency into an art form, racking up points while everyone else panics. He's the silent assassin of the bracket."
+            },
+            {
+                rank: 4, name: "A dad", manager: "Bean", record: "18-10-0", pf: 1758,
+                faction: "Cowboy",
+                trend: [141, 161, 98, 142, 124, 159, 97, 117, 117, 121, 144],
+                desc: "<strong>Matthew Stafford</strong> went NUCLEAR (37 pts) in Week 14. <strong>Kyren Williams</strong> and <strong>Ja'Marr Chase</strong> make this team terrifying. From the middle of the pack to a legitimate title contender, Bean peaked at the perfect time. Nobody wants to see that Rams stack in an elimination game."
+            },
+            {
+                rank: 5, name: "ShakeNBake", manager: "Abhishek", record: "17-11-0", pf: 1840,
+                faction: "Indian",
+                trend: [167, 130, 108, 138, 132, 105, 134, 133, 166, 93, 177],
+                desc: "THE JUGGERNAUT. Dropped 177 points in Week 14. <strong>Jordan Love</strong> (20 pts), <strong>Puka Nacua</strong> (34 pts), and <strong>Jahmyr Gibbs</strong> (33 pts). This is the team absolutely NOBODY wants to play. Abhishek decided to unleash hell right before the playoffs. Just hand him the trophy?"
+            },
+            {
+                rank: 6, name: "Mac Daddy", manager: "Mac", record: "17-11-0", pf: 1749,
+                faction: "Indian",
+                trend: [164, 125, 111, 119, 118, 146, 140, 113, 107, 90, 121],
+                desc: "Snuck into the dance. <strong>Justin Jefferson</strong> (11 yds... really?) and <strong>Josh Jacobs</strong> need to step up big time against Gagne. Mac surviving the regular season gauntlet is a miracle in itself. Now he faces the robot Gagne. Can JJetta save him?"
+            },
+            {
+                rank: 7, name: "FreeGucci", manager: "Nish", record: "16-12-0", pf: 1737,
+                faction: "Indian",
+                trend: [153, 154, 121, 143, 103, 130, 121, 112, 92, 140, 85],
+                desc: "HEARTBREAK HOTEL. Scored 85.9 points in the finale to miss the cut. <strong>Lamar Jackson</strong> (219 yds) and <strong>Deebo Samuel</strong> (87 yds) couldn't save him. 'Lamar Flop' aura is real. Enjoy the offseason, Nish. It takes a special kind of talent to hold a playoff spot all year and choke it away at the buzzer."
+            },
+            {
+                rank: 8, name: "Good Will Hunting", manager: "Will", record: "14-14-0", pf: 1639,
+                faction: "Cowboy",
+                trend: [163, 105, 119, 103, 103, 126, 141, 117, 102, 98, 127],
+                desc: "The definition of average. Finished .500 exactly. <strong>Josh Allen</strong> finally showed up (39 pts vs Cincy) but it was too little too late. Will spent the entire season being perfectly mediocre, the fantasy equivalent of lukewarm water. Not good enough to win, not bad enough to tank."
+            },
+            {
+                rank: 9, name: "Kim Jong Nate", manager: "Nate", record: "12-16-0", pf: 1723,
+                faction: "Cowboy",
+                trend: [135, 128, 129, 123, 104, 119, 165, 89, 112, 119, 140],
+                desc: "Too little, too late. Dropped 140 points in a meaningless Week 14 game. <strong>Sam Darnold</strong> (23 pts) is your QB of the future? Yikes. <strong>De'Von Achane</strong> tried his best, but Nate finally found his offense right after being eliminated from contention. Enjoy watching the playoffs from the couch."
+            },
+            {
+                rank: 10, name: "Bend The Knee", manager: "Darrius", record: "10-18-0", pf: 1661,
+                faction: "Indian",
+                trend: [97, 138, 105, 97, 116, 107, 96, 139, 148, 115, 104],
+                desc: "Ended with a whimper (104 pts). <strong>Jared Goff</strong> and <strong>Derrick Henry</strong> just ran out of gas. Darrius spent the year being the league's agent of chaos, spoiling weeks for others while ruining his own. A 10-18 record says it all: dangerous to everyone, including himself."
+            },
+            {
+                rank: 11, name: "Bullish", manager: "Mohsin", record: "8-20-0", pf: 1655,
+                faction: "Indian",
+                trend: [120, 155, 128, 103, 151, 115, 96, 104, 112, 106, 116],
+                desc: "Lost 5 in a row to end the year. A collapse of epic proportions. Even <strong>Saquon Barkley</strong> (122 yds, 1 TD) couldn't save this sinking ship. <strong>Bo Nix</strong> was... okay? From playoff hopeful to 'thank god for tiebreakers' in a month. Disgusting."
+            },
+            {
+                rank: 12, name: "Hannah Montana", manager: "Greg", record: "8-20-0", pf: 1476,
+                faction: "Cowboy",
+                trend: [119, 75, 94, 91, 106, 135, 116, 94, 93, 124, 97],
+                desc: "SACCO ALERT. Scored 97 points in W14. Lost to Poop Squad. Now plays Poop Squad AGAIN. <strong>Dak Prescott</strong> is fighting for his life, and <strong>CeeDee Lamb</strong> is doing cardio. You lost to the 13th place team to fall into the Toilet Bowl, and now you have to play them again? Cruel."
+            },
+            {
+                rank: 13, name: "Poop Squad", manager: "Anuj", record: "7-21-0", pf: 1483,
+                faction: "Indian",
+                trend: [126, 90, 101, 95, 100, 111, 98, 91, 136, 121, 105],
+                desc: "SACCO ALERT. Beat Greg in W14 thanks to <strong>Trevor Lawrence</strong> and <strong>Breece Hall</strong> (finally). Needs to do it one more time to avoid the Sacco Final. Anuj showed signs of life just in time to give himself hope. Crushing Gokey's dreams two weeks in a row would be the funniest outcome."
+            },
+            {
+                rank: 14, name: "Leo the Cleo", manager: "Leo", record: "4-24-0", pf: 1509,
+                faction: "Cowboy",
+                trend: [108, 93, 108, 120, 120, 110, 95, 112, 93, 97, 84],
+                desc: "THE FINAL BOSS. 7 straight losses. 84 points. <strong>Jayden Daniels</strong> and <strong>Bijan Robinson</strong> have checked out. You are so bad you got a bye to the Sacco Finals. Leo sits on his throne of garbage, sharpening his axe for whoever falls into his pit."
+            }
+        ];
+
+        function renderRankings() {
+            const container = document.getElementById('rankings-container');
+            
+            teams.forEach((team, index) => {
+                const card = document.createElement('div');
+                const borderColor = team.faction === 'Indian' ? 'border-indian' : 'border-cowboy';
+                
+                card.className = `team-card bg-gray-800 rounded-xl p-5 border-l-4 ${borderColor} border-gray-700 shadow-lg relative overflow-hidden`;
+                
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-2 relative z-10">
+                        <div class="flex items-center gap-3">
+                            <span class="text-3xl font-black text-gray-600 select-none">#${team.rank}</span>
+                            <div>
+                                <h3 class="font-bold text-white text-lg leading-none">${team.name}</h3>
+                                <span class="text-xs text-gray-400 uppercase font-bold">${team.manager} | ${team.record}</span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xl font-black text-white">${team.trend[team.trend.length-1]}</div>
+                            <div class="text-[10px] text-gray-500 uppercase">W14 Score</div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-4 leading-relaxed relative z-10 border-t border-gray-700 pt-2 mt-2">
+                        ${team.desc}
+                    </p>
+                    <div class="sparkline-container relative z-10">
+                        <canvas id="chart-${index}"></canvas>
+                    </div>
+                    <!-- Background Watermark -->
+                    <div class="absolute -bottom-4 -right-4 text-9xl opacity-5 select-none pointer-events-none font-black text-gray-500 z-0">
+                        ${team.rank}
+                    </div>
+                `;
+                
+                container.appendChild(card);
+                renderSparkline(`chart-${index}`, team.trend, team.faction);
+            });
+        }
+
+        function renderSparkline(canvasId, data, faction) {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            const color = faction === 'Indian' ? '#ef4444' : '#3b82f6';
+            
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: data.map((_, i) => i),
+                    datasets: [{
+                        data: data,
+                        borderColor: color,
+                        borderWidth: 2,
+                        tension: 0.4,
+                        pointRadius: 0,
+                        pointHoverRadius: 4,
+                        fill: {
+                            target: 'origin',
+                            above: faction === 'Indian' ? 'rgba(239, 68, 68, 0.1)' : 'rgba(59, 130, 246, 0.1)'
+                        }
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false }, tooltip: { enabled: true, mode: 'index', intersect: false } },
+                    scales: {
+                        x: { display: false },
+                        y: { display: false, min: Math.min(...data) - 10, max: Math.max(...data) + 10 }
+                    },
+                    layout: { padding: 5 }
+                }
+            });
+        }
+
+        renderRankings();
+    </script>
+</body>
+</html>
