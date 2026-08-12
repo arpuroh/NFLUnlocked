@@ -22,7 +22,10 @@
 
   function render(db) {
     const people = db.people.filter((p) => p.display);
-    const champs = people.filter((p) => p.rings > 0);
+    // Champions board: most rings first, then most recent title. The career
+    // table below stays sorted by rings then win percentage.
+    const champs = people.filter((p) => p.rings > 0).slice().sort((a, b) =>
+      b.rings - a.rings || Math.max(...b.titles) - Math.max(...a.titles));
     const seasons = db.seasons.filter((s) => !s.in_progress).slice().reverse();
     const rec = db.records;
 
@@ -52,23 +55,25 @@
 
         <h2 class="h-sec" style="margin-top:38px">Career Table</h2><hr class="rule-h">
         <p class="tr-note">Sorted by rings, then win percentage. Team names change every year in this
-        league — managers are the constant, so everything is tracked by manager.</p>
+        league — managers are the constant, so everything is tracked by manager.
+        Playoffs counts berths made out of seasons played; six of fourteen teams qualify.</p>
         <div class="tr-table">
           <div class="row hd">
             <span>Manager</span><span>Current Team</span><span class="c">Yrs</span>
             <span class="c">Record</span><span class="c">Win%</span><span class="c">Points</span>
-            <span class="c">\u{1F3C6}</span><span class="c">\u{1F948}</span><span class="c">\u{1F6BD}</span>
+            <span class="c">\u{1F3C6}</span><span class="c">\u{1F948}</span><span class="c po">Playoffs</span><span class="c">\u{1F6BD}</span>
           </div>
           ${people.map((p) => `<div class="row ${p.rings ? "won" : ""} ${p.active ? "" : "gone"}">
             <span class="m">${esc(p.manager)}${p.active ? "" : ` <i>· ${esc(p.span)}</i>`}</span>
             <span class="t">${esc(p.current_team)}</span>
-            <span class="c">${p.seasons}</span>
-            <span class="c">${p.wins}-${p.losses}${p.ties ? "-" + p.ties : ""}</span>
-            <span class="c">${p.win_pct.toFixed(3).replace(/^0/, "")}</span>
-            <span class="c">${n0(p.points_for)}</span>
-            <span class="c ${p.rings ? "gold" : "dim"}">${p.rings || "–"}</span>
-            <span class="c dim">${p.runner_ups.length || "–"}</span>
-            <span class="c ${p.toilets.length ? "bad" : "dim"}">${p.toilets.length || "–"}</span>
+            <span class="c" data-k="Seasons">${p.seasons}</span>
+            <span class="c" data-k="Record">${p.wins}-${p.losses}${p.ties ? "-" + p.ties : ""}</span>
+            <span class="c" data-k="Win%">${p.win_pct.toFixed(3).replace(/^0/, "")}</span>
+            <span class="c" data-k="Points">${n0(p.points_for)}</span>
+            <span class="c ${p.rings ? "gold" : "dim"}" data-k="Titles">${p.rings || "–"}</span>
+            <span class="c dim" data-k="2nd">${p.runner_ups.length || "–"}</span>
+            <span class="c po ${p.playoffs ? "" : "dim"}" data-k="Playoffs">${p.playoffs ?? "–"}<i>/${p.seasons}</i></span>
+            <span class="c ${p.toilets.length ? "bad" : "dim"}" data-k="Saccos">${p.toilets.length || "–"}</span>
           </div>`).join("")}
         </div>
 
@@ -117,8 +122,14 @@
   Promise.all([
     fetch("data/trophy.json", { cache: "no-store" }).then((r) => r.json()),
     fetch("data/ledger.json", { cache: "no-store" }).then((r) => r.json()).catch(() => ({})),
+    fetch("data/playoffs.json", { cache: "no-store" }).then((r) => r.json()).catch(() => ({})),
   ])
-    .then(([db, ledger]) => {
+    .then(([db, ledger, playoffs]) => {
+      // Playoff berths ship in their own file so the main database does not have
+      // to be rewritten to add a column. Whichever source has it wins.
+      db.people.forEach((p) => {
+        if (p.playoffs == null) p.playoffs = playoffs[p.key] ?? 0;
+      });
       // ledger rows are positional to keep the payload small:
       // [team, manager, rank, place, wins, losses, pointsFor, pointsAgainst, moves]
       db.seasons.forEach((s) => {
