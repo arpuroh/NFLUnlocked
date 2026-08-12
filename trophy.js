@@ -40,7 +40,11 @@
   }
 
   function render(db) {
-    const people = db.people.filter((p) => p.display);
+    // Career table order: rings first, then total wins. Fifteen years of showing up
+    // beats a win percentage padded by a short stay. The champions board below keeps
+    // its own order — rings, then most recent title.
+    const people = db.people.filter((p) => p.display)
+      .sort((a, b) => b.rings - a.rings || b.wins - a.wins || b.points_for - a.points_for);
     // Champions board: most rings first, then most recent title. The career
     // table below stays sorted by rings then win percentage.
     const champs = people.filter((p) => p.rings > 0).slice().sort((a, b) =>
@@ -73,7 +77,7 @@
         </div>
 
         <h2 class="h-sec" style="margin-top:38px">Career Table</h2><hr class="rule-h">
-        <p class="tr-note">Sorted by rings, then win percentage. Team names change every year in this
+        <p class="tr-note">Sorted by rings, then total wins. Team names change every year in this
         league — managers are the constant, so everything is tracked by manager.
         Playoffs counts berths made out of seasons played; six of fourteen teams qualify.</p>
         <div class="tr-table">
