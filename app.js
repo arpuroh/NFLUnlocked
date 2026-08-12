@@ -586,41 +586,27 @@ const NU = (() => {
 
   /* ──────────────────── HALL OF SHAME ───────────────────────── */
   if (page === "hall") {
-    const hist = L.history || {};
-    const seasons = hist.seasons || [];
-    const lows = hist.lows || [];
+    // Every number on this page now comes out of the league database
+    // (data/trophy.json, via hall-review.js). This is just the shell it fills.
     $("#app").innerHTML = `
       <section class="hall-hero">
-        <div class="eyebrow">Est. ${esc(hist.established || "—")} · ${seasons.length || "—"} seasons · Zero forgiveness</div>
+        <div class="eyebrow">Loading the permanent record…</div>
         <h1 class="display">Hall of Shame</h1>
       </section>
       <div class="hall-stats">
         <div class="c"><div class="eyebrow">Most Titles</div>
-          <div class="v">${esc(hist.most_titles?.count ?? "—")}</div>
-          <div class="s">${esc(hist.most_titles?.team || "Awaiting history")}</div></div>
-        <div class="c"><div class="eyebrow">Most Toilet Bowls</div>
-          <div class="v red">${esc(hist.most_toilets?.count ?? "—")}</div>
-          <div class="s">${esc(hist.most_toilets?.team || "Awaiting history")}</div></div>
-        <div class="c"><div class="eyebrow">Career FAAB Burned</div>
-          <div class="v">${hist.career_faab ? "$" + hist.career_faab.amount : "—"}</div>
-          <div class="s">${esc(hist.career_faab?.team || "Awaiting history")}</div></div>
+          <div class="v">—</div><div class="s">&nbsp;</div></div>
+        <div class="c"><div class="eyebrow">Most Saccos</div>
+          <div class="v red">—</div><div class="s">&nbsp;</div></div>
+        <div class="c"><div class="eyebrow">Most Times Runner-Up</div>
+          <div class="v">—</div><div class="s">&nbsp;</div></div>
       </div>
       <div class="pad" style="padding-top:26px;padding-bottom:34px">
         <h2 class="h-sec">The Ledger</h2><hr class="rule-h">
-        ${seasons.length ? seasons.map((s) => `<div class="ledger-row">
-          <span class="yr">${esc(s.year)}</span>
-          <span><span class="eyebrow">Champion</span><div class="nm">${esc(s.champion)}</div></span>
-          <span><span class="eyebrow red">Toilet Bowl</span><div class="nm bad">${esc(s.toilet)}</div></span>
-          <span><span class="eyebrow">Title Game</span><div class="sc">${esc(s.title_game || "")}</div></span>
-        </div>`).join("")
-        : `<p class="empty">No completed seasons on record yet. This fills in as the league finishes each year — or drop past results into <code>data/history.json</code>.</p>`}
+        <p class="empty">Reading the archive…</p>
 
         <h2 class="h-sec" style="margin-top:32px">All-Time Lows</h2><hr class="rule-h">
-        ${lows.length ? `<div class="lows">${lows.map((x) => `<div class="c">
-          <div class="eyebrow red">${esc(x.label)}</div>
-          <div class="v">${esc(x.value)}</div>
-          <div class="s">${esc(x.detail)}</div></div>`).join("")}</div>`
-          : `<p class="empty">Records begin accumulating this season.</p>`}
+        <p class="empty">Reading the archive…</p>
       </div>
       ${endband(meta)}`;
   }
