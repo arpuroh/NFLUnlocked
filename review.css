@@ -1,0 +1,40 @@
+/* ═══ season in review ═══ */
+.rv{border-bottom:2px solid var(--rule);padding-top:30px;padding-bottom:38px}
+.rv-head{font-size:clamp(30px,4.6vw,54px);font-weight:900;font-stretch:66%;line-height:.95;text-transform:uppercase;letter-spacing:-.01em;margin:8px 0 12px}
+.rv-deck{max-width:70ch;color:var(--ink-2);font-size:15px;line-height:1.55;margin:0 0 24px}
+.rv-podium{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--rule);border:2px solid var(--ink)}
+.rv-podium .c{background:var(--white);padding:18px 20px}
+.rv-podium .c.p1{background:var(--ink);color:var(--white)}
+.rv-podium .c.p1 .nm{color:var(--white)}
+.rv-podium .c.p1 .pl{color:var(--red-bright)}
+.rv-podium .c.p1 p{color:var(--gray-faint)}
+.rv-podium .c.toilet .pl{color:var(--red-deep)}
+.rv-podium .pl{display:block;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gray)}
+.rv-podium .nm{display:block;font-size:clamp(20px,2.4vw,27px);font-weight:900;font-stretch:70%;text-transform:uppercase;margin:6px 0 2px}
+.rv-podium .mg{display:block;font-size:12px;color:var(--gray-mid);margin-bottom:9px}
+.rv-podium p{font-size:13.5px;line-height:1.52;color:var(--ink-2);margin:0}
+.rv-p{max-width:74ch;font-size:14.5px;line-height:1.62;color:var(--ink-2);margin:0 0 14px}
+.rv-draft{border:2px solid var(--ink);background:var(--white)}
+.rv-draft .row{display:grid;grid-template-columns:1.1fr 2fr .75fr 64px;gap:14px;padding:13px 16px;border-bottom:1px solid var(--rule);align-items:start}
+.rv-draft .row:last-child{border-bottom:0}
+.rv-draft .row.hd{background:var(--ink);color:var(--white);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;padding:9px 16px}
+.rv-draft .t b{display:block;font-weight:900;font-stretch:72%;text-transform:uppercase;font-size:15px;line-height:1.1}
+.rv-draft .t i,.rv-draft .b i{display:block;font-style:normal;color:var(--gray-mid);font-size:12px;line-height:1.4;margin-top:4px}
+.rv-draft .b{display:block;font-size:13px;font-weight:600}
+.rv-draft .f{display:block;font-size:13px;font-weight:700}
+.rv-draft .g{display:block;font-size:22px;font-weight:900;font-stretch:75%;text-align:right}
+.rv-draft .g.bad{color:var(--red)}
+.rv-toasts{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--rule);border:2px solid var(--ink);margin-top:6px}
+.rv-toasts .c{background:var(--white);padding:20px 22px}
+.rv-toasts .nm{font-size:clamp(22px,2.6vw,30px);font-weight:900;font-stretch:70%;text-transform:uppercase;margin:6px 0 10px}
+.rv-toasts .tm{font-size:13px;color:var(--gray-mid);font-weight:600;font-stretch:100%}
+.rv-toasts p{font-size:13.5px;line-height:1.58;color:var(--ink-2);margin:0}
+.rv-toasts .cheers{margin-top:14px;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--red)}
+.rv-arrivals{margin-top:28px;background:var(--ink);color:var(--paper);padding:24px 26px;border-left:6px solid var(--red)}
+.rv-arrivals .eyebrow{color:var(--red-bright)}
+.rv-arrivals p{font-size:14px;line-height:1.62;max-width:82ch;color:var(--gray-faint);margin:8px 0 0}
+@media (max-width:760px){
+  .rv-podium,.rv-toasts{grid-template-columns:1fr}
+  .rv-draft .row{grid-template-columns:1fr;gap:6px}
+  .rv-draft .g{text-align:left}
+}
