@@ -64,6 +64,11 @@
 .tr-ledger .mg{color:var(--gray-mid)}
 .tr-ledger .c{text-align:center;font-variant-numeric:tabular-nums}
 .tr-ledger .dim{color:var(--gray-soft)}
+.sacco-strip{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin:2px 0 12px;
+  padding:9px 12px;background:var(--white);border-left:4px solid var(--red)}
+.sacco-strip .sl{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--red);white-space:nowrap}
+.sacco-strip .sd{font-size:12px;line-height:1.5;color:var(--gray-mid);font-variant-numeric:tabular-nums}
+.sacco-strip .sd b{color:var(--ink);font-weight:800}
 .tr-foot{margin-top:22px;font-size:11.5px;line-height:1.6;color:var(--gray-soft);max-width:80ch}
 
 @media (max-width:1040px){
