@@ -602,10 +602,7 @@ const NU = (() => {
           <div class="v">—</div><div class="s">&nbsp;</div></div>
       </div>
       <div class="pad" style="padding-top:26px;padding-bottom:34px">
-        <h2 class="h-sec">The Ledger</h2><hr class="rule-h">
-        <p class="empty">Reading the archive…</p>
-
-        <h2 class="h-sec" style="margin-top:32px">All-Time Lows</h2><hr class="rule-h">
+        <h2 class="h-sec">All-Time Lows</h2><hr class="rule-h">
         <p class="empty">Reading the archive…</p>
       </div>
       ${endband(meta)}`;
