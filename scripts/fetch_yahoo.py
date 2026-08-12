@@ -106,13 +106,13 @@ def get_access_token() -> str:
         print(f"  fantasy access confirmed using redirect_uri={ru} (expires_in={tok.get('expires_in')})")
         return access
 
-    sys.exit(
-        "No refresh variant produced a token the Fantasy API accepts.\n"
-        f"Last response: {last[:300]}\n"
-        "If this reads 'This application is not authorized to perform this action', the\n"
-        "Yahoo app itself has not been granted Fantasy Sports API access. Apply at\n"
-        "https://sports.yahoo.com/developer/ — access is approval-gated now."
+    print(
+        "  no refresh variant produced a token the Fantasy API accepts.\n"
+        f"  last response: {last[:300]}\n"
+        "  ('not authorized' = the Yahoo app lacks Fantasy API approval; apply at\n"
+        "  https://sports.yahoo.com/developer/). Falling back to the public league page."
     )
+    return ""
 
 
 def api_get(token: str, path: str, retries: int = 3) -> dict:
@@ -201,6 +201,193 @@ def resolve_league_key(token: str) -> str:
     print(f"  LEAGUE_ID {LEAGUE_ID} not in this account's leagues; "
           f"using newest instead -> {pick['league_key']} ({pick['season']}, {pick['name']})")
     return pick["league_key"]
+
+
+# ------------------------------------------------------- page scrape
+# Yahoo's Fantasy API is approval-gated, but this league is publicly viewable,
+# so everything the site needs is sitting in server-rendered HTML. The scrape
+# path keeps the site live while (or instead of) waiting on API approval.
+
+from html.parser import HTMLParser  # noqa: E402
+
+SITE_BASE = f"https://football.fantasysports.yahoo.com/f1/{LEAGUE_ID}"
+UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+      "(KHTML, like Gecko) Chrome/126.0 Safari/537.36")
+
+
+class TableGrab(HTMLParser):
+    """Collect every <table> as rows of cells; each cell keeps text, links, imgs."""
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.tables, self._t, self._r, self._c = [], None, None, None
+
+    def handle_starttag(self, tag, attrs):
+        a = dict(attrs)
+        if tag == "table":
+            self._t = {"id": a.get("id", ""), "class": a.get("class", ""), "rows": []}
+        elif tag == "tr" and self._t is not None:
+            self._r = []
+        elif tag in ("td", "th") and self._r is not None:
+            self._c = {"text": "", "links": [], "imgs": []}
+        elif self._c is not None and tag == "a" and a.get("href"):
+            self._c["links"].append(a["href"])
+        elif self._c is not None and tag == "img" and a.get("src"):
+            self._c["imgs"].append(a["src"])
+
+    def handle_data(self, data):
+        if self._c is not None:
+            self._c["text"] += data
+
+    def handle_endtag(self, tag):
+        if tag in ("td", "th") and self._c is not None:
+            self._c["text"] = " ".join(self._c["text"].split())
+            self._r.append(self._c)
+            self._c = None
+        elif tag == "tr" and self._r is not None:
+            if self._r:
+                self._t["rows"].append(self._r)
+            self._r = None
+        elif tag == "table" and self._t is not None:
+            self.tables.append(self._t)
+            self._t = None
+
+
+def fetch_page(url: str) -> str:
+    req = urllib.request.Request(url)
+    req.add_header("User-Agent", UA)
+    req.add_header("Accept", "text/html")
+    with urllib.request.urlopen(req) as resp:
+        return resp.read().decode("utf-8", "replace")
+
+
+def grab_tables(html: str) -> list:
+    p = TableGrab()
+    p.feed(html)
+    return p.tables
+
+
+def _row_lookup(headers: list, row: list) -> dict:
+    return {h.lower(): c for h, c in zip(headers, row)}
+
+
+def scrape_league() -> tuple[dict, list, list, list]:
+    """Standings, matchups and transactions straight off the public league pages."""
+    print(f"  scraping public league page {SITE_BASE}")
+    html = fetch_page(SITE_BASE)
+    print(f"  fetched {len(html)} bytes; standingstable present: {'standingstable' in html}")
+
+    tables = grab_tables(html)
+    standings = next((t for t in tables if t["id"] == "standingstable"), None)
+    if standings is None:
+        # fall back to any table whose header row mentions W-L-T
+        standings = next(
+            (t for t in tables
+             if t["rows"] and any("w-l-t" in c["text"].lower() for c in t["rows"][0])),
+            None)
+    if standings is None:
+        raise RuntimeError(
+            f"No standings table in the page ({len(tables)} tables seen). "
+            "If the league was switched to private, flip 'Make league publicly viewable' "
+            "back on in Yahoo league settings.")
+
+    headers = [c["text"] for c in standings["rows"][0]]
+    print(f"  standings columns: {headers}")
+
+    teams = []
+    for row in standings["rows"][1:]:
+        cells = _row_lookup(headers, row)
+        team_cell = cells.get("team")
+        if not team_cell or not team_cell["text"]:
+            continue
+        team_href = next((l for l in team_cell["links"] if f"/f1/{LEAGUE_ID}/" in l), "")
+        team_id = team_href.rstrip("/").split("/")[-1] if team_href else str(len(teams) + 1)
+        wlt = (cells.get("w-l-t", {}) or {}).get("text", "0-0-0")
+        parts = [safe_int(x) for x in wlt.split("-")] + [0, 0, 0]
+        wins, losses, ties = parts[0], parts[1], parts[2]
+        games = wins + losses + ties
+        budget_txt = (cells.get("waiver bdgt", {}) or {}).get("text", "")
+        streak_txt = (cells.get("streak", {}) or {}).get("text", "")
+        teams.append({
+            "team_key": f"scrape.l.{LEAGUE_ID}.t.{team_id}",
+            "team_id": team_id,
+            "name": team_cell["text"],
+            "manager": "",
+            "logo": (team_cell["imgs"] or [""])[0],
+            "moves": safe_int((cells.get("moves", {}) or {}).get("text")),
+            "trades": 0,
+            "faab_balance": safe_int(budget_txt.replace("$", ""), default=-1) if "$" in budget_txt else -1,
+            "clinched_playoffs": "*" in ((cells.get("rank", {}) or {}).get("text", "")),
+            "rank": safe_int((cells.get("rank", {}) or {}).get("text", "").replace("*", "")) or len(teams) + 1,
+            "wins": wins, "losses": losses, "ties": ties,
+            "win_pct": round(wins / games, 3) if games else 0.0,
+            "streak": streak_txt.replace("-", ""),
+            "points_for": safe_float((cells.get("pf", {}) or {}).get("text")),
+            "points_against": safe_float((cells.get("pa", {}) or {}).get("text")),
+            "week_points": 0.0,
+        })
+    print(f"  parsed {len(teams)} teams from standings")
+
+    # matchups: pre-draft the scoreboard is empty; harvest whatever exists
+    matchups = []
+    by_name = {t["name"]: t["team_key"] for t in teams}
+    for t in tables:
+        for row in t["rows"]:
+            texts = [c["text"] for c in row]
+            # matchup rows on the league page look like: name, score, name, score
+            if len(texts) >= 4 and texts[0] in by_name and texts[2] in by_name:
+                try:
+                    p1, p2 = float(texts[1]), float(texts[3])
+                except ValueError:
+                    continue
+                matchups.append({
+                    "week": 0, "status": "postevent" if (p1 or p2) else "preevent",
+                    "is_playoffs": False,
+                    "winner_team_key": by_name[texts[0]] if p1 > p2 else by_name[texts[2]],
+                    "teams": [
+                        {"team_key": by_name[texts[0]], "name": texts[0], "points": p1},
+                        {"team_key": by_name[texts[2]], "name": texts[2], "points": p2},
+                    ],
+                })
+
+    # transactions page (public): adds/drops with FAAB bids once the season runs
+    transactions = []
+    try:
+        tx_html = fetch_page(f"{SITE_BASE}/transactions")
+        for t in grab_tables(tx_html):
+            for row in t["rows"]:
+                text = " | ".join(c["text"] for c in row if c["text"])
+                if not text or "no recent transactions" in text.lower():
+                    continue
+                low = text.lower()
+                if "added" not in low and "dropped" not in low and "trade" not in low:
+                    continue
+                transactions.append({
+                    "id": f"scrape-{len(transactions)}",
+                    "type": "add/drop" if "added" in low else "trade",
+                    "status": "successful",
+                    "timestamp": 0,
+                    "faab_bid": safe_int((["0"] + [w.strip("$") for w in text.split() if w.startswith("$")])[-1], 0),
+                    "adds": [], "drops": [],
+                    "raw": text[:200],
+                })
+        print(f"  transactions scraped: {len(transactions)}")
+    except Exception as e:  # noqa: BLE001
+        print(f"  transactions page skipped ({e})")
+
+    season = datetime.now(timezone.utc).year if datetime.now(timezone.utc).month >= 3 else datetime.now(timezone.utc).year - 1
+    meta = {
+        "league_key": f"scrape.l.{LEAGUE_ID}",
+        "name": "NFL Unlocked",
+        "season": str(season),
+        "current_week": max([m["week"] for m in matchups], default=1) or 1,
+        "start_week": 1, "end_week": 17,
+        "num_teams": len(teams),
+        "url": SITE_BASE,
+        "logo": "",
+        "is_finished": False,
+    }
+    return meta, teams, matchups, transactions
 
 
 # ------------------------------------------------- yahoo JSON helpers
@@ -590,35 +777,41 @@ def main() -> None:
     global LEAGUE_KEY
     print(f"Fetching league {LEAGUE_KEY} ...")
     token = get_access_token()
-    LEAGUE_KEY = resolve_league_key(token)
 
-    standings_raw = api_get(token, f"league/{LEAGUE_KEY}/standings")
-    (RAW_DIR / "standings.json").write_text(json.dumps(standings_raw, indent=1))
-    meta, teams = parse_standings(standings_raw)
-    print(f"  league: {meta['name']} season {meta['season']} week {meta['current_week']}, {len(teams)} teams")
+    faab_budget, uses_faab = 100, True
+    if token:
+        LEAGUE_KEY = resolve_league_key(token)
 
-    settings_raw = api_get(token, f"league/{LEAGUE_KEY}/settings")
-    (RAW_DIR / "settings.json").write_text(json.dumps(settings_raw, indent=1))
-    settings = merge_dicts(merge_dicts(settings_raw["fantasy_content"]["league"][1:]).get("settings", []))
-    faab_budget = safe_int(settings.get("waiver_budget"), default=100) or 100
-    uses_faab = str(settings.get("uses_faab", "0")) in ("1", "true", "True")
+        standings_raw = api_get(token, f"league/{LEAGUE_KEY}/standings")
+        (RAW_DIR / "standings.json").write_text(json.dumps(standings_raw, indent=1))
+        meta, teams = parse_standings(standings_raw)
+        print(f"  league: {meta['name']} season {meta['season']} week {meta['current_week']}, {len(teams)} teams")
 
-    # scoreboards for every week played so far
-    all_matchups = []
-    last_week = min(meta["current_week"], meta["end_week"])
-    for week in range(meta["start_week"], last_week + 1):
-        try:
-            sb_raw = api_get(token, f"league/{LEAGUE_KEY}/scoreboard;week={week}")
-            wk = parse_scoreboard(sb_raw)
-            all_matchups.extend(wk)
-            print(f"  week {week}: {len(wk)} matchups")
-        except Exception as e:  # noqa: BLE001
-            print(f"  week {week}: scoreboard failed ({e})")
+        settings_raw = api_get(token, f"league/{LEAGUE_KEY}/settings")
+        (RAW_DIR / "settings.json").write_text(json.dumps(settings_raw, indent=1))
+        settings = merge_dicts(merge_dicts(settings_raw["fantasy_content"]["league"][1:]).get("settings", []))
+        faab_budget = safe_int(settings.get("waiver_budget"), default=100) or 100
+        uses_faab = str(settings.get("uses_faab", "0")) in ("1", "true", "True")
 
-    txn_raw = api_get(token, f"league/{LEAGUE_KEY}/transactions")
-    (RAW_DIR / "transactions.json").write_text(json.dumps(txn_raw, indent=1))
-    transactions = parse_transactions(txn_raw)
-    print(f"  transactions: {len(transactions)}")
+        # scoreboards for every week played so far
+        all_matchups = []
+        last_week = min(meta["current_week"], meta["end_week"])
+        for week in range(meta["start_week"], last_week + 1):
+            try:
+                sb_raw = api_get(token, f"league/{LEAGUE_KEY}/scoreboard;week={week}")
+                wk = parse_scoreboard(sb_raw)
+                all_matchups.extend(wk)
+                print(f"  week {week}: {len(wk)} matchups")
+            except Exception as e:  # noqa: BLE001
+                print(f"  week {week}: scoreboard failed ({e})")
+
+        txn_raw = api_get(token, f"league/{LEAGUE_KEY}/transactions")
+        (RAW_DIR / "transactions.json").write_text(json.dumps(txn_raw, indent=1))
+        transactions = parse_transactions(txn_raw)
+        print(f"  transactions: {len(transactions)}")
+    else:
+        meta, teams, all_matchups, transactions = scrape_league()
+        print(f"  league: {meta['name']} season {meta['season']}, {len(teams)} teams (scraped)")
 
     rankings = compute_power_rankings(teams, all_matchups, meta["current_week"])
     faab = faab_stats(teams, transactions, faab_budget)
