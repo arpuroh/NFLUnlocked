@@ -99,7 +99,7 @@
               ${s.standings.slice().sort((a, b) => a.rank - b.rank).map((r) => `<div class="fr">
                 <span class="rk ${r.place === 1 ? "one" : ""}">${r.place === 1 ? "\u{1F3C6}" : ord(r.rank)}</span>
                 <span>${esc(r.team)}</span><span class="mg">${esc(r.manager)}</span>
-                <span class="c">${r.wins}-${r.losses}${r.ties ? "-" + r.ties : ""}</span>
+                <span class="c">${r.wins}-${r.losses}</span>
                 <span class="c">${r.points_for.toFixed(1)}</span>
                 <span class="c dim">${r.points_against.toFixed(1)}</span>
                 <span class="c dim">${r.moves}</span>
@@ -119,11 +119,19 @@
     fetch("data/ledger.json", { cache: "no-store" }).then((r) => r.json()).catch(() => ({})),
   ])
     .then(([db, ledger]) => {
-      db.seasons.forEach((s) => { s.standings = ledger[String(s.year)] || []; });
+      // ledger rows are positional to keep the payload small:
+      // [team, manager, rank, place, wins, losses, pointsFor, pointsAgainst, moves]
+      db.seasons.forEach((s) => {
+        s.standings = (ledger[String(s.year)] || []).map((a) => ({
+          team: a[0], manager: a[1], rank: a[2], place: a[3],
+          wins: a[4], losses: a[5], points_for: a[6], points_against: a[7], moves: a[8],
+        }));
+      });
       return db;
     })
     .then(render)
-    .catch(() => {
+    .catch((e) => {
+      console.error("trophy render failed:", e);
       const el = $("#app");
       if (el) el.innerHTML = `<div class="pad"><p class="empty">Trophy data unavailable.</p></div>`;
     });
