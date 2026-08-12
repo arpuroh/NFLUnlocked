@@ -3,7 +3,7 @@
    league database) and fills the hall page after the core app renders. Kept
    separate from app.js so the weekly data pipeline never touches it. */
 (() => {
-  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) =>
+  const esc = (s) => String(s ?? "").replace(/Toilet Bowl/g, "Sacco")    .replace(/[&<>"']/g, (c) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
   const medal = (p) => p === 1 ? "\u{1F3C6} Champion" : p === 2 ? "\u{1F948} Runner-Up" : "\u{1F949} Third Place";
@@ -21,7 +21,7 @@
             <div class="mg">${esc(p.manager)} · ${esc(p.record)} · ${p.pf} PF</div>
             <p>${esc(p.note)}</p></div>`).join("")}
           <div class="c toilet">
-            <div class="pl">\u{1F6BD} Toilet Bowl</div>
+            <div class="pl">\u{1F6BD} The Sacco</div>
             <div class="nm">${esc(rv.toilet.team)}</div>
             <div class="mg">${esc(rv.toilet.manager)} · ${esc(rv.toilet.record)}</div>
             <p>${esc(rv.toilet.note)}</p></div>
@@ -79,7 +79,7 @@
       if (sEl) sEl.textContent = s;
     };
     put(0, "Most Titles", titles.n, titles.who.join(" & "));
-    put(1, "Most Toilet Bowls", toilets.n, toilets.who.join(" & "));
+    put(1, "Most Saccos", toilets.n, toilets.who.join(" & "));
     put(2, "Most Times Runner-Up", seconds.n, seconds.who.join(" & "));
 
     const secs = [...document.querySelectorAll(".pad .h-sec")];
@@ -90,7 +90,7 @@
       const rows = seasons.map((s) => `<div class="ledger-row">
         <span class="yr">${esc(s.year)}</span>
         <span><span class="eyebrow">Champion</span><div class="nm">${esc(s.champion)} (${esc(s.champion_manager)})</div></span>
-        <span><span class="eyebrow red">Toilet Bowl</span><div class="nm bad">${esc(s.toilet)} (${esc(s.toilet_manager)})</div></span>
+        <span><span class="eyebrow red">The Sacco</span><div class="nm bad">${esc(s.toilet)} (${esc(s.toilet_manager)})</div></span>
         <span><span class="eyebrow">Runner-Up</span><div class="sc">${esc(s.runner_up)} (${esc(s.runner_up_manager)})</div></span>
       </div>`).join("");
       if (n && (n.classList.contains("empty") || n.classList.contains("ledger-row"))) {
