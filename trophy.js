@@ -28,14 +28,14 @@
     const pi = b.play_in, f = b.final;
     const piLoser = pi.a.pts < pi.b.pts ? pi.a : pi.b;
     const piWinner = piLoser === pi.a ? pi.b : pi.a;
-    const loser = f.a.total < f.b.total ? f.a : f.b;
+    const loser = f.a.low < f.b.low ? f.a : f.b;
     const winner = loser === f.a ? f.b : f.a;
     return `<div class="sacco-strip">
       <span class="sl">\u{1F6BD} Sacco Bowl</span>
       <span class="sd">Wk ${b.weeks[0]} play-in — ${esc(piWinner.manager)} ${pi.a === piWinner ? pi.a.pts.toFixed(2) : pi.b.pts.toFixed(2)}
         beat ${esc(piLoser.manager)} ${piLoser.pts.toFixed(2)}.
-        Wk ${b.weeks[1]}–${b.weeks[2]} — ${esc(winner.manager)} ${winner.total.toFixed(2)},
-        <b>${esc(loser.manager)} ${loser.total.toFixed(2)}</b>.</span>
+        Wk ${b.weeks[1]}–${b.weeks[2]} — worst week on the board:
+        <b>${esc(loser.manager)} ${loser.low.toFixed(2)}</b>, next worst ${esc(winner.manager)} ${winner.low.toFixed(2)}.</span>
     </div>`;
   }
 
@@ -142,11 +142,12 @@
         attributed to a person and are excluded from career totals.
         <br><br>The Sacco column is not last place. The Sacco is decided by a three-team bowl:
         the 12 seed plays the 13 seed in playoff week one, the loser drops into the bowl and plays
-        the 14 seed for the next two weeks, and the lower two-week total takes it. Yahoo tracks none
+        the 14 seed for the next two weeks, and the single worst weekly score takes it. Yahoo tracks none
         of that — it drops the bottom two seeds out of every bracket — so each bowl was replayed from
-        the individual weekly lineup scores on every team's public page. 2025 is confirmed by the
-        league. The earlier years are reconstructions under the same rule; if the league remembers
-        one differently, the league is right.</p>
+        the individual weekly lineup scores on every team's public page, and the seeding was checked
+        against Yahoo's own consolation brackets. 2025 (Greg) and 2022 (Andrew) are confirmed by the
+        league and both come out right; the rest are the same rule applied honestly. If the league
+        remembers one differently, the league is right.</p>
       </div>`;
   }
 
