@@ -1,7 +1,7 @@
 /* NFL Unlocked — Hall of Shame: Season in Review layer.
-   Loads data/history.json and injects the season review + real ledger into the
-   hall page after the core app renders. Kept separate from app.js so the weekly
-   data pipeline never touches it. */
+   Loads data/history.json (the 2025 review narrative) and data/trophy.json (the
+   league database) and fills the hall page after the core app renders. Kept
+   separate from app.js so the weekly data pipeline never touches it. */
 (() => {
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -55,31 +55,43 @@
       </div>`;
   }
 
-  function fillCore(hist) {
+  function fillCore(hist, db) {
+    const people = (db.people || []).filter((p) => p.display);
+    const top = (fn) => {
+      const best = Math.max(0, ...people.map(fn));
+      return { n: best, who: people.filter((p) => fn(p) === best).map((p) => p.manager) };
+    };
+    const titles = top((p) => p.rings);
+    const toilets = top((p) => p.toilets.length);
+    const seconds = top((p) => p.runner_ups.length);
+
     const hero = document.querySelector(".hall-hero .eyebrow");
     if (hero) hero.textContent =
-      `Est. ${hist.established || "—"} · ${(hist.seasons || []).length} season${(hist.seasons || []).length === 1 ? "" : "s"} on record · Zero forgiveness`;
+      `Est. ${db.first_season} · ${db.completed_seasons} seasons on record · ${people.length} managers · Zero forgiveness`;
 
     const cells = document.querySelectorAll(".hall-stats .c");
-    const put = (i, v, s) => {
+    const put = (i, label, v, s) => {
       if (!cells[i]) return;
+      const eEl = cells[i].querySelector(".eyebrow");
       const vEl = cells[i].querySelector(".v"), sEl = cells[i].querySelector(".s");
+      if (eEl && label) eEl.textContent = label;
       if (vEl) vEl.textContent = v;
       if (sEl) sEl.textContent = s;
     };
-    if (hist.most_titles) put(0, hist.most_titles.count, hist.most_titles.team);
-    if (hist.most_toilets) put(1, hist.most_toilets.count, hist.most_toilets.team);
-    if (hist.career_faab) put(2, "$" + hist.career_faab.amount, hist.career_faab.team);
+    put(0, "Most Titles", titles.n, titles.who.join(" & "));
+    put(1, "Most Toilet Bowls", toilets.n, toilets.who.join(" & "));
+    put(2, "Most Times Runner-Up", seconds.n, seconds.who.join(" & "));
 
     const secs = [...document.querySelectorAll(".pad .h-sec")];
+    const seasons = (db.seasons || []).filter((s) => !s.in_progress && s.champion).slice().reverse();
     const ledgerSec = secs.find((h) => /the ledger/i.test(h.textContent));
-    if (ledgerSec && (hist.seasons || []).length) {
+    if (ledgerSec && seasons.length) {
       let n = ledgerSec.nextElementSibling && ledgerSec.nextElementSibling.nextElementSibling;
-      const rows = hist.seasons.map((s) => `<div class="ledger-row">
+      const rows = seasons.map((s) => `<div class="ledger-row">
         <span class="yr">${esc(s.year)}</span>
-        <span><span class="eyebrow">Champion</span><div class="nm">${esc(s.champion)}${s.champion_manager ? " (" + esc(s.champion_manager) + ")" : ""}</div></span>
-        <span><span class="eyebrow red">Toilet Bowl</span><div class="nm bad">${esc(s.toilet)}${s.toilet_manager ? " (" + esc(s.toilet_manager) + ")" : ""}</div></span>
-        <span><span class="eyebrow">Title Game</span><div class="sc">${esc(s.title_game || "")}</div></span>
+        <span><span class="eyebrow">Champion</span><div class="nm">${esc(s.champion)} (${esc(s.champion_manager)})</div></span>
+        <span><span class="eyebrow red">Toilet Bowl</span><div class="nm bad">${esc(s.toilet)} (${esc(s.toilet_manager)})</div></span>
+        <span><span class="eyebrow">Runner-Up</span><div class="sc">${esc(s.runner_up)} (${esc(s.runner_up_manager)})</div></span>
       </div>`).join("");
       if (n && (n.classList.contains("empty") || n.classList.contains("ledger-row"))) {
         const trash = [];
@@ -90,9 +102,21 @@
       }
     }
     const lowsSec = secs.find((h) => /all-time lows/i.test(h.textContent));
-    if (lowsSec && (hist.lows || []).length) {
+    const rec = db.records || {};
+    const lows = [
+      rec.fewest_points_season && { label: "Fewest points, one season",
+        value: Math.round(rec.fewest_points_season.points_for).toLocaleString(),
+        detail: `${rec.fewest_points_season.manager} · ${rec.fewest_points_season.team} · ${rec.fewest_points_season.year}` },
+      rec.worst_record && { label: "Worst record", value: `${rec.worst_record.wins}-${rec.worst_record.losses}`,
+        detail: `${rec.worst_record.manager} · ${rec.worst_record.team} · ${rec.worst_record.year}` },
+      rec.best_record && { label: "Best record, still no ring", value: `${rec.best_record.wins}-${rec.best_record.losses}`,
+        detail: `${rec.best_record.manager} · ${rec.best_record.team} · ${rec.best_record.year} — lost the final` },
+      rec.most_moves && { label: "Most roster moves", value: rec.most_moves.moves,
+        detail: `${rec.most_moves.manager} · ${rec.most_moves.team} · ${rec.most_moves.year}` },
+    ].filter(Boolean);
+    if (lowsSec && lows.length) {
       const n = lowsSec.nextElementSibling && lowsSec.nextElementSibling.nextElementSibling;
-      if (n) n.outerHTML = `<div class="lows">${hist.lows.map((x) => `<div class="c">
+      if (n) n.outerHTML = `<div class="lows">${lows.map((x) => `<div class="c">
         <div class="eyebrow red">${esc(x.label)}</div>
         <div class="v">${esc(x.value)}</div>
         <div class="s">${esc(x.detail)}</div></div>`).join("")}</div>`;
@@ -100,14 +124,17 @@
   }
 
   async function run() {
-    let hist;
+    let hist, db;
     try {
-      hist = await fetch("data/history.json", { cache: "no-store" }).then((r) => r.json());
+      [hist, db] = await Promise.all([
+        fetch("data/history.json", { cache: "no-store" }).then((r) => r.json()),
+        fetch("data/trophy.json", { cache: "no-store" }).then((r) => r.json()).catch(() => ({})),
+      ]);
     } catch { return; }
     const inject = () => {
       const hero = document.querySelector(".hall-hero");
       if (!hero) return false;
-      fillCore(hist);
+      fillCore(hist, db || {});
       if (hist.review && !document.querySelector(".rv")) {
         hero.insertAdjacentHTML("afterend", reviewHtml(hist.review));
       }
