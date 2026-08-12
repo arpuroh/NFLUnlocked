@@ -1,0 +1,27 @@
+/* ═══ offseason mode ═══ */
+.os-hero .btn-ghost{display:inline-flex;align-items:center;border:2px solid var(--gray-mid);color:var(--white);
+  padding:11px 18px;margin-left:10px;font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none}
+.os-hero .btn-ghost:hover{border-color:var(--red);color:var(--red-bright)}
+.os-hero .board-row .bn{font-size:15px}
+.os-table{border:2px solid var(--ink);background:var(--white)}
+.os-table .row{display:grid;grid-template-columns:46px 1.7fr 1fr 84px 88px 88px 62px;gap:8px;
+  padding:9px 14px;border-bottom:1px solid var(--rule);align-items:center;font-size:13.5px}
+.os-table .row:last-child{border-bottom:0}
+.os-table .row.hd{background:var(--ink);color:var(--white);font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;font-weight:800;padding:8px 14px}
+.os-table .row.champ{background:var(--paper)}
+.os-table .row.last .tm{color:var(--red-deep)}
+.os-table .rk{font-weight:800;color:var(--gray-mid)}
+.os-table .tm{font-weight:900;font-stretch:76%;text-transform:uppercase;font-size:14.5px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.os-table .mg{color:var(--gray-mid);font-size:12.5px}
+.os-table .c{text-align:center;font-variant-numeric:tabular-nums}
+.os-table .b{font-weight:800}
+.os-table .dim{color:var(--gray-soft)}
+.os-note{margin-top:14px;font-size:12.5px;line-height:1.6;color:var(--gray-soft);max-width:76ch}
+.masthead .badge-live.os-badge{background:var(--gray-mid)}
+@media (max-width:760px){
+  .os-table .row{grid-template-columns:34px 1fr 74px 76px}
+  .os-table .mg,.os-table .row span:nth-child(6),.os-table .row span:nth-child(7){display:none}
+  .os-hero .btn-ghost{margin-left:0;margin-top:8px}
+}
