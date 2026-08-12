@@ -1,56 +1,5 @@
 {
  "established": "2009",
- "most_titles": {
-  "team": "Hail Purdy (Andrew)",
-  "count": 1,
-  "note": "On the modern record. Pre-2025 archives pending recovery."
- },
- "most_toilets": {
-  "team": "Leo the Cleo (Chris)",
-  "count": 1,
-  "note": "4-24 in 2025. A performance."
- },
- "career_faab": {
-  "team": "ShakeNBake (Abhishek)",
-  "amount": 1000,
-  "note": "Burned the entire 2025 budget to $0. Committed."
- },
- "seasons": [
-  {
-   "year": 2025,
-   "champion": "Hail Purdy",
-   "champion_manager": "Andrew",
-   "runner_up": "ShakeNBake",
-   "runner_up_manager": "Abhishek",
-   "third": "Shut Up",
-   "third_manager": "Neil",
-   "toilet": "Leo the Cleo",
-   "toilet_manager": "Chris",
-   "title_game": "Hail Purdy def. ShakeNBake"
-  }
- ],
- "lows": [
-  {
-   "label": "Worst record, 2025",
-   "value": "4-24",
-   "detail": "Leo the Cleo — with $66 Bijan Robinson on the roster the entire time."
-  },
-  {
-   "label": "Lowest points-for, 2025",
-   "value": "1,476.6",
-   "detail": "Miley 💨LEO 5K Speedo Fan Club. $59 CeeDee Lamb was watching too."
-  },
-  {
-   "label": "Most points, no title",
-   "value": "1,941.94",
-   "detail": "Shut Up (Neil). League-high scoring, third place. Robbed in broad daylight."
-  },
-  {
-   "label": "FAAB left unspent",
-   "value": "$940",
-   "detail": "Also Neil. Left more budget on the table than four teams spent all year."
-  }
- ],
  "review": {
   "year": 2025,
   "headline": "The Commissioner Finally Did It (And We Have Questions)",
@@ -82,17 +31,17 @@
    }
   ],
   "toilet": {
-   "team": "Leo the Cleo",
-   "manager": "Chris",
-   "record": "4-24",
-   "pf": 1509.52,
-   "note": "Four wins. FOUR. With $66 Bijan Robinson — the best running back purchase available to humanity — on the roster. That is like being handed the keys to a Ferrari and reversing it into a lake. The 2025 Toilet Bowl is his, engraved, no appeals."
+   "team": "Miley 💨LEO 5K Speedo Fan Club",
+   "manager": "Greg (Miley)",
+   "record": "8-20",
+   "pf": 1476.6,
+   "note": "The Sacco does not go to the worst record. It goes to whoever loses the Sacco Bowl, and Greg lost it in the least defensible way available. He drew the 12 seed, lost the week-15 play-in to Poop Squad 108.76 to 142.84, and dropped into the bowl against a Leo the Cleo team that had just gone 4-24. Two weeks to outscore the worst team in the league. He put up 106.68 and then 74.22 — 180.90 total — while a 4-24 roster on autopilot posted 234.22. He lost both weeks. To a team that had already quit. A former professional poker player, self-described as obsessed with mastering probability, personally handed the trophy to himself over fourteen days. It is engraved. There are no appeals."
   },
   "story": [
    "Start with the money, because this league is incapable of spending it responsibly. Fourteen $200 auction budgets went to war on draft night and the receipts tell you everything: 'A dad' dropped a league-record $70 on Ja'Marr Chase, Leo the Cleo went $66 on Bijan, Bullish put $62 on Saquon Barkley. Of the three biggest buys in league history, exactly zero of their owners saw the semifinals. Meanwhile the commissioner quietly assembled a team of $30 misfits and won the whole thing. The market was inefficient and Andrew was the only one who read the prospectus.",
    "Then October arrived and started collecting knees. Tyreek Hill's ACL detonated in Week 4 and took Bullish's $30 with it. Malik Nabers' knee went shortly after — there went $49 of Bend The Knee's budget, a team name that aged into prophecy. Joe Burrow's toe ended Kim Jong Nate's $18 lottery ticket and simultaneously kneecapped the value of that $70 Chase. Half this league's draft capital was in a hospital by Halloween. The Injured Reserved — a team literally named for this exact scenario — went 21-7. You cannot write this.",
    "The regular season belonged to Neil. 1,941.94 points, most in the league, scored with the calm of a man who bills by the fifteen-minute increment. But fantasy playoffs are a casino, and the casino chose violence: the league's best team got clipped before the final, won the bronze game out of spite, and left the arena. The final itself was Andrew's value board against Abhishek's stars-and-scraps roster, and the boring spreadsheet beat the highlight reel. The champion's biggest player cost less than Leo the Cleo's THIRD most expensive player. Sit with that.",
-   "At the bottom, the standings page files three separate incident reports. Poop Squad paid $50 for Brian Thomas Jr.'s sophomore season and got a long-term hold. Miley's 5K Speedo Fan Club posted the lowest points-for in the league (1,476.6) despite a $59 CeeDee Lamb, proving you can overpay for a logo. And Leo the Cleo went 4-24 in a way that should trigger a wellness check. The Toilet Bowl was not contested. It was donated."
+   "At the bottom, the standings page files three separate incident reports. Poop Squad paid $50 for Brian Thomas Jr.'s sophomore season and got a long-term hold. Leo the Cleo went 4-24 in a way that should trigger a wellness check. And Miley's 5K Speedo Fan Club posted the lowest points-for in the league (1,476.6) despite a $59 CeeDee Lamb, proving you can overpay for a logo. Then came the Sacco Bowl, and the bottom of this league produced the only genuinely dramatic finish of the year: Greg lost the week-15 play-in, drew a 4-24 corpse for the final, needed two weeks to outscore a team with nothing left, and lost both. The Sacco was contested. He won it fair and square."
   ],
   "draft": {
    "intro": "The 2025 auction, graded with the benefit of hindsight and zero mercy. $200 budgets, 16 roster spots, and some decisions that should have required a co-signer.",
@@ -244,12 +193,24 @@
    ]
   },
   "arrivals": {
-   "headline": "The Replacements: Tom & Greg",
-   "body": "In exchange for Mohsin and Neil, the league welcomes Tom and Greg — and let's be honest about what happened here: this league lost color and gained a Pottery Barn catalog. Tom and Greg. TOM. AND. GREG. You cannot draft two whiter names. These are not fantasy managers, these are the guys who approve your mortgage. The seasoning cabinet just got swapped for a single jar of mayonnaise and the group chat's median hot-sauce tolerance dropped forty points overnight. The diversity report is in, and it's a blank page. Welcome, gentlemen — you have inherited a $1,000 FAAB budget, a full-savage roast column, and a Thanksgiving tradition that just got extremely complicated: Cowboys vs. Indians will be watched, reviewed, and litigated by this league on the fourth Thursday of November, and for the first time in franchise history, the Cowboys side has representation in the room. Draft accordingly.",
+   "headline": "The Replacements: Jon & Tom",
+   "body": "In exchange for Mohsin and Neil, the league welcomes Jon Gragg and Tom Alshouse — and let's be honest about what happened here: this league lost color and gained a Pottery Barn catalog. Jon and Tom. JON. AND. TOM. You cannot draft two whiter names. These are not fantasy managers, these are the guys who approve your mortgage. The seasoning cabinet just got swapped for a single jar of mayonnaise and the group chat's median hot-sauce tolerance dropped forty points overnight. The diversity report is in, and it's a blank page. Now, the credentials. Jon leads analytics for FanDuel Canada — an entire career spent building the models that decide which parlay to push at you and at exactly what moment you are most likely to take it. He has professionally studied degenerate behavior for ten years and has now voluntarily joined its natural habitat. A word of warning to the room: he knows what your Week 11 lineup says about you. A word of warning to Jon: his employer's analytics department can forecast Super Bowl handle to the dollar and still managed to miss a man going 144-0 on Czech table tennis, so his hot takes will be weighted accordingly. Also, the responsible-gambling pop-up is written by his department, which is the funniest sentence in this paragraph. Tom sells hard cider. Regional sales manager, Atlanta Hard Cider Co. — a distillery whose flagship product is fermented apple juice, out of a taproom on Marietta Square that runs drag bingo on weeknights. He is the only incoming manager whose job is convincing grown men to order the thing you order when the bar is out of everything else. The league's beverage situation has never been more optimistic or less dignified. Welcome, gentlemen — you have inherited a $1,000 FAAB budget, a full-savage roast column, and a Thanksgiving tradition that just got extremely complicated: Cowboys vs. Indians will be watched, reviewed, and litigated by this league on the fourth Thursday of November, and for the first time in franchise history, the Cowboys side has representation in the room. Draft accordingly.",
    "names": [
-    "Tom",
-    "Greg"
+    "Jon Gragg",
+    "Tom Alshouse"
    ]
+  },
+  "worst_record": {
+   "team": "Leo the Cleo",
+   "manager": "Chris",
+   "record": "4-24",
+   "pf": 1509.52,
+   "note": "Four wins. FOUR. With $66 Bijan Robinson — the best running back purchase available to humanity — on the roster the entire time. That is being handed the keys to a Ferrari and reversing it into a lake. He owns the worst record in the fifteen-year database and still did not take the Sacco home, because when it finally mattered he outscored Greg by 53 points across two weeks without appearing to try. The only man in league history to lose 24 games and win something."
   }
+ },
+ "sacco_rules": {
+  "headline": "How the Sacco Is Actually Decided",
+  "body": "Last place in the standings is not the Sacco. The Sacco is a three-team bowl played over the three playoff weeks. In playoff week one the 12 seed plays the 13 seed: the winner walks away clean, the loser drops into the bowl. Over the next two weeks that loser plays the 14 seed, and the lower two-week total takes the Sacco home. It is the only trophy in this league you can finish 10th and still win, which is exactly what happened in 2025.",
+  "footnote": "Yahoo does not track any of this — it drops the bottom two seeds out of every bracket and forgets them. Every Sacco on this site was replayed from the individual weekly lineup scores on each team's public page, then run back through the rule. 2025 is confirmed. The earlier years are reconstructions under the same rule; if the league remembers one differently, the league is right and the file gets fixed."
  }
 }
