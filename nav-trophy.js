@@ -23,8 +23,30 @@
     return true;
   };
 
-  if (add()) return;
-  const mo = new MutationObserver(() => { if (add()) mo.disconnect(); });
-  mo.observe(document.body, { childList: true, subtree: true });
-  setTimeout(() => mo.disconnect(), 10000);
+  if (!add()) {
+    const mo = new MutationObserver(() => { if (add()) mo.disconnect(); });
+    mo.observe(document.body, { childList: true, subtree: true });
+    setTimeout(() => mo.disconnect(), 10000);
+  }
+
+  // The masthead badge is built from meta.current_week, which is 1 all through
+  // the offseason - so every page claimed "Week 1 - Live" with no games on the
+  // board. Correct it site-wide from the same signal offseason.js uses.
+  fetch("data/league.json", { cache: "no-store" })
+    .then((r) => r.json())
+    .then((L) => {
+      const played = (L.matchups || []).filter((m) => m.status === "postevent");
+      if (played.length) return;
+      const stamp = () => {
+        const chip = document.querySelector(".masthead .badge-live");
+        if (!chip || /offseason/i.test(chip.textContent)) return !!chip;
+        chip.textContent = "Offseason";
+        chip.style.background = "var(--gray-mid)";
+        return true;
+      };
+      if (stamp()) return;
+      let n = 0;
+      const t = setInterval(() => { if (stamp() || ++n > 20) clearInterval(t); }, 200);
+    })
+    .catch(() => {});
 })();
