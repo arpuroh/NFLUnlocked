@@ -2,37 +2,43 @@
    The career table already prints a year span for managers who have left.
    This adds the other half: "member since YYYY" for everyone still in the
    league, so the table says at a glance who is active and when they joined.
-   Rows render in db.people order, so index alignment is the join key. */
+   Rows are matched by manager name, not row order, so the table is free to
+   sort however it likes. */
 (() => {
   const css = ".tr-champs .since{margin-top:5px;font-size:10.5px;font-weight:700;"
     + "letter-spacing:.07em;text-transform:uppercase;color:var(--gray-soft)}"
     + ".tr-champs .c.elite .since{color:var(--gray-mid)}";
-  const first = (p) => String(p.span || "").split("–")[0];
-  const last = (p) => String(p.span || "").split("–")[1];
+  const first = (p) => String(p.span || "").split("\u2013")[0];
+  const last = (p) => String(p.span || "").split("\u2013")[1];
+  const norm = (s) => String(s || "").replace(/\s+/g, " ").trim().toLowerCase();
 
   fetch("data/trophy.json", { cache: "no-store" }).then((r) => r.json()).then((db) => {
-    const people = (db.people || []).filter((p) => p.display);
-    const champs = people.filter((p) => p.rings > 0);
+    const by = new Map();
+    (db.people || []).filter((p) => p.display).forEach((p) => by.set(norm(p.manager), p));
 
     const apply = () => {
       const rows = [...document.querySelectorAll(".tr-table .row:not(.hd) .m")];
-      if (rows.length !== people.length || !rows.length) return false;
+      if (!rows.length) return false;
 
-      rows.forEach((el, i) => {
-        const p = people[i];
-        if (!p || el.querySelector("i")) return;
+      rows.forEach((el) => {
+        if (el.querySelector("i")) return;
+        const p = by.get(norm(el.textContent));
+        if (!p || !p.active) return;
         const tag = document.createElement("i");
-        tag.textContent = " · member since " + first(p);
+        tag.textContent = " \u00b7 member since " + first(p);
         el.appendChild(tag);
       });
 
-      [...document.querySelectorAll(".tr-champs .c")].forEach((c, i) => {
-        const p = champs[i];
-        if (!p || c.querySelector(".since")) return;
+      // On the champions board the only tenure worth printing is a departure —
+      // "member since" on a card that already lists title years is noise.
+      [...document.querySelectorAll(".tr-champs .c")].forEach((c) => {
+        if (c.querySelector(".since")) return;
+        const nm = c.querySelector(".nm");
+        const p = nm && by.get(norm(nm.textContent));
+        if (!p || p.active) return;
         const d = document.createElement("div");
         d.className = "since";
-        d.textContent = p.active ? "Member since " + first(p)
-          : "Est. " + first(p) + " · left " + last(p);
+        d.textContent = first(p) + "\u2013" + last(p) + " \u00b7 gone";
         const tm = c.querySelector(".tm");
         if (tm) tm.after(d); else c.appendChild(d);
       });
