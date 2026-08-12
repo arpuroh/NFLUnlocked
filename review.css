@@ -33,8 +33,31 @@
 .rv-arrivals{margin-top:28px;background:var(--ink);color:var(--paper);padding:24px 26px;border-left:6px solid var(--red)}
 .rv-arrivals .eyebrow{color:var(--red-bright)}
 .rv-arrivals p{font-size:14px;line-height:1.62;max-width:82ch;color:var(--gray-faint);margin:8px 0 0}
+.rv-podium .c.worst .pl{color:var(--gray-mid)}
+
+/* ═══ the sacco bowl ═══ */
+.sacco-bowl{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--rule);border:2px solid var(--ink)}
+.sb-leg{background:var(--white)}
+.sb-hd{background:var(--ink);color:var(--white);padding:9px 16px;font-size:11px;font-weight:800;
+  letter-spacing:.13em;text-transform:uppercase;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.sb-hd i{font-style:normal;font-weight:600;letter-spacing:.04em;text-transform:none;color:var(--gray-faint);font-size:11.5px}
+.sb-pair{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--rule)}
+.sb-pair .c{background:var(--white);padding:14px 16px;min-width:0}
+.sb-pair .c.loser{background:var(--paper);box-shadow:inset 4px 0 0 var(--red)}
+.sb-pair .pl{font-size:10px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--gray)}
+.sb-pair .nm{font-size:15px;font-weight:900;font-stretch:74%;text-transform:uppercase;line-height:1.1;margin:5px 0 2px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sb-pair .mg{font-size:12px;color:var(--gray-mid)}
+.sb-pair .sc{font-size:clamp(22px,2.6vw,29px);font-weight:900;font-stretch:72%;margin:7px 0 2px;font-variant-numeric:tabular-nums}
+.sb-pair .c.loser .sc{color:var(--red)}
+.sb-pair .sub{font-size:11.5px;color:var(--gray-soft);font-variant-numeric:tabular-nums}
+.sb-foot{max-width:80ch;margin:12px 0 0;font-size:11.5px;line-height:1.6;color:var(--gray-soft)}
+
 @media (max-width:760px){
   .rv-podium,.rv-toasts{grid-template-columns:1fr}
   .rv-draft .row{grid-template-columns:1fr;gap:6px}
   .rv-draft .g{text-align:left}
+  .sacco-bowl{grid-template-columns:1fr}
+  .sb-hd{display:block}
+  .sb-hd i{display:block;margin-top:3px}
 }
