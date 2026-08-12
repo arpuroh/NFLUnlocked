@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Commissioner Setup — NFL Unlocked</title>
+<meta name="description" content="One-time wiring: Yahoo developer app, OAuth, GitHub secrets.">
+<meta name="theme-color" content="#201E1D">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23201E1D'/><rect x='18' y='42' width='64' height='16' fill='%23EC3013'/></svg>">
+<style>
+  .step { display: grid; grid-template-columns: 54px 1fr; gap: 22px; padding: 26px 0; border-bottom: 1px solid var(--rule); }
+  .step:last-of-type { border-bottom: 0; }
+  .step-n { width: 54px; height: 54px; background: var(--ink); color: var(--paper);
+            display: grid; place-items: center; font-size: 24px; font-weight: 900; font-stretch: 84%; }
+  .step h2 { font-size: 21px; font-weight: 900; font-stretch: 84%; text-transform: uppercase;
+             margin: 4px 0 10px; letter-spacing: -0.01em; }
+  .step p { margin: 0 0 10px; font-size: 14.5px; color: var(--gray); }
+  .step ul { margin: 0 0 10px; padding-left: 18px; font-size: 14.5px; color: var(--gray); line-height: 1.85; }
+  .step strong { color: var(--ink); }
+  code.k { background: var(--fill); border: 1px solid var(--rule); padding: 2px 7px;
+           font-size: 12.5px; font-weight: 700; color: var(--red-deep); font-family: inherit; }
+  a.link { color: var(--red); text-decoration: underline; text-underline-offset: 2px; }
+  @media (max-width: 640px) { .step { grid-template-columns: 1fr; gap: 12px; } }
+</style>
+</head>
+<body data-page="setup">
+  <header class="masthead">
+    <div class="inner">
+      <a class="wordmark" href="index.html">NFL Unlocked <i></i></a>
+      <nav class="mnav">
+        <a href="index.html">This Week</a><a href="rankings.html">Rankings</a>
+        <a href="scoreboard.html">Scoreboard</a><a href="team.html">Teams</a>
+        <a href="feed.html">The Feed</a><a href="hall.html">Hall of Shame</a>
+      </nav>
+      <div class="mhead-right"><span class="badge-live">Setup</span></div>
+    </div>
+  </header>
+
+  <div class="shell">
+    <section class="dark roast-hero">
+      <div class="filed"><span class="tag-red">Commissioner Only</span></div>
+      <h1 class="display" style="font-size:clamp(34px,6vw,64px)">One-time<br>setup</h1>
+      <p class="lede">Do this once. The site updates itself forever after — game-day refreshes on Sunday,
+        the roast column Tuesday morning, a daily sweep for waiver moves. Nobody touches a spreadsheet again.</p>
+    </section>
+
+    <div class="pad" style="padding-top:8px;padding-bottom:20px;max-width:840px">
+      <div class="step">
+        <div class="step-n">1</div>
+        <div>
+          <h2>Create a free Yahoo developer app</h2>
+          <p>Go to <a class="link" href="https://developer.yahoo.com/apps/create/" rel="noopener">developer.yahoo.com/apps/create</a>
+             and sign in with the Yahoo account that is actually in the league. Set:</p>
+          <ul>
+            <li><strong>Application name:</strong> NFL Unlocked <em>(anything works)</em></li>
+            <li><strong>Redirect URI:</strong> <code class="k" id="redirect-uri"></code></li>
+            <li><strong>API permissions:</strong> Fantasy Sports → <strong>Read</strong></li>
+          </ul>
+          <p>Yahoo hands back a <strong>Client ID</strong> and <strong>Client Secret</strong>. Keep that tab open.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-n">2</div>
+        <div>
+          <h2>Add the keys to Vercel</h2>
+          <p>In Vercel → your project → <strong>Settings → Environment Variables</strong>, add
+             <code class="k">YAHOO_CLIENT_ID</code> and <code class="k">YAHOO_CLIENT_SECRET</code>,
+             then redeploy. This is what makes the button below work.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-n">3</div>
+        <div>
+          <h2>Authorize once</h2>
+          <p>Click below, sign in to Yahoo, hit <strong>Agree</strong>, and you get a
+             <strong>refresh token</strong> plus instructions for the last step.
+             It is shown once and stored nowhere.</p>
+          <p style="margin-top:16px"><a class="btn-red" href="/api/auth-start">🏈 Connect Yahoo League</a></p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-n">4</div>
+        <div>
+          <h2>Add GitHub secrets and run it</h2>
+          <p>In the GitHub repo → <strong>Settings → Secrets and variables → Actions</strong>, add four:</p>
+          <ul>
+            <li><code class="k">YAHOO_CLIENT_ID</code> — from step 1</li>
+            <li><code class="k">YAHOO_CLIENT_SECRET</code> — from step 1</li>
+            <li><code class="k">YAHOO_REFRESH_TOKEN</code> — from step 3</li>
+            <li><code class="k">ANTHROPIC_API_KEY</code> — from
+              <a class="link" href="https://console.anthropic.com/" rel="noopener">console.anthropic.com</a>,
+              powers the weekly roast</li>
+          </ul>
+          <p>Then: repo → <strong>Actions</strong> → <strong>Update league data</strong> → <strong>Run workflow</strong>.
+             Within a minute the site swaps demo data for your real league and stays current on its own.</p>
+        </div>
+      </div>
+    </div>
+
+    <section class="endband">
+      <h2 class="display">Wire it once. Let it humiliate everyone automatically.</h2>
+      <div class="meta"><div><a href="index.html">← Back to the hub</a></div></div>
+    </section>
+  </div>
+
+  <script>
+    document.getElementById("redirect-uri").textContent =
+      location.origin + "/api/auth-callback";
+  </script>
+</body>
+</html>
