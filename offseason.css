@@ -11,6 +11,10 @@
   text-transform:uppercase;font-weight:800;padding:8px 14px}
 .os-table .row.champ{background:var(--paper)}
 .os-table .row.last .tm{color:var(--red-deep)}
+.os-table .row.made .rk{color:var(--ink)}
+.os-table .row.made{background:var(--paper)}
+.os-table .row.bowl{box-shadow:inset 4px 0 0 var(--red-deep)}
+.os-table .row.bowl .rk{color:var(--red-deep)}
 .os-table .rk{font-weight:800;color:var(--gray-mid)}
 .os-table .tm{font-weight:900;font-stretch:76%;text-transform:uppercase;font-size:14.5px;
   overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
