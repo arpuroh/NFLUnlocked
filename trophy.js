@@ -20,6 +20,25 @@
     return marks.join("");
   }
 
+  /* The Sacco is settled in a three-team bowl over the playoff weeks, not by the
+     standings. Where the bowl has been replayed, show the receipts inline. */
+  function saccoLine(s) {
+    const b = s.sacco_bowl;
+    if (!b) return "";
+    const pi = b.play_in, f = b.final;
+    const piLoser = pi.a.pts < pi.b.pts ? pi.a : pi.b;
+    const piWinner = piLoser === pi.a ? pi.b : pi.a;
+    const loser = f.a.total < f.b.total ? f.a : f.b;
+    const winner = loser === f.a ? f.b : f.a;
+    return `<div class="sacco-strip">
+      <span class="sl">\u{1F6BD} Sacco Bowl</span>
+      <span class="sd">Wk ${b.weeks[0]} play-in — ${esc(piWinner.manager)} ${pi.a === piWinner ? pi.a.pts.toFixed(2) : pi.b.pts.toFixed(2)}
+        beat ${esc(piLoser.manager)} ${piLoser.pts.toFixed(2)}.
+        Wk ${b.weeks[1]}–${b.weeks[2]} — ${esc(winner.manager)} ${winner.total.toFixed(2)},
+        <b>${esc(loser.manager)} ${loser.total.toFixed(2)}</b>.</span>
+    </div>`;
+  }
+
   function render(db) {
     const people = db.people.filter((p) => p.display);
     // Champions board: most rings first, then most recent title. The career
@@ -98,6 +117,7 @@
               <span class="n">${s.teams} teams</span>
             </summary>
             <div class="full">
+              ${saccoLine(s)}
               ${!s.standings.length ? `<p class="empty">Standings unavailable.</p>` : `
               <div class="fr hd"><span>#</span><span>Team</span><span>Manager</span>
                 <span class="c">Record</span><span class="c">PF</span><span class="c">PA</span><span class="c">Moves</span></div>
@@ -115,7 +135,14 @@
         <p class="tr-foot">Source: the league's own Yahoo archive, one page per season, parsed and
         cross-checked. Two managers named Greg are separated by franchise lineage
         (Miley vs. Injured Reserve). Two 2011 entries and both 2013 Greg teams could not be
-        attributed to a person and are excluded from career totals.</p>
+        attributed to a person and are excluded from career totals.
+        <br><br>The Sacco column is not last place. The Sacco is decided by a three-team bowl:
+        the 12 seed plays the 13 seed in playoff week one, the loser drops into the bowl and plays
+        the 14 seed for the next two weeks, and the lower two-week total takes it. Yahoo tracks none
+        of that — it drops the bottom two seeds out of every bracket — so each bowl was replayed from
+        the individual weekly lineup scores on every team's public page. 2025 is confirmed by the
+        league. The earlier years are reconstructions under the same rule; if the league remembers
+        one differently, the league is right.</p>
       </div>`;
   }
 
