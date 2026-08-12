@@ -507,13 +507,14 @@ a { color: inherit; text-decoration: none; }
   .tbl .hide-s { display: none; }
   body { padding-bottom: 52px; }
   .mobile-tabs {
-    display: grid; grid-template-columns: repeat(5, 1fr);
+    display: grid; grid-template-columns: repeat(6, 1fr);
     position: fixed; bottom: 0; left: 0; right: 0; z-index: 70;
     background: var(--ink); border-top: 2px solid var(--red);
   }
   .mobile-tabs a {
-    padding: 13px 4px; text-align: center; font-size: 9.5px; font-weight: 800;
-    letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-soft);
+    padding: 13px 2px; text-align: center; font-size: 9px; font-weight: 800;
+    letter-spacing: 0.05em; text-transform: uppercase; color: var(--gray-soft);
+    white-space: nowrap;
   }
   .mobile-tabs a.on { color: var(--white); }
 }
