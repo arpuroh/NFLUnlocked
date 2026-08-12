@@ -3,7 +3,10 @@
    league database) and fills the hall page after the core app renders. Kept
    separate from app.js so the weekly data pipeline never touches it. */
 (() => {
-  const esc = (s) => String(s ?? "").replace(/Toilet Bowl/g, "Sacco")    .replace(/[&<>"']/g, (c) =>
+  // The league renamed the Toilet Bowl to the Sacco. The stored review prose
+  // predates that, so the rename is applied on the way out as well as in the labels.
+  const esc = (s) => String(s ?? "").replace(/Toilet Bowl/g, "Sacco")
+    .replace(/[&<>"']/g, (c) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
   const medal = (p) => p === 1 ? "\u{1F3C6} Champion" : p === 2 ? "\u{1F948} Runner-Up" : "\u{1F949} Third Place";
