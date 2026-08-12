@@ -140,14 +140,13 @@
         cross-checked. Two managers named Greg are separated by franchise lineage
         (Miley vs. Injured Reserve). Two 2011 entries and both 2013 Greg teams could not be
         attributed to a person and are excluded from career totals.
-        <br><br>The Sacco column is not last place. The Sacco is decided by a three-team bowl:
-        the 12 seed plays the 13 seed in playoff week one, the loser drops into the bowl and plays
-        the 14 seed for the next two weeks, and the single worst weekly score takes it. Yahoo tracks none
-        of that — it drops the bottom two seeds out of every bracket — so each bowl was replayed from
-        the individual weekly lineup scores on every team's public page, and the seeding was checked
-        against Yahoo's own consolation brackets. 2025 (Greg) and 2022 (Andrew) are confirmed by the
-        league and both come out right; the rest are the same rule applied honestly. If the league
-        remembers one differently, the league is right.</p>
+        <br><br>The Sacco column is not last place. From 2016 on it is decided by the Sacco Bowl — a
+        three-week playoff starting the week after the regular season: the 12 and 13 seeds play, the
+        loser meets the 14 seed for the final two weeks, and the lower of those two weekly scores takes
+        it. Yahoo tracks none of that, so each bowl was replayed from the weekly lineup scores on every
+        team's public page and checked against all 320 scores Yahoo prints for its own bracket teams.
+        2022 (Andrew) and 2025 (Greg) are confirmed by the league and both come out right. Before 2016
+        the Sacco was simply last place, and that is what 2011–2015 show.</p>
       </div>`;
   }
 
