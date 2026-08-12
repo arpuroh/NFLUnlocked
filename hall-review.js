@@ -27,8 +27,8 @@
     if (bowl) {
       const pi = bowl.play_in, f = bowl.final;
       const piLoser = pi.a.pts < pi.b.pts ? "a" : "b";
-      const bowlLoser = f.a.total < f.b.total ? "a" : "b";
-      const wk = (t) => (t.weekly || []).map((v) => v.toFixed(2)).join("  +  ");
+      const bowlLoser = f.a.low < f.b.low ? "a" : "b";
+      const wk = (t) => (t.weekly || []).map((v) => v.toFixed(2)).join("  ·  ");
       receipts = `
         <div class="sb-leg">
           <div class="sb-hd">Play-in · Week ${esc(pi.week)}<i>Loser drops into the bowl</i></div>
@@ -38,10 +38,10 @@
           </div>
         </div>
         <div class="sb-leg">
-          <div class="sb-hd">The Bowl · Weeks ${esc(bowl.weeks[1])}–${esc(bowl.weeks[2])}<i>Lower two-week total takes it</i></div>
+          <div class="sb-hd">The Bowl · Weeks ${esc(bowl.weeks[1])}–${esc(bowl.weeks[2])}<i>Worst single week takes it</i></div>
           <div class="sb-pair">
-            ${side(f.a, "Play-in loser", f.a.total.toFixed(2), wk(f.a), bowlLoser === "a")}
-            ${side(f.b, "14 seed", f.b.total.toFixed(2), wk(f.b), bowlLoser === "b")}
+            ${side(f.a, "Play-in loser", f.a.low.toFixed(2), wk(f.a), bowlLoser === "a")}
+            ${side(f.b, "14 seed", f.b.low.toFixed(2), wk(f.b), bowlLoser === "b")}
           </div>
         </div>`;
     }
