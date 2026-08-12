@@ -65,7 +65,7 @@
               ${robbed && robbed !== champ
                 ? `${esc(robbed.manager)} scored more points than anybody (${robbed.points_for.toFixed(1)}) and has nothing to show for it.`
                 : ""}
-              ${last ? `${esc(last.team)} finished ${ord(last.rank)} at ${last.wins}-${last.losses} and owns the Toilet Bowl until further notice.` : ""}
+              ${last ? `${esc(last.team)} finished ${ord(last.rank)} at ${last.wins}-${last.losses} and owns the Sacco until further notice.` : ""}
               Full autopsy in the season review; fifteen years of history in the Trophy Room.</p>
             <div class="hero-actions">
               <a class="btn-red" href="hall.html">Read the season review →</a>
@@ -129,7 +129,7 @@
             <div class="sup"><div class="award">Busiest manager</div>
               <div class="who">${esc(busiest.team)}</div>
               <div class="note">${busiest.moves} roster moves. Nothing was ever good enough.</div></div>
-            ${last ? `<div class="sup"><div class="award">Toilet Bowl</div>
+            ${last ? `<div class="sup"><div class="award">The Sacco</div>
               <div class="who">${esc(last.team)}</div>
               <div class="note">${esc(last.manager)} · ${last.wins}-${last.losses}. It is engraved.</div></div>` : ""}
           </div>
