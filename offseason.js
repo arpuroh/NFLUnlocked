@@ -37,8 +37,17 @@
     const champ = byRank.find((r) => r.place === 1) || byRank[0];
     const second = byRank.find((r) => r.place === 2);
     const third = byRank.find((r) => r.place === 3);
+    // Regular-season order: record first, then points. Yahoo re-ranks the teams
+    // that miss the playoffs by how the consolation bracket went, which is not a
+    // standing anybody in this league recognises — and it hides the seeding that
+    // sends three teams to the Sacco Bowl. This is the order the season was played in.
+    const seeded = rows.slice().sort((a, b) =>
+      b.wins - a.wins || b.points_for - a.points_for);
+    seeded.forEach((r, i) => { r.seed = i + 1; });
+    const FIELD = seeded.length >= 14 ? 6 : 4;
+    const playoff = seeded.slice(0, FIELD).sort((a, b) => a.rank - b.rank);
     const last = byRank.find((r) => r.team === season.toilet) || byRank[byRank.length - 1];
-    const bottom = byRank[byRank.length - 1];
+    const bottom = seeded[seeded.length - 1];
     const hi = rows.slice().sort((a, b) => b.points_for - a.points_for)[0];
     const lo = rows.slice().sort((a, b) => a.points_for - b.points_for)[0];
     const bestRec = rows.slice().sort((a, b) =>
@@ -49,6 +58,16 @@
     // Robbed: most points, no title.
     const robbed = rows.slice().sort((a, b) => b.points_for - a.points_for)
       .find((r) => r.place !== 1);
+
+    const tableRow = (r, n, cls) => `<div class="row${cls || ""}">
+      <span class="rk">${n}</span>
+      <span class="tm">${esc(r.team)}</span>
+      <span class="mg">${esc(r.manager)}</span>
+      <span class="c">${r.wins}-${r.losses}</span>
+      <span class="c b">${r.points_for.toFixed(1)}</span>
+      <span class="c dim">${r.points_against.toFixed(1)}</span>
+      <span class="c dim">${r.moves}</span>
+    </div>`;
 
     const stat = (label, v, s, red) => `<div class="cell">
       <div class="eyebrow">${esc(label)}</div>
@@ -69,7 +88,7 @@
               ${robbed && robbed !== champ
                 ? `${esc(robbed.manager)} scored more points than anybody (${robbed.points_for.toFixed(1)}) and has nothing to show for it.`
                 : ""}
-              ${last ? `${esc(last.manager)} lost the Sacco Bowl from ${ord(last.rank)} place and owns the Sacco until further notice.` : ""}
+              ${last ? `${esc(last.manager)} lost the Sacco Bowl from the ${ord(last.seed || last.rank)} seed and owns the Sacco until further notice.` : ""}
               Full autopsy in the season review; fifteen years of history in the Trophy Room.</p>
             <div class="hero-actions">
               <a class="btn-red" href="hall.html">Read the season review →</a>
@@ -101,24 +120,29 @@
 
       <div class="body-grid">
         <div class="col-main">
-          <div class="sec-top"><h2 class="h-sec">${year} Final Standings</h2>
-            <span class="note">Where it actually ended</span></div>
+          <div class="sec-top"><h2 class="h-sec">${year} Playoffs</h2>
+            <span class="note">How the bracket finished</span></div>
           <hr class="rule-h">
           <div class="os-table">
             <div class="row hd"><span>#</span><span>Team</span><span>Manager</span>
               <span class="c">Record</span><span class="c">Pts For</span><span class="c">Pts Agst</span><span class="c">Moves</span></div>
-            ${byRank.map((r) => `<div class="row${r.place === 1 ? " champ" : ""}${r === last ? " last" : ""}">
-              <span class="rk">${r.place === 1 ? "\u{1F3C6}" : ord(r.rank)}</span>
-              <span class="tm">${esc(r.team)}</span>
-              <span class="mg">${esc(r.manager)}</span>
-              <span class="c">${r.wins}-${r.losses}</span>
-              <span class="c b">${r.points_for.toFixed(1)}</span>
-              <span class="c dim">${r.points_against.toFixed(1)}</span>
-              <span class="c dim">${r.moves}</span>
-            </div>`).join("")}
+            ${playoff.map((r) => tableRow(r, r.place === 1 ? "\u{1F3C6}" : ord(r.rank), r.place === 1 ? " champ" : "")).join("")}
           </div>
-          <p class="os-note">No live matchups until Week 1. Power rankings resume the moment
-          real scores exist — until then the final table is the only truth available.</p>
+
+          <div class="sec-top" style="margin-top:26px"><h2 class="h-sec">${year} Regular Season</h2>
+            <span class="note">Seeded by record, then points</span></div>
+          <hr class="rule-h">
+          <div class="os-table">
+            <div class="row hd"><span>Seed</span><span>Team</span><span>Manager</span>
+              <span class="c">Record</span><span class="c">Pts For</span><span class="c">Pts Agst</span><span class="c">Moves</span></div>
+            ${seeded.map((r) => tableRow(r, r.seed,
+              (r === last ? " last" : "") + (r.seed <= FIELD ? " made" : "") +
+              (r.seed > seeded.length - 3 ? " bowl" : ""))).join("")}
+          </div>
+          <p class="os-note">Top ${FIELD} seeds make the playoffs. The bottom three go to the Sacco
+          Bowl: the ${seeded.length - 2} and ${seeded.length - 1} seeds play in playoff week one, the
+          loser meets the ${seeded.length} seed for the next two weeks, and the lower two-week total
+          takes the Sacco. Everything between is just the season.</p>
         </div>
 
         <div class="col-side">
