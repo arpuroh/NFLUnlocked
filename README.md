@@ -1,8 +1,10 @@
 # 🏈 NFL Unlocked
 
 Auto-updating hub for Yahoo fantasy league [675504](https://football.fantasysports.yahoo.com/f1/675504).
-Power rankings, a savage AI roast column, FAAB forensics, reaction stamps and a permanent
+Power rankings, a savage weekly roast column, FAAB forensics, reaction stamps and a permanent
 record of every bad decision. Nobody touches anything after setup.
+
+**Live:** https://www.nflunlocked.com
 
 **Design:** modernist sports tabloid — Archivo compressed at newspaper scale, red-on-white,
 hard 2px rules, zero radius. Dark blocks are reserved for the moments that matter (the roast
@@ -25,16 +27,17 @@ reads bright and loud and darkness means something is happening.
 
 ```
 Yahoo Fantasy API ──▶ GitHub Actions (cron) ──▶ data/league.json ──▶ Vercel auto-deploy
-                            │
-                            └──▶ Claude API (weekly roast column, Tuesday mornings)
+                                                        ▲
+                          Claude (Cowork, weekly) ──────┘  writes the roast column
 ```
 
 - `scripts/fetch_yahoo.py` — pulls standings, matchups, transactions and FAAB, computes power
   rankings (record 35% / scoring 30% / all-play 20% / recent form 15%) plus a luck index, and
-  builds The Feed. Reactions, the league vote and season history are carried forward across runs.
-- `scripts/generate_roasts.py` — feeds the week's stats digest to Claude and writes the column.
-- `.github/workflows/update.yml` — hourly during Sunday games, Tuesday-morning roast drop,
-  daily baseline. Commits the data; Vercel redeploys on push.
+  builds The Feed. Reactions, the league vote and season history carry forward across runs.
+- `.github/workflows/update.yml` — hourly during Sunday games, post-MNF Tuesday, daily baseline.
+  Commits the data; Vercel redeploys on push.
+- The **roast column** is written by a scheduled Claude Cowork task each Tuesday morning, which
+  reads the live data file and pushes the column back. No Anthropic API key, no metered billing.
 - `api/auth-*.js` — two serverless functions used only for the one-time Yahoo OAuth handshake.
 
 Everything else is static: no build step, no framework, no runtime dependencies.
@@ -47,20 +50,24 @@ Stamps (🤡 🔥 💀 😂) render from counts in `data/league.json` and record
 `stamps()` in `app.js` at a shared store (a KV namespace or a tiny serverless endpoint) —
 the rendering layer does not change.
 
-## One-time setup
+## Setup
 
 Full walkthrough on the site: **/setup**
 
-1. Free Yahoo developer app (Fantasy Sports · Read), redirect URI `https://<your-domain>/api/auth-callback`
-2. `YAHOO_CLIENT_ID` / `YAHOO_CLIENT_SECRET` as Vercel env vars, redeploy
+The Yahoo app must have the **Fantasy Sports · Read** permission. Yahoo removed that option from
+newly created apps — apps that predate the change still carry it, and newer ones need approval
+via https://sports.yahoo.com/developer/access/. Without it, every league endpoint returns 401.
+
+1. Yahoo app redirect URI → `https://www.nflunlocked.com/api/auth-callback`
+2. `YAHOO_CLIENT_ID` / `YAHOO_CLIENT_SECRET` as Vercel env vars, then **redeploy**
+   (env var edits do not affect existing deployments)
 3. Visit `/setup`, click Connect Yahoo League, copy the refresh token
-4. Four GitHub Actions secrets: `YAHOO_CLIENT_ID`, `YAHOO_CLIENT_SECRET`, `YAHOO_REFRESH_TOKEN`, `ANTHROPIC_API_KEY`
-5. Actions → Update league data → Run workflow. Done forever.
+4. Three GitHub Actions secrets: `YAHOO_CLIENT_ID`, `YAHOO_CLIENT_SECRET`, `YAHOO_REFRESH_TOKEN`
+5. Actions → Update league data → Run workflow
 
 ## Config
 
-`LEAGUE_ID` (default `675504`), `GAME_CODE` (default `nfl`, resolves to the current season),
-`ANTHROPIC_MODEL`, `FORCE_ROAST=1`.
+`LEAGUE_ID` (default `675504`), `GAME_CODE` (default `nfl`, resolves to the current season).
 
 ## Roast policy
 
