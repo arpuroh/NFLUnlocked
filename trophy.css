@@ -16,7 +16,7 @@
 
 .tr-note{max-width:74ch;font-size:13.5px;line-height:1.55;color:var(--gray-mid);margin:0 0 14px}
 .tr-table{border:2px solid var(--ink);background:var(--white)}
-.tr-table .row{display:grid;grid-template-columns:1.25fr 1.5fr 46px 92px 62px 82px 44px 44px 44px;
+.tr-table .row{display:grid;grid-template-columns:1.3fr 1.25fr 44px 88px 58px 76px 40px 40px 62px 40px;
   gap:8px;padding:9px 14px;border-bottom:1px solid var(--rule);align-items:center;font-size:13.5px}
 .tr-table .row:last-child{border-bottom:0}
 .tr-table .row.hd{background:var(--ink);color:var(--white);font-size:10.5px;letter-spacing:.12em;
@@ -30,6 +30,10 @@
 .tr-table .gold{font-weight:900;color:var(--red)}
 .tr-table .bad{font-weight:800;color:var(--red-deep)}
 .tr-table .dim{color:var(--gray-soft)}
+.tr-table .row span.c::before{content:none}
+.tr-table .po{font-weight:800}
+.tr-table .po i{font-style:normal;font-weight:600;color:var(--gray-soft);font-size:11px}
+.tr-table .row.hd .po{font-size:9.5px}
 
 .tr-records{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:var(--rule);border:2px solid var(--ink)}
 .tr-records .c{background:var(--white);padding:14px 16px}
@@ -66,11 +70,39 @@
   .tr-champs{grid-template-columns:repeat(2,1fr)}
   .tr-records{grid-template-columns:repeat(2,1fr)}
 }
-@media (max-width:760px){
-  .tr-table .row{grid-template-columns:1fr 60px 56px 44px;grid-auto-rows:min-content}
-  .tr-table .t,.tr-table .row span:nth-child(6){display:none}
-  .tr-ledger summary{grid-template-columns:52px 1fr;row-gap:4px}
+@media (max-width:900px){
+  .tr-hero{padding:24px 18px 22px}
+  .tr-champs{grid-template-columns:1fr 1fr}
+  .tr-records{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .tr-hero{padding:20px 16px 18px}
+  .tr-sub{font-size:13.5px}
+  .tr-champs,.tr-records{grid-template-columns:1fr}
+  .tr-champs .nm{font-size:22px}
+
+  /* Career table becomes a stacked card per manager: the desktop grid has ten
+     columns and none of them survive a 360px screen. */
+  .tr-table .row.hd{display:none}
+  .tr-table .row{display:block;padding:12px 14px;font-size:13px}
+  .tr-table .m{display:block;font-size:16px;line-height:1.15}
+  .tr-table .t{display:block;font-size:12px;margin:2px 0 6px}
+  .tr-table .row span.c{display:inline-block;margin:0 12px 2px 0;text-align:left;
+    font-variant-numeric:tabular-nums}
+  .tr-table .row span.c::before{content:attr(data-k) " ";font-size:9.5px;letter-spacing:.09em;
+    text-transform:uppercase;color:var(--gray-soft);font-weight:800}
+
+  /* Record book cards */
+  .tr-records .v{font-size:26px}
+
+  /* Ledger: year + champion on one line, everything else stacked */
+  .tr-ledger summary{grid-template-columns:1fr;row-gap:3px;padding:12px 14px;font-size:12.5px}
+  .tr-ledger .y{font-size:22px;margin-bottom:2px}
   .tr-ledger .n{display:none}
-  .tr-ledger .fr{grid-template-columns:36px 1fr 70px}
-  .tr-ledger .fr span:nth-child(3),.tr-ledger .fr span:nth-child(6),.tr-ledger .fr span:nth-child(7){display:none}
+  .tr-ledger summary span{white-space:normal}
+  .tr-ledger .full{padding:6px 10px 14px}
+  .tr-ledger .fr{grid-template-columns:32px 1fr 62px 62px;gap:6px;font-size:12px}
+  .tr-ledger .fr .mg,.tr-ledger .fr span:nth-child(6),.tr-ledger .fr span:nth-child(7){display:none}
+  .tr-ledger .fr.hd span:nth-child(3){display:none}
+  .tr-foot{font-size:11px}
 }
