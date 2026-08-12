@@ -1,0 +1,194 @@
+/* NFL Unlocked — offseason mode.
+
+   Between the final whistle and Week 1 there are no matchups, so the live
+   pages have nothing to render: the roast hero, the weekly stat bug and the
+   all-play column all bottom out at "—". Rather than show an empty live page
+   (or a stale sample column), this takes over the This Week and Rankings pages
+   and renders the completed season instead: final standings, season superlatives,
+   the champion, and the countdown to the draft.
+
+   It activates only when the league data has no completed matchups, so the
+   moment Week 1 kicks off the normal live pages come back with no changes. */
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const ord = (i) => {
+    const s = ["th", "st", "nd", "rd"], v = i % 100;
+    return i + (s[(v - 20) % 10] || s[v] || s[0]);
+  };
+
+  // Draft night, per the league's Yahoo settings page.
+  const DRAFT = new Date("2026-09-08T21:00:00Z");
+
+  function countdown() {
+    const ms = DRAFT - new Date();
+    if (ms <= 0) return { v: "Live", s: "Draft is underway" };
+    const d = Math.floor(ms / 86400000);
+    const h = Math.floor((ms % 86400000) / 3600000);
+    return { v: d > 0 ? d + "d " + h + "h" : h + "h", s: "Tue Sep 8 · 5:00pm ET" };
+  }
+
+  function seasonView(db, rows, year) {
+    const byRank = rows.slice().sort((a, b) => a.rank - b.rank);
+    const champ = byRank.find((r) => r.place === 1) || byRank[0];
+    const second = byRank.find((r) => r.place === 2);
+    const third = byRank.find((r) => r.place === 3);
+    const last = byRank[byRank.length - 1];
+    const hi = rows.slice().sort((a, b) => b.points_for - a.points_for)[0];
+    const lo = rows.slice().sort((a, b) => a.points_for - b.points_for)[0];
+    const bestRec = rows.slice().sort((a, b) =>
+      (b.wins / (b.wins + b.losses)) - (a.wins / (a.wins + a.losses)))[0];
+    const busiest = rows.slice().sort((a, b) => b.moves - a.moves)[0];
+    const cd = countdown();
+
+    // Robbed: most points, no title.
+    const robbed = rows.slice().sort((a, b) => b.points_for - a.points_for)
+      .find((r) => r.place !== 1);
+
+    const stat = (label, v, s, red) => `<div class="cell">
+      <div class="eyebrow">${esc(label)}</div>
+      <div class="v${red ? " red" : ""}">${esc(v)}</div>
+      <div class="s">${esc(s)}</div></div>`;
+
+    return `
+      <section class="dark roast-hero os-hero">
+        <div class="hero-grid">
+          <div>
+            <div class="filed">
+              <span class="tag-red">Offseason</span>
+              <span class="eyebrow">${year} season complete · ${rows.length} teams · next kickoff September</span>
+            </div>
+            <h1 class="display">The ${year} Season Is In The Books
+              <span class="kick">(and the receipts are permanent)</span></h1>
+            <p class="lede">${esc(champ.manager)} takes the ${year} title with ${esc(champ.team)}.
+              ${robbed && robbed !== champ
+                ? `${esc(robbed.manager)} scored more points than anybody (${robbed.points_for.toFixed(1)}) and has nothing to show for it.`
+                : ""}
+              ${last ? `${esc(last.team)} finished ${ord(last.rank)} at ${last.wins}-${last.losses} and owns the Toilet Bowl until further notice.` : ""}
+              Full autopsy in the season review; fifteen years of history in the Trophy Room.</p>
+            <div class="hero-actions">
+              <a class="btn-red" href="hall.html">Read the season review →</a>
+              <a class="btn-ghost" href="trophy.html">Trophy Room →</a>
+            </div>
+          </div>
+          <div class="board">
+            <div class="eyebrow">${year} Podium</div>
+            ${[[champ, "\u{1F3C6}"], [second, "\u{1F948}"], [third, "\u{1F949}"]].filter(([r]) => r).map(([r, m]) => `
+              <div class="board-row">
+                <span class="bn">${m}</span>
+                <span class="bt">${esc(r.team)}</span>
+                <span class="bm">${esc(r.manager)}</span>
+              </div>`).join("")}
+            ${last ? `<div class="board-row">
+              <span class="bn">\u{1F6BD}</span><span class="bt">${esc(last.team)}</span>
+              <span class="bm">${esc(last.manager)}</span></div>` : ""}
+            <a class="see-all" href="trophy.html">All ${db.completed_seasons || 15} seasons →</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="statbug">
+        ${stat("Most points, " + year, hi.points_for.toFixed(1), hi.team)}
+        ${stat("Fewest points, " + year, lo.points_for.toFixed(1), lo.team, true)}
+        ${stat("Best record, " + year, bestRec.wins + "-" + bestRec.losses, bestRec.team)}
+        ${stat("Draft night", cd.v, cd.s)}
+      </section>
+
+      <div class="body-grid">
+        <div class="col-main">
+          <div class="sec-top"><h2 class="h-sec">${year} Final Standings</h2>
+            <span class="note">Where it actually ended</span></div>
+          <hr class="rule-h">
+          <div class="os-table">
+            <div class="row hd"><span>#</span><span>Team</span><span>Manager</span>
+              <span class="c">Record</span><span class="c">Pts For</span><span class="c">Pts Agst</span><span class="c">Moves</span></div>
+            ${byRank.map((r) => `<div class="row${r.place === 1 ? " champ" : ""}${r === last ? " last" : ""}">
+              <span class="rk">${r.place === 1 ? "\u{1F3C6}" : ord(r.rank)}</span>
+              <span class="tm">${esc(r.team)}</span>
+              <span class="mg">${esc(r.manager)}</span>
+              <span class="c">${r.wins}-${r.losses}</span>
+              <span class="c b">${r.points_for.toFixed(1)}</span>
+              <span class="c dim">${r.points_against.toFixed(1)}</span>
+              <span class="c dim">${r.moves}</span>
+            </div>`).join("")}
+          </div>
+          <p class="os-note">No live matchups until Week 1. Power rankings resume the moment
+          real scores exist — until then the final table is the only truth available.</p>
+        </div>
+
+        <div class="col-side">
+          <div class="mod">
+            <h2 class="h-sec">${year} Awards</h2><hr class="rule-h">
+            <div class="sup"><div class="award">Champion</div>
+              <div class="who">${esc(champ.team)}</div>
+              <div class="note">${esc(champ.manager)} · ${champ.wins}-${champ.losses} · ${champ.points_for.toFixed(1)} PF</div></div>
+            ${robbed && robbed !== champ ? `<div class="sup"><div class="award">Most points, no ring</div>
+              <div class="who">${esc(robbed.team)}</div>
+              <div class="note">${esc(robbed.manager)} led the league at ${robbed.points_for.toFixed(1)} and finished ${ord(robbed.rank)}.</div></div>` : ""}
+            <div class="sup"><div class="award">Busiest manager</div>
+              <div class="who">${esc(busiest.team)}</div>
+              <div class="note">${busiest.moves} roster moves. Nothing was ever good enough.</div></div>
+            ${last ? `<div class="sup"><div class="award">Toilet Bowl</div>
+              <div class="who">${esc(last.team)}</div>
+              <div class="note">${esc(last.manager)} · ${last.wins}-${last.losses}. It is engraved.</div></div>` : ""}
+          </div>
+          <div class="mod">
+            <h2 class="h-sec">The Long View</h2><hr class="rule-h">
+            ${(db.people || []).filter((p) => p.display && p.rings)
+              .slice(0, 4).map((p) => `<div class="clown-row">
+                <span class="r">${p.rings}${p.rings > 1 ? "×" : ""}</span>
+                <span>${esc(p.manager)}</span>
+                <span class="c">${esc(p.titles.join(", "))}</span></div>`).join("")}
+            <p class="vote-foot" style="margin-top:12px">Titles since ${db.first_season || 2011}.
+              <a href="trophy.html">Full career table →</a></p>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  async function run() {
+    const page = document.body.dataset.page;
+    if (page !== "home" && page !== "ranks") return;
+
+    let league = {}, db = {}, ledger = {};
+    try {
+      [league, db, ledger] = await Promise.all([
+        fetch("data/league.json", { cache: "no-store" }).then((r) => r.json()).catch(() => ({})),
+        fetch("data/trophy.json", { cache: "no-store" }).then((r) => r.json()),
+        fetch("data/ledger.json", { cache: "no-store" }).then((r) => r.json()),
+      ]);
+    } catch { return; }
+
+    // Live season? Leave the normal pages alone.
+    const played = (league.matchups || []).filter((m) => m.status === "postevent");
+    if (played.length) return;
+
+    const done = (db.seasons || []).filter((s) => !s.in_progress && s.champion);
+    const latest = done[done.length - 1];
+    if (!latest) return;
+    const raw = ledger[String(latest.year)] || [];
+    if (!raw.length) return;
+    const rows = raw.map((a) => ({
+      team: a[0], manager: a[1], rank: a[2], place: a[3],
+      wins: a[4], losses: a[5], points_for: a[6], points_against: a[7], moves: a[8],
+    }));
+
+    const paint = () => {
+      const app = $("#app");
+      if (!app) return false;
+      app.innerHTML = seasonView(db, rows, latest.year);
+      const chip = document.querySelector(".masthead .badge-live");
+      if (chip) { chip.textContent = "Offseason"; chip.classList.add("os-badge"); }
+      return true;
+    };
+
+    // app.js renders asynchronously; take over once it has painted.
+    setTimeout(paint, 60);
+    setTimeout(paint, 400);
+    setTimeout(paint, 1200);
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();
