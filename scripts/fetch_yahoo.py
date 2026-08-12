@@ -16,6 +16,7 @@ Optional:
   GAME_CODE            Yahoo game code (default: nfl → resolves to current season)
 """
 
+import hashlib
 import json
 import os
 import sys
@@ -54,10 +55,19 @@ def get_access_token() -> str:
         "grant_type": "refresh_token",
         "redirect_uri": "oob",
     }).encode()
+    # Identify which Yahoo app these secrets belong to without ever printing them.
+    # Actions masks secret values in logs, so a hash is the only way to tell the
+    # right app from the wrong one — and hashes are safe to publish.
+    print("  credential fingerprints (sha256, first 10):")
+    for label, val in (("client_id", cid), ("client_secret", secret), ("refresh_token", refresh)):
+        print(f"    {label:<14} {hashlib.sha256(val.encode()).hexdigest()[:10]}  len={len(val)}")
+
     req = urllib.request.Request(TOKEN_URL, data=body, method="POST")
     req.add_header("Content-Type", "application/x-www-form-urlencoded")
     with urllib.request.urlopen(req) as resp:
         tok = json.loads(resp.read().decode())
+    granted = tok.get("scope") or tok.get("xoauth_scope") or "(none reported)"
+    print(f"  token granted scope: {granted}; expires_in={tok.get('expires_in')}")
     return tok["access_token"]
 
 
