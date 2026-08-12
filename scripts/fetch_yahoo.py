@@ -20,6 +20,7 @@ import json
 import os
 import sys
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
@@ -70,12 +71,82 @@ def api_get(token: str, path: str, retries: int = 3) -> dict:
         try:
             with urllib.request.urlopen(req) as resp:
                 return json.loads(resp.read().decode())
+        except urllib.error.HTTPError as e:
+            # Yahoo puts the real reason in the body; the status alone is useless.
+            try:
+                body = e.read().decode("utf-8", "replace")
+            except Exception:  # noqa: BLE001
+                body = ""
+            body = " ".join(body.split())[:500]
+            if attempt == retries - 1:
+                raise RuntimeError(f"HTTP {e.code} on {path} :: {body}") from None
+            print(f"  retrying {path} after HTTP {e.code}: {body}")
+            time.sleep(2 * (attempt + 1))
         except Exception as e:  # noqa: BLE001
             if attempt == retries - 1:
                 raise
             print(f"  retrying {path} after error: {e}")
             time.sleep(2 * (attempt + 1))
     return {}
+
+
+def discover_leagues(token: str) -> list:
+    """Every NFL league this Yahoo account has ever joined, newest season first.
+
+    League ids are re-issued every season, so a hardcoded `nfl.l.<id>` key silently
+    points at a stranger's league whenever the game alias rolls over — Yahoo answers
+    that with a 403, not a 404. Asking Yahoo which leagues the token actually owns
+    removes the guesswork, and doubles as the season chain for league history.
+    """
+    raw = api_get(token, "users;use_login=1/games;game_codes=nfl/leagues")
+    found = []
+    for u in indexed_items(raw.get("fantasy_content", {}).get("users", {})):
+        user = merge_dicts(u.get("user", []))
+        for g in indexed_items(user.get("games", {})):
+            game = merge_dicts(g.get("game", []))
+            season = safe_int(game.get("season"))
+            for l in indexed_items(game.get("leagues", {})):
+                lg = merge_dicts(l.get("league", []))
+                if not lg.get("league_key"):
+                    continue
+                found.append({
+                    "season": season or safe_int(lg.get("season")),
+                    "league_key": lg.get("league_key"),
+                    "league_id": str(lg.get("league_id") or ""),
+                    "name": lg.get("name") or "",
+                    "num_teams": safe_int(lg.get("num_teams")),
+                })
+    found.sort(key=lambda x: x["season"], reverse=True)
+    return found
+
+
+def resolve_league_key(token: str) -> str:
+    """Pick the live league key, preferring an exact LEAGUE_ID hit, newest season."""
+    try:
+        leagues = discover_leagues(token)
+    except Exception as e:  # noqa: BLE001
+        print(f"  league discovery failed ({e}); falling back to {LEAGUE_KEY}")
+        return LEAGUE_KEY
+
+    if not leagues:
+        print(f"  no leagues visible to this token; falling back to {LEAGUE_KEY}")
+        return LEAGUE_KEY
+
+    print(f"  this token can see {len(leagues)} NFL league(s):")
+    for lg in leagues:
+        print(f"    {lg['season']}  {lg['league_key']:<18} id={lg['league_id']:<8} "
+              f"{lg['num_teams']:>2} teams  {lg['name']}")
+
+    exact = [lg for lg in leagues if lg["league_id"] == str(LEAGUE_ID)]
+    if exact:
+        pick = exact[0]
+        print(f"  matched LEAGUE_ID {LEAGUE_ID} -> {pick['league_key']} ({pick['season']})")
+        return pick["league_key"]
+
+    pick = leagues[0]
+    print(f"  LEAGUE_ID {LEAGUE_ID} not in this account's leagues; "
+          f"using newest instead -> {pick['league_key']} ({pick['season']}, {pick['name']})")
+    return pick["league_key"]
 
 
 # ------------------------------------------------- yahoo JSON helpers
@@ -462,8 +533,10 @@ def main() -> None:
     DATA_DIR.mkdir(exist_ok=True)
     RAW_DIR.mkdir(exist_ok=True)
 
+    global LEAGUE_KEY
     print(f"Fetching league {LEAGUE_KEY} ...")
     token = get_access_token()
+    LEAGUE_KEY = resolve_league_key(token)
 
     standings_raw = api_get(token, f"league/{LEAGUE_KEY}/standings")
     (RAW_DIR / "standings.json").write_text(json.dumps(standings_raw, indent=1))
