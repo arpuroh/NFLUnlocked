@@ -77,6 +77,19 @@
             <div class="mg">${esc(wr.manager)} · ${esc(wr.record)} · ${wr.pf} PF</div>
             <p>${esc(wr.note)}</p></div>` : ""}
         </div>
+        <h2 class="h-sec" style="margin-top:36px">${esc(rv.farewells.headline)}</h2><hr class="rule-h">
+        <p class="rv-p">${esc(rv.farewells.intro)}</p>
+        <div class="rv-toasts">
+          ${rv.farewells.people.map((f) => `<div class="c">
+            <div class="eyebrow red">${esc(f.title)}</div>
+            <div class="nm">${esc(f.name)} <span class="tm">· ${esc(f.team)}</span></div>
+            <p>${esc(f.toast)}</p>
+            <div class="cheers">\u{1F942} Gone, but roasted forever.</div></div>`).join("")}
+        </div>
+        <div class="rv-arrivals">
+          <div class="eyebrow">${esc(rv.arrivals.headline)}</div>
+          <p>${esc(rv.arrivals.body)}</p>
+        </div>
         ${saccoHtml(hist.sacco_rules, season.sacco_bowl)}
         <h2 class="h-sec" style="margin-top:36px">How It Happened</h2><hr class="rule-h">
         ${rv.story.map((p) => `<p class="rv-p">${esc(p)}</p>`).join("")}
@@ -90,19 +103,6 @@
             <span class="f">${esc(r.finish)}</span>
             <span class="g ${r.grade[0] === "A" ? "good" : (r.grade[0] === "D" || r.grade[0] === "F") ? "bad" : ""}">${esc(r.grade)}</span>
           </div>`).join("")}
-        </div>
-        <h2 class="h-sec" style="margin-top:36px">${esc(rv.farewells.headline)}</h2><hr class="rule-h">
-        <p class="rv-p">${esc(rv.farewells.intro)}</p>
-        <div class="rv-toasts">
-          ${rv.farewells.people.map((f) => `<div class="c">
-            <div class="eyebrow red">${esc(f.title)}</div>
-            <div class="nm">${esc(f.name)} <span class="tm">· ${esc(f.team)}</span></div>
-            <p>${esc(f.toast)}</p>
-            <div class="cheers">\u{1F942} Gone, but roasted forever.</div></div>`).join("")}
-        </div>
-        <div class="rv-arrivals">
-          <div class="eyebrow">${esc(rv.arrivals.headline)}</div>
-          <p>${esc(rv.arrivals.body)}</p>
         </div>
       </div>`;
   }
