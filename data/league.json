@@ -1,0 +1,127 @@
+{
+ "meta": {
+  "league_key": "nfl.l.675504",
+  "name": "NFL Unlocked",
+  "season": "2026",
+  "current_week": 10,
+  "start_week": 1,
+  "end_week": 17,
+  "num_teams": 10,
+  "url": "https://football.fantasysports.yahoo.com/f1/675504",
+  "uses_faab": true,
+  "faab_budget": 100,
+  "demo": true,
+  "last_updated": "2026-08-12T13:00:00+00:00"
+ },
+ "teams": [
+  {"team_key":"d.1","name":"Championship or Bust (Bust)","manager":"Demo Dave","moves":31,"faab_balance":12,"rank":1,"wins":9,"losses":0,"ties":0,"streak":"W9","points_for":1187.4,"points_against":950.4,"trophies":["Champion '23"]},
+  {"team_key":"d.2","name":"The Waiver Wire Gremlins","manager":"Demo Priya","moves":44,"faab_balance":3,"rank":4,"wins":6,"losses":3,"ties":0,"streak":"L2","points_for":1121.8,"points_against":1022.7,"trophies":["Champion '24"]},
+  {"team_key":"d.3","name":"Started From The Bottom (Still Here)","manager":"Demo Marcus","moves":12,"faab_balance":71,"rank":3,"wins":7,"losses":2,"ties":0,"streak":"W1","points_for":1093.2,"points_against":947.0,"trophies":["Champion '22"]},
+  {"team_key":"d.4","name":"Bench Points University","manager":"Demo Sarah","moves":19,"faab_balance":45,"rank":2,"wins":7,"losses":2,"ties":0,"streak":"W2","points_for":1140.7,"points_against":1017.7,"trophies":[]},
+  {"team_key":"d.5","name":"Autodraft Andy's Revenge","manager":"Demo Andy","moves":4,"faab_balance":97,"rank":10,"wins":1,"losses":8,"ties":0,"streak":"L5","points_for":1015.5,"points_against":1109.8,"trophies":[]},
+  {"team_key":"d.6","name":"The 2019 Champs (Ask Me About It)","manager":"Demo Jordan","moves":22,"faab_balance":38,"rank":5,"wins":4,"losses":5,"ties":0,"streak":"W1","points_for":1052.0,"points_against":1041.4,"trophies":["Champion '21","Champion '25"]},
+  {"team_key":"d.7","name":"Injured Reserve Society","manager":"Demo Chris","moves":38,"faab_balance":9,"rank":6,"wins":3,"losses":6,"ties":0,"streak":"L2","points_for":998.6,"points_against":1141.2,"trophies":["Toilet Bowl '23"]},
+  {"team_key":"d.8","name":"Trust The Process (Year 9)","manager":"Demo Alex","moves":15,"faab_balance":55,"rank":7,"wins":3,"losses":6,"ties":0,"streak":"W2","points_for":982.4,"points_against":1059.3,"trophies":["Champion '20"]},
+  {"team_key":"d.9","name":"Vibes Over Analytics","manager":"Demo Taylor","moves":27,"faab_balance":21,"rank":8,"wins":3,"losses":6,"ties":0,"streak":"L1","points_for":941.1,"points_against":1091.1,"trophies":["Toilet Bowl ×4"]},
+  {"team_key":"d.10","name":"The Toilet Bowl Favorite","manager":"Demo Sam","moves":8,"faab_balance":88,"rank":9,"wins":2,"losses":7,"ties":0,"streak":"L1","points_for":887.9,"points_against":1040.0,"trophies":["Toilet Bowl '24"]}
+ ],
+ "power_rankings": [
+  {"team_key":"d.1","score":0.9452,"all_play":"64-17","luck_index":0.21,"rank":1,"prev_rank":1,"movement":0},
+  {"team_key":"d.4","score":0.7412,"all_play":"52-29","luck_index":0.136,"rank":2,"prev_rank":3,"movement":1},
+  {"team_key":"d.3","score":0.675,"all_play":"46-35","luck_index":0.21,"rank":3,"prev_rank":4,"movement":1},
+  {"team_key":"d.2","score":0.6412,"all_play":"51-30","luck_index":0.037,"rank":4,"prev_rank":2,"movement":-2},
+  {"team_key":"d.6","score":0.4897,"all_play":"42-39","luck_index":-0.075,"rank":5,"prev_rank":5,"movement":0},
+  {"team_key":"d.8","score":0.3881,"all_play":"33-48","luck_index":-0.074,"rank":6,"prev_rank":7,"movement":1},
+  {"team_key":"d.7","score":0.3542,"all_play":"36-45","luck_index":-0.111,"rank":7,"prev_rank":8,"movement":1},
+  {"team_key":"d.9","score":0.3176,"all_play":"29-52","luck_index":-0.025,"rank":8,"prev_rank":9,"movement":1},
+  {"team_key":"d.5","score":0.3084,"all_play":"36-45","luck_index":-0.333,"rank":9,"prev_rank":6,"movement":-3},
+  {"team_key":"d.10","score":0.1546,"all_play":"16-65","luck_index":0.024,"rank":10,"prev_rank":10,"movement":0}
+ ],
+ "matchups": [
+  {"week":7,"status":"postevent","is_playoffs":false,"winner_team_key":"d.1","teams":[{"team_key":"d.1","name":"Championship or Bust (Bust)","points":125.4},{"team_key":"d.9","name":"Vibes Over Analytics","points":98.2}]},
+  {"week":7,"status":"postevent","is_playoffs":false,"winner_team_key":"d.4","teams":[{"team_key":"d.4","name":"Bench Points University","points":133.8},{"team_key":"d.5","name":"Autodraft Andy's Revenge","points":104.1}]},
+  {"week":7,"status":"postevent","is_playoffs":false,"winner_team_key":"d.3","teams":[{"team_key":"d.3","name":"Started From The Bottom (Still Here)","points":118.6},{"team_key":"d.7","name":"Injured Reserve Society","points":92.4}]},
+  {"week":7,"status":"postevent","is_playoffs":false,"winner_team_key":"d.2","teams":[{"team_key":"d.2","name":"The Waiver Wire Gremlins","points":121.0},{"team_key":"d.10","name":"The Toilet Bowl Favorite","points":87.5}]},
+  {"week":7,"status":"postevent","is_playoffs":false,"winner_team_key":"d.6","teams":[{"team_key":"d.6","name":"The 2019 Champs (Ask Me About It)","points":112.3},{"team_key":"d.8","name":"Trust The Process (Year 9)","points":101.9}]},
+  {"week":8,"status":"postevent","is_playoffs":false,"winner_team_key":"d.1","teams":[{"team_key":"d.1","name":"Championship or Bust (Bust)","points":139.0},{"team_key":"d.8","name":"Trust The Process (Year 9)","points":110.6}]},
+  {"week":8,"status":"postevent","is_playoffs":false,"winner_team_key":"d.4","teams":[{"team_key":"d.4","name":"Bench Points University","points":126.0},{"team_key":"d.2","name":"The Waiver Wire Gremlins","points":119.4}]},
+  {"week":8,"status":"postevent","is_playoffs":false,"winner_team_key":"d.3","teams":[{"team_key":"d.3","name":"Started From The Bottom (Still Here)","points":110.3},{"team_key":"d.5","name":"Autodraft Andy's Revenge","points":95.7}]},
+  {"week":8,"status":"postevent","is_playoffs":false,"winner_team_key":"d.9","teams":[{"team_key":"d.9","name":"Vibes Over Analytics","points":116.5},{"team_key":"d.7","name":"Injured Reserve Society","points":99.1}]},
+  {"week":8,"status":"postevent","is_playoffs":false,"winner_team_key":"d.6","teams":[{"team_key":"d.6","name":"The 2019 Champs (Ask Me About It)","points":108.8},{"team_key":"d.10","name":"The Toilet Bowl Favorite","points":98.4}]},
+  {"week":9,"status":"postevent","is_playoffs":false,"winner_team_key":"d.1","teams":[{"team_key":"d.1","name":"Championship or Bust (Bust)","points":151.9},{"team_key":"d.7","name":"Injured Reserve Society","points":79.3}],"reactions":{"🤡":31,"🔥":12,"😂":4}},
+  {"week":9,"status":"postevent","is_playoffs":false,"winner_team_key":"d.4","teams":[{"team_key":"d.4","name":"Bench Points University","points":126.0},{"team_key":"d.2","name":"The Waiver Wire Gremlins","points":91.9}],"reactions":{"💀":8,"🔥":19,"😂":2}},
+  {"week":9,"status":"postevent","is_playoffs":false,"winner_team_key":"d.3","teams":[{"team_key":"d.3","name":"Started From The Bottom (Still Here)","points":110.3},{"team_key":"d.10","name":"The Toilet Bowl Favorite","points":98.4}],"reactions":{"🤡":44,"🔥":3,"😂":27}},
+  {"week":9,"status":"postevent","is_playoffs":false,"winner_team_key":"d.6","teams":[{"team_key":"d.6","name":"The 2019 Champs (Ask Me About It)","points":139.0},{"team_key":"d.9","name":"Vibes Over Analytics","points":116.5}],"reactions":{"💀":12,"🔥":22,"😂":9}},
+  {"week":9,"status":"postevent","is_playoffs":false,"winner_team_key":"d.8","teams":[{"team_key":"d.8","name":"Trust The Process (Year 9)","points":126.3},{"team_key":"d.5","name":"Autodraft Andy's Revenge","points":118.9}],"reactions":{"🤡":2,"🔥":1,"😂":14}}
+ ],
+ "transactions": [
+  {"id":"d.tx.1","type":"add/drop","status":"successful","timestamp":1786300800,"faab_bid":54,"adds":[{"player":"Backup Running Back","position":"RB","nfl_team":"DAL","team_name":"Injured Reserve Society","team_key":"d.7"}],"drops":[{"player":"Last Week's Hero","position":"WR","nfl_team":"MIA","team_name":"Injured Reserve Society","team_key":"d.7"}]},
+  {"id":"d.tx.2","type":"add/drop","status":"successful","timestamp":1786214400,"faab_bid":31,"adds":[{"player":"Streaming Defense","position":"DEF","nfl_team":"NE","team_name":"The Waiver Wire Gremlins","team_key":"d.2"}],"drops":[{"player":"Bye Week Casualty","position":"DEF","nfl_team":"SEA","team_name":"The Waiver Wire Gremlins","team_key":"d.2"}]},
+  {"id":"d.tx.3","type":"add","status":"successful","timestamp":1786128000,"faab_bid":2,"adds":[{"player":"Handcuff Nobody Wanted","position":"RB","nfl_team":"KC","team_name":"Championship or Bust (Bust)","team_key":"d.1"}],"drops":[]},
+  {"id":"d.tx.4","type":"add/drop","status":"successful","timestamp":1786041600,"faab_bid":17,"adds":[{"player":"Rookie Hype Train","position":"WR","nfl_team":"GB","team_name":"Vibes Over Analytics","team_key":"d.9"}],"drops":[{"player":"Proven Veteran","position":"WR","nfl_team":"PIT","team_name":"Vibes Over Analytics","team_key":"d.9"}]}
+ ],
+ "faab": {
+  "budget": 100,
+  "top_bids": [
+   {"team_key":"d.7","team_name":"Injured Reserve Society","player":"Backup Running Back","bid":54,"timestamp":1786300800},
+   {"team_key":"d.2","team_name":"The Waiver Wire Gremlins","player":"Streaming Defense","bid":31,"timestamp":1786214400},
+   {"team_key":"d.9","team_name":"Vibes Over Analytics","player":"Rookie Hype Train","bid":17,"timestamp":1786041600}
+  ]
+ },
+ "roast": {
+  "week": 9,
+  "generated_at": "2026-08-12T10:02:00+00:00",
+  "headline": "Everyone Here Should Be Ashamed (Except The Guy We Hate For Winning)",
+  "intro": "Nine weeks in and the standings are a crime scene. One 9-0 fraud, one man who spent $54 on a backup, and a six-game losing streak still sitting on $88 of unspent FAAB like it earns interest. This is sample content — connect the Yahoo league and the Executioner files a real one every Tuesday.",
+  "reactions": {"🤡":214,"🔥":88,"💀":47},
+  "team_blurbs": [
+   {"team_key":"d.1","title":"Congrats On Peaking In The Regular Season. Again.","body":"9-0 and insufferable about it. You have outscored the league by 65 points and you will still find a way to lose in the semifinals to someone who started a player on bye. History does not repeat, but your playoff collapses do.","reactions":{"💀":41,"🤡":22,"😂":4}},
+   {"team_key":"d.7","title":"$54 On A Backup. Fifty. Four.","body":"You dropped more than half your remaining budget on a handcuff whose starter is listed as day-to-day, which is also how we would describe your grip on this roster. 79.3 points this week. A high school JV team drafting by jersey color does better.","reactions":{"🤡":38,"💀":19,"😂":11}},
+   {"team_key":"d.5","title":"The Schedule Finally Stopped Lying For You","body":"1-8 with a luck index of -0.333, the worst in the league. You have been outscored by teams you beat and beaten by teams you outscored. At some point that stops being variance and starts being a personality.","reactions":{"😂":27,"🤡":14}},
+   {"team_key":"d.10","title":"The Toilet Bowl Is Not Going To Win Itself","body":"2-7 and still holding $88 of FAAB like it accrues interest. Spend it. Or do not — at this point the waiver wire cannot save you, only witness protection can.","reactions":{"🤡":52,"💀":9}}
+  ],
+  "superlatives": [
+   {"award":"FAAB Arsonist of the Week","team_name":"Injured Reserve Society","note":"$54 on a backup RB — the financial equivalent of paying full price for airport sushi."},
+   {"award":"Luckiest Fraud","team_name":"Started From The Bottom","note":"7-2 on a +0.210 luck index. The schedule is doing more carrying than the roster."},
+   {"award":"Bench of the Week","team_name":"Bench Points University","note":"Left 41 points on the bench and still won. Imagine being this good at losing at winning."}
+  ],
+  "closing": "Connect the Yahoo league and the Executioner starts publishing for real. Until then, these demo managers take the bullets meant for you."
+ },
+ "vote": {
+  "question": "Who is the biggest fraud at 7-2?",
+  "options": [{"label":"Started From The Bottom","votes":5},{"label":"Bench Points University","votes":2}],
+  "footnote": "7 of 10 managers voted · closes Sunday 1pm"
+ },
+ "feed": [
+  {"id":"f1","kind":"rankings","team_key":"d.2","timestamp":1786530000,"title":"The Waiver Wire Gremlins drop 2 spots to #4","body":"All-play 51-30 and a luck index of +0.037. The model trusts them less than the standings do.","reactions":{"😂":46,"💀":34,"🔥":28},"reacted_by":8},
+  {"id":"f2","kind":"wire","team_key":"d.7","timestamp":1786300800,"title":"Injured Reserve Society spends $54 on Backup Running Back","body":"Leaves them with $9 for the rest of the season. Their starting RB is questionable. Again.","reactions":{"🤡":44,"🔥":2,"😂":38},"reacted_by":10},
+  {"id":"f3","kind":"roast","team_key":"d.1","timestamp":1786528920,"title":"Congrats on peaking in the regular season. Again.","body":"The Executioner opens Week 9 on the 9-0 leader and does not let up for four paragraphs.","reactions":{"💀":88,"🔥":61,"🤡":12},"reacted_by":10},
+  {"id":"f4","kind":"scores","team_key":"d.7","timestamp":1786490000,"title":"Injured Reserve Society posts 79.3 — lowest score of Week 9","body":"Two players on bye were left in the starting lineup. The kicker outscored the QB.","reactions":{"🤡":67,"🔥":4,"😂":52},"reacted_by":9},
+  {"id":"f5","kind":"scores","team_key":"d.1","timestamp":1786489000,"title":"Championship or Bust drops 151.9 on the league in Week 9","body":"Top score of the week. They will not shut up about it.","reactions":{"🔥":57,"💀":2,"🤡":27},"reacted_by":7}
+ ],
+ "most_clowned": [
+  {"team_key":"d.7","team_name":"Injured Reserve Society","count":149},
+  {"team_key":"d.1","team_name":"Championship or Bust (Bust)","count":86},
+  {"team_key":"d.2","team_name":"The Waiver Wire Gremlins","count":108},
+  {"team_key":"d.10","team_name":"The Toilet Bowl Favorite","count":61},
+  {"team_key":"d.5","team_name":"Autodraft Andy's Revenge","count":41}
+ ],
+ "history": {
+  "established": 2016,
+  "most_titles": {"team":"The 2019 Champs","count":3},
+  "most_toilets": {"team":"Vibes Over Analytics","count":4},
+  "career_faab": {"team":"Injured Reserve Society","amount":742},
+  "seasons": [
+   {"year":2025,"champion":"The 2019 Champs","toilet":"Vibes Over Analytics","title_game":"148.2 — 121.4"},
+   {"year":2024,"champion":"Waiver Wire Gremlins","toilet":"Toilet Bowl Favorite","title_game":"139.6 — 133.1"},
+   {"year":2023,"champion":"Championship or Bust","toilet":"Injured Reserve Society","title_game":"161.0 — 98.7"},
+   {"year":2022,"champion":"Started From The Bottom","toilet":"Vibes Over Analytics","title_game":"127.3 — 119.9"},
+   {"year":2021,"champion":"The 2019 Champs","toilet":"Trust The Process","title_game":"144.8 — 102.2"},
+   {"year":2020,"champion":"Bench Points University","toilet":"Vibes Over Analytics","title_game":"155.4 — 141.0"}
+  ],
+  "lows": [
+   {"label":"Lowest score ever","value":"41.6","detail":"Toilet Bowl Favorite · Wk 12, 2023"},
+   {"label":"Most points left on bench","value":"71.2","detail":"Bench Points University · Wk 4, 2024"}
+  ]
+ }
+}
