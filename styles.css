@@ -4,11 +4,15 @@
    Dark = something is happening.
    ══════════════════════════════════════════════════════════════ */
 
-/* Archivo variable (wdth 62–125, wght 100–900) — self-hosted, SIL OFL.
-   No CDN dependency: the design renders identically offline and on first paint. */
+/* Archivo variable (wdth 62–125, wght 100–900), SIL OFL.
+   The vendored copies in fonts/ are corrupt — they were committed through a text
+   editor at some point and the binary did not survive, so every page has silently
+   been falling back to system-ui. Google's copy is listed first and the local file
+   is kept as the fallback; swap the order back once fonts/ holds real bytes again. */
 @font-face {
   font-family: "Archivo";
-  src: url("fonts/archivo-var.woff2") format("woff2-variations");
+  src: url("https://fonts.gstatic.com/s/archivo/v25/k3kQo8UDI-1M0wlSfdnoLmvDIaI.woff2") format("woff2-variations"),
+       url("fonts/archivo-var.woff2") format("woff2-variations");
   font-weight: 100 900;
   font-stretch: 62% 125%;
   font-style: normal;
@@ -16,7 +20,8 @@
 }
 @font-face {
   font-family: "Archivo";
-  src: url("fonts/archivo-var-italic.woff2") format("woff2-variations");
+  src: url("https://fonts.gstatic.com/s/archivo/v25/k3kSo8UDI-1M0wlSfdzYLGHEA6CF8Q.woff2") format("woff2-variations"),
+       url("fonts/archivo-var-italic.woff2") format("woff2-variations");
   font-weight: 100 900;
   font-stretch: 62% 125%;
   font-style: italic;
