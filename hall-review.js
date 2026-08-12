@@ -134,25 +134,9 @@
     put(1, "Most Saccos", toilets.n, toilets.who.join(" & "));
     put(2, "Most Times Runner-Up", seconds.n, seconds.who.join(" & "));
 
+    // The season-by-season ledger lives in the Trophy Room now; this page keeps
+    // the superlatives and the review.
     const secs = [...document.querySelectorAll(".pad .h-sec")];
-    const seasons = (db.seasons || []).filter((s) => !s.in_progress && s.champion).slice().reverse();
-    const ledgerSec = secs.find((h) => /the ledger/i.test(h.textContent));
-    if (ledgerSec && seasons.length) {
-      let n = ledgerSec.nextElementSibling && ledgerSec.nextElementSibling.nextElementSibling;
-      const rows = seasons.map((s) => `<div class="ledger-row">
-        <span class="yr">${esc(s.year)}</span>
-        <span><span class="eyebrow">Champion</span><div class="nm">${esc(s.champion)} (${esc(s.champion_manager)})</div></span>
-        <span><span class="eyebrow red">The Sacco</span><div class="nm bad">${esc(s.toilet)} (${esc(s.toilet_manager)})</div></span>
-        <span><span class="eyebrow">Runner-Up</span><div class="sc">${esc(s.runner_up)} (${esc(s.runner_up_manager)})</div></span>
-      </div>`).join("");
-      if (n && (n.classList.contains("empty") || n.classList.contains("ledger-row"))) {
-        const trash = [];
-        let cur = n;
-        while (cur && (cur.classList.contains("empty") || cur.classList.contains("ledger-row"))) { trash.push(cur); cur = cur.nextElementSibling; }
-        trash.slice(1).forEach((el) => el.remove());
-        trash[0].outerHTML = rows;
-      }
-    }
     const lowsSec = secs.find((h) => /all-time lows/i.test(h.textContent));
     const rec = db.records || {};
     const lows = [
