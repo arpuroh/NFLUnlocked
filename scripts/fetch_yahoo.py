@@ -14,6 +14,7 @@ Required environment variables:
 Optional:
   LEAGUE_ID            Yahoo league id (default: 675504)
   GAME_CODE            Yahoo game code (default: nfl → resolves to current season)
+  YAHOO_REDIRECT_URI   Callback URL the refresh token was granted against
 """
 
 import hashlib
@@ -41,20 +42,40 @@ RAW_DIR = DATA_DIR / "raw"
 
 # ---------------------------------------------------------------- auth
 
+def _refresh(cid: str, secret: str, refresh: str, redirect_uri: str) -> dict:
+    body = urllib.parse.urlencode({
+        "client_id": cid,
+        "client_secret": secret,
+        "refresh_token": refresh,
+        "grant_type": "refresh_token",
+        "redirect_uri": redirect_uri,
+    }).encode()
+    req = urllib.request.Request(TOKEN_URL, data=body, method="POST")
+    req.add_header("Content-Type", "application/x-www-form-urlencoded")
+    try:
+        with urllib.request.urlopen(req) as resp:
+            return json.loads(resp.read().decode())
+    except urllib.error.HTTPError as e:
+        detail = " ".join((e.read().decode("utf-8", "replace") or "").split())[:300]
+        raise RuntimeError(f"HTTP {e.code} :: {detail}") from None
+
+
 def get_access_token() -> str:
+    """Mint an access token that the Fantasy API will actually accept.
+
+    Yahoo hands back a perfectly valid-looking access token on refresh even when
+    the grant behind it carries no fantasy scope; the failure only shows up later
+    as a 403 on the first data call. So refresh, then probe, and only return a
+    token that has been proven to work. `redirect_uri` on the refresh call is the
+    variable worth testing: Yahoo is documented as `oob`, but a grant created
+    against a real callback URL does not always honour that.
+    """
     cid = os.environ.get("YAHOO_CLIENT_ID")
     secret = os.environ.get("YAHOO_CLIENT_SECRET")
     refresh = os.environ.get("YAHOO_REFRESH_TOKEN")
     if not all([cid, secret, refresh]):
         sys.exit("Missing YAHOO_CLIENT_ID / YAHOO_CLIENT_SECRET / YAHOO_REFRESH_TOKEN env vars.")
 
-    body = urllib.parse.urlencode({
-        "client_id": cid,
-        "client_secret": secret,
-        "refresh_token": refresh,
-        "grant_type": "refresh_token",
-        "redirect_uri": "oob",
-    }).encode()
     # Identify which Yahoo app these secrets belong to without ever printing them.
     # Actions masks secret values in logs, so a hash is the only way to tell the
     # right app from the wrong one — and hashes are safe to publish.
@@ -62,13 +83,36 @@ def get_access_token() -> str:
     for label, val in (("client_id", cid), ("client_secret", secret), ("refresh_token", refresh)):
         print(f"    {label:<14} {hashlib.sha256(val.encode()).hexdigest()[:10]}  len={len(val)}")
 
-    req = urllib.request.Request(TOKEN_URL, data=body, method="POST")
-    req.add_header("Content-Type", "application/x-www-form-urlencoded")
-    with urllib.request.urlopen(req) as resp:
-        tok = json.loads(resp.read().decode())
-    granted = tok.get("scope") or tok.get("xoauth_scope") or "(none reported)"
-    print(f"  token granted scope: {granted}; expires_in={tok.get('expires_in')}")
-    return tok["access_token"]
+    candidates = [
+        os.environ.get("YAHOO_REDIRECT_URI", "https://www.nflunlocked.com/api/auth-callback"),
+        "https://nflunlocked.com/api/auth-callback",
+        "oob",
+    ]
+    last = ""
+    for ru in candidates:
+        try:
+            tok = _refresh(cid, secret, refresh, ru)
+        except Exception as e:  # noqa: BLE001
+            print(f"  refresh(redirect_uri={ru}) failed: {e}")
+            last = str(e)
+            continue
+        access = tok.get("access_token", "")
+        try:
+            api_get(access, "users;use_login=1/games", retries=1)
+        except Exception as e:  # noqa: BLE001
+            print(f"  refresh(redirect_uri={ru}) ok, but fantasy probe rejected it: {str(e)[:220]}")
+            last = str(e)
+            continue
+        print(f"  fantasy access confirmed using redirect_uri={ru} (expires_in={tok.get('expires_in')})")
+        return access
+
+    sys.exit(
+        "No refresh variant produced a token the Fantasy API accepts.\n"
+        f"Last response: {last[:300]}\n"
+        "If this reads 'This application is not authorized to perform this action', the\n"
+        "Yahoo app itself has not been granted Fantasy Sports API access. Apply at\n"
+        "https://sports.yahoo.com/developer/ — access is approval-gated now."
+    )
 
 
 def api_get(token: str, path: str, retries: int = 3) -> dict:
