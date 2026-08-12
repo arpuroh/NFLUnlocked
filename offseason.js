@@ -31,10 +31,14 @@
 
   function seasonView(db, rows, year) {
     const byRank = rows.slice().sort((a, b) => a.rank - b.rank);
+    // The Sacco is not last place. It is the loser of the three-team Sacco Bowl,
+    // resolved in the database; the standings table only decides the seeding.
+    const season = (db.seasons || []).find((s) => s.year === year) || {};
     const champ = byRank.find((r) => r.place === 1) || byRank[0];
     const second = byRank.find((r) => r.place === 2);
     const third = byRank.find((r) => r.place === 3);
-    const last = byRank[byRank.length - 1];
+    const last = byRank.find((r) => r.team === season.toilet) || byRank[byRank.length - 1];
+    const bottom = byRank[byRank.length - 1];
     const hi = rows.slice().sort((a, b) => b.points_for - a.points_for)[0];
     const lo = rows.slice().sort((a, b) => a.points_for - b.points_for)[0];
     const bestRec = rows.slice().sort((a, b) =>
@@ -65,7 +69,7 @@
               ${robbed && robbed !== champ
                 ? `${esc(robbed.manager)} scored more points than anybody (${robbed.points_for.toFixed(1)}) and has nothing to show for it.`
                 : ""}
-              ${last ? `${esc(last.team)} finished ${ord(last.rank)} at ${last.wins}-${last.losses} and owns the Sacco until further notice.` : ""}
+              ${last ? `${esc(last.manager)} lost the Sacco Bowl from ${ord(last.rank)} place and owns the Sacco until further notice.` : ""}
               Full autopsy in the season review; fifteen years of history in the Trophy Room.</p>
             <div class="hero-actions">
               <a class="btn-red" href="hall.html">Read the season review →</a>
@@ -131,7 +135,11 @@
               <div class="note">${busiest.moves} roster moves. Nothing was ever good enough.</div></div>
             ${last ? `<div class="sup"><div class="award">The Sacco</div>
               <div class="who">${esc(last.team)}</div>
-              <div class="note">${esc(last.manager)} · ${last.wins}-${last.losses}. It is engraved.</div></div>` : ""}
+              <div class="note">${esc(last.manager)} · ${last.wins}-${last.losses}. Lost the three-team Sacco Bowl${
+                season.sacco_bowl ? ` ${season.sacco_bowl.final.a.total.toFixed(1)}–${season.sacco_bowl.final.b.total.toFixed(1)}` : ""}. It is engraved.</div></div>` : ""}
+            ${bottom && bottom !== last ? `<div class="sup"><div class="award">Worst record</div>
+              <div class="who">${esc(bottom.team)}</div>
+              <div class="note">${esc(bottom.manager)} · ${bottom.wins}-${bottom.losses} and still did not take the Sacco home.</div></div>` : ""}
           </div>
           <div class="mod">
             <h2 class="h-sec">The Long View</h2><hr class="rule-h">
