@@ -33,6 +33,7 @@
 .rv-arrivals{margin-top:28px;background:var(--ink);color:var(--paper);padding:24px 26px;border-left:6px solid var(--red)}
 .rv-arrivals .eyebrow{color:var(--red-bright)}
 .rv-arrivals p{font-size:14px;line-height:1.62;max-width:82ch;color:var(--gray-faint);margin:8px 0 0}
+.rv-podium .c.worst{grid-column:1/-1}
 .rv-podium .c.worst .pl{color:var(--gray-mid)}
 
 /* ═══ the sacco bowl ═══ */
