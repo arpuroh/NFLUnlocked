@@ -11,7 +11,50 @@
 
   const medal = (p) => p === 1 ? "\u{1F3C6} Champion" : p === 2 ? "\u{1F948} Runner-Up" : "\u{1F949} Third Place";
 
-  function reviewHtml(rv) {
+  /* The Sacco Bowl. Yahoo drops the bottom two seeds out of every bracket, so
+     none of this is in the standings — it is replayed from the weekly lineup
+     scores and stored on each season in data/trophy.json. */
+  function saccoHtml(rules, bowl) {
+    if (!rules && !bowl) return "";
+    const side = (t, label, score, sub, loser) => `<div class="c${loser ? " loser" : ""}">
+      <div class="pl">${esc(label)}</div>
+      <div class="nm">${esc(t.team)}</div>
+      <div class="mg">${esc(t.manager)}</div>
+      <div class="sc">${score}</div>
+      <div class="sub">${esc(sub)}</div></div>`;
+
+    let receipts = "";
+    if (bowl) {
+      const pi = bowl.play_in, f = bowl.final;
+      const piLoser = pi.a.pts < pi.b.pts ? "a" : "b";
+      const bowlLoser = f.a.total < f.b.total ? "a" : "b";
+      const wk = (t) => (t.weekly || []).map((v) => v.toFixed(2)).join("  +  ");
+      receipts = `
+        <div class="sb-leg">
+          <div class="sb-hd">Play-in · Week ${esc(pi.week)}<i>Loser drops into the bowl</i></div>
+          <div class="sb-pair">
+            ${side(pi.a, "12 seed", pi.a.pts.toFixed(2), piLoser === "a" ? "Into the bowl" : "Safe", piLoser === "a")}
+            ${side(pi.b, "13 seed", pi.b.pts.toFixed(2), piLoser === "b" ? "Into the bowl" : "Safe", piLoser === "b")}
+          </div>
+        </div>
+        <div class="sb-leg">
+          <div class="sb-hd">The Bowl · Weeks ${esc(bowl.weeks[1])}–${esc(bowl.weeks[2])}<i>Lower two-week total takes it</i></div>
+          <div class="sb-pair">
+            ${side(f.a, "Play-in loser", f.a.total.toFixed(2), wk(f.a), bowlLoser === "a")}
+            ${side(f.b, "14 seed", f.b.total.toFixed(2), wk(f.b), bowlLoser === "b")}
+          </div>
+        </div>`;
+    }
+    return `
+      <h2 class="h-sec" style="margin-top:36px">${esc(rules?.headline || "The Sacco Bowl")}</h2><hr class="rule-h">
+      ${rules?.body ? `<p class="rv-p">${esc(rules.body)}</p>` : ""}
+      <div class="sacco-bowl">${receipts}</div>
+      ${rules?.footnote ? `<p class="sb-foot">${esc(rules.footnote)}</p>` : ""}`;
+  }
+
+  function reviewHtml(rv, hist, db) {
+    const season = ((db || {}).seasons || []).find((s) => s.year === rv.year) || {};
+    const wr = rv.worst_record;
     return `
       <div class="pad rv">
         <div class="eyebrow red">Season in Review · ${esc(rv.year)}</div>
@@ -28,7 +71,13 @@
             <div class="nm">${esc(rv.toilet.team)}</div>
             <div class="mg">${esc(rv.toilet.manager)} · ${esc(rv.toilet.record)}</div>
             <p>${esc(rv.toilet.note)}</p></div>
+          ${wr ? `<div class="c worst">
+            <div class="pl">\u{1F4C9} Worst Record</div>
+            <div class="nm">${esc(wr.team)}</div>
+            <div class="mg">${esc(wr.manager)} · ${esc(wr.record)} · ${wr.pf} PF</div>
+            <p>${esc(wr.note)}</p></div>` : ""}
         </div>
+        ${saccoHtml(hist.sacco_rules, season.sacco_bowl)}
         <h2 class="h-sec" style="margin-top:36px">How It Happened</h2><hr class="rule-h">
         ${rv.story.map((p) => `<p class="rv-p">${esc(p)}</p>`).join("")}
         <h2 class="h-sec" style="margin-top:36px">The Draft, Audited</h2><hr class="rule-h">
@@ -139,7 +188,7 @@
       if (!hero) return false;
       fillCore(hist, db || {});
       if (hist.review && !document.querySelector(".rv")) {
-        hero.insertAdjacentHTML("afterend", reviewHtml(hist.review));
+        hero.insertAdjacentHTML("afterend", reviewHtml(hist.review, hist, db || {}));
       }
       return true;
     };
