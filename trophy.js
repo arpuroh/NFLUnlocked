@@ -1,8 +1,8 @@
 /* NFL Unlocked — Trophy Room.
-   Renders data/trophy.json: the full league database, 2011 to now. Every
-   champion, every manager's career line, the record book, and a season-by-season
-   ledger you can open. Standalone from app.js so the weekly data pipeline can
-   never disturb it. */
+   Renders data/trophy.json (+ data/ledger.json): the full league database, 2011
+   to now. Every champion, every manager's career line, the record book, and a
+   season-by-season ledger you can open. Standalone from app.js so the weekly
+   data pipeline can never disturb it. */
 (() => {
   const $ = (s, r = document) => r.querySelector(s);
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) =>
@@ -93,6 +93,7 @@
               <span class="n">${s.teams} teams</span>
             </summary>
             <div class="full">
+              ${!s.standings.length ? `<p class="empty">Standings unavailable.</p>` : `
               <div class="fr hd"><span>#</span><span>Team</span><span>Manager</span>
                 <span class="c">Record</span><span class="c">PF</span><span class="c">PA</span><span class="c">Moves</span></div>
               ${s.standings.slice().sort((a, b) => a.rank - b.rank).map((r) => `<div class="fr">
@@ -102,7 +103,7 @@
                 <span class="c">${r.points_for.toFixed(1)}</span>
                 <span class="c dim">${r.points_against.toFixed(1)}</span>
                 <span class="c dim">${r.moves}</span>
-              </div>`).join("")}
+              </div>`).join("")}`}
             </div>
           </details>`).join("")}
         </div>
@@ -113,8 +114,14 @@
       </div>`;
   }
 
-  fetch("data/trophy.json", { cache: "no-store" })
-    .then((r) => r.json())
+  Promise.all([
+    fetch("data/trophy.json", { cache: "no-store" }).then((r) => r.json()),
+    fetch("data/ledger.json", { cache: "no-store" }).then((r) => r.json()).catch(() => ({})),
+  ])
+    .then(([db, ledger]) => {
+      db.seasons.forEach((s) => { s.standings = ledger[String(s.year)] || []; });
+      return db;
+    })
     .then(render)
     .catch(() => {
       const el = $("#app");
