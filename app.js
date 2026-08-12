@@ -112,9 +112,11 @@ const NU = (() => {
         </div>
       </div>`;
 
+    // The masthead nav is hidden under 900px, so this bar is the only way around
+    // the site on a phone — the Trophy Room and the Hall of Shame belong in it.
     const tabs = [["index.html","Home","home"],["rankings.html","Ranks","ranks"],
                   ["scoreboard.html","Scores","scores"],["feed.html","Feed","feed"],
-                  ["team.html","My Team","team"]];
+                  ["trophy.html","Trophy","trophy"],["hall.html","Shame","hall"]];
     const mt = document.createElement("nav");
     mt.className = "mobile-tabs";
     mt.innerHTML = tabs.map(([h, l, k]) =>
