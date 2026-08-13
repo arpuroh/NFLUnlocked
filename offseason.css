@@ -26,6 +26,6 @@
 .masthead .badge-live.os-badge{background:var(--gray-mid)}
 @media (max-width:760px){
   .os-table .row{grid-template-columns:34px 1fr 74px 76px}
-  .os-table .mg,.os-table .row span:nth-child(6),.os-table .row span:nth-child(7){display:none}
+  .os-table .row span:nth-child(3),.os-table .row span:nth-child(6),.os-table .row span:nth-child(7){display:none}
   .os-hero .btn-ghost{margin-left:0;margin-top:8px}
 }
