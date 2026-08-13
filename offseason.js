@@ -141,8 +141,8 @@
           </div>
           <p class="os-note">Top ${FIELD} seeds make the playoffs. The bottom three go to the Sacco
           Bowl: the ${seeded.length - 2} and ${seeded.length - 1} seeds play in playoff week one, the
-          loser meets the ${seeded.length} seed for the next two weeks, and the worst single week on that
-          board takes the Sacco. Everything between is just the season.</p>
+          loser meets the ${seeded.length} seed for the next two weeks, and the lower two-week total
+          takes the Sacco. Everything between is just the season.</p>
         </div>
 
         <div class="col-side">
@@ -159,8 +159,8 @@
               <div class="note">${busiest.moves} roster moves. Nothing was ever good enough.</div></div>
             ${last ? `<div class="sup"><div class="award">The Sacco</div>
               <div class="who">${esc(last.team)}</div>
-              <div class="note">${esc(last.manager)} · ${last.wins}-${last.losses}. Worst single week in the Sacco Bowl${
-                season.sacco_bowl ? `: ${Math.min(season.sacco_bowl.final.a.low, season.sacco_bowl.final.b.low).toFixed(2)}` : ""}. It is engraved.</div></div>` : ""}
+              <div class="note">${esc(last.manager)} · ${last.wins}-${last.losses}. Lost the Sacco Bowl${
+                season.sacco_bowl ? ` ${Math.min(season.sacco_bowl.final.a.total, season.sacco_bowl.final.b.total).toFixed(2)}–${Math.max(season.sacco_bowl.final.a.total, season.sacco_bowl.final.b.total).toFixed(2)}` : ""}. It is engraved.</div></div>` : ""}
             ${bottom && bottom !== last ? `<div class="sup"><div class="award">Worst record</div>
               <div class="who">${esc(bottom.team)}</div>
               <div class="note">${esc(bottom.manager)} · ${bottom.wins}-${bottom.losses} and still did not take the Sacco home.</div></div>` : ""}
