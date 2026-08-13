@@ -3,16 +3,17 @@
  "updated": "2026-08",
  "people": {
   "andrew": {
-   "name": "Andrew",
+   "name": "Andrew Barnhart",
    "key": "andrew",
    "role": "Commissioner",
    "notes": [
-    "Has run this league for years. Won it for the first time in 2025, which means the champion and the person who certifies the champion are the same man.",
+    "Has been commissioner of this league every year of its existence. Won it in 2018, 2020 and 2025, which means the champion and the person who certifies the champion are the same man.",
     "Renamed the franchise from Hail Mary to Hail Purdy mid-title-run.",
-    "2025 auction: biggest buy $36 Ladd McConkey, nothing over $40, and a ring."
+    "2025 auction: biggest buy $36 Ladd McConkey, nothing over $40, and a ring.",
+    "Sacco in 2022, champion in 2025, commissioner throughout both — and throughout everything before them."
    ],
    "employer": "Coinbase",
-   "tenure": "Commissioner for the better part of a decade",
+   "tenure": "Commissioner for all fifteen seasons, 2011–present",
    "company_facts": [
     "Coinbase is the largest US crypto exchange; its app is famous for going down at exactly the moment everybody needs it.",
     "Its 2022 Super Bowl ad was a bouncing QR code with no words, and the resulting traffic crashed the app."
@@ -20,7 +21,8 @@
    "roast_angles": [
     "Works in crypto and won this league by refusing to buy anything expensive. He has watched enough people go all-in at the top to know exactly what it looks like.",
     "Commissioner, champion, and the man who investigates the commissioner. Three roles, one guy, zero recusals.",
-    "His draft board is the single most boring document this league has produced, and it beat everybody."
+    "His draft board is the single most boring document this league has produced, and it beat everybody.",
+    "The only man in league history to hold the trophy and the Sacco. He certified both results himself."
    ]
   },
   "abhishek": {
@@ -74,7 +76,7 @@
    "key": "mohsin",
    "notes": [
     "Left after 2025. Team was named Bullish; also ran Bearish. Both bore the same result.",
-    "All-time Sacco leader with three: 2016, 2018 and 2022. Nobody else has more than two."
+    "Two Saccos, 2016 and 2018 — tied with Maclane for the most in league history."
    ]
   },
   "nishil": {
@@ -245,6 +247,36 @@
     "Sells a beverage with no natural enemies, because nothing has ever chosen it. Cider is what you order when the bar is out and you aren't brave enough to say you don't like beer.",
     "Fourteen men who scream about running backs now have a dedicated apple juice supplier.",
     "The league has never been more hydrated or less intimidating."
+   ]
+  },
+  "varun": {
+   "name": "Varun Sipani",
+   "key": "varun",
+   "employer": "Diamonds / jewellery trade",
+   "notes": [
+    "Champion in 2019 with a 7-6 record and 104 roster moves.",
+    "Most transaction-happy manager in league history: 105 in 2021, 122 in 2022, 143 in 2023.",
+    "Left the league after 2023. Thirteen seasons, one ring."
+   ],
+   "roast_angles": [
+    "Sells a product whose entire value rests on nobody looking at it too closely.",
+    "One title in thirteen years. In his industry that is called a solitaire.",
+    "Pressure makes diamonds. Thirteen years of it made exactly one."
+   ]
+  },
+  "jordan": {
+   "name": "Jordan",
+   "key": "jordan",
+   "employer": "Chick-fil-A",
+   "notes": [
+    "Four seasons in this league (2012–2015), four championships, then gone.",
+    "Won the 2015 title with a 6-7 regular-season record.",
+    "The only perfect career on file: no Saccos, no losing finishes, no forwarding address."
+   ],
+   "roast_angles": [
+    "Works for a company that is closed on Sundays. The most important day of the fantasy week and he has it off.",
+    "Four rings in four years and then he left. That is a heist with an exit strategy.",
+    "More championships than the commissioner, the dentist and both Gregs combined."
    ]
   }
  }
