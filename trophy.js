@@ -28,14 +28,14 @@
     const pi = b.play_in, f = b.final;
     const piLoser = pi.a.pts < pi.b.pts ? pi.a : pi.b;
     const piWinner = piLoser === pi.a ? pi.b : pi.a;
-    const loser = f.a.low < f.b.low ? f.a : f.b;
+    const loser = f.a.total < f.b.total ? f.a : f.b;
     const winner = loser === f.a ? f.b : f.a;
     return `<div class="sacco-strip">
       <span class="sl">\u{1F6BD} Sacco Bowl</span>
       <span class="sd">Wk ${b.weeks[0]} play-in — ${esc(piWinner.manager)} ${pi.a === piWinner ? pi.a.pts.toFixed(2) : pi.b.pts.toFixed(2)}
         beat ${esc(piLoser.manager)} ${piLoser.pts.toFixed(2)}.
-        Wk ${b.weeks[1]}–${b.weeks[2]} — worst week on the board:
-        <b>${esc(loser.manager)} ${loser.low.toFixed(2)}</b>, next worst ${esc(winner.manager)} ${winner.low.toFixed(2)}.</span>
+        Wk ${b.weeks[1]}–${b.weeks[2]} two-week total — ${esc(winner.manager)} ${winner.total.toFixed(2)},
+        <b>${esc(loser.manager)} ${loser.total.toFixed(2)}</b>.</span>
     </div>`;
   }
 
@@ -142,7 +142,7 @@
         attributed to a person and are excluded from career totals.
         <br><br>The Sacco column is not last place. From 2016 on it is decided by the Sacco Bowl — a
         three-week playoff starting the week after the regular season: the 12 and 13 seeds play, the
-        loser meets the 14 seed for the final two weeks, and the lower of those two weekly scores takes
+        loser meets the 14 seed for the final two weeks, and the lower two-week total takes
         it. Yahoo tracks none of that, so each bowl was replayed from the weekly lineup scores on every
         team's public page and checked against all 320 scores Yahoo prints for its own bracket teams.
         2022 (Andrew) and 2025 (Greg) are confirmed by the league and both come out right. Before 2016
