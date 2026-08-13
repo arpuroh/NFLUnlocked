@@ -27,7 +27,7 @@
     if (bowl) {
       const pi = bowl.play_in, f = bowl.final;
       const piLoser = pi.a.pts < pi.b.pts ? "a" : "b";
-      const bowlLoser = f.a.low < f.b.low ? "a" : "b";
+      const bowlLoser = f.a.total < f.b.total ? "a" : "b";
       const wk = (t) => (t.weekly || []).map((v) => v.toFixed(2)).join("  ·  ");
       receipts = `
         <div class="sb-leg">
@@ -38,10 +38,10 @@
           </div>
         </div>
         <div class="sb-leg">
-          <div class="sb-hd">The Bowl · Weeks ${esc(bowl.weeks[1])}–${esc(bowl.weeks[2])}<i>Worst single week takes it</i></div>
+          <div class="sb-hd">The Bowl · Weeks ${esc(bowl.weeks[1])}–${esc(bowl.weeks[2])}<i>Lower two-week total takes it</i></div>
           <div class="sb-pair">
-            ${side(f.a, "Play-in loser", f.a.low.toFixed(2), wk(f.a), bowlLoser === "a")}
-            ${side(f.b, "14 seed", f.b.low.toFixed(2), wk(f.b), bowlLoser === "b")}
+            ${side(f.a, "Play-in loser", f.a.total.toFixed(2), wk(f.a), bowlLoser === "a")}
+            ${side(f.b, "14 seed", f.b.total.toFixed(2), wk(f.b), bowlLoser === "b")}
           </div>
         </div>`;
     }
@@ -113,7 +113,6 @@
       const best = Math.max(0, ...people.map(fn));
       return { n: best, who: people.filter((p) => fn(p) === best).map((p) => p.manager) };
     };
-    const titles = top((p) => p.rings);
     const toilets = top((p) => p.toilets.length);
     const seconds = top((p) => p.runner_ups.length);
 
@@ -130,9 +129,8 @@
       if (vEl) vEl.textContent = v;
       if (sEl) sEl.textContent = s;
     };
-    put(0, "Most Titles", titles.n, titles.who.join(" & "));
-    put(1, "Most Saccos", toilets.n, toilets.who.join(" & "));
-    put(2, "Most Times Runner-Up", seconds.n, seconds.who.join(" & "));
+    put(0, "Most Saccos", toilets.n, toilets.who.join(" & "));
+    put(1, "Most Times Runner-Up", seconds.n, seconds.who.join(" & "));
 
     // The season-by-season ledger lives in the Trophy Room now; this page keeps
     // the superlatives and the review.
