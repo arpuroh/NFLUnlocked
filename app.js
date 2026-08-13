@@ -139,7 +139,6 @@ const NU = (() => {
         <div>Updated ${upd ? esc(ago(upd.getTime() / 1000)) : "—"}</div>
         <div>Auto-pulled from Yahoo Fantasy</div>
         <div>Roasts by AI · Grudges by you</div>
-        <div><a href="setup.html">Commissioner setup</a></div>
       </div>
     </section>`;
   }
