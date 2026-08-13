@@ -1,0 +1,38 @@
+/* ═══ roast roulette ═══ */
+.rr{padding:26px 30px 30px;border-bottom:2px solid var(--rule);background:var(--page)}
+.rr-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.rr-h{font-size:clamp(22px,3vw,34px);font-weight:900;font-stretch:70%;text-transform:uppercase;
+  letter-spacing:-.01em;line-height:1;margin:8px 0 0}
+.rr-actions{display:flex;gap:8px}
+.rr-spin,.rr-copy{font:inherit;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  padding:11px 18px;border:2px solid var(--ink);background:var(--ink);color:var(--white);cursor:pointer}
+.rr-spin:hover{background:var(--red);border-color:var(--red)}
+.rr-copy{background:transparent;color:var(--ink)}
+.rr-copy:hover{background:var(--ink);color:var(--white)}
+
+.rr-chips{display:flex;flex-wrap:wrap;gap:6px;margin:18px 0 14px}
+.rr-chip{font:inherit;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+  padding:7px 11px;border:1px solid var(--rule);background:var(--white);color:var(--gray);cursor:pointer}
+.rr-chip:hover{border-color:var(--ink);color:var(--ink)}
+.rr-chip.on{background:var(--ink);border-color:var(--ink);color:var(--white)}
+.rr-chip.hit{border-color:var(--red);color:var(--red);box-shadow:inset 0 -2px 0 var(--red)}
+.rr-chip.all.on{background:var(--red);border-color:var(--red)}
+
+.rr-card{border:2px solid var(--ink);background:var(--white);padding:24px 26px 26px;min-height:150px}
+.rr-card.spin{animation:rr-in .32s cubic-bezier(.2,.8,.3,1)}
+@keyframes rr-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.rr-who{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+  padding-bottom:12px;border-bottom:1px solid var(--rule)}
+.rr-nm{font-size:clamp(20px,2.4vw,27px);font-weight:900;font-stretch:70%;text-transform:uppercase;line-height:1}
+.rr-tm{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
+.rr-tg{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-soft)}
+.rr-burn{margin:14px 0 0;font-size:clamp(16px,1.9vw,21px);line-height:1.45;color:var(--ink-2);max-width:68ch}
+.rr-foot{margin:12px 0 0;font-size:11.5px;line-height:1.6;color:var(--gray-soft);max-width:70ch}
+
+@media (max-width:760px){
+  .rr{padding:22px 18px 24px}
+  .rr-head{align-items:flex-start;flex-direction:column;gap:14px}
+  .rr-actions{width:100%}
+  .rr-spin{flex:1}
+  .rr-card{padding:18px 18px 20px;min-height:170px}
+}
