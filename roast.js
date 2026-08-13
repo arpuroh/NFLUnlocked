@@ -13,7 +13,8 @@
   let lastBurn = "";
   let filter = "";              // "" = anybody; otherwise a manager key
   let dealt = 0;
-  let spinning = false;
+  let seq = 0;                  // pull token; a newer pull invalidates an older roll
+  let rollTimer = null;
 
   /* ── dealing ─────────────────────────────────────────── */
   const deal = (p) => {
@@ -72,34 +73,41 @@
 
   /* ── the pull ────────────────────────────────────────── */
   function spin(key) {
-    if (spinning) return;
     const target = pickPerson(key);
     if (!target) return;
-    spinning = true;
     dealt += 1;
+    current = target;
+    // The result is painted straight away and the reel flourish runs on top of
+    // it. Deferring the paint until the animation finished meant a fast clicker
+    // preempted every roll and the card never changed at all.
+    paint(target, deal(target));
+    reel(target);
+  }
 
+  // Cosmetic only: a short blur of names in the machine's top window. A newer
+  // pull invalidates an older roll through the token, so they cannot interleave.
+  function reel(target) {
     const machine = document.querySelector("#rr-machine");
-    const reel = document.querySelector("#rr-reel");
+    const win = document.querySelector("#rr-reel");
+    if (!machine || !win) return;
+    const me = ++seq;
+    if (rollTimer) clearTimeout(rollTimer);
     machine.classList.add("rolling");
+    machine.classList.remove("landed");
+    void machine.offsetWidth;
+    machine.classList.add("landed");
 
-    // A short blur of names before it settles. Purely theatre, and the whole
-    // point of a roulette.
     let ticks = 0;
-    const total = 11;
     const roll = () => {
+      if (me !== seq) return;
       ticks += 1;
-      reel.textContent = people[Math.floor(Math.random() * people.length)].name;
-      if (ticks < total) {
-        setTimeout(roll, 38 + ticks * 9);
+      if (ticks < 8) {
+        win.textContent = people[Math.floor(Math.random() * people.length)].name;
+        rollTimer = setTimeout(roll, 22 + ticks * 7);
       } else {
-        reel.textContent = target.name;
+        rollTimer = null;
+        win.textContent = target.name;
         machine.classList.remove("rolling");
-        machine.classList.remove("landed");
-        void machine.offsetWidth;
-        machine.classList.add("landed");
-        current = target;
-        paint(target, deal(target));
-        spinning = false;
       }
     };
     roll();
