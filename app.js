@@ -11,13 +11,14 @@ const NU = (() => {
     String(s ?? "").replace(/[&<>"']/g, (c) =>
       ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
+  // Scoreboard, Teams and The Feed are parked for the offseason - there is nothing
+  // live behind them until Week 1. The pages still resolve at their own URLs.
   const NAV = [
-    ["index.html",     "This Week",     "home"],
-    ["rankings.html",  "Rankings",      "ranks"],
-    ["scoreboard.html","Scoreboard",    "scores"],
-    ["team.html",      "Teams",         "team"],
-    ["feed.html",      "The Feed",      "feed"],
-    ["hall.html",      "Hall of Shame", "hall"],
+    ["index.html",     "This Week",      "home"],
+    ["rankings.html",  "Rankings",       "ranks"],
+    ["hall.html",      "Hall of Shame",  "hall"],
+    ["trophy.html",    "Trophy Room",    "trophy"],
+    ["roast.html",     "Roast Roulette", "roast"],
   ];
   const REACTIONS = ["🤡", "🔥", "💀", "😂"];
 
@@ -115,8 +116,8 @@ const NU = (() => {
     // The masthead nav is hidden under 900px, so this bar is the only way around
     // the site on a phone — the Trophy Room and the Hall of Shame belong in it.
     const tabs = [["index.html","Home","home"],["rankings.html","Ranks","ranks"],
-                  ["scoreboard.html","Scores","scores"],["feed.html","Feed","feed"],
-                  ["trophy.html","Trophy","trophy"],["hall.html","Shame","hall"]];
+                  ["hall.html","Shame","hall"],["trophy.html","Trophy","trophy"],
+                  ["roast.html","Roast","roast"]];
     const mt = document.createElement("nav");
     mt.className = "mobile-tabs";
     mt.innerHTML = tabs.map(([h, l, k]) =>
