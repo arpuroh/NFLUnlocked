@@ -59,6 +59,10 @@
     const robbed = rows.slice().sort((a, b) => b.points_for - a.points_for)
       .find((r) => r.place !== 1);
 
+    const champions = (db.people || []).filter((p) => p.display && p.rings);
+    const repeat = champions.filter((p) => p.rings > 1).sort(byRecency);
+    const once = champions.filter((p) => p.rings === 1).sort(byRecency);
+
     const tableRow = (r, n, cls) => `<div class="row${cls || ""}">
       <span class="rk">${n}</span>
       <span class="tm">${esc(r.team)}</span>
@@ -167,17 +171,24 @@
           </div>
           <div class="mod">
             <h2 class="h-sec">The Long View</h2><hr class="rule-h">
-            ${(db.people || []).filter((p) => p.display && p.rings)
-              .slice(0, 4).map((p) => `<div class="clown-row">
-                <span class="r">${p.rings}${p.rings > 1 ? "×" : ""}</span>
+            ${repeat.map((p) => `<div class="clown-row">
+                <span class="r">${p.rings}×</span>
                 <span>${esc(p.manager)}</span>
                 <span class="c">${esc(p.titles.join(", "))}</span></div>`).join("")}
-            <p class="vote-foot" style="margin-top:12px">Titles since ${db.first_season || 2011}.
+            <p class="vote-foot" style="margin-top:12px">Repeat champions since ${db.first_season || 2011}.${
+              once.length ? ` One apiece, most recent first: ${
+                once.map((p) => `${esc(p.manager)} (${Math.max(...p.titles)})`).join(", ")}.` : ""}
               <a href="trophy.html">Full career table →</a></p>
           </div>
         </div>
       </div>`;
   }
+
+  /* The Long View: repeat champions only. The old version sliced the first four
+     people off trophy.json's own ordering, which handed the fourth slot to the
+     oldest single title in the book. One-time winners now get a line of their
+     own instead, newest first. */
+  const byRecency = (a, b) => b.rings - a.rings || Math.max(...b.titles) - Math.max(...a.titles);
 
   async function run() {
     const page = document.body.dataset.page;
