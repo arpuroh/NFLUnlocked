@@ -596,8 +596,6 @@ const NU = (() => {
         <h1 class="display">Hall of Shame</h1>
       </section>
       <div class="hall-stats">
-        <div class="c"><div class="eyebrow">Most Titles</div>
-          <div class="v">—</div><div class="s">&nbsp;</div></div>
         <div class="c"><div class="eyebrow">Most Saccos</div>
           <div class="v red">—</div><div class="s">&nbsp;</div></div>
         <div class="c"><div class="eyebrow">Most Times Runner-Up</div>
