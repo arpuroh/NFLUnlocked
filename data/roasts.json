@@ -1,0 +1,252 @@
+{
+ "_note": "Roast Roulette ammunition. Every line here is written fresh for the roulette — nothing is reused from the season review, the farewell toasts or the roast_angles in dossiers.json. Active managers first, then the departed and the legends. Add freely; the wheel picks at random and never repeats a line until it has used them all.",
+ "updated": "2026-08",
+ "managers": [
+  {
+   "key": "andrew",
+   "name": "Andrew",
+   "team": "Hail Purdy",
+   "tag": "Commissioner",
+   "burns": [
+    "Won the league and certified the result himself. In any other sport that is an investigation. Here it is a Tuesday.",
+    "Works at Coinbase and drafts like a man who has read the terms and conditions. Nothing over $40, no leverage, no fun, one ring.",
+    "Renamed the team from Hail Mary to Hail Purdy the season it started working, which is the most commissioner thing that has ever happened.",
+    "Has the trophy and a Sacco. He is the only man here who has been to both ends of the building and taken the elevator himself.",
+    "Sets the FAAB budget, approves the trades, writes the rules, and then acts surprised when he wins. Nobody has audited him because he is the audit.",
+    "Fourteen managers, one commissioner, zero recusals. He is the league's referee, its champion, and its worst-case scenario.",
+    "The only man in this league whose day job has an outage page. The league does not have one, which he considers a personal achievement."
+   ]
+  },
+  {
+   "key": "abhishek",
+   "name": "Abhishek",
+   "team": "ShakeNBake",
+   "burns": [
+    "Built a website with fifteen years of receipts on it and the loudest number on the whole thing is his own second place.",
+    "Spent one thousand FAAB dollars down to zero and finished exactly one game short. There is a word for that and it is not strategy.",
+    "He is the only person who can edit this page and he still left the part about losing the final in.",
+    "Runs the archive, wrote the roasts, coded the wheel, and the wheel still landed on him. There is no version of this he wins.",
+    "Made a permanent public monument to a league that has never given him a ring. That is not a hobby, that is a shrine to a grudge.",
+    "The site auto-updates every week so that his second place can be freshly delivered to fourteen phones in perpetuity."
+   ]
+  },
+  {
+   "key": "nishil",
+   "name": "Nishil",
+   "team": "FreeGucci",
+   "tag": "3× champion",
+   "burns": [
+    "Three rings and the same team name for fifteen years. The man found one joke in 2011 and has been cashing it ever since.",
+    "Sixty-six roster moves in 2025 and a ninth-place finish. That is not managing a team, that is refreshing a page with intent.",
+    "Has won this league three times and still cannot get anybody to ask him about his job. Try. See what happens. Clear your evening.",
+    "The most decorated manager in the room and the least interesting man at the party. Both facts are load-bearing.",
+    "Free Gucci. Gucci has been free for fifteen years. Nobody has told him.",
+    "Won titles in 2017, 2022 and 2024 and somehow nobody remembers a single moment from any of them."
+   ]
+  },
+  {
+   "key": "nathan",
+   "name": "Nathan",
+   "team": "Kim Jong Nate",
+   "burns": [
+    "Owns liquor stores and named his team after a dictator. At some point somebody has to ask about the branding strategy.",
+    "Outscored his opponents across the whole of 2025 and finished 12-16. The schedule did not beat him, it audited him.",
+    "Sells the one product that does better the worse this league gets. He is the only man here with a hedge.",
+    "A championship in 2016 that he brings up the way people bring up a semester abroad.",
+    "The team name has survived three different international incidents and zero title defenses.",
+    "Runs a business on the premise that people make bad decisions on Sunday nights, then joins a league to prove it personally."
+   ]
+  },
+  {
+   "key": "barrett",
+   "name": "Barrett",
+   "team": "A dad",
+   "burns": [
+    "Named the team A dad, which is the shortest confession in league history.",
+    "A CEO who got his company acquired and still could not get out of the 2017 Sacco.",
+    "Paid seventy dollars for Ja'Marr Chase — the biggest buy this league has ever recorded — and watched the season end in the consolation bracket.",
+    "Runs a company built on letting strangers into houses unsupervised. His waiver wire operates on the same trust model.",
+    "40 Under 40 in one building and second-from-last in another. Both plaques exist.",
+    "Won the very first title in 2011 and has spent fifteen years explaining that the field was weaker now."
+   ]
+  },
+  {
+   "key": "maclane",
+   "name": "Maclane",
+   "team": "Mac Daddy",
+   "burns": [
+    "Two Saccos and one ring, which means the highs and lows average out to a man who should probably take up golf.",
+    "Named a team Young Dudzzzzzzz, took the Sacco with it, and has never once acknowledged the prophecy.",
+    "Works in IT for a company that was invented by a private equity firm and named by nobody. He fits right in.",
+    "Sixty dollars for Justin Jefferson and a fourth-place finish. The most expensive fourth place available on the market.",
+    "Belichick yo'self was a top-three team name and a bottom-one team. Both records stand.",
+    "The 2021 title is real and he will tell you about it before you ask, which is how you know."
+   ]
+  },
+  {
+   "key": "greg-miley",
+   "name": "Greg (Miley)",
+   "team": "Miley 5K Speedo Fan Club",
+   "burns": [
+    "Played poker professionally and then lost a two-week contest to a team that was not being managed by a person.",
+    "Has a championship ring and the most recent Sacco. He is a case study and the study is ongoing.",
+    "The team name has gotten longer every single year while the roster has gotten worse. There is a graph.",
+    "Fifty-nine dollars for CeeDee Lamb and the lowest points-for in the league. He paid a premium for the privilege.",
+    "Went from Mexico Miley to a 5K Speedo Fan Club. Nobody has ever asked him to explain either one and nobody will.",
+    "Spent years learning to read people for money and then read a fantasy matchup so badly it got engraved."
+   ]
+  },
+  {
+   "key": "greg-ir",
+   "name": "Greg (IR)",
+   "team": "The Injured Reserved",
+   "burns": [
+    "Named the team after a list of unavailable players and then had the healthiest season in the league. Nothing about him is straightforward.",
+    "Twenty-one wins, the fewest points allowed of anybody, and a fifth-place finish. He was robbed by a bracket and has been quietly dignified about it, which is worse.",
+    "Works at a bank whose name was invented, mocked, and then sued. He has a lot of experience with things that are technically almost real.",
+    "The one Auburn degree in a room full of Georgia degrees. He does not bring it up. Everyone else does.",
+    "Second Greg. Fifteen years in and he is still the second Greg.",
+    "A Director at a bank with five hundred billion dollars in assets who could not direct a fantasy roster past the semifinal."
+   ]
+  },
+  {
+   "key": "darrius",
+   "name": "Darrius",
+   "team": "Bend The Knee",
+   "burns": [
+    "Named the team Bend The Knee and then watched Malik Nabers' knee end his season. The universe reads team names.",
+    "Absorbed 1,788 points against in 2025, more than anyone. He was not outplayed, he was targeted.",
+    "Denies insurance claims for a living, which makes him the only person here professionally trained to explain why his season does not qualify for coverage.",
+    "Spent a hundred and fifty-one dollars on three players and finished twelfth. Somewhere there is a policy that covers this and he would deny it.",
+    "The 2023 Sacco arrived under a team name about kneeling. Nobody needed the symbolism spelled out and he spelled it out anyway.",
+    "Eleven-dollar Cooper Kupp was the best value pick of the draft and it did not matter even slightly."
+   ]
+  },
+  {
+   "key": "will",
+   "name": "Will",
+   "team": "Good Will Hunting",
+   "burns": [
+    "Nobody in this league knows what Will does for a living. Fourteen years. Not one person can say it out loud.",
+    "Finished 2025 at exactly 14-14, which is the statistical equivalent of not being there.",
+    "Made thirteen roster moves all season. Thirteen. He treats the waiver wire like a landline.",
+    "Good Will Hunting is a movie about a genius who wastes his gift, so at least the branding is honest.",
+    "The most mysterious man in the league and the least mysterious final standing.",
+    "One playoff appearance in his entire career. He has been here long enough that this is now a personality trait."
+   ]
+  },
+  {
+   "key": "anuj",
+   "name": "Anuj",
+   "team": "Poop Squad",
+   "burns": [
+    "Owns car washes, an industry that makes its money from people paying monthly for something they never show up to use. He then joined a league and did the same thing to himself.",
+    "Named the team Poop Squad and finished thirteenth, which is either self-awareness or a business plan.",
+    "Fifty dollars for Brian Thomas Jr. and a 7-21 record. That is not a purchase, that is a hostage situation.",
+    "Escaped the Sacco Bowl by beating Greg once in December. It is the single greatest achievement of his fantasy career and he knows it.",
+    "Runs a business where the customer pays and drives away disappointed. Then he built a roster on the same principle.",
+    "The only manager whose team name accurately forecast the final standings before Week 1."
+   ]
+  },
+  {
+   "key": "chris",
+   "name": "Chris",
+   "team": "Leo the Cleo",
+   "burns": [
+    "Went 4-24 while holding the single best running back purchase available to any human being on draft night.",
+    "Made fifty-three roster moves on a four-win team. At some point that stops being management and starts being a cry for help.",
+    "Owns the worst record in the fifteen-year database and did not even take the Sacco for it. He lost the losing.",
+    "Sixty-six dollars for Bijan Robinson. Four wins. Somewhere an accountant is still crying.",
+    "Took the 2024 Sacco and then followed it with 4-24, which is what economists call a trend.",
+    "The 2025 season ended with his team outscoring a live manager over two weeks without anybody touching the lineup. That is his peak."
+   ]
+  },
+  {
+   "key": "jon-gragg",
+   "name": "Jon Gragg",
+   "team": "New for 2026",
+   "tag": "Rookie",
+   "burns": [
+    "Does analytics for a sportsbook, which means he has spent a decade watching men exactly like us and getting paid for it.",
+    "He has seen the data on people who take the late Thursday parlay. He has now joined a group chat composed entirely of them.",
+    "The first manager in league history who can calculate his own odds of taking the Sacco. It will not help.",
+    "Comes in with a model, a dashboard, and no idea that this league has never once been won by either.",
+    "A rookie who knows the expected value of every decision he is about to make and will make the other one anyway.",
+    "Spent ten years studying degenerate behavior from the outside. Welcome to the inside, Jon."
+   ]
+  },
+  {
+   "key": "tom-alshouse",
+   "name": "Tom Alshouse",
+   "team": "New for 2026",
+   "tag": "Rookie",
+   "burns": [
+    "Sells hard cider, the only beverage on earth that has never been anybody's first choice.",
+    "Joins a fourteen-man league as the designated apple juice supplier. The bar has been lowered and also stocked.",
+    "A regional sales manager whose region is a cidery in Marietta. The commute and the territory are the same drive.",
+    "Works at a distillery whose flagship product is fermented fruit. Everything about the man is a technicality.",
+    "The rookie most likely to bring the wrong thing to the draft and the most likely to be forgiven for it.",
+    "Arrives with zero fantasy history and a product nobody orders on purpose. A clean slate in every direction."
+   ]
+  },
+  {
+   "key": "neil",
+   "name": "Neil",
+   "team": "Shut Up",
+   "tag": "2012–2025",
+   "burns": [
+    "A dentist. Fourteen years of telling people to open wide and not one of them ever got a word in.",
+    "Made nine roster moves in an entire season. Nine. The loudest man in the league is also the one doing the least, and both facts arrive at the same time every Sunday.",
+    "Finished dead last in 2023, then went 22-6 in his final year and left. He fixed it and immediately quit, which is the most dentist thing imaginable.",
+    "Fourteen seasons. Zero championships. One Sacco. An uninterrupted commentary track over all of it.",
+    "He has finally shut up, and it only cost the league fourteen years and an open roster spot.",
+    "The only professional in the room whose job requires the other person to be unable to respond. He chose that. Think about that.",
+    "Ran teams called Shit On Your D and Dez Nutz before settling on Shut Up. The league did not name that last one, but the league did vote."
+   ]
+  },
+  {
+   "key": "mohsin",
+   "name": "Mohsin",
+   "team": "Bullish",
+   "tag": "2013–2025",
+   "burns": [
+    "Two Saccos, zero championships, thirteen seasons. Nobody in this league has been more reliable and nobody has been reliable at a worse thing.",
+    "Named the team Bullish, went 8-20, renamed it Bearish, and went 4-10. The man is not a manager, he is a market indicator that is wrong in both directions.",
+    "Finished fourteenth in 2016 and fourteenth again in 2018. He did not decline, he recurred.",
+    "Departed after 2025 tied for the most Saccos in league history. That is the plaque and it is bolted to the floor.",
+    "Went 10-3 in 2015 and finished third, which is the single strongest evidence anyone has that he was ever actually trying.",
+    "Twelve roster moves in his final season. He did not leave the league so much as slowly stop attending it."
+   ]
+  },
+  {
+   "key": "varun",
+   "name": "Varun",
+   "team": "Air Sipani",
+   "tag": "2011–2023",
+   "burns": [
+    "Sells diamonds, a product whose entire value depends on everybody agreeing not to look at it too closely. His 2019 title works the same way.",
+    "Won the 2019 championship with a 7-6 record and 104 roster moves. He did not draft that team, he assembled it in installments.",
+    "Made 143 transactions in his final season and finished fourth. At some point the waiver wire files a restraining order.",
+    "A career built on convincing people that something small and expensive is worth it. Thirteen years, one ring — technically a solitaire.",
+    "Air Sipani for thirteen seasons. The name promised flight. The standings delivered a layover in Atlanta.",
+    "Spent 2014 and 2015 running a team called BrownJew, finished thirteenth, and somehow that is only the second-most confusing thing about him.",
+    "Pressure makes diamonds. Thirteen years of it made exactly one, and he has been quietly appraising it ever since."
+   ]
+  },
+  {
+   "key": "jordan",
+   "name": "Jordan",
+   "team": "The Hebrew Hammer",
+   "tag": "4× champion · 2012–2015",
+   "burns": [
+    "Won this league four times in four seasons and then left. That is not a dynasty, that is a heist with an exit strategy.",
+    "Works for a company that is closed on Sundays. The single most important day of the fantasy football week and the man has it off. It explains a great deal.",
+    "Won the 2015 championship with a 6-7 record. He did not even have a winning season and he still took the trophy home and then took it out of state.",
+    "A perfect career: four years, four rings, zero Saccos, zero bad seasons, zero forwarding address.",
+    "Fourteen men have spent the last decade insisting the field was weaker back then. Fourteen men also went 0-for-4 against him.",
+    "Sells chicken sandwiches for a living and has more championships than the commissioner, the dentist, and both Gregs combined.",
+    "His entire relationship with this league is four titles and a phone number that nobody has tested since 2015."
+   ]
+  }
+ ]
+}
