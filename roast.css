@@ -75,6 +75,60 @@
 .rr-chip.all.on{background:var(--red);border-color:var(--red)}
 .rr-note{margin:14px 0 0;font-size:11.5px;line-height:1.6;color:var(--gray-soft);max-width:62ch}
 
+
+/* ── suggestion box ───────────────────────────────────── */
+/* Dark, because something is happening: this is the one place on the page where
+   the reader gets to talk back. Sits under the chips so the reply to a burn is
+   one scroll away from the burn itself. */
+.rr-box{margin:34px 0 0;background:var(--ink);color:var(--white);border:3px solid var(--ink);
+  border-top:3px solid var(--red);box-shadow:10px 10px 0 var(--red-deep)}
+.rr-box-head{padding:26px 30px 20px;border-bottom:1px solid #3A3736}
+.rr-box-head h2{margin:8px 0 0;font-size:clamp(24px,3.4vw,40px);font-weight:900;font-stretch:66%;
+  text-transform:uppercase;line-height:.96;letter-spacing:-.015em}
+.rr-box-head p{margin:12px 0 0;max-width:62ch;font-size:14px;line-height:1.6;color:#C9C5C3}
+
+.rr-form{display:grid;grid-template-columns:1fr 1fr;gap:18px 20px;padding:24px 30px 26px}
+.rr-f{display:block;position:relative}
+.rr-f-wide{grid-column:1 / -1}
+.rr-f > span{display:block;margin:0 0 8px;font-size:10.5px;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--red-bright)}
+.rr-f > span i{font-style:normal;color:var(--gray-soft);letter-spacing:.1em}
+
+.rr-form select,.rr-form input,.rr-form textarea{width:100%;font:inherit;font-size:15px;
+  color:var(--white);background:#2B2928;border:2px solid #4A4645;padding:12px 14px;
+  border-radius:0;-webkit-appearance:none;appearance:none}
+.rr-form textarea{min-height:104px;line-height:1.5;resize:vertical}
+.rr-form select{background-image:linear-gradient(45deg,transparent 50%,var(--red-bright) 50%),
+  linear-gradient(135deg,var(--red-bright) 50%,transparent 50%);
+  background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;
+  background-size:6px 6px,6px 6px;background-repeat:no-repeat;padding-right:40px;cursor:pointer}
+.rr-form ::placeholder{color:#7D7979;opacity:1}
+.rr-form select:focus,.rr-form input:focus,.rr-form textarea:focus{outline:none;
+  border-color:var(--red-bright);background:#332F2E}
+
+.rr-f-count{position:absolute;right:12px;bottom:12px;font-style:normal;font-size:10.5px;
+  font-weight:800;letter-spacing:.1em;color:var(--gray-mid);pointer-events:none}
+.rr-f-count.near{color:var(--red-bright)}
+
+.rr-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+.rr-f-actions{grid-column:1 / -1;display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  padding:4px 0 0;border-top:1px solid #3A3736;margin-top:2px}
+.rr-send{font:inherit;font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  margin-top:18px;padding:14px 30px;cursor:pointer;color:var(--white);
+  background:var(--red);border:2px solid var(--red);box-shadow:4px 4px 0 var(--white)}
+.rr-send:hover:not(:disabled){background:var(--red-deep);border-color:var(--red-deep)}
+.rr-send:active:not(:disabled){transform:translate(4px,4px);box-shadow:none}
+.rr-send:disabled{opacity:.5;cursor:default;box-shadow:none}
+.rr-f-msg{margin-top:18px;font-size:11.5px;font-weight:800;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--gray-soft)}
+.rr-f-msg.ok{color:#5FD08A}
+.rr-f-msg.bad{color:var(--red-bright)}
+
+.rr-jump{font:inherit;font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  padding:14px 22px;border:2px dashed var(--gray-mid);background:transparent;color:var(--ink-2);cursor:pointer}
+.rr-jump:hover{border-style:solid;border-color:var(--ink);color:var(--ink)}
+
 /* ── phone ────────────────────────────────────────────── */
 @media (max-width:760px){
   .rr-hero{padding:30px 18px 26px}
@@ -89,4 +143,12 @@
   .rr-spin{flex:1 1 100%;text-align:center}
   .rr-copy{flex:1}
   .rr-hint{display:none}
+
+  .rr-box{margin-top:26px;border-width:2px;box-shadow:5px 5px 0 var(--red-deep)}
+  .rr-box-head{padding:20px 18px 16px}
+  .rr-form{grid-template-columns:1fr;gap:14px;padding:18px 18px 22px}
+  .rr-form select,.rr-form input,.rr-form textarea{font-size:16px}  /* 16px stops iOS zooming on focus */
+  .rr-send{flex:1 1 100%;text-align:center;margin-top:14px}
+  .rr-f-msg{margin-top:10px;flex:1 1 100%}
+  .rr-jump{flex:1}
 }

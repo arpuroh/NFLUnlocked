@@ -7,6 +7,13 @@
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
+  /* Suggestion box. The key below is a Supabase *publishable* key and is meant to
+     be public: the table grants anon INSERT on four columns and nothing else — no
+     select, no update, no delete, and no way to set your own line to "approved". */
+  const SUGGEST_URL = "https://zajaumqfompslmgoohxv.supabase.co/rest/v1/roast_suggestions";
+  const SUGGEST_KEY = "sb_publishable_RlJF7WmTp_IyW2fOS2jwpQ_NnaiaI6u";
+  const SENT_KEY = "nflu_rr_sent";
+
   let people = [];
   const bags = {};              // key -> burn indexes not yet dealt this cycle
   let current = null;           // whoever the wheel last landed on
@@ -142,6 +149,7 @@
           <div class="rr-controls">
             <button class="rr-spin" type="button">\u{1F3B0} <b>Spin</b></button>
             <button class="rr-copy" type="button">Copy line</button>
+            <button class="rr-jump" type="button">Suggest a burn</button>
             <span class="rr-hint" id="rr-hint">Or aim it at somebody below</span>
           </div>
         </div>
@@ -156,11 +164,161 @@
           <p class="rr-note">Ordered by career wins, most first. The two rookies have no record to
           stand on yet, so they wait at the end.</p>
         </div>
+
+        ${box()}
       </section>`;
+  }
+
+  /* ── suggestion box ────────────────────────────────── */
+  function box() {
+    return `
+      <section class="rr-box" id="rr-box">
+        <div class="rr-box-head">
+          <div class="eyebrow red">Suggestion box</div>
+          <h2>Got a better one?</h2>
+          <p>The wheel only knows what it has been fed. Write a line, name a victim, and it
+          goes in the pile — the good ones get loaded into the machine. Fantasy decisions only:
+          drafts, trades, lineups, waiver crimes. Nothing about anybody’s real life.</p>
+        </div>
+
+        <form class="rr-form" id="rr-form" novalidate>
+          <label class="rr-f">
+            <span>Who is it about</span>
+            <select id="rr-f-target" name="target">
+              <option value="">Anybody · the whole league</option>
+              ${people.map((p) => `<option value="${esc(p.key)}">${esc(p.name)} — ${esc(p.team)}</option>`).join("")}
+            </select>
+          </label>
+
+          <label class="rr-f rr-f-name">
+            <span>Your name <i>optional</i></span>
+            <input id="rr-f-author" name="author" maxlength="60" autocomplete="name"
+              placeholder="Leave blank to stay anonymous">
+          </label>
+
+          <label class="rr-f rr-f-wide">
+            <span>The burn</span>
+            <textarea id="rr-f-joke" name="joke" rows="3" maxlength="600"
+              placeholder="Land it in two sentences. Evidence helps."></textarea>
+            <em class="rr-f-count" id="rr-f-count">0 / 600</em>
+          </label>
+
+          <div class="rr-hp" aria-hidden="true">
+            <label>Do not fill this in<input id="rr-f-hp" name="website" tabindex="-1" autocomplete="off"></label>
+          </div>
+
+          <div class="rr-f-actions">
+            <button class="rr-send" type="submit">Send it in</button>
+            <span class="rr-f-msg" id="rr-f-msg" role="status" aria-live="polite"></span>
+          </div>
+        </form>
+      </section>`;
+  }
+
+  // Six an hour, five seconds apart. Enough for a real venting session, not enough
+  // to let one bored manager paste the whole internet into the commissioner’s table.
+  function throttle() {
+    let sent = [];
+    try { sent = JSON.parse(localStorage.getItem(SENT_KEY) || "[]"); } catch { sent = []; }
+    const now = Date.now();
+    sent = sent.filter((t) => now - t < 36e5);
+    if (sent.length >= 6) return "That is six in an hour. The pile is full — come back later.";
+    if (sent.length && now - sent[sent.length - 1] < 5000) return "Easy. Give it a second.";
+    return "";
+  }
+
+  function stamp() {
+    let sent = [];
+    try { sent = JSON.parse(localStorage.getItem(SENT_KEY) || "[]"); } catch { sent = []; }
+    sent.push(Date.now());
+    try { localStorage.setItem(SENT_KEY, JSON.stringify(sent.slice(-12))); } catch { /* private mode */ }
+  }
+
+  function wireBox() {
+    const form = document.querySelector("#rr-form");
+    if (!form) return;
+    const joke = document.querySelector("#rr-f-joke");
+    const count = document.querySelector("#rr-f-count");
+    const msg = document.querySelector("#rr-f-msg");
+    const btn = form.querySelector(".rr-send");
+
+    const say = (text, kind) => {
+      msg.textContent = text;
+      msg.className = "rr-f-msg" + (kind ? " " + kind : "");
+    };
+
+    joke.addEventListener("input", () => {
+      count.textContent = `${joke.value.length} / 600`;
+      count.classList.toggle("near", joke.value.length > 540);
+    });
+
+    form.addEventListener("submit", async (ev) => {
+      ev.preventDefault();
+      if (document.querySelector("#rr-f-hp").value) { say("Sent.", "ok"); return; }  // bot
+
+      const text = joke.value.trim();
+      if (text.length < 4) { say("Write something first.", "bad"); joke.focus(); return; }
+
+      const gate = throttle();
+      if (gate) { say(gate, "bad"); return; }
+
+      const key = document.querySelector("#rr-f-target").value;
+      const who = people.find((p) => p.key === key);
+      const author = document.querySelector("#rr-f-author").value.trim();
+
+      btn.disabled = true;
+      say("Sending…", "");
+      try {
+        const res = await fetch(SUGGEST_URL, {
+          method: "POST",
+          headers: {
+            apikey: SUGGEST_KEY,
+            Authorization: `Bearer ${SUGGEST_KEY}`,
+            "Content-Type": "application/json",
+            Prefer: "return=minimal",
+          },
+          body: JSON.stringify({
+            target_key: key || null,
+            target_name: who ? who.name : null,
+            joke: text.slice(0, 600),
+            author: author ? author.slice(0, 60) : null,
+          }),
+        });
+        if (!res.ok) {
+          let why = "";
+          try { why = (await res.json()).message || ""; } catch { /* no body */ }
+          throw new Error(why || String(res.status));
+        }
+        stamp();
+        joke.value = "";
+        count.textContent = "0 / 600";
+        count.classList.remove("near");
+        say(who ? `Filed against ${who.name}. Keep them coming.` : "Filed. Keep them coming.", "ok");
+      } catch (err) {
+        // The table guards against duplicates and floods; say which one it was
+        // rather than blaming the network for a rejection the server chose.
+        const m = String((err && err.message) || "");
+        say(/already in the pile/.test(m) ? "Somebody already sent that exact line."
+          : /slow down/.test(m) ? "The box is getting hammered. Try again in a minute."
+          : "Would not send. Check your connection and try again.", "bad");
+      } finally {
+        btn.disabled = false;
+      }
+    });
   }
 
   function wire() {
     document.querySelector(".rr-spin").addEventListener("click", () => spin(filter));
+
+    // Aims the box at whoever the wheel just landed on, so the reply is one click away.
+    document.querySelector(".rr-jump").addEventListener("click", () => {
+      const sel = document.querySelector("#rr-f-target");
+      if (sel && current) sel.value = current.key;
+      const b = document.querySelector("#rr-box");
+      if (b) b.scrollIntoView({ behavior: "smooth", block: "start" });
+      const j = document.querySelector("#rr-f-joke");
+      if (j) setTimeout(() => j.focus({ preventScroll: true }), 320);
+    });
 
     document.querySelector(".rr-copy").addEventListener("click", async (ev) => {
       const burn = document.querySelector(".rr-burn");
@@ -185,7 +343,7 @@
 
     // Space bar pulls the lever, because of course it does.
     document.addEventListener("keydown", (ev) => {
-      if (ev.code !== "Space" || /^(INPUT|TEXTAREA|BUTTON)$/.test(document.activeElement.tagName)) return;
+      if (ev.code !== "Space" || /^(INPUT|TEXTAREA|BUTTON|SELECT)$/.test(document.activeElement.tagName)) return;
       ev.preventDefault();
       spin(filter);
     });
@@ -213,6 +371,7 @@
       if (!app) return false;
       app.innerHTML = shell(db);
       wire();
+      wireBox();
       spin("");
       return true;
     };
