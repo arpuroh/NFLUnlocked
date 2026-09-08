@@ -4,7 +4,7 @@
    draft-results page) and data/draft_grades.json (the writing: grades, awards,
    preseason power rankings). Three states, decided by the data alone:
 
-     pending   — no picks yet: countdown, nomination order, last year's receipts
+     pending   — no picks yet: countdown, the field, last year's biggest buys
      complete  — picks in, no grades yet: full auction ledger, grades "in the oven"
      graded    — picks + grades: the real page
 
@@ -114,13 +114,6 @@
     const order = (draft.teams || []).map((t) => t.team);
     const pTop = prev ? prev.ledger.top_buys.slice(0, 12) : [];
     const pDollar = prev ? prev.ledger.dollar_count : null;
-    const pm = prev ? prev.ledger.pos_market : {};
-    const posRows = POS_ORDER.filter((k) => pm[k]).map((k) => `<div class="mk-row">
-        <span class="pp ${posClass(k)}">${k}</span>
-        <span class="mk-bar"><i style="width:${Math.round(pm[k].total / prev.ledger.total_spent * 100 * 2.2)}%"></i></span>
-        <span class="mk-v num">${money(pm[k].total)}</span>
-        <span class="mk-s">${pm[k].count} bought · avg ${money(pm[k].avg)}</span>
-      </div>`).join("");
 
     return `
       <section class="dark roast-hero dr-hero">
@@ -160,59 +153,27 @@
         ${pDollar != null ? stat("$1 players last year", pDollar, `of ${prev.picks.length} picks. A third of the league costs a dollar.`) : stat("$1 players", "—", "")}
       </section>
 
-      <div class="body-grid">
-        <div class="col-main" id="last-year">
-          ${prev ? `
-          <div class="sec-top"><h2 class="h-sec">The ${prev.season} Auction, Audited</h2>
-            <span class="note">Biggest buys and what they bought</span></div>
-          <hr class="rule-h">
-          <div class="dr-table">
-            <div class="row hd"><span>Pick</span><span>Player</span><span>Bought by</span><span class="c">Price</span><span class="c">Finish</span></div>
-            ${pTop.map((p) => {
-              const f = finishOf(ledger, prev.season, p.team);
-              const fin = f ? (f.place === 1 ? "🏆 Champion" : ord(f.rank) + " · " + f.rec) : "—";
-              return `<div class="row${f && f.rank >= 12 ? " bad" : ""}${f && f.place === 1 ? " champ" : ""}">
-                <span class="rk">${p.pick}</span>
-                <span class="tm"><span class="pp ${posClass(p.slot)}">${esc(p.slot)}</span> ${esc(p.player)}</span>
-                <span class="mg">${esc(p.team)}</span>
-                <span class="c b num">${money(p.cost)}</span>
-                <span class="c dim">${esc(fin)}</span></div>`;
-            }).join("")}
-          </div>
-          <p class="os-note">The five biggest buys of ${prev.season} finished 6th, 14th, 8-20, 4th and the Sacco. Not one made
-            the final. The champion's most expensive player cost $36. Tonight the same fourteen people
-            walk back into the same room with the same $200 and swear it will be different.</p>
-
-          <div class="sec-top" style="margin-top:30px"><h2 class="h-sec">Where the money went</h2>
-            <span class="note">${prev.season} spend by position</span></div>
-          <hr class="rule-h">
-          <div class="dr-market">${posRows}</div>` : `<p class="empty">No prior draft on file.</p>`}
+      <div class="dr-solo" id="last-year">
+        ${prev ? `
+        <div class="sec-top"><h2 class="h-sec">The ${prev.season} Auction, Audited</h2>
+          <span class="note">Biggest buys and where they finished</span></div>
+        <hr class="rule-h">
+        <div class="dr-table">
+          <div class="row hd"><span>Pick</span><span>Player</span><span>Bought by</span><span class="c">Price</span><span class="c">Finish</span></div>
+          ${pTop.map((p) => {
+            const f = finishOf(ledger, prev.season, p.team);
+            const fin = f ? (f.place === 1 ? "\u{1F3C6} Champion" : ord(f.rank) + " · " + f.rec) : "—";
+            return `<div class="row${f && f.rank >= 12 ? " bad" : ""}${f && f.place === 1 ? " champ" : ""}">
+              <span class="rk">${p.pick}</span>
+              <span class="tm"><span class="pp ${posClass(p.slot)}">${esc(p.slot)}</span> ${esc(p.player)}</span>
+              <span class="mg">${esc(p.team)}</span>
+              <span class="c b num">${money(p.cost)}</span>
+              <span class="c dim">${esc(fin)}</span></div>`;
+          }).join("")}
         </div>
-
-        <div class="col-side">
-          <div class="mod">
-            <h2 class="h-sec">How grades work</h2><hr class="rule-h">
-            <div class="sup"><div class="award">Price vs. value</div>
-              <div class="who">Did you pay the market or set it?</div>
-              <div class="note">Every buy is compared with what the room paid for the same tier. Overpaying for a stud
-              is forgiven once. Overpaying for a WR3 is not.</div></div>
-            <div class="sup"><div class="award">Roster shape</div>
-              <div class="who">Starters, depth, and the $1 bin</div>
-              <div class="note">Stars-and-scrubs is a strategy. Stars-and-nothing is a cry for help. The league's own
-              roster (2 RB, 2 WR, TE, 2 flex, IDP) decides what counts as a starter.</div></div>
-            <div class="sup"><div class="award">The receipts</div>
-              <div class="who">Full savage, fantasy decisions only</div>
-              <div class="note">Drafts, prices and bench crimes are fair game. Nobody's job, family or face.
-              Grades are final and are reprinted in December next to your actual record.</div></div>
-          </div>
-          <div class="mod">
-            <h2 class="h-sec">Tonight's schedule</h2><hr class="rule-h">
-            <div class="clown-row"><span class="r">1</span><span>Nomination order posts</span><span class="c">6:30pm ET</span></div>
-            <div class="clown-row"><span class="r">2</span><span>First nomination</span><span class="c">7:00pm ET</span></div>
-            <div class="clown-row"><span class="r">3</span><span>Auction ledger live here</span><span class="c">Final pick + 5 min</span></div>
-            <div class="clown-row"><span class="r">4</span><span>Grades + preseason rankings</span><span class="c">Final pick + ~1 hr</span></div>
-          </div>
-        </div>
+        <p class="os-note">The five biggest buys of ${prev.season} finished 6th, 14th, 8-20, 4th and the Sacco. Not one made
+          the final. The champion's most expensive player cost $36. Tonight the same fourteen people
+          walk back into the same room with the same $200 and swear it will be different.</p>` : `<p class="empty">No prior draft on file.</p>`}
       </div>`;
   }
 
