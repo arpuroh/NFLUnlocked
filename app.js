@@ -15,6 +15,7 @@ const NU = (() => {
   // live behind them until Week 1. The pages still resolve at their own URLs.
   const NAV = [
     ["index.html",     "This Week",      "home"],
+    ["draft.html",     "Draft",          "draft"],
     ["rankings.html",  "Rankings",       "ranks"],
     ["hall.html",      "Hall of Shame",  "hall"],
     ["trophy.html",    "Trophy Room",    "trophy"],
@@ -115,7 +116,7 @@ const NU = (() => {
 
     // The masthead nav is hidden under 900px, so this bar is the only way around
     // the site on a phone — the Trophy Room and the Hall of Shame belong in it.
-    const tabs = [["index.html","Home","home"],["rankings.html","Ranks","ranks"],
+    const tabs = [["index.html","Home","home"],["draft.html","Draft","draft"],["rankings.html","Ranks","ranks"],
                   ["hall.html","Shame","hall"],["trophy.html","Trophy","trophy"],
                   ["roast.html","Roast","roast"]];
     const mt = document.createElement("nav");

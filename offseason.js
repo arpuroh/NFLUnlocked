@@ -19,17 +19,17 @@
   };
 
   // Draft night, per the league's Yahoo settings page.
-  const DRAFT = new Date("2026-09-08T21:00:00Z");
+  const DRAFT = new Date("2026-09-08T23:00:00Z");
 
   function countdown() {
     const ms = DRAFT - new Date();
     if (ms <= 0) return { v: "Live", s: "Draft is underway" };
     const d = Math.floor(ms / 86400000);
     const h = Math.floor((ms % 86400000) / 3600000);
-    return { v: d > 0 ? d + "d " + h + "h" : h + "h", s: "Tue Sep 8 · 5:00pm ET" };
+    return { v: d > 0 ? d + "d " + h + "h" : h + "h", s: "Tue Sep 8 · 7:00pm ET" };
   }
 
-  function seasonView(db, rows, year) {
+  function seasonView(db, rows, year, draft, grades) {
     const byRank = rows.slice().sort((a, b) => a.rank - b.rank);
     // The Sacco is not last place. It is the loser of the three-team Sacco Bowl,
     // resolved in the database; the standings table only decides the seeding.
@@ -54,6 +54,7 @@
       (b.wins / (b.wins + b.losses)) - (a.wins / (a.wins + a.losses)))[0];
     const busiest = rows.slice().sort((a, b) => b.moves - a.moves)[0];
     const cd = countdown();
+    const drafted = !!(draft && draft.status === "complete" && draft.picks && draft.picks.length);
 
     // Robbed: most points, no title.
     const robbed = rows.slice().sort((a, b) => b.points_for - a.points_for)
@@ -83,9 +84,20 @@
         <div class="hero-grid">
           <div>
             <div class="filed">
-              <span class="tag-red">Offseason</span>
-              <span class="eyebrow">${year} season complete · ${rows.length} teams · next kickoff September</span>
+              <span class="tag-red">${drafted ? "Preseason" : "Offseason"}</span>
+              <span class="eyebrow">${drafted
+                ? `${draft.season} rosters set · ${rows.length} teams · Week 1 kicks off Sunday`
+                : `${year} season complete · ${rows.length} teams · next kickoff September`}</span>
             </div>
+            ${drafted ? `
+            <h1 class="display">${esc(grades && grades.headline || "The Draft Receipts Are In")}
+              <span class="kick">${esc(grades && grades.kicker || "(every dollar, audited)")}</span></h1>
+            <p class="lede">${esc(grades && grades.lede ||
+              `${draft.picks.length} picks and $${draft.ledger.total_spent} later, the ${draft.season} rosters are set. Every price, every roster, a letter grade for all ${draft.teams.length} and the preseason power rankings are on the draft page.`)}</p>
+            <div class="hero-actions">
+              <a class="btn-red" href="draft.html">${grades ? "Read the draft grades →" : "See every pick →"}</a>
+              <a class="btn-ghost" href="hall.html">${year} season review →</a>
+            </div>` : `
             <h1 class="display">The ${year} Season Is In The Books
               <span class="kick">(and the receipts are permanent)</span></h1>
             <p class="lede">${esc(champ.manager)} takes the ${year} title with ${esc(champ.team)}.
@@ -96,8 +108,9 @@
               Full autopsy in the season review; fifteen years of history in the Trophy Room.</p>
             <div class="hero-actions">
               <a class="btn-red" href="hall.html">Read the season review →</a>
+              <a class="btn-ghost" href="draft.html">Draft night →</a>
               <a class="btn-ghost" href="trophy.html">Trophy Room →</a>
-            </div>
+            </div>`}
           </div>
           <div class="board">
             <div class="eyebrow">${year} Podium</div>
@@ -119,7 +132,9 @@
         ${stat("Most points, " + year, hi.points_for.toFixed(1), hi.team)}
         ${stat("Fewest points, " + year, lo.points_for.toFixed(1), lo.team, true)}
         ${stat("Best record, " + year, bestRec.wins + "-" + bestRec.losses, bestRec.team)}
-        ${stat("Draft night", cd.v, cd.s)}
+        ${drafted && draft.ledger && draft.ledger.top_buys && draft.ledger.top_buys[0]
+          ? `<a href="draft.html" class="cell-link">${stat("Biggest buy", "$" + draft.ledger.top_buys[0].cost, draft.ledger.top_buys[0].player + " · " + draft.ledger.top_buys[0].team, true)}</a>`
+          : `<a href="draft.html" class="cell-link">${stat("Draft night", cd.v, cd.s)}</a>`}
       </section>
 
       <div class="body-grid">
@@ -194,14 +209,18 @@
     const page = document.body.dataset.page;
     if (page !== "home" && page !== "ranks") return;
 
-    let league = {}, db = {}, ledger = {};
+    let league = {}, db = {}, ledger = {}, draft = null, grades = null;
+    const opt = (p) => fetch(p, { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
     try {
-      [league, db, ledger] = await Promise.all([
+      [league, db, ledger, draft, grades] = await Promise.all([
         fetch("data/league.json", { cache: "no-store" }).then((r) => r.json()).catch(() => ({})),
         fetch("data/trophy.json", { cache: "no-store" }).then((r) => r.json()),
         fetch("data/ledger.json", { cache: "no-store" }).then((r) => r.json()),
+        opt("data/draft.json"),
+        opt("data/draft_grades.json"),
       ]);
     } catch { return; }
+    if (grades && !(grades.grades && Object.keys(grades.grades).length)) grades = null;
 
     // Live season? Leave the normal pages alone.
     const played = (league.matchups || []).filter((m) => m.status === "postevent");
@@ -220,9 +239,9 @@
     const paint = () => {
       const app = $("#app");
       if (!app) return false;
-      app.innerHTML = seasonView(db, rows, latest.year);
+      app.innerHTML = seasonView(db, rows, latest.year, draft, grades);
       const chip = document.querySelector(".masthead .badge-live");
-      if (chip) { chip.textContent = "Offseason"; chip.classList.add("os-badge"); }
+      if (chip) { chip.textContent = draft && draft.status === "complete" ? "Preseason" : "Offseason"; chip.classList.add("os-badge"); }
       return true;
     };
 

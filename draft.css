@@ -1,0 +1,113 @@
+/* ═══ Draft Central ═══
+   Same tabloid: Archivo, 2px rules, zero radius. Dark is the hero and the stat bug only. */
+
+.dr-hero .btn-ghost{display:inline-flex;align-items:center;border:2px solid var(--gray-mid);color:var(--white);
+  padding:11px 18px;font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.dr-hero .btn-ghost:hover{border-color:var(--red);color:var(--red-bright)}
+.dr-hero .board-row .bm{max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:right}
+
+/* position pill */
+.pp{display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  border:1px solid var(--ink);color:var(--ink);padding:2px 5px;line-height:1.2;min-width:30px;text-align:center;
+  vertical-align:middle;font-variant-numeric:tabular-nums}
+.pp.pos-qb{background:var(--ink);color:var(--white)}
+.pp.pos-k,.pp.pos-def,.pp.pos-idp{border-color:var(--gray-faint);color:var(--gray-mid)}
+.dark .pp{border-color:var(--gray-mid);color:var(--paper)}
+.dark .pp.pos-qb{background:var(--paper);color:var(--ink)}
+
+/* pick line (rosters, ledgers) */
+.dr-pick{display:grid;grid-template-columns:36px 1fr auto;gap:10px;align-items:center;
+  padding:7px 0;border-bottom:1px solid var(--rule);font-size:13.5px}
+.dr-pick .pn{font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dr-pick .pn em{font-style:normal;font-weight:600;color:var(--gray-soft);font-size:11px;margin-left:4px}
+.dr-pick .pt{font-size:11px;color:var(--gray-mid);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:120px}
+.dr-pick .pc{font-weight:800;font-size:14px;text-align:right;white-space:nowrap}
+.dr-pick .pc i{font-style:normal;font-size:10px;font-weight:800;margin-left:5px;color:var(--gray-soft)}
+.dr-pick .pc i.up{color:var(--red)}
+.dr-pick .pc i.dn{color:var(--gray-mid)}
+.dr-pick:has(.pt){grid-template-columns:36px 1fr auto auto}
+.dr-list .dr-pick:last-child{border-bottom:0}
+
+/* audited table (pending state) */
+.dr-table{border:2px solid var(--ink);background:var(--white)}
+.dr-table .row{display:grid;grid-template-columns:44px 1.6fr 1.2fr 70px 130px;gap:8px;padding:9px 14px;
+  border-bottom:1px solid var(--rule);align-items:center;font-size:13.5px}
+.dr-table .row:last-child{border-bottom:0}
+.dr-table .row.hd{background:var(--ink);color:var(--white);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;padding:8px 14px}
+.dr-table .rk{font-weight:800;color:var(--gray-mid)}
+.dr-table .tm{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dr-table .mg{color:var(--gray-mid);font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dr-table .c{text-align:center;font-variant-numeric:tabular-nums}
+.dr-table .b{font-weight:800}
+.dr-table .dim{color:var(--gray-soft);font-size:12px}
+.dr-table .row.bad .dim{color:var(--red-deep);font-weight:700}
+.dr-table .row.champ{background:var(--paper)}
+.dr-table .row.champ .dim{color:var(--ink);font-weight:800}
+
+/* position market bars */
+.dr-market{margin-top:6px}
+.mk-row{display:grid;grid-template-columns:40px 1fr 60px;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--rule)}
+.mk-row:last-child{border-bottom:0}
+.mk-bar{display:block;height:11px;background:var(--fill);position:relative}
+.mk-bar i{display:block;height:100%;background:var(--ink);max-width:100%}
+.mk-v{text-align:right;font-weight:800;font-size:14px}
+.mk-s{grid-column:2 / -1;font-size:11px;color:var(--gray-mid);margin-top:-4px}
+
+/* grade cards */
+.dr-card{display:grid;grid-template-columns:96px 1fr;gap:0;border:2px solid var(--ink);background:var(--white);margin-top:18px}
+.dr-card.ungraded{border-color:var(--gray-faint)}
+.dr-grade{border-right:2px solid var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+  padding:18px 8px;background:var(--paper)}
+.dr-card.ungraded .dr-grade{border-right-color:var(--gray-faint)}
+.dr-grade .g{font-size:56px;font-weight:900;font-stretch:76%;line-height:.9;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.dr-grade .g.ap,.dr-grade .g.a,.dr-grade .g.am{color:var(--ink)}
+.dr-grade .g.bp,.dr-grade .g.b,.dr-grade .g.bm{color:var(--ink-2)}
+.dr-grade .g.cp,.dr-grade .g.c,.dr-grade .g.cm{color:var(--gray)}
+.dr-grade .g.dp,.dr-grade .g.d,.dr-grade .g.dm,.dr-grade .g.f{color:var(--red)}
+.dr-grade .rk{margin-top:10px;font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--gray-mid)}
+.dr-body{padding:16px 18px 18px;min-width:0}
+.dr-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;flex-wrap:wrap}
+.dr-head h3{margin:0;font-size:22px;font-weight:900;font-stretch:78%;text-transform:uppercase;letter-spacing:-.01em;line-height:1}
+.dr-head .mg{font-size:12px;color:var(--gray-mid);margin-top:5px}
+.dr-head .mg .left{color:var(--red);font-weight:700}
+.dr-pos{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.dr-pos .ps{font-size:11px;font-weight:700;color:var(--gray);white-space:nowrap}
+.dr-pos .ps .pp{margin-right:2px}
+.dr-hl{margin:14px 0 6px;font-size:17px;font-weight:800;line-height:1.2}
+.dr-p{margin:0 0 10px;font-size:14px;line-height:1.55;color:var(--ink-2)}
+.dr-p.dim{color:var(--gray-mid)}
+.dr-verdicts{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--rule);margin:12px 0 14px}
+.dr-verdicts .vd{padding:10px 12px;font-size:12.5px;line-height:1.45}
+.dr-verdicts .vd.good{border-right:1px solid var(--rule)}
+.dr-verdicts .vd .eyebrow{display:block;margin-bottom:3px}
+.dr-verdicts .vd.bad .eyebrow{color:var(--red)}
+.dr-roster{border-top:2px solid var(--ink);padding-top:4px}
+.dr-card.ungraded .dr-roster{border-top-color:var(--gray-faint)}
+.dr-toggle{display:block;width:100%;margin-top:6px;background:none;border:1px solid var(--rule);
+  font:inherit;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);
+  padding:8px;cursor:pointer}
+.dr-toggle:hover{border-color:var(--ink);color:var(--ink)}
+
+/* preseason rankings (sidebar) */
+.dr-rank{display:grid;grid-template-columns:34px 1fr;gap:10px;padding:10px 0;border-bottom:1px solid var(--rule);align-items:start}
+.dr-rank .n{font-size:24px;font-weight:900;font-stretch:78%;line-height:1;font-variant-numeric:tabular-nums;color:var(--ink)}
+.dr-rank:nth-child(n+8) .n{color:var(--gray-soft)}
+.dr-rank .t b{display:block;font-size:14px;font-weight:800;line-height:1.15}
+.dr-rank .t small{display:block;font-size:11px;color:var(--gray-mid);margin-top:2px}
+.dr-rank .t .bl{display:block;font-size:12.5px;color:var(--ink-2);margin-top:5px;line-height:1.45}
+
+@media (max-width:760px){
+  .dr-table .row{grid-template-columns:32px 1fr 64px}
+  .dr-table .row span:nth-child(3),.dr-table .row span:nth-child(5){display:none}
+  .dr-card{grid-template-columns:64px 1fr}
+  .dr-grade{padding:14px 4px}
+  .dr-grade .g{font-size:40px}
+  .dr-body{padding:14px 12px 14px}
+  .dr-head h3{font-size:19px}
+  .dr-pos{justify-content:flex-start}
+  .dr-verdicts{grid-template-columns:1fr}
+  .dr-verdicts .vd.good{border-right:0;border-bottom:1px solid var(--rule)}
+  .dr-pick .pt{display:none}
+  .dr-pick:has(.pt){grid-template-columns:36px 1fr auto}
+  .dr-hero .btn-ghost{margin-top:0}
+}

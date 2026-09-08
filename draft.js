@@ -1,0 +1,393 @@
+/* NFL Unlocked — Draft Central.
+
+   Reads data/draft.json (written by scripts/fetch_draft.py off the public Yahoo
+   draft-results page) and data/draft_grades.json (the writing: grades, awards,
+   preseason power rankings). Three states, decided by the data alone:
+
+     pending   — no picks yet: countdown, nomination order, last year's receipts
+     complete  — picks in, no grades yet: full auction ledger, grades "in the oven"
+     graded    — picks + grades: the real page
+
+   No build step, no state. Reloading is the refresh. */
+(() => {
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const $ = (s, r = document) => r.querySelector(s);
+  const money = (n) => "$" + (n ?? 0);
+  const ord = (i) => {
+    const s = ["th", "st", "nd", "rd"], v = i % 100;
+    return i + (s[(v - 20) % 10] || s[v] || s[0]);
+  };
+
+  // Draft night, per the league's Yahoo settings page. 7:00pm ET.
+  const DRAFT_AT = new Date("2026-09-08T23:00:00Z");
+  const YAHOO = "https://football.fantasysports.yahoo.com/f1/675504";
+
+  // Team name → manager. Yahoo's public page carries team names only.
+  const MANAGERS = {
+    "Hail Mary": "Andrew", "Hail Purdy": "Andrew",
+    "ShakeNBake": "Abhishek",
+    "A dad": "Barrett",
+    "FreeGucci": "Nishil",
+    "Kim Jong Nate": "Nathan",
+    "Mac Daddy": "Maclane",
+    "The Injured Reserved": "Greg (IR)",
+    "Miley 💨LEO 5K Speedo Fan Club": "Greg (Miley)",
+    "Bend The Knee 🐲🔥": "Darrius",
+    "Poop Squad 💩": "Anuj",
+    "Good Will Hunting": "Will",
+    "Leo the Cleo": "Chris",
+    "The Asshouse Always Wins": "Tom",
+    "Fwamming Gwaggon": "Jon",
+    "Shut Up": "Neil", "Bullish": "Mohsin",
+  };
+  const mgr = (team, grades) =>
+    (grades && grades.grades && grades.grades[team] && grades.grades[team].manager) ||
+    MANAGERS[team] || "";
+
+  const POS_ORDER = ["QB", "RB", "WR", "TE", "K", "DEF", "IDP"];
+  const posClass = (slot) => "pos-" + String(slot || "").toLowerCase();
+
+  /* ── data ────────────────────────────────────────────── */
+  const getJSON = (p) => fetch(p, { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+
+  async function run() {
+    if (document.body.dataset.page !== "draft") return;
+    const [draft, grades, prev, ledger] = await Promise.all([
+      getJSON("data/draft.json"), getJSON("data/draft_grades.json"),
+      getJSON("data/draft_2025.json"), getJSON("data/ledger.json"),
+    ]);
+    const paint = () => {
+      const app = $("#app");
+      if (!app) return false;
+      if (!draft) {
+        app.innerHTML = `<p class="empty pad">Draft data has not been published yet. Poke the commissioner.</p>`;
+        return true;
+      }
+      const graded = draft.status === "complete" && grades && grades.grades && Object.keys(grades.grades).length;
+      app.innerHTML = draft.status === "pending"
+        ? pendingView(draft, prev, ledger)
+        : draftView(draft, graded ? grades : null, prev);
+      wire();
+      const chip = document.querySelector(".masthead .badge-live");
+      if (chip) {
+        chip.textContent = draft.status === "pending" ? "Draft Night" : "Preseason";
+        chip.style.background = draft.status === "pending" ? "var(--red)" : "";
+      }
+      return true;
+    };
+    // app.js paints the shell asynchronously; take over once it has.
+    setTimeout(paint, 60); setTimeout(paint, 400); setTimeout(paint, 1200);
+  }
+
+  /* ── shared bits ─────────────────────────────────────── */
+  const stat = (label, v, s, red) => `<div class="cell">
+    <div class="eyebrow">${esc(label)}</div>
+    <div class="v${red ? " red" : ""}">${esc(v)}</div>
+    <div class="s">${esc(s)}</div></div>`;
+
+  const pickLine = (p, opts = {}) => `<div class="dr-pick${opts.cls || ""}">
+      <span class="pp ${posClass(p.slot)}">${esc(p.slot === "IDP" ? p.pos.split(",")[0] : p.slot)}</span>
+      <span class="pn">${esc(p.player)} <em>${esc(p.nfl)}</em></span>
+      ${opts.team ? `<span class="pt">${esc(p.team)}</span>` : ""}
+      <span class="pc num">${money(p.cost)}${p.last_year != null && opts.delta
+        ? `<i class="${p.cost > p.last_year ? "up" : p.cost < p.last_year ? "dn" : ""}">${
+            p.cost === p.last_year ? "=" : (p.cost > p.last_year ? "+" : "−") + Math.abs(p.cost - p.last_year)}</i>` : ""}</span>
+    </div>`;
+
+  function countdown() {
+    const ms = DRAFT_AT - new Date();
+    if (ms <= 0) return { v: "Live", s: "The auction is underway" };
+    const h = Math.floor(ms / 3600000), m = Math.floor((ms % 3600000) / 60000);
+    return { v: h > 0 ? `${h}h ${m}m` : `${m}m`, s: "Tue Sep 8 · 7:00pm ET" };
+  }
+
+  const finishOf = (ledger, year, team) => {
+    const rows = (ledger && ledger[String(year)]) || [];
+    const r = rows.find((a) => a[0] === team);
+    return r ? { rank: r[2], place: r[3], rec: `${r[4]}-${r[5]}` } : null;
+  };
+
+  /* ── PENDING: before the first nomination ─────────────── */
+  function pendingView(draft, prev, ledger) {
+    const cd = countdown();
+    const order = (draft.teams || []).map((t) => t.team);
+    const pTop = prev ? prev.ledger.top_buys.slice(0, 12) : [];
+    const pDollar = prev ? prev.ledger.dollar_count : null;
+    const pm = prev ? prev.ledger.pos_market : {};
+    const posRows = POS_ORDER.filter((k) => pm[k]).map((k) => `<div class="mk-row">
+        <span class="pp ${posClass(k)}">${k}</span>
+        <span class="mk-bar"><i style="width:${Math.round(pm[k].total / prev.ledger.total_spent * 100 * 2.2)}%"></i></span>
+        <span class="mk-v num">${money(pm[k].total)}</span>
+        <span class="mk-s">${pm[k].count} bought · avg ${money(pm[k].avg)}</span>
+      </div>`).join("");
+
+    return `
+      <section class="dark roast-hero dr-hero">
+        <div class="hero-grid">
+          <div>
+            <div class="filed">
+              <span class="tag-red">Draft Night</span>
+              <span class="eyebrow">${draft.season} auction · ${order.length || 14} teams · $${draft.budget} each · 16 roster spots</span>
+            </div>
+            <h1 class="display">Every Dollar Gets Audited
+              <span class="kick">(grades drop tonight)</span></h1>
+            <p class="lede">Fourteen managers, $${(draft.budget || 200) * (order.length || 14)} in play, one room. The moment the
+              last $1 kicker goes off the board this page turns into the receipts: every pick with its price,
+              a letter grade for every roster, and the preseason power rankings nobody agrees with.
+              Refresh after the draft.</p>
+            <div class="hero-actions">
+              <a class="btn-red" href="${YAHOO}" target="_blank" rel="noopener">Yahoo draft room →</a>
+              <a class="btn-ghost" href="#last-year">Last year's receipts ↓</a>
+            </div>
+          </div>
+          <div class="board">
+            <div class="eyebrow">${order.length ? "The field" : "Nomination order"}</div>
+            ${order.length ? order.map((t, i) => `<div class="board-row">
+                <span class="bn">${i + 1}</span>
+                <span class="bt">${esc(t)}</span>
+                <span class="bm">${esc(MANAGERS[t] || "")}</span></div>`).join("")
+              : `<p class="lede" style="margin-top:8px">Yahoo randomizes it 30 minutes before the draft.</p>`}
+            <span class="see-all">Order is randomized 30 min before kickoff</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="statbug">
+        ${stat("First nomination in", cd.v, cd.s, true)}
+        ${stat("Money on the table", money((draft.budget || 200) * (order.length || 14)), "$1 is reserved for every empty slot")}
+        ${prev && pTop[0] ? stat("Last year's top buy", money(pTop[0].cost), `${pTop[0].player} · ${pTop[0].team}`) : stat("Last year's top buy", "—", "")}
+        ${pDollar != null ? stat("$1 players last year", pDollar, `of ${prev.picks.length} picks. A third of the league costs a dollar.`) : stat("$1 players", "—", "")}
+      </section>
+
+      <div class="body-grid">
+        <div class="col-main" id="last-year">
+          ${prev ? `
+          <div class="sec-top"><h2 class="h-sec">The ${prev.season} Auction, Audited</h2>
+            <span class="note">Biggest buys and what they bought</span></div>
+          <hr class="rule-h">
+          <div class="dr-table">
+            <div class="row hd"><span>Pick</span><span>Player</span><span>Bought by</span><span class="c">Price</span><span class="c">Finish</span></div>
+            ${pTop.map((p) => {
+              const f = finishOf(ledger, prev.season, p.team);
+              const fin = f ? (f.place === 1 ? "🏆 Champion" : ord(f.rank) + " · " + f.rec) : "—";
+              return `<div class="row${f && f.rank >= 12 ? " bad" : ""}${f && f.place === 1 ? " champ" : ""}">
+                <span class="rk">${p.pick}</span>
+                <span class="tm"><span class="pp ${posClass(p.slot)}">${esc(p.slot)}</span> ${esc(p.player)}</span>
+                <span class="mg">${esc(p.team)}</span>
+                <span class="c b num">${money(p.cost)}</span>
+                <span class="c dim">${esc(fin)}</span></div>`;
+            }).join("")}
+          </div>
+          <p class="os-note">The five biggest buys of ${prev.season} finished 6th, 14th, 8-20, 4th and the Sacco. Not one made
+            the final. The champion's most expensive player cost $36. Tonight the same fourteen people
+            walk back into the same room with the same $200 and swear it will be different.</p>
+
+          <div class="sec-top" style="margin-top:30px"><h2 class="h-sec">Where the money went</h2>
+            <span class="note">${prev.season} spend by position</span></div>
+          <hr class="rule-h">
+          <div class="dr-market">${posRows}</div>` : `<p class="empty">No prior draft on file.</p>`}
+        </div>
+
+        <div class="col-side">
+          <div class="mod">
+            <h2 class="h-sec">How grades work</h2><hr class="rule-h">
+            <div class="sup"><div class="award">Price vs. value</div>
+              <div class="who">Did you pay the market or set it?</div>
+              <div class="note">Every buy is compared with what the room paid for the same tier. Overpaying for a stud
+              is forgiven once. Overpaying for a WR3 is not.</div></div>
+            <div class="sup"><div class="award">Roster shape</div>
+              <div class="who">Starters, depth, and the $1 bin</div>
+              <div class="note">Stars-and-scrubs is a strategy. Stars-and-nothing is a cry for help. The league's own
+              roster (2 RB, 2 WR, TE, 2 flex, IDP) decides what counts as a starter.</div></div>
+            <div class="sup"><div class="award">The receipts</div>
+              <div class="who">Full savage, fantasy decisions only</div>
+              <div class="note">Drafts, prices and bench crimes are fair game. Nobody's job, family or face.
+              Grades are final and are reprinted in December next to your actual record.</div></div>
+          </div>
+          <div class="mod">
+            <h2 class="h-sec">Tonight's schedule</h2><hr class="rule-h">
+            <div class="clown-row"><span class="r">1</span><span>Nomination order posts</span><span class="c">6:30pm ET</span></div>
+            <div class="clown-row"><span class="r">2</span><span>First nomination</span><span class="c">7:00pm ET</span></div>
+            <div class="clown-row"><span class="r">3</span><span>Auction ledger live here</span><span class="c">Final pick + 5 min</span></div>
+            <div class="clown-row"><span class="r">4</span><span>Grades + preseason rankings</span><span class="c">Final pick + ~1 hr</span></div>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  /* ── COMPLETE / GRADED ────────────────────────────────── */
+  function draftView(draft, grades, prev) {
+    const L = draft.ledger || {};
+    const teams = draft.teams || [];
+    const G = grades ? grades.grades : null;
+    const rankOf = {};
+    (grades && grades.rankings || []).forEach((r) => { rankOf[r.team] = r; });
+
+    // Order: by preseason rank when graded, else by spend.
+    const ordered = teams.slice().sort((a, b) =>
+      G ? ((rankOf[a.team] || {}).rank || 99) - ((rankOf[b.team] || {}).rank || 99)
+        : b.spent - a.spent);
+
+    const top = L.top_buys ? L.top_buys[0] : null;
+    const dollarKing = teams.slice().sort((a, b) => b.dollar_players - a.dollar_players)[0];
+    const topHeavy = teams.slice().sort((a, b) => b.top3_share - a.top3_share)[0];
+    const qb = L.pos_market && L.pos_market.QB;
+    const totalSpent = L.total_spent || 0;
+    const top5 = (grades && grades.rankings || []).slice(0, 5);
+    const headline = grades && grades.headline || "The Receipts Are In";
+    const kicker = grades && grades.kicker || "(grades are being written)";
+    const lede = grades && grades.lede ||
+      `${draft.picks.length} picks, ${money(totalSpent)} spent, ${L.dollar_count} of them for a dollar. The full auction
+       ledger is below. The letter grades and the preseason power rankings are being written right now;
+       refresh in a bit.`;
+
+    const card = (t, i) => {
+      const g = G && G[t.team];
+      const r = rankOf[t.team];
+      const shown = t.picks.slice(0, 7);
+      const rest = t.picks.slice(7);
+      const pos = POS_ORDER.filter((k) => t.pos_spend[k]).map((k) =>
+        `<span class="ps"><b class="pp ${posClass(k)}">${k}</b> ${money(t.pos_spend[k])}</span>`).join("");
+      return `<article class="dr-card${g ? "" : " ungraded"}" id="t-${i}">
+        <div class="dr-grade">
+          <span class="g${g ? " " + g.grade.replace("+", "p").replace("-", "m").toLowerCase() : ""}">${g ? esc(g.grade) : "?"}</span>
+          ${r ? `<span class="rk">#${r.rank}</span>` : ""}
+        </div>
+        <div class="dr-body">
+          <div class="dr-head">
+            <div>
+              <h3>${esc(t.team)}</h3>
+              <div class="mg">${esc(mgr(t.team, grades))} · ${money(t.spent)} spent${t.left > 0 ? ` · <span class="left">${money(t.left)} left on the table</span>` : ""}</div>
+            </div>
+            <div class="dr-pos">${pos}</div>
+          </div>
+          ${g ? `<h4 class="dr-hl">${esc(g.headline)}</h4>
+                 ${(Array.isArray(g.body) ? g.body : [g.body]).map((p) => `<p class="dr-p">${esc(p)}</p>`).join("")}
+                 <div class="dr-verdicts">
+                   ${g.best ? `<div class="vd good"><span class="eyebrow">Best buy</span><div>${esc(g.best)}</div></div>` : ""}
+                   ${g.worst ? `<div class="vd bad"><span class="eyebrow">Worst buy</span><div>${esc(g.worst)}</div></div>` : ""}
+                 </div>` : `<p class="dr-p dim">Grade pending. The roster is final; the verdict is not.</p>`}
+          <div class="dr-roster">
+            ${shown.map((p) => pickLine(p, { delta: true })).join("")}
+            ${rest.length ? `<div class="dr-more" hidden>${rest.map((p) => pickLine(p, { delta: true })).join("")}</div>
+              <button class="dr-toggle" type="button">Full roster (${t.picks.length}) ↓</button>` : ""}
+          </div>
+        </div>
+      </article>`;
+    };
+
+    const pm = L.pos_market || {};
+    const posRows = POS_ORDER.filter((k) => pm[k]).map((k) => `<div class="mk-row">
+        <span class="pp ${posClass(k)}">${k}</span>
+        <span class="mk-bar"><i style="width:${Math.round(pm[k].total / totalSpent * 100 * 2.2)}%"></i></span>
+        <span class="mk-v num">${money(pm[k].total)}</span>
+        <span class="mk-s">${pm[k].count} bought · top ${money(pm[k].max.cost)} ${esc(pm[k].max.player)}</span>
+      </div>`).join("");
+
+    return `
+      <section class="dark roast-hero dr-hero">
+        <div class="hero-grid">
+          <div>
+            <div class="filed">
+              <span class="tag-red">${grades ? "Draft Grades" : "Auction Ledger"}</span>
+              <span class="eyebrow">${draft.season} auction · ${draft.picks.length} picks · ${money(totalSpent)} spent · ${teams.length} teams</span>
+            </div>
+            <h1 class="display">${esc(headline)} <span class="kick">${esc(kicker)}</span></h1>
+            <p class="lede">${esc(lede)}</p>
+            <div class="hero-actions">
+              <a class="btn-red" href="#grades">${grades ? "Read the grades →" : "See every pick →"}</a>
+              <a class="btn-ghost" href="#rankings">Preseason rankings →</a>
+            </div>
+          </div>
+          <div class="board">
+            <div class="eyebrow">${top5.length ? "Preseason power rankings" : "Biggest buys"}</div>
+            ${top5.length ? top5.map((r) => `<div class="board-row">
+                <span class="bn">${r.rank}</span>
+                <span class="bt">${esc(r.team)}</span>
+                <span class="bm">${esc(G && G[r.team] ? G[r.team].grade : "")}</span></div>`).join("")
+              : (L.top_buys || []).slice(0, 5).map((p) => `<div class="board-row">
+                <span class="bn">${money(p.cost)}</span>
+                <span class="bt">${esc(p.player)}</span>
+                <span class="bm">${esc(p.team)}</span></div>`).join("")}
+            <a class="see-all" href="#rankings">${top5.length ? "All 14 →" : "Full ledger →"}</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="statbug">
+        ${top ? stat("Biggest buy", money(top.cost), `${top.player} · ${top.team}`, true) : ""}
+        ${dollarKing ? stat("Most $1 players", dollarKing.dollar_players, dollarKing.team) : ""}
+        ${topHeavy ? stat("Most top-heavy", Math.round(topHeavy.top3_share * 100) + "%", `${topHeavy.team} · budget in 3 players`) : ""}
+        ${qb ? stat("QB market", money(qb.total), `${qb.count} QBs · top ${money(qb.max.cost)} ${qb.max.player}`) : ""}
+      </section>
+
+      <div class="body-grid">
+        <div class="col-main" id="grades">
+          <div class="sec-top"><h2 class="h-sec">${grades ? "The Grades" : "Every Roster"}</h2>
+            <span class="note">${grades ? "Ordered by preseason rank" : "Ordered by money spent"}</span></div>
+          <hr class="rule-h">
+          ${ordered.map(card).join("")}
+        </div>
+
+        <div class="col-side">
+          ${grades && grades.rankings ? `<div class="mod" id="rankings">
+            <h2 class="h-sec">Preseason Power Rankings</h2><hr class="rule-h">
+            ${grades.rankings.map((r) => `<div class="dr-rank">
+              <span class="n">${r.rank}</span>
+              <span class="t"><b>${esc(r.team)}</b><small>${esc(mgr(r.team, grades))}${G && G[r.team] ? " · " + esc(G[r.team].grade) : ""}</small>
+                ${r.blurb ? `<span class="bl">${esc(r.blurb)}</span>` : ""}</span>
+            </div>`).join("")}
+            <p class="vote-foot" style="margin-top:12px">Zero games played. These are opinions with a number next to them.
+            Real rankings take over in Week 1.</p>
+          </div>` : `<div class="mod" id="rankings"><h2 class="h-sec">Preseason Power Rankings</h2><hr class="rule-h">
+            <p class="empty">Being written. Refresh shortly.</p></div>`}
+
+          ${grades && grades.awards && grades.awards.length ? `<div class="mod">
+            <h2 class="h-sec">Draft Night Awards</h2><hr class="rule-h">
+            ${grades.awards.map((a) => `<div class="sup"><div class="award">${esc(a.label)}</div>
+              <div class="who">${esc(a.team)}</div><div class="note">${esc(a.note)}</div></div>`).join("")}
+          </div>` : ""}
+
+          <div class="mod" id="ledger">
+            <h2 class="h-sec">Biggest Buys</h2><hr class="rule-h">
+            <div class="dr-list">${(L.top_buys || []).map((p) => pickLine(p, { team: true, delta: true })).join("")}</div>
+          </div>
+
+          <div class="mod">
+            <h2 class="h-sec">Where the Money Went</h2><hr class="rule-h">
+            <div class="dr-market">${posRows}</div>
+          </div>
+
+          ${(L.price_moves || []).length ? `<div class="mod">
+            <h2 class="h-sec">Price Moves vs ${prev ? prev.season : "Last Year"}</h2><hr class="rule-h">
+            <div class="dr-list">${L.price_moves.map((p) => `<div class="dr-pick">
+              <span class="pp ${posClass(p.slot)}">${esc(p.slot)}</span>
+              <span class="pn">${esc(p.player)} <em>${esc(p.team)}</em></span>
+              <span class="pc num">${money(p.last_year)} → ${money(p.cost)} <i class="${p.delta > 0 ? "up" : "dn"}">${p.delta > 0 ? "+" : "−"}${Math.abs(p.delta)}</i></span>
+            </div>`).join("")}</div>
+          </div>` : ""}
+
+          <div class="mod">
+            <h2 class="h-sec">The First Ten</h2><hr class="rule-h">
+            <div class="dr-list">${(L.first_ten || []).map((p) => pickLine(p, { team: true })).join("")}</div>
+            <p class="vote-foot" style="margin-top:10px">Nominated early to drain budgets, or bought early out of nerves. Usually the second one.</p>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  function wire() {
+    document.querySelectorAll(".dr-toggle").forEach((b) => {
+      b.addEventListener("click", () => {
+        const more = b.previousElementSibling;
+        more.hidden = !more.hidden;
+        b.textContent = more.hidden ? b.textContent.replace("↑", "↓").replace("Hide", "Full") : "Hide the bench ↑";
+        if (more.hidden) b.textContent = `Full roster (${more.children.length + 7}) ↓`;
+      });
+    });
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();

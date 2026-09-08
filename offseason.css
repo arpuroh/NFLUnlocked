@@ -29,3 +29,9 @@
   .os-table .row span:nth-child(3),.os-table .row span:nth-child(6),.os-table .row span:nth-child(7){display:none}
   .os-hero .btn-ghost{margin-left:0;margin-top:8px}
 }
+
+/* the draft-night stat cell is a link */
+.statbug a.cell-link{display:block;color:inherit;border-left:1px solid #3A3736}
+.statbug a.cell-link .cell{height:100%;border-left:0;border-top:0}
+@media (max-width:900px){.statbug a.cell-link{border-top:1px solid #3A3736}}
+.statbug a.cell-link:hover .v{color:var(--red-bright)}
