@@ -1,0 +1,53 @@
+name: Draft results
+
+# Scrapes the public Yahoo draft-results page into data/draft.json.
+# Draft night is Tue Sep 8 2026, 7:00pm ET (23:00 UTC); the schedule polls every
+# 15 minutes from 9pm ET until 3am ET so the ledger lands within minutes of the
+# last pick. Runs on demand any time. Delete the schedule block after the draft.
+on:
+  schedule:
+    - cron: "*/15 1-7 * * 3"   # Wed Sep 9, 01:00-07:59 UTC = Tue 9pm-3:59am ET
+  workflow_dispatch:
+    inputs:
+      grades:
+        description: "Also write draft_grades.json with the Claude API (needs ANTHROPIC_API_KEY secret)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-league
+  cancel-in-progress: false
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Scrape draft results
+        run: python scripts/fetch_draft.py
+
+      - name: Write draft grades
+        if: ${{ inputs.grades && secrets.ANTHROPIC_API_KEY != '' }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/generate_draft_grades.py
+
+      - name: Commit and push
+        run: |
+          git config user.name "nfl-unlocked-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then
+            echo "No data changes."
+          else
+            git commit -m "data: draft results $(date -u '+%Y-%m-%d %H:%M UTC')"
+            git pull --rebase origin main || true
+            git push
+          fi
