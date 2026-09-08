@@ -1,0 +1,260 @@
+{
+ "season": 2026,
+ "league_id": "675504",
+ "status": "pending",
+ "budget": 200,
+ "fetched_at": "2026-09-08T11:08:49.850095+00:00",
+ "source": "https://football.fantasysports.yahoo.com/f1/675504/draftresults",
+ "teams": [
+  {
+   "team": "Hail Mary",
+   "picks": [],
+   "count": 0,
+   "spent": 0,
+   "left": 200,
+   "top_buy": null,
+   "top3_share": 0,
+   "dollar_players": 0,
+   "avg_cost": 0,
+   "pos_spend": {},
+   "starters_spend": 0
+  },
+  {
+   "team": "A dad",
+   "picks": [],
+   "count": 0,
+   "spent": 0,
+   "left": 200,
+   "top_buy": null,
+   "top3_share": 0,
+   "dollar_players": 0,
+   "avg_cost": 0,
+   "pos_spend": {},
+   "starters_spend": 0
+  },
+  {
+   "team": "Good Will Hunting",
+   "picks": [],
+   "count": 0,
+   "spent": 0,
+   "left": 200,
+   "top_buy": null,
+   "top3_share": 0,
+   "dollar_players": 0,
+   "avg_cost": 0,
+   "pos_spend": {},
+   "starters_spend": 0
+  },
+  {
+   "team": "Kim Jong Nate",
+   "picks": [],
+   "count": 0,
+   "spent": 0,
+   "left": 200,
+   "top_buy": null,
+   "top3_share": 0,
+   "dollar_players": 0,
+   "avg_cost": 0,
+   "pos_spend": {},
+   "starters_spend": 0
+  },
+  {
+   "team": "The Asshouse Always Wins",
+   "picks": [],
+   "count": 0,
+   "spent": 0,
+   "left": 200,
+   "top_buy": null,
+   "top3_share": 0,
+   "dollar_players": 0,
+   "avg_cost": 0,
+   "pos_spend": {},
+   "starters_spend": 0
+  },
+  {
+   "team": "Bend The Knee 🐲🔥",
+   "picks": [],
+   "count": 0,
+   "spent": 0,
+   "left": 200,
+   "top_buy": null,
+   "top3_share": 0,
+   "dollar_players": 0,
+   "avg_cost": 0,
+   "pos_spend": {},
+   "starters_spend": 0
+  },
+  {
+   "team": "FreeGucci",
+   "picks": [],
+   "count": 0,
+   "spent": 0,
+   "left": 200,
+   "top_buy": null,
+   "top3_share": 0,
+   "dollar_players": 0,
+   "avg_cost": 0,
+   "pos_spend": {},
+   "starters_spend": 0
+  },
+  {
+   "team": "Mac Daddy",
+   "picks": [],
+   "count": 0,
+   "spent": 0,
+   "left": 200,
+   "top_buy": null,
+   "top3_share": 0,
+   "dollar_players": 0,
+   "avg_cost": 0,
+   "pos_spend": {},
+   "starters_spend": 0
+  },
+  {
+   "team": "Poop Squad 💩",
+   "picks": [],
+   "count": 0,
+   "spent": 0,
+   "left": 200,
+   "top_buy": null,
+   "top3_share": 0,
+   "dollar_players": 0,
+   "avg_cost": 0,
+   "pos_spend": {},
+   "starters_spend": 0
+  },
+  {
+   "team": "Leo the Cleo",
+   "picks": [],
+   "count": 0,
+   "spent": 0,
+   "left": 200,
+   "top_buy": null,
+   "top3_share": 0,
+   "dollar_players": 0,
+   "avg_cost": 0,
+   "pos_spend": {},
+   "starters_spend": 0
+  },
+  {
+   "team": "Miley 💨LEO 5K Speedo Fan Club",
+   "picks": [],
+   "count": 0,
+   "spent": 0,
+   "left": 200,
+   "top_buy": null,
+   "top3_share": 0,
+   "dollar_players": 0,
+   "avg_cost": 0,
+   "pos_spend": {},
+   "starters_spend": 0
+  },
+  {
+   "team": "ShakeNBake",
+   "picks": [],
+   "count": 0,
+   "spent": 0,
+   "left": 200,
+   "top_buy": null,
+   "top3_share": 0,
+   "dollar_players": 0,
+   "avg_cost": 0,
+   "pos_spend": {},
+   "starters_spend": 0
+  },
+  {
+   "team": "Fwamming Gwaggon",
+   "picks": [],
+   "count": 0,
+   "spent": 0,
+   "left": 200,
+   "top_buy": null,
+   "top3_share": 0,
+   "dollar_players": 0,
+   "avg_cost": 0,
+   "pos_spend": {},
+   "starters_spend": 0
+  },
+  {
+   "team": "The Injured Reserved",
+   "picks": [],
+   "count": 0,
+   "spent": 0,
+   "left": 200,
+   "top_buy": null,
+   "top3_share": 0,
+   "dollar_players": 0,
+   "avg_cost": 0,
+   "pos_spend": {},
+   "starters_spend": 0
+  }
+ ],
+ "picks": [],
+ "ledger": {
+  "total_spent": 0,
+  "total_budget": 2800,
+  "top_buys": [],
+  "pos_market": {},
+  "dollar_count": 0,
+  "first_ten": [],
+  "price_moves": [],
+  "qb_spend": [
+   {
+    "team": "Hail Mary",
+    "spent": 0
+   },
+   {
+    "team": "A dad",
+    "spent": 0
+   },
+   {
+    "team": "Good Will Hunting",
+    "spent": 0
+   },
+   {
+    "team": "Kim Jong Nate",
+    "spent": 0
+   },
+   {
+    "team": "The Asshouse Always Wins",
+    "spent": 0
+   },
+   {
+    "team": "Bend The Knee 🐲🔥",
+    "spent": 0
+   },
+   {
+    "team": "FreeGucci",
+    "spent": 0
+   },
+   {
+    "team": "Mac Daddy",
+    "spent": 0
+   },
+   {
+    "team": "Poop Squad 💩",
+    "spent": 0
+   },
+   {
+    "team": "Leo the Cleo",
+    "spent": 0
+   },
+   {
+    "team": "Miley 💨LEO 5K Speedo Fan Club",
+    "spent": 0
+   },
+   {
+    "team": "ShakeNBake",
+    "spent": 0
+   },
+   {
+    "team": "Fwamming Gwaggon",
+    "spent": 0
+   },
+   {
+    "team": "The Injured Reserved",
+    "spent": 0
+   }
+  ]
+ }
+}

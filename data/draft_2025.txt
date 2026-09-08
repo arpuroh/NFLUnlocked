@@ -1,0 +1,224 @@
+1~Drake London~Atl - WR~41~Good Will Hunting
+2~Jahmyr Gibbs~Det - RB~56~ShakeNBake
+3~TreVeyon Henderson~NE - RB~28~Poop Squad 💩
+4~Brock Bowers~LV - TE~35~Miley 💨LEO 5K Speedo Fan Club
+5~Tyreek Hill~Mia - WR~30~Bullish
+6~Ja'Marr Chase~Cin - WR~70~A dad
+7~Bijan Robinson~Atl - RB~66~Leo the Cleo
+8~Saquon Barkley~Phi - RB~62~Bullish
+9~CeeDee Lamb~Dal - WR~59~Miley 💨LEO 5K Speedo Fan Club
+10~Justin Jefferson~Min - WR~60~Mac Daddy
+11~Puka Nacua~LAR - WR~49~ShakeNBake
+12~Nico Collins~Hou - WR~49~Bend The Knee 🐲🔥
+13~Travis Kelce~KC - TE~14~Bullish
+14~Jaxon Smith-Njigba~Sea - WR~30~Bullish
+15~Christian McCaffrey~SF - RB~55~Kim Jong Nate
+16~Lamar Jackson~Bal - QB~32~FreeGucci
+17~Ladd McConkey~LAC - WR~36~Hail Purdy
+18~Derrick Henry~Bal - RB~53~Bend The Knee 🐲🔥
+19~Josh Allen~Buf - QB~31~Good Will Hunting
+20~Travis Hunter~Jax - WR,CB~16~The Injured Reserved
+21~Breece Hall~NYJ - RB~19~Poop Squad 💩
+22~De'Von Achane~Mia - RB~41~Kim Jong Nate
+23~Amon-Ra St. Brown~Det - WR~51~Shut Up
+24~Malik Nabers~NYG - WR~49~Bend The Knee 🐲🔥
+25~Brian Thomas Jr.~Jax - WR~50~Poop Squad 💩
+26~Chase Brown~Cin - RB~40~The Injured Reserved
+27~Ashton Jeanty~LV - RB~46~Good Will Hunting
+28~A.J. Brown~NE - WR~42~Poop Squad 💩
+29~Kyren Williams~LAR - RB~38~A dad
+30~Josh Jacobs~GB - RB~43~Mac Daddy
+31~George Kittle~SF - TE~22~Shut Up
+32~Bucky Irving~TB - RB~40~Shut Up
+33~Patrick Mahomes~KC - QB~16~Shut Up
+34~Jonathan Taylor~Ind - RB~44~Shut Up
+35~Trey McBride~Ari - TE~30~Hail Purdy
+36~Tee Higgins~Cin - WR~28~A dad
+37~Jayden Daniels~Was - QB~21~Leo the Cleo
+38~Tony Pollard~Ten - RB~19~Bullish
+39~RJ Harvey~Den - RB~18~A dad
+40~Terry McLaurin~Was - WR~30~Leo the Cleo
+41~Omarion Hampton~LAC - RB~31~FreeGucci
+42~Xavier Worthy~KC - WR~15~Poop Squad 💩
+43~Kenneth Walker III~KC - RB~25~Mac Daddy
+44~Mike Evans~SF - WR~28~Kim Jong Nate
+45~Alvin Kamara~NO - RB~29~Miley 💨LEO 5K Speedo Fan Club
+46~David Montgomery~Hou - RB~20~Hail Purdy
+47~Jalen Hurts~Phi - QB~22~Hail Purdy
+48~James Cook III~Buf - RB~31~Hail Purdy
+49~Marvin Harrison Jr.~Ari - WR~25~Mac Daddy
+50~James Conner~Ari - RB~30~Miley 💨LEO 5K Speedo Fan Club
+51~Garrett Wilson~NYJ - WR~20~Leo the Cleo
+52~DJ Moore~Buf - WR~19~A dad
+53~DK Metcalf~Pit - WR~17~ShakeNBake
+54~Aaron Jones Sr.~Min - RB~19~Hail Purdy
+55~Zay Flowers~Bal - WR~17~Leo the Cleo
+56~Rome Odunze~Chi - WR~16~The Injured Reserved
+57~Isiah Pacheco~Det - RB~17~ShakeNBake
+58~Chuba Hubbard~Car - RB~23~The Injured Reserved
+59~Davante Adams~LAR - WR~26~The Injured Reserved
+60~Zach Charbonnet~Sea - RB~11~Bullish
+61~Nick Chubb~Hou - RB~5~Good Will Hunting
+62~Darnell Mooney~NYG - WR~11~Poop Squad 💩
+63~Tyrone Tracy Jr.~NYG - RB~14~ShakeNBake
+64~DeVonta Smith~Phi - WR~17~Good Will Hunting
+65~George Pickens~Dal - WR~19~Hail Purdy
+66~Mark Andrews~Bal - TE~6~ShakeNBake
+67~Tetairoa McMillan~Car - WR~25~The Injured Reserved
+68~Kyle Pitts Sr.~Atl - TE~6~Good Will Hunting
+69~Jaylen Waddle~Den - WR~17~ShakeNBake
+70~Bo Nix~Den - QB~7~Bullish
+71~Jerry Jeudy~Cle - WR~11~Bullish
+72~Jameson Williams~Det - WR~27~Miley 💨LEO 5K Speedo Fan Club
+73~Calvin Ridley~Ten - WR~26~FreeGucci
+74~Brian Robinson~Atl - RB~5~Kim Jong Nate
+75~Dak Prescott~Dal - QB~10~Miley 💨LEO 5K Speedo Fan Club
+76~Joe Burrow~Cin - QB~18~Kim Jong Nate
+77~Roschon Johnson~Chi - RB~2~Poop Squad 💩
+78~Courtland Sutton~Den - WR~27~The Injured Reserved
+79~D'Andre Swift~Chi - RB~19~FreeGucci
+80~Braelon Allen~NYJ - RB~9~Mac Daddy
+81~Kaleb Johnson~GB - RB~6~Good Will Hunting
+82~Jaylen Warren~Pit - RB~12~Kim Jong Nate
+83~Justin Fields~KC - QB~2~Good Will Hunting
+84~Tucker Kraft~GB - TE~6~The Injured Reserved
+85~David Njoku~LAC - TE~8~Leo the Cleo
+86~Chris Olave~NO - WR~8~Good Will Hunting
+87~Stefon Diggs~Was - WR~8~ShakeNBake
+88~Jordan Love~GB - QB~7~ShakeNBake
+89~Cooper Kupp~Sea - WR~11~Bend The Knee 🐲🔥
+90~Sam LaPorta~Det - TE~15~FreeGucci
+91~Khalil Shakir~Buf - WR~9~Kim Jong Nate
+92~Ricky Pearsall~SF - WR~12~Mac Daddy
+93~Jerome Ford~Was - RB~8~Hail Purdy
+94~Bhayshul Tuten~Jax - RB~5~FreeGucci
+95~Drake Maye~NE - QB~1~The Injured Reserved
+96~Jordan Mason~Min - RB~11~Good Will Hunting
+97~Matthew Golden~GB - WR~10~Kim Jong Nate
+98~Brock Purdy~SF - QB~10~Bend The Knee 🐲🔥
+99~Deebo Samuel Sr.~SF - WR~8~FreeGucci
+100~Emeka Egbuka~TB - WR~10~FreeGucci
+101~Juanyeh Thomas~Ind - S~1~FreeGucci
+102~Josh Blackwell~Chi - DB,CB~1~ShakeNBake
+103~J.J. McCarthy~Min - QB~4~A dad
+104~T.J. Hockenson~Min - TE~8~Poop Squad 💩
+105~Travis Etienne Jr.~NO - RB~9~Mac Daddy
+106~Jacory Croskey-Merritt~Was - RB~8~Hail Purdy
+107~Cam Skattebo~NYG - RB~9~FreeGucci
+108~Rhamondre Stevenson~NE - RB~6~Bend The Knee 🐲🔥
+109~J.K. Dobbins~Den - RB~15~FreeGucci
+110~Javonte Williams~Dal - RB~8~Bend The Knee 🐲🔥
+111~Austin Ekeler~Was - RB~10~Leo the Cleo
+112~Jakobi Meyers~Jax - WR~7~Leo the Cleo
+113~Evan Engram~Den - TE~3~Mac Daddy
+114~Rashee Rice~KC - WR~6~FreeGucci
+115~Baker Mayfield~TB - QB~2~Shut Up
+116~Rashid Shaheed~Sea - WR~5~Bullish
+117~Aaron Rodgers~Pit - QB~1~Poop Squad 💩
+118~Jordan Addison~Min - WR~4~FreeGucci
+119~Emanuel Wilson~Sea - RB~1~Mac Daddy
+120~Kyler Murray~Min - QB~2~Mac Daddy
+121~Eagles~Phi - DEF~4~Good Will Hunting
+122~Jake Ferguson~Dal - TE~4~Mac Daddy
+123~Tyler Warren~Ind - TE~7~Kim Jong Nate
+124~Kareem Hunt~KC - RB~3~Kim Jong Nate
+125~Colston Loveland~Chi - TE~3~Shut Up
+126~Tank Bigsby~Phi - RB~6~Leo the Cleo
+127~Michael Pittman Jr.~Pit - WR~5~A dad
+128~Jauan Jennings~Min - WR~6~Leo the Cleo
+129~Keon Coleman~Buf - WR~7~FreeGucci
+130~Tyler Allgeier~Ari - RB~5~The Injured Reserved
+131~Trevor Lawrence~Jax - QB~1~Poop Squad 💩
+132~Dallas Goedert~Phi - TE~2~Shut Up
+133~Broncos~Den - DEF~3~FreeGucci
+134~Joe Mixon~Hou - RB~5~Good Will Hunting
+135~Josh Downs~Ind - WR~5~Bend The Knee 🐲🔥
+136~Dalton Kincaid~Buf - TE~4~A dad
+137~Dylan Sampson~Cle - RB~6~The Injured Reserved
+138~Rachaad White~Was - RB~5~Bullish
+139~Sam Hubbard~Cin - DL,DE~1~Good Will Hunting
+140~Raheem Mostert~LV - RB~1~Bullish
+141~Keenan Allen~Ind - WR~4~The Injured Reserved
+142~Jayden Reed~GB - WR~2~A dad
+143~Tre' Harris~LAC - WR~1~FreeGucci
+144~Quentin Johnston~LAC - WR~3~Poop Squad 💩
+145~Christian Kirk~SF - WR~5~Poop Squad 💩
+146~Scott Matlock~LAC - DL,DE~1~A dad
+147~Brandon Aubrey~Dal - K~2~Kim Jong Nate
+148~Chris Godwin Jr.~TB - WR~6~Good Will Hunting
+149~Rashod Bateman~Bal - WR~3~Leo the Cleo
+150~Hunter Henry~NE - TE~1~Bend The Knee 🐲🔥
+151~Najee Harris~NYG - RB~4~A dad
+152~Justice Hill~Bal - RB~1~Leo the Cleo
+153~Chig Okonkwo~Was - TE~1~Good Will Hunting
+154~Joshua Palmer~Buf - WR~2~ShakeNBake
+155~Divine Deablo~Atl - LB~1~Kim Jong Nate
+156~Tyjae Spears~Ten - RB~3~Poop Squad 💩
+157~Younghoe Koo~NYG - K~1~ShakeNBake
+158~Jake Bates~Det - K~4~Good Will Hunting
+159~DeAndre Hopkins~Bal - WR~1~A dad
+160~Ravens~Bal - DEF~2~Kim Jong Nate
+161~Marvin Mims Jr.~Den - WR~2~Mac Daddy
+162~Trey Benson~Ari - RB~3~Kim Jong Nate
+163~Darren Waller~Car - TE~1~Bend The Knee 🐲🔥
+164~Vikings~Min - DEF~1~The Injured Reserved
+165~Ollie Gordon II~Mia - RB~2~The Injured Reserved
+166~Zach Ertz~Was - TE~1~Bullish
+167~Jaydon Blue~Phi - RB~1~Kim Jong Nate
+168~Ray Davis~Buf - RB~2~A dad
+169~Tory Horton~Sea - WR~1~ShakeNBake
+170~Steelers~Pit - DEF~3~Poop Squad 💩
+171~Brandon Aiyuk~SF - WR~2~Shut Up
+172~Bills~Buf - DEF~2~Shut Up
+173~Chargers~LAC - DEF~1~Hail Purdy
+174~Jayden Higgins~Hou - WR~1~Miley 💨LEO 5K Speedo Fan Club
+175~Wan'Dale Robinson~Ten - WR~1~Bend The Knee 🐲🔥
+176~Bryce Young~Car - QB~1~The Injured Reserved
+177~C.J. Stroud~Hou - QB~1~Leo the Cleo
+178~Romeo Doubs~NE - WR~1~Bullish
+179~Xavier Legette~Car - WR~1~Kim Jong Nate
+180~Rico Dowdle~Pit - RB~2~Shut Up
+181~Packers~GB - DEF~2~Bend The Knee 🐲🔥
+182~Harrison Butker~KC - K~1~Poop Squad 💩
+183~Will Shipley~Phi - RB~1~A dad
+184~Cameron Dicker~LAC - K~1~Mac Daddy
+185~Ka'imi Fairbairn~Hou - K~1~Hail Purdy
+186~Chris Rodriguez Jr.~Jax - RB~1~Miley 💨LEO 5K Speedo Fan Club
+187~Jared Goff~Det - QB~1~Bend The Knee 🐲🔥
+188~Brenton Strange~Jax - TE~1~The Injured Reserved
+189~Marcus Jones~NE - DB,CB~1~Leo the Cleo
+190~Chase McLaughlin~TB - K~1~Bullish
+191~Ashtyn Davis~SF - S~1~Shut Up
+192~Texans~Hou - DEF~1~ShakeNBake
+193~Fred Warner~SF - LB~1~Poop Squad 💩
+194~Cowboys~Dal - DEF~2~A dad
+195~Roquan Smith~Bal - LB~1~Mac Daddy
+196~Kyle Monangai~Chi - RB~1~Hail Purdy
+197~Jeffery Simmons~Ten - DT,DE~1~Miley 💨LEO 5K Speedo Fan Club
+198~Jake Elliott~Phi - K~1~Bend The Knee 🐲🔥
+199~Tyler Bass~Buf - K~2~Shut Up
+200~Lions~Det - DEF~2~Leo the Cleo
+201~Cedric Tillman~NO - WR~1~Shut Up
+202~Alec Pierce~Ind - WR~1~ShakeNBake
+203~Adam Thielen~Pit - WR~1~A dad
+204~Chiefs~KC - DEF~1~Mac Daddy
+205~Quinshon Judkins~Cle - RB~1~Hail Purdy
+206~Caleb Williams~Chi - QB~2~ShakeNBake
+207~Amari Cooper~Buf - WR~1~Bend The Knee 🐲🔥
+208~Seahawks~Sea - DEF~1~Leo the Cleo
+209~Rams~LAR - DEF~1~Bullish
+210~DeMario Douglas~NE - WR~2~Mac Daddy
+211~Zaire Franklin~GB - LB~1~Hail Purdy
+212~Justin Herbert~LAC - QB~1~Miley 💨LEO 5K Speedo Fan Club
+213~Hollywood Brown~Phi - WR~1~Bend The Knee 🐲🔥
+214~Ernest Jones IV~Sea - LB~1~Bullish
+215~Jonnu Smith~GB - TE~1~Shut Up
+216~Zack Baun~Phi - LB~1~Hail Purdy
+217~Luther Burden III~Chi - WR~1~Miley 💨LEO 5K Speedo Fan Club
+218~Blake Corum~LAR - RB~1~Shut Up
+219~Foyesade Oluokun~Jax - LB~1~Hail Purdy
+220~Isaac Guerendo~SF - RB~1~Miley 💨LEO 5K Speedo Fan Club
+221~Woody Marks~Hou - RB~1~Miley 💨LEO 5K Speedo Fan Club
+222~Theo Johnson~NYG - TE~1~Miley 💨LEO 5K Speedo Fan Club
+223~Jets~NYJ - DEF~1~Miley 💨LEO 5K Speedo Fan Club
+224~Chris Boswell~Pit - K~1~Miley 💨LEO 5K Speedo Fan Club

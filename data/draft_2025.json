@@ -1,0 +1,4824 @@
+{
+ "season": 2025,
+ "league_id": "675504",
+ "status": "complete",
+ "budget": 200,
+ "fetched_at": "2026-09-08T11:09:05.468013+00:00",
+ "source": "https://football.fantasysports.yahoo.com/f1/675504/draftresults",
+ "teams": [
+  {
+   "team": "ShakeNBake",
+   "picks": [
+    {
+     "pick": 2,
+     "player": "Jahmyr Gibbs",
+     "nfl": "Det",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 56,
+     "team": "ShakeNBake"
+    },
+    {
+     "pick": 11,
+     "player": "Puka Nacua",
+     "nfl": "LAR",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 49,
+     "team": "ShakeNBake"
+    },
+    {
+     "pick": 53,
+     "player": "DK Metcalf",
+     "nfl": "Pit",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 17,
+     "team": "ShakeNBake"
+    },
+    {
+     "pick": 57,
+     "player": "Isiah Pacheco",
+     "nfl": "Det",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 17,
+     "team": "ShakeNBake"
+    },
+    {
+     "pick": 69,
+     "player": "Jaylen Waddle",
+     "nfl": "Den",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 17,
+     "team": "ShakeNBake"
+    },
+    {
+     "pick": 63,
+     "player": "Tyrone Tracy Jr.",
+     "nfl": "NYG",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 14,
+     "team": "ShakeNBake"
+    },
+    {
+     "pick": 87,
+     "player": "Stefon Diggs",
+     "nfl": "Was",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 8,
+     "team": "ShakeNBake"
+    },
+    {
+     "pick": 88,
+     "player": "Jordan Love",
+     "nfl": "GB",
+     "pos": "QB",
+     "slot": "QB",
+     "cost": 7,
+     "team": "ShakeNBake"
+    },
+    {
+     "pick": 66,
+     "player": "Mark Andrews",
+     "nfl": "Bal",
+     "pos": "TE",
+     "slot": "TE",
+     "cost": 6,
+     "team": "ShakeNBake"
+    },
+    {
+     "pick": 154,
+     "player": "Joshua Palmer",
+     "nfl": "Buf",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 2,
+     "team": "ShakeNBake"
+    },
+    {
+     "pick": 206,
+     "player": "Caleb Williams",
+     "nfl": "Chi",
+     "pos": "QB",
+     "slot": "QB",
+     "cost": 2,
+     "team": "ShakeNBake"
+    },
+    {
+     "pick": 102,
+     "player": "Josh Blackwell",
+     "nfl": "Chi",
+     "pos": "DB,CB",
+     "slot": "IDP",
+     "cost": 1,
+     "team": "ShakeNBake"
+    },
+    {
+     "pick": 157,
+     "player": "Younghoe Koo",
+     "nfl": "NYG",
+     "pos": "K",
+     "slot": "K",
+     "cost": 1,
+     "team": "ShakeNBake"
+    },
+    {
+     "pick": 169,
+     "player": "Tory Horton",
+     "nfl": "Sea",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 1,
+     "team": "ShakeNBake"
+    },
+    {
+     "pick": 192,
+     "player": "Texans",
+     "nfl": "Hou",
+     "pos": "DEF",
+     "slot": "DEF",
+     "cost": 1,
+     "team": "ShakeNBake"
+    },
+    {
+     "pick": 202,
+     "player": "Alec Pierce",
+     "nfl": "Ind",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 1,
+     "team": "ShakeNBake"
+    }
+   ],
+   "count": 16,
+   "spent": 200,
+   "left": 0,
+   "top_buy": {
+    "pick": 2,
+    "player": "Jahmyr Gibbs",
+    "nfl": "Det",
+    "pos": "RB",
+    "slot": "RB",
+    "cost": 56,
+    "team": "ShakeNBake"
+   },
+   "top3_share": 0.61,
+   "dollar_players": 5,
+   "avg_cost": 12.5,
+   "pos_spend": {
+    "RB": 87,
+    "WR": 95,
+    "QB": 9,
+    "TE": 6,
+    "IDP": 1,
+    "K": 1,
+    "DEF": 1
+   },
+   "starters_spend": 197
+  },
+  {
+   "team": "Miley 💨LEO 5K Speedo Fan Club",
+   "picks": [
+    {
+     "pick": 9,
+     "player": "CeeDee Lamb",
+     "nfl": "Dal",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 59,
+     "team": "Miley 💨LEO 5K Speedo Fan Club"
+    },
+    {
+     "pick": 4,
+     "player": "Brock Bowers",
+     "nfl": "LV",
+     "pos": "TE",
+     "slot": "TE",
+     "cost": 35,
+     "team": "Miley 💨LEO 5K Speedo Fan Club"
+    },
+    {
+     "pick": 50,
+     "player": "James Conner",
+     "nfl": "Ari",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 30,
+     "team": "Miley 💨LEO 5K Speedo Fan Club"
+    },
+    {
+     "pick": 45,
+     "player": "Alvin Kamara",
+     "nfl": "NO",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 29,
+     "team": "Miley 💨LEO 5K Speedo Fan Club"
+    },
+    {
+     "pick": 72,
+     "player": "Jameson Williams",
+     "nfl": "Det",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 27,
+     "team": "Miley 💨LEO 5K Speedo Fan Club"
+    },
+    {
+     "pick": 75,
+     "player": "Dak Prescott",
+     "nfl": "Dal",
+     "pos": "QB",
+     "slot": "QB",
+     "cost": 10,
+     "team": "Miley 💨LEO 5K Speedo Fan Club"
+    },
+    {
+     "pick": 174,
+     "player": "Jayden Higgins",
+     "nfl": "Hou",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 1,
+     "team": "Miley 💨LEO 5K Speedo Fan Club"
+    },
+    {
+     "pick": 186,
+     "player": "Chris Rodriguez Jr.",
+     "nfl": "Jax",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 1,
+     "team": "Miley 💨LEO 5K Speedo Fan Club"
+    },
+    {
+     "pick": 197,
+     "player": "Jeffery Simmons",
+     "nfl": "Ten",
+     "pos": "DT,DE",
+     "slot": "IDP",
+     "cost": 1,
+     "team": "Miley 💨LEO 5K Speedo Fan Club"
+    },
+    {
+     "pick": 212,
+     "player": "Justin Herbert",
+     "nfl": "LAC",
+     "pos": "QB",
+     "slot": "QB",
+     "cost": 1,
+     "team": "Miley 💨LEO 5K Speedo Fan Club"
+    },
+    {
+     "pick": 217,
+     "player": "Luther Burden III",
+     "nfl": "Chi",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 1,
+     "team": "Miley 💨LEO 5K Speedo Fan Club"
+    },
+    {
+     "pick": 220,
+     "player": "Isaac Guerendo",
+     "nfl": "SF",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 1,
+     "team": "Miley 💨LEO 5K Speedo Fan Club"
+    },
+    {
+     "pick": 221,
+     "player": "Woody Marks",
+     "nfl": "Hou",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 1,
+     "team": "Miley 💨LEO 5K Speedo Fan Club"
+    },
+    {
+     "pick": 222,
+     "player": "Theo Johnson",
+     "nfl": "NYG",
+     "pos": "TE",
+     "slot": "TE",
+     "cost": 1,
+     "team": "Miley 💨LEO 5K Speedo Fan Club"
+    },
+    {
+     "pick": 223,
+     "player": "Jets",
+     "nfl": "NYJ",
+     "pos": "DEF",
+     "slot": "DEF",
+     "cost": 1,
+     "team": "Miley 💨LEO 5K Speedo Fan Club"
+    },
+    {
+     "pick": 224,
+     "player": "Chris Boswell",
+     "nfl": "Pit",
+     "pos": "K",
+     "slot": "K",
+     "cost": 1,
+     "team": "Miley 💨LEO 5K Speedo Fan Club"
+    }
+   ],
+   "count": 16,
+   "spent": 200,
+   "left": 0,
+   "top_buy": {
+    "pick": 9,
+    "player": "CeeDee Lamb",
+    "nfl": "Dal",
+    "pos": "WR",
+    "slot": "WR",
+    "cost": 59,
+    "team": "Miley 💨LEO 5K Speedo Fan Club"
+   },
+   "top3_share": 0.62,
+   "dollar_players": 10,
+   "avg_cost": 12.5,
+   "pos_spend": {
+    "WR": 88,
+    "TE": 36,
+    "RB": 62,
+    "QB": 11,
+    "IDP": 1,
+    "DEF": 1,
+    "K": 1
+   },
+   "starters_spend": 197
+  },
+  {
+   "team": "Bullish",
+   "picks": [
+    {
+     "pick": 8,
+     "player": "Saquon Barkley",
+     "nfl": "Phi",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 62,
+     "team": "Bullish"
+    },
+    {
+     "pick": 5,
+     "player": "Tyreek Hill",
+     "nfl": "Mia",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 30,
+     "team": "Bullish"
+    },
+    {
+     "pick": 14,
+     "player": "Jaxon Smith-Njigba",
+     "nfl": "Sea",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 30,
+     "team": "Bullish"
+    },
+    {
+     "pick": 38,
+     "player": "Tony Pollard",
+     "nfl": "Ten",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 19,
+     "team": "Bullish"
+    },
+    {
+     "pick": 13,
+     "player": "Travis Kelce",
+     "nfl": "KC",
+     "pos": "TE",
+     "slot": "TE",
+     "cost": 14,
+     "team": "Bullish"
+    },
+    {
+     "pick": 60,
+     "player": "Zach Charbonnet",
+     "nfl": "Sea",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 11,
+     "team": "Bullish"
+    },
+    {
+     "pick": 71,
+     "player": "Jerry Jeudy",
+     "nfl": "Cle",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 11,
+     "team": "Bullish"
+    },
+    {
+     "pick": 70,
+     "player": "Bo Nix",
+     "nfl": "Den",
+     "pos": "QB",
+     "slot": "QB",
+     "cost": 7,
+     "team": "Bullish"
+    },
+    {
+     "pick": 116,
+     "player": "Rashid Shaheed",
+     "nfl": "Sea",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 5,
+     "team": "Bullish"
+    },
+    {
+     "pick": 138,
+     "player": "Rachaad White",
+     "nfl": "Was",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 5,
+     "team": "Bullish"
+    },
+    {
+     "pick": 140,
+     "player": "Raheem Mostert",
+     "nfl": "LV",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 1,
+     "team": "Bullish"
+    },
+    {
+     "pick": 166,
+     "player": "Zach Ertz",
+     "nfl": "Was",
+     "pos": "TE",
+     "slot": "TE",
+     "cost": 1,
+     "team": "Bullish"
+    },
+    {
+     "pick": 178,
+     "player": "Romeo Doubs",
+     "nfl": "NE",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 1,
+     "team": "Bullish"
+    },
+    {
+     "pick": 190,
+     "player": "Chase McLaughlin",
+     "nfl": "TB",
+     "pos": "K",
+     "slot": "K",
+     "cost": 1,
+     "team": "Bullish"
+    },
+    {
+     "pick": 209,
+     "player": "Rams",
+     "nfl": "LAR",
+     "pos": "DEF",
+     "slot": "DEF",
+     "cost": 1,
+     "team": "Bullish"
+    },
+    {
+     "pick": 214,
+     "player": "Ernest Jones IV",
+     "nfl": "Sea",
+     "pos": "LB",
+     "slot": "IDP",
+     "cost": 1,
+     "team": "Bullish"
+    }
+   ],
+   "count": 16,
+   "spent": 200,
+   "left": 0,
+   "top_buy": {
+    "pick": 8,
+    "player": "Saquon Barkley",
+    "nfl": "Phi",
+    "pos": "RB",
+    "slot": "RB",
+    "cost": 62,
+    "team": "Bullish"
+   },
+   "top3_share": 0.61,
+   "dollar_players": 6,
+   "avg_cost": 12.5,
+   "pos_spend": {
+    "RB": 98,
+    "WR": 77,
+    "TE": 15,
+    "QB": 7,
+    "K": 1,
+    "DEF": 1,
+    "IDP": 1
+   },
+   "starters_spend": 197
+  },
+  {
+   "team": "A dad",
+   "picks": [
+    {
+     "pick": 6,
+     "player": "Ja'Marr Chase",
+     "nfl": "Cin",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 70,
+     "team": "A dad"
+    },
+    {
+     "pick": 29,
+     "player": "Kyren Williams",
+     "nfl": "LAR",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 38,
+     "team": "A dad"
+    },
+    {
+     "pick": 36,
+     "player": "Tee Higgins",
+     "nfl": "Cin",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 28,
+     "team": "A dad"
+    },
+    {
+     "pick": 52,
+     "player": "DJ Moore",
+     "nfl": "Buf",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 19,
+     "team": "A dad"
+    },
+    {
+     "pick": 39,
+     "player": "RJ Harvey",
+     "nfl": "Den",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 18,
+     "team": "A dad"
+    },
+    {
+     "pick": 127,
+     "player": "Michael Pittman Jr.",
+     "nfl": "Pit",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 5,
+     "team": "A dad"
+    },
+    {
+     "pick": 103,
+     "player": "J.J. McCarthy",
+     "nfl": "Min",
+     "pos": "QB",
+     "slot": "QB",
+     "cost": 4,
+     "team": "A dad"
+    },
+    {
+     "pick": 136,
+     "player": "Dalton Kincaid",
+     "nfl": "Buf",
+     "pos": "TE",
+     "slot": "TE",
+     "cost": 4,
+     "team": "A dad"
+    },
+    {
+     "pick": 151,
+     "player": "Najee Harris",
+     "nfl": "NYG",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 4,
+     "team": "A dad"
+    },
+    {
+     "pick": 142,
+     "player": "Jayden Reed",
+     "nfl": "GB",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 2,
+     "team": "A dad"
+    },
+    {
+     "pick": 168,
+     "player": "Ray Davis",
+     "nfl": "Buf",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 2,
+     "team": "A dad"
+    },
+    {
+     "pick": 194,
+     "player": "Cowboys",
+     "nfl": "Dal",
+     "pos": "DEF",
+     "slot": "DEF",
+     "cost": 2,
+     "team": "A dad"
+    },
+    {
+     "pick": 146,
+     "player": "Scott Matlock",
+     "nfl": "LAC",
+     "pos": "DL,DE",
+     "slot": "IDP",
+     "cost": 1,
+     "team": "A dad"
+    },
+    {
+     "pick": 159,
+     "player": "DeAndre Hopkins",
+     "nfl": "Bal",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 1,
+     "team": "A dad"
+    },
+    {
+     "pick": 183,
+     "player": "Will Shipley",
+     "nfl": "Phi",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 1,
+     "team": "A dad"
+    },
+    {
+     "pick": 203,
+     "player": "Adam Thielen",
+     "nfl": "Pit",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 1,
+     "team": "A dad"
+    }
+   ],
+   "count": 16,
+   "spent": 200,
+   "left": 0,
+   "top_buy": {
+    "pick": 6,
+    "player": "Ja'Marr Chase",
+    "nfl": "Cin",
+    "pos": "WR",
+    "slot": "WR",
+    "cost": 70,
+    "team": "A dad"
+   },
+   "top3_share": 0.68,
+   "dollar_players": 4,
+   "avg_cost": 12.5,
+   "pos_spend": {
+    "WR": 126,
+    "RB": 63,
+    "QB": 4,
+    "TE": 4,
+    "DEF": 2,
+    "IDP": 1
+   },
+   "starters_spend": 197
+  },
+  {
+   "team": "Leo the Cleo",
+   "picks": [
+    {
+     "pick": 7,
+     "player": "Bijan Robinson",
+     "nfl": "Atl",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 66,
+     "team": "Leo the Cleo"
+    },
+    {
+     "pick": 40,
+     "player": "Terry McLaurin",
+     "nfl": "Was",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 30,
+     "team": "Leo the Cleo"
+    },
+    {
+     "pick": 37,
+     "player": "Jayden Daniels",
+     "nfl": "Was",
+     "pos": "QB",
+     "slot": "QB",
+     "cost": 21,
+     "team": "Leo the Cleo"
+    },
+    {
+     "pick": 51,
+     "player": "Garrett Wilson",
+     "nfl": "NYJ",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 20,
+     "team": "Leo the Cleo"
+    },
+    {
+     "pick": 55,
+     "player": "Zay Flowers",
+     "nfl": "Bal",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 17,
+     "team": "Leo the Cleo"
+    },
+    {
+     "pick": 111,
+     "player": "Austin Ekeler",
+     "nfl": "Was",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 10,
+     "team": "Leo the Cleo"
+    },
+    {
+     "pick": 85,
+     "player": "David Njoku",
+     "nfl": "LAC",
+     "pos": "TE",
+     "slot": "TE",
+     "cost": 8,
+     "team": "Leo the Cleo"
+    },
+    {
+     "pick": 112,
+     "player": "Jakobi Meyers",
+     "nfl": "Jax",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 7,
+     "team": "Leo the Cleo"
+    },
+    {
+     "pick": 126,
+     "player": "Tank Bigsby",
+     "nfl": "Phi",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 6,
+     "team": "Leo the Cleo"
+    },
+    {
+     "pick": 128,
+     "player": "Jauan Jennings",
+     "nfl": "Min",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 6,
+     "team": "Leo the Cleo"
+    },
+    {
+     "pick": 149,
+     "player": "Rashod Bateman",
+     "nfl": "Bal",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 3,
+     "team": "Leo the Cleo"
+    },
+    {
+     "pick": 200,
+     "player": "Lions",
+     "nfl": "Det",
+     "pos": "DEF",
+     "slot": "DEF",
+     "cost": 2,
+     "team": "Leo the Cleo"
+    },
+    {
+     "pick": 152,
+     "player": "Justice Hill",
+     "nfl": "Bal",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 1,
+     "team": "Leo the Cleo"
+    },
+    {
+     "pick": 177,
+     "player": "C.J. Stroud",
+     "nfl": "Hou",
+     "pos": "QB",
+     "slot": "QB",
+     "cost": 1,
+     "team": "Leo the Cleo"
+    },
+    {
+     "pick": 189,
+     "player": "Marcus Jones",
+     "nfl": "NE",
+     "pos": "DB,CB",
+     "slot": "IDP",
+     "cost": 1,
+     "team": "Leo the Cleo"
+    },
+    {
+     "pick": 208,
+     "player": "Seahawks",
+     "nfl": "Sea",
+     "pos": "DEF",
+     "slot": "DEF",
+     "cost": 1,
+     "team": "Leo the Cleo"
+    }
+   ],
+   "count": 16,
+   "spent": 200,
+   "left": 0,
+   "top_buy": {
+    "pick": 7,
+    "player": "Bijan Robinson",
+    "nfl": "Atl",
+    "pos": "RB",
+    "slot": "RB",
+    "cost": 66,
+    "team": "Leo the Cleo"
+   },
+   "top3_share": 0.585,
+   "dollar_players": 4,
+   "avg_cost": 12.5,
+   "pos_spend": {
+    "RB": 83,
+    "WR": 83,
+    "QB": 22,
+    "TE": 8,
+    "DEF": 3,
+    "IDP": 1
+   },
+   "starters_spend": 196
+  },
+  {
+   "team": "Mac Daddy",
+   "picks": [
+    {
+     "pick": 10,
+     "player": "Justin Jefferson",
+     "nfl": "Min",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 60,
+     "team": "Mac Daddy"
+    },
+    {
+     "pick": 30,
+     "player": "Josh Jacobs",
+     "nfl": "GB",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 43,
+     "team": "Mac Daddy"
+    },
+    {
+     "pick": 43,
+     "player": "Kenneth Walker III",
+     "nfl": "KC",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 25,
+     "team": "Mac Daddy"
+    },
+    {
+     "pick": 49,
+     "player": "Marvin Harrison Jr.",
+     "nfl": "Ari",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 25,
+     "team": "Mac Daddy"
+    },
+    {
+     "pick": 92,
+     "player": "Ricky Pearsall",
+     "nfl": "SF",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 12,
+     "team": "Mac Daddy"
+    },
+    {
+     "pick": 80,
+     "player": "Braelon Allen",
+     "nfl": "NYJ",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 9,
+     "team": "Mac Daddy"
+    },
+    {
+     "pick": 105,
+     "player": "Travis Etienne Jr.",
+     "nfl": "NO",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 9,
+     "team": "Mac Daddy"
+    },
+    {
+     "pick": 122,
+     "player": "Jake Ferguson",
+     "nfl": "Dal",
+     "pos": "TE",
+     "slot": "TE",
+     "cost": 4,
+     "team": "Mac Daddy"
+    },
+    {
+     "pick": 113,
+     "player": "Evan Engram",
+     "nfl": "Den",
+     "pos": "TE",
+     "slot": "TE",
+     "cost": 3,
+     "team": "Mac Daddy"
+    },
+    {
+     "pick": 120,
+     "player": "Kyler Murray",
+     "nfl": "Min",
+     "pos": "QB",
+     "slot": "QB",
+     "cost": 2,
+     "team": "Mac Daddy"
+    },
+    {
+     "pick": 161,
+     "player": "Marvin Mims Jr.",
+     "nfl": "Den",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 2,
+     "team": "Mac Daddy"
+    },
+    {
+     "pick": 210,
+     "player": "DeMario Douglas",
+     "nfl": "NE",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 2,
+     "team": "Mac Daddy"
+    },
+    {
+     "pick": 119,
+     "player": "Emanuel Wilson",
+     "nfl": "Sea",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 1,
+     "team": "Mac Daddy"
+    },
+    {
+     "pick": 184,
+     "player": "Cameron Dicker",
+     "nfl": "LAC",
+     "pos": "K",
+     "slot": "K",
+     "cost": 1,
+     "team": "Mac Daddy"
+    },
+    {
+     "pick": 195,
+     "player": "Roquan Smith",
+     "nfl": "Bal",
+     "pos": "LB",
+     "slot": "IDP",
+     "cost": 1,
+     "team": "Mac Daddy"
+    },
+    {
+     "pick": 204,
+     "player": "Chiefs",
+     "nfl": "KC",
+     "pos": "DEF",
+     "slot": "DEF",
+     "cost": 1,
+     "team": "Mac Daddy"
+    }
+   ],
+   "count": 16,
+   "spent": 200,
+   "left": 0,
+   "top_buy": {
+    "pick": 10,
+    "player": "Justin Jefferson",
+    "nfl": "Min",
+    "pos": "WR",
+    "slot": "WR",
+    "cost": 60,
+    "team": "Mac Daddy"
+   },
+   "top3_share": 0.64,
+   "dollar_players": 4,
+   "avg_cost": 12.5,
+   "pos_spend": {
+    "WR": 101,
+    "RB": 87,
+    "TE": 7,
+    "QB": 2,
+    "K": 1,
+    "IDP": 1,
+    "DEF": 1
+   },
+   "starters_spend": 197
+  },
+  {
+   "team": "Bend The Knee 🐲🔥",
+   "picks": [
+    {
+     "pick": 18,
+     "player": "Derrick Henry",
+     "nfl": "Bal",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 53,
+     "team": "Bend The Knee 🐲🔥"
+    },
+    {
+     "pick": 12,
+     "player": "Nico Collins",
+     "nfl": "Hou",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 49,
+     "team": "Bend The Knee 🐲🔥"
+    },
+    {
+     "pick": 24,
+     "player": "Malik Nabers",
+     "nfl": "NYG",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 49,
+     "team": "Bend The Knee 🐲🔥"
+    },
+    {
+     "pick": 89,
+     "player": "Cooper Kupp",
+     "nfl": "Sea",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 11,
+     "team": "Bend The Knee 🐲🔥"
+    },
+    {
+     "pick": 98,
+     "player": "Brock Purdy",
+     "nfl": "SF",
+     "pos": "QB",
+     "slot": "QB",
+     "cost": 10,
+     "team": "Bend The Knee 🐲🔥"
+    },
+    {
+     "pick": 110,
+     "player": "Javonte Williams",
+     "nfl": "Dal",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 8,
+     "team": "Bend The Knee 🐲🔥"
+    },
+    {
+     "pick": 108,
+     "player": "Rhamondre Stevenson",
+     "nfl": "NE",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 6,
+     "team": "Bend The Knee 🐲🔥"
+    },
+    {
+     "pick": 135,
+     "player": "Josh Downs",
+     "nfl": "Ind",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 5,
+     "team": "Bend The Knee 🐲🔥"
+    },
+    {
+     "pick": 181,
+     "player": "Packers",
+     "nfl": "GB",
+     "pos": "DEF",
+     "slot": "DEF",
+     "cost": 2,
+     "team": "Bend The Knee 🐲🔥"
+    },
+    {
+     "pick": 150,
+     "player": "Hunter Henry",
+     "nfl": "NE",
+     "pos": "TE",
+     "slot": "TE",
+     "cost": 1,
+     "team": "Bend The Knee 🐲🔥"
+    },
+    {
+     "pick": 163,
+     "player": "Darren Waller",
+     "nfl": "Car",
+     "pos": "TE",
+     "slot": "TE",
+     "cost": 1,
+     "team": "Bend The Knee 🐲🔥"
+    },
+    {
+     "pick": 175,
+     "player": "Wan'Dale Robinson",
+     "nfl": "Ten",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 1,
+     "team": "Bend The Knee 🐲🔥"
+    },
+    {
+     "pick": 187,
+     "player": "Jared Goff",
+     "nfl": "Det",
+     "pos": "QB",
+     "slot": "QB",
+     "cost": 1,
+     "team": "Bend The Knee 🐲🔥"
+    },
+    {
+     "pick": 198,
+     "player": "Jake Elliott",
+     "nfl": "Phi",
+     "pos": "K",
+     "slot": "K",
+     "cost": 1,
+     "team": "Bend The Knee 🐲🔥"
+    },
+    {
+     "pick": 207,
+     "player": "Amari Cooper",
+     "nfl": "Buf",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 1,
+     "team": "Bend The Knee 🐲🔥"
+    },
+    {
+     "pick": 213,
+     "player": "Hollywood Brown",
+     "nfl": "Phi",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 1,
+     "team": "Bend The Knee 🐲🔥"
+    }
+   ],
+   "count": 16,
+   "spent": 200,
+   "left": 0,
+   "top_buy": {
+    "pick": 18,
+    "player": "Derrick Henry",
+    "nfl": "Bal",
+    "pos": "RB",
+    "slot": "RB",
+    "cost": 53,
+    "team": "Bend The Knee 🐲🔥"
+   },
+   "top3_share": 0.755,
+   "dollar_players": 7,
+   "avg_cost": 12.5,
+   "pos_spend": {
+    "RB": 67,
+    "WR": 117,
+    "QB": 11,
+    "DEF": 2,
+    "TE": 2,
+    "K": 1
+   },
+   "starters_spend": 197
+  },
+  {
+   "team": "Hail Purdy",
+   "picks": [
+    {
+     "pick": 17,
+     "player": "Ladd McConkey",
+     "nfl": "LAC",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 36,
+     "team": "Hail Purdy"
+    },
+    {
+     "pick": 48,
+     "player": "James Cook III",
+     "nfl": "Buf",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 31,
+     "team": "Hail Purdy"
+    },
+    {
+     "pick": 35,
+     "player": "Trey McBride",
+     "nfl": "Ari",
+     "pos": "TE",
+     "slot": "TE",
+     "cost": 30,
+     "team": "Hail Purdy"
+    },
+    {
+     "pick": 47,
+     "player": "Jalen Hurts",
+     "nfl": "Phi",
+     "pos": "QB",
+     "slot": "QB",
+     "cost": 22,
+     "team": "Hail Purdy"
+    },
+    {
+     "pick": 46,
+     "player": "David Montgomery",
+     "nfl": "Hou",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 20,
+     "team": "Hail Purdy"
+    },
+    {
+     "pick": 54,
+     "player": "Aaron Jones Sr.",
+     "nfl": "Min",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 19,
+     "team": "Hail Purdy"
+    },
+    {
+     "pick": 65,
+     "player": "George Pickens",
+     "nfl": "Dal",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 19,
+     "team": "Hail Purdy"
+    },
+    {
+     "pick": 93,
+     "player": "Jerome Ford",
+     "nfl": "Was",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 8,
+     "team": "Hail Purdy"
+    },
+    {
+     "pick": 106,
+     "player": "Jacory Croskey-Merritt",
+     "nfl": "Was",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 8,
+     "team": "Hail Purdy"
+    },
+    {
+     "pick": 173,
+     "player": "Chargers",
+     "nfl": "LAC",
+     "pos": "DEF",
+     "slot": "DEF",
+     "cost": 1,
+     "team": "Hail Purdy"
+    },
+    {
+     "pick": 185,
+     "player": "Ka'imi Fairbairn",
+     "nfl": "Hou",
+     "pos": "K",
+     "slot": "K",
+     "cost": 1,
+     "team": "Hail Purdy"
+    },
+    {
+     "pick": 196,
+     "player": "Kyle Monangai",
+     "nfl": "Chi",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 1,
+     "team": "Hail Purdy"
+    },
+    {
+     "pick": 205,
+     "player": "Quinshon Judkins",
+     "nfl": "Cle",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 1,
+     "team": "Hail Purdy"
+    },
+    {
+     "pick": 211,
+     "player": "Zaire Franklin",
+     "nfl": "GB",
+     "pos": "LB",
+     "slot": "IDP",
+     "cost": 1,
+     "team": "Hail Purdy"
+    },
+    {
+     "pick": 216,
+     "player": "Zack Baun",
+     "nfl": "Phi",
+     "pos": "LB",
+     "slot": "IDP",
+     "cost": 1,
+     "team": "Hail Purdy"
+    },
+    {
+     "pick": 219,
+     "player": "Foyesade Oluokun",
+     "nfl": "Jax",
+     "pos": "LB",
+     "slot": "IDP",
+     "cost": 1,
+     "team": "Hail Purdy"
+    }
+   ],
+   "count": 16,
+   "spent": 200,
+   "left": 0,
+   "top_buy": {
+    "pick": 17,
+    "player": "Ladd McConkey",
+    "nfl": "LAC",
+    "pos": "WR",
+    "slot": "WR",
+    "cost": 36,
+    "team": "Hail Purdy"
+   },
+   "top3_share": 0.485,
+   "dollar_players": 7,
+   "avg_cost": 12.5,
+   "pos_spend": {
+    "WR": 55,
+    "RB": 88,
+    "TE": 30,
+    "QB": 22,
+    "DEF": 1,
+    "K": 1,
+    "IDP": 3
+   },
+   "starters_spend": 195
+  },
+  {
+   "team": "The Injured Reserved",
+   "picks": [
+    {
+     "pick": 26,
+     "player": "Chase Brown",
+     "nfl": "Cin",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 40,
+     "team": "The Injured Reserved"
+    },
+    {
+     "pick": 78,
+     "player": "Courtland Sutton",
+     "nfl": "Den",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 27,
+     "team": "The Injured Reserved"
+    },
+    {
+     "pick": 59,
+     "player": "Davante Adams",
+     "nfl": "LAR",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 26,
+     "team": "The Injured Reserved"
+    },
+    {
+     "pick": 67,
+     "player": "Tetairoa McMillan",
+     "nfl": "Car",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 25,
+     "team": "The Injured Reserved"
+    },
+    {
+     "pick": 58,
+     "player": "Chuba Hubbard",
+     "nfl": "Car",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 23,
+     "team": "The Injured Reserved"
+    },
+    {
+     "pick": 20,
+     "player": "Travis Hunter",
+     "nfl": "Jax",
+     "pos": "WR,CB",
+     "slot": "WR",
+     "cost": 16,
+     "team": "The Injured Reserved"
+    },
+    {
+     "pick": 56,
+     "player": "Rome Odunze",
+     "nfl": "Chi",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 16,
+     "team": "The Injured Reserved"
+    },
+    {
+     "pick": 84,
+     "player": "Tucker Kraft",
+     "nfl": "GB",
+     "pos": "TE",
+     "slot": "TE",
+     "cost": 6,
+     "team": "The Injured Reserved"
+    },
+    {
+     "pick": 137,
+     "player": "Dylan Sampson",
+     "nfl": "Cle",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 6,
+     "team": "The Injured Reserved"
+    },
+    {
+     "pick": 130,
+     "player": "Tyler Allgeier",
+     "nfl": "Ari",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 5,
+     "team": "The Injured Reserved"
+    },
+    {
+     "pick": 141,
+     "player": "Keenan Allen",
+     "nfl": "Ind",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 4,
+     "team": "The Injured Reserved"
+    },
+    {
+     "pick": 165,
+     "player": "Ollie Gordon II",
+     "nfl": "Mia",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 2,
+     "team": "The Injured Reserved"
+    },
+    {
+     "pick": 95,
+     "player": "Drake Maye",
+     "nfl": "NE",
+     "pos": "QB",
+     "slot": "QB",
+     "cost": 1,
+     "team": "The Injured Reserved"
+    },
+    {
+     "pick": 164,
+     "player": "Vikings",
+     "nfl": "Min",
+     "pos": "DEF",
+     "slot": "DEF",
+     "cost": 1,
+     "team": "The Injured Reserved"
+    },
+    {
+     "pick": 176,
+     "player": "Bryce Young",
+     "nfl": "Car",
+     "pos": "QB",
+     "slot": "QB",
+     "cost": 1,
+     "team": "The Injured Reserved"
+    },
+    {
+     "pick": 188,
+     "player": "Brenton Strange",
+     "nfl": "Jax",
+     "pos": "TE",
+     "slot": "TE",
+     "cost": 1,
+     "team": "The Injured Reserved"
+    }
+   ],
+   "count": 16,
+   "spent": 200,
+   "left": 0,
+   "top_buy": {
+    "pick": 26,
+    "player": "Chase Brown",
+    "nfl": "Cin",
+    "pos": "RB",
+    "slot": "RB",
+    "cost": 40,
+    "team": "The Injured Reserved"
+   },
+   "top3_share": 0.465,
+   "dollar_players": 4,
+   "avg_cost": 12.5,
+   "pos_spend": {
+    "RB": 76,
+    "WR": 114,
+    "TE": 7,
+    "QB": 2,
+    "DEF": 1
+   },
+   "starters_spend": 199
+  },
+  {
+   "team": "Kim Jong Nate",
+   "picks": [
+    {
+     "pick": 15,
+     "player": "Christian McCaffrey",
+     "nfl": "SF",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 55,
+     "team": "Kim Jong Nate"
+    },
+    {
+     "pick": 22,
+     "player": "De'Von Achane",
+     "nfl": "Mia",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 41,
+     "team": "Kim Jong Nate"
+    },
+    {
+     "pick": 44,
+     "player": "Mike Evans",
+     "nfl": "SF",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 28,
+     "team": "Kim Jong Nate"
+    },
+    {
+     "pick": 76,
+     "player": "Joe Burrow",
+     "nfl": "Cin",
+     "pos": "QB",
+     "slot": "QB",
+     "cost": 18,
+     "team": "Kim Jong Nate"
+    },
+    {
+     "pick": 82,
+     "player": "Jaylen Warren",
+     "nfl": "Pit",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 12,
+     "team": "Kim Jong Nate"
+    },
+    {
+     "pick": 97,
+     "player": "Matthew Golden",
+     "nfl": "GB",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 10,
+     "team": "Kim Jong Nate"
+    },
+    {
+     "pick": 91,
+     "player": "Khalil Shakir",
+     "nfl": "Buf",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 9,
+     "team": "Kim Jong Nate"
+    },
+    {
+     "pick": 123,
+     "player": "Tyler Warren",
+     "nfl": "Ind",
+     "pos": "TE",
+     "slot": "TE",
+     "cost": 7,
+     "team": "Kim Jong Nate"
+    },
+    {
+     "pick": 74,
+     "player": "Brian Robinson",
+     "nfl": "Atl",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 5,
+     "team": "Kim Jong Nate"
+    },
+    {
+     "pick": 124,
+     "player": "Kareem Hunt",
+     "nfl": "KC",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 3,
+     "team": "Kim Jong Nate"
+    },
+    {
+     "pick": 162,
+     "player": "Trey Benson",
+     "nfl": "Ari",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 3,
+     "team": "Kim Jong Nate"
+    },
+    {
+     "pick": 147,
+     "player": "Brandon Aubrey",
+     "nfl": "Dal",
+     "pos": "K",
+     "slot": "K",
+     "cost": 2,
+     "team": "Kim Jong Nate"
+    },
+    {
+     "pick": 160,
+     "player": "Ravens",
+     "nfl": "Bal",
+     "pos": "DEF",
+     "slot": "DEF",
+     "cost": 2,
+     "team": "Kim Jong Nate"
+    },
+    {
+     "pick": 155,
+     "player": "Divine Deablo",
+     "nfl": "Atl",
+     "pos": "LB",
+     "slot": "IDP",
+     "cost": 1,
+     "team": "Kim Jong Nate"
+    },
+    {
+     "pick": 167,
+     "player": "Jaydon Blue",
+     "nfl": "Phi",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 1,
+     "team": "Kim Jong Nate"
+    },
+    {
+     "pick": 179,
+     "player": "Xavier Legette",
+     "nfl": "Car",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 1,
+     "team": "Kim Jong Nate"
+    }
+   ],
+   "count": 16,
+   "spent": 198,
+   "left": 2,
+   "top_buy": {
+    "pick": 15,
+    "player": "Christian McCaffrey",
+    "nfl": "SF",
+    "pos": "RB",
+    "slot": "RB",
+    "cost": 55,
+    "team": "Kim Jong Nate"
+   },
+   "top3_share": 0.626,
+   "dollar_players": 3,
+   "avg_cost": 12.4,
+   "pos_spend": {
+    "RB": 120,
+    "WR": 48,
+    "QB": 18,
+    "TE": 7,
+    "K": 2,
+    "DEF": 2,
+    "IDP": 1
+   },
+   "starters_spend": 193
+  },
+  {
+   "team": "Good Will Hunting",
+   "picks": [
+    {
+     "pick": 27,
+     "player": "Ashton Jeanty",
+     "nfl": "LV",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 46,
+     "team": "Good Will Hunting"
+    },
+    {
+     "pick": 1,
+     "player": "Drake London",
+     "nfl": "Atl",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 41,
+     "team": "Good Will Hunting"
+    },
+    {
+     "pick": 19,
+     "player": "Josh Allen",
+     "nfl": "Buf",
+     "pos": "QB",
+     "slot": "QB",
+     "cost": 31,
+     "team": "Good Will Hunting"
+    },
+    {
+     "pick": 64,
+     "player": "DeVonta Smith",
+     "nfl": "Phi",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 17,
+     "team": "Good Will Hunting"
+    },
+    {
+     "pick": 96,
+     "player": "Jordan Mason",
+     "nfl": "Min",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 11,
+     "team": "Good Will Hunting"
+    },
+    {
+     "pick": 86,
+     "player": "Chris Olave",
+     "nfl": "NO",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 8,
+     "team": "Good Will Hunting"
+    },
+    {
+     "pick": 68,
+     "player": "Kyle Pitts Sr.",
+     "nfl": "Atl",
+     "pos": "TE",
+     "slot": "TE",
+     "cost": 6,
+     "team": "Good Will Hunting"
+    },
+    {
+     "pick": 81,
+     "player": "Kaleb Johnson",
+     "nfl": "GB",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 6,
+     "team": "Good Will Hunting"
+    },
+    {
+     "pick": 148,
+     "player": "Chris Godwin Jr.",
+     "nfl": "TB",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 6,
+     "team": "Good Will Hunting"
+    },
+    {
+     "pick": 61,
+     "player": "Nick Chubb",
+     "nfl": "Hou",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 5,
+     "team": "Good Will Hunting"
+    },
+    {
+     "pick": 134,
+     "player": "Joe Mixon",
+     "nfl": "Hou",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 5,
+     "team": "Good Will Hunting"
+    },
+    {
+     "pick": 121,
+     "player": "Eagles",
+     "nfl": "Phi",
+     "pos": "DEF",
+     "slot": "DEF",
+     "cost": 4,
+     "team": "Good Will Hunting"
+    },
+    {
+     "pick": 158,
+     "player": "Jake Bates",
+     "nfl": "Det",
+     "pos": "K",
+     "slot": "K",
+     "cost": 4,
+     "team": "Good Will Hunting"
+    },
+    {
+     "pick": 83,
+     "player": "Justin Fields",
+     "nfl": "KC",
+     "pos": "QB",
+     "slot": "QB",
+     "cost": 2,
+     "team": "Good Will Hunting"
+    },
+    {
+     "pick": 139,
+     "player": "Sam Hubbard",
+     "nfl": "Cin",
+     "pos": "DL,DE",
+     "slot": "IDP",
+     "cost": 1,
+     "team": "Good Will Hunting"
+    },
+    {
+     "pick": 153,
+     "player": "Chig Okonkwo",
+     "nfl": "Was",
+     "pos": "TE",
+     "slot": "TE",
+     "cost": 1,
+     "team": "Good Will Hunting"
+    }
+   ],
+   "count": 16,
+   "spent": 194,
+   "left": 6,
+   "top_buy": {
+    "pick": 27,
+    "player": "Ashton Jeanty",
+    "nfl": "LV",
+    "pos": "RB",
+    "slot": "RB",
+    "cost": 46,
+    "team": "Good Will Hunting"
+   },
+   "top3_share": 0.608,
+   "dollar_players": 2,
+   "avg_cost": 12.1,
+   "pos_spend": {
+    "RB": 73,
+    "WR": 72,
+    "QB": 33,
+    "TE": 7,
+    "DEF": 4,
+    "K": 4,
+    "IDP": 1
+   },
+   "starters_spend": 185
+  },
+  {
+   "team": "Poop Squad 💩",
+   "picks": [
+    {
+     "pick": 25,
+     "player": "Brian Thomas Jr.",
+     "nfl": "Jax",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 50,
+     "team": "Poop Squad 💩"
+    },
+    {
+     "pick": 28,
+     "player": "A.J. Brown",
+     "nfl": "NE",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 42,
+     "team": "Poop Squad 💩"
+    },
+    {
+     "pick": 3,
+     "player": "TreVeyon Henderson",
+     "nfl": "NE",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 28,
+     "team": "Poop Squad 💩"
+    },
+    {
+     "pick": 21,
+     "player": "Breece Hall",
+     "nfl": "NYJ",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 19,
+     "team": "Poop Squad 💩"
+    },
+    {
+     "pick": 42,
+     "player": "Xavier Worthy",
+     "nfl": "KC",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 15,
+     "team": "Poop Squad 💩"
+    },
+    {
+     "pick": 62,
+     "player": "Darnell Mooney",
+     "nfl": "NYG",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 11,
+     "team": "Poop Squad 💩"
+    },
+    {
+     "pick": 104,
+     "player": "T.J. Hockenson",
+     "nfl": "Min",
+     "pos": "TE",
+     "slot": "TE",
+     "cost": 8,
+     "team": "Poop Squad 💩"
+    },
+    {
+     "pick": 145,
+     "player": "Christian Kirk",
+     "nfl": "SF",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 5,
+     "team": "Poop Squad 💩"
+    },
+    {
+     "pick": 144,
+     "player": "Quentin Johnston",
+     "nfl": "LAC",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 3,
+     "team": "Poop Squad 💩"
+    },
+    {
+     "pick": 156,
+     "player": "Tyjae Spears",
+     "nfl": "Ten",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 3,
+     "team": "Poop Squad 💩"
+    },
+    {
+     "pick": 170,
+     "player": "Steelers",
+     "nfl": "Pit",
+     "pos": "DEF",
+     "slot": "DEF",
+     "cost": 3,
+     "team": "Poop Squad 💩"
+    },
+    {
+     "pick": 77,
+     "player": "Roschon Johnson",
+     "nfl": "Chi",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 2,
+     "team": "Poop Squad 💩"
+    },
+    {
+     "pick": 117,
+     "player": "Aaron Rodgers",
+     "nfl": "Pit",
+     "pos": "QB",
+     "slot": "QB",
+     "cost": 1,
+     "team": "Poop Squad 💩"
+    },
+    {
+     "pick": 131,
+     "player": "Trevor Lawrence",
+     "nfl": "Jax",
+     "pos": "QB",
+     "slot": "QB",
+     "cost": 1,
+     "team": "Poop Squad 💩"
+    },
+    {
+     "pick": 182,
+     "player": "Harrison Butker",
+     "nfl": "KC",
+     "pos": "K",
+     "slot": "K",
+     "cost": 1,
+     "team": "Poop Squad 💩"
+    },
+    {
+     "pick": 193,
+     "player": "Fred Warner",
+     "nfl": "SF",
+     "pos": "LB",
+     "slot": "IDP",
+     "cost": 1,
+     "team": "Poop Squad 💩"
+    }
+   ],
+   "count": 16,
+   "spent": 193,
+   "left": 7,
+   "top_buy": {
+    "pick": 25,
+    "player": "Brian Thomas Jr.",
+    "nfl": "Jax",
+    "pos": "WR",
+    "slot": "WR",
+    "cost": 50,
+    "team": "Poop Squad 💩"
+   },
+   "top3_share": 0.622,
+   "dollar_players": 4,
+   "avg_cost": 12.1,
+   "pos_spend": {
+    "WR": 126,
+    "RB": 52,
+    "TE": 8,
+    "DEF": 3,
+    "QB": 2,
+    "K": 1,
+    "IDP": 1
+   },
+   "starters_spend": 188
+  },
+  {
+   "team": "FreeGucci",
+   "picks": [
+    {
+     "pick": 16,
+     "player": "Lamar Jackson",
+     "nfl": "Bal",
+     "pos": "QB",
+     "slot": "QB",
+     "cost": 32,
+     "team": "FreeGucci"
+    },
+    {
+     "pick": 41,
+     "player": "Omarion Hampton",
+     "nfl": "LAC",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 31,
+     "team": "FreeGucci"
+    },
+    {
+     "pick": 73,
+     "player": "Calvin Ridley",
+     "nfl": "Ten",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 26,
+     "team": "FreeGucci"
+    },
+    {
+     "pick": 79,
+     "player": "D'Andre Swift",
+     "nfl": "Chi",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 19,
+     "team": "FreeGucci"
+    },
+    {
+     "pick": 90,
+     "player": "Sam LaPorta",
+     "nfl": "Det",
+     "pos": "TE",
+     "slot": "TE",
+     "cost": 15,
+     "team": "FreeGucci"
+    },
+    {
+     "pick": 109,
+     "player": "J.K. Dobbins",
+     "nfl": "Den",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 15,
+     "team": "FreeGucci"
+    },
+    {
+     "pick": 100,
+     "player": "Emeka Egbuka",
+     "nfl": "TB",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 10,
+     "team": "FreeGucci"
+    },
+    {
+     "pick": 107,
+     "player": "Cam Skattebo",
+     "nfl": "NYG",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 9,
+     "team": "FreeGucci"
+    },
+    {
+     "pick": 99,
+     "player": "Deebo Samuel Sr.",
+     "nfl": "SF",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 8,
+     "team": "FreeGucci"
+    },
+    {
+     "pick": 129,
+     "player": "Keon Coleman",
+     "nfl": "Buf",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 7,
+     "team": "FreeGucci"
+    },
+    {
+     "pick": 114,
+     "player": "Rashee Rice",
+     "nfl": "KC",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 6,
+     "team": "FreeGucci"
+    },
+    {
+     "pick": 94,
+     "player": "Bhayshul Tuten",
+     "nfl": "Jax",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 5,
+     "team": "FreeGucci"
+    },
+    {
+     "pick": 118,
+     "player": "Jordan Addison",
+     "nfl": "Min",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 4,
+     "team": "FreeGucci"
+    },
+    {
+     "pick": 133,
+     "player": "Broncos",
+     "nfl": "Den",
+     "pos": "DEF",
+     "slot": "DEF",
+     "cost": 3,
+     "team": "FreeGucci"
+    },
+    {
+     "pick": 101,
+     "player": "Juanyeh Thomas",
+     "nfl": "Ind",
+     "pos": "S",
+     "slot": "IDP",
+     "cost": 1,
+     "team": "FreeGucci"
+    },
+    {
+     "pick": 143,
+     "player": "Tre' Harris",
+     "nfl": "LAC",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 1,
+     "team": "FreeGucci"
+    }
+   ],
+   "count": 16,
+   "spent": 192,
+   "left": 8,
+   "top_buy": {
+    "pick": 16,
+    "player": "Lamar Jackson",
+    "nfl": "Bal",
+    "pos": "QB",
+    "slot": "QB",
+    "cost": 32,
+    "team": "FreeGucci"
+   },
+   "top3_share": 0.464,
+   "dollar_players": 2,
+   "avg_cost": 12.0,
+   "pos_spend": {
+    "QB": 32,
+    "RB": 79,
+    "WR": 62,
+    "TE": 15,
+    "DEF": 3,
+    "IDP": 1
+   },
+   "starters_spend": 188
+  },
+  {
+   "team": "Shut Up",
+   "picks": [
+    {
+     "pick": 23,
+     "player": "Amon-Ra St. Brown",
+     "nfl": "Det",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 51,
+     "team": "Shut Up"
+    },
+    {
+     "pick": 34,
+     "player": "Jonathan Taylor",
+     "nfl": "Ind",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 44,
+     "team": "Shut Up"
+    },
+    {
+     "pick": 32,
+     "player": "Bucky Irving",
+     "nfl": "TB",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 40,
+     "team": "Shut Up"
+    },
+    {
+     "pick": 31,
+     "player": "George Kittle",
+     "nfl": "SF",
+     "pos": "TE",
+     "slot": "TE",
+     "cost": 22,
+     "team": "Shut Up"
+    },
+    {
+     "pick": 33,
+     "player": "Patrick Mahomes",
+     "nfl": "KC",
+     "pos": "QB",
+     "slot": "QB",
+     "cost": 16,
+     "team": "Shut Up"
+    },
+    {
+     "pick": 125,
+     "player": "Colston Loveland",
+     "nfl": "Chi",
+     "pos": "TE",
+     "slot": "TE",
+     "cost": 3,
+     "team": "Shut Up"
+    },
+    {
+     "pick": 115,
+     "player": "Baker Mayfield",
+     "nfl": "TB",
+     "pos": "QB",
+     "slot": "QB",
+     "cost": 2,
+     "team": "Shut Up"
+    },
+    {
+     "pick": 132,
+     "player": "Dallas Goedert",
+     "nfl": "Phi",
+     "pos": "TE",
+     "slot": "TE",
+     "cost": 2,
+     "team": "Shut Up"
+    },
+    {
+     "pick": 171,
+     "player": "Brandon Aiyuk",
+     "nfl": "SF",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 2,
+     "team": "Shut Up"
+    },
+    {
+     "pick": 172,
+     "player": "Bills",
+     "nfl": "Buf",
+     "pos": "DEF",
+     "slot": "DEF",
+     "cost": 2,
+     "team": "Shut Up"
+    },
+    {
+     "pick": 180,
+     "player": "Rico Dowdle",
+     "nfl": "Pit",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 2,
+     "team": "Shut Up"
+    },
+    {
+     "pick": 199,
+     "player": "Tyler Bass",
+     "nfl": "Buf",
+     "pos": "K",
+     "slot": "K",
+     "cost": 2,
+     "team": "Shut Up"
+    },
+    {
+     "pick": 191,
+     "player": "Ashtyn Davis",
+     "nfl": "SF",
+     "pos": "S",
+     "slot": "IDP",
+     "cost": 1,
+     "team": "Shut Up"
+    },
+    {
+     "pick": 201,
+     "player": "Cedric Tillman",
+     "nfl": "NO",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 1,
+     "team": "Shut Up"
+    },
+    {
+     "pick": 215,
+     "player": "Jonnu Smith",
+     "nfl": "GB",
+     "pos": "TE",
+     "slot": "TE",
+     "cost": 1,
+     "team": "Shut Up"
+    },
+    {
+     "pick": 218,
+     "player": "Blake Corum",
+     "nfl": "LAR",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 1,
+     "team": "Shut Up"
+    }
+   ],
+   "count": 16,
+   "spent": 192,
+   "left": 8,
+   "top_buy": {
+    "pick": 23,
+    "player": "Amon-Ra St. Brown",
+    "nfl": "Det",
+    "pos": "WR",
+    "slot": "WR",
+    "cost": 51,
+    "team": "Shut Up"
+   },
+   "top3_share": 0.703,
+   "dollar_players": 4,
+   "avg_cost": 12.0,
+   "pos_spend": {
+    "WR": 54,
+    "RB": 87,
+    "TE": 28,
+    "QB": 18,
+    "DEF": 2,
+    "K": 2,
+    "IDP": 1
+   },
+   "starters_spend": 187
+  }
+ ],
+ "picks": [
+  {
+   "pick": 1,
+   "player": "Drake London",
+   "nfl": "Atl",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 41,
+   "team": "Good Will Hunting"
+  },
+  {
+   "pick": 2,
+   "player": "Jahmyr Gibbs",
+   "nfl": "Det",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 56,
+   "team": "ShakeNBake"
+  },
+  {
+   "pick": 3,
+   "player": "TreVeyon Henderson",
+   "nfl": "NE",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 28,
+   "team": "Poop Squad 💩"
+  },
+  {
+   "pick": 4,
+   "player": "Brock Bowers",
+   "nfl": "LV",
+   "pos": "TE",
+   "slot": "TE",
+   "cost": 35,
+   "team": "Miley 💨LEO 5K Speedo Fan Club"
+  },
+  {
+   "pick": 5,
+   "player": "Tyreek Hill",
+   "nfl": "Mia",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 30,
+   "team": "Bullish"
+  },
+  {
+   "pick": 6,
+   "player": "Ja'Marr Chase",
+   "nfl": "Cin",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 70,
+   "team": "A dad"
+  },
+  {
+   "pick": 7,
+   "player": "Bijan Robinson",
+   "nfl": "Atl",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 66,
+   "team": "Leo the Cleo"
+  },
+  {
+   "pick": 8,
+   "player": "Saquon Barkley",
+   "nfl": "Phi",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 62,
+   "team": "Bullish"
+  },
+  {
+   "pick": 9,
+   "player": "CeeDee Lamb",
+   "nfl": "Dal",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 59,
+   "team": "Miley 💨LEO 5K Speedo Fan Club"
+  },
+  {
+   "pick": 10,
+   "player": "Justin Jefferson",
+   "nfl": "Min",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 60,
+   "team": "Mac Daddy"
+  },
+  {
+   "pick": 11,
+   "player": "Puka Nacua",
+   "nfl": "LAR",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 49,
+   "team": "ShakeNBake"
+  },
+  {
+   "pick": 12,
+   "player": "Nico Collins",
+   "nfl": "Hou",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 49,
+   "team": "Bend The Knee 🐲🔥"
+  },
+  {
+   "pick": 13,
+   "player": "Travis Kelce",
+   "nfl": "KC",
+   "pos": "TE",
+   "slot": "TE",
+   "cost": 14,
+   "team": "Bullish"
+  },
+  {
+   "pick": 14,
+   "player": "Jaxon Smith-Njigba",
+   "nfl": "Sea",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 30,
+   "team": "Bullish"
+  },
+  {
+   "pick": 15,
+   "player": "Christian McCaffrey",
+   "nfl": "SF",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 55,
+   "team": "Kim Jong Nate"
+  },
+  {
+   "pick": 16,
+   "player": "Lamar Jackson",
+   "nfl": "Bal",
+   "pos": "QB",
+   "slot": "QB",
+   "cost": 32,
+   "team": "FreeGucci"
+  },
+  {
+   "pick": 17,
+   "player": "Ladd McConkey",
+   "nfl": "LAC",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 36,
+   "team": "Hail Purdy"
+  },
+  {
+   "pick": 18,
+   "player": "Derrick Henry",
+   "nfl": "Bal",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 53,
+   "team": "Bend The Knee 🐲🔥"
+  },
+  {
+   "pick": 19,
+   "player": "Josh Allen",
+   "nfl": "Buf",
+   "pos": "QB",
+   "slot": "QB",
+   "cost": 31,
+   "team": "Good Will Hunting"
+  },
+  {
+   "pick": 20,
+   "player": "Travis Hunter",
+   "nfl": "Jax",
+   "pos": "WR,CB",
+   "slot": "WR",
+   "cost": 16,
+   "team": "The Injured Reserved"
+  },
+  {
+   "pick": 21,
+   "player": "Breece Hall",
+   "nfl": "NYJ",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 19,
+   "team": "Poop Squad 💩"
+  },
+  {
+   "pick": 22,
+   "player": "De'Von Achane",
+   "nfl": "Mia",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 41,
+   "team": "Kim Jong Nate"
+  },
+  {
+   "pick": 23,
+   "player": "Amon-Ra St. Brown",
+   "nfl": "Det",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 51,
+   "team": "Shut Up"
+  },
+  {
+   "pick": 24,
+   "player": "Malik Nabers",
+   "nfl": "NYG",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 49,
+   "team": "Bend The Knee 🐲🔥"
+  },
+  {
+   "pick": 25,
+   "player": "Brian Thomas Jr.",
+   "nfl": "Jax",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 50,
+   "team": "Poop Squad 💩"
+  },
+  {
+   "pick": 26,
+   "player": "Chase Brown",
+   "nfl": "Cin",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 40,
+   "team": "The Injured Reserved"
+  },
+  {
+   "pick": 27,
+   "player": "Ashton Jeanty",
+   "nfl": "LV",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 46,
+   "team": "Good Will Hunting"
+  },
+  {
+   "pick": 28,
+   "player": "A.J. Brown",
+   "nfl": "NE",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 42,
+   "team": "Poop Squad 💩"
+  },
+  {
+   "pick": 29,
+   "player": "Kyren Williams",
+   "nfl": "LAR",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 38,
+   "team": "A dad"
+  },
+  {
+   "pick": 30,
+   "player": "Josh Jacobs",
+   "nfl": "GB",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 43,
+   "team": "Mac Daddy"
+  },
+  {
+   "pick": 31,
+   "player": "George Kittle",
+   "nfl": "SF",
+   "pos": "TE",
+   "slot": "TE",
+   "cost": 22,
+   "team": "Shut Up"
+  },
+  {
+   "pick": 32,
+   "player": "Bucky Irving",
+   "nfl": "TB",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 40,
+   "team": "Shut Up"
+  },
+  {
+   "pick": 33,
+   "player": "Patrick Mahomes",
+   "nfl": "KC",
+   "pos": "QB",
+   "slot": "QB",
+   "cost": 16,
+   "team": "Shut Up"
+  },
+  {
+   "pick": 34,
+   "player": "Jonathan Taylor",
+   "nfl": "Ind",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 44,
+   "team": "Shut Up"
+  },
+  {
+   "pick": 35,
+   "player": "Trey McBride",
+   "nfl": "Ari",
+   "pos": "TE",
+   "slot": "TE",
+   "cost": 30,
+   "team": "Hail Purdy"
+  },
+  {
+   "pick": 36,
+   "player": "Tee Higgins",
+   "nfl": "Cin",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 28,
+   "team": "A dad"
+  },
+  {
+   "pick": 37,
+   "player": "Jayden Daniels",
+   "nfl": "Was",
+   "pos": "QB",
+   "slot": "QB",
+   "cost": 21,
+   "team": "Leo the Cleo"
+  },
+  {
+   "pick": 38,
+   "player": "Tony Pollard",
+   "nfl": "Ten",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 19,
+   "team": "Bullish"
+  },
+  {
+   "pick": 39,
+   "player": "RJ Harvey",
+   "nfl": "Den",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 18,
+   "team": "A dad"
+  },
+  {
+   "pick": 40,
+   "player": "Terry McLaurin",
+   "nfl": "Was",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 30,
+   "team": "Leo the Cleo"
+  },
+  {
+   "pick": 41,
+   "player": "Omarion Hampton",
+   "nfl": "LAC",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 31,
+   "team": "FreeGucci"
+  },
+  {
+   "pick": 42,
+   "player": "Xavier Worthy",
+   "nfl": "KC",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 15,
+   "team": "Poop Squad 💩"
+  },
+  {
+   "pick": 43,
+   "player": "Kenneth Walker III",
+   "nfl": "KC",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 25,
+   "team": "Mac Daddy"
+  },
+  {
+   "pick": 44,
+   "player": "Mike Evans",
+   "nfl": "SF",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 28,
+   "team": "Kim Jong Nate"
+  },
+  {
+   "pick": 45,
+   "player": "Alvin Kamara",
+   "nfl": "NO",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 29,
+   "team": "Miley 💨LEO 5K Speedo Fan Club"
+  },
+  {
+   "pick": 46,
+   "player": "David Montgomery",
+   "nfl": "Hou",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 20,
+   "team": "Hail Purdy"
+  },
+  {
+   "pick": 47,
+   "player": "Jalen Hurts",
+   "nfl": "Phi",
+   "pos": "QB",
+   "slot": "QB",
+   "cost": 22,
+   "team": "Hail Purdy"
+  },
+  {
+   "pick": 48,
+   "player": "James Cook III",
+   "nfl": "Buf",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 31,
+   "team": "Hail Purdy"
+  },
+  {
+   "pick": 49,
+   "player": "Marvin Harrison Jr.",
+   "nfl": "Ari",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 25,
+   "team": "Mac Daddy"
+  },
+  {
+   "pick": 50,
+   "player": "James Conner",
+   "nfl": "Ari",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 30,
+   "team": "Miley 💨LEO 5K Speedo Fan Club"
+  },
+  {
+   "pick": 51,
+   "player": "Garrett Wilson",
+   "nfl": "NYJ",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 20,
+   "team": "Leo the Cleo"
+  },
+  {
+   "pick": 52,
+   "player": "DJ Moore",
+   "nfl": "Buf",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 19,
+   "team": "A dad"
+  },
+  {
+   "pick": 53,
+   "player": "DK Metcalf",
+   "nfl": "Pit",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 17,
+   "team": "ShakeNBake"
+  },
+  {
+   "pick": 54,
+   "player": "Aaron Jones Sr.",
+   "nfl": "Min",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 19,
+   "team": "Hail Purdy"
+  },
+  {
+   "pick": 55,
+   "player": "Zay Flowers",
+   "nfl": "Bal",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 17,
+   "team": "Leo the Cleo"
+  },
+  {
+   "pick": 56,
+   "player": "Rome Odunze",
+   "nfl": "Chi",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 16,
+   "team": "The Injured Reserved"
+  },
+  {
+   "pick": 57,
+   "player": "Isiah Pacheco",
+   "nfl": "Det",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 17,
+   "team": "ShakeNBake"
+  },
+  {
+   "pick": 58,
+   "player": "Chuba Hubbard",
+   "nfl": "Car",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 23,
+   "team": "The Injured Reserved"
+  },
+  {
+   "pick": 59,
+   "player": "Davante Adams",
+   "nfl": "LAR",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 26,
+   "team": "The Injured Reserved"
+  },
+  {
+   "pick": 60,
+   "player": "Zach Charbonnet",
+   "nfl": "Sea",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 11,
+   "team": "Bullish"
+  },
+  {
+   "pick": 61,
+   "player": "Nick Chubb",
+   "nfl": "Hou",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 5,
+   "team": "Good Will Hunting"
+  },
+  {
+   "pick": 62,
+   "player": "Darnell Mooney",
+   "nfl": "NYG",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 11,
+   "team": "Poop Squad 💩"
+  },
+  {
+   "pick": 63,
+   "player": "Tyrone Tracy Jr.",
+   "nfl": "NYG",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 14,
+   "team": "ShakeNBake"
+  },
+  {
+   "pick": 64,
+   "player": "DeVonta Smith",
+   "nfl": "Phi",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 17,
+   "team": "Good Will Hunting"
+  },
+  {
+   "pick": 65,
+   "player": "George Pickens",
+   "nfl": "Dal",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 19,
+   "team": "Hail Purdy"
+  },
+  {
+   "pick": 66,
+   "player": "Mark Andrews",
+   "nfl": "Bal",
+   "pos": "TE",
+   "slot": "TE",
+   "cost": 6,
+   "team": "ShakeNBake"
+  },
+  {
+   "pick": 67,
+   "player": "Tetairoa McMillan",
+   "nfl": "Car",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 25,
+   "team": "The Injured Reserved"
+  },
+  {
+   "pick": 68,
+   "player": "Kyle Pitts Sr.",
+   "nfl": "Atl",
+   "pos": "TE",
+   "slot": "TE",
+   "cost": 6,
+   "team": "Good Will Hunting"
+  },
+  {
+   "pick": 69,
+   "player": "Jaylen Waddle",
+   "nfl": "Den",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 17,
+   "team": "ShakeNBake"
+  },
+  {
+   "pick": 70,
+   "player": "Bo Nix",
+   "nfl": "Den",
+   "pos": "QB",
+   "slot": "QB",
+   "cost": 7,
+   "team": "Bullish"
+  },
+  {
+   "pick": 71,
+   "player": "Jerry Jeudy",
+   "nfl": "Cle",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 11,
+   "team": "Bullish"
+  },
+  {
+   "pick": 72,
+   "player": "Jameson Williams",
+   "nfl": "Det",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 27,
+   "team": "Miley 💨LEO 5K Speedo Fan Club"
+  },
+  {
+   "pick": 73,
+   "player": "Calvin Ridley",
+   "nfl": "Ten",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 26,
+   "team": "FreeGucci"
+  },
+  {
+   "pick": 74,
+   "player": "Brian Robinson",
+   "nfl": "Atl",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 5,
+   "team": "Kim Jong Nate"
+  },
+  {
+   "pick": 75,
+   "player": "Dak Prescott",
+   "nfl": "Dal",
+   "pos": "QB",
+   "slot": "QB",
+   "cost": 10,
+   "team": "Miley 💨LEO 5K Speedo Fan Club"
+  },
+  {
+   "pick": 76,
+   "player": "Joe Burrow",
+   "nfl": "Cin",
+   "pos": "QB",
+   "slot": "QB",
+   "cost": 18,
+   "team": "Kim Jong Nate"
+  },
+  {
+   "pick": 77,
+   "player": "Roschon Johnson",
+   "nfl": "Chi",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 2,
+   "team": "Poop Squad 💩"
+  },
+  {
+   "pick": 78,
+   "player": "Courtland Sutton",
+   "nfl": "Den",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 27,
+   "team": "The Injured Reserved"
+  },
+  {
+   "pick": 79,
+   "player": "D'Andre Swift",
+   "nfl": "Chi",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 19,
+   "team": "FreeGucci"
+  },
+  {
+   "pick": 80,
+   "player": "Braelon Allen",
+   "nfl": "NYJ",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 9,
+   "team": "Mac Daddy"
+  },
+  {
+   "pick": 81,
+   "player": "Kaleb Johnson",
+   "nfl": "GB",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 6,
+   "team": "Good Will Hunting"
+  },
+  {
+   "pick": 82,
+   "player": "Jaylen Warren",
+   "nfl": "Pit",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 12,
+   "team": "Kim Jong Nate"
+  },
+  {
+   "pick": 83,
+   "player": "Justin Fields",
+   "nfl": "KC",
+   "pos": "QB",
+   "slot": "QB",
+   "cost": 2,
+   "team": "Good Will Hunting"
+  },
+  {
+   "pick": 84,
+   "player": "Tucker Kraft",
+   "nfl": "GB",
+   "pos": "TE",
+   "slot": "TE",
+   "cost": 6,
+   "team": "The Injured Reserved"
+  },
+  {
+   "pick": 85,
+   "player": "David Njoku",
+   "nfl": "LAC",
+   "pos": "TE",
+   "slot": "TE",
+   "cost": 8,
+   "team": "Leo the Cleo"
+  },
+  {
+   "pick": 86,
+   "player": "Chris Olave",
+   "nfl": "NO",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 8,
+   "team": "Good Will Hunting"
+  },
+  {
+   "pick": 87,
+   "player": "Stefon Diggs",
+   "nfl": "Was",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 8,
+   "team": "ShakeNBake"
+  },
+  {
+   "pick": 88,
+   "player": "Jordan Love",
+   "nfl": "GB",
+   "pos": "QB",
+   "slot": "QB",
+   "cost": 7,
+   "team": "ShakeNBake"
+  },
+  {
+   "pick": 89,
+   "player": "Cooper Kupp",
+   "nfl": "Sea",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 11,
+   "team": "Bend The Knee 🐲🔥"
+  },
+  {
+   "pick": 90,
+   "player": "Sam LaPorta",
+   "nfl": "Det",
+   "pos": "TE",
+   "slot": "TE",
+   "cost": 15,
+   "team": "FreeGucci"
+  },
+  {
+   "pick": 91,
+   "player": "Khalil Shakir",
+   "nfl": "Buf",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 9,
+   "team": "Kim Jong Nate"
+  },
+  {
+   "pick": 92,
+   "player": "Ricky Pearsall",
+   "nfl": "SF",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 12,
+   "team": "Mac Daddy"
+  },
+  {
+   "pick": 93,
+   "player": "Jerome Ford",
+   "nfl": "Was",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 8,
+   "team": "Hail Purdy"
+  },
+  {
+   "pick": 94,
+   "player": "Bhayshul Tuten",
+   "nfl": "Jax",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 5,
+   "team": "FreeGucci"
+  },
+  {
+   "pick": 95,
+   "player": "Drake Maye",
+   "nfl": "NE",
+   "pos": "QB",
+   "slot": "QB",
+   "cost": 1,
+   "team": "The Injured Reserved"
+  },
+  {
+   "pick": 96,
+   "player": "Jordan Mason",
+   "nfl": "Min",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 11,
+   "team": "Good Will Hunting"
+  },
+  {
+   "pick": 97,
+   "player": "Matthew Golden",
+   "nfl": "GB",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 10,
+   "team": "Kim Jong Nate"
+  },
+  {
+   "pick": 98,
+   "player": "Brock Purdy",
+   "nfl": "SF",
+   "pos": "QB",
+   "slot": "QB",
+   "cost": 10,
+   "team": "Bend The Knee 🐲🔥"
+  },
+  {
+   "pick": 99,
+   "player": "Deebo Samuel Sr.",
+   "nfl": "SF",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 8,
+   "team": "FreeGucci"
+  },
+  {
+   "pick": 100,
+   "player": "Emeka Egbuka",
+   "nfl": "TB",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 10,
+   "team": "FreeGucci"
+  },
+  {
+   "pick": 101,
+   "player": "Juanyeh Thomas",
+   "nfl": "Ind",
+   "pos": "S",
+   "slot": "IDP",
+   "cost": 1,
+   "team": "FreeGucci"
+  },
+  {
+   "pick": 102,
+   "player": "Josh Blackwell",
+   "nfl": "Chi",
+   "pos": "DB,CB",
+   "slot": "IDP",
+   "cost": 1,
+   "team": "ShakeNBake"
+  },
+  {
+   "pick": 103,
+   "player": "J.J. McCarthy",
+   "nfl": "Min",
+   "pos": "QB",
+   "slot": "QB",
+   "cost": 4,
+   "team": "A dad"
+  },
+  {
+   "pick": 104,
+   "player": "T.J. Hockenson",
+   "nfl": "Min",
+   "pos": "TE",
+   "slot": "TE",
+   "cost": 8,
+   "team": "Poop Squad 💩"
+  },
+  {
+   "pick": 105,
+   "player": "Travis Etienne Jr.",
+   "nfl": "NO",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 9,
+   "team": "Mac Daddy"
+  },
+  {
+   "pick": 106,
+   "player": "Jacory Croskey-Merritt",
+   "nfl": "Was",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 8,
+   "team": "Hail Purdy"
+  },
+  {
+   "pick": 107,
+   "player": "Cam Skattebo",
+   "nfl": "NYG",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 9,
+   "team": "FreeGucci"
+  },
+  {
+   "pick": 108,
+   "player": "Rhamondre Stevenson",
+   "nfl": "NE",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 6,
+   "team": "Bend The Knee 🐲🔥"
+  },
+  {
+   "pick": 109,
+   "player": "J.K. Dobbins",
+   "nfl": "Den",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 15,
+   "team": "FreeGucci"
+  },
+  {
+   "pick": 110,
+   "player": "Javonte Williams",
+   "nfl": "Dal",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 8,
+   "team": "Bend The Knee 🐲🔥"
+  },
+  {
+   "pick": 111,
+   "player": "Austin Ekeler",
+   "nfl": "Was",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 10,
+   "team": "Leo the Cleo"
+  },
+  {
+   "pick": 112,
+   "player": "Jakobi Meyers",
+   "nfl": "Jax",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 7,
+   "team": "Leo the Cleo"
+  },
+  {
+   "pick": 113,
+   "player": "Evan Engram",
+   "nfl": "Den",
+   "pos": "TE",
+   "slot": "TE",
+   "cost": 3,
+   "team": "Mac Daddy"
+  },
+  {
+   "pick": 114,
+   "player": "Rashee Rice",
+   "nfl": "KC",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 6,
+   "team": "FreeGucci"
+  },
+  {
+   "pick": 115,
+   "player": "Baker Mayfield",
+   "nfl": "TB",
+   "pos": "QB",
+   "slot": "QB",
+   "cost": 2,
+   "team": "Shut Up"
+  },
+  {
+   "pick": 116,
+   "player": "Rashid Shaheed",
+   "nfl": "Sea",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 5,
+   "team": "Bullish"
+  },
+  {
+   "pick": 117,
+   "player": "Aaron Rodgers",
+   "nfl": "Pit",
+   "pos": "QB",
+   "slot": "QB",
+   "cost": 1,
+   "team": "Poop Squad 💩"
+  },
+  {
+   "pick": 118,
+   "player": "Jordan Addison",
+   "nfl": "Min",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 4,
+   "team": "FreeGucci"
+  },
+  {
+   "pick": 119,
+   "player": "Emanuel Wilson",
+   "nfl": "Sea",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 1,
+   "team": "Mac Daddy"
+  },
+  {
+   "pick": 120,
+   "player": "Kyler Murray",
+   "nfl": "Min",
+   "pos": "QB",
+   "slot": "QB",
+   "cost": 2,
+   "team": "Mac Daddy"
+  },
+  {
+   "pick": 121,
+   "player": "Eagles",
+   "nfl": "Phi",
+   "pos": "DEF",
+   "slot": "DEF",
+   "cost": 4,
+   "team": "Good Will Hunting"
+  },
+  {
+   "pick": 122,
+   "player": "Jake Ferguson",
+   "nfl": "Dal",
+   "pos": "TE",
+   "slot": "TE",
+   "cost": 4,
+   "team": "Mac Daddy"
+  },
+  {
+   "pick": 123,
+   "player": "Tyler Warren",
+   "nfl": "Ind",
+   "pos": "TE",
+   "slot": "TE",
+   "cost": 7,
+   "team": "Kim Jong Nate"
+  },
+  {
+   "pick": 124,
+   "player": "Kareem Hunt",
+   "nfl": "KC",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 3,
+   "team": "Kim Jong Nate"
+  },
+  {
+   "pick": 125,
+   "player": "Colston Loveland",
+   "nfl": "Chi",
+   "pos": "TE",
+   "slot": "TE",
+   "cost": 3,
+   "team": "Shut Up"
+  },
+  {
+   "pick": 126,
+   "player": "Tank Bigsby",
+   "nfl": "Phi",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 6,
+   "team": "Leo the Cleo"
+  },
+  {
+   "pick": 127,
+   "player": "Michael Pittman Jr.",
+   "nfl": "Pit",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 5,
+   "team": "A dad"
+  },
+  {
+   "pick": 128,
+   "player": "Jauan Jennings",
+   "nfl": "Min",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 6,
+   "team": "Leo the Cleo"
+  },
+  {
+   "pick": 129,
+   "player": "Keon Coleman",
+   "nfl": "Buf",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 7,
+   "team": "FreeGucci"
+  },
+  {
+   "pick": 130,
+   "player": "Tyler Allgeier",
+   "nfl": "Ari",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 5,
+   "team": "The Injured Reserved"
+  },
+  {
+   "pick": 131,
+   "player": "Trevor Lawrence",
+   "nfl": "Jax",
+   "pos": "QB",
+   "slot": "QB",
+   "cost": 1,
+   "team": "Poop Squad 💩"
+  },
+  {
+   "pick": 132,
+   "player": "Dallas Goedert",
+   "nfl": "Phi",
+   "pos": "TE",
+   "slot": "TE",
+   "cost": 2,
+   "team": "Shut Up"
+  },
+  {
+   "pick": 133,
+   "player": "Broncos",
+   "nfl": "Den",
+   "pos": "DEF",
+   "slot": "DEF",
+   "cost": 3,
+   "team": "FreeGucci"
+  },
+  {
+   "pick": 134,
+   "player": "Joe Mixon",
+   "nfl": "Hou",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 5,
+   "team": "Good Will Hunting"
+  },
+  {
+   "pick": 135,
+   "player": "Josh Downs",
+   "nfl": "Ind",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 5,
+   "team": "Bend The Knee 🐲🔥"
+  },
+  {
+   "pick": 136,
+   "player": "Dalton Kincaid",
+   "nfl": "Buf",
+   "pos": "TE",
+   "slot": "TE",
+   "cost": 4,
+   "team": "A dad"
+  },
+  {
+   "pick": 137,
+   "player": "Dylan Sampson",
+   "nfl": "Cle",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 6,
+   "team": "The Injured Reserved"
+  },
+  {
+   "pick": 138,
+   "player": "Rachaad White",
+   "nfl": "Was",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 5,
+   "team": "Bullish"
+  },
+  {
+   "pick": 139,
+   "player": "Sam Hubbard",
+   "nfl": "Cin",
+   "pos": "DL,DE",
+   "slot": "IDP",
+   "cost": 1,
+   "team": "Good Will Hunting"
+  },
+  {
+   "pick": 140,
+   "player": "Raheem Mostert",
+   "nfl": "LV",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 1,
+   "team": "Bullish"
+  },
+  {
+   "pick": 141,
+   "player": "Keenan Allen",
+   "nfl": "Ind",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 4,
+   "team": "The Injured Reserved"
+  },
+  {
+   "pick": 142,
+   "player": "Jayden Reed",
+   "nfl": "GB",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 2,
+   "team": "A dad"
+  },
+  {
+   "pick": 143,
+   "player": "Tre' Harris",
+   "nfl": "LAC",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 1,
+   "team": "FreeGucci"
+  },
+  {
+   "pick": 144,
+   "player": "Quentin Johnston",
+   "nfl": "LAC",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 3,
+   "team": "Poop Squad 💩"
+  },
+  {
+   "pick": 145,
+   "player": "Christian Kirk",
+   "nfl": "SF",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 5,
+   "team": "Poop Squad 💩"
+  },
+  {
+   "pick": 146,
+   "player": "Scott Matlock",
+   "nfl": "LAC",
+   "pos": "DL,DE",
+   "slot": "IDP",
+   "cost": 1,
+   "team": "A dad"
+  },
+  {
+   "pick": 147,
+   "player": "Brandon Aubrey",
+   "nfl": "Dal",
+   "pos": "K",
+   "slot": "K",
+   "cost": 2,
+   "team": "Kim Jong Nate"
+  },
+  {
+   "pick": 148,
+   "player": "Chris Godwin Jr.",
+   "nfl": "TB",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 6,
+   "team": "Good Will Hunting"
+  },
+  {
+   "pick": 149,
+   "player": "Rashod Bateman",
+   "nfl": "Bal",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 3,
+   "team": "Leo the Cleo"
+  },
+  {
+   "pick": 150,
+   "player": "Hunter Henry",
+   "nfl": "NE",
+   "pos": "TE",
+   "slot": "TE",
+   "cost": 1,
+   "team": "Bend The Knee 🐲🔥"
+  },
+  {
+   "pick": 151,
+   "player": "Najee Harris",
+   "nfl": "NYG",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 4,
+   "team": "A dad"
+  },
+  {
+   "pick": 152,
+   "player": "Justice Hill",
+   "nfl": "Bal",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 1,
+   "team": "Leo the Cleo"
+  },
+  {
+   "pick": 153,
+   "player": "Chig Okonkwo",
+   "nfl": "Was",
+   "pos": "TE",
+   "slot": "TE",
+   "cost": 1,
+   "team": "Good Will Hunting"
+  },
+  {
+   "pick": 154,
+   "player": "Joshua Palmer",
+   "nfl": "Buf",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 2,
+   "team": "ShakeNBake"
+  },
+  {
+   "pick": 155,
+   "player": "Divine Deablo",
+   "nfl": "Atl",
+   "pos": "LB",
+   "slot": "IDP",
+   "cost": 1,
+   "team": "Kim Jong Nate"
+  },
+  {
+   "pick": 156,
+   "player": "Tyjae Spears",
+   "nfl": "Ten",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 3,
+   "team": "Poop Squad 💩"
+  },
+  {
+   "pick": 157,
+   "player": "Younghoe Koo",
+   "nfl": "NYG",
+   "pos": "K",
+   "slot": "K",
+   "cost": 1,
+   "team": "ShakeNBake"
+  },
+  {
+   "pick": 158,
+   "player": "Jake Bates",
+   "nfl": "Det",
+   "pos": "K",
+   "slot": "K",
+   "cost": 4,
+   "team": "Good Will Hunting"
+  },
+  {
+   "pick": 159,
+   "player": "DeAndre Hopkins",
+   "nfl": "Bal",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 1,
+   "team": "A dad"
+  },
+  {
+   "pick": 160,
+   "player": "Ravens",
+   "nfl": "Bal",
+   "pos": "DEF",
+   "slot": "DEF",
+   "cost": 2,
+   "team": "Kim Jong Nate"
+  },
+  {
+   "pick": 161,
+   "player": "Marvin Mims Jr.",
+   "nfl": "Den",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 2,
+   "team": "Mac Daddy"
+  },
+  {
+   "pick": 162,
+   "player": "Trey Benson",
+   "nfl": "Ari",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 3,
+   "team": "Kim Jong Nate"
+  },
+  {
+   "pick": 163,
+   "player": "Darren Waller",
+   "nfl": "Car",
+   "pos": "TE",
+   "slot": "TE",
+   "cost": 1,
+   "team": "Bend The Knee 🐲🔥"
+  },
+  {
+   "pick": 164,
+   "player": "Vikings",
+   "nfl": "Min",
+   "pos": "DEF",
+   "slot": "DEF",
+   "cost": 1,
+   "team": "The Injured Reserved"
+  },
+  {
+   "pick": 165,
+   "player": "Ollie Gordon II",
+   "nfl": "Mia",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 2,
+   "team": "The Injured Reserved"
+  },
+  {
+   "pick": 166,
+   "player": "Zach Ertz",
+   "nfl": "Was",
+   "pos": "TE",
+   "slot": "TE",
+   "cost": 1,
+   "team": "Bullish"
+  },
+  {
+   "pick": 167,
+   "player": "Jaydon Blue",
+   "nfl": "Phi",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 1,
+   "team": "Kim Jong Nate"
+  },
+  {
+   "pick": 168,
+   "player": "Ray Davis",
+   "nfl": "Buf",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 2,
+   "team": "A dad"
+  },
+  {
+   "pick": 169,
+   "player": "Tory Horton",
+   "nfl": "Sea",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 1,
+   "team": "ShakeNBake"
+  },
+  {
+   "pick": 170,
+   "player": "Steelers",
+   "nfl": "Pit",
+   "pos": "DEF",
+   "slot": "DEF",
+   "cost": 3,
+   "team": "Poop Squad 💩"
+  },
+  {
+   "pick": 171,
+   "player": "Brandon Aiyuk",
+   "nfl": "SF",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 2,
+   "team": "Shut Up"
+  },
+  {
+   "pick": 172,
+   "player": "Bills",
+   "nfl": "Buf",
+   "pos": "DEF",
+   "slot": "DEF",
+   "cost": 2,
+   "team": "Shut Up"
+  },
+  {
+   "pick": 173,
+   "player": "Chargers",
+   "nfl": "LAC",
+   "pos": "DEF",
+   "slot": "DEF",
+   "cost": 1,
+   "team": "Hail Purdy"
+  },
+  {
+   "pick": 174,
+   "player": "Jayden Higgins",
+   "nfl": "Hou",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 1,
+   "team": "Miley 💨LEO 5K Speedo Fan Club"
+  },
+  {
+   "pick": 175,
+   "player": "Wan'Dale Robinson",
+   "nfl": "Ten",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 1,
+   "team": "Bend The Knee 🐲🔥"
+  },
+  {
+   "pick": 176,
+   "player": "Bryce Young",
+   "nfl": "Car",
+   "pos": "QB",
+   "slot": "QB",
+   "cost": 1,
+   "team": "The Injured Reserved"
+  },
+  {
+   "pick": 177,
+   "player": "C.J. Stroud",
+   "nfl": "Hou",
+   "pos": "QB",
+   "slot": "QB",
+   "cost": 1,
+   "team": "Leo the Cleo"
+  },
+  {
+   "pick": 178,
+   "player": "Romeo Doubs",
+   "nfl": "NE",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 1,
+   "team": "Bullish"
+  },
+  {
+   "pick": 179,
+   "player": "Xavier Legette",
+   "nfl": "Car",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 1,
+   "team": "Kim Jong Nate"
+  },
+  {
+   "pick": 180,
+   "player": "Rico Dowdle",
+   "nfl": "Pit",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 2,
+   "team": "Shut Up"
+  },
+  {
+   "pick": 181,
+   "player": "Packers",
+   "nfl": "GB",
+   "pos": "DEF",
+   "slot": "DEF",
+   "cost": 2,
+   "team": "Bend The Knee 🐲🔥"
+  },
+  {
+   "pick": 182,
+   "player": "Harrison Butker",
+   "nfl": "KC",
+   "pos": "K",
+   "slot": "K",
+   "cost": 1,
+   "team": "Poop Squad 💩"
+  },
+  {
+   "pick": 183,
+   "player": "Will Shipley",
+   "nfl": "Phi",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 1,
+   "team": "A dad"
+  },
+  {
+   "pick": 184,
+   "player": "Cameron Dicker",
+   "nfl": "LAC",
+   "pos": "K",
+   "slot": "K",
+   "cost": 1,
+   "team": "Mac Daddy"
+  },
+  {
+   "pick": 185,
+   "player": "Ka'imi Fairbairn",
+   "nfl": "Hou",
+   "pos": "K",
+   "slot": "K",
+   "cost": 1,
+   "team": "Hail Purdy"
+  },
+  {
+   "pick": 186,
+   "player": "Chris Rodriguez Jr.",
+   "nfl": "Jax",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 1,
+   "team": "Miley 💨LEO 5K Speedo Fan Club"
+  },
+  {
+   "pick": 187,
+   "player": "Jared Goff",
+   "nfl": "Det",
+   "pos": "QB",
+   "slot": "QB",
+   "cost": 1,
+   "team": "Bend The Knee 🐲🔥"
+  },
+  {
+   "pick": 188,
+   "player": "Brenton Strange",
+   "nfl": "Jax",
+   "pos": "TE",
+   "slot": "TE",
+   "cost": 1,
+   "team": "The Injured Reserved"
+  },
+  {
+   "pick": 189,
+   "player": "Marcus Jones",
+   "nfl": "NE",
+   "pos": "DB,CB",
+   "slot": "IDP",
+   "cost": 1,
+   "team": "Leo the Cleo"
+  },
+  {
+   "pick": 190,
+   "player": "Chase McLaughlin",
+   "nfl": "TB",
+   "pos": "K",
+   "slot": "K",
+   "cost": 1,
+   "team": "Bullish"
+  },
+  {
+   "pick": 191,
+   "player": "Ashtyn Davis",
+   "nfl": "SF",
+   "pos": "S",
+   "slot": "IDP",
+   "cost": 1,
+   "team": "Shut Up"
+  },
+  {
+   "pick": 192,
+   "player": "Texans",
+   "nfl": "Hou",
+   "pos": "DEF",
+   "slot": "DEF",
+   "cost": 1,
+   "team": "ShakeNBake"
+  },
+  {
+   "pick": 193,
+   "player": "Fred Warner",
+   "nfl": "SF",
+   "pos": "LB",
+   "slot": "IDP",
+   "cost": 1,
+   "team": "Poop Squad 💩"
+  },
+  {
+   "pick": 194,
+   "player": "Cowboys",
+   "nfl": "Dal",
+   "pos": "DEF",
+   "slot": "DEF",
+   "cost": 2,
+   "team": "A dad"
+  },
+  {
+   "pick": 195,
+   "player": "Roquan Smith",
+   "nfl": "Bal",
+   "pos": "LB",
+   "slot": "IDP",
+   "cost": 1,
+   "team": "Mac Daddy"
+  },
+  {
+   "pick": 196,
+   "player": "Kyle Monangai",
+   "nfl": "Chi",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 1,
+   "team": "Hail Purdy"
+  },
+  {
+   "pick": 197,
+   "player": "Jeffery Simmons",
+   "nfl": "Ten",
+   "pos": "DT,DE",
+   "slot": "IDP",
+   "cost": 1,
+   "team": "Miley 💨LEO 5K Speedo Fan Club"
+  },
+  {
+   "pick": 198,
+   "player": "Jake Elliott",
+   "nfl": "Phi",
+   "pos": "K",
+   "slot": "K",
+   "cost": 1,
+   "team": "Bend The Knee 🐲🔥"
+  },
+  {
+   "pick": 199,
+   "player": "Tyler Bass",
+   "nfl": "Buf",
+   "pos": "K",
+   "slot": "K",
+   "cost": 2,
+   "team": "Shut Up"
+  },
+  {
+   "pick": 200,
+   "player": "Lions",
+   "nfl": "Det",
+   "pos": "DEF",
+   "slot": "DEF",
+   "cost": 2,
+   "team": "Leo the Cleo"
+  },
+  {
+   "pick": 201,
+   "player": "Cedric Tillman",
+   "nfl": "NO",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 1,
+   "team": "Shut Up"
+  },
+  {
+   "pick": 202,
+   "player": "Alec Pierce",
+   "nfl": "Ind",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 1,
+   "team": "ShakeNBake"
+  },
+  {
+   "pick": 203,
+   "player": "Adam Thielen",
+   "nfl": "Pit",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 1,
+   "team": "A dad"
+  },
+  {
+   "pick": 204,
+   "player": "Chiefs",
+   "nfl": "KC",
+   "pos": "DEF",
+   "slot": "DEF",
+   "cost": 1,
+   "team": "Mac Daddy"
+  },
+  {
+   "pick": 205,
+   "player": "Quinshon Judkins",
+   "nfl": "Cle",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 1,
+   "team": "Hail Purdy"
+  },
+  {
+   "pick": 206,
+   "player": "Caleb Williams",
+   "nfl": "Chi",
+   "pos": "QB",
+   "slot": "QB",
+   "cost": 2,
+   "team": "ShakeNBake"
+  },
+  {
+   "pick": 207,
+   "player": "Amari Cooper",
+   "nfl": "Buf",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 1,
+   "team": "Bend The Knee 🐲🔥"
+  },
+  {
+   "pick": 208,
+   "player": "Seahawks",
+   "nfl": "Sea",
+   "pos": "DEF",
+   "slot": "DEF",
+   "cost": 1,
+   "team": "Leo the Cleo"
+  },
+  {
+   "pick": 209,
+   "player": "Rams",
+   "nfl": "LAR",
+   "pos": "DEF",
+   "slot": "DEF",
+   "cost": 1,
+   "team": "Bullish"
+  },
+  {
+   "pick": 210,
+   "player": "DeMario Douglas",
+   "nfl": "NE",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 2,
+   "team": "Mac Daddy"
+  },
+  {
+   "pick": 211,
+   "player": "Zaire Franklin",
+   "nfl": "GB",
+   "pos": "LB",
+   "slot": "IDP",
+   "cost": 1,
+   "team": "Hail Purdy"
+  },
+  {
+   "pick": 212,
+   "player": "Justin Herbert",
+   "nfl": "LAC",
+   "pos": "QB",
+   "slot": "QB",
+   "cost": 1,
+   "team": "Miley 💨LEO 5K Speedo Fan Club"
+  },
+  {
+   "pick": 213,
+   "player": "Hollywood Brown",
+   "nfl": "Phi",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 1,
+   "team": "Bend The Knee 🐲🔥"
+  },
+  {
+   "pick": 214,
+   "player": "Ernest Jones IV",
+   "nfl": "Sea",
+   "pos": "LB",
+   "slot": "IDP",
+   "cost": 1,
+   "team": "Bullish"
+  },
+  {
+   "pick": 215,
+   "player": "Jonnu Smith",
+   "nfl": "GB",
+   "pos": "TE",
+   "slot": "TE",
+   "cost": 1,
+   "team": "Shut Up"
+  },
+  {
+   "pick": 216,
+   "player": "Zack Baun",
+   "nfl": "Phi",
+   "pos": "LB",
+   "slot": "IDP",
+   "cost": 1,
+   "team": "Hail Purdy"
+  },
+  {
+   "pick": 217,
+   "player": "Luther Burden III",
+   "nfl": "Chi",
+   "pos": "WR",
+   "slot": "WR",
+   "cost": 1,
+   "team": "Miley 💨LEO 5K Speedo Fan Club"
+  },
+  {
+   "pick": 218,
+   "player": "Blake Corum",
+   "nfl": "LAR",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 1,
+   "team": "Shut Up"
+  },
+  {
+   "pick": 219,
+   "player": "Foyesade Oluokun",
+   "nfl": "Jax",
+   "pos": "LB",
+   "slot": "IDP",
+   "cost": 1,
+   "team": "Hail Purdy"
+  },
+  {
+   "pick": 220,
+   "player": "Isaac Guerendo",
+   "nfl": "SF",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 1,
+   "team": "Miley 💨LEO 5K Speedo Fan Club"
+  },
+  {
+   "pick": 221,
+   "player": "Woody Marks",
+   "nfl": "Hou",
+   "pos": "RB",
+   "slot": "RB",
+   "cost": 1,
+   "team": "Miley 💨LEO 5K Speedo Fan Club"
+  },
+  {
+   "pick": 222,
+   "player": "Theo Johnson",
+   "nfl": "NYG",
+   "pos": "TE",
+   "slot": "TE",
+   "cost": 1,
+   "team": "Miley 💨LEO 5K Speedo Fan Club"
+  },
+  {
+   "pick": 223,
+   "player": "Jets",
+   "nfl": "NYJ",
+   "pos": "DEF",
+   "slot": "DEF",
+   "cost": 1,
+   "team": "Miley 💨LEO 5K Speedo Fan Club"
+  },
+  {
+   "pick": 224,
+   "player": "Chris Boswell",
+   "nfl": "Pit",
+   "pos": "K",
+   "slot": "K",
+   "cost": 1,
+   "team": "Miley 💨LEO 5K Speedo Fan Club"
+  }
+ ],
+ "ledger": {
+  "total_spent": 2769,
+  "total_budget": 2800,
+  "top_buys": [
+   {
+    "pick": 6,
+    "player": "Ja'Marr Chase",
+    "nfl": "Cin",
+    "pos": "WR",
+    "slot": "WR",
+    "cost": 70,
+    "team": "A dad"
+   },
+   {
+    "pick": 7,
+    "player": "Bijan Robinson",
+    "nfl": "Atl",
+    "pos": "RB",
+    "slot": "RB",
+    "cost": 66,
+    "team": "Leo the Cleo"
+   },
+   {
+    "pick": 8,
+    "player": "Saquon Barkley",
+    "nfl": "Phi",
+    "pos": "RB",
+    "slot": "RB",
+    "cost": 62,
+    "team": "Bullish"
+   },
+   {
+    "pick": 10,
+    "player": "Justin Jefferson",
+    "nfl": "Min",
+    "pos": "WR",
+    "slot": "WR",
+    "cost": 60,
+    "team": "Mac Daddy"
+   },
+   {
+    "pick": 9,
+    "player": "CeeDee Lamb",
+    "nfl": "Dal",
+    "pos": "WR",
+    "slot": "WR",
+    "cost": 59,
+    "team": "Miley 💨LEO 5K Speedo Fan Club"
+   },
+   {
+    "pick": 2,
+    "player": "Jahmyr Gibbs",
+    "nfl": "Det",
+    "pos": "RB",
+    "slot": "RB",
+    "cost": 56,
+    "team": "ShakeNBake"
+   },
+   {
+    "pick": 15,
+    "player": "Christian McCaffrey",
+    "nfl": "SF",
+    "pos": "RB",
+    "slot": "RB",
+    "cost": 55,
+    "team": "Kim Jong Nate"
+   },
+   {
+    "pick": 18,
+    "player": "Derrick Henry",
+    "nfl": "Bal",
+    "pos": "RB",
+    "slot": "RB",
+    "cost": 53,
+    "team": "Bend The Knee 🐲🔥"
+   },
+   {
+    "pick": 23,
+    "player": "Amon-Ra St. Brown",
+    "nfl": "Det",
+    "pos": "WR",
+    "slot": "WR",
+    "cost": 51,
+    "team": "Shut Up"
+   },
+   {
+    "pick": 25,
+    "player": "Brian Thomas Jr.",
+    "nfl": "Jax",
+    "pos": "WR",
+    "slot": "WR",
+    "cost": 50,
+    "team": "Poop Squad 💩"
+   },
+   {
+    "pick": 11,
+    "player": "Puka Nacua",
+    "nfl": "LAR",
+    "pos": "WR",
+    "slot": "WR",
+    "cost": 49,
+    "team": "ShakeNBake"
+   },
+   {
+    "pick": 12,
+    "player": "Nico Collins",
+    "nfl": "Hou",
+    "pos": "WR",
+    "slot": "WR",
+    "cost": 49,
+    "team": "Bend The Knee 🐲🔥"
+   }
+  ],
+  "pos_market": {
+   "QB": {
+    "count": 22,
+    "total": 193,
+    "max": {
+     "pick": 16,
+     "player": "Lamar Jackson",
+     "nfl": "Bal",
+     "pos": "QB",
+     "slot": "QB",
+     "cost": 32,
+     "team": "FreeGucci"
+    },
+    "avg": 8.8
+   },
+   "RB": {
+    "count": 67,
+    "total": 1122,
+    "max": {
+     "pick": 7,
+     "player": "Bijan Robinson",
+     "nfl": "Atl",
+     "pos": "RB",
+     "slot": "RB",
+     "cost": 66,
+     "team": "Leo the Cleo"
+    },
+    "avg": 16.7
+   },
+   "WR": {
+    "count": 73,
+    "total": 1218,
+    "max": {
+     "pick": 6,
+     "player": "Ja'Marr Chase",
+     "nfl": "Cin",
+     "pos": "WR",
+     "slot": "WR",
+     "cost": 70,
+     "team": "A dad"
+    },
+    "avg": 16.7
+   },
+   "TE": {
+    "count": 23,
+    "total": 180,
+    "max": {
+     "pick": 4,
+     "player": "Brock Bowers",
+     "nfl": "LV",
+     "pos": "TE",
+     "slot": "TE",
+     "cost": 35,
+     "team": "Miley 💨LEO 5K Speedo Fan Club"
+    },
+    "avg": 7.8
+   },
+   "K": {
+    "count": 10,
+    "total": 15,
+    "max": {
+     "pick": 158,
+     "player": "Jake Bates",
+     "nfl": "Det",
+     "pos": "K",
+     "slot": "K",
+     "cost": 4,
+     "team": "Good Will Hunting"
+    },
+    "avg": 1.5
+   },
+   "DEF": {
+    "count": 15,
+    "total": 27,
+    "max": {
+     "pick": 121,
+     "player": "Eagles",
+     "nfl": "Phi",
+     "pos": "DEF",
+     "slot": "DEF",
+     "cost": 4,
+     "team": "Good Will Hunting"
+    },
+    "avg": 1.8
+   },
+   "IDP": {
+    "count": 14,
+    "total": 14,
+    "max": {
+     "pick": 101,
+     "player": "Juanyeh Thomas",
+     "nfl": "Ind",
+     "pos": "S",
+     "slot": "IDP",
+     "cost": 1,
+     "team": "FreeGucci"
+    },
+    "avg": 1.0
+   }
+  },
+  "dollar_count": 66,
+  "first_ten": [
+   {
+    "pick": 1,
+    "player": "Drake London",
+    "nfl": "Atl",
+    "pos": "WR",
+    "slot": "WR",
+    "cost": 41,
+    "team": "Good Will Hunting"
+   },
+   {
+    "pick": 2,
+    "player": "Jahmyr Gibbs",
+    "nfl": "Det",
+    "pos": "RB",
+    "slot": "RB",
+    "cost": 56,
+    "team": "ShakeNBake"
+   },
+   {
+    "pick": 3,
+    "player": "TreVeyon Henderson",
+    "nfl": "NE",
+    "pos": "RB",
+    "slot": "RB",
+    "cost": 28,
+    "team": "Poop Squad 💩"
+   },
+   {
+    "pick": 4,
+    "player": "Brock Bowers",
+    "nfl": "LV",
+    "pos": "TE",
+    "slot": "TE",
+    "cost": 35,
+    "team": "Miley 💨LEO 5K Speedo Fan Club"
+   },
+   {
+    "pick": 5,
+    "player": "Tyreek Hill",
+    "nfl": "Mia",
+    "pos": "WR",
+    "slot": "WR",
+    "cost": 30,
+    "team": "Bullish"
+   },
+   {
+    "pick": 6,
+    "player": "Ja'Marr Chase",
+    "nfl": "Cin",
+    "pos": "WR",
+    "slot": "WR",
+    "cost": 70,
+    "team": "A dad"
+   },
+   {
+    "pick": 7,
+    "player": "Bijan Robinson",
+    "nfl": "Atl",
+    "pos": "RB",
+    "slot": "RB",
+    "cost": 66,
+    "team": "Leo the Cleo"
+   },
+   {
+    "pick": 8,
+    "player": "Saquon Barkley",
+    "nfl": "Phi",
+    "pos": "RB",
+    "slot": "RB",
+    "cost": 62,
+    "team": "Bullish"
+   },
+   {
+    "pick": 9,
+    "player": "CeeDee Lamb",
+    "nfl": "Dal",
+    "pos": "WR",
+    "slot": "WR",
+    "cost": 59,
+    "team": "Miley 💨LEO 5K Speedo Fan Club"
+   },
+   {
+    "pick": 10,
+    "player": "Justin Jefferson",
+    "nfl": "Min",
+    "pos": "WR",
+    "slot": "WR",
+    "cost": 60,
+    "team": "Mac Daddy"
+   }
+  ],
+  "price_moves": [],
+  "qb_spend": [
+   {
+    "team": "Good Will Hunting",
+    "spent": 33
+   },
+   {
+    "team": "FreeGucci",
+    "spent": 32
+   },
+   {
+    "team": "Leo the Cleo",
+    "spent": 22
+   },
+   {
+    "team": "Hail Purdy",
+    "spent": 22
+   },
+   {
+    "team": "Kim Jong Nate",
+    "spent": 18
+   },
+   {
+    "team": "Shut Up",
+    "spent": 18
+   },
+   {
+    "team": "Miley 💨LEO 5K Speedo Fan Club",
+    "spent": 11
+   },
+   {
+    "team": "Bend The Knee 🐲🔥",
+    "spent": 11
+   },
+   {
+    "team": "ShakeNBake",
+    "spent": 9
+   },
+   {
+    "team": "Bullish",
+    "spent": 7
+   },
+   {
+    "team": "A dad",
+    "spent": 4
+   },
+   {
+    "team": "Poop Squad 💩",
+    "spent": 2
+   },
+   {
+    "team": "Mac Daddy",
+    "spent": 2
+   },
+   {
+    "team": "The Injured Reserved",
+    "spent": 2
+   }
+  ]
+ }
+}
