@@ -1,34 +1,37 @@
 {
  "season": 2026,
- "written_at": "2026-09-09T02:40:39.149357+00:00",
+ "written_at": "2026-09-09T03:13:04.262513+00:00",
  "headline": "Welcome Back. The Grades Are In.",
- "kicker": "(nobody is going to enjoy this)",
- "lede": "Two hundred and twenty-four picks, $2,790 spent, seventy-two players gone for a dollar. The most expensive player in the history of this league was bought ninety seconds into the auction by a team that has never made the playoffs. The best-built roster in the room belongs to somebody who joined in March. And the defending champion finished fourteenth on this page, which he is going to hear about until December. Fourteen grades, every price, and the preseason rankings below.",
+ "kicker": "(the math had some surprises)",
+ "lede": "Two hundred and twenty-four picks, $2,790 spent, seventy-two players gone for a dollar. Every roster here is ranked on one thing: what its eight scoring positions are actually worth once replacement-level dollars come off. That math says the worst franchise in league history drafted one of the two best starting lineups in the room, that the defending champion left $47 of offense on his own bench, and that two of the best drafts belong to men who joined this league in March. Fourteen grades and every price below.",
+ "home_headline": "Football Is Back And So Are The Receipts",
+ "home_kicker": "(draft grades are up)",
+ "home_lede": "Fifteen seasons in, fourteen managers, two new faces and $2,790 set on fire in a single night. The rosters are locked, every dollar is audited, and Week 1 kicks off Sunday. Draft grades, the biggest steal of the night, and preseason power rankings built on what each starting lineup is actually worth are one click away. Nobody is going to agree with any of it. Welcome back.",
  "rankings": [
   {
    "rank": 1,
-   "team": "Fwamming Gwaggon",
-   "blurb": "Bijan, A.J. Brown, and the two best discounts of the night. The best-built roster in the league belongs to a man who joined in March."
+   "team": "A dad",
+   "blurb": "Tied for the most starting value in the draft, and the only man who bought a five-times-market edge at tight end. One four-dollar flex is the whole exposure."
   },
   {
    "rank": 2,
-   "team": "A dad",
-   "blurb": "The most offensive capital in the draft and a five-times-market edge at tight end. Also a one-dollar quarterback and eight one-dollar everything-elses."
+   "team": "Leo the Cleo",
+   "blurb": "The worst franchise in league history walked out tied for the most starting value in the room. Also three of his eight starting spots cost four dollars or less. Highest ceiling, lowest floor, by a mile."
   },
   {
    "rank": 3,
-   "team": "The Asshouse Always Wins",
-   "blurb": "Four real starters, only two dollar players, and Mahomes plus Herbert for ten dollars total. The other new guy also gets it."
+   "team": "Fwamming Gwaggon",
+   "blurb": "A hundred and ninety dollars on the field and not one replacement-level starter, the only manager who managed both. First draft. Everybody else has been doing this for years."
   },
   {
    "rank": 4,
-   "team": "The Injured Reserved",
-   "blurb": "Nine players who can start a week and not one of them cost fifty dollars. Josh Jacobs at $8 was the theft of the night."
+   "team": "Kim Jong Nate",
+   "blurb": "The spreadsheet loves him more than your eyes will. Lamb and Jefferson for $103, two flex spots to absorb them, and an entire backfield that cost thirty-four dollars."
   },
   {
    "rank": 5,
-   "team": "Poop Squad 💩",
-   "blurb": "A hundred and eleven dollars on Nacua and Achane, and then he kept buying. Highest ceiling outside the top three, thinnest margin for a hamstring."
+   "team": "Mac Daddy",
+   "blurb": "Zero replacement-level starters and the cheapest man in his lineup cost six dollars. The most boring eight in the draft and one of the two best."
   },
   {
    "rank": 6,
@@ -38,42 +41,42 @@
   {
    "rank": 7,
    "team": "Bend The Knee 🐲🔥",
-   "blurb": "Sixty percent of the budget on the biggest raise of the draft and the third biggest. Parker Washington cost him three and a half Travis Kelces."
+   "blurb": "Sixty percent of the budget on the biggest raise of the draft and the third biggest. Then he built the only bench in the league that is worth anything."
   },
   {
    "rank": 8,
-   "team": "Good Will Hunting",
-   "blurb": "Chase and McCaffrey is the best pair anybody owns. Seventy-two percent of the budget says everything after them is a rumor."
+   "team": "Poop Squad 💩",
+   "blurb": "A hundred and eleven dollars on Nacua and Achane and then he kept buying. Highest ceiling in the bottom half, thinnest margin for a hamstring."
   },
   {
    "rank": 9,
-   "team": "ShakeNBake",
-   "blurb": "Barkley, Jeanty and Nico all came in under last year's price, and then a rookie at $13 was asked to be the third receiver."
+   "team": "Good Will Hunting",
+   "blurb": "Chase and McCaffrey is the best pair anybody owns. Two of the other six starting spots are already filled at replacement price."
   },
   {
    "rank": 10,
-   "team": "Mac Daddy",
-   "blurb": "Jonathan Taylor and three real receivers is a playoff spine. Rico Dowdle at $13 is the second running back, which is the whole problem."
+   "team": "ShakeNBake",
+   "blurb": "Barkley, Jeanty and Nico all came in under last year's price, and then $183 of the $200 made the lineup and two dollars made nothing at all."
   },
   {
    "rank": 11,
-   "team": "Kim Jong Nate",
-   "blurb": "A hundred and thirty-one dollars on wide receivers and thirty-four on the entire backfield, in a lineup that starts two backs and two flexes."
+   "team": "The Asshouse Always Wins",
+   "blurb": "Four real starters and then sixteen dollars of excellent players stacked behind them. Move that money one slot forward and he is top five."
   },
   {
    "rank": 12,
-   "team": "Leo the Cleo",
-   "blurb": "League-record $73 for Gibbs ninety seconds into the auction, then nine players at a dollar or two. A WR2 who cost four dollars."
+   "team": "The Injured Reserved",
+   "blurb": "Josh Jacobs at $8 was the theft of the night. He then bought eleven players deserving of a roster spot in a league that starts eight."
   },
   {
    "rank": 13,
    "team": "FreeGucci",
-   "blurb": "One hundred and ninety-five dollars spread perfectly evenly across sixteen forgettable men, with five dollars never spent at all."
+   "blurb": "One hundred and sixty-two dollars reached the lineup, thirteenth of fourteen, spread perfectly evenly across sixteen forgettable men."
   },
   {
    "rank": 14,
    "team": "Hail Mary",
-   "blurb": "The champion benched $48, bought three quarterbacks for one slot, and his biggest purchase of the night was a $28 receiver."
+   "blurb": "The champion got $150 into a starting lineup and left $47 of offense on his bench, plus three quarterbacks for one slot."
   }
  ],
  "awards": [
@@ -85,22 +88,22 @@
   {
    "label": "The Record",
    "team": "Leo the Cleo",
-   "note": "$73 for Jahmyr Gibbs, the most expensive player in fifteen years of this league, bought roughly ninety seconds after the auction opened. The old record was $70 and that team finished sixth."
+   "note": "$73 for Jahmyr Gibbs, the most expensive player in fifteen years of this league, bought about ninety seconds after the auction opened. The old record was $70 and that team finished sixth."
+  },
+  {
+   "label": "Cleanest Lineup",
+   "team": "Fwamming Gwaggon",
+   "note": "$190 on the field, zero starting spots filled at replacement price. Only one other manager got both of those right and he has been in this league since 2012."
   },
   {
    "label": "The Quarterback Hoard",
    "team": "Hail Mary",
-   "note": "Three quarterbacks, $22, one starting slot. Patrick Mahomes went for $3 to somebody else. The commissioner also bought a second kicker, presumably for the company."
+   "note": "Three quarterbacks, $22, one starting slot. Then a second kicker for a second kicker slot that does not exist. That is $24 spent on positions that were already full."
   },
   {
-   "label": "Most Money Benched",
-   "team": "Hail Mary",
-   "note": "$48 of $200 never reached a starting lineup, three and a half times the league average of $14. The defending champion has the smallest active roster in the league."
-  },
-  {
-   "label": "Best Shape",
-   "team": "Fwamming Gwaggon",
-   "note": "Seven players over $10, six dollar bills, and two of the four biggest discounts of the night. First draft. Everybody else has been doing this for years."
+   "label": "Money In The Wrong Place",
+   "team": "The Asshouse Always Wins",
+   "note": "Sixteen dollars of genuinely good players stacked on his bench, including a $3 Patrick Mahomes who cannot score a point in a one-quarterback league unless Justin Herbert gets hurt."
   },
   {
    "label": "The Bravest Twenty-One Dollars",
@@ -108,100 +111,112 @@
    "note": "Parker Washington cost $21. Travis Kelce cost $6. DK Metcalf cost $19. No further questions."
   },
   {
-   "label": "Quietest Correct Answer",
-   "team": "The Asshouse Always Wins",
-   "note": "Patrick Mahomes at $3 and Justin Herbert at $7 in a four-point-passing-touchdown league, while the rest of the room spent $153 on quarterbacks."
+   "label": "Highest Floor",
+   "team": "Mac Daddy",
+   "note": "The cheapest player in his starting lineup cost six dollars. Nobody else can say that. It is the least exciting sentence in this column and it wins a lot of weeks."
   },
   {
    "label": "The Bargain Bin",
    "team": "Bend The Knee 🐲🔥",
-   "note": "Eight players at a dollar, including Alvin Kamara ($29 last year), T.J. Hockenson ($8) and Keenan Allen. If three of them hit, this ranking looks stupid by Halloween."
+   "note": "Eight players at a dollar, including Alvin Kamara ($29 last year), T.J. Hockenson ($8) and Keenan Allen. If three of them hit, this whole ranking looks stupid by Halloween."
   }
  ],
  "grades": {
+  "A dad": {
+   "manager": "Barrett",
+   "grade": "A",
+   "headline": "Four kings and a fistful of ones",
+   "body": [
+    "A hundred and ninety of his two hundred dollars is standing in the starting lineup, and after the replacement-level dollars are stripped out he is tied for the most starting value in the draft. Amon-Ra St. Brown $60, Kenneth Walker III $43, Brock Bowers $39, Ladd McConkey $28. Then the roster falls off a cliff so cleanly you could film a car commercial on it.",
+    "Bowers at $39 is the smartest buy of the night and the easiest one to laugh at. Twenty-four tight ends changed hands at an average of $7.80. He paid five times the market and now owns a weekly advantage at a mandatory slot while thirteen other people roll a die there every Sunday. Paying up at the position nobody wants to pay up at is how a league gets won quietly.",
+    "He also spent $1 on Kyler Murray to be his starting quarterback, which in a league that hands out four points for a passing touchdown is not the crime it looks like. The actual exposure is Xavier Worthy at $4 in a flex spot and Chuba Hubbard at $10 as the second back. If St. Brown or Walker misses a month there is nothing behind them but the sound of ones rattling in a cup."
+   ],
+   "best": "Brock Bowers, $39. The tight end market cleared at $7.80 and he bought a weekly edge with it.",
+   "worst": "Kenneth Walker III, $43. Eighteen dollars more than this room paid for the same man last year."
+  },
+  "Leo the Cleo": {
+   "manager": "Chris",
+   "grade": "A-",
+   "headline": "The math has bad news for everybody",
+   "body": [
+    "Sit down for this one. The worst franchise in the history of this league, 33-78 across six seasons with zero playoff appearances, walked out of that room tied for the most starting value in the draft. A hundred and ninety dollars in eight starters, and after replacement is stripped out, nobody has more. Jahmyr Gibbs $73, Kyren Williams $32, Josh Allen $29, Malik Nabers $29, Tony Pollard $18. That is a genuinely frightening front five.",
+    "The $73 on Gibbs is the most expensive player in fifteen years of this league, bought roughly ninety seconds after the auction opened, and everybody in that room enjoyed watching him pay it. The previous record was $70 and that team finished sixth. What the laughing missed is that he then bought three more real starters instead of stopping, which is the part nobody expected.",
+    "The catch is enormous and it is the reason this is an A- and not an A. Three of his eight starting spots are filled at replacement price: Jakobi Meyers at $4, Jayden Reed at $4, and a $1 tight end. Every other contender has one of those or none. When Gibbs plays, this team beats anybody. When Gibbs sits, three of eight slots are already scoring nothing and a fourth just joined them. The highest ceiling in the league and, by a distance, the lowest floor."
+   ],
+   "best": "Cooper Kupp, $2. He cost $11 here last year.",
+   "worst": "A one-dollar tight end and a four-dollar WR2. The top five is a contender. The bottom three is a bye week."
+  },
   "Fwamming Gwaggon": {
    "manager": "Jon",
    "grade": "A",
    "headline": "The new guy read the room",
    "body": [
-    "Second name called all night, $69 for Bijan Robinson, and then he never blinked again. A.J. Brown $45, David Montgomery $23, Jaylen Warren $13. Seven players over $10 on a roster carrying only six dollar bills. That is not a rookie draft. That is a man who watched four nominations, worked out exactly what this room panics about, and then went shopping in the aisle everybody had walked past.",
-    "The back half is the whole thing. Brian Thomas Jr. cost $10. This exact room paid $50 for him last September. Courtland Sutton cost $5 after going for $27. Two of the four biggest discounts of the night, both his, both bought while eleven other people were still arguing about running backs like it was 2019. $187 of his budget is in players who will actually start.",
-    "The one wobble is Colston Loveland at $22, a $3 tight end last year in a market that cleared at $7.80. Pay that and he has to be the position, not a guy at the position. If he is not, this is still a very good team with one expensive decoration. Twelve men have been in this league for over a decade and the best-built roster in the room belongs to somebody who joined in March."
+    "Second name called all night, $69 for Bijan Robinson, and then he never blinked again. A.J. Brown $45, David Montgomery $23, Colston Loveland $22, Jaylen Warren $13, Brian Thomas Jr. $10. He is the only manager in the entire league who got a hundred and ninety dollars into his starting lineup without a single replacement-level body in it. Not one slot filled by a guy anybody could have had for pocket change.",
+    "The back half is where it was won. Brian Thomas Jr. cost $10. This exact room paid $50 for him last September. Courtland Sutton cost $5 after going for $27. Two of the four biggest discounts of the night, both his, both bought while eleven other people were still arguing about running backs like it was 2019.",
+    "The one wobble is Loveland at $22, a $3 tight end last year in a market that cleared at $7.80. Pay that and he has to be the position, not a guy at the position. Twelve men have been in this league for over a decade and the cleanest draft in the room belongs to somebody who joined in March. The rest of the league should find that considerably more upsetting than they currently do."
    ],
    "best": "Brian Thomas Jr., $10. The same fourteen people paid $50 for him twelve months ago.",
    "worst": "Colston Loveland, $22. Three times what the tight end market cleared at."
   },
-  "A dad": {
-   "manager": "Barrett",
-   "grade": "A-",
-   "headline": "Four kings and a fistful of ones",
-   "body": [
-    "The most offensive capital in the draft, $189, and $170 of it lives in four men: Amon-Ra St. Brown $60, Kenneth Walker III $43, Brock Bowers $39, Ladd McConkey $28. Then the roster falls off a cliff so cleanly you could film a car commercial on it. Chuba Hubbard at $10 is the RB2. Eight players cost a dollar. There is no middle class here, there is a penthouse and a parking lot.",
-    "Bowers at $39 is the smartest buy of the night and the easiest one to laugh at. Twenty-four tight ends changed hands at an average of $7.80. He paid five times the market and now owns a weekly advantage at a mandatory slot while thirteen other people roll a die there every Sunday. Paying up at the position nobody wants to pay up at is how you win a league quietly.",
-    "He also spent $1 on Kyler Murray to be his starting quarterback, which is either a man who read the scoring settings very carefully or a man who looked at his remaining budget and made peace with God. Given the shape of everything else, both are true. If St. Brown or Walker misses a month there is nothing behind them but the sound of ones rattling in a cup."
-   ],
-   "best": "Brock Bowers, $39. The tight end market cleared at $7.80 and he bought a weekly edge.",
-   "worst": "Kenneth Walker III, $43. Eighteen dollars more than this room paid for the same man last year."
-  },
-  "The Asshouse Always Wins": {
-   "manager": "Tom",
-   "grade": "A-",
-   "headline": "Nobody told the rookie to panic",
-   "body": [
-    "Derrick Henry $45, Drake London $45, Chris Olave $32, Breece Hall $29. Four real starters, not one budget-ending purchase, and then the most disciplined back half anybody assembled: two dollar players on the entire roster. Everyone else has at least four. He bought sixteen players and fourteen of them are people you would actually consider starting, which in this league counts as radical behavior.",
-    "The quarterback room is the funniest thing that happened all night at somebody else's expense. Justin Herbert $7. Patrick Mahomes $3. Ten dollars for both, in a room where one man paid $29 for a single quarterback and another bought three of them. In a league that pays four points for a passing touchdown, the correct play is to spend nothing and take whoever falls, and the newest person here is the only one who wrote that down.",
-    "Chris Olave at $32 is the tax, an $8 player in this room a year ago and now a third of the way to a Ferrari. Sixteen dollars sits on the bench. Neither is fatal. Two men joined this league eight months ago and both of them just drafted better than most of the founding membership, which is going to be brought up at every opportunity for the next four months."
-   ],
-   "best": "Mahomes at $3 and Herbert at $7. Ten dollars for two starting quarterbacks in a four-point-passing-touchdown league.",
-   "worst": "Chris Olave, $32. He was an eight-dollar player in this exact room in September."
-  },
-  "The Injured Reserved": {
-   "manager": "Greg (IR)",
+  "Kim Jong Nate": {
+   "manager": "Nathan",
    "grade": "B+",
-   "headline": "The deepest roster in the room",
+   "headline": "Two Ferraris and a rented bus",
    "body": [
-    "Josh Jacobs at $8 is the buy of the draft and it is not close. This room paid $43 for him last September. He came off the board fifth, before anybody had settled into their chair, and fourteen people sat on their hands and let it happen. Nobody bid. Somewhere around March that price is going to look like a felony.",
-    "The rest is the same discipline. Omarion Hampton $47, Zay Flowers $34, Bhayshul Tuten $26, Jaylen Waddle $24, Quentin Johnston $14, Tucker Kraft $13, Chris Godwin $10, Rachaad White $5. That is nine players who can start a week for you, which is more than anybody else in the league can say, and he did it without ever spending fifty dollars on one person. Coming off 21-7 and a fifth-place finish, this is the roster of somebody who has done this before.",
-    "The nitpick is $28 sitting on the bench, twice the league average, and no kicker or defense, which costs one waiver claim and zero dollars. The team is called The Injured Reserved and it drafted eleven guys who will play every week. Somebody check on him."
+    "CeeDee Lamb $52 and Justin Jefferson $51, both cheaper than last year, and Emeka Egbuka at $25 behind them. On the arithmetic this is a top-four starting lineup, because two flex slots mean a receiver-heavy roster still gets all that money on the field. The eye test and the spreadsheet disagree about this team more than any other and it is worth understanding why.",
+    "The entire running back room cost thirty-four dollars. Quinshon Judkins $23, Jacory Croskey-Merritt $9, Kaleb Johnson $1, Sean Tucker $1. That is less than he paid for Justin Jefferson on his own, spread across the position that touches the ball on every snap of every drive. Two starting running back slots get filled by a $23 rookie and a $9 flier, and if either one is not the guy, the flexes stop being a luxury and start being a patch.",
+    "Zachariah Branch at $1 is already sitting in a flex spot, which is one slot scoring nothing before the season starts. The ceiling is real, the receivers are the best in the league, and the whole thing rests on a backfield he assembled out of whatever was still moving at nine o'clock."
    ],
-   "best": "Josh Jacobs, $8. He cost $43 in this room last year and not one person raised a hand.",
-   "worst": "Twenty-eight dollars on the bench. The depth is real, but some of it is depth nobody asked for."
+   "best": "Jayden Daniels, $10. Half of last year's price for the same quarterback.",
+   "worst": "The backfield, $34 total. Four running backs for two thirds of what one CeeDee Lamb cost."
   },
-  "Poop Squad 💩": {
-   "manager": "Anuj",
-   "grade": "B+",
-   "headline": "A hundred and eleven dollars of hamstring",
+  "Mac Daddy": {
+   "manager": "Maclane",
+   "grade": "A-",
+   "headline": "The most boring lineup in the draft, and it works",
    "body": [
-    "Puka Nacua $63 and De'Von Achane $48. That is $111, fifty-six percent of the budget, on two men whose entire value proposition is remaining structurally intact for four months. When they are upright they are top-five at the position and this team is terrifying. The plan is not complicated and it does not need to be, but it does need a physiotherapist on retainer.",
-    "What rescues the grade is that he kept buying after the fireworks. Davante Adams $24, Rhamondre Stevenson $19, MarShawn Lloyd $17, Sam LaPorta at $7 after going $15 last year. That is a genuine flex, a genuine bench and a genuine tight end. Coming off 7-21 and thirteenth place, this is the first roster he has owned in years that has a reason to open the app on Sunday.",
-    "The quarterback plan is Jaxson Dart at $7 with Baker Mayfield behind him at $1, which is fine right up to the Tuesday it is the only thing anybody in the group chat wants to discuss. And $17 for MarShawn Lloyd is a starter's price for a man who has never once held the job. Aggressive was the correct posture from where he finished. This is aggressive."
+    "Nobody built a cleaner eight. Jonathan Taylor $62, DeVonta Smith $34, Tee Higgins $25, Garrett Wilson $23, Lamar Jackson $21, Rico Dowdle $13, and the cheapest man in his starting lineup cost six dollars. Zero replacement-level starters, a hundred and ninety dollars on the field, and not one slot where you look at the name and wince. In a fourteen-team league that plays two flexes, that matters more than anybody wants to admit in September.",
+    "George Kittle at $6 after going $22 last year is the best tight end value of the draft, and $62 for Jonathan Taylor is eighteen dollars of certainty tax on a $44 player from a year ago. Fine. He finished fourth last season with considerably less than this and he did it by never having a hole to plug.",
+    "Lamar Jackson at $21 is the one indulgence: the second most expensive quarterback in a league that pays four points for a passing touchdown, in a room where two starters changed hands for ten dollars combined. That is not acquiring a player, that is buying a boat and then telling everyone how much you use it. Behind Dowdle the backfield thins out fast, which is the difference between this and a top-two grade."
    ],
-   "best": "Sam LaPorta, $7. Eight dollars cheaper than last year for the same tight end.",
-   "worst": "MarShawn Lloyd, $17. Seventeen dollars is a lot to pay for a rumor."
+   "best": "George Kittle, $6. Sixteen dollars cheaper than last year at the position nobody solved.",
+   "worst": "Lamar Jackson, $21. One quarterback slot, four-point passing touchdowns, twenty-one dollars."
   },
   "Miley 💨LEO 5K Speedo Fan Club": {
    "manager": "Greg (Miley)",
    "grade": "B+",
    "headline": "Seven guys who might all be good",
    "body": [
-    "The flattest competitive roster in the draft. Rashee Rice $35, Javonte Williams $33, Trey McBride $30, Travis Etienne $28, Tetairoa McMillan $22, Cam Skattebo $21, Rome Odunze $17. Seven starters between $17 and $35, only forty-nine percent of the budget in his top three, and nobody on the roster who can end his season by pulling up short on a Sunday. Coming off the Sacco, that is exactly the right way to rebuild.",
-    "The bill for that flatness is enormous. Rice went $6 to $35. Javonte went $8 to $33. Etienne went $9 to $28. Those are the second, fourth and eighth biggest raises of the entire night, all on one roster, which means he is not buying value, he is buying last September's breakouts at this September's asking price. Everybody in this room does this every single year and every single year it is somebody else's turn to be surprised.",
-    "Travis Hunter at $1 after costing $16 twelve months ago is the kind of pickup that quietly wins a flex spot in October. The floor is dramatically higher than last season's catastrophe. The ceiling is capped by the fact that he bought seven very good number twos and did not buy a single number one."
+    "The flattest competitive roster in the draft and, it turns out, one of the most efficient. Rashee Rice $35, Javonte Williams $33, Trey McBride $30, Travis Etienne $28, Tetairoa McMillan $22, Cam Skattebo $21, Rome Odunze $17. A hundred and eighty-nine dollars on the field, no replacement-level starters anywhere, and nobody who can end the season by pulling up short on a Sunday. Coming off the Sacco, that is exactly the right way to rebuild.",
+    "The bill for all that flatness is enormous. Rice went $6 to $35. Javonte went $8 to $33. Etienne went $9 to $28. Those are the second, fourth and eighth biggest raises of the entire night, all sitting on one roster, which means he is not buying value, he is buying last September's breakouts at this September's asking price. Everybody in this room does that every year and every year it is somebody else's turn to be surprised.",
+    "Travis Hunter at $1 after costing $16 twelve months ago is the kind of pickup that quietly wins a flex spot in October. The floor here is dramatically higher than last season's catastrophe. The ceiling is capped by the fact that he bought seven very good number twos and never once bought a number one."
    ],
    "best": "Travis Hunter, $1. He cost $16 in this room last September.",
-   "worst": "Rashee Rice, $35. Up from $6, and there was nobody else within twenty dollars of that bid."
+   "worst": "Rashee Rice, $35. Up from $6, and nobody else was within twenty dollars of that bid."
   },
   "Bend The Knee 🐲🔥": {
    "manager": "Darrius",
-   "grade": "B",
-   "headline": "Sixty percent of the money, two names",
+   "grade": "B+",
+   "headline": "Sixty percent of the money, two names, no holes",
    "body": [
-    "Jaxon Smith-Njigba at $63 is the single biggest raise of the draft, plus $33 on what this room paid a year ago, and James Cook III at $56 is the third biggest at plus $25. Together they ate $119 of $200. He did not find value on either. He set the market on both and then had eighty-one dollars left to build the other fourteen roster spots out of whatever was still breathing.",
-    "To his credit, what that eighty-one bought is a museum of other people's regrets. Alvin Kamara at $1 after $29. T.J. Hockenson at $1 after $8. Travis Kelce at $6 after $14. Keenan Allen at $1. Eight dollar players in total, and if even three of them do anything this roster is dangerous.",
-    "And then there is Parker Washington at $21, which is more than he paid for DK Metcalf and three and a half times what he paid for Travis Kelce. It is the single most confident purchase anybody made all night on a player the rest of the room had priced at approximately nothing. One playoff appearance in nine seasons says the boring approach was not working. This is not the boring approach."
+    "Jaxon Smith-Njigba at $63 is the single biggest raise of the draft, plus $33 on what this room paid a year ago, and James Cook III at $56 is the third biggest at plus $25. Together they ate $119 of $200. He did not find value on either one. He set the market on both and then had eighty-one dollars to build the rest of a football team.",
+    "What that eighty-one bought is a museum of other people's regrets, and it is the reason this grade is higher than it looks like it should be. Alvin Kamara at $1 after $29. T.J. Hockenson at $1 after $8. Travis Kelce at $6 after $14. Keenan Allen at $1. He is one of only four teams with no replacement-level starter, and the only team in the league whose bench is worth anything at all once replacement dollars come off.",
+    "And then there is Parker Washington at $21, more than he paid for DK Metcalf and three and a half times what he paid for Travis Kelce, on a player the rest of the room had priced at approximately nothing. One playoff appearance in nine seasons says the careful approach was not working. This is emphatically not the careful approach."
    ],
    "best": "Alvin Kamara, $1. Twenty-nine dollars last year. One dollar tonight. Somebody had to.",
    "worst": "Parker Washington, $21. Three and a half Travis Kelces."
+  },
+  "Poop Squad 💩": {
+   "manager": "Anuj",
+   "grade": "B",
+   "headline": "A hundred and eleven dollars of hamstring",
+   "body": [
+    "Puka Nacua $63 and De'Von Achane $48. That is $111, fifty-six percent of the budget, on two men whose entire value proposition is remaining structurally intact for four months. When they are upright this team is terrifying. The plan is not complicated and it does not need to be, but it does need a physiotherapist on retainer.",
+    "What holds the grade up is that he kept buying after the fireworks. Davante Adams $24, Rhamondre Stevenson $19, MarShawn Lloyd $17, Sam LaPorta at $7 after going $15 last year. A hundred and eighty-nine dollars reached the starting lineup, seventh most in the league. Coming off 7-21 and thirteenth place, this is the first roster he has owned in years with a reason to open the app on Sunday.",
+    "Jordan Addison at $4 is already sitting in a flex spot doing nothing, the quarterback plan is Jaxson Dart at $7, and $17 for MarShawn Lloyd is a starter's price for a man who has never held the job. Aggressive was the correct posture from where he finished. This is aggressive."
+   ],
+   "best": "Sam LaPorta, $7. Eight dollars cheaper than last year for the same tight end.",
+   "worst": "MarShawn Lloyd, $17. Seventeen dollars is a lot to pay for a rumor."
   },
   "Good Will Hunting": {
    "manager": "Will",
@@ -209,8 +224,8 @@
    "headline": "The best two players and then a cliff",
    "body": [
     "Ja'Marr Chase $63 and Christian McCaffrey $59 is the strongest pair anybody walked out with, and $122 to own it. Seventy-two percent of his money sits in three players, the most concentrated roster in the league. When it works it is unbeatable and when either man misses a month it looks exactly like 2025, where the five biggest buys in this room finished sixth, fourteenth, 8-20, fourth, and in the Sacco Bowl.",
-    "Then Jadarian Price at $22, a rookie running back who cost precisely the same as Jalen Hurts, Joe Burrow and Patrick Mahomes combined. Read that again. Three starting quarterbacks, or one man who has not yet been handed a jersey number he will keep. Terry McLaurin at $21 after going $30 last year is genuinely sharp work, and Joe Burrow at $11 is the third-best quarterback value of the night.",
-    "After McLaurin it is five dollars and under for ten straight players. This is a lineup that wins six weeks by forty and loses six weeks by forty. In a fourteen-team league with six playoff spots, that is a coin flip in a very expensive coat."
+    "Then Jadarian Price at $22, a rookie running back who cost precisely the same as Jalen Hurts, Joe Burrow and Patrick Mahomes combined. Read that again. Three starting quarterbacks, or one man who has not yet been handed a jersey number he gets to keep. Terry McLaurin at $21 after going $30 is genuinely sharp work and Joe Burrow at $11 is a fine answer at the position.",
+    "Two of his eight starting spots are already replacement level, Dalton Kincaid at $3 and KC Concepcion at $4, and only Leo the Cleo is carrying more dead weight in a starting lineup. This is a team that wins six weeks by forty and loses six weeks by forty. In a fourteen-team league with six playoff spots, that is a coin flip in a very expensive coat."
    ],
    "best": "Terry McLaurin, $21. Nine dollars off last year for the same production.",
    "worst": "Jadarian Price, $22. The exact price of Hurts, Burrow and Mahomes stacked on top of each other."
@@ -220,57 +235,45 @@
    "grade": "B-",
    "headline": "Three studs, two dollars, still no ring",
    "body": [
-    "Saquon Barkley $52, Ashton Jeanty $43, Nico Collins $43. A hundred and thirty-eight dollars in three men, and all three came in under what this room paid for them last year, which is the correct way to be top-heavy: buy the expensive guys when the market has gone quiet rather than when it is screaming.",
-    "The problem starts immediately afterward. Carnell Tate at $13 and Jonathon Brooks at $10 are dart throws being asked to hold down a flex spot on a contender. Mike Evans at $12 is the one honest piece of middle-class value. Trevor Lawrence at $7 is a quarterback bought on vibes. And two dollars went entirely unspent, which in an auction is two dollars set on fire in front of witnesses.",
-    "Fifteen seasons, two runner-up finishes, zero rings, and the roster shape that produced both of those near misses is sitting right here again: an elite top, a soft middle, and a season that comes down to whether the third receiver hits. The man who built this website ranked himself ninth on it, which is either integrity or a very long con."
+    "Saquon Barkley $52, Ashton Jeanty $43, Nico Collins $43, and all three came in under what this room paid for them last year, which is the correct way to be top-heavy: buy the expensive names when the market has gone quiet rather than when it is screaming. That is the good half.",
+    "The bad half is that only $183 of the $200 ever reached the starting lineup, seven dollars below the field, because the money after the big three went into Carnell Tate at $13 and Jonathon Brooks at $10, two dart throws being asked to hold down a flex on a contender. Isaiah Likely at $3 is a starting tight end who scores nothing. And two dollars went entirely unspent, which in an auction is not thrift, it is litter.",
+    "Fifteen seasons, two runner-up finishes, zero rings, and the roster shape that produced both near misses is sitting right here again: elite at the top, soft in the middle, and a season that turns on whether the third receiver hits. The man who built this website ranked himself tenth on it, which is either integrity or a very long con."
    ],
    "best": "Mike Evans, $12. He cost $28 in this room a year ago.",
-   "worst": "Two dollars, unspent. In an auction that is not thrift, that is litter."
+   "worst": "Two dollars, unspent, plus a three-dollar tight end in a starting slot."
   },
-  "Mac Daddy": {
-   "manager": "Maclane",
-   "grade": "B-",
-   "headline": "Four receivers, one back, one boat",
-   "body": [
-    "Jonathan Taylor at $62 was a $44 player last year, so he paid eighteen dollars in certainty tax, and then built a genuinely good receiver room behind him: DeVonta Smith $34, Tee Higgins $25, Garrett Wilson $23. A workhorse back and three real receivers is a playoff spine, and he finished fourth last season with considerably less than this.",
-    "The second running back is Rico Dowdle at $13, up from $2, and behind him it is Kenny Gainwell at $6 and Tyler Allgeier at $2. In a lineup that starts two backs and two flexes, that is one hamstring away from a season decided by a Tuesday morning waiver claim and a prayer.",
-    "George Kittle at $6 after going $22 last year is the best tight end value of the draft. Lamar Jackson at $21 is the exact opposite: the second most expensive quarterback in a league that pays four points for a passing touchdown, bought in a room where two starting quarterbacks changed hands for ten dollars combined. That is not acquiring a player. That is buying a boat and then telling everyone how much you use it."
-   ],
-   "best": "George Kittle, $6. Sixteen dollars cheaper than last year at the position nobody solved.",
-   "worst": "Lamar Jackson, $21. One quarterback slot, four-point passing touchdowns, twenty-one dollars."
-  },
-  "Kim Jong Nate": {
-   "manager": "Nathan",
+  "The Asshouse Always Wins": {
+   "manager": "Tom",
    "grade": "C+",
-   "headline": "Two Ferraris and a bus pass",
+   "headline": "He bought a beautiful bench",
    "body": [
-    "CeeDee Lamb $52 and Justin Jefferson $51 is $103 on two wide receivers, and both came cheaper than last year, so the purchases themselves are perfectly defensible. Add Emeka Egbuka at $25 and Tyler Warren at $17 and he owns the best receiving corps in the league on paper. Then you scroll down to the backfield and the music stops.",
-    "The entire running back room cost thirty-four dollars. Quinshon Judkins $23, Jacory Croskey-Merritt $9, Kaleb Johnson $1, Sean Tucker $1. This is a lineup that starts two running backs and two flexes every single week, and he answered that requirement with one real player and three scratch-off tickets. A hundred and thirty-one dollars went to receivers. Thirty-four went to the position that touches the ball on every snap of every drive, which is less than he paid for Justin Jefferson on his own.",
-    "Jayden Daniels at $10 after $21 last year is clean, sensible work. None of it changes the arithmetic. He bought two of the best players in the room and then has to get them to the stadium somehow."
+    "Derrick Henry $45, Drake London $45, Chris Olave $32, Breece Hall $29. Four real starters and a genuinely composed first draft from somebody who joined this league eight months ago. Nobody is going to enjoy playing him in October. The problem is what happened with the last forty dollars.",
+    "Only $180 reached the starting lineup, eleventh in the league, because sixteen dollars went into Patrick Mahomes at $3, Mark Andrews at $4, Khalil Shakir at $3, Deebo Samuel at $3 and Tank Bigsby at $3. Every one of those is a fine player at a fair price and every one of those is worth exactly nothing to a lineup, because they are all sitting behind somebody. Mahomes at $3 got a lot of admiring noise on draft night and he is a backup quarterback in a league with one quarterback slot. He cannot score a point unless Justin Herbert gets hurt.",
+    "That is the whole gap between eleventh and fourth: not the players he bought, but where he put them. Sixteen dollars moved from the bench into a real flex and this is a top-five team. Rookie mistake, extremely fixable, and he still drafted better than four men who have been doing this since 2011."
    ],
-   "best": "Jayden Daniels, $10. Half of last year's price for the same quarterback.",
-   "worst": "The backfield, $34 total. Four running backs for two thirds of what one CeeDee Lamb cost."
+   "best": "Chris Olave and Breece Hall for $61 combined. Two starters for the price of one of Leo's.",
+   "worst": "Sixteen dollars of very good bench. A backup quarterback in a one-quarterback league cannot score."
   },
-  "Leo the Cleo": {
-   "manager": "Chris",
-   "grade": "C",
-   "headline": "Seventy-three dollars on the first name called",
+  "The Injured Reserved": {
+   "manager": "Greg (IR)",
+   "grade": "C+",
+   "headline": "The best shopping, the wrong basket",
    "body": [
-    "Jahmyr Gibbs at $73 is the most expensive player in the fifteen-year history of this league. The previous record was $70 for Ja'Marr Chase last season and that team finished sixth. He nominated Gibbs first, bid against a room that was delighted to let him have it, and spent thirty-seven percent of his budget before a single other person had bought a single other player. The auction had been running for about ninety seconds.",
-    "Then Josh Allen at $29, the most expensive quarterback of the night in a draft where the entire quarterback market cost $153 across twenty-five bodies. Kyren Williams at $32 and Malik Nabers at $29 are both good buys, genuinely. That is $163 in four men, and after Tony Pollard at $18 the roster drops off a table: nine players at a dollar or two, and a WR2 who cost four dollars.",
-    "Six seasons here, zero playoff appearances, a 33-78 record and 4-24 last year. Aggression was absolutely the right instinct and nobody should tell him otherwise. Spending record money in the opening minute and then furnishing nine roster spots from the clearance rack is the single most reliable way this league produces a bad team, and there are fifteen years of receipts one section down."
+    "Josh Jacobs at $8 is the buy of the draft and it is not close. This room paid $43 for him last September. He came off the board fifth, before anybody had settled into their chair, and fourteen people sat on their hands and let it happen. Nobody bid. Somewhere around November that price is going to look like a felony.",
+    "And then the same instinct that found Jacobs kept going long after it should have stopped. Omarion Hampton $47, Zay Flowers $34, Bhayshul Tuten $26, Jaylen Waddle $24, Quentin Johnston $14, Tucker Kraft $13, Chris Godwin $10, Rachaad White $5, Romeo Doubs $5. He bought eleven players who deserve a roster spot in a league that starts eight of them. Only $171 got into the starting lineup, twelfth in the league, and $25 is parked behind it waiting for somebody to get hurt.",
+    "Depth wins leagues in November and it does not win them in September, and this is a metric that only counts what starts. He went 21-7 last year and finished fifth, so he knows precisely what he is doing, but the same money arranged differently is a top-five roster instead of a twelfth-place one. Also no kicker and no defense, which costs one waiver claim and nothing else."
    ],
-   "best": "Cooper Kupp, $2. He cost $11 here last year.",
-   "worst": "Jahmyr Gibbs, $73. A league record, set before anybody else had spent a dollar."
+   "best": "Josh Jacobs, $8. He cost $43 in this room last year and not one person raised a hand.",
+   "worst": "Twenty-five dollars of bench. The best value board in the draft, pointed at the wrong slots."
   },
   "FreeGucci": {
    "manager": "Nishil",
    "grade": "C-",
    "headline": "He turned two hundred dollars into a smoothie",
    "body": [
-    "Sixteen players. Exactly one of them cost a dollar and not one of them cost more than $44. Chase Brown $44, George Pickens $37, DJ Moore $23, Drake Maye $15, Alec Pierce $14, Michael Pittman $13, Jordan Mason $13, Blake Corum $10. Every single price on this roster is a middling price. There is no star to build around and no bargain to feel clever about. He took $200 and blended it until it was smooth.",
-    "Only $147 of it landed in players who will start at an offensive position, thirteenth of fourteen, and five dollars never left his pocket at all. Thirty-one dollars is parked on the bench. Spreading money evenly is a real strategy in a year when the middle of the board is underpriced. This year the middle of the board was the single most expensive part of it, and he bought all of it.",
-    "Three championships says he understands something about this league that the rest of us do not. This roster says whatever it is, it did not survive contact with a thirty-seven dollar bid on George Pickens. He owns sixteen players and not one of them is going to be the reason he wins a week."
+    "Sixteen players, exactly one of them cost a dollar, and not one of them cost more than $44. Chase Brown $44, George Pickens $37, DJ Moore $23, Drake Maye $15, Alec Pierce $14, Michael Pittman $13, Jordan Mason $13, Blake Corum $10. Every price on this roster is a middling price. There is no star to build around and no bargain to feel clever about. He took $200 and blended it until it was completely smooth.",
+    "Only $162 of it ever reached a starting lineup, thirteenth of fourteen, with $31 sitting on the bench and five dollars that never left his pocket at all. Spreading money evenly is a genuine strategy in a year when the middle of the board is underpriced. This year the middle of the board was the single most expensive part of it, and he bought all of it.",
+    "Three championships says he understands something about this league the rest of us do not. This roster says whatever it is, it did not survive contact with a thirty-seven dollar bid on George Pickens. He owns sixteen players and not one of them is going to be the reason he wins a week."
    ],
    "best": "Zach Charbonnet, $5. Six dollars off last year and a genuine handcuff.",
    "worst": "Alec Pierce, $14. He cost one dollar in this exact room in September."
@@ -278,17 +281,14 @@
   "Hail Mary": {
    "manager": "Andrew",
    "grade": "D+",
-   "headline": "The title defense begins with three quarterbacks",
+   "headline": "Forty-seven dollars of offense on the bench",
    "body": [
-    "The defending champion spent twenty-two dollars on three quarterbacks. There is one quarterback slot. He can start one of them. The other two are there for emotional support. In a league that pays four points for a passing touchdown, where Patrick Mahomes went for three dollars, the commissioner assembled a quarterback room and then bought a second kicker to keep it company.",
-    "The offensive damage is the real story. His biggest purchase all night was Jameson Williams at $28. Only $142 of his budget reached a starting offensive position, dead last in the league and thirty dollars below the field, and forty-eight dollars is sitting on his bench, three and a half times the league average. Thirty-eight percent of his money is in his top three players, the flattest roster in the draft by a distance, except this time flat does not mean balanced, it means short.",
-    "In 2025 he won this thing by refusing to buy anything expensive, and this site called his draft board the most boring document the league had ever produced. He appears to have filed that as a compliment rather than as a description of a market that happened to be cheap that year. Flat works when the middle is underpriced. Tonight the middle was where all the money was, and he showed up with three quarterbacks and a spare kicker."
+    "A hundred and fifty dollars of the champion's two hundred reached his starting lineup. That is dead last in the league by twelve dollars and thirty-two below the field. Forty-seven dollars of real offense is sitting behind it, three and a half times what anybody else benched, and it is not depth, it is a filing error. His biggest purchase of the entire night was Jameson Williams at $28.",
+    "Some of that is the quarterbacks. He spent $22 on three of them in a league with one quarterback slot and four points for a passing touchdown, so he can start one and the other two are there for emotional support, while Patrick Mahomes went for three dollars to somebody else. Then he bought a second kicker to keep them company. That is $24 of a $200 budget on two roster slots that were already full.",
+    "In 2025 he won this thing by refusing to buy anything expensive, and this site called his draft board the most boring document the league had ever produced. He seems to have filed that as a compliment rather than as a description of a market that happened to be cheap that year. Flat works when the middle is underpriced. Tonight the middle was where all the money went, and the commissioner showed up with three quarterbacks and a spare kicker."
    ],
    "best": "TreVeyon Henderson, $13. Fifteen dollars off last year's price.",
-   "worst": "The second, third and fourth quarterback. There is one quarterback slot and it has been full since eight o'clock."
+   "worst": "The second, third and fourth quarterback. There is one quarterback slot and it was full by eight o'clock."
   }
- },
- "home_headline": "Football Is Back And So Are The Receipts",
- "home_kicker": "(draft grades are up)",
- "home_lede": "Fifteen seasons in, fourteen managers, two new faces and $2,790 set on fire in a single night. The rosters are locked, the auction is audited to the dollar, and Week 1 kicks off Sunday. Every grade, every price paid, the biggest steal of the night and the preseason power rankings nobody is going to agree with are one click away. Welcome back."
+ }
 }
