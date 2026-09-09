@@ -2,11 +2,24 @@
 """
 NFL Unlocked — Yahoo Fantasy data fetcher.
 
-Pulls league standings, matchups, transactions, and FAAB data from the
-Yahoo Fantasy Sports API using a long-lived refresh token, computes power
+Pulls league standings, matchups, transactions, and FAAB data, computes power
 rankings, and writes everything to data/league.json for the site.
 
-Required environment variables:
+  !! Yahoo DECLINED Fantasy Sports API access for this developer app. !!
+
+The OAuth path below still refreshes its token happily and then 403s every
+single Fantasy call ("This application is not authorized to perform this
+action"). It is kept only so it starts working the day that changes. In
+practice main() always falls through to scrape_league(), which reads the
+public league pages. Do not burn time re-authorising: the answer was no.
+
+Known limits of the scrape path, which are the ones that actually matter:
+  * every matchup is written with "week": 0, so recent-form rankings and
+    anything keyed on week are not trustworthy
+  * league_key comes out as "scrape.l.675504" — that is the normal state now
+  * Yahoo shows a logged-out visitor only the CURRENT week
+
+Environment variables (only used if access is ever granted):
   YAHOO_CLIENT_ID      Yahoo developer app client id
   YAHOO_CLIENT_SECRET  Yahoo developer app client secret
   YAHOO_REFRESH_TOKEN  Refresh token from the one-time OAuth flow (site /setup page)
