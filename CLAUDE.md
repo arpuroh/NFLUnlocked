@@ -10,7 +10,7 @@ Do not introduce a bundler, a framework, or a package.json without being asked.
 
 | Path | What it is |
 |---|---|
-| `index.html` | This Week |
+| `index.html` | This Week. Before any real score exists it is the **season opener** (`opener.js` + `opener.css`): Week 1 matchups with win probability, Monte Carlo playoff odds, live polls, season preview. `app.js` takes over the moment a matchup goes `postevent` |
 | `rankings.html` `scoreboard.html` `team.html` `feed.html` | league pages (`team.html?t=<team_key>`) |
 | `hall.html` `trophy.html` | Hall of Shame, Trophy Room |
 | `roast.html` + `roast.js` + `roast.css` | Roast Roulette, incl. the suggestion box |
@@ -19,6 +19,7 @@ Do not introduce a bundler, a framework, or a package.json without being asked.
 | `data/*.json` | all content. `league.json` is machine-written; the rest are hand-authored |
 | `scripts/fetch_yahoo.py` | Actions cron → rewrites `data/league.json` |
 | `scripts/generate_roasts.py` | Claude API → weekly roast headline |
+| `scripts/fetch_schedule.py` | league home page → `data/schedule.json`. Yahoo only shows logged-out visitors the **current** week, so re-run this every Tuesday |
 | `scripts/fetch_draft.py` | public Yahoo draft-results page → `data/draft.json` (no OAuth; the league is public). `--fixture` rebuilds `data/draft_2025.json` from `data/draft_2025.txt` |
 | `scripts/project_draft.py` | Sleeper 2026 projections re-scored under this league's rules → `data/projections.json`. **This is what the power rankings are built on.** `--refresh` re-downloads the feed |
 | `scripts/generate_draft_grades.py` | `data/draft.json` → `data/draft_grades.json` via the Claude API. Grades live apart from the ledger so a re-scrape never clobbers the writing |
@@ -70,6 +71,13 @@ approved line into `data/roasts.json` is currently manual.
 column-level GRANT + RLS insert-only + a trigger, and `revoke execute` on the trigger
 function or the security advisor flags it as a callable RPC.
 
+`poll_votes` is the second one. Same shape, plus one trick worth stealing: `anon` has no
+UPDATE, so re-voting works by inserting again and reading through the `poll_results` view,
+which is `security_invoker = false` and does `distinct on (poll_id, voter) … order by
+created_at desc`. Last row per voter wins. Raw `poll_votes` reads 401 for anon; only the
+aggregate view is public. Poll ids are checked against a list in the table constraint, so
+adding a poll to `data/season.json` also needs that constraint widened.
+
 ## Known broken — do not assume these work
 
 1. **`update.yml` never generates roasts.** It runs `fetch_yahoo.py` only;
@@ -106,6 +114,23 @@ keyed by team name exactly as Yahoo spells it. `draft.js` carries the team → m
 The offseason home page (`offseason.js`) swaps its hero to the draft grades once
 `draft.json.status === "complete"`, and links the draft-night stat cell to `draft.html` before that.
 Draft time lives in two places: `offseason.js` and `draft.js` (`DRAFT_AT`), both 2026-09-08T23:00Z.
+
+## The season opener
+
+`opener.js` owns `index.html` from the end of the draft until the first real score lands.
+Three data dependencies: `data/projections.json` (the model), `data/schedule.json` (this
+week's pairings) and `data/season.json` (all the writing and the poll definitions). Editing
+copy means editing `season.json` — do not put prose in the JS.
+
+Win probability is `phi(diff / (WEEK_SD * √2))` with `WEEK_SD = 26`. That is per team, so
+the margin's SD is 26√2 ≈ 37, which is why a five-point projected edge is only ~55%. That
+flatness is correct and the page says so; do not "fix" it by shrinking the SD. The filled
+part of a matchup bar is always the **favourite's** share and grows from the favourite's
+side, so red never sits next to the underdog. When both sides round to the same number the
+card goes neutral grey rather than crowning one of them.
+
+Playoff odds are 8,000 Monte Carlo seasons over a random balanced schedule, because Yahoo
+will not give a logged-out visitor weeks 2 to 14.
 
 ## Testing
 
