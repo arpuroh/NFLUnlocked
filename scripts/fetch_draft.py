@@ -149,6 +149,75 @@ def parse_fixture(path: Path) -> list:
 
 # ---------------------------------------------------------------- analysis
 
+# ---------------------------------------------------------------- lineup model
+#
+# Only eight roster slots turn money into points: QB, RB, RB, WR, WR, TE and two
+# flexes. Kickers, defenses and the IDP cost a dollar and are replacement level by
+# definition, so they are left out of the strength number entirely.
+#
+# An auction price is the whole room's estimate of a player's value over a freely
+# available replacement, which is why prices add up the way points do. The one
+# place raw price lies is at the bottom: a $3 starter is not worth three dollars of
+# production, he is worth roughly nothing, because anybody can claim a $3 player on
+# Tuesday. So REPLACEMENT dollars come off every player before the lineup is added
+# up. Bench players count at BENCH_WEIGHT because byes and injuries hand them
+# roughly a fifth of the season's starts.
+FULL_LINEUP = [("QB", 1), ("RB", 2), ("WR", 2), ("TE", 1), ("FLEX", 2), ("K", 1), ("DEF", 1), ("IDP", 1)]
+OFFENSE = [("QB", 1), ("RB", 2), ("WR", 2), ("TE", 1), ("FLEX", 2)]
+FLEX_OK = ("RB", "WR", "TE")
+REPLACEMENT = 4
+BENCH_WEIGHT = 0.30
+
+
+def _fill(pool: list, slots: list) -> tuple:
+    used, starters = set(), []
+    missing = []
+    for slot, n in slots:
+        for _ in range(n):
+            cand = next((p for p in pool
+                         if id(p) not in used
+                         and (p["slot"] in FLEX_OK if slot == "FLEX" else p["slot"] == slot)), None)
+            if cand is None:
+                missing.append(slot)
+                continue
+            used.add(id(cand))
+            starters.append({**cand, "start": slot})
+    return starters, used, missing
+
+
+def fit_lineup(picks: list) -> dict:
+    """Whole-roster fit, used for the money map and the waiver-wire shopping list."""
+    pool = sorted(picks, key=lambda p: -p["cost"])
+    starters, used, missing = _fill(pool, FULL_LINEUP)
+    bench = [p for p in pool if id(p) not in used]
+    return {
+        "starters": starters, "bench": bench, "missing": missing,
+        "starter_capital": sum(p["cost"] for p in starters),
+        "bench_spend": sum(p["cost"] for p in bench),
+        "core_capital": sum(p["cost"] for p in starters if p["slot"] in FLEX_OK),
+    }
+
+
+def lineup_strength(picks: list) -> dict:
+    """The number the power rankings are built on: replacement-adjusted starting offense."""
+    pool = sorted(picks, key=lambda p: -p["cost"])
+    starters, used, _ = _fill(pool, OFFENSE)
+    bench = [p for p in pool if id(p) not in used and p["slot"] in ("QB",) + FLEX_OK]
+    above = lambda p: max(0, p["cost"] - REPLACEMENT)
+    start_value = sum(above(p) for p in starters)
+    bench_value = sum(above(p) for p in bench[:5])
+    return {
+        "offense_starters": [{"start": p["start"], "player": p["player"], "pos": p["pos"],
+                              "slot": p["slot"], "cost": p["cost"]} for p in starters],
+        "start_paid": sum(p["cost"] for p in starters),
+        "start_value": start_value,
+        "bench_value": bench_value,
+        "lineup_score": round(start_value + BENCH_WEIGHT * bench_value, 1),
+        "weak_starters": [p["player"] for p in starters
+                          if p["cost"] <= REPLACEMENT and p["slot"] != "QB"],
+    }
+
+
 def build(picks: list, order: list, season: int, budget: int, prev: dict | None) -> dict:
     prev_price = {}
     if prev:
@@ -170,6 +239,8 @@ def build(picks: list, order: list, season: int, budget: int, prev: dict | None)
         pos_spend = defaultdict(int)
         for p in ps:
             pos_spend[p["slot"]] += p["cost"]
+        fit = fit_lineup(ps)
+        strength = lineup_strength(ps)
         teams.append({
             "team": name,
             "picks": ps,
@@ -182,6 +253,11 @@ def build(picks: list, order: list, season: int, budget: int, prev: dict | None)
             "avg_cost": round(spent / len(ps), 1) if ps else 0,
             "pos_spend": dict(pos_spend),
             "starters_spend": sum(p["cost"] for p in ps if p["slot"] in ("QB", "RB", "WR", "TE")),
+            "starter_capital": fit["starter_capital"],
+            "bench_spend": fit["bench_spend"],
+            "core_capital": fit["core_capital"],
+            "missing": fit["missing"],
+            **strength,
         })
 
     # league-wide ledger
@@ -203,6 +279,21 @@ def build(picks: list, order: list, season: int, budget: int, prev: dict | None)
             inflation.append({**p, "delta": p["cost"] - p["last_year"]})
     inflation.sort(key=lambda p: -abs(p["delta"]))
 
+    money_map = [{
+        "team": t["team"],
+        "starter_capital": t["starter_capital"],
+        "bench_spend": t["bench_spend"],
+        "pos": {k: t["pos_spend"].get(k, 0) for k in ("QB", "RB", "WR", "TE", "K", "DEF", "IDP")},
+    } for t in sorted(teams, key=lambda t: -t["starter_capital"])]
+
+    holes = [{"team": t["team"], "missing": t["missing"]} for t in teams if t["missing"]]
+
+    lineup_board = sorted(
+        [{"team": t["team"], "lineup_score": t["lineup_score"], "start_paid": t["start_paid"],
+          "start_value": t["start_value"], "bench_value": t["bench_value"],
+          "weak_starters": t["weak_starters"]} for t in teams],
+        key=lambda x: -x["lineup_score"])
+
     status = "complete" if picks and len(picks) >= len(team_names) * 14 else \
              "in_progress" if picks else "pending"
 
@@ -223,6 +314,12 @@ def build(picks: list, order: list, season: int, budget: int, prev: dict | None)
             "dollar_count": sum(1 for p in picks if p["cost"] <= 1),
             "first_ten": sorted(picks, key=lambda p: p["pick"])[:10],
             "price_moves": inflation[:12],
+            "money_map": money_map,
+            "holes": holes,
+            "lineup_board": lineup_board,
+            "avg_lineup_score": round(sum(t["lineup_score"] for t in teams) / len(teams), 1) if teams else 0,
+            "avg_starter_capital": round(sum(t["starter_capital"] for t in teams) / len(teams), 1) if teams else 0,
+            "avg_bench_spend": round(sum(t["bench_spend"] for t in teams) / len(teams), 1) if teams else 0,
             "qb_spend": sorted(
                 [{"team": t["team"], "spent": t["pos_spend"].get("QB", 0)} for t in teams],
                 key=lambda x: -x["spent"]),
