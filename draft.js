@@ -207,7 +207,16 @@
        refresh in a bit.`;
 
     /* capital bar: what actually starts vs what sits on the bench */
+    const avgScore = L.avg_lineup_score || 0;
     const capitalBar = (t) => `<div class="cap">
+      <div class="cap-score">
+        <span class="cs-n${t.lineup_score >= avgScore ? " up" : " dn"}">${t.lineup_score}</span>
+        <span class="cs-l">Starting lineup value<em>league average ${avgScore}${
+          (t.weak_starters || []).length
+            ? " \u00B7 " + t.weak_starters.length + " starting spot" + (t.weak_starters.length > 1 ? "s" : "")
+              + " filled at replacement price (" + t.weak_starters.map(esc).join(", ") + ")"
+            : " \u00B7 no replacement-level starters"}</em></span>
+      </div>
       <div class="cap-bar">
         <i class="st" style="width:${Math.round(t.starter_capital / BUDGET * 100)}%"></i>
         <i class="bn" style="width:${Math.round(t.bench_spend / BUDGET * 100)}%"></i>
@@ -363,12 +372,14 @@
               <span class="t"><b>${esc(r.team)}</b><small>${esc(mgr(r.team, grades))}${G && G[r.team] ? " · " + esc(G[r.team].grade) : ""}</small>
                 ${r.blurb ? `<span class="bl">${esc(r.blurb)}</span>` : ""}</span>
             </div>`).join("")}
-            <p class="vote-foot" style="margin-top:12px"><b>How this is ranked:</b> an auction price is the whole room's
-            opinion of a player, so the starting point is what each manager paid for the eleven players who actually start,
-            weighted toward quarterback, running back, receiver and tight end. That gets adjusted for depth, for how much
-            sits in the top three names, and for whether the roster covers two running backs and two flexes every week.
-            Kickers and defenses are not counted. Zero games have been played, so these are still opinions with a number
-            next to them. Real rankings take over the moment Week 1 kicks off.</p>
+            <p class="vote-foot" style="margin-top:12px"><b>How this is ranked:</b> only eight slots turn money into points,
+            so only those eight are counted: QB, two RB, two WR, TE and two flexes. Kickers, defenses and the IDP cost a dollar
+            and are ignored. An auction price is the whole room's estimate of a player's value over a freely available
+            replacement, which is why prices add up the way points do. The one place price lies is at the bottom, so the first
+            $4 of every player is stripped out: a $3 starter is not worth three dollars of production, he is worth nothing,
+            because anybody can claim a $3 player on Tuesday. Bench players count at thirty percent, because byes and injuries
+            hand them about a fifth of the season. Zero games have been played. These are still opinions, they just have
+            arithmetic behind them.</p>
           </div>` : `<div class="mod" id="rankings"><h2 class="h-sec">Preseason Power Rankings</h2><hr class="rule-h">
             <p class="empty">Being written. Refresh shortly.</p></div>`}
 
