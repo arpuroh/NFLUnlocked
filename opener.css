@@ -1,0 +1,88 @@
+/* ═══ Season opener ═══
+   Same tabloid rules: Archivo, 2px lines, zero radius, dark only where
+   something is happening. */
+
+.op-hero .btn-ghost{display:inline-flex;align-items:center;border:2px solid var(--gray-mid);
+  color:var(--white);padding:11px 18px;font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.op-hero .btn-ghost:hover{border-color:var(--red);color:var(--red-bright)}
+.op-hero .board-row .bm{font-variant-numeric:tabular-nums;font-weight:800;color:var(--paper)}
+
+/* ── this week's matchups ── */
+.op-mus{display:grid;gap:14px}
+.mu{border:2px solid var(--ink);background:var(--white);padding:14px 16px 12px;
+  display:grid;grid-template-columns:1fr;gap:8px}
+.mu-side{display:grid;grid-template-columns:22px 1fr auto;gap:10px;align-items:center}
+.mu-side .mu-name{font-size:15px;font-weight:800;line-height:1.15;min-width:0;overflow-wrap:anywhere}
+.mu-side .mu-name em{display:block;font-style:normal;font-size:11px;font-weight:700;
+  color:var(--gray-mid);margin-top:2px;letter-spacing:.02em}
+.mu-side .mu-pct{font-size:19px;font-weight:900;font-stretch:80%;font-variant-numeric:tabular-nums;
+  color:var(--gray-mid)}
+.mu-side.fav .mu-pct{color:var(--red)}
+.mu-side.fav .mu-name{color:var(--ink)}
+.mu-bar{height:12px;background:var(--fill);border:1px solid var(--rule);display:block;margin:2px 0}
+.mu-bar i{display:block;height:100%;background:var(--red)}
+.mu-foot{font-size:11.5px;color:var(--gray-mid);line-height:1.45;border-top:1px solid var(--rule);
+  padding-top:8px;margin-top:2px}
+
+/* ── season preview ── */
+.op-story{border-left:3px solid var(--red);padding:2px 0 2px 14px;margin:0 0 20px}
+.op-story h3{margin:0 0 6px;font-size:17px;font-weight:900;font-stretch:82%;
+  text-transform:uppercase;letter-spacing:-.01em;line-height:1.05}
+.op-story p{margin:0;font-size:14px;line-height:1.55;color:var(--ink-2)}
+
+/* ── playoff odds ── */
+.od-list{border-top:1px solid var(--rule)}
+.od-row{display:grid;grid-template-columns:22px 22px 1fr 52px;gap:8px 9px;align-items:center;
+  padding:9px 0;border-bottom:1px solid var(--rule)}
+.od-n{font-size:13px;font-weight:800;color:var(--gray-soft);font-variant-numeric:tabular-nums;text-align:right}
+.od-t{font-size:12.5px;font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.od-bar{grid-column:3;height:10px;background:var(--fill);display:block}
+.od-bar i{display:block;height:100%;background:var(--ink)}
+.od-v{grid-row:1 / span 2;grid-column:4;text-align:right;font-weight:900;font-size:15px;
+  font-variant-numeric:tabular-nums}
+.od-s{grid-column:2 / 4;font-size:10.5px;color:var(--gray-mid);margin-top:-3px}
+.od-row:nth-child(-n+6) .od-bar i{background:var(--red)}
+#resim{margin-top:12px}
+
+/* ── the poll ── */
+.poll{border:2px solid var(--ink);background:var(--white);padding:16px 18px 14px;margin-bottom:18px}
+.poll-q{margin:0 0 12px;font-size:19px;font-weight:900;font-stretch:80%;text-transform:uppercase;
+  letter-spacing:-.01em;line-height:1}
+.poll-opts{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--rule)}
+.poll-opt{display:grid;grid-template-columns:22px 1fr auto;gap:9px;align-items:center;
+  padding:9px 10px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);
+  background:none;border-top:0;border-left:0;font:inherit;text-align:left;cursor:pointer;
+  position:relative;min-width:0}
+.poll-opt:nth-child(2n){border-right:0}
+.poll-opt:hover{background:var(--fill)}
+.poll-opt .po-t{font-size:12.5px;font-weight:800;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;position:relative;z-index:1}
+.poll-opt .po-bar{position:absolute;left:0;right:0;top:0;bottom:0;display:block;z-index:0}
+.poll-opt .po-bar i{display:block;height:100%;background:var(--fill)}
+.poll-opt .po-v{font-size:12px;font-weight:800;color:var(--gray-mid);position:relative;z-index:1;
+  font-variant-numeric:tabular-nums}
+.poll-opt .tlogo{position:relative;z-index:1}
+.poll-opt.mine{box-shadow:inset 3px 0 0 var(--red)}
+.poll-opt.mine .po-t{color:var(--red)}
+.poll-opt.mine .po-bar i{background:#F6DAD5}
+.poll-opt:hover .po-bar i{background:var(--rule)}
+.poll-note{margin:12px 0 0;font-size:11px;color:var(--gray-mid);line-height:1.5}
+.poll-status{font-weight:800;color:var(--ink)}
+
+/* ── side links ── */
+.op-link{display:block;padding:10px 0;border-bottom:1px solid var(--rule)}
+.op-link b{display:block;font-size:13.5px;font-weight:800}
+.op-link span{display:block;font-size:11.5px;color:var(--gray-mid);margin-top:2px}
+.op-link:hover b{color:var(--red)}
+
+@media (max-width:760px){
+  .poll-opts{grid-template-columns:1fr}
+  .poll-opt{border-right:0}
+  .mu-side .mu-pct{font-size:17px}
+  .od-row{grid-template-columns:20px 20px 1fr 46px}
+}
+
+/* The filled part of the bar is always the favourite's share, and it grows out
+   of the favourite's side of the card so red never sits next to the underdog. */
+.mu-bar.down{display:flex;justify-content:flex-end}
+.mu-bar.even i{background:var(--gray-faint)}

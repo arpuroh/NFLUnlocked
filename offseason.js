@@ -243,6 +243,8 @@
     // Live season? Leave the normal pages alone.
     const played = (league.matchups || []).filter((m) => m.status === "postevent");
     if (played.length) return;
+    // Once the draft is in, opener.js owns This Week. This file keeps Rankings.
+    if (page === "home" && draft && draft.status === "complete") return;
 
     const done = (db.seasons || []).filter((s) => !s.in_progress && s.champion);
     const latest = done[done.length - 1];
