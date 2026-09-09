@@ -397,6 +397,12 @@
       wire(d);
       const chip = $(".masthead .badge-live");
       if (chip) { chip.textContent = `Week ${sched.week}`; chip.style.background = "var(--red)"; }
+      // The page is painted by JS, so the browser has already given up on any
+      // #hash by now. Shared links like /#poll have to be honoured by hand, once.
+      if (!paint.jumped && location.hash.length > 1) {
+        const target = document.getElementById(location.hash.slice(1));
+        if (target) { paint.jumped = true; target.scrollIntoView({ block: "start" }); }
+      }
       return true;
     };
     setTimeout(paint, 60); setTimeout(paint, 400); setTimeout(paint, 1200);
