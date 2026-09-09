@@ -7,50 +7,64 @@
 .op-hero .btn-ghost:hover{border-color:var(--red);color:var(--red-bright)}
 .op-hero .board-row .bm{font-variant-numeric:tabular-nums;font-weight:800;color:var(--paper)}
 
-/* ── this week's matchups ── */
-.op-mus{display:grid;gap:14px}
-.mu{border:2px solid var(--ink);background:var(--white);padding:14px 16px 12px;
-  display:grid;grid-template-columns:1fr;gap:8px}
-.mu-side{display:grid;grid-template-columns:22px 1fr auto;gap:10px;align-items:center}
-.mu-side .mu-name{font-size:15px;font-weight:800;line-height:1.15;min-width:0;overflow-wrap:anywhere}
-.mu-side .mu-name em{display:block;font-style:normal;font-size:11px;font-weight:700;
-  color:var(--gray-mid);margin-top:2px;letter-spacing:.02em}
-.mu-side .mu-pct{font-size:19px;font-weight:900;font-stretch:80%;font-variant-numeric:tabular-nums;
-  color:var(--gray-mid)}
-.mu-side.fav .mu-pct{color:var(--red)}
-.mu-side.fav .mu-name{color:var(--ink)}
-.mu-bar{height:12px;background:var(--fill);border:1px solid var(--rule);display:block;margin:2px 0}
+/* ── this week's matchups ──
+   Head to head: the two teams sit on opposite sides of the card with one split
+   bar between them. `direction:rtl` on the away side mirrors the same three
+   tracks, so the template is written once and never overridden per side. */
+.op-mus{display:grid;gap:8px}
+.mu{border:2px solid var(--ink);background:var(--white);padding:9px 12px 8px;
+  display:grid;grid-template-columns:1fr 26px 1fr;align-items:center;column-gap:6px;row-gap:5px}
+.mu-t{display:grid;grid-template-columns:20px minmax(0,1fr) auto;gap:7px;align-items:center;min-width:0}
+.mu-t.away{direction:rtl}
+.mu-t.away>*{direction:ltr}
+.mu-t.away .mu-id{text-align:right}
+.mu-id{min-width:0}
+.mu-id b{display:block;font-size:13.5px;font-weight:800;line-height:1.15;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mu-id em{display:block;font-style:normal;font-size:10.5px;font-weight:700;
+  color:var(--gray-mid);letter-spacing:.02em;margin-top:1px;white-space:nowrap}
+.mu-pct{font-size:17px;font-weight:900;font-stretch:80%;font-variant-numeric:tabular-nums;
+  color:var(--gray-mid);line-height:1}
+.mu-t.fav .mu-pct{color:var(--red)}
+.mu-vs{font-size:9.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--gray-faint);text-align:center}
+.mu-bar{grid-column:1 / -1;height:8px;background:var(--fill);border:1px solid var(--rule);display:block}
 .mu-bar i{display:block;height:100%;background:var(--red)}
-.mu-foot{font-size:11.5px;color:var(--gray-mid);line-height:1.45;border-top:1px solid var(--rule);
-  padding-top:8px;margin-top:2px}
+/* the filled share always belongs to the favourite and grows from their side */
+.mu-bar.right{display:flex;justify-content:flex-end}
+.mu-bar.even i{background:var(--gray-faint)}
+.mu-foot{grid-column:1 / -1;font-size:11px;color:var(--gray-mid);line-height:1.4}
 
 /* ── season preview ── */
-.op-story{border-left:3px solid var(--red);padding:2px 0 2px 14px;margin:0 0 20px}
-.op-story h3{margin:0 0 6px;font-size:17px;font-weight:900;font-stretch:82%;
+.op-story{border-left:3px solid var(--red);padding:1px 0 1px 13px;margin:0 0 15px}
+.op-story h3{margin:0 0 5px;font-size:17px;font-weight:900;font-stretch:82%;
   text-transform:uppercase;letter-spacing:-.01em;line-height:1.05}
 .op-story p{margin:0;font-size:14px;line-height:1.55;color:var(--ink-2)}
 
-/* ── playoff odds ── */
+/* ── playoff odds ──
+   The bar sits behind the row rather than in its own column, so fourteen team
+   names get the full width instead of being truncated to make room for it. */
 .od-list{border-top:1px solid var(--rule)}
-.od-row{display:grid;grid-template-columns:22px 22px 1fr 52px;gap:8px 9px;align-items:center;
-  padding:9px 0;border-bottom:1px solid var(--rule)}
-.od-n{font-size:13px;font-weight:800;color:var(--gray-soft);font-variant-numeric:tabular-nums;text-align:right}
+.od-row{position:relative;display:grid;grid-template-columns:16px 18px minmax(0,1fr) 32px 38px;
+  gap:7px;align-items:center;padding:6px 0;border-bottom:1px solid var(--rule)}
+.od-row>*{position:relative;z-index:1}
+.od-bar{position:absolute;left:0;top:1px;bottom:1px;z-index:0;background:var(--fill);display:block}
+.od-row:nth-child(-n+6) .od-bar{background:#F6DAD5}
+.od-n{font-size:11px;font-weight:800;color:var(--gray-soft);font-variant-numeric:tabular-nums;text-align:right}
 .od-t{font-size:12.5px;font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.od-bar{grid-column:3;height:10px;background:var(--fill);display:block}
-.od-bar i{display:block;height:100%;background:var(--ink)}
-.od-v{grid-row:1 / span 2;grid-column:4;text-align:right;font-weight:900;font-size:15px;
-  font-variant-numeric:tabular-nums}
-.od-s{grid-column:2 / 4;font-size:10.5px;color:var(--gray-mid);margin-top:-3px}
-.od-row:nth-child(-n+6) .od-bar i{background:var(--red)}
-#resim{margin-top:12px}
+.od-w{font-size:10.5px;color:var(--gray-mid);text-align:right;font-variant-numeric:tabular-nums}
+.od-v{text-align:right;font-weight:900;font-size:13px;font-variant-numeric:tabular-nums}
+.od-row:nth-child(-n+6) .od-v{color:var(--red)}
+/* the playoff line itself */
+.od-row.cut{border-top:2px solid var(--ink);margin-top:2px;padding-top:8px}
 
 /* ── the poll ── */
-.poll{border:2px solid var(--ink);background:var(--white);padding:16px 18px 14px;margin-bottom:18px}
-.poll-q{margin:0 0 12px;font-size:19px;font-weight:900;font-stretch:80%;text-transform:uppercase;
+.poll{border:2px solid var(--ink);background:var(--white);padding:14px 16px 12px;margin-bottom:14px}
+.poll-q{margin:0 0 10px;font-size:19px;font-weight:900;font-stretch:80%;text-transform:uppercase;
   letter-spacing:-.01em;line-height:1}
 .poll-opts{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--rule)}
-.poll-opt{display:grid;grid-template-columns:22px 1fr auto;gap:9px;align-items:center;
-  padding:9px 10px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);
+.poll-opt{display:grid;grid-template-columns:20px 1fr auto;gap:8px;align-items:center;
+  padding:6px 9px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);
   background:none;border-top:0;border-left:0;font:inherit;text-align:left;cursor:pointer;
   position:relative;min-width:0}
 .poll-opt:nth-child(2n){border-right:0}
@@ -66,11 +80,25 @@
 .poll-opt.mine .po-t{color:var(--red)}
 .poll-opt.mine .po-bar i{background:#F6DAD5}
 .poll-opt:hover .po-bar i{background:var(--rule)}
-.poll-note{margin:12px 0 0;font-size:11px;color:var(--gray-mid);line-height:1.5}
+.poll-who{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center;
+  margin-top:12px;padding-top:11px;border-top:1px solid var(--rule)}
+.poll-who span{font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--gray-mid)}
+.poll-name{border:2px solid var(--rule);background:var(--paper);padding:7px 9px;
+  font:inherit;font-size:16px;font-weight:700;color:var(--ink);width:100%;min-width:0}
+.poll-name::placeholder{color:var(--gray-faint);font-weight:600}
+.poll-name:focus{outline:0;border-color:var(--red);background:var(--white)}
+.poll-roll{margin-top:9px;font-size:11px;line-height:1.7;color:var(--gray-mid)}
+.poll-roll b{font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--gray-mid);margin-right:6px}
+.pr-1{display:inline-block;border:1px solid var(--rule);padding:1px 6px;margin:0 4px 4px 0;
+  white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis;vertical-align:bottom}
+.pr-1 i{font-style:normal;font-weight:800;color:var(--ink)}
+.poll-note{margin:10px 0 0;font-size:11px;color:var(--gray-mid);line-height:1.5}
 .poll-status{font-weight:800;color:var(--ink)}
 
 /* ── side links ── */
-.op-link{display:block;padding:10px 0;border-bottom:1px solid var(--rule)}
+.op-link{display:block;padding:8px 0;border-bottom:1px solid var(--rule)}
 .op-link b{display:block;font-size:13.5px;font-weight:800}
 .op-link span{display:block;font-size:11.5px;color:var(--gray-mid);margin-top:2px}
 .op-link:hover b{color:var(--red)}
@@ -78,11 +106,18 @@
 @media (max-width:760px){
   .poll-opts{grid-template-columns:1fr}
   .poll-opt{border-right:0}
-  .mu-side .mu-pct{font-size:17px}
-  .od-row{grid-template-columns:20px 20px 1fr 46px}
-}
+  .poll-who{grid-template-columns:1fr;gap:6px}
+  .od-row{grid-template-columns:14px 16px minmax(0,1fr) 30px 34px;gap:6px}
 
-/* The filled part of the bar is always the favourite's share, and it grows out
-   of the favourite's side of the card so red never sits next to the underdog. */
-.mu-bar.down{display:flex;justify-content:flex-end}
-.mu-bar.even i{background:var(--gray-faint)}
+  /* Side by side does not survive 390px with names like "Miley LEO 5K Speedo
+     Fan Club", so the two teams stack instead — still mirrored, still with the
+     bar between them, so it reads as one team against the other. */
+  .mu{grid-template-columns:1fr;row-gap:6px;padding:9px 11px 8px}
+  .mu-vs{display:none}
+  .mu-t{order:1}
+  .mu-bar{order:2;grid-column:1}
+  .mu-t.away{order:3}
+  .mu-foot{order:4;grid-column:1}
+  .mu-id b{font-size:13px}
+  .mu-pct{font-size:16px}
+}

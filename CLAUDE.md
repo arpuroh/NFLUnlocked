@@ -83,12 +83,18 @@ adding a poll to `data/season.json` also needs that constraint widened.
 1. **`update.yml` never generates roasts.** It runs `fetch_yahoo.py` only;
    `generate_roasts.py` has its own `main()` and is never invoked, so the marquee headline
    freezes while scores keep moving. Needs a second step plus an `ANTHROPIC_API_KEY` secret.
-2. **Yahoo OAuth is failing silently.** `main()` falls back to `scrape_league()` when the
-   token refresh fails, and the scrape path hardcodes `"week": 0` on every matchup. That
-   makes recent-form rankings meaningless and makes the roast generator fire exactly once,
-   ever. `data/league.json` showing `league_key: "scrape.l.675504"` is the tell.
-   Consider gating the fallback behind an explicit `ALLOW_SCRAPE=1` so a broken refresh
-   turns the build red instead of green.
+2. **There is no Yahoo API access, and there is not going to be.** Yahoo declined the
+   Fantasy Sports API permission on the developer app, so `fetch_yahoo.py`'s OAuth path
+   refreshes its token fine and then 403s every Fantasy call ("This application is not
+   authorized to perform this action"). Scraping the public pages is the only route in.
+   Do not spend time re-auth'ing, rotating keys, or re-reading the OAuth docs — the
+   answer is no. Practical consequences to design around:
+   - `scrape_league()` hardcodes `"week": 0` on every matchup, so recent-form rankings
+     are meaningless and the roast generator fires once, ever.
+   - `data/league.json` showing `league_key: "scrape.l.675504"` is the tell that the
+     scrape path produced it, which is now the normal state, not a failure.
+   - Only the **current** week is visible to a logged-out visitor. Anything needing a
+     full schedule has to model it (see the season opener) or wait for the week to arrive.
 
 ## Power rankings: projected points, not dollars
 

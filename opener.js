@@ -164,33 +164,41 @@
     // If both sides round to the same number, nobody gets the red treatment.
     const flip = Math.round(pa * 100) === Math.round((1 - pa) * 100);
     const gr = (t) => (grades && grades.grades && grades.grades[t] ? grades.grades[t].grade : "");
-    const side = (t, p, win, home) => `
-      <div class="mu-side${home ? "" : " away"}${win ? " fav" : ""}">
+    // Opponents face each other: home on the left, away mirrored on the right,
+    // with one split bar between them read left to right like a tug of war.
+    const side = (t, p, win, away) => `
+      <div class="mu-t${away ? " away" : ""}${win ? " fav" : ""}">
         ${logoOf(draft, t.team)}
-        <div class="mu-name">${esc(t.team)}<em>${esc(gr(t.team))} · ${t.weekly.toFixed(1)} proj</em></div>
+        <div class="mu-id">
+          <b>${esc(t.team)}</b>
+          <em>${esc(gr(t.team))} \u00b7 ${t.weekly.toFixed(1)}</em>
+        </div>
         <div class="mu-pct">${pct(p)}</div>
       </div>`;
     return `<article class="mu">
-      ${side(a, pa, !flip && favA, true)}
-      <div class="mu-bar${flip ? " even" : favA ? "" : " down"}"><i style="width:${
+      ${side(a, pa, !flip && favA, false)}
+      <div class="mu-vs">vs</div>
+      ${side(b, 1 - pa, !flip && !favA, true)}
+      <div class="mu-bar${flip ? " even" : favA ? "" : " right"}"><i style="width:${
         Math.round((flip ? 0.5 : favA ? pa : 1 - pa) * 100)}%"></i></div>
-      ${side(b, 1 - pa, !flip && !favA, false)}
       <div class="mu-foot">${muFoot(favA ? a : b, favA ? b : a, Math.abs(diff))}</div>
     </article>`;
   }
 
   function oddsRows(rows, draft) {
-    return rows.map((r, i) => `<div class="od-row">
+    return rows.map((r, i) => `<div class="od-row${i === PLAYOFF_SPOTS ? " cut" : ""}">
+      <span class="od-bar" style="width:${Math.max(2, Math.round(r.playoffs * 100))}%"></span>
       <span class="od-n">${i + 1}</span>
       ${logoOf(draft, r.team)}
       <span class="od-t">${esc(r.team)}</span>
-      <span class="od-bar"><i style="width:${Math.max(1, Math.round(r.playoffs * 100))}%"></i></span>
+      <span class="od-w num">${r.wins.toFixed(1)}w</span>
       <span class="od-v num">${pct(r.playoffs)}</span>
-      <span class="od-s">${r.wins.toFixed(1)} wins · ${pct(r.top)} for the one seed · ${pct(r.sacco)} Sacco</span>
     </div>`).join("");
   }
 
   function pollBlock(poll, teams, draft) {
+    let name = "";
+    try { name = localStorage.getItem("nflu_name") || ""; } catch (e) { /* private mode */ }
     return `<div class="poll" data-poll="${esc(poll.id)}">
       <h3 class="poll-q">${esc(poll.question)}</h3>
       <div class="poll-opts">
@@ -201,21 +209,35 @@
           <span class="po-v"></span>
         </button>`).join("")}
       </div>
+      <label class="poll-who">
+        <span>Sign it</span>
+        <input class="poll-name" type="text" maxlength="40" autocomplete="nickname"
+               placeholder="your name, so the league knows who to blame" value="${esc(name)}">
+      </label>
       <p class="poll-note">${esc(poll.note)} <span class="poll-status"></span></p>
+      <div class="poll-roll"></div>
     </div>`;
   }
 
+  // Two reads: the aggregate the bars need, and the roll of who picked what.
+  // Both are views; the raw ballot table is not readable by anybody.
   async function loadPoll(id, root) {
-    const res = await fetch(`${SUPA}/poll_results?select=choice,votes&poll_id=eq.${encodeURIComponent(id)}`,
-      { headers: { apikey: SUPA_KEY }, cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
-    if (!res) { paintPoll(root, null); return; }
+    const get = (path) => fetch(`${SUPA}/${path}`, { headers: { apikey: SUPA_KEY }, cache: "no-store" })
+      .then((r) => (r.ok ? r.json() : null)).catch(() => null);
+    const q = encodeURIComponent(id);
+    const [res, ballots] = await Promise.all([
+      get(`poll_results?select=choice,votes&poll_id=eq.${q}`),
+      get(`poll_ballots?select=name,choice&poll_id=eq.${q}&limit=60`),
+    ]);
+    if (!res) { paintPoll(root, null, null); return; }
     const tally = {};
     res.forEach((r) => { tally[r.choice] = r.votes; });
-    paintPoll(root, tally);
+    paintPoll(root, tally, ballots || []);
   }
 
-  function paintPoll(root, tally) {
+  function paintPoll(root, tally, ballots) {
     const status = $(".poll-status", root);
+    const roll = $(".poll-roll", root);
     if (!tally) {
       if (status) status.textContent = "Results are offline at the moment. Your vote still counts.";
       return;
@@ -223,33 +245,42 @@
     const total = Object.values(tally).reduce((a, b) => a + b, 0);
     const max = Math.max(1, ...Object.values(tally));
     let mine = "";
-    try { mine = localStorage.getItem("nflu_vote_" + root.dataset.poll) || ""; } catch {}
+    try { mine = localStorage.getItem("nflu_vote_" + root.dataset.poll) || ""; } catch (e) { /* private mode */ }
     $$(".poll-opt", root).forEach((b) => {
       const v = tally[b.dataset.choice] || 0;
       b.classList.toggle("mine", b.dataset.choice === mine);
       b.classList.toggle("has", v > 0);
       $(".po-bar i", b).style.width = Math.round((v / max) * 100) + "%";
-      $(".po-v", b).textContent = total ? (v ? Math.round((v / total) * 100) + "%" : "") : "";
+      $(".po-v", b).textContent = v ? `${v} \u00b7 ${Math.round((v / total) * 100)}%` : "";
     });
     if (status) {
       status.textContent = total
-        ? `${total} vote${total === 1 ? "" : "s"} so far.`
+        ? `${total} vote${total === 1 ? "" : "s"} in.`
         : "Nobody has voted yet. Go first.";
+    }
+    if (roll) {
+      roll.innerHTML = (ballots && ballots.length)
+        ? `<b>Who voted</b> ${ballots.map((v) =>
+            `<span class="pr-1"><i>${esc(v.name)}</i> ${esc(v.choice)}</span>`).join("")}`
+        : "";
     }
   }
 
   async function castVote(id, choice, root) {
     const status = $(".poll-status", root);
+    const field = $(".poll-name", root);
+    const name = (field && field.value.trim().slice(0, 40)) || null;
+    if (name) { try { localStorage.setItem("nflu_name", name); } catch (e) { /* private mode */ } }
     try {
       const r = await fetch(`${SUPA}/poll_votes`, {
         method: "POST",
         headers: { apikey: SUPA_KEY, "Content-Type": "application/json", Prefer: "return=minimal" },
-        body: JSON.stringify({ poll_id: id, choice, voter: voterId() }),
+        body: JSON.stringify({ poll_id: id, choice, voter: voterId(), display_name: name }),
       });
       if (!r.ok) throw new Error(String(r.status));
-      try { localStorage.setItem("nflu_vote_" + id, choice); } catch {}
+      try { localStorage.setItem("nflu_vote_" + id, choice); } catch (e) { /* private mode */ }
       await loadPoll(id, root);
-    } catch {
+    } catch (e) {
       if (status) status.textContent = "That vote did not go through. Try again in a second.";
     }
   }
@@ -323,7 +354,7 @@
             <h3>${esc(p.title)}</h3><p>${esc(p.body)}</p></div>`).join("")}
 
           <div class="sec-top" style="margin-top:32px" id="poll"><h2 class="h-sec">The League Votes</h2>
-            <span class="note">Live, shared, one vote per device</span></div>
+            <span class="note">Live and shared \u00b7 sign it or vote anonymously</span></div>
           <hr class="rule-h">
           ${(season.polls || []).map((p) => pollBlock(p, teamsAZ, draft)).join("")}
         </div>
@@ -331,13 +362,11 @@
         <div class="col-side">
           <div class="mod" id="odds">
             <h2 class="h-sec">Playoff Odds</h2><hr class="rule-h">
-            <p class="vote-foot" style="margin:0 0 12px">${SIMS.toLocaleString()} simulated seasons. Everybody scores
-              around their projection each week, top six make the playoffs, bottom three go to the Sacco Bowl.</p>
+            <p class="vote-foot" style="margin:0 0 10px">${SIMS.toLocaleString()} simulated seasons. Top six make the
+              playoffs, bottom three go to the Sacco. The second number is expected wins.</p>
             <div class="od-list">${oddsRows(odds, draft)}</div>
-            <button class="dr-toggle" id="resim" type="button">Run it again ↻</button>
-            <p class="vote-foot" style="margin-top:10px">Yahoo only publishes the current week's pairings to anybody
-              not signed in, so weeks 2 to 14 are drawn as a balanced random schedule. Over fourteen weeks that lands
-              very close to a real one. Ties break on points, same as the league.</p>
+            <p class="vote-foot" style="margin-top:10px">Yahoo shows a logged-out visitor only the current week, so
+              weeks 2 to 14 are drawn as a balanced random schedule. Ties break on points, same as the league.</p>
           </div>
 
           <div class="mod">
@@ -353,19 +382,6 @@
   }
 
   function wire(d) {
-    const btn = $("#resim");
-    if (btn) {
-      btn.addEventListener("click", () => {
-        btn.disabled = true;
-        btn.textContent = "Simulating…";
-        setTimeout(() => {
-          const rows = simulate(d.proj.teams);
-          $(".od-list").innerHTML = oddsRows(rows, d.draft);
-          btn.disabled = false;
-          btn.textContent = "Run it again ↻";
-        }, 30);
-      });
-    }
     $$(".poll").forEach((root) => {
       const id = root.dataset.poll;
       loadPoll(id, root);
@@ -373,6 +389,16 @@
         const b = ev.target.closest(".poll-opt");
         if (b) castVote(id, b.dataset.choice, root);
       });
+      // One name for the whole page: type it on either poll and both carry it,
+      // so nobody signs the first vote and forgets the second.
+      const field = $(".poll-name", root);
+      if (field) {
+        field.addEventListener("input", () => {
+          const v = field.value;
+          try { localStorage.setItem("nflu_name", v.trim().slice(0, 40)); } catch (e) { /* private mode */ }
+          $$(".poll-name").forEach((other) => { if (other !== field) other.value = v; });
+        });
+      }
     });
   }
 
