@@ -1,0 +1,67 @@
+{
+ "league_id": "675504",
+ "week": 1,
+ "fetched_at": "2026-09-09T11:07:55.296575+00:00",
+ "source": "https://football.fantasysports.yahoo.com/f1/675504",
+ "note": "Yahoo only exposes the current week to logged-out visitors.",
+ "teams": {
+  "1": "Hail Mary",
+  "5": "The Asshouse Always Wins",
+  "2": "A dad",
+  "8": "Mac Daddy",
+  "3": "Good Will Hunting",
+  "7": "FreeGucci",
+  "4": "Kim Jong Nate",
+  "11": "Miley 💨LEO 5K Speedo Fan Club",
+  "6": "Bend The Knee 🐲🔥",
+  "12": "ShakeNBake",
+  "9": "Poop Squad 💩",
+  "14": "The Injured Reserved",
+  "10": "Leo the Cleo",
+  "13": "Fwamming Gwaggon"
+ },
+ "matchups": [
+  {
+   "home_id": "1",
+   "away_id": "5",
+   "home": "Hail Mary",
+   "away": "The Asshouse Always Wins"
+  },
+  {
+   "home_id": "2",
+   "away_id": "8",
+   "home": "A dad",
+   "away": "Mac Daddy"
+  },
+  {
+   "home_id": "3",
+   "away_id": "7",
+   "home": "Good Will Hunting",
+   "away": "FreeGucci"
+  },
+  {
+   "home_id": "4",
+   "away_id": "11",
+   "home": "Kim Jong Nate",
+   "away": "Miley 💨LEO 5K Speedo Fan Club"
+  },
+  {
+   "home_id": "6",
+   "away_id": "12",
+   "home": "Bend The Knee 🐲🔥",
+   "away": "ShakeNBake"
+  },
+  {
+   "home_id": "9",
+   "away_id": "14",
+   "home": "Poop Squad 💩",
+   "away": "The Injured Reserved"
+  },
+  {
+   "home_id": "10",
+   "away_id": "13",
+   "home": "Leo the Cleo",
+   "away": "Fwamming Gwaggon"
+  }
+ ]
+}

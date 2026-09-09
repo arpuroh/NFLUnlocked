@@ -1,0 +1,39 @@
+{
+ "season": 2026,
+ "week": 1,
+ "kickoff": "2026-09-13T17:00:00Z",
+ "kickoff_label": "Sunday 1:00pm ET",
+ "headline": "Fourteen Men, One Ring, Zero Excuses Left",
+ "kicker": "(week one starts Sunday)",
+ "lede": "The auction is done, the receipts are printed and the arguing has nowhere left to go. Every roster below has a projected score, every Week 1 matchup has a number attached, and the whole league fits inside seven and a half points a week. Vote on who wins it, run the season yourself, then go set your lineup.",
+ "preview": [
+  {
+   "title": "Nobody repeats around here",
+   "body": "Andrew is trying to go back-to-back and this league has not allowed that since Jordan won four straight and left. Ten seasons, ten different defences of a title, ten failures. He is also the only man in the room who has already won doing exactly what he did again in September: buy nothing expensive, fill every hole, and let everyone else laugh. The projections have him third. This page had him last for about six hours and he will bring that up until December."
+  },
+  {
+   "title": "The new guys are the problem",
+   "body": "Two managers joined this league in March and both of them out-drafted almost everybody who has been here a decade. Jon walked out with the highest projected lineup in the league on his first attempt, mostly by buying Brian Thomas Jr. for ten dollars while eleven other people argued about running backs. Tom found the best individual defensive player in the draft for two dollars because he was the only person who read the scoring settings. That is going to keep being annoying."
+  },
+  {
+   "title": "Somebody paid seventy-three dollars",
+   "body": "Seventy-three dollars for Jahmyr Gibbs is the biggest auction price this site has on record, and it landed about ninety seconds after bidding opened. It went to a manager with six seasons, zero playoff appearances, a best finish of ninth and a toilet bowl on his resume. Gibbs is also the highest-projected running back on the board, which ruins the joke and only makes it more interesting: Leo the Cleo now owns the second-best projected roster in the league. Something has to give."
+  },
+  {
+   "title": "It is closer than anybody wants",
+   "body": "First to fourteenth is seven and a half points a week. That is one bad kicker week, one wrong flex, one Tuesday waiver claim. Six of fourteen make the playoffs and the bottom three go to the Sacco Bowl, so half this league is going to spend December pretending they meant to do that. The projections are opinions with arithmetic behind them and zero games have been played."
+  }
+ ],
+ "polls": [
+  {
+   "id": "champ2026",
+   "question": "Who is winning the whole thing?",
+   "note": "One vote per device. Change your mind as often as you like, the last one counts."
+  },
+  {
+   "id": "sacco2026",
+   "question": "Who is taking the Sacco?",
+   "note": "Be honest. It is anonymous and the tally is public."
+  }
+ ]
+}
