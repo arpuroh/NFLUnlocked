@@ -55,10 +55,16 @@
 
   async function run() {
     if (document.body.dataset.page !== "draft") return;
-    const [draft, grades, prev, ledger] = await Promise.all([
+    const [draft, grades, prev, ledger, proj] = await Promise.all([
       getJSON("data/draft.json"), getJSON("data/draft_grades.json"),
       getJSON("data/draft_2025.json"), getJSON("data/ledger.json"),
+      getJSON("data/projections.json"),
     ]);
+    if (proj && draft) {
+      const byTeam = Object.fromEntries((proj.teams || []).map((t) => [t.team, t]));
+      (draft.teams || []).forEach((t) => { t.proj = byTeam[t.team] || null; });
+      draft.projections = proj;
+    }
     const paint = () => {
       const app = $("#app");
       if (!app) return false;
@@ -207,16 +213,14 @@
        refresh in a bit.`;
 
     /* capital bar: what actually starts vs what sits on the bench */
-    const avgScore = L.avg_lineup_score || 0;
+    const P = draft.projections || {};
+    const avgWeek = P.avg_weekly || 0;
     const capitalBar = (t) => `<div class="cap">
-      <div class="cap-score">
-        <span class="cs-n${t.lineup_score >= avgScore ? " up" : " dn"}">${t.lineup_score}</span>
-        <span class="cs-l">Starting lineup value<em>league average ${avgScore}${
-          (t.weak_starters || []).length
-            ? " \u00B7 " + t.weak_starters.length + " starting spot" + (t.weak_starters.length > 1 ? "s" : "")
-              + " filled at replacement price (" + t.weak_starters.map(esc).join(", ") + ")"
-            : " \u00B7 no replacement-level starters"}</em></span>
-      </div>
+      ${t.proj ? `<div class="cap-score">
+        <span class="cs-n${t.proj.weekly >= avgWeek ? " up" : " dn"}">${(Math.round(t.proj.weekly * 10) / 10).toFixed(1)}</span>
+        <span class="cs-l">Projected points per week<em>${ord(t.proj.rank)} of ${(P.teams || []).length} &middot; league average ${avgWeek}
+          &middot; ${(Math.round(t.proj.lineup_ppg * 10) / 10).toFixed(1)} when everybody plays, less ${(Math.round(t.proj.depth_cost * 10) / 10).toFixed(1)} for byes and injuries</em></span>
+      </div>` : ""}
       <div class="cap-bar">
         <i class="st" style="width:${Math.round(t.starter_capital / BUDGET * 100)}%"></i>
         <i class="bn" style="width:${Math.round(t.bench_spend / BUDGET * 100)}%"></i>
@@ -358,9 +362,10 @@
           <div class="sec-top"><h2 class="h-sec">${grades ? "The Grades" : "Every Roster"}</h2>
             <span class="note">${grades ? "Ordered by preseason rank, best first" : "Ordered by starting-lineup capital"}</span></div>
           <hr class="rule-h">
-          <p class="os-note" style="margin-bottom:6px">Graded on the part that scores: quarterback, running back, receiver and tight end.
-            Kickers and defenses are a Tuesday waiver claim and are not held against anybody. What is held against you is money
-            that never made it into a starting lineup. Grades are final, unfair, and get reprinted in December next to your actual record.</p>
+          <p class="os-note" style="margin-bottom:6px">Every roster below carries its projected points per week, worked out under
+            this league's own scoring rules and using the lineup each manager would actually field. Nobody is punished for a slot
+            they can fill off the waiver wire. Grades weigh that number against what was paid for it. They are final, unfair, and
+            get reprinted in December next to your actual record.</p>
           ${ordered.map(card).join("")}
         </div>
 
@@ -369,17 +374,20 @@
             <h2 class="h-sec">Preseason Power Rankings</h2><hr class="rule-h">
             ${grades.rankings.map((r) => `<div class="dr-rank">
               <span class="n">${r.rank}</span>
-              <span class="t"><b>${esc(r.team)}</b><small>${esc(mgr(r.team, grades))}${G && G[r.team] ? " · " + esc(G[r.team].grade) : ""}</small>
+              <span class="t"><b>${esc(r.team)}</b><small>${esc(mgr(r.team, grades))}${G && G[r.team] ? " · " + esc(G[r.team].grade) : ""}${
+                (teams.find((x) => x.team === r.team) || {}).proj
+                  ? " · " + (Math.round(teams.find((x) => x.team === r.team).proj.weekly * 10) / 10).toFixed(1) + " pts/wk" : ""}</small>
                 ${r.blurb ? `<span class="bl">${esc(r.blurb)}</span>` : ""}</span>
             </div>`).join("")}
-            <p class="vote-foot" style="margin-top:12px"><b>How this is ranked:</b> only eight slots turn money into points,
-            so only those eight are counted: QB, two RB, two WR, TE and two flexes. Kickers, defenses and the IDP cost a dollar
-            and are ignored. An auction price is the whole room's estimate of a player's value over a freely available
-            replacement, which is why prices add up the way points do. The one place price lies is at the bottom, so the first
-            $4 of every player is stripped out: a $3 starter is not worth three dollars of production, he is worth nothing,
-            because anybody can claim a $3 player on Tuesday. Bench players count at thirty percent, because byes and injuries
-            hand them about a fifth of the season. Zero games have been played. These are still opinions, they just have
-            arithmetic behind them.</p>
+            <p class="vote-foot" style="margin-top:12px"><b>How this is ranked:</b> by projected points, the same way real power
+            rankings work. Every drafted player is run through this league's actual scoring rules, which are not standard
+            anywhere else: half PPR, four points for a passing touchdown, kickers paid a point per ten yards of made field
+            goals, and an IDP slot paid on tackles. Each roster then fields its best legal lineup and we add up what it
+            should score in a normal week. Two things stop that from being naive. Nobody is punished for a slot they can
+            fill off the wire, so every position is worth at least the best free agent available. And starters miss weeks,
+            for byes and for hamstrings, at rates that differ by position, so a real bench earns back the points a row of
+            dollar bills does not. Projections are one source and one source is always wrong somewhere. Zero games have
+            been played.</p>
           </div>` : `<div class="mod" id="rankings"><h2 class="h-sec">Preseason Power Rankings</h2><hr class="rule-h">
             <p class="empty">Being written. Refresh shortly.</p></div>`}
 
