@@ -3,11 +3,13 @@
  "league_id": "675504",
  "status": "complete",
  "budget": 200,
- "fetched_at": "2026-09-09T03:10:17.606620+00:00",
+ "fetched_at": "2026-09-09T10:36:15.711527+00:00",
  "source": "https://football.fantasysports.yahoo.com/f1/675504/draftresults",
  "teams": [
   {
    "team": "Leo the Cleo",
+   "team_id": "10",
+   "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/614cb36d46f9edc5aca35aaa803a8fa30dceed9bd1f10524d266052c83b8a924.jpg",
    "picks": [
     {
      "pick": 1,
@@ -268,6 +270,8 @@
   },
   {
    "team": "Fwamming Gwaggon",
+   "team_id": "13",
+   "logo": "https://s.yimg.com/ep/cx/blendr/v2/image-dragon-png_1721173946530.png",
    "picks": [
     {
      "pick": 2,
@@ -522,6 +526,8 @@
   },
   {
    "team": "The Injured Reserved",
+   "team_id": "14",
+   "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/6933584f04d1bde8d8c31369be63df7ade2c4c97999ba5fe2a6514d38ae42bb2.jpg",
    "picks": [
     {
      "pick": 32,
@@ -778,6 +784,8 @@
   },
   {
    "team": "Mac Daddy",
+   "team_id": "8",
+   "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/87caae3ea27e5764afe50efbc5b1e3bc060b3f15b9cc206accd95983a6271104.jpg",
    "picks": [
     {
      "pick": 12,
@@ -1032,6 +1040,8 @@
   },
   {
    "team": "A dad",
+   "team_id": "2",
+   "logo": "https://s.yimg.com/cv/apiv2/default/nfl/nfl_8_b.png",
    "picks": [
     {
      "pick": 15,
@@ -1289,6 +1299,8 @@
   },
   {
    "team": "The Asshouse Always Wins",
+   "team_id": "5",
+   "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/ff5082a8eca1faeba4a80d02bde690352bb8b967f9d08c2bef72b32ca2505e88.png",
    "picks": [
     {
      "pick": 11,
@@ -1547,6 +1559,8 @@
   },
   {
    "team": "Bend The Knee 🐲🔥",
+   "team_id": "6",
+   "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/9c8ddac63f5831a2c6bc9f69d07b6f17d1d82f639ec642752f29c2b6aa21cd9e.jpg",
    "picks": [
     {
      "pick": 17,
@@ -1801,6 +1815,8 @@
   },
   {
    "team": "Kim Jong Nate",
+   "team_id": "4",
+   "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/35938214603_546a9a.jpg",
    "picks": [
     {
      "pick": 26,
@@ -2056,6 +2072,8 @@
   },
   {
    "team": "Hail Mary",
+   "team_id": "1",
+   "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/25205944781_f55b83a6fa.jpg",
    "picks": [
     {
      "pick": 73,
@@ -2309,6 +2327,8 @@
   },
   {
    "team": "Poop Squad 💩",
+   "team_id": "9",
+   "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/3c7a9f355615cd533612e483f2720a67c8dc1f0c4e05e52759ac1f4630edba6d.jpg",
    "picks": [
     {
      "pick": 6,
@@ -2563,6 +2583,8 @@
   },
   {
    "team": "Good Will Hunting",
+   "team_id": "3",
+   "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/294c101b0012ae2044dfb832be7a254d2ff520c34206ba46c2cb3c16d80b69da.jpg",
    "picks": [
     {
      "pick": 4,
@@ -2816,6 +2838,8 @@
   },
   {
    "team": "Miley 💨LEO 5K Speedo Fan Club",
+   "team_id": "11",
+   "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/db213c28a1c236ccc1d3f0f0ed6ce67143a732feb8045af35368e6b34a66858b.jpg",
    "picks": [
     {
      "pick": 52,
@@ -3069,6 +3093,8 @@
   },
   {
    "team": "ShakeNBake",
+   "team_id": "12",
+   "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/036413160a71a76b42890dd9196cf47fabbccda61f8f2394f8a7fb84ea186a0a.jpg",
    "picks": [
     {
      "pick": 25,
@@ -3321,6 +3347,8 @@
   },
   {
    "team": "FreeGucci",
+   "team_id": "7",
+   "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/3e2185d5692aabbcb23e288139db28c90871d64e1046faac8f407f3bdcef814f.jpg",
    "picks": [
     {
      "pick": 38,

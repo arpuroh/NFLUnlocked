@@ -3,7 +3,7 @@
  "written_at": "2026-09-09T10:21:01.810970+00:00",
  "headline": "Welcome Back. The Grades Are In.",
  "kicker": "(the projections disagree with all of you)",
- "lede": "Two hundred and twenty-four picks and $2,790 spent. Every roster here is ranked the way real power rankings are: each drafted player run through this league's own scoring, each team fielding its best lineup, and a number for what it should put up in a normal week. The league is separated by 7.3 points a week from first to last. The worst franchise in league history projects second, the defending champion everybody mocked projects third, and the best team in the room belongs to somebody who joined in March.",
+ "lede": "Two hundred and twenty-four picks and $2,790 spent. Every roster here is ranked the way real power rankings are: each drafted player run through this league's own scoring, each team fielding its best lineup, and a number for what it should put up in a normal week. The league is separated by 7.5 points a week from first to last. The worst franchise in league history projects second, the defending champion everybody mocked projects third, and the best team in the room belongs to somebody who joined in March.",
  "home_headline": "Football Is Back And So Are The Receipts",
  "home_kicker": "(draft grades are up)",
  "home_lede": "Fifteen seasons in, fourteen managers, two new faces and $2,790 set on fire in a single night. The rosters are locked, every dollar is audited, and Week 1 kicks off Sunday. Draft grades, the biggest steal of the night, and power rankings built on projected points for every lineup are one click away. Nobody is going to agree with any of it. Welcome back.",
@@ -11,7 +11,7 @@
   {
    "rank": 1,
    "team": "Fwamming Gwaggon",
-   "blurb": "105.9 a week, the most in the league, in his first draft. Bijan and A.J. Brown up top, and the two best discounts of the night underneath."
+   "blurb": "110 a week, the most in the league, in his first draft. Bijan and A.J. Brown up top, and the two best discounts of the night underneath."
   },
   {
    "rank": 2,
@@ -31,7 +31,7 @@
   {
    "rank": 5,
    "team": "Miley 💨LEO 5K Speedo Fan Club",
-   "blurb": "Every starter between 10.2 and 11.4 except the quarterback. The highest floor in the league and no ceiling to speak of."
+   "blurb": "Every starter between 11 and 11.4 except the quarterback. The highest floor in the league and no ceiling to speak of."
   },
   {
    "rank": 6,
@@ -66,24 +66,24 @@
   {
    "rank": 12,
    "team": "The Injured Reserved",
-   "blurb": "Josh Jacobs at $8 was the steal of the night and projects at 4.7 a week, which does not even make his lineup. Somebody is wrong and it is going to be fun finding out who."
+   "blurb": "Josh Jacobs at $8 was the steal of the night and projects at 4.8 a week, which does not even make his lineup. Somebody is wrong and it is going to be fun finding out who."
   },
   {
    "rank": 13,
    "team": "Kim Jong Nate",
-   "blurb": "The best receivers in the league and $34 of running back. Three of eight starting spots project under seven points."
+   "blurb": "The best receivers in the league and $34 of running back. Three of eight starting spots project at or under seven points."
   },
   {
    "rank": 14,
    "team": "Bend The Knee 🐲🔥",
-   "blurb": "Smith-Njigba and Cook cost $119 and project at 28. The other six spots cost $81 and it shows in every one of them."
+   "blurb": "Smith-Njigba and Cook cost $119 and project at 29. The other six spots cost $81 and it shows in every one of them."
   }
  ],
  "awards": [
   {
    "label": "Best Draft",
    "team": "Fwamming Gwaggon",
-   "note": "105.9 projected points a week, first in the league, first ever attempt. Eleven men who have been here since 2011 finished behind somebody who joined in March."
+   "note": "110 projected points a week, first in the league, first ever attempt. Eleven men who have been here since 2011 finished behind somebody who joined in March."
   },
   {
    "label": "The Number Nobody Expected",
@@ -103,12 +103,12 @@
   {
    "label": "The Quarterback Hoard",
    "team": "Hail Mary",
-   "note": "Three quarterbacks, $22, one starting slot. Dak Prescott projects 17.9 a week and will score none of them. Bo Nix cost three dollars and projects 17.4 as a starter."
+   "note": "Three quarterbacks, $22, one starting slot. Dak Prescott projects 18 a week and will score none of them. Bo Nix cost three dollars and projects 17.4 as a starter."
   },
   {
    "label": "Worst Bench",
    "team": "Mac Daddy",
-   "note": "Five bench players projecting under 4.3 a week. He loses 9.1 points every week to byes and injuries, the biggest drop in the league, off the fourth-best lineup."
+   "note": "Five bench players projecting under 4.4 a week. He loses 9.3 points every week to byes and injuries, the biggest drop in the league, off the fourth-best lineup."
   },
   {
    "label": "The Uncomfortable Steal",
@@ -127,7 +127,7 @@
    "grade": "A",
    "headline": "The new guy read the room",
    "body": [
-    "105.9 projected points a week, the most in the league, from a man in his first draft. Bijan Robinson at $69 is the second-highest projected player anybody owns, A.J. Brown at $45 sits behind him, and then the part nobody clapped for at the time: Brian Thomas Jr. for $10 after this room paid $50 for him last September, and Courtland Sutton for $5 after $27. Two of the four biggest discounts of the night, both his.",
+    "110 projected points a week, the most in the league, from a man in his first draft. Bijan Robinson at $69 is the second-highest projected player anybody owns, A.J. Brown at $45 sits behind him, and then the part nobody clapped for at the time: Brian Thomas Jr. for $10 after this room paid $50 for him last September, and Courtland Sutton for $5 after $27. Two of the four biggest discounts of the night, both his.",
     "The quarterback answer is the tell. Bo Nix at $3 projects at 17.4 a week, which is inside a point of what Leo paid $29 to get. In a league that hands out four points for a passing touchdown, that is the entire position solved for the price of a sandwich, and he then put the money he saved into actual football players.",
     "Colston Loveland at $22 is the only thing to argue about, a $3 tight end last year bought at three times what the position cleared at. He is projected to justify it. If he does not, this is still the best team in the league, which is a deeply annoying sentence for the eleven men who have been doing this since before he had an account."
    ],
@@ -139,9 +139,9 @@
    "grade": "A-",
    "headline": "The math has bad news for everybody",
    "body": [
-    "Sit down. The worst franchise in the history of this league, 33-78 across six seasons with zero playoff appearances, drafted the second-best projected roster in the room. 104.6 points a week. Josh Allen at $29 is the single highest-projected player in anybody's starting lineup at 21.3 a week, Jahmyr Gibbs at $73 is the top running back at 17.6, and Kyren Williams and Malik Nabers behind them are both genuinely good.",
+    "Sit down. The worst franchise in the history of this league, 33-78 across six seasons with zero playoff appearances, drafted the second-best projected roster in the room. 108.3 points a week. Josh Allen at $29 is the single highest-projected player in anybody's starting lineup at 21.3 a week, Jahmyr Gibbs at $73 is the top running back at 17.9, and Kyren Williams and Malik Nabers behind them are both genuinely good.",
     "The $73 on Gibbs is the most expensive player in fifteen years of this league, bought about ninety seconds after the auction opened, and the room enjoyed watching him pay it enormously. The projections are less amused: Gibbs is the highest-scoring running back on the board. Overpaying for the best player at a position is the least fatal way to overpay, and everybody laughing had a chance to bid.",
-    "What keeps this off the top line is the bottom of the lineup. Jake Ferguson at $1 is a starting tight end. Jayden Reed at $4 is a starting receiver. He loses 9.3 points a week to byes and injuries, one of the steepest drops in the league, because behind those five good players is a bench of ones and twos. Highest ceiling in the league. Nothing whatsoever underneath it."
+    "What keeps this off the top line is the bottom of the lineup. Jake Ferguson at $1 is a starting tight end. Jayden Reed at $4 is a starting receiver. He loses 9.4 points a week to byes and injuries, one of the steepest drops in the league, because behind those five good players is a bench of ones and twos. Highest ceiling in the league. Nothing whatsoever underneath it."
    ],
    "best": "Josh Allen, $29. The highest-projected player in anybody's starting lineup.",
    "worst": "A one-dollar tight end and a four-dollar receiver, both starting. The top five is a contender and the bottom three is a rumor."
@@ -151,9 +151,9 @@
    "grade": "A-",
    "headline": "Everybody laughed and the numbers did not",
    "body": [
-    "This page had him last when the ranking was built on money, and the projections say that was wrong. 104 points a week, third in the league. There is no star anywhere on this roster, his biggest purchase all night was Jameson Williams at $28, and every single starter he fields projects between 8.4 and 18.3 points. Nobody else can say that. There is no hole to plug because there is no hole.",
-    "The bench is the actual weapon. TreVeyon Henderson at $13, J.K. Dobbins at $13 and Kyle Pitts at $12 are all projected to start for somebody else, and he loses only 5.1 points a week to byes and injuries, the second-smallest drop anybody takes. That is what depth is for, and it is the thing that money-counting completely misses. He won this league last year doing exactly this and then did it again.",
-    "The three quarterbacks are still funny. He spent $22 on Jalen Hurts, Dak Prescott and Caleb Williams for a single quarterback slot, and Dak at 17.9 a week is going to sit on his bench and score nothing all season while Patrick Mahomes went to somebody else for three dollars. Add the second kicker and that is $24 on positions that were already full. The rest of the draft was good enough to carry it."
+    "This page had him last when the ranking was built on money, and the projections say that was wrong. 107.9 points a week, third in the league. There is no star anywhere on this roster, his biggest purchase all night was Jameson Williams at $28, and every single starter he fields projects between 8.6 and 18.3 points. Nobody else can say that. There is no hole to plug because there is no hole.",
+    "The bench is the actual weapon. TreVeyon Henderson at $13, J.K. Dobbins at $13 and Kyle Pitts at $12 are all projected to start for somebody else, and he loses only 5.2 points a week to byes and injuries, the second-smallest drop anybody takes. That is what depth is for, and it is the thing that money-counting completely misses. He won this league last year doing exactly this and then did it again.",
+    "The three quarterbacks are still funny. He spent $22 on Jalen Hurts, Dak Prescott and Caleb Williams for a single quarterback slot, and Dak at 18 a week is going to sit on his bench and score nothing all season while Patrick Mahomes went to somebody else for three dollars. Add the second kicker and that is $24 on positions that were already full. The rest of the draft was good enough to carry it."
    ],
    "best": "The bench. TreVeyon Henderson, J.K. Dobbins and Kyle Pitts for $38 combined, all of them startable.",
    "worst": "The second and third quarterback. There is one quarterback slot and $14 of that roster can never score a point in it."
@@ -163,7 +163,7 @@
    "grade": "B+",
    "headline": "Nobody told the rookie to panic",
    "body": [
-    "Derrick Henry $45, Drake London $45, Chris Olave $32, Breece Hall $29. Four real starters, not one budget-ending purchase, and 103.5 points a week from somebody who joined this league eight months ago. Only two players on his entire roster cost a dollar. Everybody else has at least four.",
+    "Derrick Henry $45, Drake London $45, Chris Olave $32, Breece Hall $29. Four real starters, not one budget-ending purchase, and 107.4 points a week from somebody who joined this league eight months ago. Only two players on his entire roster cost a dollar. Everybody else has at least four.",
     "The quiet win is Jack Campbell for $2, who is the highest-projected individual defensive player in the entire draft in a league that pays IDPs by tackle volume. Fourteen managers looked at that slot, shrugged, and threw a dollar at a pass rusher. He read the scoring settings. That is a two-dollar edge nobody else in the room bothered to find.",
     "Patrick Mahomes at $3 got a lot of admiring noise on draft night and he is a backup quarterback in a one-quarterback league. He projects at 16.9 a week and he will score zero of them unless Justin Herbert gets hurt. Same for Dallas Goedert at $5 sitting behind Mark Andrews. Move ten of those bench dollars into a flex and this is a top-two team instead of a fourth-place one."
    ],
@@ -175,7 +175,7 @@
    "grade": "B+",
    "headline": "Seven guys who might all be good",
    "body": [
-    "The flattest roster in the draft and it works. 103.4 points a week, and outside of Jared Goff at quarterback, every single starter he fields projects between 10.2 and 11.4. Rashee Rice, Javonte Williams, Trey McBride, Travis Etienne, Tetairoa McMillan, Cam Skattebo, Rome Odunze. There is no player who can end his season by pulling up short on a Sunday, which after last year's Sacco is precisely the correct rebuild.",
+    "The flattest roster in the draft and it works. 107.2 points a week, and outside of Jared Goff at quarterback, every single starter he fields projects between 11 and 11.4. Rashee Rice, Javonte Williams, Trey McBride, Travis Etienne, Tetairoa McMillan, Cam Skattebo, Rome Odunze. There is no player who can end his season by pulling up short on a Sunday, which after last year's Sacco is precisely the correct rebuild.",
     "The bill for all that was enormous. Rice went $6 to $35, Javonte $8 to $33, Etienne $9 to $28, the second, fourth and eighth biggest raises of the night, all on one roster. He is not buying value, he is buying last September's breakouts at this September's price, and the projections have him at a perfectly respectable fifth rather than anywhere near the top.",
     "Travis Hunter at $1 after costing $16 last year is the kind of pickup that wins a flex spot in October. Trey McBride at $30 is the second-best tight end in the league and one of only three genuine positional edges anybody bought. The floor is high. The ceiling is a room full of number twos."
    ],
@@ -187,8 +187,8 @@
    "grade": "B+",
    "headline": "Three studs, two dollars, still no ring",
    "body": [
-    "Saquon Barkley $52, Ashton Jeanty $43, Nico Collins $43, all three cheaper than this room paid a year ago, which is the correct way to be top-heavy: buy the expensive names when the market goes quiet rather than when it is screaming. 103.4 points a week, sixth, and the top of this lineup is as good as anybody's.",
-    "Then it thins fast. Isaiah Likely at $3 is the starting tight end and projects at 7.4, one of the four worst tight end slots in the league. Carnell Tate at $13 and Makai Lemon at $4 are both starting in a flex on a team that is supposed to contend. And two dollars went entirely unspent, which in an auction is not thrift, it is litter.",
+    "Saquon Barkley $52, Ashton Jeanty $43, Nico Collins $43, all three cheaper than this room paid a year ago, which is the correct way to be top-heavy: buy the expensive names when the market goes quiet rather than when it is screaming. 107.2 points a week, sixth, and the top of this lineup is as good as anybody's.",
+    "Then it thins fast. Isaiah Likely at $3 is the starting tight end and projects at 7.5, one of the four worst tight end slots in the league. Carnell Tate at $13 and Makai Lemon at $4 are both starting in a flex on a team that is supposed to contend. And two dollars went entirely unspent, which in an auction is not thrift, it is litter.",
     "Fifteen seasons, two runner-up finishes, no rings, and the roster shape that produced both near misses is sitting here again: elite at the top, soft through the middle, a season that turns on whether the third receiver hits. The man who built this website ranked himself sixth on it and the projections agree, which is either integrity or an extremely long con."
    ],
    "best": "Mike Evans, $12. He cost $28 in this room a year ago and projects to start every week.",
@@ -199,8 +199,8 @@
    "grade": "B",
    "headline": "The best pair in the league and then nothing",
    "body": [
-    "Ja'Marr Chase at 15.1 a week and Christian McCaffrey at 15.1 is the strongest one-two anybody owns, and it cost $122 to own. Nobody is going to enjoy the weeks both of them go off. 103 points a week is seventh, which tells you everything about what happened after those two names came off the board.",
-    "Jadarian Price at $22 is his second running back, a rookie who cost the same as Jalen Hurts, Joe Burrow and Patrick Mahomes combined and projects at 9.8. Dalton Kincaid at $3 is his starting tight end. KC Concepcion at $4 is starting in a flex. He then built the worst bench in the league by projected points, so he gives back 8.2 a week to byes and injuries, and there is genuinely nobody behind Chase and McCaffrey.",
+    "Ja'Marr Chase at 15.4 a week and Christian McCaffrey at 15.2 is the strongest one-two anybody owns, and it cost $122 to own. Nobody is going to enjoy the weeks both of them go off. 107 points a week is seventh, which tells you everything about what happened after those two names came off the board.",
+    "Jadarian Price at $22 is his second running back, a rookie who cost the same as Jalen Hurts, Joe Burrow and Patrick Mahomes combined and projects at 9.9. Dalton Kincaid at $3 is his starting tight end. KC Concepcion at $4 is starting in a flex. The bench behind all that is one of the four thinnest in the league, so he gives back 8.5 a week to byes and injuries, and there is genuinely nobody behind Chase and McCaffrey.",
     "This is a lineup that wins six weeks by forty and loses six weeks by forty. In a fourteen-team league with six playoff spots that is a coin flip in a very expensive coat, and last year the five biggest buys in this room finished sixth, fourteenth, 8-20, fourth, and in the Sacco Bowl."
    ],
    "best": "Terry McLaurin, $21. Nine dollars off last year's price for the same production.",
@@ -211,9 +211,9 @@
    "grade": "B",
    "headline": "A hundred and eleven dollars of hamstring",
    "body": [
-    "Puka Nacua at 15.2 a week and De'Von Achane at 13.5 is $111 and fifty-six percent of the budget on two men whose whole value proposition is remaining structurally intact until December. When they are upright this is a playoff team. The projections have him eighth, which is roughly the honest price of that bet.",
-    "The support is better than it looks. Davante Adams $24, Rhamondre Stevenson $19, Sam LaPorta at $7 after going $15 a year ago, and Jaxson Dart at $7 projecting 17.4 at quarterback, which is more than four other managers are getting from that slot. Coming off 7-21 and thirteenth place, this is the first roster he has owned in years with a reason to open the app on a Sunday.",
-    "The exposure is the same as it has always been. He loses 8.2 points a week to byes and injuries, and if it is Nacua or Achane who goes down rather than a flex, the drop is a great deal worse than that. $17 for MarShawn Lloyd is also a starter's price for a man who has never held the job."
+    "Puka Nacua at 15.6 a week and De'Von Achane at 13.7 is $111 and fifty-six percent of the budget on two men whose whole value proposition is remaining structurally intact until December. When they are upright this is a playoff team. 106.6 points a week has him eighth, which is roughly the honest price of that bet.",
+    "The support is better than it looks. Davante Adams $24, Rhamondre Stevenson $19, Sam LaPorta at $7 after going $15 a year ago, and Jaxson Dart at $7 projecting 17.5 at quarterback, which is more than four other managers are getting from that slot. Coming off 7-21 and thirteenth place, this is the first roster he has owned in years with a reason to open the app on a Sunday.",
+    "The exposure is the same as it has always been. He loses 8.3 points a week to byes and injuries, and if it is Nacua or Achane who goes down rather than a flex, the drop is a great deal worse than that. $17 for MarShawn Lloyd is also a starter's price for a man who has never held the job."
    ],
    "best": "Sam LaPorta, $7. Eight dollars cheaper than last year at a position most of this league ignored.",
    "worst": "MarShawn Lloyd, $17. Seventeen dollars is a lot to pay for a rumor."
@@ -223,9 +223,9 @@
    "grade": "B",
    "headline": "A great lineup with nothing behind it",
    "body": [
-    "The starting eleven is genuinely excellent. Lamar Jackson at 19.2, Jonathan Taylor at 15, DeVonta Smith, Tee Higgins and Garrett Wilson all around 11, George Kittle at $6 after going $22 last year. When everybody plays this is a 110-point team, fourth best in the league.",
-    "Everybody does not play. His bench is Tyler Allgeier at 4.3, Calvin Ridley at 3.8, Hollywood Brown at 3.2, Seth McGowan at 1.9 and Austin Hooper at 1.5, and it is the reason he gives back 9.1 points a week to byes and injuries, the largest drop anybody takes. He spent $190 assembling a lineup and then $10 assembling a fire exit.",
-    "Lamar at $21 is the other quibble: the second most expensive quarterback in a league that pays four points for a passing touchdown, in a room where Bo Nix went for three dollars and projects within two points a week of him. That is not acquiring a player, that is buying a boat and telling everyone how much you use it. Ninth is a floor, not a ceiling, and one healthy season turns this into a top-three team."
+    "The starting lineup is good and the bench is a rumor. Lamar Jackson at 19.2, Jonathan Taylor at 15.3, DeVonta Smith, Tee Higgins and Garrett Wilson all around 11, George Kittle at $6 after going $22 last year. When everybody plays this team puts up 114.3, right in the middle of a very tight league.",
+    "Everybody does not play, and that is where the season goes. His bench is Tyler Allgeier at 4.4, Calvin Ridley at 3.8, Hollywood Brown at 3.3, Seth McGowan at 1.9 and Austin Hooper at 1.6, and it is the reason he gives back 9.3 points a week to byes and injuries, the largest drop anybody takes. He spent $190 assembling a lineup and then $10 assembling a fire exit.",
+    "Lamar at $21 is the other quibble: the second most expensive quarterback in a league that pays four points for a passing touchdown, in a room where Bo Nix went for three dollars and projects within two points a week of him. That is not acquiring a player, that is buying a boat and telling everyone how much you use it. 105 points a week and ninth is a floor rather than a ceiling: one healthy season and one useful waiver claim turns this into a top-four team."
    ],
    "best": "George Kittle, $6. Sixteen dollars cheaper than last year at the position nobody solved.",
    "worst": "The bench. Five players projected under 4.3 a week, on a roster that cannot afford a bye."
@@ -235,8 +235,8 @@
    "grade": "B-",
    "headline": "Four kings and a fistful of ones",
    "body": [
-    "Amon-Ra St. Brown at 13.4 a week, Brock Bowers at 11.9, Ladd McConkey at 11 and Kenneth Walker at 13.3 is $170 of very good football, and Bowers at $39 is the single biggest positional edge anybody bought: twenty-four tight ends changed hands at an average of $7.80 and he owns the best one in the league. That part was smart and everyone who laughed was wrong.",
-    "The rest is a parking lot. Chuba Hubbard at $10 is the second running back at 8.1. Matthew Golden at $5 and Xavier Worthy at $4 are both starting in flex spots. The bench is Brenton Strange, Omar Cooper, Brian Robinson, Braelon Allen and a Ricky Pearsall projected at zero. Eight players cost a dollar and none of them can play. Tenth in projected points, which is what happens when four excellent players are asked to carry four empty ones.",
+    "Amon-Ra St. Brown at 13.7 a week, Brock Bowers at 12.1, Ladd McConkey at 11.2 and Kenneth Walker at 13.5 is $170 of very good football, and Bowers at $39 is the single biggest positional edge anybody bought: twenty-four tight ends changed hands at an average of $7.80 and he owns the best one in the league. That part was smart and everyone who laughed was wrong.",
+    "The rest is a parking lot. Chuba Hubbard at $10 is the second running back at 8.2. Matthew Golden at $5 and Xavier Worthy at $4 are both starting in flex spots. The bench is Brenton Strange, Omar Cooper, Brian Robinson, Braelon Allen and a Ricky Pearsall projected at zero. Eight players cost a dollar and none of them can play. 104.7 points a week, tenth, which is what happens when four excellent players are asked to carry four empty ones.",
     "Kyler Murray at $1 is fine, genuinely, in a four-point-passing-touchdown league where the waiver wire holds a 13.9-point quarterback. The problem was never the dollar he spent at quarterback, it was the eight he spread across players who will not see a lineup."
    ],
    "best": "Brock Bowers, $39. The best tight end in the league in a market that cleared at $7.80.",
@@ -247,8 +247,8 @@
    "grade": "C+",
    "headline": "Sixteen players, no reason to be afraid",
    "body": [
-    "Nobody in the room built a flatter roster and nobody built a lower one. Chase Brown $44, George Pickens $37, DJ Moore $23, Drake Maye $15, Alec Pierce $14, Michael Pittman $13, Jordan Mason $13, Blake Corum $10. Every price is a middling price and every projection follows: 99.7 points a week, eleventh, with a lineup where nothing above Drake Maye at 18.9 ever happens.",
-    "The depth is real, which is the one genuine compliment available here. Wan'Dale Robinson, Blake Corum, Chris Rodriguez and Rashid Shaheed all project above seven a week off the bench, so he loses only 5.3 to byes and injuries, third least in the league. He will never have a catastrophic week. He will also never have the week that wins a playoff round.",
+    "Nobody in the room built a flatter roster and nobody built a lower one. Chase Brown $44, George Pickens $37, DJ Moore $23, Drake Maye $15, Alec Pierce $14, Michael Pittman $13, Jordan Mason $13, Blake Corum $10. Every price is a middling price and every projection follows: 103.6 points a week, eleventh, with a lineup where nothing above Drake Maye at 18.9 ever happens.",
+    "The depth is real, which is the one genuine compliment available here. Wan'Dale Robinson, Blake Corum, Chris Rodriguez and Rashid Shaheed all project above seven a week off the bench, so he loses only 5.4 to byes and injuries, third least in the league. He will never have a catastrophic week. He will also never have the week that wins a playoff round.",
     "Three championships says he understands something about this league the rest of us do not. This roster says whatever it is, it did not survive a $37 bid on George Pickens and $14 on a receiver who cost a dollar here last September. He owns sixteen players and not one of them is going to be the reason he wins."
    ],
    "best": "Blake Corum, $10, and Wan'Dale Robinson, $3. The best bench in the league for thirteen dollars.",
@@ -259,11 +259,11 @@
    "grade": "C+",
    "headline": "The steal that the projections hate",
    "body": [
-    "Josh Jacobs at $8 was the buy everybody talked about on the way home. This room paid $43 for him last September, he came off the board fifth, and nobody bid. The projections think the room was right and last year was the mistake: Jacobs comes in at 4.7 points a week, which does not crack this roster's starting lineup. That is the most uncomfortable number on this entire page and it belongs to the pick of the night.",
-    "The rest is fine and only fine. Brock Purdy at $3 is a genuine bargain at 17.8 a week. Omarion Hampton at $47 is the anchor. Zay Flowers, Jaylen Waddle and Tucker Kraft all start. But he spent $26 on Bhayshul Tuten and $14 on Quentin Johnston and both project under ten, and 99.7 points a week is twelfth in a fourteen-team league.",
-    "The depth is legitimate, four bench players projecting above 6.5, so he gives up only 5.4 a week when people sit. He went 21-7 last year and finished fifth, so he knows exactly what he is doing, and one of these two things is wrong: the projections, or the price the room put on half his roster. Also no kicker and no defense, which costs one waiver claim and nothing else."
+    "Josh Jacobs at $8 was the buy everybody talked about on the way home. This room paid $43 for him last September, he came off the board fifth, and nobody bid. The projections think the room was right and last year was the mistake: Jacobs comes in at 4.8 points a week, which does not crack this roster's starting lineup. That is the most uncomfortable number on this entire page and it belongs to the pick of the night.",
+    "The rest is fine and only fine. Brock Purdy at $3 is a genuine bargain at 17.9 a week. Omarion Hampton at $47 is the anchor. Zay Flowers, Jaylen Waddle and Tucker Kraft all start. But he spent $26 on Bhayshul Tuten and $14 on Quentin Johnston and both project under ten, and 103.3 points a week is twelfth in a fourteen-team league.",
+    "The depth is legitimate, four bench players projecting above 6.5, so he gives up only 5.5 a week when people sit. He went 21-7 last year and finished fifth, so he knows exactly what he is doing, and one of these two things is wrong: the projections, or the price the room put on half his roster. Also no kicker and no defense, which costs one waiver claim and nothing else."
    ],
-   "best": "Brock Purdy, $3. Seventeen points a week from the position everybody else overpaid for.",
+   "best": "Brock Purdy, $3. Nearly eighteen points a week from the position everybody else overpaid for.",
    "worst": "Bhayshul Tuten, $26, up from $5 last year, projected under ten a week."
   },
   "Kim Jong Nate": {
@@ -271,9 +271,9 @@
    "grade": "C",
    "headline": "Two Ferraris and a rented bus",
    "body": [
-    "CeeDee Lamb at 13.1 and Justin Jefferson at 12.1, both cheaper than last year, plus Emeka Egbuka at 10.9 and Tyler Warren at 9.4. The receiving corps is the best in the league on paper and it is not close. Then you look at what has to carry the ball.",
-    "The entire running back room cost thirty-four dollars, which is less than he paid for Justin Jefferson on his own. Quinshon Judkins projects at 10.6 and Jacory Croskey-Merritt at 7, and those are his two starting running backs in a lineup that also plays two flexes. Tetairoa McMillan at 6.2 fills one of them. That is three of eight starting spots below seven points a week on a roster with $103 sitting in two receivers.",
-    "99.4 points a week, thirteenth, and it is entirely a shape problem rather than a talent problem. He bought two of the five best players in the room and then had to work out how to get them to the stadium."
+    "CeeDee Lamb at 13.4 and Justin Jefferson at 12.3, both cheaper than last year, plus Emeka Egbuka at 11.1 and Tyler Warren at 9.6. The receiving corps is the best in the league on paper and it is not close. Then you look at what has to carry the ball.",
+    "The entire running back room cost thirty-four dollars, which is less than he paid for Justin Jefferson on his own. Quinshon Judkins projects at 10.7 and Jacory Croskey-Merritt at 7, and those are his two starting running backs in a lineup that also plays two flexes. Tetairoa McMillan at 6.3 fills one of them. That is three of eight starting spots at or below seven points a week on a roster with $103 sitting in two receivers.",
+    "103.1 points a week, thirteenth, and it is entirely a shape problem rather than a talent problem. He bought two of the five best players in the room and then had to work out how to get them to the stadium."
    ],
    "best": "Jayden Daniels, $10. Half of last year's price for 18.2 points a week.",
    "worst": "The backfield, $34 total. Four running backs for two thirds of what one CeeDee Lamb cost him."
@@ -283,9 +283,9 @@
    "grade": "C",
    "headline": "Two enormous bids and a long silence",
    "body": [
-    "Jaxon Smith-Njigba at $63 is the single biggest raise of the draft, plus $33 on what this room paid a year ago. James Cook III at $56 is the third biggest at plus $25. Together they ate $119 of $200 and together they project at 28.3 points a week, which is good, and not $119 good. He did not find value on either. He set the market on both.",
-    "The eighty-one dollars left had to build six more starting spots and it did not manage it. Sam Darnold at $1 is the lowest-projected starting quarterback in the league at 15.5. RJ Harvey at $9 is the second running back at 7.4. Travis Kelce at $6 is a $14 player from last year who now projects at 8. 98.5 points a week is last, in a league where the gap from first to last is only 7.3, so this is not a disaster, it is just the bottom of a tight pile.",
-    "And then Parker Washington at $21, more than DK Metcalf cost him and three and a half times what Kelce cost him, on a player the rest of the room had priced at nothing. He projects at 10.4 and is the fifth-best thing on this roster, so the joke is only half a joke. One playoff appearance in nine seasons says the careful approach was not working. This was not the careful approach."
+    "Jaxon Smith-Njigba at $63 is the single biggest raise of the draft, plus $33 on what this room paid a year ago. James Cook III at $56 is the third biggest at plus $25. Together they ate $119 of $200 and together they project at 28.9 points a week, which is good, and not $119 good. He did not find value on either. He set the market on both.",
+    "The eighty-one dollars left had to build six more starting spots and it did not manage it. Sam Darnold at $1 is the lowest-projected starting quarterback in the league at 15.5. RJ Harvey at $9 is the second running back at 7.4. Travis Kelce at $6 is a $14 player from last year who now projects at 8.1. 102.5 points a week is last, in a league where the gap from first to last is only 7.5, so this is not a disaster, it is just the bottom of a tight pile.",
+    "And then Parker Washington at $21, more than DK Metcalf cost him and three and a half times what Kelce cost him, on a player the rest of the room had priced at nothing. He projects at 10.8 and is the fifth-best thing on this roster, so the joke is only half a joke. One playoff appearance in nine seasons says the careful approach was not working. This was not the careful approach."
    ],
    "best": "Alvin Kamara, $1, and T.J. Hockenson, $1. Twenty-nine and eight dollars last year respectively.",
    "worst": "Sam Darnold, $1, starting at quarterback. Free was available and free was better."
