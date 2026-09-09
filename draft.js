@@ -363,8 +363,12 @@
               <span class="t"><b>${esc(r.team)}</b><small>${esc(mgr(r.team, grades))}${G && G[r.team] ? " · " + esc(G[r.team].grade) : ""}</small>
                 ${r.blurb ? `<span class="bl">${esc(r.blurb)}</span>` : ""}</span>
             </div>`).join("")}
-            <p class="vote-foot" style="margin-top:12px">Zero games played. These are opinions with a number next to them.
-            The real rankings take over the moment Week 1 kicks off.</p>
+            <p class="vote-foot" style="margin-top:12px"><b>How this is ranked:</b> an auction price is the whole room's
+            opinion of a player, so the starting point is what each manager paid for the eleven players who actually start,
+            weighted toward quarterback, running back, receiver and tight end. That gets adjusted for depth, for how much
+            sits in the top three names, and for whether the roster covers two running backs and two flexes every week.
+            Kickers and defenses are not counted. Zero games have been played, so these are still opinions with a number
+            next to them. Real rankings take over the moment Week 1 kicks off.</p>
           </div>` : `<div class="mod" id="rankings"><h2 class="h-sec">Preseason Power Rankings</h2><hr class="rule-h">
             <p class="empty">Being written. Refresh shortly.</p></div>`}
 

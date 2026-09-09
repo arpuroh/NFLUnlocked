@@ -90,9 +90,9 @@
                 : `${year} season complete · ${rows.length} teams · next kickoff September`}</span>
             </div>
             ${drafted ? `
-            <h1 class="display">${esc(grades && grades.headline || "The Draft Receipts Are In")}
-              <span class="kick">${esc(grades && grades.kicker || "(every dollar, audited)")}</span></h1>
-            <p class="lede">${esc(grades && grades.lede ||
+            <h1 class="display">${esc((grades && (grades.home_headline || grades.headline)) || "The Draft Receipts Are In")}
+              <span class="kick">${esc((grades && (grades.home_kicker || grades.kicker)) || "(every dollar, audited)")}</span></h1>
+            <p class="lede">${esc((grades && (grades.home_lede || grades.lede)) ||
               `${draft.picks.length} picks and $${draft.ledger.total_spent} later, the ${draft.season} rosters are set. Every price, every roster, a letter grade for all ${draft.teams.length} and the preseason power rankings are on the draft page.`)}</p>
             <div class="hero-actions">
               <a class="btn-red" href="draft.html">${grades ? "Read the draft grades →" : "See every pick →"}</a>
@@ -113,7 +113,15 @@
             </div>`}
           </div>
           <div class="board">
-            <div class="eyebrow">${year} Podium</div>
+            <div class="eyebrow">${drafted && grades && grades.rankings ? "Preseason power rankings" : year + " Podium"}</div>
+            ${drafted && grades && grades.rankings ? `${grades.rankings.slice(0, 5).map((r) => `
+              <div class="board-row">
+                <span class="bn">${r.rank}</span>
+                <span class="bt">${esc(r.team)}</span>
+                <span class="bm">${esc(grades.grades && grades.grades[r.team] ? grades.grades[r.team].grade : "")}</span>
+              </div>`).join("")}
+              <a class="see-all" href="draft.html">All ${grades.rankings.length} grades →</a>
+            </div>` : `
             ${[[champ, "\u{1F3C6}"], [second, "\u{1F948}"], [third, "\u{1F949}"]].filter(([r]) => r).map(([r, m]) => `
               <div class="board-row">
                 <span class="bn">${m}</span>
@@ -124,17 +132,24 @@
               <span class="bn">\u{1F6BD}</span><span class="bt">${esc(last.team)}</span>
               <span class="bm">${esc(last.manager)}</span></div>` : ""}
             <a class="see-all" href="trophy.html">All ${db.completed_seasons || 15} seasons →</a>
-          </div>
+          </div>`}
         </div>
       </section>
 
       <section class="statbug">
+        ${drafted ? `
+        <a href="draft.html" class="cell-link">${stat("Biggest buy", "$" + draft.ledger.top_buys[0].cost,
+          draft.ledger.top_buys[0].player + " \u00B7 " + draft.ledger.top_buys[0].team, true)}</a>
+        <a href="draft.html" class="cell-link">${stat("Dollar players", draft.ledger.dollar_count,
+          "of " + draft.picks.length + " picks went for a buck")}</a>
+        <a href="draft.html" class="cell-link">${stat("Money spent in one night", "$" + draft.ledger.total_spent,
+          "of $" + draft.ledger.total_budget + ". Somebody left five on the table.")}</a>
+        ${stat("Defending champion", esc(champ.manager), champ.team + " \u00B7 " + champ.wins + "-" + champ.losses + " in " + year)}`
+        : `
         ${stat("Most points, " + year, hi.points_for.toFixed(1), hi.team)}
         ${stat("Fewest points, " + year, lo.points_for.toFixed(1), lo.team, true)}
         ${stat("Best record, " + year, bestRec.wins + "-" + bestRec.losses, bestRec.team)}
-        ${drafted && draft.ledger && draft.ledger.top_buys && draft.ledger.top_buys[0]
-          ? `<a href="draft.html" class="cell-link">${stat("Biggest buy", "$" + draft.ledger.top_buys[0].cost, draft.ledger.top_buys[0].player + " · " + draft.ledger.top_buys[0].team, true)}</a>`
-          : `<a href="draft.html" class="cell-link">${stat("Draft night", cd.v, cd.s)}</a>`}
+        <a href="draft.html" class="cell-link">${stat("Draft night", cd.v, cd.s)}</a>`}
       </section>
 
       <div class="body-grid">
