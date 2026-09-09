@@ -184,24 +184,38 @@
     const G = grades ? grades.grades : null;
     const rankOf = {};
     (grades && grades.rankings || []).forEach((r) => { rankOf[r.team] = r; });
+    const BUDGET = draft.budget || 200;
 
-    // Order: by preseason rank when graded, else by spend.
+    // Order: by preseason rank when graded, else by starter capital.
     const ordered = teams.slice().sort((a, b) =>
       G ? ((rankOf[a.team] || {}).rank || 99) - ((rankOf[b.team] || {}).rank || 99)
-        : b.spent - a.spent);
+        : b.starter_capital - a.starter_capital);
 
     const top = L.top_buys ? L.top_buys[0] : null;
     const dollarKing = teams.slice().sort((a, b) => b.dollar_players - a.dollar_players)[0];
-    const topHeavy = teams.slice().sort((a, b) => b.top3_share - a.top3_share)[0];
+    const benchKing = teams.slice().sort((a, b) => b.bench_spend - a.bench_spend)[0];
     const qb = L.pos_market && L.pos_market.QB;
     const totalSpent = L.total_spent || 0;
     const top5 = (grades && grades.rankings || []).slice(0, 5);
-    const headline = grades && grades.headline || "The Receipts Are In";
-    const kicker = grades && grades.kicker || "(grades are being written)";
-    const lede = grades && grades.lede ||
+    const headline = (grades && grades.headline) || "The Receipts Are In";
+    const kicker = (grades && grades.kicker) || "(grades are being written)";
+    const lede = (grades && grades.lede) ||
       `${draft.picks.length} picks, ${money(totalSpent)} spent, ${L.dollar_count} of them for a dollar. The full auction
        ledger is below. The letter grades and the preseason power rankings are being written right now;
        refresh in a bit.`;
+
+    /* capital bar: what actually starts vs what sits on the bench */
+    const capitalBar = (t) => `<div class="cap">
+      <div class="cap-bar">
+        <i class="st" style="width:${Math.round(t.starter_capital / BUDGET * 100)}%"></i>
+        <i class="bn" style="width:${Math.round(t.bench_spend / BUDGET * 100)}%"></i>
+      </div>
+      <div class="cap-lbl">
+        <span><b>${money(t.starter_capital)}</b> in the starting eleven</span>
+        <span class="${t.bench_spend >= 20 ? "warn" : ""}">${money(t.bench_spend)} on the bench</span>
+        ${t.left > 0 ? `<span class="warn">${money(t.left)} never spent</span>` : ""}
+      </div>
+    </div>`;
 
     const card = (t, i) => {
       const g = G && G[t.team];
@@ -210,41 +224,66 @@
       const rest = t.picks.slice(7);
       const pos = POS_ORDER.filter((k) => t.pos_spend[k]).map((k) =>
         `<span class="ps"><b class="pp ${posClass(k)}">${k}</b> ${money(t.pos_spend[k])}</span>`).join("");
-      return `<article class="dr-card${g ? "" : " ungraded"}" id="t-${i}">
+      const gclass = g ? " " + g.grade.replace("+", "p").replace("-", "m").toLowerCase() : "";
+      return `<article class="dr-card${g ? "" : " ungraded"}" id="t-${i + 1}">
         <div class="dr-grade">
-          <span class="g${g ? " " + g.grade.replace("+", "p").replace("-", "m").toLowerCase() : ""}">${g ? esc(g.grade) : "?"}</span>
-          ${r ? `<span class="rk">#${r.rank}</span>` : ""}
+          <span class="g${gclass}">${g ? esc(g.grade) : "?"}</span>
+          ${r ? `<span class="rk">#${r.rank}<i> preseason</i></span>` : ""}
         </div>
         <div class="dr-body">
           <div class="dr-head">
             <div>
               <h3>${esc(t.team)}</h3>
-              <div class="mg">${esc(mgr(t.team, grades))} · ${money(t.spent)} spent${t.left > 0 ? ` · <span class="left">${money(t.left)} left on the table</span>` : ""}</div>
+              <div class="mg">${esc(mgr(t.team, grades))} · ${money(t.spent)} spent · ${t.count} players · top 3 = ${Math.round(t.top3_share * 100)}% of the budget</div>
             </div>
             <div class="dr-pos">${pos}</div>
           </div>
+          ${(t.missing || []).length ? `<div class="dr-alarm">Roster illegal as drafted: no ${t.missing.map((m) => esc(m)).join(", no ")}. That slot scores zero until the waiver wire fixes it.</div>` : ""}
           ${g ? `<h4 class="dr-hl">${esc(g.headline)}</h4>
                  ${(Array.isArray(g.body) ? g.body : [g.body]).map((p) => `<p class="dr-p">${esc(p)}</p>`).join("")}
                  <div class="dr-verdicts">
                    ${g.best ? `<div class="vd good"><span class="eyebrow">Best buy</span><div>${esc(g.best)}</div></div>` : ""}
                    ${g.worst ? `<div class="vd bad"><span class="eyebrow">Worst buy</span><div>${esc(g.worst)}</div></div>` : ""}
                  </div>` : `<p class="dr-p dim">Grade pending. The roster is final; the verdict is not.</p>`}
+          ${capitalBar(t)}
           <div class="dr-roster">
             ${shown.map((p) => pickLine(p, { delta: true })).join("")}
             ${rest.length ? `<div class="dr-more" hidden>${rest.map((p) => pickLine(p, { delta: true })).join("")}</div>
-              <button class="dr-toggle" type="button">Full roster (${t.picks.length}) ↓</button>` : ""}
+              <button class="dr-toggle" type="button" data-n="${t.picks.length}">Full roster (${t.picks.length}) ↓</button>` : ""}
           </div>
         </div>
       </article>`;
     };
+
+    /* the money map: every team's spend split by position, one stacked bar each */
+    const mapRows = (L.money_map || []).map((m) => {
+      const segs = POS_ORDER.filter((k) => m.pos[k]).map((k) =>
+        `<i class="seg ${posClass(k)}" style="width:${m.pos[k] / BUDGET * 100}%" title="${k} ${money(m.pos[k])}"></i>`).join("");
+      const t = teams.find((x) => x.team === m.team) || {};
+      return `<div class="mm-row">
+        <span class="mm-t">${esc(m.team)}</span>
+        <span class="mm-bar">${segs}</span>
+        <span class="mm-v num">${money(m.starter_capital)}</span>
+      </div>`;
+    }).join("");
 
     const pm = L.pos_market || {};
     const posRows = POS_ORDER.filter((k) => pm[k]).map((k) => `<div class="mk-row">
         <span class="pp ${posClass(k)}">${k}</span>
         <span class="mk-bar"><i style="width:${Math.round(pm[k].total / totalSpent * 100 * 2.2)}%"></i></span>
         <span class="mk-v num">${money(pm[k].total)}</span>
-        <span class="mk-s">${pm[k].count} bought · top ${money(pm[k].max.cost)} ${esc(pm[k].max.player)}</span>
+        <span class="mk-s">${pm[k].count} bought · avg ${money(pm[k].avg)} · top ${money(pm[k].max.cost)} ${esc(pm[k].max.player)}</span>
       </div>`).join("");
+
+    /* the board: all 224 picks in nomination order */
+    const board = (draft.picks || []).slice().sort((a, b) => a.pick - b.pick);
+    const boardRow = (p) => `<div class="bd-row${p.cost >= 40 ? " big" : ""}${p.cost <= 1 ? " buck" : ""}">
+      <span class="bd-n">${p.pick}</span>
+      <span class="pp ${posClass(p.slot)}">${esc(p.slot === "IDP" ? p.pos.split(",")[0] : p.slot)}</span>
+      <span class="bd-p">${esc(p.player)} <em>${esc(p.nfl)}</em></span>
+      <span class="bd-t">${esc(p.team)}</span>
+      <span class="bd-c num">${money(p.cost)}</span>
+    </div>`;
 
     return `
       <section class="dark roast-hero dr-hero">
@@ -258,7 +297,8 @@
             <p class="lede">${esc(lede)}</p>
             <div class="hero-actions">
               <a class="btn-red" href="#grades">${grades ? "Read the grades →" : "See every pick →"}</a>
-              <a class="btn-ghost" href="#rankings">Preseason rankings →</a>
+              <a class="btn-ghost" href="#rankings">Power rankings →</a>
+              <a class="btn-ghost" href="#board">The full board →</a>
             </div>
           </div>
           <div class="board">
@@ -271,23 +311,26 @@
                 <span class="bn">${money(p.cost)}</span>
                 <span class="bt">${esc(p.player)}</span>
                 <span class="bm">${esc(p.team)}</span></div>`).join("")}
-            <a class="see-all" href="#rankings">${top5.length ? "All 14 →" : "Full ledger →"}</a>
+            <a class="see-all" href="#rankings">${top5.length ? `All ${teams.length} →` : "Full ledger →"}</a>
           </div>
         </div>
       </section>
 
       <section class="statbug">
         ${top ? stat("Biggest buy", money(top.cost), `${top.player} · ${top.team}`, true) : ""}
-        ${dollarKing ? stat("Most $1 players", dollarKing.dollar_players, dollarKing.team) : ""}
-        ${topHeavy ? stat("Most top-heavy", Math.round(topHeavy.top3_share * 100) + "%", `${topHeavy.team} · budget in 3 players`) : ""}
-        ${qb ? stat("QB market", money(qb.total), `${qb.count} QBs · top ${money(qb.max.cost)} ${qb.max.player}`) : ""}
+        ${stat("Dollar players", L.dollar_count, `of ${draft.picks.length} picks went for a buck`)}
+        ${benchKing ? stat("Most money benched", money(benchKing.bench_spend), `${benchKing.team} · league average ${money(Math.round(L.avg_bench_spend))}`, benchKing.bench_spend >= 30) : ""}
+        ${qb ? stat("The entire QB market", money(qb.total), `${qb.count} QBs bought. The room paid more for two running backs.`) : ""}
       </section>
 
       <div class="body-grid">
         <div class="col-main" id="grades">
           <div class="sec-top"><h2 class="h-sec">${grades ? "The Grades" : "Every Roster"}</h2>
-            <span class="note">${grades ? "Ordered by preseason rank" : "Ordered by money spent"}</span></div>
+            <span class="note">${grades ? "Ordered by preseason rank, best first" : "Ordered by starting-lineup capital"}</span></div>
           <hr class="rule-h">
+          <p class="os-note" style="margin-bottom:6px">Every roster below is measured the same way: what the starting eleven cost,
+            what got left on the bench, and what the room paid for the same players last September. Grades are final,
+            unfair, and will be reprinted in December next to your actual record.</p>
           ${ordered.map(card).join("")}
         </div>
 
@@ -300,7 +343,7 @@
                 ${r.blurb ? `<span class="bl">${esc(r.blurb)}</span>` : ""}</span>
             </div>`).join("")}
             <p class="vote-foot" style="margin-top:12px">Zero games played. These are opinions with a number next to them.
-            Real rankings take over in Week 1.</p>
+            The real rankings take over the moment Week 1 kicks off.</p>
           </div>` : `<div class="mod" id="rankings"><h2 class="h-sec">Preseason Power Rankings</h2><hr class="rule-h">
             <p class="empty">Being written. Refresh shortly.</p></div>`}
 
@@ -310,9 +353,29 @@
               <div class="who">${esc(a.team)}</div><div class="note">${esc(a.note)}</div></div>`).join("")}
           </div>` : ""}
 
+          ${(L.holes || []).length ? `<div class="mod">
+            <h2 class="h-sec">The Empty Chairs</h2><hr class="rule-h">
+            <p class="vote-foot" style="margin:0 0 10px">The lineup is QB, 2 RB, 2 WR, TE, 2 flex, K, DEF and one IDP.
+              These rosters cannot legally fill it. Somebody is starting a zero in Week 1.</p>
+            ${L.holes.map((h) => `<div class="hole-row">
+              <span class="hn">${esc(h.team)}</span>
+              <span class="hv">${h.missing.map((m) => `<b>no ${esc(m)}</b>`).join(" · ")}</span>
+            </div>`).join("")}
+          </div>` : ""}
+
+          <div class="mod" id="moneymap">
+            <h2 class="h-sec">The Money Map</h2><hr class="rule-h">
+            <p class="vote-foot" style="margin:0 0 10px">Every budget, split by position. The number on the right is what the
+              starting eleven cost. Ordered by that.</p>
+            <div class="dr-map">${mapRows}</div>
+            <div class="mm-key">${POS_ORDER.map((k) => `<span><i class="seg ${posClass(k)}"></i>${k}</span>`).join("")}</div>
+          </div>
+
           <div class="mod" id="ledger">
             <h2 class="h-sec">Biggest Buys</h2><hr class="rule-h">
             <div class="dr-list">${(L.top_buys || []).map((p) => pickLine(p, { team: true, delta: true })).join("")}</div>
+            <p class="vote-foot" style="margin-top:10px">The small number is the move against what this room paid for the same
+              player last September.</p>
           </div>
 
           <div class="mod">
@@ -321,7 +384,9 @@
           </div>
 
           ${(L.price_moves || []).length ? `<div class="mod">
-            <h2 class="h-sec">Price Moves vs ${prev ? prev.season : "Last Year"}</h2><hr class="rule-h">
+            <h2 class="h-sec">The Inflation Report</h2><hr class="rule-h">
+            <p class="vote-foot" style="margin:0 0 10px">Biggest price moves against ${prev ? prev.season : "last year"}. The market
+              has no memory and every year it swears it does.</p>
             <div class="dr-list">${L.price_moves.map((p) => `<div class="dr-pick">
               <span class="pp ${posClass(p.slot)}">${esc(p.slot)}</span>
               <span class="pn">${esc(p.player)} <em>${esc(p.team)}</em></span>
@@ -330,21 +395,41 @@
           </div>` : ""}
 
           <div class="mod">
-            <h2 class="h-sec">The First Ten</h2><hr class="rule-h">
+            <h2 class="h-sec">The First Ten Off The Board</h2><hr class="rule-h">
             <div class="dr-list">${(L.first_ten || []).map((p) => pickLine(p, { team: true })).join("")}</div>
-            <p class="vote-foot" style="margin-top:10px">Nominated early to drain budgets, or bought early out of nerves. Usually the second one.</p>
+            <p class="vote-foot" style="margin-top:10px">Nominated early to drain everyone else's budget, or bought early out of
+              nerves. It is almost always the second one.</p>
           </div>
         </div>
+      </div>
+
+      <div class="dr-solo" id="board">
+        <div class="sec-top"><h2 class="h-sec">The Board</h2>
+          <span class="note">All ${board.length} picks in the order they came off</span></div>
+        <hr class="rule-h">
+        <div class="dr-board">
+          <div class="bd-row hd"><span class="bd-n">#</span><span>Pos</span><span class="bd-p">Player</span>
+            <span class="bd-t">Bought by</span><span class="bd-c">Price</span></div>
+          ${board.slice(0, 40).map(boardRow).join("")}
+          <div class="bd-more" hidden>${board.slice(40).map(boardRow).join("")}</div>
+        </div>
+        <button class="dr-toggle bd-toggle" type="button">Show all ${board.length} picks ↓</button>
       </div>`;
   }
 
   function wire() {
     document.querySelectorAll(".dr-toggle").forEach((b) => {
+      if (b.dataset.wired) return;
+      b.dataset.wired = "1";
+      const more = b.classList.contains("bd-toggle")
+        ? b.previousElementSibling.querySelector(".bd-more")
+        : b.previousElementSibling;
+      if (!more) return;
+      const shut = b.textContent;
       b.addEventListener("click", () => {
-        const more = b.previousElementSibling;
         more.hidden = !more.hidden;
-        b.textContent = more.hidden ? b.textContent.replace("↑", "↓").replace("Hide", "Full") : "Hide the bench ↑";
-        if (more.hidden) b.textContent = `Full roster (${more.children.length + 7}) ↓`;
+        b.textContent = more.hidden ? shut
+          : (b.classList.contains("bd-toggle") ? "Collapse the board ↑" : "Hide the bench ↑");
       });
     });
   }
