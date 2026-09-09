@@ -390,6 +390,12 @@
     if (!proj || !sched || !season || !draft) return;
 
     const d = { proj, sched, season, draft, grades, db: db || {} };
+    // Chrome restores the previous scroll position on a reload, and it does that
+    // after our own jump, so a #hash link loses a race it should not be in.
+    if (location.hash.length > 1 && "scrollRestoration" in history) {
+      try { history.scrollRestoration = "manual"; } catch (e) { /* older Safari */ }
+    }
+
     let userMoved = false;
     for (const ev of ["wheel", "touchmove", "keydown"]) {
       addEventListener(ev, () => { userMoved = true; }, { once: true, passive: true });
