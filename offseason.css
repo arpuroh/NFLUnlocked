@@ -35,3 +35,6 @@
 .statbug a.cell-link .cell{height:100%;border-left:0;border-top:0}
 @media (max-width:900px){.statbug a.cell-link{border-top:1px solid #3A3736}}
 .statbug a.cell-link:hover .v{color:var(--red-bright)}
+
+/* preseason board rows carry each manager's Yahoo avatar */
+.board-row.has-logo{grid-template-columns:20px 22px 1fr auto}

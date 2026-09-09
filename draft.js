@@ -46,6 +46,9 @@
     MANAGERS[team] || "";
 
   const POS_ORDER = ["QB", "RB", "WR", "TE", "K", "DEF", "IDP"];
+  // each manager's own Yahoo avatar, scraped with the draft results
+  const tlogo = (t, cls) => t && t.logo
+    ? `<img class="tlogo${cls ? " " + cls : ""}" src="${esc(t.logo)}" alt="" loading="lazy">` : "";
   const posClass = (slot) => "pos-" + String(slot || "").toLowerCase();
   // Stable anchor per team so the index at the top can jump straight to a card.
   const slug = (t) => "t-" + String(t).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -247,9 +250,12 @@
         </div>
         <div class="dr-body">
           <div class="dr-head">
-            <div>
+            <div class="dr-id">
+              ${tlogo(t, "lg")}
+              <div>
               <h3>${esc(t.team)}</h3>
               <div class="mg">${esc(mgr(t.team, grades))} · ${money(t.spent)} spent · ${t.count} players · top 3 = ${Math.round(t.top3_share * 100)}% of the budget</div>
+              </div>
             </div>
             <div class="dr-pos">${pos}</div>
           </div>
@@ -318,8 +324,9 @@
           </div>
           <div class="board">
             <div class="eyebrow">${top5.length ? "Preseason power rankings" : "Biggest buys"}</div>
-            ${top5.length ? top5.map((r) => `<div class="board-row">
+            ${top5.length ? top5.map((r) => `<div class="board-row has-logo">
                 <span class="bn">${r.rank}</span>
+                ${tlogo(teams.find((x) => x.team === r.team), "sm")}
                 <span class="bt">${esc(r.team)}</span>
                 <span class="bm">${esc(G && G[r.team] ? G[r.team].grade : "")}</span></div>`).join("")
               : (L.top_buys || []).slice(0, 5).map((p) => `<div class="board-row">
@@ -350,6 +357,7 @@
             const gc = g ? " g" + g.grade.replace("+", "p").replace("-", "m").toLowerCase() : "";
             return `<a class="ix${gc}" href="#${slug(t.team)}">
               <span class="ix-n">${r ? r.rank : i + 1}</span>
+              ${tlogo(t, "sm")}
               <span class="ix-t">${esc(t.team)}<em>${esc(mgr(t.team, grades))}</em></span>
               <span class="ix-g">${g ? esc(g.grade) : "—"}</span>
             </a>`;
@@ -374,6 +382,7 @@
             <h2 class="h-sec">Preseason Power Rankings</h2><hr class="rule-h">
             ${grades.rankings.map((r) => `<div class="dr-rank">
               <span class="n">${r.rank}</span>
+              ${tlogo(teams.find((x) => x.team === r.team), "sm")}
               <span class="t"><b>${esc(r.team)}</b><small>${esc(mgr(r.team, grades))}${G && G[r.team] ? " · " + esc(G[r.team].grade) : ""}${
                 (teams.find((x) => x.team === r.team) || {}).proj
                   ? " · " + (Math.round(teams.find((x) => x.team === r.team).proj.weekly * 10) / 10).toFixed(1) + " pts/wk" : ""}</small>

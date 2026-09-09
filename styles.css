@@ -103,7 +103,14 @@ a { color: inherit; text-decoration: none; }
   font-weight: 900; font-stretch: 76%; text-transform: uppercase;
   font-size: 17px; letter-spacing: -0.01em; display: flex; align-items: center; gap: 7px;
 }
-.wordmark i { width: 8px; height: 8px; background: var(--red); display: block; }
+/* The league mark: an open padlock with a football for a body. Loaded as a mask
+   rather than an <img> so it takes the red from the palette and stays crisp. */
+.wordmark i {
+  width: 19px; height: 31px; display: block; background: var(--red);
+  -webkit-mask: url("logo.svg") center/contain no-repeat;
+          mask: url("logo.svg") center/contain no-repeat;
+}
+.wordmark:hover i { background: var(--red-bright); }
 .mnav { display: flex; gap: 20px; flex: 1; overflow-x: auto; scrollbar-width: none; }
 .mnav::-webkit-scrollbar { display: none; }
 .mnav a {
@@ -518,3 +525,15 @@ a { color: inherit; text-decoration: none; }
   }
   .mobile-tabs a.on { color: var(--white); }
 }
+
+
+/* ═══ Yahoo team avatars ═══
+   Every manager's own logo, straight off the league page. Squared off like
+   everything else here, with a rule instead of a shadow. */
+.tlogo {
+  display: block; width: 34px; height: 34px; object-fit: cover;
+  border: 1px solid var(--rule); background: var(--fill); flex: none;
+}
+.dark .tlogo { border-color: #3A3736; background: #2B2928; }
+.tlogo.sm { width: 22px; height: 22px; }
+.tlogo.lg { width: 46px; height: 46px; border-width: 2px; border-color: var(--ink); }

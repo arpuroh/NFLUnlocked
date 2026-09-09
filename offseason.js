@@ -114,12 +114,15 @@
           </div>
           <div class="board">
             <div class="eyebrow">${drafted && grades && grades.rankings ? "Preseason power rankings" : year + " Podium"}</div>
-            ${drafted && grades && grades.rankings ? `${grades.rankings.slice(0, 5).map((r) => `
-              <div class="board-row">
+            ${drafted && grades && grades.rankings ? `${grades.rankings.slice(0, 5).map((r) => {
+              const dt = (draft.teams || []).find((x) => x.team === r.team);
+              return `
+              <div class="board-row${dt && dt.logo ? " has-logo" : ""}">
                 <span class="bn">${r.rank}</span>
+                ${dt && dt.logo ? `<img class="tlogo sm" src="${esc(dt.logo)}" alt="" loading="lazy">` : ""}
                 <span class="bt">${esc(r.team)}</span>
                 <span class="bm">${esc(grades.grades && grades.grades[r.team] ? grades.grades[r.team].grade : "")}</span>
-              </div>`).join("")}
+              </div>`; }).join("")}
               <a class="see-all" href="draft.html">All ${grades.rankings.length} grades →</a>
             </div>` : `
             ${[[champ, "\u{1F3C6}"], [second, "\u{1F948}"], [third, "\u{1F949}"]].filter(([r]) => r).map(([r, m]) => `
