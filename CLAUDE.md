@@ -20,6 +20,7 @@ Do not introduce a bundler, a framework, or a package.json without being asked.
 | `scripts/fetch_yahoo.py` | Actions cron → rewrites `data/league.json` |
 | `scripts/generate_roasts.py` | Claude API → weekly roast headline |
 | `scripts/fetch_draft.py` | public Yahoo draft-results page → `data/draft.json` (no OAuth; the league is public). `--fixture` rebuilds `data/draft_2025.json` from `data/draft_2025.txt` |
+| `scripts/project_draft.py` | Sleeper 2026 projections re-scored under this league's rules → `data/projections.json`. **This is what the power rankings are built on.** `--refresh` re-downloads the feed |
 | `scripts/generate_draft_grades.py` | `data/draft.json` → `data/draft_grades.json` via the Claude API. Grades live apart from the ledger so a re-scrape never clobbers the writing |
 | `.github/workflows/draft.yml` | polls the draft page every 15 min on draft night; `workflow_dispatch` any time |
 | `.github/workflows/update.yml` | the cron |
@@ -80,6 +81,22 @@ function or the security advisor flags it as a callable RPC.
    ever. `data/league.json` showing `league_key: "scrape.l.675504"` is the tell.
    Consider gating the fallback behind an explicit `ALLOW_SCRAPE=1` so a broken refresh
    turns the build red instead of green.
+
+## Power rankings: projected points, not dollars
+
+`scripts/project_draft.py` is the model. It pulls Sleeper's public 2026 season projections
+(no key needed), re-scores every stat line under this league's actual rules (half PPR, 4-point
+passing TDs, kickers paid 1 pt per 10 yards of made FGs, IDP paid on tackles), fits each roster's
+best legal lineup, and computes expected points per week. Two rules keep it honest:
+
+1. **Every slot is floored at the waiver wire.** Undrafted players are the free-agent pool, so a
+   missing kicker or a starter worse than what is sitting unowned costs nothing. Nobody is
+   penalized for a slot they can fill on Tuesday.
+2. **Starters miss weeks.** Byes plus position-specific injury rates decide how often, and the
+   best bench player at that position covers. That is exactly what depth is worth, no more.
+
+Never rank on money spent. Earlier versions did and were wrong twice: dollar-based ranking had
+Hail Mary 14th (projections: 3rd) and Leo the Cleo 12th (projections: 2nd).
 
 ## Draft data
 
