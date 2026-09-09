@@ -390,6 +390,11 @@
     if (!proj || !sched || !season || !draft) return;
 
     const d = { proj, sched, season, draft, grades, db: db || {} };
+    let userMoved = false;
+    for (const ev of ["wheel", "touchmove", "keydown"]) {
+      addEventListener(ev, () => { userMoved = true; }, { once: true, passive: true });
+    }
+
     const paint = () => {
       const app = $("#app");
       if (!app) return false;
@@ -398,10 +403,12 @@
       const chip = $(".masthead .badge-live");
       if (chip) { chip.textContent = `Week ${sched.week}`; chip.style.background = "var(--red)"; }
       // The page is painted by JS, so the browser has already given up on any
-      // #hash by now. Shared links like /#poll have to be honoured by hand, once.
-      if (!paint.jumped && location.hash.length > 1) {
+      // #hash by now, and each repaint blows away the DOM and the scroll with it.
+      // So re-apply the hash on every paint, and stop the moment the reader
+      // touches the page themselves.
+      if (!userMoved && location.hash.length > 1) {
         const target = document.getElementById(location.hash.slice(1));
-        if (target) { paint.jumped = true; target.scrollIntoView({ block: "start" }); }
+        if (target) target.scrollIntoView({ block: "start" });
       }
       return true;
     };
