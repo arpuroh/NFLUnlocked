@@ -1,0 +1,2223 @@
+{
+ "season": 2026,
+ "source": "Sleeper 2026 season projections, re-scored under this league's rules",
+ "scoring_note": "half PPR, 4-point passing touchdowns, kickers paid 1 point per 10 yards of made field goals, IDP paid on tackle volume",
+ "waiver_baseline": {
+  "QB": 10.41,
+  "RB": 3.56,
+  "WR": 5.27,
+  "TE": 5.99,
+  "K": 6.6,
+  "DEF": 5.06,
+  "IDP": 6.74
+ },
+ "avg_weekly": 102.15,
+ "spread": 7.32,
+ "teams": [
+  {
+   "team": "Fwamming Gwaggon",
+   "weekly": 105.85,
+   "season": 1799.4,
+   "lineup_ppg": 115.39,
+   "depth_cost": 9.54,
+   "waiver_slots": [
+    "IDP"
+   ],
+   "bench_ppg": 34.53,
+   "lineup": [
+    {
+     "slot": "QB",
+     "player": "Bo Nix",
+     "ppg": 17.4,
+     "counted": 17.4,
+     "replaced": false,
+     "backup": "Jordan Love",
+     "backup_ppg": 16.38,
+     "expected": 17.24
+    },
+    {
+     "slot": "RB",
+     "player": "Bijan Robinson",
+     "ppg": 17.23,
+     "counted": 17.23,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 3.56,
+     "expected": 13.85
+    },
+    {
+     "slot": "RB",
+     "player": "David Montgomery",
+     "ppg": 11.18,
+     "counted": 11.18,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 3.56,
+     "expected": 9.3
+    },
+    {
+     "slot": "WR",
+     "player": "A.J. Brown",
+     "ppg": 12.22,
+     "counted": 12.22,
+     "replaced": false,
+     "backup": "Jordyn Tyson",
+     "backup_ppg": 5.32,
+     "expected": 10.9
+    },
+    {
+     "slot": "WR",
+     "player": "Brian Thomas",
+     "ppg": 9.67,
+     "counted": 9.67,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.27,
+     "expected": 8.83
+    },
+    {
+     "slot": "TE",
+     "player": "Colston Loveland",
+     "ppg": 10.2,
+     "counted": 10.2,
+     "replaced": false,
+     "backup": "Chig Okonkwo",
+     "backup_ppg": 6.68,
+     "expected": 9.56
+    },
+    {
+     "slot": "FLEX",
+     "player": "Jaylen Warren",
+     "ppg": 8.98,
+     "counted": 8.98,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 8.24
+    },
+    {
+     "slot": "FLEX",
+     "player": "Courtland Sutton",
+     "ppg": 8.52,
+     "counted": 8.52,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 8.04
+    },
+    {
+     "slot": "K",
+     "player": "Cam Little",
+     "ppg": 7.13,
+     "counted": 7.13,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 6.6,
+     "expected": 7.08
+    },
+    {
+     "slot": "DEF",
+     "player": "Texans",
+     "ppg": 6.12,
+     "counted": 6.12,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.06,
+     "expected": 6.06
+    },
+    {
+     "slot": "IDP",
+     "player": "T.J. Watt",
+     "ppg": 3.97,
+     "counted": 6.74,
+     "replaced": true,
+     "backup": "waiver",
+     "backup_ppg": 6.74,
+     "expected": 6.74
+    }
+   ],
+   "bench": [
+    {
+     "name": "Jordan Love",
+     "pos": "QB",
+     "ppg": 16.38,
+     "cost": 2
+    },
+    {
+     "name": "Chig Okonkwo",
+     "pos": "TE",
+     "ppg": 6.68,
+     "cost": 1
+    },
+    {
+     "name": "Jordyn Tyson",
+     "pos": "WR",
+     "ppg": 5.32,
+     "cost": 1
+    },
+    {
+     "name": "Adonai Mitchell",
+     "pos": "WR",
+     "ppg": 4.75,
+     "cost": 1
+    },
+    {
+     "name": "Najee Harris",
+     "pos": "RB",
+     "ppg": 1.4,
+     "cost": 1
+    }
+   ],
+   "rank": 1
+  },
+  {
+   "team": "Leo the Cleo",
+   "weekly": 104.64,
+   "season": 1778.9,
+   "lineup_ppg": 113.9,
+   "depth_cost": 9.26,
+   "waiver_slots": [
+    "IDP"
+   ],
+   "bench_ppg": 32.43,
+   "lineup": [
+    {
+     "slot": "QB",
+     "player": "Josh Allen",
+     "ppg": 21.26,
+     "counted": 21.26,
+     "replaced": false,
+     "backup": "Tyler Shough",
+     "backup_ppg": 15.94,
+     "expected": 20.45
+    },
+    {
+     "slot": "RB",
+     "player": "Jahmyr Gibbs",
+     "ppg": 17.64,
+     "counted": 17.64,
+     "replaced": false,
+     "backup": "Dylan Sampson",
+     "backup_ppg": 4.54,
+     "expected": 14.4
+    },
+    {
+     "slot": "RB",
+     "player": "Kyren Williams",
+     "ppg": 11.29,
+     "counted": 11.29,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 3.56,
+     "expected": 9.38
+    },
+    {
+     "slot": "WR",
+     "player": "Malik Nabers",
+     "ppg": 11.39,
+     "counted": 11.39,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.27,
+     "expected": 10.22
+    },
+    {
+     "slot": "WR",
+     "player": "Jayden Reed",
+     "ppg": 9.56,
+     "counted": 9.56,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.27,
+     "expected": 8.74
+    },
+    {
+     "slot": "TE",
+     "player": "Jake Ferguson",
+     "ppg": 7.34,
+     "counted": 7.34,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 7.1
+    },
+    {
+     "slot": "FLEX",
+     "player": "Tony Pollard",
+     "ppg": 8.59,
+     "counted": 8.59,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 7.95
+    },
+    {
+     "slot": "FLEX",
+     "player": "Jakobi Meyers",
+     "ppg": 8.08,
+     "counted": 8.08,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 7.68
+    },
+    {
+     "slot": "K",
+     "player": "Tyler Loop",
+     "ppg": 6.83,
+     "counted": 6.83,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 6.6,
+     "expected": 6.81
+    },
+    {
+     "slot": "DEF",
+     "player": "Steelers",
+     "ppg": 5.18,
+     "counted": 5.18,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.06,
+     "expected": 5.17
+    },
+    {
+     "slot": "IDP",
+     "player": "Josh Blackwell",
+     "ppg": 0.0,
+     "counted": 6.74,
+     "replaced": true,
+     "backup": "waiver",
+     "backup_ppg": 6.74,
+     "expected": 6.74
+    }
+   ],
+   "bench": [
+    {
+     "name": "Tyler Shough",
+     "pos": "QB",
+     "ppg": 15.94,
+     "cost": 1
+    },
+    {
+     "name": "Jauan Jennings",
+     "pos": "WR",
+     "ppg": 5.07,
+     "cost": 1
+    },
+    {
+     "name": "Dylan Sampson",
+     "pos": "RB",
+     "ppg": 4.54,
+     "cost": 2
+    },
+    {
+     "name": "Cooper Kupp",
+     "pos": "WR",
+     "ppg": 4.14,
+     "cost": 2
+    },
+    {
+     "name": "David Njoku",
+     "pos": "TE",
+     "ppg": 2.74,
+     "cost": 1
+    }
+   ],
+   "rank": 2
+  },
+  {
+   "team": "Hail Mary",
+   "weekly": 104.02,
+   "season": 1768.3,
+   "lineup_ppg": 109.14,
+   "depth_cost": 5.12,
+   "waiver_slots": [
+    "K",
+    "IDP"
+   ],
+   "bench_ppg": 61.33,
+   "lineup": [
+    {
+     "slot": "QB",
+     "player": "Jalen Hurts",
+     "ppg": 18.27,
+     "counted": 18.27,
+     "replaced": false,
+     "backup": "Dak Prescott",
+     "backup_ppg": 17.88,
+     "expected": 18.21
+    },
+    {
+     "slot": "RB",
+     "player": "D'Andre Swift",
+     "ppg": 11.15,
+     "counted": 11.15,
+     "replaced": false,
+     "backup": "TreVeyon Henderson",
+     "backup_ppg": 9.03,
+     "expected": 10.63
+    },
+    {
+     "slot": "RB",
+     "player": "Jeremiyah Love",
+     "ppg": 11.08,
+     "counted": 11.08,
+     "replaced": false,
+     "backup": "J.K. Dobbins",
+     "backup_ppg": 8.66,
+     "expected": 10.48
+    },
+    {
+     "slot": "WR",
+     "player": "Jameson Williams",
+     "ppg": 10.36,
+     "counted": 10.36,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.27,
+     "expected": 9.39
+    },
+    {
+     "slot": "WR",
+     "player": "Christian Watson",
+     "ppg": 10.36,
+     "counted": 10.36,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.27,
+     "expected": 9.39
+    },
+    {
+     "slot": "TE",
+     "player": "Harold Fannin",
+     "ppg": 8.44,
+     "counted": 8.44,
+     "replaced": false,
+     "backup": "Kyle Pitts",
+     "backup_ppg": 8.15,
+     "expected": 8.39
+    },
+    {
+     "slot": "FLEX",
+     "player": "Bucky Irving",
+     "ppg": 10.55,
+     "counted": 10.55,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 9.42
+    },
+    {
+     "slot": "FLEX",
+     "player": "Luther Burden",
+     "ppg": 10.18,
+     "counted": 10.18,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 9.38
+    },
+    {
+     "slot": "K",
+     "player": "Eddy Pineiro",
+     "ppg": 6.48,
+     "counted": 6.6,
+     "replaced": true,
+     "backup": "waiver",
+     "backup_ppg": 6.6,
+     "expected": 6.6
+    },
+    {
+     "slot": "DEF",
+     "player": "Patriots",
+     "ppg": 5.41,
+     "counted": 5.41,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.06,
+     "expected": 5.39
+    },
+    {
+     "slot": "IDP",
+     "player": "(waiver pickup)",
+     "ppg": 0.0,
+     "counted": 6.74,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 6.74,
+     "expected": 6.74
+    }
+   ],
+   "bench": [
+    {
+     "name": "Dak Prescott",
+     "pos": "QB",
+     "ppg": 17.88,
+     "cost": 8
+    },
+    {
+     "name": "Caleb Williams",
+     "pos": "QB",
+     "ppg": 17.61,
+     "cost": 6
+    },
+    {
+     "name": "TreVeyon Henderson",
+     "pos": "RB",
+     "ppg": 9.03,
+     "cost": 13
+    },
+    {
+     "name": "J.K. Dobbins",
+     "pos": "RB",
+     "ppg": 8.66,
+     "cost": 13
+    },
+    {
+     "name": "Kyle Pitts",
+     "pos": "TE",
+     "ppg": 8.15,
+     "cost": 12
+    },
+    {
+     "name": "Cairo Santos",
+     "pos": "K",
+     "ppg": 6.42,
+     "cost": 1
+    }
+   ],
+   "rank": 3
+  },
+  {
+   "team": "The Asshouse Always Wins",
+   "weekly": 103.48,
+   "season": 1759.2,
+   "lineup_ppg": 110.64,
+   "depth_cost": 7.16,
+   "waiver_slots": [
+    "DEF"
+   ],
+   "bench_ppg": 41.47,
+   "lineup": [
+    {
+     "slot": "QB",
+     "player": "Justin Herbert",
+     "ppg": 17.38,
+     "counted": 17.38,
+     "replaced": false,
+     "backup": "Patrick Mahomes",
+     "backup_ppg": 16.86,
+     "expected": 17.3
+    },
+    {
+     "slot": "RB",
+     "player": "Derrick Henry",
+     "ppg": 14.02,
+     "counted": 14.02,
+     "replaced": false,
+     "backup": "Aaron Jones",
+     "backup_ppg": 7.06,
+     "expected": 12.3
+    },
+    {
+     "slot": "RB",
+     "player": "Breece Hall",
+     "ppg": 11.32,
+     "counted": 11.32,
+     "replaced": false,
+     "backup": "Tank Bigsby",
+     "backup_ppg": 3.6,
+     "expected": 9.41
+    },
+    {
+     "slot": "WR",
+     "player": "Drake London",
+     "ppg": 12.07,
+     "counted": 12.07,
+     "replaced": false,
+     "backup": "Deebo Samuel",
+     "backup_ppg": 7.51,
+     "expected": 11.2
+    },
+    {
+     "slot": "WR",
+     "player": "Chris Olave",
+     "ppg": 11.46,
+     "counted": 11.46,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.27,
+     "expected": 10.28
+    },
+    {
+     "slot": "TE",
+     "player": "Mark Andrews",
+     "ppg": 7.79,
+     "counted": 7.79,
+     "replaced": false,
+     "backup": "Dallas Goedert",
+     "backup_ppg": 6.44,
+     "expected": 7.55
+    },
+    {
+     "slot": "FLEX",
+     "player": "Marvin Harrison",
+     "ppg": 9.13,
+     "counted": 9.13,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 8.53
+    },
+    {
+     "slot": "FLEX",
+     "player": "Khalil Shakir",
+     "ppg": 7.95,
+     "counted": 7.95,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 7.58
+    },
+    {
+     "slot": "K",
+     "player": "Jake Bates",
+     "ppg": 6.72,
+     "counted": 6.72,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 6.6,
+     "expected": 6.71
+    },
+    {
+     "slot": "DEF",
+     "player": "Browns",
+     "ppg": 4.35,
+     "counted": 5.06,
+     "replaced": true,
+     "backup": "waiver",
+     "backup_ppg": 5.06,
+     "expected": 5.06
+    },
+    {
+     "slot": "IDP",
+     "player": "Jack Campbell",
+     "ppg": 7.74,
+     "counted": 7.74,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 6.74,
+     "expected": 7.57
+    }
+   ],
+   "bench": [
+    {
+     "name": "Patrick Mahomes",
+     "pos": "QB",
+     "ppg": 16.86,
+     "cost": 3
+    },
+    {
+     "name": "Deebo Samuel",
+     "pos": "WR",
+     "ppg": 7.51,
+     "cost": 3
+    },
+    {
+     "name": "Aaron Jones",
+     "pos": "RB",
+     "ppg": 7.06,
+     "cost": 4
+    },
+    {
+     "name": "Dallas Goedert",
+     "pos": "TE",
+     "ppg": 6.44,
+     "cost": 5
+    },
+    {
+     "name": "Tank Bigsby",
+     "pos": "RB",
+     "ppg": 3.6,
+     "cost": 3
+    }
+   ],
+   "rank": 4
+  },
+  {
+   "team": "Miley 💨LEO 5K Speedo Fan Club",
+   "weekly": 103.43,
+   "season": 1758.3,
+   "lineup_ppg": 111.33,
+   "depth_cost": 7.9,
+   "waiver_slots": [
+    "DEF",
+    "IDP"
+   ],
+   "bench_ppg": 41.43,
+   "lineup": [
+    {
+     "slot": "QB",
+     "player": "Jared Goff",
+     "ppg": 16.67,
+     "counted": 16.67,
+     "replaced": false,
+     "backup": "Matthew Stafford",
+     "backup_ppg": 16.48,
+     "expected": 16.64
+    },
+    {
+     "slot": "RB",
+     "player": "Javonte Williams",
+     "ppg": 11.35,
+     "counted": 11.35,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 3.56,
+     "expected": 9.43
+    },
+    {
+     "slot": "RB",
+     "player": "Travis Etienne",
+     "ppg": 11.16,
+     "counted": 11.16,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 3.56,
+     "expected": 9.28
+    },
+    {
+     "slot": "WR",
+     "player": "Rashee Rice",
+     "ppg": 10.9,
+     "counted": 10.9,
+     "replaced": false,
+     "backup": "Jalen Coker",
+     "backup_ppg": 7.99,
+     "expected": 10.35
+    },
+    {
+     "slot": "WR",
+     "player": "Tetairoa McMillan",
+     "ppg": 10.85,
+     "counted": 10.85,
+     "replaced": false,
+     "backup": "Travis Hunter",
+     "backup_ppg": 6.51,
+     "expected": 10.02
+    },
+    {
+     "slot": "TE",
+     "player": "Trey McBride",
+     "ppg": 10.99,
+     "counted": 10.99,
+     "replaced": false,
+     "backup": "Dalton Schultz",
+     "backup_ppg": 6.99,
+     "expected": 10.27
+    },
+    {
+     "slot": "FLEX",
+     "player": "Cam Skattebo",
+     "ppg": 10.6,
+     "counted": 10.6,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 9.46
+    },
+    {
+     "slot": "FLEX",
+     "player": "Rome Odunze",
+     "ppg": 10.23,
+     "counted": 10.23,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 9.42
+    },
+    {
+     "slot": "K",
+     "player": "Harrison Mevis",
+     "ppg": 6.78,
+     "counted": 6.78,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 6.6,
+     "expected": 6.76
+    },
+    {
+     "slot": "DEF",
+     "player": "Bills",
+     "ppg": 4.94,
+     "counted": 5.06,
+     "replaced": true,
+     "backup": "waiver",
+     "backup_ppg": 5.06,
+     "expected": 5.06
+    },
+    {
+     "slot": "IDP",
+     "player": "Marcus Jones",
+     "ppg": 3.79,
+     "counted": 6.74,
+     "replaced": true,
+     "backup": "waiver",
+     "backup_ppg": 6.74,
+     "expected": 6.74
+    }
+   ],
+   "bench": [
+    {
+     "name": "Matthew Stafford",
+     "pos": "QB",
+     "ppg": 16.48,
+     "cost": 1
+    },
+    {
+     "name": "Jalen Coker",
+     "pos": "WR",
+     "ppg": 7.99,
+     "cost": 2
+    },
+    {
+     "name": "Dalton Schultz",
+     "pos": "TE",
+     "ppg": 6.99,
+     "cost": 1
+    },
+    {
+     "name": "Travis Hunter",
+     "pos": "WR",
+     "ppg": 6.51,
+     "cost": 1
+    },
+    {
+     "name": "Jonah Coleman",
+     "pos": "RB",
+     "ppg": 3.46,
+     "cost": 1
+    }
+   ],
+   "rank": 5
+  },
+  {
+   "team": "ShakeNBake",
+   "weekly": 103.4,
+   "season": 1757.8,
+   "lineup_ppg": 111.0,
+   "depth_cost": 7.6,
+   "waiver_slots": [],
+   "bench_ppg": 32.92,
+   "lineup": [
+    {
+     "slot": "QB",
+     "player": "Trevor Lawrence",
+     "ppg": 17.85,
+     "counted": 17.85,
+     "replaced": false,
+     "backup": "Fernando Mendoza",
+     "backup_ppg": 12.48,
+     "expected": 17.03
+    },
+    {
+     "slot": "RB",
+     "player": "Saquon Barkley",
+     "ppg": 13.42,
+     "counted": 13.42,
+     "replaced": false,
+     "backup": "Jonathon Brooks",
+     "backup_ppg": 8.11,
+     "expected": 12.11
+    },
+    {
+     "slot": "RB",
+     "player": "Ashton Jeanty",
+     "ppg": 12.44,
+     "counted": 12.44,
+     "replaced": false,
+     "backup": "Tyjae Spears",
+     "backup_ppg": 5.71,
+     "expected": 10.78
+    },
+    {
+     "slot": "WR",
+     "player": "Nico Collins",
+     "ppg": 12.94,
+     "counted": 12.94,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.27,
+     "expected": 11.48
+    },
+    {
+     "slot": "WR",
+     "player": "Mike Evans",
+     "ppg": 11.01,
+     "counted": 11.01,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.27,
+     "expected": 9.92
+    },
+    {
+     "slot": "TE",
+     "player": "Isaiah Likely",
+     "ppg": 7.43,
+     "counted": 7.43,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 7.17
+    },
+    {
+     "slot": "FLEX",
+     "player": "Carnell Tate",
+     "ppg": 8.52,
+     "counted": 8.52,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 8.04
+    },
+    {
+     "slot": "FLEX",
+     "player": "Makai Lemon",
+     "ppg": 8.15,
+     "counted": 8.15,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 7.74
+    },
+    {
+     "slot": "K",
+     "player": "Ka'imi Fairbairn",
+     "ppg": 7.24,
+     "counted": 7.24,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 6.6,
+     "expected": 7.18
+    },
+    {
+     "slot": "DEF",
+     "player": "Chargers",
+     "ppg": 5.06,
+     "counted": 5.06,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.06,
+     "expected": 5.06
+    },
+    {
+     "slot": "IDP",
+     "player": "Jordyn Brooks",
+     "ppg": 6.94,
+     "counted": 6.94,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 6.74,
+     "expected": 6.91
+    }
+   ],
+   "bench": [
+    {
+     "name": "Fernando Mendoza",
+     "pos": "QB",
+     "ppg": 12.48,
+     "cost": 2
+    },
+    {
+     "name": "Jonathon Brooks",
+     "pos": "RB",
+     "ppg": 8.11,
+     "cost": 10
+    },
+    {
+     "name": "Tyjae Spears",
+     "pos": "RB",
+     "ppg": 5.71,
+     "cost": 1
+    },
+    {
+     "name": "Jaylin Noel",
+     "pos": "WR",
+     "ppg": 4.07,
+     "cost": 1
+    },
+    {
+     "name": "Tank Dell",
+     "pos": "WR",
+     "ppg": 2.55,
+     "cost": 3
+    }
+   ],
+   "rank": 6
+  },
+  {
+   "team": "Good Will Hunting",
+   "weekly": 103.0,
+   "season": 1751.0,
+   "lineup_ppg": 111.22,
+   "depth_cost": 8.22,
+   "waiver_slots": [
+    "IDP"
+   ],
+   "bench_ppg": 29.26,
+   "lineup": [
+    {
+     "slot": "QB",
+     "player": "Joe Burrow",
+     "ppg": 18.01,
+     "counted": 18.01,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 10.41,
+     "expected": 16.85
+    },
+    {
+     "slot": "RB",
+     "player": "Christian McCaffrey",
+     "ppg": 15.06,
+     "counted": 15.06,
+     "replaced": false,
+     "backup": "Mike Washington",
+     "backup_ppg": 5.26,
+     "expected": 12.64
+    },
+    {
+     "slot": "RB",
+     "player": "Jadarian Price",
+     "ppg": 9.79,
+     "counted": 9.79,
+     "replaced": false,
+     "backup": "Keaton Mitchell",
+     "backup_ppg": 5.17,
+     "expected": 8.65
+    },
+    {
+     "slot": "WR",
+     "player": "Ja'Marr Chase",
+     "ppg": 15.09,
+     "counted": 15.09,
+     "replaced": false,
+     "backup": "Denzel Boston",
+     "backup_ppg": 6.36,
+     "expected": 13.43
+    },
+    {
+     "slot": "WR",
+     "player": "Terry McLaurin",
+     "ppg": 10.4,
+     "counted": 10.4,
+     "replaced": false,
+     "backup": "Malik Washington",
+     "backup_ppg": 6.31,
+     "expected": 9.62
+    },
+    {
+     "slot": "TE",
+     "player": "Dalton Kincaid",
+     "ppg": 7.68,
+     "counted": 7.68,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 7.37
+    },
+    {
+     "slot": "FLEX",
+     "player": "Josh Downs",
+     "ppg": 8.08,
+     "counted": 8.08,
+     "replaced": false,
+     "backup": "Kayshon Boutte",
+     "backup_ppg": 6.16,
+     "expected": 7.71
+    },
+    {
+     "slot": "FLEX",
+     "player": "KC Concepcion",
+     "ppg": 7.49,
+     "counted": 7.49,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 7.2
+    },
+    {
+     "slot": "K",
+     "player": "Jason Myers",
+     "ppg": 7.12,
+     "counted": 7.12,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 6.6,
+     "expected": 7.07
+    },
+    {
+     "slot": "DEF",
+     "player": "Eagles",
+     "ppg": 5.76,
+     "counted": 5.76,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.06,
+     "expected": 5.72
+    },
+    {
+     "slot": "IDP",
+     "player": "Juanyeh Thomas",
+     "ppg": 2.56,
+     "counted": 6.74,
+     "replaced": true,
+     "backup": "waiver",
+     "backup_ppg": 6.74,
+     "expected": 6.74
+    }
+   ],
+   "bench": [
+    {
+     "name": "Denzel Boston",
+     "pos": "WR",
+     "ppg": 6.36,
+     "cost": 1
+    },
+    {
+     "name": "Malik Washington",
+     "pos": "WR",
+     "ppg": 6.31,
+     "cost": 1
+    },
+    {
+     "name": "Kayshon Boutte",
+     "pos": "WR",
+     "ppg": 6.16,
+     "cost": 1
+    },
+    {
+     "name": "Mike Washington",
+     "pos": "RB",
+     "ppg": 5.26,
+     "cost": 3
+    },
+    {
+     "name": "Keaton Mitchell",
+     "pos": "RB",
+     "ppg": 5.17,
+     "cost": 1
+    }
+   ],
+   "rank": 7
+  },
+  {
+   "team": "Poop Squad 💩",
+   "weekly": 102.94,
+   "season": 1750.0,
+   "lineup_ppg": 111.11,
+   "depth_cost": 8.17,
+   "waiver_slots": [
+    "K",
+    "IDP"
+   ],
+   "bench_ppg": 36.34,
+   "lineup": [
+    {
+     "slot": "QB",
+     "player": "Jaxson Dart",
+     "ppg": 17.44,
+     "counted": 17.44,
+     "replaced": false,
+     "backup": "Baker Mayfield",
+     "backup_ppg": 16.17,
+     "expected": 17.25
+    },
+    {
+     "slot": "RB",
+     "player": "De'Von Achane",
+     "ppg": 13.52,
+     "counted": 13.52,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 3.56,
+     "expected": 11.06
+    },
+    {
+     "slot": "RB",
+     "player": "Rhamondre Stevenson",
+     "ppg": 9.09,
+     "counted": 9.09,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 3.56,
+     "expected": 7.72
+    },
+    {
+     "slot": "WR",
+     "player": "Puka Nacua",
+     "ppg": 15.24,
+     "counted": 15.24,
+     "replaced": false,
+     "backup": "Tre Tucker",
+     "backup_ppg": 6.05,
+     "expected": 13.49
+    },
+    {
+     "slot": "WR",
+     "player": "Davante Adams",
+     "ppg": 9.47,
+     "counted": 9.47,
+     "replaced": false,
+     "backup": "Jerry Jeudy",
+     "backup_ppg": 5.77,
+     "expected": 8.76
+    },
+    {
+     "slot": "TE",
+     "player": "Sam LaPorta",
+     "ppg": 9.32,
+     "counted": 9.32,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 8.72
+    },
+    {
+     "slot": "FLEX",
+     "player": "Jordan Addison",
+     "ppg": 8.34,
+     "counted": 8.34,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 7.89
+    },
+    {
+     "slot": "FLEX",
+     "player": "MarShawn Lloyd",
+     "ppg": 8.06,
+     "counted": 8.06,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 7.55
+    },
+    {
+     "slot": "K",
+     "player": "Harrison Butker",
+     "ppg": 6.42,
+     "counted": 6.6,
+     "replaced": true,
+     "backup": "waiver",
+     "backup_ppg": 6.6,
+     "expected": 6.6
+    },
+    {
+     "slot": "DEF",
+     "player": "Rams",
+     "ppg": 7.29,
+     "counted": 7.29,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.06,
+     "expected": 7.16
+    },
+    {
+     "slot": "IDP",
+     "player": "Deonte Banks",
+     "ppg": 0.65,
+     "counted": 6.74,
+     "replaced": true,
+     "backup": "waiver",
+     "backup_ppg": 6.74,
+     "expected": 6.74
+    }
+   ],
+   "bench": [
+    {
+     "name": "Baker Mayfield",
+     "pos": "QB",
+     "ppg": 16.17,
+     "cost": 1
+    },
+    {
+     "name": "Tre Tucker",
+     "pos": "WR",
+     "ppg": 6.05,
+     "cost": 1
+    },
+    {
+     "name": "Jerry Jeudy",
+     "pos": "WR",
+     "ppg": 5.77,
+     "cost": 1
+    },
+    {
+     "name": "Terrance Ferguson",
+     "pos": "TE",
+     "ppg": 4.87,
+     "cost": 1
+    },
+    {
+     "name": "Emmett Johnson",
+     "pos": "RB",
+     "ppg": 3.48,
+     "cost": 1
+    }
+   ],
+   "rank": 8
+  },
+  {
+   "team": "Mac Daddy",
+   "weekly": 101.0,
+   "season": 1717.0,
+   "lineup_ppg": 110.11,
+   "depth_cost": 9.11,
+   "waiver_slots": [],
+   "bench_ppg": 14.74,
+   "lineup": [
+    {
+     "slot": "QB",
+     "player": "Lamar Jackson",
+     "ppg": 19.18,
+     "counted": 19.18,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 10.41,
+     "expected": 17.84
+    },
+    {
+     "slot": "RB",
+     "player": "Jonathan Taylor",
+     "ppg": 14.96,
+     "counted": 14.96,
+     "replaced": false,
+     "backup": "Tyler Allgeier",
+     "backup_ppg": 4.28,
+     "expected": 12.32
+    },
+    {
+     "slot": "RB",
+     "player": "Rico Dowdle",
+     "ppg": 8.36,
+     "counted": 8.36,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 3.56,
+     "expected": 7.17
+    },
+    {
+     "slot": "WR",
+     "player": "DeVonta Smith",
+     "ppg": 11.13,
+     "counted": 11.13,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.27,
+     "expected": 10.01
+    },
+    {
+     "slot": "WR",
+     "player": "Tee Higgins",
+     "ppg": 10.99,
+     "counted": 10.99,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.27,
+     "expected": 9.9
+    },
+    {
+     "slot": "TE",
+     "player": "George Kittle",
+     "ppg": 8.14,
+     "counted": 8.14,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 7.75
+    },
+    {
+     "slot": "FLEX",
+     "player": "Garrett Wilson",
+     "ppg": 10.79,
+     "counted": 10.79,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 9.88
+    },
+    {
+     "slot": "FLEX",
+     "player": "Kenny Gainwell",
+     "ppg": 7.58,
+     "counted": 7.58,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 7.19
+    },
+    {
+     "slot": "K",
+     "player": "Cameron Dicker",
+     "ppg": 6.83,
+     "counted": 6.83,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 6.6,
+     "expected": 6.81
+    },
+    {
+     "slot": "DEF",
+     "player": "Vikings",
+     "ppg": 5.41,
+     "counted": 5.41,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.06,
+     "expected": 5.39
+    },
+    {
+     "slot": "IDP",
+     "player": "Carson Schwesinger",
+     "ppg": 6.74,
+     "counted": 6.74,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 6.74,
+     "expected": 6.74
+    }
+   ],
+   "bench": [
+    {
+     "name": "Tyler Allgeier",
+     "pos": "RB",
+     "ppg": 4.28,
+     "cost": 2
+    },
+    {
+     "name": "Calvin Ridley",
+     "pos": "WR",
+     "ppg": 3.75,
+     "cost": 1
+    },
+    {
+     "name": "Marquise Brown",
+     "pos": "WR",
+     "ppg": 3.24,
+     "cost": 1
+    },
+    {
+     "name": "Seth McGowan",
+     "pos": "RB",
+     "ppg": 1.93,
+     "cost": 1
+    },
+    {
+     "name": "Austin Hooper",
+     "pos": "TE",
+     "ppg": 1.54,
+     "cost": 1
+    }
+   ],
+   "rank": 9
+  },
+  {
+   "team": "A dad",
+   "weekly": 100.98,
+   "season": 1716.7,
+   "lineup_ppg": 109.5,
+   "depth_cost": 8.52,
+   "waiver_slots": [
+    "IDP"
+   ],
+   "bench_ppg": 20.28,
+   "lineup": [
+    {
+     "slot": "QB",
+     "player": "Kyler Murray",
+     "ppg": 16.65,
+     "counted": 16.65,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 10.41,
+     "expected": 15.7
+    },
+    {
+     "slot": "RB",
+     "player": "Kenneth Walker",
+     "ppg": 13.26,
+     "counted": 13.26,
+     "replaced": false,
+     "backup": "Brian Robinson",
+     "backup_ppg": 3.73,
+     "expected": 10.91
+    },
+    {
+     "slot": "RB",
+     "player": "Chuba Hubbard",
+     "ppg": 8.05,
+     "counted": 8.05,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 3.56,
+     "expected": 6.94
+    },
+    {
+     "slot": "WR",
+     "player": "Amon-Ra St. Brown",
+     "ppg": 13.38,
+     "counted": 13.38,
+     "replaced": false,
+     "backup": "Omar Cooper",
+     "backup_ppg": 6.15,
+     "expected": 12.0
+    },
+    {
+     "slot": "WR",
+     "player": "Ladd McConkey",
+     "ppg": 11.04,
+     "counted": 11.04,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.27,
+     "expected": 9.94
+    },
+    {
+     "slot": "TE",
+     "player": "Brock Bowers",
+     "ppg": 11.91,
+     "counted": 11.91,
+     "replaced": false,
+     "backup": "Brenton Strange",
+     "backup_ppg": 7.62,
+     "expected": 11.13
+    },
+    {
+     "slot": "FLEX",
+     "player": "Matthew Golden",
+     "ppg": 8.29,
+     "counted": 8.29,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 7.85
+    },
+    {
+     "slot": "FLEX",
+     "player": "Xavier Worthy",
+     "ppg": 7.88,
+     "counted": 7.88,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 7.52
+    },
+    {
+     "slot": "K",
+     "player": "Will Reichard",
+     "ppg": 6.95,
+     "counted": 6.95,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 6.6,
+     "expected": 6.92
+    },
+    {
+     "slot": "DEF",
+     "player": "Jaguars",
+     "ppg": 5.35,
+     "counted": 5.35,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.06,
+     "expected": 5.33
+    },
+    {
+     "slot": "IDP",
+     "player": "Ashtyn Davis",
+     "ppg": 0.44,
+     "counted": 6.74,
+     "replaced": true,
+     "backup": "waiver",
+     "backup_ppg": 6.74,
+     "expected": 6.74
+    }
+   ],
+   "bench": [
+    {
+     "name": "Brenton Strange",
+     "pos": "TE",
+     "ppg": 7.62,
+     "cost": 1
+    },
+    {
+     "name": "Omar Cooper",
+     "pos": "WR",
+     "ppg": 6.15,
+     "cost": 1
+    },
+    {
+     "name": "Brian Robinson",
+     "pos": "RB",
+     "ppg": 3.73,
+     "cost": 3
+    },
+    {
+     "name": "Braelon Allen",
+     "pos": "RB",
+     "ppg": 2.78,
+     "cost": 1
+    },
+    {
+     "name": "Ricky Pearsall",
+     "pos": "WR",
+     "ppg": 0.0,
+     "cost": 1
+    }
+   ],
+   "rank": 10
+  },
+  {
+   "team": "FreeGucci",
+   "weekly": 99.74,
+   "season": 1695.6,
+   "lineup_ppg": 105.06,
+   "depth_cost": 5.32,
+   "waiver_slots": [
+    "K",
+    "IDP"
+   ],
+   "bench_ppg": 35.11,
+   "lineup": [
+    {
+     "slot": "QB",
+     "player": "Drake Maye",
+     "ppg": 18.87,
+     "counted": 18.87,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 10.41,
+     "expected": 17.58
+    },
+    {
+     "slot": "RB",
+     "player": "Chase Brown",
+     "ppg": 13.34,
+     "counted": 13.34,
+     "replaced": false,
+     "backup": "Blake Corum",
+     "backup_ppg": 7.52,
+     "expected": 11.9
+    },
+    {
+     "slot": "RB",
+     "player": "Jordan Mason",
+     "ppg": 8.45,
+     "counted": 8.45,
+     "replaced": false,
+     "backup": "Chris Rodriguez",
+     "backup_ppg": 7.35,
+     "expected": 8.18
+    },
+    {
+     "slot": "WR",
+     "player": "George Pickens",
+     "ppg": 12.1,
+     "counted": 12.1,
+     "replaced": false,
+     "backup": "Wan'Dale Robinson",
+     "backup_ppg": 7.95,
+     "expected": 11.31
+    },
+    {
+     "slot": "WR",
+     "player": "Alec Pierce",
+     "ppg": 8.88,
+     "counted": 8.88,
+     "replaced": false,
+     "backup": "Rashid Shaheed",
+     "backup_ppg": 7.15,
+     "expected": 8.55
+    },
+    {
+     "slot": "TE",
+     "player": "Hunter Henry",
+     "ppg": 7.32,
+     "counted": 7.32,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 7.08
+    },
+    {
+     "slot": "FLEX",
+     "player": "DJ Moore",
+     "ppg": 8.68,
+     "counted": 8.68,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 8.17
+    },
+    {
+     "slot": "FLEX",
+     "player": "Michael Pittman",
+     "ppg": 8.02,
+     "counted": 8.02,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 7.63
+    },
+    {
+     "slot": "K",
+     "player": "(waiver pickup)",
+     "ppg": 0.0,
+     "counted": 6.6,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 6.6,
+     "expected": 6.6
+    },
+    {
+     "slot": "DEF",
+     "player": "Seahawks",
+     "ppg": 6.06,
+     "counted": 6.06,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.06,
+     "expected": 6.0
+    },
+    {
+     "slot": "IDP",
+     "player": "(waiver pickup)",
+     "ppg": 0.0,
+     "counted": 6.74,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 6.74,
+     "expected": 6.74
+    }
+   ],
+   "bench": [
+    {
+     "name": "Wan'Dale Robinson",
+     "pos": "WR",
+     "ppg": 7.95,
+     "cost": 3
+    },
+    {
+     "name": "Blake Corum",
+     "pos": "RB",
+     "ppg": 7.52,
+     "cost": 10
+    },
+    {
+     "name": "Chris Rodriguez",
+     "pos": "RB",
+     "ppg": 7.35,
+     "cost": 3
+    },
+    {
+     "name": "Rashid Shaheed",
+     "pos": "WR",
+     "ppg": 7.15,
+     "cost": 5
+    },
+    {
+     "name": "Ja'Kobi Lane",
+     "pos": "WR",
+     "ppg": 5.14,
+     "cost": 1
+    },
+    {
+     "name": "Woody Marks",
+     "pos": "RB",
+     "ppg": 4.37,
+     "cost": 4
+    }
+   ],
+   "rank": 11
+  },
+  {
+   "team": "The Injured Reserved",
+   "weekly": 99.73,
+   "season": 1695.4,
+   "lineup_ppg": 105.16,
+   "depth_cost": 5.43,
+   "waiver_slots": [
+    "K",
+    "DEF",
+    "IDP"
+   ],
+   "bench_ppg": 44.82,
+   "lineup": [
+    {
+     "slot": "QB",
+     "player": "Brock Purdy",
+     "ppg": 17.84,
+     "counted": 17.84,
+     "replaced": false,
+     "backup": "Malik Willis",
+     "backup_ppg": 15.89,
+     "expected": 17.54
+    },
+    {
+     "slot": "RB",
+     "player": "Omarion Hampton",
+     "ppg": 12.88,
+     "counted": 12.88,
+     "replaced": false,
+     "backup": "Rachaad White",
+     "backup_ppg": 6.54,
+     "expected": 11.31
+    },
+    {
+     "slot": "RB",
+     "player": "Bhayshul Tuten",
+     "ppg": 9.34,
+     "counted": 9.34,
+     "replaced": false,
+     "backup": "Josh Jacobs",
+     "backup_ppg": 4.72,
+     "expected": 8.2
+    },
+    {
+     "slot": "WR",
+     "player": "Zay Flowers",
+     "ppg": 11.04,
+     "counted": 11.04,
+     "replaced": false,
+     "backup": "Quentin Johnston",
+     "backup_ppg": 7.94,
+     "expected": 10.45
+    },
+    {
+     "slot": "WR",
+     "player": "Jaylen Waddle",
+     "ppg": 10.74,
+     "counted": 10.74,
+     "replaced": false,
+     "backup": "Romeo Doubs",
+     "backup_ppg": 7.81,
+     "expected": 10.18
+    },
+    {
+     "slot": "TE",
+     "player": "Tucker Kraft",
+     "ppg": 8.29,
+     "counted": 8.29,
+     "replaced": false,
+     "backup": "Juwan Johnson",
+     "backup_ppg": 6.64,
+     "expected": 7.99
+    },
+    {
+     "slot": "FLEX",
+     "player": "Kyle Monangai",
+     "ppg": 8.42,
+     "counted": 8.42,
+     "replaced": false,
+     "backup": "De'Zhaun Stribling",
+     "backup_ppg": 6.2,
+     "expected": 7.87
+    },
+    {
+     "slot": "FLEX",
+     "player": "Chris Godwin",
+     "ppg": 8.21,
+     "counted": 8.21,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 7.79
+    },
+    {
+     "slot": "K",
+     "player": "(waiver pickup)",
+     "ppg": 0.0,
+     "counted": 6.6,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 6.6,
+     "expected": 6.6
+    },
+    {
+     "slot": "DEF",
+     "player": "(waiver pickup)",
+     "ppg": 0.0,
+     "counted": 5.06,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.06,
+     "expected": 5.06
+    },
+    {
+     "slot": "IDP",
+     "player": "Jeffery Simmons",
+     "ppg": 4.12,
+     "counted": 6.74,
+     "replaced": true,
+     "backup": "waiver",
+     "backup_ppg": 6.74,
+     "expected": 6.74
+    }
+   ],
+   "bench": [
+    {
+     "name": "Malik Willis",
+     "pos": "QB",
+     "ppg": 15.89,
+     "cost": 1
+    },
+    {
+     "name": "Quentin Johnston",
+     "pos": "WR",
+     "ppg": 7.94,
+     "cost": 14
+    },
+    {
+     "name": "Romeo Doubs",
+     "pos": "WR",
+     "ppg": 7.81,
+     "cost": 5
+    },
+    {
+     "name": "Juwan Johnson",
+     "pos": "TE",
+     "ppg": 6.64,
+     "cost": 2
+    },
+    {
+     "name": "Rachaad White",
+     "pos": "RB",
+     "ppg": 6.54,
+     "cost": 5
+    },
+    {
+     "name": "De'Zhaun Stribling",
+     "pos": "WR",
+     "ppg": 6.2,
+     "cost": 4
+    }
+   ],
+   "rank": 12
+  },
+  {
+   "team": "Kim Jong Nate",
+   "weekly": 99.35,
+   "season": 1688.9,
+   "lineup_ppg": 107.19,
+   "depth_cost": 7.84,
+   "waiver_slots": [
+    "IDP"
+   ],
+   "bench_ppg": 26.9,
+   "lineup": [
+    {
+     "slot": "QB",
+     "player": "Jayden Daniels",
+     "ppg": 18.16,
+     "counted": 18.16,
+     "replaced": false,
+     "backup": "Daniel Jones",
+     "backup_ppg": 13.15,
+     "expected": 17.39
+    },
+    {
+     "slot": "RB",
+     "player": "Quinshon Judkins",
+     "ppg": 10.59,
+     "counted": 10.59,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 3.56,
+     "expected": 8.85
+    },
+    {
+     "slot": "RB",
+     "player": "Jacory Croskey-Merritt",
+     "ppg": 6.96,
+     "counted": 6.96,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 3.56,
+     "expected": 6.12
+    },
+    {
+     "slot": "WR",
+     "player": "CeeDee Lamb",
+     "ppg": 13.09,
+     "counted": 13.09,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.27,
+     "expected": 11.6
+    },
+    {
+     "slot": "WR",
+     "player": "Justin Jefferson",
+     "ppg": 12.08,
+     "counted": 12.08,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.27,
+     "expected": 10.78
+    },
+    {
+     "slot": "TE",
+     "player": "Tyler Warren",
+     "ppg": 9.39,
+     "counted": 9.39,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 8.77
+    },
+    {
+     "slot": "FLEX",
+     "player": "Emeka Egbuka",
+     "ppg": 10.91,
+     "counted": 10.91,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 9.97
+    },
+    {
+     "slot": "FLEX",
+     "player": "Jalen McMillan",
+     "ppg": 6.2,
+     "counted": 6.2,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 6.16
+    },
+    {
+     "slot": "K",
+     "player": "Brandon Aubrey",
+     "ppg": 7.42,
+     "counted": 7.42,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 6.6,
+     "expected": 7.34
+    },
+    {
+     "slot": "DEF",
+     "player": "Broncos",
+     "ppg": 5.65,
+     "counted": 5.65,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.06,
+     "expected": 5.62
+    },
+    {
+     "slot": "IDP",
+     "player": "Fred Warner",
+     "ppg": 6.5,
+     "counted": 6.74,
+     "replaced": true,
+     "backup": "waiver",
+     "backup_ppg": 6.74,
+     "expected": 6.74
+    }
+   ],
+   "bench": [
+    {
+     "name": "Daniel Jones",
+     "pos": "QB",
+     "ppg": 13.15,
+     "cost": 1
+    },
+    {
+     "name": "Malachi Fields",
+     "pos": "WR",
+     "ppg": 5.07,
+     "cost": 1
+    },
+    {
+     "name": "Zachariah Branch",
+     "pos": "WR",
+     "ppg": 4.09,
+     "cost": 1
+    },
+    {
+     "name": "Sean Tucker",
+     "pos": "RB",
+     "ppg": 2.85,
+     "cost": 1
+    },
+    {
+     "name": "Kaleb Johnson",
+     "pos": "RB",
+     "ppg": 1.74,
+     "cost": 1
+    }
+   ],
+   "rank": 13
+  },
+  {
+   "team": "Bend The Knee 🐲🔥",
+   "weekly": 98.53,
+   "season": 1675.0,
+   "lineup_ppg": 105.66,
+   "depth_cost": 7.13,
+   "waiver_slots": [
+    "IDP"
+   ],
+   "bench_ppg": 37.24,
+   "lineup": [
+    {
+     "slot": "QB",
+     "player": "Sam Darnold",
+     "ppg": 15.46,
+     "counted": 15.46,
+     "replaced": false,
+     "backup": "C.J. Stroud",
+     "backup_ppg": 14.58,
+     "expected": 15.33
+    },
+    {
+     "slot": "RB",
+     "player": "James Cook",
+     "ppg": 14.43,
+     "counted": 14.43,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 3.56,
+     "expected": 11.74
+    },
+    {
+     "slot": "RB",
+     "player": "RJ Harvey",
+     "ppg": 7.39,
+     "counted": 7.39,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 3.56,
+     "expected": 6.44
+    },
+    {
+     "slot": "WR",
+     "player": "Jaxon Smith-Njigba",
+     "ppg": 13.83,
+     "counted": 13.83,
+     "replaced": false,
+     "backup": "Stefon Diggs",
+     "backup_ppg": 7.37,
+     "expected": 12.6
+    },
+    {
+     "slot": "WR",
+     "player": "Parker Washington",
+     "ppg": 10.38,
+     "counted": 10.38,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.27,
+     "expected": 9.41
+    },
+    {
+     "slot": "TE",
+     "player": "Travis Kelce",
+     "ppg": 8.02,
+     "counted": 8.02,
+     "replaced": false,
+     "backup": "T.J. Hockenson",
+     "backup_ppg": 7.18,
+     "expected": 7.87
+    },
+    {
+     "slot": "FLEX",
+     "player": "DK Metcalf",
+     "ppg": 8.96,
+     "counted": 8.96,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 8.39
+    },
+    {
+     "slot": "FLEX",
+     "player": "Michael Wilson",
+     "ppg": 8.03,
+     "counted": 8.03,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.99,
+     "expected": 7.64
+    },
+    {
+     "slot": "K",
+     "player": "Evan McPherson",
+     "ppg": 6.83,
+     "counted": 6.83,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 6.6,
+     "expected": 6.81
+    },
+    {
+     "slot": "DEF",
+     "player": "Ravens",
+     "ppg": 5.59,
+     "counted": 5.59,
+     "replaced": false,
+     "backup": "waiver",
+     "backup_ppg": 5.06,
+     "expected": 5.56
+    },
+    {
+     "slot": "IDP",
+     "player": "Divine Deablo",
+     "ppg": 4.06,
+     "counted": 6.74,
+     "replaced": true,
+     "backup": "waiver",
+     "backup_ppg": 6.74,
+     "expected": 6.74
+    }
+   ],
+   "bench": [
+    {
+     "name": "C.J. Stroud",
+     "pos": "QB",
+     "ppg": 14.58,
+     "cost": 1
+    },
+    {
+     "name": "Stefon Diggs",
+     "pos": "WR",
+     "ppg": 7.37,
+     "cost": 10
+    },
+    {
+     "name": "T.J. Hockenson",
+     "pos": "TE",
+     "ppg": 7.18,
+     "cost": 1
+    },
+    {
+     "name": "Keenan Allen",
+     "pos": "WR",
+     "ppg": 4.99,
+     "cost": 1
+    },
+    {
+     "name": "Alvin Kamara",
+     "pos": "RB",
+     "ppg": 3.12,
+     "cost": 1
+    }
+   ],
+   "rank": 14
+  }
+ ],
+ "unmatched": []
+}
