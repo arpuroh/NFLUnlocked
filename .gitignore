@@ -2,3 +2,7 @@ __pycache__/
 *.pyc
 .env
 .vercel
+
+# API response caches: Yahoo raw dumps and the Sleeper projection feed.
+# Re-downloadable, large, and never worth a diff.
+data/raw/
