@@ -47,6 +47,8 @@
 
   const POS_ORDER = ["QB", "RB", "WR", "TE", "K", "DEF", "IDP"];
   const posClass = (slot) => "pos-" + String(slot || "").toLowerCase();
+  // Stable anchor per team so the index at the top can jump straight to a card.
+  const slug = (t) => "t-" + String(t).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
   /* ── data ────────────────────────────────────────────── */
   const getJSON = (p) => fetch(p, { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
@@ -225,7 +227,7 @@
       const pos = POS_ORDER.filter((k) => t.pos_spend[k]).map((k) =>
         `<span class="ps"><b class="pp ${posClass(k)}">${k}</b> ${money(t.pos_spend[k])}</span>`).join("");
       const gclass = g ? " " + g.grade.replace("+", "p").replace("-", "m").toLowerCase() : "";
-      return `<article class="dr-card${g ? "" : " ungraded"}" id="t-${i + 1}">
+      return `<article class="dr-card${g ? "" : " ungraded"}" id="${slug(t.team)}">
         <div class="dr-grade">
           <span class="g${gclass}">${g ? esc(g.grade) : "?"}</span>
           ${r ? `<span class="rk">#${r.rank}<i> preseason</i></span>` : ""}
@@ -238,7 +240,7 @@
             </div>
             <div class="dr-pos">${pos}</div>
           </div>
-          ${(t.missing || []).length ? `<div class="dr-alarm">Roster illegal as drafted: no ${t.missing.map((m) => esc(m)).join(", no ")}. That slot scores zero until the waiver wire fixes it.</div>` : ""}
+          ${(t.missing || []).length ? `<div class="dr-note">Walked out without a ${t.missing.map((m) => esc(m)).join(" or a ")}. Costs a waiver claim on Tuesday and nothing else, which is exactly why nobody spent on them.</div>` : ""}
           ${g ? `<h4 class="dr-hl">${esc(g.headline)}</h4>
                  ${(Array.isArray(g.body) ? g.body : [g.body]).map((p) => `<p class="dr-p">${esc(p)}</p>`).join("")}
                  <div class="dr-verdicts">
@@ -323,14 +325,33 @@
         ${qb ? stat("The entire QB market", money(qb.total), `${qb.count} QBs bought. The room paid more for two running backs.`) : ""}
       </section>
 
+      <nav class="dr-index" id="index" aria-label="Jump to a team's grade">
+        <div class="ix-head">
+          <span class="eyebrow">All ${ordered.length} grades · tap yours to jump straight to it</span>
+          <span class="ix-note">${grades ? "Best to worst" : "By starting-lineup capital"}</span>
+        </div>
+        <div class="ix-grid">
+          ${ordered.map((t, i) => {
+            const g = G && G[t.team];
+            const r = rankOf[t.team];
+            const gc = g ? " g" + g.grade.replace("+", "p").replace("-", "m").toLowerCase() : "";
+            return `<a class="ix${gc}" href="#${slug(t.team)}">
+              <span class="ix-n">${r ? r.rank : i + 1}</span>
+              <span class="ix-t">${esc(t.team)}<em>${esc(mgr(t.team, grades))}</em></span>
+              <span class="ix-g">${g ? esc(g.grade) : "—"}</span>
+            </a>`;
+          }).join("")}
+        </div>
+      </nav>
+
       <div class="body-grid">
         <div class="col-main" id="grades">
           <div class="sec-top"><h2 class="h-sec">${grades ? "The Grades" : "Every Roster"}</h2>
             <span class="note">${grades ? "Ordered by preseason rank, best first" : "Ordered by starting-lineup capital"}</span></div>
           <hr class="rule-h">
-          <p class="os-note" style="margin-bottom:6px">Every roster below is measured the same way: what the starting eleven cost,
-            what got left on the bench, and what the room paid for the same players last September. Grades are final,
-            unfair, and will be reprinted in December next to your actual record.</p>
+          <p class="os-note" style="margin-bottom:6px">Graded on the part that scores: quarterback, running back, receiver and tight end.
+            Kickers and defenses are a Tuesday waiver claim and are not held against anybody. What is held against you is money
+            that never made it into a starting lineup. Grades are final, unfair, and get reprinted in December next to your actual record.</p>
           ${ordered.map(card).join("")}
         </div>
 
@@ -354,12 +375,12 @@
           </div>` : ""}
 
           ${(L.holes || []).length ? `<div class="mod">
-            <h2 class="h-sec">The Empty Chairs</h2><hr class="rule-h">
-            <p class="vote-foot" style="margin:0 0 10px">The lineup is QB, 2 RB, 2 WR, TE, 2 flex, K, DEF and one IDP.
-              These rosters cannot legally fill it. Somebody is starting a zero in Week 1.</p>
+            <h2 class="h-sec">Tuesday's Shopping List</h2><hr class="rule-h">
+            <p class="vote-foot" style="margin:0 0 10px">Nobody drafted a kicker or a defense with real money and nobody should.
+              These three skipped one entirely and will pick it up off waivers for a dollar like everybody else does in October.</p>
             ${L.holes.map((h) => `<div class="hole-row">
               <span class="hn">${esc(h.team)}</span>
-              <span class="hv">${h.missing.map((m) => `<b>no ${esc(m)}</b>`).join(" · ")}</span>
+              <span class="hv">${h.missing.map((m) => `<b>${esc(m)}</b>`).join(" · ")}</span>
             </div>`).join("")}
           </div>` : ""}
 
