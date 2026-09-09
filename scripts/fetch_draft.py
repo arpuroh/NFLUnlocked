@@ -28,10 +28,12 @@ import sys
 import urllib.request
 from collections import defaultdict
 from datetime import datetime, timezone
+from html import unescape
 from html.parser import HTMLParser
 from pathlib import Path
 
 LEAGUE_ID = "675504"
+HOME = f"https://football.fantasysports.yahoo.com/f1/{LEAGUE_ID}"
 PAGE = f"https://football.fantasysports.yahoo.com/f1/{LEAGUE_ID}/draftresults"
 UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/128.0 Safari/537.36")
@@ -135,6 +137,51 @@ def parse_order(html: str) -> list:
     return []
 
 
+
+def scrape_team_logos() -> dict:
+    """
+    Team name -> the avatar each manager picked on Yahoo, plus his team id.
+
+    Only the league home page carries these, and only inside the matchup preview
+    list. Every matchup block holds exactly four things in this order: the first
+    team's name, the first team's logo, the second team's logo, the second team's
+    name. Pairing on that order is reliable; pairing on "nearest logo in the
+    document" is not, because the right-hand team's markup puts its name first
+    and two teams end up sharing an avatar.
+    """
+    try:
+        html_doc = fetch(HOME)
+    except Exception as e:  # noqa: BLE001
+        print(f"  team logos skipped ({e})")
+        return {}
+    # Match EVERY avatar, not just the uploaded ones. Managers who never picked a
+    # logo keep Yahoo's default helmet, which is served from a different host, and
+    # skipping those shifts every later pairing in the block by one.
+    token = re.compile(
+        r'<img[^>]+src="(?P<logo>https://[^"]+)"[^>]+alt="logo"'
+        r'|href="[^"]*/f1/' + LEAGUE_ID + r'/(?P<tid>\d+)"[^>]*>(?P<name>[^<]{1,60})</a>')
+    out = {}
+    for block in re.findall(r"<li class='Linkable Listitem No-p '.*?</li>", html_doc, re.S):
+        names, logos = [], []
+        for m in token.finditer(block):
+            if m.group("logo"):
+                logos.append(m.group("logo"))
+            else:
+                nm = unescape(m.group("name")).strip()
+                if nm:
+                    names.append((m.group("tid"), nm))
+        if len(names) != len(logos):
+            print(f"  WARNING: {len(names)} names but {len(logos)} logos in one matchup, skipping it")
+            continue
+        for (tid, nm), logo in zip(names, logos):
+            out.setdefault(nm, {"team_id": tid, "logo": logo,
+                                "default_logo": "cloudinary" not in logo})
+    if len(out) != len({v["logo"] for v in out.values()}):
+        print("  WARNING: duplicate team logos, the pairing is off")
+    print(f"  team logos: {len(out)}")
+    return out
+
+
 def parse_fixture(path: Path) -> list:
     picks = []
     for line in path.read_text(encoding="utf-8").splitlines():
@@ -218,7 +265,8 @@ def lineup_strength(picks: list) -> dict:
     }
 
 
-def build(picks: list, order: list, season: int, budget: int, prev: dict | None) -> dict:
+def build(picks: list, order: list, season: int, budget: int, prev: dict | None,
+          logos: dict | None = None) -> dict:
     prev_price = {}
     if prev:
         for p in prev.get("picks", []):
@@ -239,10 +287,13 @@ def build(picks: list, order: list, season: int, budget: int, prev: dict | None)
         pos_spend = defaultdict(int)
         for p in ps:
             pos_spend[p["slot"]] += p["cost"]
+        art = (logos or {}).get(name, {})
         fit = fit_lineup(ps)
         strength = lineup_strength(ps)
         teams.append({
             "team": name,
+            "team_id": art.get("team_id", ""),
+            "logo": art.get("logo", ""),
             "picks": ps,
             "count": len(ps),
             "spent": spent,
@@ -339,7 +390,7 @@ def main() -> int:
                     help="previous season draft.json for year-over-year prices")
     args = ap.parse_args()
 
-    order = []
+    order, logos = [], {}
     if args.fixture:
         picks = parse_fixture(Path(args.fixture))
         print(f"  fixture: {len(picks)} picks")
@@ -352,6 +403,7 @@ def main() -> int:
         print(f"  fetched {len(html)} bytes")
         picks = parse_picks(html)
         order = parse_order(html)
+        logos = scrape_team_logos()
         print(f"  picks: {len(picks)}  teams in nomination order: {len(order)}")
 
     prev = None
@@ -362,7 +414,7 @@ def main() -> int:
         except Exception:  # noqa: BLE001
             prev = None
 
-    out = build(picks, order, args.season, args.budget, prev)
+    out = build(picks, order, args.season, args.budget, prev, logos)
     Path(args.out).write_text(json.dumps(out, indent=1, ensure_ascii=False))
     print(f"  status={out['status']}  wrote {args.out}")
     return 0

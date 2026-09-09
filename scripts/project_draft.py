@@ -24,6 +24,7 @@ Usage:  python scripts/project_draft.py [--refresh]
 
 import argparse
 import json
+import math
 import re
 import sys
 import urllib.request
@@ -39,10 +40,11 @@ FEED = ("https://api.sleeper.app/projections/nfl/{season}"
 
 # ---------------------------------------------------------------- league rules
 #
-# Yahoo league 675504. The three that matter and that no default scoring gets
-# right: four points for a passing touchdown (so quarterbacks are worth much less
-# than in a 6-point league), kickers scoring one point per ten yards of made field
-# goals with no per-kick points, and an IDP slot paid mostly in tackles.
+# Taken verbatim from the league's own settings page, which is public at
+# football.fantasysports.yahoo.com/f1/675504/settings. Do not guess these. The
+# ones that differ from every default scoring system are the four-point passing
+# touchdown, kickers paid only by total field goal yardage, an IDP slot paid on
+# tackle volume, and defensive tiers compressed to roughly half of Yahoo's.
 SCORING = {
     "pass_yd": 0.04, "pass_td": 4.0, "pass_int": -1.0, "pass_2pt": 2.0,
     "rush_yd": 0.1, "rush_td": 6.0, "rush_2pt": 2.0,
@@ -53,8 +55,32 @@ SCORING = {
     "idp_int": 3.0, "idp_ff": 2.0, "idp_fum_rec": 2.0, "idp_td": 6.0,
     "sack": 1.0, "int": 2.0, "fum_rec": 2.0, "def_td": 6.0,
     "def_st_td": 6.0, "def_kr_td": 6.0, "def_pr_td": 6.0, "def_fum_td": 6.0,
-    "safe": 2.0, "blk_kick": 2.0,
+    "pr_td": 6.0, "safe": 2.0, "blk_kick": 2.0,
 }
+
+# Yahoo also pays a bonus point for a big game: 100, 150 and 200 rushing or
+# receiving yards, and 400, 450 and 500 passing. Projections come as season
+# totals, so the bonus has to be estimated rather than counted. Game-level
+# yardage is roughly lognormal, so a player's per-game average plus a position's
+# usual spread gives how often he should clear each line. It is worth a couple of
+# points a week across a lineup, and it quietly rewards the workhorses.
+BONUS = {
+    "rush_yd": ([100, 150, 200], 0.60),
+    "rec_yd": ([100, 150, 200], 0.70),
+    "pass_yd": ([400, 450, 500], 0.35),
+}
+
+# The defensive tiers are worth about three points a game to an average unit,
+# points allowed and yards allowed combined, under this league's compressed
+# table. No projection source publishes a defense's points or yards allowed, so
+# every defense gets the league-average value rather than an invented one. It is
+# the same for all fourteen teams, so it moves nobody up or down; it is here so
+# the weekly totals are honest rather than three points light.
+DEF_TIER_BASELINE = 2.9
+
+# Two settings are left out because nothing projects them: an IDP's passes
+# defended (1 point each) and offensive return yardage (1 point per 25). Both are
+# small, and both are disclosed on the site so the number is not oversold.
 
 WEEKS = 17          # NFL regular season
 BYE = 1             # every player sits one of them
@@ -87,8 +113,29 @@ def fetch(refresh: bool) -> list:
     return rows
 
 
+def _expected_bonus(total_yards: float, games: float, lines: list, cv: float) -> float:
+    """Times a player should clear each yardage line over the season, at a point each."""
+    if total_yards <= 0 or games <= 0:
+        return 0.0
+    mu = total_yards / games
+    if mu <= 1:
+        return 0.0
+    sigma2 = math.log(1 + cv * cv)
+    sigma = math.sqrt(sigma2)
+    med = math.log(mu) - sigma2 / 2          # lognormal median implied by the mean
+    out = 0.0
+    for line in lines:
+        z = (math.log(line) - med) / sigma
+        out += games * 0.5 * math.erfc(z / math.sqrt(2))   # games x P(X >= line)
+    return out
+
+
 def score(stats: dict) -> float:
-    return round(sum(v * stats.get(k, 0.0) for k, v in SCORING.items()), 2)
+    pts = sum(v * stats.get(k, 0.0) for k, v in SCORING.items())
+    games = stats.get("gp", 0.0) or WEEKS
+    for key, (lines, cv) in BONUS.items():
+        pts += _expected_bonus(stats.get(key, 0.0), games, lines, cv)
+    return round(pts, 2)
 
 
 SUFFIX = re.compile(r"\b(jr|sr|ii|iii|iv|v)\b")
@@ -126,7 +173,9 @@ def build_index(rows: list) -> tuple:
         if not key:
             continue
         pts = score(st)
-        rec = {"name": full.strip(), "pos": pos, "points": pts,
+        if pos == "DEF":
+            pts += DEF_TIER_BASELINE * WEEKS   # DEF "gp" is 1 in the feed, not a game count
+        rec = {"name": full.strip(), "pos": pos, "points": round(pts, 2),
                "team": (p.get("team") or ""), "ppg": round(pts / WEEKS, 2)}
         # keep the best projection under a given name+position
         cur = by_name.get((key, pos))
@@ -287,8 +336,11 @@ def main() -> int:
     out = {
         "season": SEASON,
         "source": "Sleeper 2026 season projections, re-scored under this league's rules",
-        "scoring_note": ("half PPR, 4-point passing touchdowns, kickers paid 1 point per 10 yards "
-                         "of made field goals, IDP paid on tackle volume"),
+        "scoring_note": ("scored on the league's own Yahoo settings: half PPR, 4-point passing "
+                         "touchdowns, big-game yardage bonuses, kickers paid 1 point per 10 yards of "
+                         "made field goals, IDP on tackle volume, and this league's compressed "
+                         "defensive tiers. Passes defended and return yardage are not projected by "
+                         "any source and are left out."),
         "waiver_baseline": waiver,
         "avg_weekly": avg,
         "spread": round(out_teams[0]["weekly"] - out_teams[-1]["weekly"], 2),
