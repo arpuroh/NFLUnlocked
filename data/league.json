@@ -13,7 +13,7 @@
   "uses_faab": true,
   "faab_budget": 100,
   "demo": false,
-  "last_updated": "2026-09-09T14:56:55.260180+00:00"
+  "last_updated": "2026-09-10T14:42:46.508558+00:00"
  },
  "teams": [
   {
@@ -22,7 +22,7 @@
    "name": "Hail Mary",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/25205944781_f55b83a6fa.jpg",
-   "moves": 1,
+   "moves": 3,
    "trades": 0,
    "faab_balance": 100,
    "clinched_playoffs": false,
@@ -43,7 +43,7 @@
    "name": "A dad",
    "manager": "",
    "logo": "https://s.yimg.com/cv/apiv2/default/nfl/nfl_8_b.png",
-   "moves": 0,
+   "moves": 4,
    "trades": 0,
    "faab_balance": 100,
    "clinched_playoffs": false,
@@ -64,7 +64,7 @@
    "name": "Good Will Hunting",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/294c101b0012ae2044dfb832be7a254d2ff520c34206ba46c2cb3c16d80b69da.jpg",
-   "moves": 2,
+   "moves": 3,
    "trades": 0,
    "faab_balance": 100,
    "clinched_playoffs": false,
@@ -169,7 +169,7 @@
    "name": "Mac Daddy",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/87caae3ea27e5764afe50efbc5b1e3bc060b3f15b9cc206accd95983a6271104.jpg",
-   "moves": 0,
+   "moves": 2,
    "trades": 0,
    "faab_balance": 100,
    "clinched_playoffs": false,
@@ -187,10 +187,10 @@
   {
    "team_key": "scrape.l.675504.t.9",
    "team_id": "9",
-   "name": "Poop Squad \ud83d\udca9",
+   "name": "Talk Darty to Me \ud83c\udfaf",
    "manager": "",
-   "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/3c7a9f355615cd533612e483f2720a67c8dc1f0c4e05e52759ac1f4630edba6d.jpg",
-   "moves": 0,
+   "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/4ec83422cb4e6deebccc64e5f2aa7af61e910d11fed05bd5b150f1e9e797a450.jpg",
+   "moves": 1,
    "trades": 0,
    "faab_balance": 100,
    "clinched_playoffs": false,
@@ -274,7 +274,7 @@
    "name": "Fwamming Gwaggon",
    "manager": "",
    "logo": "https://s.yimg.com/ep/cx/blendr/v2/image-dragon-png_1721173946530.png",
-   "moves": 0,
+   "moves": 1,
    "trades": 0,
    "faab_balance": 100,
    "clinched_playoffs": false,
@@ -320,8 +320,8 @@
    "luck_index": 0.0,
    "recent_form": 0.0,
    "rank": 1,
-   "prev_rank": 3,
-   "movement": 2
+   "prev_rank": 1,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.2",
@@ -331,8 +331,8 @@
    "luck_index": 0.0,
    "recent_form": 0.0,
    "rank": 2,
-   "prev_rank": 4,
-   "movement": 2
+   "prev_rank": 2,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.3",
@@ -342,8 +342,8 @@
    "luck_index": 0.0,
    "recent_form": 0.0,
    "rank": 3,
-   "prev_rank": 1,
-   "movement": -2
+   "prev_rank": 3,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.4",
@@ -353,8 +353,8 @@
    "luck_index": 0.0,
    "recent_form": 0.0,
    "rank": 4,
-   "prev_rank": 6,
-   "movement": 2
+   "prev_rank": 4,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.5",
@@ -364,8 +364,8 @@
    "luck_index": 0.0,
    "recent_form": 0.0,
    "rank": 5,
-   "prev_rank": 2,
-   "movement": -3
+   "prev_rank": 5,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.6",
@@ -375,8 +375,8 @@
    "luck_index": 0.0,
    "recent_form": 0.0,
    "rank": 6,
-   "prev_rank": 5,
-   "movement": -1
+   "prev_rank": 6,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.7",
@@ -386,8 +386,8 @@
    "luck_index": 0.0,
    "recent_form": 0.0,
    "rank": 7,
-   "prev_rank": 11,
-   "movement": 4
+   "prev_rank": 7,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.8",
@@ -397,8 +397,8 @@
    "luck_index": 0.0,
    "recent_form": 0.0,
    "rank": 8,
-   "prev_rank": 9,
-   "movement": 1
+   "prev_rank": 8,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.9",
@@ -408,8 +408,8 @@
    "luck_index": 0.0,
    "recent_form": 0.0,
    "rank": 9,
-   "prev_rank": 7,
-   "movement": -2
+   "prev_rank": 9,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.10",
@@ -419,8 +419,8 @@
    "luck_index": 0.0,
    "recent_form": 0.0,
    "rank": 10,
-   "prev_rank": 12,
-   "movement": 2
+   "prev_rank": 10,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.11",
@@ -430,8 +430,8 @@
    "luck_index": 0.0,
    "recent_form": 0.0,
    "rank": 11,
-   "prev_rank": 8,
-   "movement": -3
+   "prev_rank": 11,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.12",
@@ -441,8 +441,8 @@
    "luck_index": 0.0,
    "recent_form": 0.0,
    "rank": 12,
-   "prev_rank": 10,
-   "movement": -2
+   "prev_rank": 12,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.13",
@@ -558,108 +558,7 @@
   ],
   "closing": "Connect the Yahoo league and the Executioner starts publishing for real. Until then, these demo managers take the bullets meant for you."
  },
- "feed": [
-  {
-   "id": "rank-scrape.l.675504.t.1-1",
-   "kind": "rankings",
-   "title": "Hail Mary jumps 2 spots to #1",
-   "body": "All-play 0-0 and a luck index of +0.000. The model likes them more than the standings do.",
-   "timestamp": 1788965815,
-   "team_key": "scrape.l.675504.t.1",
-   "reactions": {},
-   "reacted_by": 0
-  },
-  {
-   "id": "rank-scrape.l.675504.t.2-2",
-   "kind": "rankings",
-   "title": "A dad jumps 2 spots to #2",
-   "body": "All-play 0-0 and a luck index of +0.000. The model likes them more than the standings do.",
-   "timestamp": 1788965815,
-   "team_key": "scrape.l.675504.t.2",
-   "reactions": {},
-   "reacted_by": 0
-  },
-  {
-   "id": "rank-scrape.l.675504.t.3-3",
-   "kind": "rankings",
-   "title": "Good Will Hunting drops 2 spots to #3",
-   "body": "All-play 0-0 and a luck index of +0.000. The model trusts them less than the standings do.",
-   "timestamp": 1788965815,
-   "team_key": "scrape.l.675504.t.3",
-   "reactions": {},
-   "reacted_by": 0
-  },
-  {
-   "id": "rank-scrape.l.675504.t.4-4",
-   "kind": "rankings",
-   "title": "Kim Jong Nate jumps 2 spots to #4",
-   "body": "All-play 0-0 and a luck index of +0.000. The model likes them more than the standings do.",
-   "timestamp": 1788965815,
-   "team_key": "scrape.l.675504.t.4",
-   "reactions": {},
-   "reacted_by": 0
-  },
-  {
-   "id": "rank-scrape.l.675504.t.5-5",
-   "kind": "rankings",
-   "title": "The Asshouse Always Wins drops 3 spots to #5",
-   "body": "All-play 0-0 and a luck index of +0.000. The model trusts them less than the standings do.",
-   "timestamp": 1788965815,
-   "team_key": "scrape.l.675504.t.5",
-   "reactions": {},
-   "reacted_by": 0
-  },
-  {
-   "id": "rank-scrape.l.675504.t.7-7",
-   "kind": "rankings",
-   "title": "FreeGucci jumps 4 spots to #7",
-   "body": "All-play 0-0 and a luck index of +0.000. The model likes them more than the standings do.",
-   "timestamp": 1788965815,
-   "team_key": "scrape.l.675504.t.7",
-   "reactions": {},
-   "reacted_by": 0
-  },
-  {
-   "id": "rank-scrape.l.675504.t.9-9",
-   "kind": "rankings",
-   "title": "Poop Squad \ud83d\udca9 drops 2 spots to #9",
-   "body": "All-play 0-0 and a luck index of +0.000. The model trusts them less than the standings do.",
-   "timestamp": 1788965815,
-   "team_key": "scrape.l.675504.t.9",
-   "reactions": {},
-   "reacted_by": 0
-  },
-  {
-   "id": "rank-scrape.l.675504.t.10-10",
-   "kind": "rankings",
-   "title": "Leo the Cleo jumps 2 spots to #10",
-   "body": "All-play 0-0 and a luck index of +0.000. The model likes them more than the standings do.",
-   "timestamp": 1788965815,
-   "team_key": "scrape.l.675504.t.10",
-   "reactions": {},
-   "reacted_by": 0
-  },
-  {
-   "id": "rank-scrape.l.675504.t.11-11",
-   "kind": "rankings",
-   "title": "Miley \ud83d\udca8LEO 5K Speedo Fan Club drops 3 spots to #11",
-   "body": "All-play 0-0 and a luck index of +0.000. The model trusts them less than the standings do.",
-   "timestamp": 1788965815,
-   "team_key": "scrape.l.675504.t.11",
-   "reactions": {},
-   "reacted_by": 0
-  },
-  {
-   "id": "rank-scrape.l.675504.t.12-12",
-   "kind": "rankings",
-   "title": "ShakeNBake drops 2 spots to #12",
-   "body": "All-play 0-0 and a luck index of +0.000. The model trusts them less than the standings do.",
-   "timestamp": 1788965815,
-   "team_key": "scrape.l.675504.t.12",
-   "reactions": {},
-   "reacted_by": 0
-  }
- ],
+ "feed": [],
  "most_clowned": [],
  "history": {
   "established": 2016,
