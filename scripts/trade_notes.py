@@ -1,0 +1,87 @@
+# Every hand-written line on the Trade Court page (trades.html), keyed by trade id from
+# data/trades.json. Fantasy decisions only, never real life. No em dashes. Numbers quoted
+# here are the rounded figures the page shows; re-check them if the scoring changes.
+
+NOTES = {
+    # ---- the robberies
+    "2013-020": "The league vetoed this twice, because it looked like Jordan was fleecing Greg. So Jordan kept sweetening it: first LeGarrette Blount, then a rookie named Keenan Allen. It cleared on the third try and became the most lopsided trade in league history. Against Jordan. He won the title anyway, which is the only reason he can look at this card.",
+    "2025-131": "Nathan traded Christian McCaffrey in October for Calvin Ridley and Rome Odunze. McCaffrey scored 257 more points and carried the Injured Reserved into the playoffs. Ridley scored four. Nathan finished 11th.",
+    "2014-028": "Eddie Lacy started slow, so Neil sold him in Week 4 to the one manager you should never sell to. Stevan Ridley and Brian Quick played seven more games between them. Lacy scored 225 more points.",
+    "2016-067": "Sold before a single snap of Week 1. Nathan gave up LeSean McCoy for Keenan Allen, who tore his ACL in his first game. McCoy scored 277 more points. Nathan won the title anyway, because ten weeks later he did this exact thing to Barrett.",
+    "2012-012": "Barrett sold rookie Doug Martin two games into his career for a tight end and a slot receiver. Seven weeks later Martin ran for 251 yards and four touchdowns in one afternoon. All Varun had to do was set his lineup.",
+    "2014-030": "Andrew bought LeSean McCoy, the reigning rushing champ. Nathan walked away with Le'Veon Bell the year he broke out and won this deal by 119. Then he handed Bell to Miley six weeks later, which is its own card on this page.",
+    "2019-107": "Neil sent Michael Thomas to Varun in Week 5 for three players. Thomas set the single-season catch record, scored 245 more points, and Varun won the title. Neil finished 12th.",
+    "2013-021": "Barrett turned Brandon Marshall into Marlon Brown, Isaiah Pead and Danny Amendola. Marshall outscored all three of them combined. By himself.",
+    "2011-002": "Barrett traded rookie Cam Newton for Matt Hasselbeck and a tight end in Week 5. Newton scored 261 more points. Barrett won the title anyway, which is the only reason he can read this.",
+    "2011-009": "Kevin made exactly one trade in his NFL Unlocked career. He took Roddy White off Nathan's hands, then left the league undefeated. Nathan is still here.",
+    "2023-121": "The only Robbery anyone has pulled on Varun in 42 trades, and a second-year manager did it. Anuj took Rashee Rice and James Cook for Tony Pollard and Zay Jones. Frame it.",
+    "2016-089": "Barrett shopped Le'Veon Bell three times in two days. The league vetoed the first two. Nathan added Dion Lewis, it went through on Thanksgiving, Bell put up 97 points in the fantasy playoffs, and Nathan won the title.",
+    "2011-007": "Barrett turned Wes Welker into Jordy Nelson, Nate Washington and Rashard Mendenhall. The three of them scored 141 points in the fantasy playoffs and JewishWarriors won the first title on file.",
+    "2014-033": "Miley gave Mark Julio Jones for John Brown, Fred Jackson and Heath Miller. Neither team made the playoffs, so this one only hurt emotionally.",
+    "2015-041": "Andrew traded for Peyton Manning. In 2015. He got four more games and 39 points out of him. Greg got Russell Wilson, who scored 236.",
+    "2014-039": "Jordan sold Odell Beckham Jr. three days before the one-handed catch. Beckham scored 98 points in the fantasy playoffs for Barrett, who made the final. Against Jordan. Who won.",
+    "2014-037": "Nathan had won the Le'Veon Bell trade by 119 points. Six weeks later he gave Bell to Miley for DeMarco Murray. Bell scored 87 more in the fantasy playoffs, for somebody else.",
+    "2024-130": "Anuj bought the rookie hype, three players deep. Will took George Kittle and Jerry Jeudy, won the deal by 61 and finished third.",
+    "2013-022": "Two different Gregs traded seven players. Both teams missed the playoffs. It is not clear which Greg won, only that this was a lot of paperwork for two Gregs.",
+    # ---- title trades
+    "2012-017": "Jordan's deadline haul: Brandon Lloyd, Michael Crabtree, Brian Hartline and Rashad Jennings, for four players who scored 34 points the rest of the way. Lloyd and Crabtree put up 115 in the fantasy playoffs and Kukler won the title.",
+    "2013-023": "Jordan gave Nathan four players and got Dez Bryant, who scored 54 in the fantasy playoffs. On paper Nathan won this. Jordan has the ring.",
+    "2014-032": "Nishil got two starting receivers. Jordan got Jordy Nelson and, eventually, the trophy. Everybody won, Jordan more.",
+    # ---- vetoes
+    "2013-018": "Vetoed. For the record, Jordan was already losing this version by 85.",
+    "2013-019": "Vetoed again. Jordan added LeGarrette Blount to make it fair. He was now losing it by 92.",
+    "2016-076": "Anthony offered DeAndre Hopkins, Carlos Hyde, Melvin Gordon and Christine Michael for four spare parts. The league stepped in. Good call: Neil would have won it by 62, and Anthony went on to finish third.",
+    "2016-087": "Vetoed on Tuesday night. Nathan attached Dion Lewis, resubmitted on Thanksgiving, and won the title with Bell.",
+    "2016-088": "Barrett's plan B: Bell and Jeremy Maclin to Varun for Jarvis Landry, Spencer Ware and James White. Also vetoed. Barrett was trying very hard to lose this trade, and on the third attempt he did.",
+    # ---- fair fights and other fun
+    "2021-113": "A six-player blockbuster with two starting quarterbacks in it. Chris got Joe Burrow in the year he went to the Super Bowl. Varun got Mahomes and Keenan Allen. Both sides were fine, which never happens.",
+    "2018-101": "Varun took Derrick Henry for rookie Nick Chubb in October. Dead even until December, when Henry ran for 238 yards and four touchdowns on a Thursday night.",
+    "2018-102": "Alvin Kamara for Melvin Gordon and Jarvis Landry, in the same season. Two teams got a stud. One of them got a better one.",
+    "2022-118": "Anuj's first trade in the league, in a season his own team was named First Timer. He sent Josh Allen and A.J. Brown to Varun. Welcome.",
+    "2024-128": "Andrew got Jalen Hurts for D'Andre Swift and a 40-year-old Aaron Rodgers. The commissioner approves this trade.",
+    "2023-124": "Abhishek traded for Kyler Murray at the deadline. Murray gave him four games and nothing over a waiver quarterback. Barrett got Ezekiel Elliott and finished second.",
+    "2015-059": "A week before the deadline, Abhishek traded Brandon Marshall for Adrian Peterson. Marshall outscored Peterson by 42 the rest of the way. Abhishek lost the final.",
+    "2011-004": "Abhishek's first real trade on file: Hakeem Nicks and Tim Tebow went out, Jermichael Finley and Ryan Fitzpatrick came in. Tebow outscored Fitzpatrick. That sentence should never be true.",
+}
+
+SEASON_NOTES = {
+    2011: "Twelve teams, two divisions, draft-pick trades allowed. Varun was in five of the eleven deals, which should have been a warning to everyone.",
+    2012: "A ten-team year. Barrett sold Doug Martin in September and Jordan bought his way to a title at the deadline.",
+    2013: "The only season the league vetoed the same trade twice. It cleared on the third try, once Jordan had sweetened it into the worst trade in league history. For himself.",
+    2014: "Le'Veon Bell was traded twice in six weeks. Jordan sold Odell Beckham Jr., met him in the final, and won anyway.",
+    2015: "The busiest year on record: 27 trades, 16 of them one half of a rental that got sent back within days. Varun was in seven.",
+    2016: "Keenan Allen was traded before Week 1 and hurt in Week 1. Le'Veon Bell was shopped three times in two days and won Nathan a title.",
+    2017: "Eleven trades, zero robberies. Nishil won the title without making one.",
+    2018: "Derrick Henry for Nick Chubb, Alvin Kamara for Melvin Gordon. Andrew won the title after one trade in which nobody got anything.",
+    2019: "Three trades. One of them was Michael Thomas to Varun, and Varun won the title.",
+    2020: "Three trades, none decided by more than 13 points. The quietest market until 2022.",
+    2021: "Burrow for Mahomes, and CeeDee Lamb for Brandin Cooks. Maclane won the title without a single trade.",
+    2022: "The quietest season on file: two trades. One of them was Anuj's first, and he gave away Josh Allen.",
+    2023: "Nathan named his team \"Anuj please stop trading.\" Anuj made two trades that year, one of them the only Robbery anyone has pulled on Varun.",
+    2024: "Anuj made three more trades. Nishil won his third title without making any.",
+    2025: "Two trades all season. One of them was Christian McCaffrey for Calvin Ridley and Rome Odunze.",
+}
+
+MGR_NOTES = {
+    "varun": "42 trades, 21 wins, six losses. Everybody's favorite trade partner is also the reason everybody else is in the red.",
+    "greg-ir": "The second-best ledger in the league, and more than all of it came from one October afternoon with Nathan and Christian McCaffrey.",
+    "greg-miley": "Plus 98 overall and plus 213 against Nathan alone. Miley does not trade with the league. Miley trades with Nathan.",
+    "kevin": "One season, one trade, one Robbery. Retired undefeated. Possibly the smartest man in league history.",
+    "mark": "Seven trades, one loss, and he pried Julio Jones out of Miley. A quiet closer.",
+    "will": "Two seasons in, one trade, a 61-point win. Will already understands this league better than most of the people who built it.",
+    "nishil": "Five trades in fifteen years, zero losses, three titles. Nishil does not need you.",
+    "chris": "Four trades, two wins, slightly in the green. Leo the Cleo is, somehow, a responsible trader.",
+    "jake": "Two trades in 2011, dead even. Then gone.",
+    "andrew": "23 trades and the commissioner is almost exactly break-even, which is the least suspicious thing about him. Giving Nathan Le'Veon Bell cost 119 on its own.",
+    "anthony": "One season, three trades, and the league had to veto a fourth to save him from himself.",
+    "sagar": "Eight trades, a punctuation mark for a team name most years, and he still could not hide from Nathan.",
+    "mohsin": "Two trades, nine years apart, two losses. Some people learn slowly.",
+    "darrius": "Four trades. The one that mattered was Garrett Wilson and three backups to Varun for James Cook.",
+    "anuj": "Traded away Josh Allen as a first-timer, then robbed Varun the next year. The only manager who has done both. Nathan asked him to stop in 2023. He did not.",
+    "abhishek": "Eleven trades, three wins, minus 106. Built this entire website and still cannot beat Barrett in a trade.",
+    "barrett": "21 trades and a bad habit of selling rookies early: Cam Newton in 2011, Doug Martin in 2012. Varun has taken 220 points off him, the most one manager has taken from another.",
+    "maclane": "Fourteen trades, three wins, five of them with Varun. You can guess how those went.",
+    "jordan": "Minus 182 in trades and four straight titles. Jordan loses trades on purpose so the rest of you feel included.",
+    "neil": "Nine trades, minus 196, and Varun took 200 of it in six deals. Neil is the reason Varun's number looks like that.",
+    "nathan": "28 trades, eight wins, minus 349: the most generous trader in league history. He still won a title with a traded-for Le'Veon Bell, which proves the system works if you try 28 times.",
+}
