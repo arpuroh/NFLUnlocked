@@ -76,7 +76,7 @@
               <span class="tag-red">Trade Court</span>
               <span class="eyebrow">${DB.first}–${DB.last} · ${T.trades} trades · ${T.players} players moved · ${T.vetoes} vetoed</span>
             </div>
-            <h1 class="display">Every trade since ${DB.first}. <span class="kick">Re-scored.</span></h1>
+            <h1 class="display">Every trade since ${DB.first}. <span class="kick" style="white-space:nowrap">Re‑scored.</span></h1>
             <p class="lede">${T.trades} deals across fifteen seasons, each one judged by what the players
               actually did after the handshake, under that season's own scoring. ${esc(king.manager)} is up
               ${r0(king.net)} points. ${esc(donor.manager)} has donated ${Math.abs(r0(donor.net))}. The rest of
