@@ -13,7 +13,7 @@
   "uses_faab": true,
   "faab_budget": 100,
   "demo": false,
-  "last_updated": "2026-09-10T14:42:46.508558+00:00"
+  "last_updated": "2026-09-11T14:44:42.193652+00:00"
  },
  "teams": [
   {
@@ -274,7 +274,7 @@
    "name": "Fwamming Gwaggon",
    "manager": "",
    "logo": "https://s.yimg.com/ep/cx/blendr/v2/image-dragon-png_1721173946530.png",
-   "moves": 1,
+   "moves": 2,
    "trades": 0,
    "faab_balance": 100,
    "clinched_playoffs": false,
@@ -295,7 +295,7 @@
    "name": "The Injured Reserved",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/6933584f04d1bde8d8c31369be63df7ade2c4c97999ba5fe2a6514d38ae42bb2.jpg",
-   "moves": 3,
+   "moves": 7,
    "trades": 0,
    "faab_balance": 100,
    "clinched_playoffs": false,
