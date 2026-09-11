@@ -44,10 +44,10 @@
         <div class="tc-team"><div><b${s.team.length > 16 ? ' class="long"' : ""}>${esc(s.team)}</b>
           <small>${esc(whoLine(s))}${finish(s) ? " · " + esc(finish(s)) : ""}</small></div>
           ${decided ? `<span class="tc-flag">${won ? "Won" : "Lost"}</span>` : ""}</div>
-        <div class="tc-lbl">Received · pts after · value</div>
+        <div class="tc-lbl">Received · games · pts after · value</div>
         <ul class="tc-pl">${s.got.slice().sort(byVal).map((p) => `<li>${pos(p.p)}
           <span class="pn">${esc(p.n)}</span>
-          <span class="pv">${r0(p.pts)} pts <b class="${r0(p.val) > 0 ? "" : "z"}">${p0(p.val)}</b></span></li>`).join("")}</ul>
+          <span class="pv"><i title="${p.g} game${p.g === 1 ? "" : "s"} after the trade">${p.g}g</i> ${r0(p.pts)} pts <b class="${r0(p.val) > 0 ? "" : "z"}">${p0(p.val)}</b></span></li>`).join("")}</ul>
         <div class="tc-sum"><span>Value received</span><b>${p0(s.val)}</b></div>
       </div>`;
     return `<article class="tc${o.feature ? " feature" : ""}${o.more ? " more" : ""}"${o.anchor ? ` id="c-${esc(t.id)}"` : ""}>
@@ -397,6 +397,7 @@
         <dt>Window</dt><dd>${esc(m.window)}</dd>
         <dt>Scoring</dt><dd>${esc(m.scoring)} 2011 paid receivers bonuses from 50 yards. Kickers were paid by distance
           until 2021. Team defenses got 15 points for a shutout through 2013.</dd>
+        <dt>Injuries</dt><dd>${esc(m.injuries)}</dd>
         <dt>Waiver line, ${DB.last}</dt><dd><span class="rep">${Object.entries(last).map(([k, v]) => `<span>${lab[k] || k} ${v}</span>`).join("")}</span>
           Points per game from the first players past the last starter at each position, given ${DB.last}'s lineup of 14 teams.
           Every season has its own line.</dd>

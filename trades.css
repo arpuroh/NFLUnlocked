@@ -73,6 +73,7 @@
 .tc-pl li:last-child{border-bottom:0}
 .tc-pl .pn{flex:1;min-width:0;font-weight:700;line-height:1.25}
 .tc-pl .pv{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;font-size:12px;color:var(--gray-mid)}
+.tc-pl .pv i{font-style:normal;font-weight:700;color:var(--gray-soft);font-size:11px;margin-right:3px}
 .tc-pl .pv b{display:inline-block;min-width:38px;font-size:13px;font-weight:800;color:var(--ink)}
 .tc-pl .pv b.z{color:var(--gray-faint)}
 .tc-sum{display:flex;justify-content:space-between;align-items:baseline;margin-top:8px;padding-top:7px;border-top:2px solid var(--ink)}
