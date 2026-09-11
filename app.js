@@ -19,6 +19,7 @@ const NU = (() => {
     ["rankings.html",  "Rankings",       "ranks"],
     ["hall.html",      "Hall of Shame",  "hall"],
     ["trophy.html",    "Trophy Room",    "trophy"],
+    ["trades.html",    "Trades",         "trades"],
     ["roast.html",     "Roast Roulette", "roast"],
   ];
   const REACTIONS = ["🤡", "🔥", "💀", "😂"];
@@ -118,7 +119,7 @@ const NU = (() => {
     // the site on a phone — the Trophy Room and the Hall of Shame belong in it.
     const tabs = [["index.html","Home","home"],["draft.html","Draft","draft"],["rankings.html","Ranks","ranks"],
                   ["hall.html","Shame","hall"],["trophy.html","Trophy","trophy"],
-                  ["roast.html","Roast","roast"]];
+                  ["trades.html","Trades","trades"],["roast.html","Roast","roast"]];
     const mt = document.createElement("nav");
     mt.className = "mobile-tabs";
     mt.innerHTML = tabs.map(([h, l, k]) =>

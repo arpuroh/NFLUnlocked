@@ -15,6 +15,7 @@ Do not introduce a bundler, a framework, or a package.json without being asked.
 | `hall.html` `trophy.html` | Hall of Shame, Trophy Room |
 | `roast.html` + `roast.js` + `roast.css` | Roast Roulette, incl. the suggestion box |
 | `draft.html` + `draft.js` + `draft.css` | Draft Central: auction ledger, grades, preseason rankings. Three states from data alone: pending / complete / graded |
+| `trades.html` + `trades.js` + `trades.css` | Trade Court: every trade since 2011 re-scored. Robberies, trader rankings, title trades, veto files, rentals, filterable archive (`#m=<manager key>` deep-links a manager) |
 | `app.js` `styles.css` | shared shell: masthead, nav, formatting helpers |
 | `data/*.json` | all content. `league.json` is machine-written; the rest are hand-authored |
 | `scripts/fetch_yahoo.py` | Actions cron → rewrites `data/league.json` |
@@ -22,6 +23,7 @@ Do not introduce a bundler, a framework, or a package.json without being asked.
 | `scripts/fetch_schedule.py` | league home page → `data/schedule.json`. Yahoo only shows logged-out visitors the **current** week, so re-run this every Tuesday |
 | `scripts/fetch_draft.py` | public Yahoo draft-results page → `data/draft.json` (no OAuth; the league is public). `--fixture` rebuilds `data/draft_2025.json` from `data/draft_2025.txt` |
 | `scripts/project_draft.py` | Sleeper 2026 projections re-scored under this league's rules → `data/projections.json`. **This is what the power rankings are built on.** `--refresh` re-downloads the feed |
+| `scripts/build_trades.py` | `data/trades_yahoo.json` (scraped) + nflverse weekly stats → `data/trades.json`. Prose lives in `scripts/trade_notes.py` |
 | `scripts/generate_draft_grades.py` | `data/draft.json` → `data/draft_grades.json` via the Claude API. Grades live apart from the ledger so a re-scrape never clobbers the writing |
 | `.github/workflows/draft.yml` | polls the draft page every 15 min on draft night; `workflow_dispatch` any time |
 | `.github/workflows/update.yml` | the cron |
@@ -120,6 +122,27 @@ keyed by team name exactly as Yahoo spells it. `draft.js` carries the team → m
 The offseason home page (`offseason.js`) swaps its hero to the draft grades once
 `draft.json.status === "complete"`, and links the draft-night stat cell to `draft.html` before that.
 Draft time lives in two places: `offseason.js` and `draft.js` (`DRAFT_AT`), both 2026-09-08T23:00Z.
+
+## Trade Court
+
+`scripts/build_trades.py` is the whole pipeline; `data/trades.json` is machine-written.
+- **Source of trades:** `data/trades_yahoo.json`, scraped from each season's
+  `/<year>/f1/<league_id>/transactions?transactionsfilter=trade` (league ids are in
+  `data/trophy.json`). Yahoo serves those pages only to a real browser session, and it
+  rate-limits hard: roughly 40 page loads in a burst and every page answers "Request denied"
+  for about ten minutes. Scrape through Chrome, gently, once a season ends. Vetoed trades show
+  as "Vetoed Trade to" rows and are kept.
+- **Value** = points after the deal through the fantasy final, minus that season's waiver-line
+  ppg at the position, floored at zero per player. Each season uses its own scoring (bonuses,
+  fumbles, kickers and DEF tiers all changed; see `rules()`). Asset valuation: a player counts
+  for whoever received him even if they flipped or cut him, so a flip is judged in its own
+  trade. Rentals (reversed player-for-player within 21 days, 13 of them in 2015-16) count only
+  until the return, and the return is excluded from every ranking.
+- **Checked** against Yahoo's own weekly points on team pages: mean miss 0.11 per player-game.
+- Team names are mapped to managers through `data/ledger.json`. "Unknown" (two 2011 teams)
+  and "Greg (unmatched)" (both 2013 Greg teams) are left out of career tables, as in the Trophy Room.
+- Trade ids (`2016-089`) are the chronological index over all seasons. Adding an earlier trade
+  would renumber them and orphan the notes in `trade_notes.py`, so append only.
 
 ## The season opener
 
