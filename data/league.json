@@ -13,7 +13,7 @@
   "uses_faab": true,
   "faab_budget": 100,
   "demo": false,
-  "last_updated": "2026-09-11T14:44:42.193652+00:00"
+  "last_updated": "2026-09-12T13:48:49.577413+00:00"
  },
  "teams": [
   {
@@ -43,9 +43,9 @@
    "name": "A dad",
    "manager": "",
    "logo": "https://s.yimg.com/cv/apiv2/default/nfl/nfl_8_b.png",
-   "moves": 4,
+   "moves": 5,
    "trades": 0,
-   "faab_balance": 100,
+   "faab_balance": 98,
    "clinched_playoffs": false,
    "rank": 2,
    "wins": 0,
@@ -253,7 +253,7 @@
    "name": "ShakeNBake",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/036413160a71a76b42890dd9196cf47fabbccda61f8f2394f8a7fb84ea186a0a.jpg",
-   "moves": 2,
+   "moves": 3,
    "trades": 0,
    "faab_balance": 100,
    "clinched_playoffs": false,
