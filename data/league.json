@@ -13,7 +13,7 @@
   "uses_faab": true,
   "faab_budget": 100,
   "demo": false,
-  "last_updated": "2026-09-13T14:44:39.033438+00:00"
+  "last_updated": "2026-09-13T22:45:32.903493+00:00"
  },
  "teams": [
   {
@@ -127,7 +127,7 @@
    "name": "Bend The Knee \ud83d\udc32\ud83d\udd25",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/9c8ddac63f5831a2c6bc9f69d07b6f17d1d82f639ec642752f29c2b6aa21cd9e.jpg",
-   "moves": 1,
+   "moves": 2,
    "trades": 0,
    "faab_balance": 100,
    "clinched_playoffs": false,
@@ -148,7 +148,7 @@
    "name": "FreeGucci",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/3e2185d5692aabbcb23e288139db28c90871d64e1046faac8f407f3bdcef814f.jpg",
-   "moves": 1,
+   "moves": 2,
    "trades": 0,
    "faab_balance": 100,
    "clinched_playoffs": false,
@@ -211,7 +211,7 @@
    "name": "Leo the Cleo",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/614cb36d46f9edc5aca35aaa803a8fa30dceed9bd1f10524d266052c83b8a924.jpg",
-   "moves": 1,
+   "moves": 2,
    "trades": 0,
    "faab_balance": 100,
    "clinched_playoffs": false,
