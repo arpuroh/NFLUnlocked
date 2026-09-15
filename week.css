@@ -60,6 +60,38 @@
 .wk-receipt .r-v { font-size: 30px; font-weight: 900; font-stretch: 82%; line-height: 1; margin: 8px 0 6px; font-variant-numeric: tabular-nums; color: var(--red-bright); }
 .wk-receipt .r-s { font-size: 12.5px; color: var(--gray-faint); line-height: 1.45; }
 
+/* ── the median ────────────────────────────────────────── */
+.wk-bug5 { grid-template-columns: repeat(5, 1fr); }
+.wk-hero .board-row.wk-bd .bt em {
+  font-style: normal; font-size: 10px; font-weight: 800; letter-spacing: 0.06em;
+  color: var(--gray-soft); margin-left: 5px;
+}
+.med-cards { display: grid; grid-template-columns: repeat(4, 1fr); border: 2px solid var(--ink); margin: 14px 30px 0; }
+.med-card { padding: 14px 16px 16px; border-left: 1px solid var(--rule); }
+.med-card:first-child { border-left: 0; }
+.med-card .k { font-size: 10px; font-weight: 800; letter-spacing: 0.11em; text-transform: uppercase; color: var(--gray-mid); }
+.med-card .v { font-size: 30px; font-weight: 900; font-stretch: 84%; line-height: 1; margin: 7px 0 6px; font-variant-numeric: tabular-nums; }
+.med-card .v.red { color: var(--red); }
+.med-card .s { font-size: 12px; color: var(--gray); line-height: 1.42; }
+
+.med-chart { padding: 22px 30px 8px; }
+.med-row {
+  display: grid; grid-template-columns: 200px 1fr 66px; gap: 14px; align-items: center;
+  padding: 7px 0; border-bottom: 1px solid var(--rule);
+}
+.med-row:hover { background: var(--fill); }
+.med-team { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.med-team .n { display: block; font-weight: 700; font-size: 13.5px; line-height: 1.15; }
+.med-team .m { display: block; font-size: 11px; color: var(--gray-mid); font-variant-numeric: tabular-nums; }
+/* diverging from the median line: right is a win, left is not */
+.med-track { position: relative; height: 15px; background: var(--fill); border: 1px solid var(--rule); }
+.med-track::before { content: ""; position: absolute; left: 50%; top: -3px; bottom: -3px; width: 2px; background: var(--ink); }
+.med-track i { position: absolute; top: 0; height: 100%; display: block; }
+.med-track i.over { background: var(--ink); }
+.med-track i.under { background: var(--red); }
+.med-v { text-align: right; font-size: 13.5px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.med-v.under { color: var(--red); }
+
 /* ── tables ────────────────────────────────────────────── */
 .wk-table-wrap { padding: 4px 30px 26px; overflow-x: auto; }
 .wk-table-wrap .tbl { min-width: 620px; }
@@ -111,6 +143,12 @@
 }
 
 @media (max-width: 900px) {
+  .wk-bug5 { grid-template-columns: repeat(2, 1fr); }
+  .wk-bug5 .cell:nth-child(2n+1) { border-left: 0; }
+  .wk-bug5 .cell:nth-child(n+3) { border-top: 1px solid #3A3736; }
+  .med-cards { grid-template-columns: repeat(2, 1fr); margin-left: 30px; margin-right: 30px; }
+  .med-card:nth-child(2n+1) { border-left: 0; }
+  .med-card:nth-child(n+3) { border-top: 1px solid var(--rule); }
   .wk-two { grid-template-columns: 1fr; }
   .wk-two > section { border-right: 0; border-bottom: 1px solid var(--rule); }
   .wk-awards { grid-template-columns: 1fr; }
@@ -123,7 +161,10 @@
 }
 
 @media (max-width: 640px) {
-  .wk-hero, .wk-sec, .wk-games, .wk-table-wrap, .wk-awards, .wk-receipt { padding-left: 16px; padding-right: 16px; }
+  .wk-hero, .wk-sec, .wk-games, .wk-table-wrap, .wk-awards, .wk-receipt, .med-chart { padding-left: 16px; padding-right: 16px; }
+  .med-cards { margin-left: 16px; margin-right: 16px; }
+  .med-row { grid-template-columns: 1fr 58px; row-gap: 6px; }
+  .med-track { grid-column: 1 / -1; }
   .wk-two > section { padding-left: 16px; padding-right: 16px; }
   .wk-slots, .wk-note { margin-left: 16px; margin-right: 16px; }
   .wk-g-line { grid-template-columns: 1fr; gap: 6px; }

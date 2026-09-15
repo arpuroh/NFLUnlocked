@@ -125,13 +125,33 @@ adding a poll to `data/season.json` also needs that constraint widened.
    intros, the awards — lives in `scripts/week_notes.py`, so re-running the build never
    overwrites the writing. Game notes are keyed by the **winning team id**, as ints.
 
+### ⭐ THE MEDIAN GAME — two games a week
+
+This league plays a **median game**. Every team plays its head-to-head matchup *and* the
+league median score, so a weekly record is **2-0, 1-1 or 0-2, never 1-0**. With fourteen
+teams the median sits between the 7th and 8th scores, nobody can tie it, and the two teams
+that set it are the two it decides. Week 1: median 117.91, Kim Jong Nate cleared it by 0.53
+and Fwamming Gwaggon (the 8th score) missed it by 0.53.
+
+The scraped records in `league.json` are **correct** — they look doubled and are not. If a
+weekly build produces 1-0/0-1 records, it has dropped the median game; check that against
+`league.json` before "fixing" anything, because the median rule reproduces all fourteen
+scraped records exactly and that is the test.
+
+Consequences baked into `build_week.py`: the record component of the power ranking is
+`wins / 2`, and **luck is measured on the head-to-head only** — the median game is decided
+by your own score and nothing else, so half of this league's weekly schedule luck does not
+exist. `week<n>.json` carries a `median` block (the line, who it saved, who it sunk, the
+sweeps, and the two teams straddling it) that drives the Median section on the recap.
+
 ### `data/current.json` is the in-season source of truth
 
 `build_week.py` also writes `data/current.json`, and **`NU.load()` in `app.js` merges it over
-`league.json` on every page**. That is what fixes the scrape's damage in one place: the
-scrape double-counts wins (it reported everyone at 2-0 after one week) and ships an empty
-matchup list, so without this the standings are wrong, the scoreboard is blank, `rankings.html`
-falls through to last season's final table and every page reads "Offseason". `offseason.js`
+`league.json` on every page**. That is what fixes the scrape's damage in one place: the scrape
+ships an empty matchup list and hardcodes `"week": 0`, so without this the scoreboard is blank,
+`rankings.html` falls through to last season's final table and every page reads "Offseason".
+Records are the exception — those the scrape gets right (see the median game above), and
+`current.json` re-derives the same 2-0/1-1/0-2 from the box scores. `offseason.js`
 and `nav-trophy.js` check the same file before taking over. Delete `current.json` and the site
 reverts to exactly its old behaviour.
 

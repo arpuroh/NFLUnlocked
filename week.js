@@ -43,6 +43,12 @@
   const ghosts = W.money_pits.filter((p) => p.pts <= 0);
   const biggestCrime = W.bench_crimes[0];
   const crimeTeam = T[biggestCrime.team_id];
+  const M = W.median;
+  const medTeam = (id) => (T[id] || {}).name || "";
+  const medNames = (ids) => {
+    const n = ids.map(medTeam);
+    return n.length < 2 ? (n[0] || "") : n.slice(0, -1).join(", ") + " and " + n[n.length - 1];
+  };
   const combined = W.games.map((g) => g.winner_points + g.loser_points);
   const bestGame = Math.max(...combined);
 
@@ -65,6 +71,7 @@
         <p class="wk-lede">${esc(W.lede)}</p>
         <nav class="wk-jump">
           <a href="#games">The Seven</a>
+          <a href="#median">The Median</a>
           <a href="#standings">Standings &amp; Efficiency</a>
           <a href="#bench">Bench Crimes</a>
           <a href="#money">Draft Money</a>
@@ -78,9 +85,9 @@
         ${[...W.games].sort((a, b) => b.winner_points - a.winner_points).map((g) => {
           const w = T[g.winner], l = T[g.loser];
           return `<a class="board-row wk-bd" href="#games">
-            <span class="bt">${esc(w.name)}</span>
+            <span class="bt">${esc(w.name)} <em>${esc(w.record)}</em></span>
             <span class="bn">${n1(g.winner_points)}</span>
-            <span class="bt lost">${esc(l.name)}</span>
+            <span class="bt lost">${esc(l.name)} <em>${esc(l.record)}</em></span>
             <span class="bm">${n1(g.loser_points)}</span>
           </a>`;
         }).join("")}
@@ -89,7 +96,9 @@
     </div>
   </section>
 
-  <section class="statbug">
+  <section class="statbug wk-bug5">
+    <div class="cell"><div class="eyebrow">The Median</div>
+      <div class="v">${n2(M.value)}</div><div class="s">${M.beat} of 14 cleared it</div></div>
     <div class="cell"><div class="eyebrow">League Average</div>
       <div class="v">${n2(W.league_average)}</div><div class="s">model said 105.99 a week</div></div>
     <div class="cell"><div class="eyebrow">Highest Score</div>
@@ -116,11 +125,11 @@
         <div class="wk-g-line">
           <a class="wk-side" href="${link(w)}">${logo(w)}
             <span class="who"><span class="n">${esc(w.name)}</span>
-            <span class="m">${esc(w.manager)} · ${w.efficiency}% of his own roster</span></span></a>
+            <span class="m">${esc(w.manager)} · ${esc(w.record)} · ${w.efficiency}% of his own roster</span></span></a>
           <span class="wk-g-score"><b>${n2(g.winner_points)}</b><i>–</i><b class="lose">${n2(g.loser_points)}</b></span>
           <a class="wk-side right lose" href="${link(l)}">${logo(l)}
             <span class="who"><span class="n">${esc(l.name)}</span>
-            <span class="m">${esc(l.manager)} · left ${n2(l.regret)} on the bench</span></span></a>
+            <span class="m">${esc(l.manager)} · ${esc(l.record)} · left ${n2(l.regret)} on the bench</span></span></a>
         </div>
         <p class="wk-g-note">${esc(g.note)}</p>
         ${stamps(`wk${W.week}-g${i}`, {}, { min: 3 })}
@@ -152,6 +161,53 @@
     </div>
   </section>
 
+  <section class="wk-sec" id="median">
+    <div class="sec-top"><h2 class="h-sec">The Median</h2>
+      <span class="note">${n2(M.value)} · the second opponent</span></div>
+    <hr class="rule-h">
+    <p class="intro">${esc(W.sections.median)}</p>
+  </section>
+  <div class="med-cards">
+    <div class="med-card"><div class="k">Swept the week</div>
+      <div class="v">${M.sweeps.length}</div>
+      <div class="s">${esc(medNames(M.sweeps))} went 2-0.</div></div>
+    <div class="med-card"><div class="k">Saved by the median</div>
+      <div class="v">${M.saved_by_median.length}</div>
+      <div class="s">${M.saved_by_median.length
+        ? esc(medNames(M.saved_by_median)) + " lost the matchup and cleared the line anyway, so 1-1."
+        : "nobody"}</div></div>
+    <div class="med-card"><div class="k">Sunk by the median</div>
+      <div class="v red">${M.sunk_by_median.length}</div>
+      <div class="s">${M.sunk_by_median.length
+        ? esc(medNames(M.sunk_by_median)) + " won the matchup and still went 1-1."
+        : "nobody"}</div></div>
+    <div class="med-card"><div class="k">Swept out</div>
+      <div class="v red">${M.swept.length}</div>
+      <div class="s">${esc(medNames(M.swept))} went 0-2.</div></div>
+  </div>
+  <div class="med-chart">
+    ${(() => {
+      const mx = Math.max(...W.teams.map((t) => Math.abs(t.vs_median))) || 1;
+      return W.teams.map((t) => {
+        const w = Math.abs(t.vs_median) / mx * 48;
+        return `<a class="med-row" href="${link(t)}">
+          <span class="med-team">${logo(t, "sm")}<span><span class="n">${esc(t.name)}</span>
+            <span class="m">${esc(t.record)} · ${n2(t.points)}</span></span></span>
+          <span class="med-track"><i class="${t.beat_median ? "over" : "under"}"
+            style="${t.beat_median ? `left:50%;width:${w}%` : `right:50%;width:${w}%`}"></i></span>
+          <span class="med-v ${t.beat_median ? "over" : "under"}">${
+            t.vs_median > 0 ? "+" : ""}${n2(t.vs_median)}</span>
+        </a>`;
+      }).join("");
+    })()}
+  </div>
+  <p class="wk-note">With fourteen teams the line sits between the 7th and 8th scores, so
+    nobody ties it and the two teams that set it are the two it decides.
+    ${esc(medTeam(M.closest_above))} cleared it by
+    ${n2(Math.abs((T[M.closest_above] || {}).vs_median))} and
+    ${esc(medTeam(M.closest_below))} missed it by
+    ${n2(Math.abs((T[M.closest_below] || {}).vs_median))}. Same number, opposite week.</p>
+
   <section class="wk-sec" id="standings">
     <div class="sec-top"><h2 class="h-sec">Standings &amp; Efficiency</h2>
       <span class="note">One week of evidence</span></div>
@@ -161,7 +217,7 @@
   <div class="wk-table-wrap">
     <table class="tbl">
       <thead><tr>
-        <th>#</th><th>Team</th><th class="r">Points</th><th class="r">All-Play</th>
+        <th>#</th><th>Team</th><th class="r">Points</th><th class="r">vs Median</th><th class="r">All-Play</th>
         <th class="r">Lineup Eff.</th><th class="r">Left On Bench</th>
         <th class="r hide-s">Preseason</th><th class="r">Luck</th>
       </tr></thead>
@@ -172,8 +228,10 @@
           <td><span class="rk"><b>${i + 1}</b></span></td>
           <td><a href="${link(t)}" style="display:flex;align-items:center;gap:9px">
             ${logo(t, "sm")}<span><span class="n">${esc(t.name)}</span>
-            <span class="m">${esc(t.manager)} · ${t.won ? "1-0" : "0-1"}</span></span></a></td>
+            <span class="m">${esc(t.manager)} · ${esc(t.record)}</span></span></a></td>
           <td class="r"><span class="big">${n2(t.points)}</span></td>
+          <td class="r"><span class="${t.beat_median ? "up" : "down"}">${
+            t.vs_median > 0 ? "+" : ""}${n2(t.vs_median)}</span></td>
           <td class="r"><span class="rec">${esc(t.all_play)}</span></td>
           <td class="r"><span class="big">${t.efficiency}%</span>
             <span class="eff-bar" style="margin-left:auto"><i class="${clean ? "clean" : ""}" style="width:${t.efficiency}%"></i></span></td>
@@ -188,11 +246,13 @@
       }).join("")}</tbody>
     </table>
   </div>
-  <p class="wk-note">Luck is the gap between the result and what the score deserved:
-    ${esc(luckiest.name)} won with the ${ordinal(W.teams.findIndex((t) => t.team_id === luckiest.team_id) + 1)}
-    best score in the league, and ${esc(robbed.name)} lost with the
-    ${ordinal(W.teams.findIndex((t) => t.team_id === robbed.team_id) + 1)}. One of those
-    is a fraud and one of those got robbed, and neither of them gets to pick which.</p>
+  <p class="wk-note">Luck is measured on the head-to-head only, because the median game is
+    decided by your own score and nothing else: half this league's weekly schedule luck does
+    not exist. On the half that does, ${esc(luckiest.name)} won a matchup with the
+    ${ordinal(W.teams.findIndex((t) => t.team_id === luckiest.team_id) + 1)} best score in the
+    league, and ${esc(robbed.name)} lost one with the
+    ${ordinal(W.teams.findIndex((t) => t.team_id === robbed.team_id) + 1)}. One of those is a
+    fraud and one of those got robbed, and neither of them gets to pick which.</p>
 
   <section class="wk-sec" id="bench">
     <div class="sec-top"><h2 class="h-sec">Bench Crimes</h2>

@@ -32,6 +32,7 @@
   const low = W.teams[W.teams.length - 1];
   const totalRegret = W.teams.reduce((s, t) => s + t.regret, 0);
   const luckiest = [...W.teams].sort((a, b) => b.luck - a.luck)[0];
+  const M = W.median;
   const board = [...cur.power_rankings].sort((a, b) => a.rank - b.rank).slice(0, 5);
   const maxScore = Math.max(1, ...cur.power_rankings.map((r) => r.score || 0));
   const mv = (m) => m > 0 ? `<span class="mv up">▲${m}</span>`
@@ -78,11 +79,10 @@
         <div class="v">${n1(high.points)}</div><div class="s">${esc(high.name)}</div></div>
       <div class="cell"><div class="eyebrow">Lowest Wk ${cur.week}</div>
         <div class="v red">${n1(low.points)}</div><div class="s">${esc(low.name)}</div></div>
+      <div class="cell"><div class="eyebrow">The Median</div>
+        <div class="v">${n2(M.value)}</div><div class="s">${M.beat} of 14 cleared it</div></div>
       <div class="cell"><div class="eyebrow">Left On Benches</div>
         <div class="v">${n1(totalRegret)}</div><div class="s">league-wide, unplayed</div></div>
-      <div class="cell"><div class="eyebrow">Luckiest Fraud</div>
-        <div class="v">${luckiest.luck > 0 ? "+" : ""}${luckiest.luck.toFixed(3)}</div>
-        <div class="s">${esc(luckiest.name)}</div></div>
     </section>
 
     <div class="body-grid">
@@ -97,7 +97,7 @@
             ${logo(t) || ""}
             <span class="pr-team">
               <span class="nm">${esc(t.name || "")}</span>
-              <span class="mg">${esc(t.manager || "")} · ${t.won ? "1-0" : "0-1"} · ${r.efficiency}% efficient</span>
+              <span class="mg">${esc(t.manager || "")} · ${esc(t.record)} · ${r.efficiency}% efficient</span>
             </span>
             <span class="pr-stats">
               <span class="stat-cell"><span class="k">Pts For</span><span class="v">${n1(t.points)}</span></span>
@@ -116,7 +116,7 @@
           return `<div class="mu-cell">
             <div class="mu-side"><span class="n">${esc(w.name)}</span><span class="p">${n1(g.winner_points)}</span></div>
             <div class="mu-side lost"><span class="n">${esc(l.name)}</span><span class="p">${n1(g.loser_points)}</span></div>
-            <div class="margin">Margin ${n2(g.margin)}</div>
+            <div class="margin">Margin ${n2(g.margin)} · ${esc(w.record)} / ${esc(l.record)}</div>
           </div>`;
         }).join("")}</div>
         <p style="margin:16px 0 0"><a class="see-all" href="${esc(cur.recap)}">
