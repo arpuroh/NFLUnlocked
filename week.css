@@ -6,7 +6,7 @@
    ══════════════════════════════════════════════════════════════ */
 
 /* ── hero ──────────────────────────────────────────────── */
-.wk-hero { padding: 30px 30px 26px; }
+.wk-hero { padding: 34px 30px 30px; }
 .wk-hero .filed { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
 .wk-hero h1 { font-size: clamp(34px, 4.6vw, 58px); max-width: 17ch; }
 /* the hero board carries the seven finals: team, score, team, score on two lines */
@@ -18,15 +18,39 @@
 .wk-hero .board-row.wk-bd:hover .bt { color: var(--red-bright); }
 .wk-hero h1 .kick { display: block; color: var(--red-bright); font-size: 0.4em; margin-top: 12px; font-stretch: 86%; }
 .wk-lede { max-width: 66ch; margin: 20px 0 0; font-size: 15.5px; line-height: 1.52; color: var(--gray-faint); }
-.wk-jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
-.wk-jump a {
-  font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
-  border: 2px solid #4A4645; color: var(--paper); padding: 7px 11px;
+/* ── sticky section rail ───────────────────────────────
+   The page is long. This sits under the masthead (46px) and tracks the
+   section you are in, so nobody has to scroll back to the top to move. */
+.wk-rail {
+  position: sticky; top: 46px; z-index: 55;
+  background: var(--fill); border-bottom: 2px solid var(--ink); border-top: 2px solid var(--ink);
 }
-.wk-jump a:hover { border-color: var(--red-bright); color: var(--red-bright); }
+.wk-rail .rail-inner {
+  display: flex; gap: 0; padding: 0 30px; overflow-x: auto;
+  scrollbar-width: none; -webkit-overflow-scrolling: touch;
+}
+.wk-rail .rail-inner::-webkit-scrollbar { display: none; }
+.wk-rail a {
+  display: flex; align-items: baseline; gap: 6px; white-space: nowrap;
+  padding: 11px 16px 10px; font-size: 10.5px; font-weight: 800;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray);
+  border-bottom: 3px solid transparent; margin-bottom: -2px;
+}
+.wk-rail a:first-child { padding-left: 0; }
+.wk-rail a .rn { font-size: 9px; color: var(--gray-faint); font-variant-numeric: tabular-nums; }
+.wk-rail a:hover { color: var(--ink); }
+.wk-rail a.on { color: var(--red); border-bottom-color: var(--red); }
+.wk-rail a.on .rn { color: var(--red); }
 
 /* ── section furniture ─────────────────────────────────── */
-.wk-sec { padding: 28px 30px 8px; }
+/* anchors have to clear the masthead and the rail */
+.wk-sec[id] { scroll-margin-top: 96px; }
+.secno {
+  font-size: 0.5em; color: var(--gray-faint); margin-right: 10px;
+  font-variant-numeric: tabular-nums; letter-spacing: 0.04em;
+}
+.h-sec.sub { font-size: 19px; }
+.wk-sec { padding: 30px 30px 8px; }
 .wk-sec .intro { max-width: 70ch; color: var(--gray); font-size: 13.5px; margin: 12px 0 0; line-height: 1.5; }
 .wk-sec .h-sec { margin-bottom: 4px; }
 
@@ -125,7 +149,7 @@
 .wk-li .v.bad { color: var(--red); }
 
 /* ── awards ────────────────────────────────────────────── */
-.wk-awards { padding: 6px 30px 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 30px; }
+.wk-awards { padding: 8px 30px 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 36px; }
 .wk-awards .sup { margin: 14px 0; }
 
 /* ── position weather ──────────────────────────────────── */
@@ -162,6 +186,13 @@
 
 @media (max-width: 640px) {
   .wk-hero, .wk-sec, .wk-games, .wk-table-wrap, .wk-awards, .wk-receipt, .med-chart { padding-left: 16px; padding-right: 16px; }
+  .wk-rail .rail-inner { padding-left: 16px; padding-right: 16px; }
+  /* let the section title own the full width; the note drops beneath it */
+  .wk-sec .sec-top { flex-direction: column; align-items: flex-start; gap: 5px; }
+  .wk-sec .h-sec { font-size: 23px; }
+  .wk-sec .h-sec.sub { font-size: 18px; }
+  .wk-rail a { padding: 10px 13px 9px; font-size: 10px; }
+  .secno { margin-right: 7px; }
   .med-cards { margin-left: 16px; margin-right: 16px; }
   .med-row { grid-template-columns: 1fr 58px; row-gap: 6px; }
   .med-track { grid-column: 1 / -1; }
