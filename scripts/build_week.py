@@ -15,12 +15,18 @@ Input:
   data/draft.json         auction price and real position for every drafted player
   data/projections.json   the preseason model (see scripts/project_draft.py)
 
+THE MEDIAN GAME. This league plays two games a week: the head-to-head matchup and a
+second game against the league median score. So a weekly record is 2-0, 1-1 or 0-2, never
+1-0. With fourteen teams the median sits between the 7th and 8th scores, so nobody can tie
+it, and the two teams that set it are the two it decides. Verified against Yahoo: the
+median rule reproduces all fourteen scraped records exactly.
+
 Output: data/week<N>.json — numbers plus every line of prose, which lives in
         scripts/week_notes.py so a re-run never clobbers the writing.
 
 Usage:  python3 scripts/build_week.py --week 1
 """
-import argparse, json, os, re, unicodedata
+import argparse, json, os, re, statistics, unicodedata
 from datetime import datetime, timezone
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -206,17 +212,46 @@ def main():
         })
     games.sort(key=lambda g: g["margin"])
 
-    # ── all-play and luck ───────────────────────────────────────
+    # ── the median game, all-play and luck ──────────────────────
     scores = {tid: teams[tid]["points"] for tid in teams}
+    median = round(statistics.median(scores.values()), 2)
     for tid in teams:
         s = scores[tid]
         wins = sum(1 for o, v in scores.items() if o != tid and s > v)
         teams[tid]["all_play"] = f"{wins}-{len(scores) - 1 - wins}"
         teams[tid]["all_play_wins"] = wins
-        won = any(g["winner"] == tid for g in games)
-        teams[tid]["won"] = won
-        # luck = the gap between the result and what the score deserved
-        teams[tid]["luck"] = round((1 if won else 0) - wins / (len(scores) - 1), 3)
+
+        # Two games a week: the matchup, and the league median.
+        h2h = any(g["winner"] == tid for g in games)
+        beat_median = s > median
+        teams[tid]["won"] = h2h                     # the head-to-head only
+        teams[tid]["beat_median"] = beat_median
+        teams[tid]["vs_median"] = round(s - median, 2)
+        w = int(h2h) + int(beat_median)
+        teams[tid]["wins"], teams[tid]["losses"] = w, 2 - w
+        teams[tid]["record"] = f"{w}-{2 - w}"
+
+        # Luck lives in the head-to-head only. The median game is decided by your own
+        # score alone, so half of this league's weekly schedule luck does not exist.
+        teams[tid]["luck"] = round(int(h2h) - wins / (len(scores) - 1), 3)
+
+    med_sorted = sorted(teams.values(), key=lambda t: -t["points"])
+    median_info = {
+        "value": median,
+        "beat": sum(1 for t in teams.values() if t["beat_median"]),
+        # the two teams that straddle the median are the two that set it
+        "closest_above": min((t for t in teams.values() if t["beat_median"]),
+                             key=lambda t: t["vs_median"])["team_id"],
+        "closest_below": max((t for t in teams.values() if not t["beat_median"]),
+                             key=lambda t: t["vs_median"])["team_id"],
+        # won the matchup, lost to the median, and vice versa
+        "saved_by_median": [t["team_id"] for t in med_sorted
+                            if not t["won"] and t["beat_median"]],
+        "sunk_by_median": [t["team_id"] for t in med_sorted
+                           if t["won"] and not t["beat_median"]],
+        "sweeps": [t["team_id"] for t in med_sorted if t["wins"] == 2],
+        "swept": [t["team_id"] for t in med_sorted if t["wins"] == 0],
+    }
 
     # ── league-wide leaderboards ────────────────────────────────
     everyone = []
@@ -238,6 +273,7 @@ def main():
         "week": args.week,
         "built_at": datetime.now(timezone.utc).isoformat(),
         "league_average": round(sum(scores.values()) / len(scores), 2),
+        "median": median_info,
         "headline": NOTES["headline"],
         "kicker": NOTES["kicker"],
         "lede": NOTES["lede"],
@@ -286,8 +322,10 @@ def main():
         standings.append({
             "team_key": t["team_key"], "team_id": tid, "name": t["name"],
             "manager": t["manager"], "logo": t["logo"],
-            "wins": 1 if won else 0, "losses": 0 if won else 1, "ties": 0,
-            "win_pct": 1.0 if won else 0.0, "streak": "W1" if won else "L1",
+            # two games a week: the matchup and the median
+            "wins": t["wins"], "losses": t["losses"], "ties": 0,
+            "win_pct": round(t["wins"] / 2, 3),
+            "streak": "W2" if t["wins"] == 2 else ("L2" if t["wins"] == 0 else ""),
             "points_for": t["points"], "points_against": against,
             "week_points": t["points"], "moves": t["moves"],
             "faab_balance": t["faab_left"],
@@ -296,7 +334,7 @@ def main():
         scoring = (t["points"] - lo) / span
         power.append({
             "team_key": t["team_key"], "team_id": tid,
-            "score": round(0.35 * (1 if won else 0) + 0.30 * scoring
+            "score": round(0.35 * (t["wins"] / 2) + 0.30 * scoring
                            + 0.20 * ap + 0.15 * scoring, 4),
             "all_play": t["all_play"], "all_play_pct": round(ap, 4),
             "luck_index": t["luck"], "recent_form": round(scoring, 4),
@@ -330,6 +368,7 @@ def main():
         "built_at": out["built_at"],
         "headline": NOTES["headline"], "kicker": NOTES["kicker"], "lede": NOTES["lede"],
         "league_average": out["league_average"],
+        "median": median,
         "teams": standings, "power_rankings": power, "matchups": matchups,
     }
     json.dump(cur, open(D("current.json"), "w"), indent=1, ensure_ascii=False)

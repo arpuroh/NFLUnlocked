@@ -6,6 +6,9 @@ imports NOTES; keeping the writing here means a re-scrape never overwrites a jok
 House rule, same as everywhere else on this site: full savage, fantasy decisions
 only. Lineups, drafts, waivers, money. Never anybody's real life.
 
+Remember the league plays TWO games a week - the matchup and the league median - so
+a weekly record is 2-0, 1-1 or 0-2. Never write "won this week" about a 1-1.
+
 Game notes are keyed by the WINNING team_id:
   1 Hail Mary · 2 A dad · 3 Good Will Hunting · 4 Kim Jong Nate
   5 The Asshouse Always Wins · 6 Bend The Knee · 7 FreeGucci · 8 Mac Daddy
@@ -21,9 +24,10 @@ NOTES = {
         "126 and change, which means every single one of you is about to mistake variance "
         "for genius. Two teams cleared 155. One team started a quarterback who threw for "
         "13 yards. Three managers lost a game they had the points to win, sitting on their "
-        "own bench, in street clothes, watching. The preseason number one lost by 36. "
-        "The preseason number thirteen played the only perfect lineup in the league. "
-        "Nothing you learned tonight is real, and all of it is permanent."
+        "own bench, in street clothes, watching. Then the median came for the rest: 117.91, "
+        "the second opponent nobody gets to game-plan for. It saved two managers who lost "
+        "their matchup and it took a win away from two who won theirs. Five of you are 2-0. "
+        "Five of you are 0-2. Nothing you learned this week is real, and all of it is permanent."
     ),
 
     # one line under each game on the scoreboard
@@ -32,20 +36,24 @@ NOTES = {
             "supposed to. Greg made seven roster moves this week, more than anybody, "
             "and used exactly none of them to notice that Kyle Monangai was about to "
             "go for 20.4 on his bench while Jaylen Waddle caught one pass for two "
-            "yards in his starting lineup. He won anyway. There is no justice and "
-            "there is no God.",
+            "yards in his starting lineup. He won the matchup and then lost to the "
+            "median by 12.37, so the reward for all that activity is 1-1. Anuj drew "
+            "the only opponent in the league he could have beaten and still went 0-2.",
         4: "The cleanest win of the week and the dirtiest loss. Nathan is the only "
            "manager in this league who started his best available eleven, full stop, "
-           "100 percent of the points he had. Greg, the other Greg, started a "
-           "quarterback for 5.1, a kicker for 1.0 and a wide receiver in the IDP slot "
-           "for 2.6. That is 8.7 points from three roster spots. He lost by 8.68. "
+           "100 percent of the points he had, and it bought him a 2-0 by exactly 0.53 "
+           "points over the median. Greg, the other Greg, started a quarterback for 5.1, "
+           "a kicker for 1.0 and a wide receiver in the IDP slot for 2.6. That is 8.7 "
+           "points from three roster spots. He lost by 8.68 and went 0-2. "
            "Do the math, it's already done.",
         1: "309 combined points, the best game on the board, and both managers "
            "should feel terrible. Andrew won it 162 to 147 with Caleb Williams and "
            "37.26 points glued to his bench and Kyle Pitts posting a clean zero in "
            "his starting lineup. Tom had the single best roster in the league on "
            "Sunday, 179.18 points of it, and played 147.28. Mahomes and Goedert "
-           "watched from the couch. That is the whole game, right there.",
+           "watched from the couch. That is the whole game, right there. The only mercy "
+           "is that 147.28 cleared the median by 29.37, so Tom banked the half he did "
+           "not have to think about and goes to 1-1.",
         7: "Nishil scored 116.80, which is 10 points below league average, and won "
            "by 24. That is what happens when the man across from you pays $63 for a "
            "receiver who catches two balls for 12 yards. Will's starting lineup "
@@ -56,7 +64,9 @@ NOTES = {
             "Darrius started Sam Darnold. Thirteen passing yards. 0.52 points. "
             "C.J. Stroud, also one dollar, also on the roster, threw for 274 and "
             "two scores from the bench. The $1 quarterback lottery has a losing "
-            "ticket and Bend The Knee bought it.",
+            "ticket and Bend The Knee bought it. Darrius still cleared the median by "
+            "7.67, which is the fantasy equivalent of getting hit by a bus and keeping "
+            "your wallet. 1-1.",
         10: "The preseason number one against the preseason number two, and it was "
             "over by the second quarter. Chris got 35.66 from Josh Allen and 33.1 "
             "from Gibbs and never looked back. Jon started a $22 tight end who did "
@@ -68,13 +78,17 @@ NOTES = {
            "watched him throw for 18 yards and an interception, and still put up "
            "157.06 because Kenneth Walker went for 34.6 and Chuba Hubbard went for "
            "22.2. Maclane got 24.96 from Lamar Jackson and then the rest of his "
-           "roster filed for unemployment.",
+           "roster filed for unemployment, 13 points under the median, 0-2.",
     },
 
     # section intros
     "sections": {
+        "median": "This league plays two games a week: your matchup, and the league "
+                  "median. Week 1's line was 117.91. Seven teams cleared it and seven did "
+                  "not, which is what a median is, and it is the one opponent that does not "
+                  "care who you were scheduled against. Bars run from the line. Right is a win.",
         "standings": "Week 1 scoring, all-play record, and how much of your own "
-                     "roster you actually managed to start. Efficiency is what you "
+                     "roster you actually managed to start, plus both results. Efficiency is what you "
                      "scored over what your best legal lineup would have scored. "
                      "Injured reserve does not count against you. Everything else does.",
         "bench": "247.36 points sat on benches this week. That is nearly two full "
@@ -132,6 +146,16 @@ NOTES = {
                  "in all-play and scored 98.10. Jordan Addison and Davante Adams "
                  "combined for 4.1 points out of the starting lineup. New name, "
                  "same squad."},
+        {"title": "Won The Game, Lost The Week",
+         "winner": "FreeGucci",
+         "line": "Beat Good Will Hunting by 23.70 and missed the median by 1.11. "
+                 "A single catch anywhere on the roster is the difference between 2-0 "
+                 "and 1-1, and he will think about that until November."},
+        {"title": "Half A Point From A Different Season",
+         "winner": "Fwamming Gwaggon",
+         "line": "117.38 against a median of 117.91. As the 8th-highest score in a "
+                 "14-team league he helped set that number, then lost to it by 0.53 "
+                 "and left Week 1 at 0-2 as the preseason favourite."},
         {"title": "Paid In Full",
          "winner": "ShakeNBake",
          "line": "Isaiah Likely, three dollars, 23.80 points, the best tight end "
