@@ -1,0 +1,599 @@
+{
+ "season": 2026,
+ "week": 1,
+ "status": "final",
+ "label": "Week 1 · Final",
+ "recap": "week.html?w=1",
+ "built_at": "2026-09-15T10:27:56.146578+00:00",
+ "headline": "Fourteen Managers Walked In. Nine Of Them Left Evidence.",
+ "kicker": "(week 1, and the benches scored 247 points)",
+ "lede": "The model said this league would average 106 points a week. Week 1 came in at 126 and change, which means every single one of you is about to mistake variance for genius. Two teams cleared 155. One team started a quarterback who threw for 13 yards. Three managers lost a game they had the points to win, sitting on their own bench, in street clothes, watching. The preseason number one lost by 36. The preseason number thirteen played the only perfect lineup in the league. Nothing you learned tonight is real, and all of it is permanent.",
+ "league_average": 126.07,
+ "teams": [
+  {
+   "team_key": "scrape.l.675504.t.1",
+   "team_id": "1",
+   "name": "Hail Mary",
+   "manager": "Andrew",
+   "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/25205944781_f55b83a6fa.jpg",
+   "wins": 1,
+   "losses": 0,
+   "ties": 0,
+   "win_pct": 1.0,
+   "streak": "W1",
+   "points_for": 162.1,
+   "points_against": 147.28,
+   "week_points": 162.1,
+   "moves": 3,
+   "faab_balance": 100,
+   "rank": 1
+  },
+  {
+   "team_key": "scrape.l.675504.t.2",
+   "team_id": "2",
+   "name": "A dad",
+   "manager": "Barrett",
+   "logo": "https://s.yimg.com/cv/apiv2/default/nfl/nfl_8_b.png",
+   "wins": 1,
+   "losses": 0,
+   "ties": 0,
+   "win_pct": 1.0,
+   "streak": "W1",
+   "points_for": 157.06,
+   "points_against": 104.48,
+   "week_points": 157.06,
+   "moves": 5,
+   "faab_balance": 98,
+   "rank": 2
+  },
+  {
+   "team_key": "scrape.l.675504.t.12",
+   "team_id": "12",
+   "name": "ShakeNBake",
+   "manager": "Abhishek",
+   "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/036413160a71a76b42890dd9196cf47fabbccda61f8f2394f8a7fb84ea186a0a.jpg",
+   "wins": 1,
+   "losses": 0,
+   "ties": 0,
+   "win_pct": 1.0,
+   "streak": "W1",
+   "points_for": 155.6,
+   "points_against": 125.58,
+   "week_points": 155.6,
+   "moves": 3,
+   "faab_balance": 100,
+   "rank": 3
+  },
+  {
+   "team_key": "scrape.l.675504.t.10",
+   "team_id": "10",
+   "name": "Leo the Cleo",
+   "manager": "Chris",
+   "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/614cb36d46f9edc5aca35aaa803a8fa30dceed9bd1f10524d266052c83b8a924.jpg",
+   "wins": 1,
+   "losses": 0,
+   "ties": 0,
+   "win_pct": 1.0,
+   "streak": "W1",
+   "points_for": 153.8,
+   "points_against": 117.38,
+   "week_points": 153.8,
+   "moves": 2,
+   "faab_balance": 100,
+   "rank": 4
+  },
+  {
+   "team_key": "scrape.l.675504.t.4",
+   "team_id": "4",
+   "name": "Kim Jong Nate",
+   "manager": "Nathan",
+   "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/35938214603_546a9a.jpg",
+   "wins": 1,
+   "losses": 0,
+   "ties": 0,
+   "win_pct": 1.0,
+   "streak": "W1",
+   "points_for": 118.44,
+   "points_against": 109.76,
+   "week_points": 118.44,
+   "moves": 1,
+   "faab_balance": 100,
+   "rank": 5
+  },
+  {
+   "team_key": "scrape.l.675504.t.7",
+   "team_id": "7",
+   "name": "FreeGucci",
+   "manager": "Nishil",
+   "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/3e2185d5692aabbcb23e288139db28c90871d64e1046faac8f407f3bdcef814f.jpg",
+   "wins": 1,
+   "losses": 0,
+   "ties": 0,
+   "win_pct": 1.0,
+   "streak": "W1",
+   "points_for": 116.8,
+   "points_against": 93.1,
+   "week_points": 116.8,
+   "moves": 2,
+   "faab_balance": 100,
+   "rank": 6
+  },
+  {
+   "team_key": "scrape.l.675504.t.5",
+   "team_id": "5",
+   "name": "The Asshouse Always Wins",
+   "manager": "Tom",
+   "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/ff5082a8eca1faeba4a80d02bde690352bb8b967f9d08c2bef72b32ca2505e88.png",
+   "wins": 0,
+   "losses": 1,
+   "ties": 0,
+   "win_pct": 0.0,
+   "streak": "L1",
+   "points_for": 147.28,
+   "points_against": 162.1,
+   "week_points": 147.28,
+   "moves": 0,
+   "faab_balance": 100,
+   "rank": 7
+  },
+  {
+   "team_key": "scrape.l.675504.t.14",
+   "team_id": "14",
+   "name": "The Injured Reserved",
+   "manager": "Greg (IR)",
+   "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/6933584f04d1bde8d8c31369be63df7ade2c4c97999ba5fe2a6514d38ae42bb2.jpg",
+   "wins": 1,
+   "losses": 0,
+   "ties": 0,
+   "win_pct": 1.0,
+   "streak": "W1",
+   "points_for": 105.54,
+   "points_against": 98.1,
+   "week_points": 105.54,
+   "moves": 7,
+   "faab_balance": 100,
+   "rank": 8
+  },
+  {
+   "team_key": "scrape.l.675504.t.6",
+   "team_id": "6",
+   "name": "Bend The Knee 🐲🔥",
+   "manager": "Darrius",
+   "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/9c8ddac63f5831a2c6bc9f69d07b6f17d1d82f639ec642752f29c2b6aa21cd9e.jpg",
+   "wins": 0,
+   "losses": 1,
+   "ties": 0,
+   "win_pct": 0.0,
+   "streak": "L1",
+   "points_for": 125.58,
+   "points_against": 155.6,
+   "week_points": 125.58,
+   "moves": 2,
+   "faab_balance": 100,
+   "rank": 9
+  },
+  {
+   "team_key": "scrape.l.675504.t.13",
+   "team_id": "13",
+   "name": "Fwamming Gwaggon",
+   "manager": "Jon",
+   "logo": "https://s.yimg.com/ep/cx/blendr/v2/image-dragon-png_1721173946530.png",
+   "wins": 0,
+   "losses": 1,
+   "ties": 0,
+   "win_pct": 0.0,
+   "streak": "L1",
+   "points_for": 117.38,
+   "points_against": 153.8,
+   "week_points": 117.38,
+   "moves": 2,
+   "faab_balance": 100,
+   "rank": 10
+  },
+  {
+   "team_key": "scrape.l.675504.t.11",
+   "team_id": "11",
+   "name": "Miley 💨LEO 5K Speedo Fan Club",
+   "manager": "Greg (Miley)",
+   "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/db213c28a1c236ccc1d3f0f0ed6ce67143a732feb8045af35368e6b34a66858b.jpg",
+   "wins": 0,
+   "losses": 1,
+   "ties": 0,
+   "win_pct": 0.0,
+   "streak": "L1",
+   "points_for": 109.76,
+   "points_against": 118.44,
+   "week_points": 109.76,
+   "moves": 0,
+   "faab_balance": 100,
+   "rank": 11
+  },
+  {
+   "team_key": "scrape.l.675504.t.8",
+   "team_id": "8",
+   "name": "Mac Daddy",
+   "manager": "Maclane",
+   "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/87caae3ea27e5764afe50efbc5b1e3bc060b3f15b9cc206accd95983a6271104.jpg",
+   "wins": 0,
+   "losses": 1,
+   "ties": 0,
+   "win_pct": 0.0,
+   "streak": "L1",
+   "points_for": 104.48,
+   "points_against": 157.06,
+   "week_points": 104.48,
+   "moves": 2,
+   "faab_balance": 100,
+   "rank": 12
+  },
+  {
+   "team_key": "scrape.l.675504.t.9",
+   "team_id": "9",
+   "name": "Talk Darty to Me 🎯",
+   "manager": "Anuj",
+   "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/4ec83422cb4e6deebccc64e5f2aa7af61e910d11fed05bd5b150f1e9e797a450.jpg",
+   "wins": 0,
+   "losses": 1,
+   "ties": 0,
+   "win_pct": 0.0,
+   "streak": "L1",
+   "points_for": 98.1,
+   "points_against": 105.54,
+   "week_points": 98.1,
+   "moves": 1,
+   "faab_balance": 100,
+   "rank": 13
+  },
+  {
+   "team_key": "scrape.l.675504.t.3",
+   "team_id": "3",
+   "name": "Good Will Hunting",
+   "manager": "Will",
+   "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/294c101b0012ae2044dfb832be7a254d2ff520c34206ba46c2cb3c16d80b69da.jpg",
+   "wins": 0,
+   "losses": 1,
+   "ties": 0,
+   "win_pct": 0.0,
+   "streak": "L1",
+   "points_for": 93.1,
+   "points_against": 116.8,
+   "week_points": 93.1,
+   "moves": 3,
+   "faab_balance": 100,
+   "rank": 14
+  }
+ ],
+ "power_rankings": [
+  {
+   "team_key": "scrape.l.675504.t.1",
+   "team_id": "1",
+   "score": 1.0,
+   "all_play": "13-0",
+   "all_play_pct": 1.0,
+   "luck_index": 0.0,
+   "recent_form": 1.0,
+   "efficiency": 91.2,
+   "regret": 15.64,
+   "prev_rank": 3,
+   "rank": 1,
+   "movement": 2
+  },
+  {
+   "team_key": "scrape.l.675504.t.2",
+   "team_id": "2",
+   "score": 0.9517,
+   "all_play": "12-1",
+   "all_play_pct": 0.9231,
+   "luck_index": 0.077,
+   "recent_form": 0.927,
+   "efficiency": 92.3,
+   "regret": 13.1,
+   "prev_rank": 10,
+   "rank": 2,
+   "movement": 8
+  },
+  {
+   "team_key": "scrape.l.675504.t.12",
+   "team_id": "12",
+   "score": 0.9268,
+   "all_play": "11-2",
+   "all_play_pct": 0.8462,
+   "luck_index": 0.154,
+   "recent_form": 0.9058,
+   "efficiency": 98.6,
+   "regret": 2.18,
+   "prev_rank": 6,
+   "rank": 3,
+   "movement": 3
+  },
+  {
+   "team_key": "scrape.l.675504.t.10",
+   "team_id": "10",
+   "score": 0.8997,
+   "all_play": "10-3",
+   "all_play_pct": 0.7692,
+   "luck_index": 0.231,
+   "recent_form": 0.8797,
+   "efficiency": 95.2,
+   "regret": 7.7,
+   "prev_rank": 2,
+   "rank": 4,
+   "movement": -2
+  },
+  {
+   "team_key": "scrape.l.675504.t.4",
+   "team_id": "4",
+   "score": 0.623,
+   "all_play": "7-6",
+   "all_play_pct": 0.5385,
+   "luck_index": 0.462,
+   "recent_form": 0.3672,
+   "efficiency": 100.0,
+   "regret": 0.0,
+   "prev_rank": 13,
+   "rank": 5,
+   "movement": 8
+  },
+  {
+   "team_key": "scrape.l.675504.t.7",
+   "team_id": "7",
+   "score": 0.5815,
+   "all_play": "5-8",
+   "all_play_pct": 0.3846,
+   "luck_index": 0.615,
+   "recent_form": 0.3435,
+   "efficiency": 95.8,
+   "regret": 5.12,
+   "prev_rank": 11,
+   "rank": 6,
+   "movement": 5
+  },
+  {
+   "team_key": "scrape.l.675504.t.5",
+   "team_id": "5",
+   "score": 0.4918,
+   "all_play": "9-4",
+   "all_play_pct": 0.6923,
+   "luck_index": -0.692,
+   "recent_form": 0.7852,
+   "efficiency": 82.2,
+   "regret": 31.9,
+   "prev_rank": 4,
+   "rank": 7,
+   "movement": -3
+  },
+  {
+   "team_key": "scrape.l.675504.t.14",
+   "team_id": "14",
+   "score": 0.4773,
+   "all_play": "3-10",
+   "all_play_pct": 0.2308,
+   "luck_index": 0.769,
+   "recent_form": 0.1803,
+   "efficiency": 77.9,
+   "regret": 29.9,
+   "prev_rank": 12,
+   "rank": 8,
+   "movement": 4
+  },
+  {
+   "team_key": "scrape.l.675504.t.6",
+   "team_id": "6",
+   "score": 0.3349,
+   "all_play": "8-5",
+   "all_play_pct": 0.6154,
+   "luck_index": -0.615,
+   "recent_form": 0.4707,
+   "efficiency": 81.8,
+   "regret": 27.94,
+   "prev_rank": 14,
+   "rank": 9,
+   "movement": 5
+  },
+  {
+   "team_key": "scrape.l.675504.t.13",
+   "team_id": "13",
+   "score": 0.2507,
+   "all_play": "6-7",
+   "all_play_pct": 0.4615,
+   "luck_index": -0.462,
+   "recent_form": 0.3519,
+   "efficiency": 76.6,
+   "regret": 35.84,
+   "prev_rank": 1,
+   "rank": 10,
+   "movement": -9
+  },
+  {
+   "team_key": "scrape.l.675504.t.11",
+   "team_id": "11",
+   "score": 0.1702,
+   "all_play": "4-9",
+   "all_play_pct": 0.3077,
+   "luck_index": -0.308,
+   "recent_form": 0.2414,
+   "efficiency": 74.9,
+   "regret": 36.84,
+   "prev_rank": 5,
+   "rank": 11,
+   "movement": -6
+  },
+  {
+   "team_key": "scrape.l.675504.t.8",
+   "team_id": "8",
+   "score": 0.105,
+   "all_play": "2-11",
+   "all_play_pct": 0.1538,
+   "luck_index": -0.154,
+   "recent_form": 0.1649,
+   "efficiency": 86.1,
+   "regret": 16.88,
+   "prev_rank": 9,
+   "rank": 12,
+   "movement": -3
+  },
+  {
+   "team_key": "scrape.l.675504.t.9",
+   "team_id": "9",
+   "score": 0.048,
+   "all_play": "1-12",
+   "all_play_pct": 0.0769,
+   "luck_index": -0.077,
+   "recent_form": 0.0725,
+   "efficiency": 92.2,
+   "regret": 8.3,
+   "prev_rank": 8,
+   "rank": 13,
+   "movement": -5
+  },
+  {
+   "team_key": "scrape.l.675504.t.3",
+   "team_id": "3",
+   "score": 0.0,
+   "all_play": "0-13",
+   "all_play_pct": 0.0,
+   "luck_index": 0.0,
+   "recent_form": 0.0,
+   "efficiency": 85.3,
+   "regret": 16.02,
+   "prev_rank": 7,
+   "rank": 14,
+   "movement": -7
+  }
+ ],
+ "matchups": [
+  {
+   "week": 1,
+   "status": "postevent",
+   "winner_team_key": "scrape.l.675504.t.14",
+   "teams": [
+    {
+     "team_key": "scrape.l.675504.t.14",
+     "name": "The Injured Reserved",
+     "points": 105.54,
+     "projected": 123.7
+    },
+    {
+     "team_key": "scrape.l.675504.t.9",
+     "name": "Talk Darty to Me 🎯",
+     "points": 98.1,
+     "projected": 131.07
+    }
+   ]
+  },
+  {
+   "week": 1,
+   "status": "postevent",
+   "winner_team_key": "scrape.l.675504.t.4",
+   "teams": [
+    {
+     "team_key": "scrape.l.675504.t.4",
+     "name": "Kim Jong Nate",
+     "points": 118.44,
+     "projected": 120.04
+    },
+    {
+     "team_key": "scrape.l.675504.t.11",
+     "name": "Miley 💨LEO 5K Speedo Fan Club",
+     "points": 109.76,
+     "projected": 129.07
+    }
+   ]
+  },
+  {
+   "week": 1,
+   "status": "postevent",
+   "winner_team_key": "scrape.l.675504.t.1",
+   "teams": [
+    {
+     "team_key": "scrape.l.675504.t.1",
+     "name": "Hail Mary",
+     "points": 162.1,
+     "projected": 125.57
+    },
+    {
+     "team_key": "scrape.l.675504.t.5",
+     "name": "The Asshouse Always Wins",
+     "points": 147.28,
+     "projected": 125.61
+    }
+   ]
+  },
+  {
+   "week": 1,
+   "status": "postevent",
+   "winner_team_key": "scrape.l.675504.t.7",
+   "teams": [
+    {
+     "team_key": "scrape.l.675504.t.7",
+     "name": "FreeGucci",
+     "points": 116.8,
+     "projected": 113.91
+    },
+    {
+     "team_key": "scrape.l.675504.t.3",
+     "name": "Good Will Hunting",
+     "points": 93.1,
+     "projected": 132.88
+    }
+   ]
+  },
+  {
+   "week": 1,
+   "status": "postevent",
+   "winner_team_key": "scrape.l.675504.t.12",
+   "teams": [
+    {
+     "team_key": "scrape.l.675504.t.12",
+     "name": "ShakeNBake",
+     "points": 155.6,
+     "projected": 123.84
+    },
+    {
+     "team_key": "scrape.l.675504.t.6",
+     "name": "Bend The Knee 🐲🔥",
+     "points": 125.58,
+     "projected": 117.15
+    }
+   ]
+  },
+  {
+   "week": 1,
+   "status": "postevent",
+   "winner_team_key": "scrape.l.675504.t.10",
+   "teams": [
+    {
+     "team_key": "scrape.l.675504.t.10",
+     "name": "Leo the Cleo",
+     "points": 153.8,
+     "projected": 128.49
+    },
+    {
+     "team_key": "scrape.l.675504.t.13",
+     "name": "Fwamming Gwaggon",
+     "points": 117.38,
+     "projected": 110.48
+    }
+   ]
+  },
+  {
+   "week": 1,
+   "status": "postevent",
+   "winner_team_key": "scrape.l.675504.t.2",
+   "teams": [
+    {
+     "team_key": "scrape.l.675504.t.2",
+     "name": "A dad",
+     "points": 157.06,
+     "projected": 121.23
+    },
+    {
+     "team_key": "scrape.l.675504.t.8",
+     "name": "Mac Daddy",
+     "points": 104.48,
+     "projected": 129.01
+    }
+   ]
+  }
+ ]
+}
