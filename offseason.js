@@ -241,6 +241,11 @@
     if (grades && !(grades.grades && Object.keys(grades.grades).length)) grades = null;
 
     // Live season? Leave the normal pages alone.
+    // league.json's matchup list is empty on the scrape path even mid-season, so the
+    // real signal is data/current.json — written by scripts/build_week.py once a week
+    // is final. Without this check Rankings would keep showing last season forever.
+    const cur = await opt("data/current.json");
+    if (cur && cur.status === "final") return;
     const played = (league.matchups || []).filter((m) => m.status === "postevent");
     if (played.length) return;
     // Once the draft is in, opener.js owns This Week. This file keeps Rankings.

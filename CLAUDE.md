@@ -10,7 +10,8 @@ Do not introduce a bundler, a framework, or a package.json without being asked.
 
 | Path | What it is |
 |---|---|
-| `index.html` | This Week. Before any real score exists it is the **season opener** (`opener.js` + `opener.css`): Week 1 matchups with win probability, Monte Carlo playoff odds, live polls, season preview. `app.js` takes over the moment a matchup goes `postevent` |
+| `index.html` | This Week. Before any real score exists it is the **season opener** (`opener.js` + `opener.css`): Week 1 matchups with win probability, Monte Carlo playoff odds, live polls, season preview. Once `data/current.json` says a week is `final`, **`home-week.js`** owns the page instead |
+| `week.html` + `week.js` + `week.css` | **The weekly recap.** `week.html?w=<n>` reads `data/week<n>.json`: the seven games with written notes, standings and lineup efficiency, bench crimes, draft money against one Sunday, studs and duds, awards, the wire |
 | `rankings.html` `scoreboard.html` `team.html` `feed.html` | league pages (`team.html?t=<team_key>`) |
 | `hall.html` `trophy.html` | Hall of Shame, Trophy Room |
 | `roast.html` + `roast.js` + `roast.css` | Roast Roulette, incl. the suggestion box |
@@ -19,6 +20,7 @@ Do not introduce a bundler, a framework, or a package.json without being asked.
 | `app.js` `styles.css` | shared shell: masthead, nav, formatting helpers |
 | `data/*.json` | all content. `league.json` is machine-written; the rest are hand-authored |
 | `scripts/fetch_yahoo.py` | Actions cron → rewrites `data/league.json` |
+| `scripts/build_week.py` | weekly box scores + draft + projections → `data/week<n>.json` and `data/current.json`. Prose lives in `scripts/week_notes.py` |
 | `scripts/generate_roasts.py` | Claude API → weekly roast headline |
 | `scripts/fetch_schedule.py` | league home page → `data/schedule.json`. Yahoo only shows logged-out visitors the **current** week, so re-run this every Tuesday |
 | `scripts/fetch_draft.py` | public Yahoo draft-results page → `data/draft.json` (no OAuth; the league is public). `--fixture` rebuilds `data/draft_2025.json` from `data/draft_2025.txt` |
@@ -97,6 +99,41 @@ adding a poll to `data/season.json` also needs that constraint widened.
      scrape path produced it, which is now the normal state, not a failure.
    - Only the **current** week is visible to a logged-out visitor. Anything needing a
      full schedule has to model it (see the season opener) or wait for the week to arrive.
+
+## The weekly recap
+
+`week.html` is the Monday page and it is meant to repeat every week. The pipeline:
+
+1. **Scrape the box scores.** There is no API (below), and Yahoo shows a logged-out visitor
+   only the current week, so the rosters come out of a logged-in Chrome session:
+   `/f1/675504/matchup?week=<n>&mid1=<a>&mid2=<b>` **loaded in a same-origin hidden iframe**
+   (a plain `fetch()` returns a 92-byte shell) and read out of `contentDocument` after about
+   4 seconds. Seven page loads cover all fourteen teams, because each page carries both
+   rosters with their real Week `n` points. The pairing you ask for does not have to be the
+   real matchup — Yahoo renders whatever two teams you name, each with its own true score.
+   Two gotchas: the FantasyPros extension injects extra columns, so the starter table is
+   **15 columns in a top-level tab and 11 inside an iframe** — detect, do not assume. And
+   Yahoo rate-limits at roughly 40 page loads in a burst.
+   Save the result as `data/weeks/<season>-wk<NN>-rosters.json`.
+2. **Build.** `python3 scripts/build_week.py --week <n>`. It re-identifies each scraped
+   roster by matching its starter total to `points_for` in `league.json` (unambiguous, and
+   it does not care which Yahoo team id the scrape happened to file it under), prices every
+   player off `draft.json`, solves each roster's best legal lineup for the efficiency and
+   bench-regret numbers, derives the matchups from the PF/PA mirror, and computes all-play
+   and luck.
+3. **Write.** Every line of prose — headline, lede, the note under each game, section
+   intros, the awards — lives in `scripts/week_notes.py`, so re-running the build never
+   overwrites the writing. Game notes are keyed by the **winning team id**, as ints.
+
+### `data/current.json` is the in-season source of truth
+
+`build_week.py` also writes `data/current.json`, and **`NU.load()` in `app.js` merges it over
+`league.json` on every page**. That is what fixes the scrape's damage in one place: the
+scrape double-counts wins (it reported everyone at 2-0 after one week) and ships an empty
+matchup list, so without this the standings are wrong, the scoreboard is blank, `rankings.html`
+falls through to last season's final table and every page reads "Offseason". `offseason.js`
+and `nav-trophy.js` check the same file before taking over. Delete `current.json` and the site
+reverts to exactly its old behaviour.
 
 ## Power rankings: projected points, not dollars
 

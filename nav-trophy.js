@@ -34,7 +34,12 @@
   // board. Correct it site-wide from the same signal offseason.js uses.
   fetch("data/league.json", { cache: "no-store" })
     .then((r) => r.json())
-    .then((L) => {
+    .then(async (L) => {
+      // A finished week lives in data/current.json; league.json's matchup list is
+      // empty on the scrape path, which used to stamp every page "Offseason".
+      const cur = await fetch("data/current.json", { cache: "no-store" })
+        .then((r) => (r.ok ? r.json() : null)).catch(() => null);
+      if (cur && cur.status === "final") return;
       const played = (L.matchups || []).filter((m) => m.status === "postevent");
       if (played.length) return;
       const stamp = () => {

@@ -15,6 +15,7 @@ const NU = (() => {
   // live behind them until Week 1. The pages still resolve at their own URLs.
   const NAV = [
     ["index.html",     "This Week",      "home"],
+    ["week.html",      "Week 1",         "week"],
     ["draft.html",     "Draft",          "draft"],
     ["rankings.html",  "Rankings",       "ranks"],
     ["hall.html",      "Hall of Shame",  "hall"],
@@ -103,7 +104,7 @@ const NU = (() => {
 
   /* ── page chrome ──────────────────────────────────── */
   function chrome(meta, page) {
-    const live = meta.current_week ? `Week ${meta.current_week} · Live` : "Preseason";
+    const live = meta.week_label || (meta.current_week ? `Week ${meta.current_week} · Live` : "Preseason");
     $("#masthead").innerHTML = `
       <div class="inner">
         <a class="wordmark" href="index.html">NFL Unlocked <i></i></a>
@@ -117,7 +118,7 @@ const NU = (() => {
 
     // The masthead nav is hidden under 900px, so this bar is the only way around
     // the site on a phone — the Trophy Room and the Hall of Shame belong in it.
-    const tabs = [["index.html","Home","home"],["draft.html","Draft","draft"],["rankings.html","Ranks","ranks"],
+    const tabs = [["index.html","Home","home"],["week.html","Wk 1","week"],["draft.html","Draft","draft"],["rankings.html","Ranks","ranks"],
                   ["hall.html","Shame","hall"],["trophy.html","Trophy","trophy"],
                   ["trades.html","Trades","trades"],["roast.html","Roast","roast"]];
     const mt = document.createElement("nav");
@@ -161,9 +162,28 @@ const NU = (() => {
     return { teams, played, weekly, lastWeek };
   }
 
+  /* league.json is written by the Yahoo scrape, which cannot see a schedule and
+     double-counts wins (there is no API — see CLAUDE.md). data/current.json is
+     re-derived from the week's real box scores by scripts/build_week.py, so it
+     wins wherever the two disagree. Every page loads through here, which is why
+     the standings, the rankings, the scoreboard and the team pages all correct
+     themselves at once. Absent current.json this is exactly the old behaviour. */
   async function load() {
-    const resp = await fetch("data/league.json", { cache: "no-store" });
-    return resp.json();
+    const [L, cur] = await Promise.all([
+      fetch("data/league.json", { cache: "no-store" }).then((r) => r.json()),
+      fetch("data/current.json", { cache: "no-store" }).then((r) => r.ok ? r.json() : null).catch(() => null),
+    ]);
+    if (!cur || cur.status !== "final") return L;
+
+    const fix = Object.fromEntries((cur.teams || []).map((t) => [t.team_key, t]));
+    L.teams = (L.teams || []).map((t) => ({ ...t, ...(fix[t.team_key] || {}) }))
+                             .sort((a, b) => (a.rank || 99) - (b.rank || 99));
+    L.power_rankings = cur.power_rankings || L.power_rankings;
+    L.matchups = cur.matchups || L.matchups;
+    L.meta = { ...(L.meta || {}), current_week: cur.week, week_status: cur.status,
+               week_label: cur.label, recap: cur.recap };
+    L.current = cur;
+    return L;
   }
 
   return { $, $$, esc, avatar, initials, ago, stamps, wireStamps, chrome,
@@ -197,7 +217,9 @@ const NU = (() => {
     : `<span class="mv eq">—</span>`;
 
   /* ─────────────────────────── HOME ───────────────────────── */
-  if (page === "home") {
+  // Once a week is final, home-week.js renders this page from data/week<N>.json.
+  // This branch is the pre-season shell and would only paint stale demo copy over it.
+  if (page === "home" && !(L.current && L.current.status === "final")) {
     const top5 = ranks.slice(0, 5);
     const allPts = played.flatMap((m) => m.teams.map((s) => s.points));
     const hi = played.flatMap((m) => m.teams).sort((a, b) => b.points - a.points)[0];
@@ -351,7 +373,7 @@ const NU = (() => {
           <div class="w"><div class="eyebrow">Recent Form</div><div class="v">15%</div></div>
         </div>
       </section>
-      <table class="tbl">
+      <div class="table-scroll"><table class="tbl">
         <thead><tr><th>Rk</th><th>Team</th><th>Record</th><th>Pts For</th>
           <th class="hide-s">All-Play</th><th>Luck Index</th></tr></thead>
         <tbody>${ranks.map((r) => {
@@ -372,7 +394,7 @@ const NU = (() => {
               <div class="luck-lbl">${v >= 0 ? "+" : ""}${v.toFixed(3)} ${v >= 0.02 ? "fraud" : v <= -0.02 ? "robbed" : "fair"}</div>
             </div></td></tr>`;
         }).join("")}</tbody>
-      </table>
+      </table></div>
       ${endband(meta)}`;
   }
 
