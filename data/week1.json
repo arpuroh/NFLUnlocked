@@ -1,13 +1,42 @@
 {
  "season": 2026,
  "week": 1,
- "built_at": "2026-09-15T10:27:56.146578+00:00",
+ "built_at": "2026-09-15T10:48:13.515477+00:00",
  "league_average": 126.07,
+ "median": {
+  "value": 117.91,
+  "beat": 7,
+  "closest_above": "4",
+  "closest_below": "13",
+  "saved_by_median": [
+   "5",
+   "6"
+  ],
+  "sunk_by_median": [
+   "7",
+   "14"
+  ],
+  "sweeps": [
+   "1",
+   "2",
+   "12",
+   "10",
+   "4"
+  ],
+  "swept": [
+   "13",
+   "11",
+   "8",
+   "9",
+   "3"
+  ]
+ },
  "headline": "Fourteen Managers Walked In. Nine Of Them Left Evidence.",
  "kicker": "(week 1, and the benches scored 247 points)",
- "lede": "The model said this league would average 106 points a week. Week 1 came in at 126 and change, which means every single one of you is about to mistake variance for genius. Two teams cleared 155. One team started a quarterback who threw for 13 yards. Three managers lost a game they had the points to win, sitting on their own bench, in street clothes, watching. The preseason number one lost by 36. The preseason number thirteen played the only perfect lineup in the league. Nothing you learned tonight is real, and all of it is permanent.",
+ "lede": "The model said this league would average 106 points a week. Week 1 came in at 126 and change, which means every single one of you is about to mistake variance for genius. Two teams cleared 155. One team started a quarterback who threw for 13 yards. Three managers lost a game they had the points to win, sitting on their own bench, in street clothes, watching. Then the median came for the rest: 117.91, the second opponent nobody gets to game-plan for. It saved two managers who lost their matchup and it took a win away from two who won theirs. Five of you are 2-0. Five of you are 0-2. Nothing you learned this week is real, and all of it is permanent.",
  "sections": {
-  "standings": "Week 1 scoring, all-play record, and how much of your own roster you actually managed to start. Efficiency is what you scored over what your best legal lineup would have scored. Injured reserve does not count against you. Everything else does.",
+  "median": "This league plays two games a week: your matchup, and the league median. Week 1's line was 117.91. Seven teams cleared it and seven did not, which is what a median is, and it is the one opponent that does not care who you were scheduled against. Bars run from the line. Right is a win.",
+  "standings": "Week 1 scoring, all-play record, and how much of your own roster you actually managed to start, plus both results. Efficiency is what you scored over what your best legal lineup would have scored. Injured reserve does not count against you. Everything else does.",
   "bench": "247.36 points sat on benches this week. That is nearly two full winning scores, in street clothes, doing nothing. Here is where they were sitting.",
   "money": "Every dollar from draft night, priced against exactly one Sunday of work. It is a sample of one and it is completely unfair, which is the entire point of running it.",
   "draftvs": "Preseason projections against what actually happened. The model ranked all fourteen of you in September on projected points per week. One week is noise. Enjoy the noise.",
@@ -49,6 +78,16 @@
    "title": "Rebrand Of The Year",
    "winner": "Talk Darty to Me 🎯",
    "line": "Changed the name from Poop Squad after the draft, then went 1-13 in all-play and scored 98.10. Jordan Addison and Davante Adams combined for 4.1 points out of the starting lineup. New name, same squad."
+  },
+  {
+   "title": "Won The Game, Lost The Week",
+   "winner": "FreeGucci",
+   "line": "Beat Good Will Hunting by 23.70 and missed the median by 1.11. A single catch anywhere on the roster is the difference between 2-0 and 1-1, and he will think about that until November."
+  },
+  {
+   "title": "Half A Point From A Different Season",
+   "winner": "Fwamming Gwaggon",
+   "line": "117.38 against a median of 117.91. As the 8th-highest score in a 14-team league he helped set that number, then lost to it by 0.53 and left Week 1 at 0-2 as the preseason favourite."
   },
   {
    "title": "Paid In Full",
@@ -336,6 +375,11 @@
    "all_play": "13-0",
    "all_play_wins": 13,
    "won": true,
+   "beat_median": true,
+   "vs_median": 44.19,
+   "wins": 2,
+   "losses": 0,
+   "record": "2-0",
    "luck": 0.0
   },
   {
@@ -605,6 +649,11 @@
    "all_play": "12-1",
    "all_play_wins": 12,
    "won": true,
+   "beat_median": true,
+   "vs_median": 39.15,
+   "wins": 2,
+   "losses": 0,
+   "record": "2-0",
    "luck": 0.077
   },
   {
@@ -885,6 +934,11 @@
    "all_play": "11-2",
    "all_play_wins": 11,
    "won": true,
+   "beat_median": true,
+   "vs_median": 37.69,
+   "wins": 2,
+   "losses": 0,
+   "record": "2-0",
    "luck": 0.154
   },
   {
@@ -1154,6 +1208,11 @@
    "all_play": "10-3",
    "all_play_wins": 10,
    "won": true,
+   "beat_median": true,
+   "vs_median": 35.89,
+   "wins": 2,
+   "losses": 0,
+   "record": "2-0",
    "luck": 0.231
   },
   {
@@ -1423,6 +1482,11 @@
    "all_play": "9-4",
    "all_play_wins": 9,
    "won": false,
+   "beat_median": true,
+   "vs_median": 29.37,
+   "wins": 1,
+   "losses": 1,
+   "record": "1-1",
    "luck": -0.692
   },
   {
@@ -1703,6 +1767,11 @@
    "all_play": "8-5",
    "all_play_wins": 8,
    "won": false,
+   "beat_median": true,
+   "vs_median": 7.67,
+   "wins": 1,
+   "losses": 1,
+   "record": "1-1",
    "luck": -0.615
   },
   {
@@ -1972,6 +2041,11 @@
    "all_play": "7-6",
    "all_play_wins": 7,
    "won": true,
+   "beat_median": true,
+   "vs_median": 0.53,
+   "wins": 2,
+   "losses": 0,
+   "record": "2-0",
    "luck": 0.462
   },
   {
@@ -2241,6 +2315,11 @@
    "all_play": "6-7",
    "all_play_wins": 6,
    "won": false,
+   "beat_median": false,
+   "vs_median": -0.53,
+   "wins": 0,
+   "losses": 2,
+   "record": "0-2",
    "luck": -0.462
   },
   {
@@ -2532,6 +2611,11 @@
    "all_play": "5-8",
    "all_play_wins": 5,
    "won": true,
+   "beat_median": false,
+   "vs_median": -1.11,
+   "wins": 1,
+   "losses": 1,
+   "record": "1-1",
    "luck": 0.615
   },
   {
@@ -2801,6 +2885,11 @@
    "all_play": "4-9",
    "all_play_wins": 4,
    "won": false,
+   "beat_median": false,
+   "vs_median": -8.15,
+   "wins": 0,
+   "losses": 2,
+   "record": "0-2",
    "luck": -0.308
   },
   {
@@ -3092,6 +3181,11 @@
    "all_play": "3-10",
    "all_play_wins": 3,
    "won": true,
+   "beat_median": false,
+   "vs_median": -12.37,
+   "wins": 1,
+   "losses": 1,
+   "record": "1-1",
    "luck": 0.769
   },
   {
@@ -3361,6 +3455,11 @@
    "all_play": "2-11",
    "all_play_wins": 2,
    "won": false,
+   "beat_median": false,
+   "vs_median": -13.43,
+   "wins": 0,
+   "losses": 2,
+   "record": "0-2",
    "luck": -0.154
   },
   {
@@ -3630,6 +3729,11 @@
    "all_play": "1-12",
    "all_play_wins": 1,
    "won": false,
+   "beat_median": false,
+   "vs_median": -19.81,
+   "wins": 0,
+   "losses": 2,
+   "record": "0-2",
    "luck": -0.077
   },
   {
@@ -3910,6 +4014,11 @@
    "all_play": "0-13",
    "all_play_wins": 0,
    "won": false,
+   "beat_median": false,
+   "vs_median": -24.81,
+   "wins": 0,
+   "losses": 2,
+   "record": "0-2",
    "luck": 0.0
   }
  ],
@@ -3920,7 +4029,7 @@
    "winner_points": 105.54,
    "loser_points": 98.1,
    "margin": 7.44,
-   "note": "The two lowest scores of the week found each other, like they were supposed to. Greg made seven roster moves this week, more than anybody, and used exactly none of them to notice that Kyle Monangai was about to go for 20.4 on his bench while Jaylen Waddle caught one pass for two yards in his starting lineup. He won anyway. There is no justice and there is no God."
+   "note": "The two lowest scores of the week found each other, like they were supposed to. Greg made seven roster moves this week, more than anybody, and used exactly none of them to notice that Kyle Monangai was about to go for 20.4 on his bench while Jaylen Waddle caught one pass for two yards in his starting lineup. He won the matchup and then lost to the median by 12.37, so the reward for all that activity is 1-1. Anuj drew the only opponent in the league he could have beaten and still went 0-2."
   },
   {
    "winner": "4",
@@ -3928,7 +4037,7 @@
    "winner_points": 118.44,
    "loser_points": 109.76,
    "margin": 8.68,
-   "note": "The cleanest win of the week and the dirtiest loss. Nathan is the only manager in this league who started his best available eleven, full stop, 100 percent of the points he had. Greg, the other Greg, started a quarterback for 5.1, a kicker for 1.0 and a wide receiver in the IDP slot for 2.6. That is 8.7 points from three roster spots. He lost by 8.68. Do the math, it's already done."
+   "note": "The cleanest win of the week and the dirtiest loss. Nathan is the only manager in this league who started his best available eleven, full stop, 100 percent of the points he had, and it bought him a 2-0 by exactly 0.53 points over the median. Greg, the other Greg, started a quarterback for 5.1, a kicker for 1.0 and a wide receiver in the IDP slot for 2.6. That is 8.7 points from three roster spots. He lost by 8.68 and went 0-2. Do the math, it's already done."
   },
   {
    "winner": "1",
@@ -3936,7 +4045,7 @@
    "winner_points": 162.1,
    "loser_points": 147.28,
    "margin": 14.82,
-   "note": "309 combined points, the best game on the board, and both managers should feel terrible. Andrew won it 162 to 147 with Caleb Williams and 37.26 points glued to his bench and Kyle Pitts posting a clean zero in his starting lineup. Tom had the single best roster in the league on Sunday, 179.18 points of it, and played 147.28. Mahomes and Goedert watched from the couch. That is the whole game, right there."
+   "note": "309 combined points, the best game on the board, and both managers should feel terrible. Andrew won it 162 to 147 with Caleb Williams and 37.26 points glued to his bench and Kyle Pitts posting a clean zero in his starting lineup. Tom had the single best roster in the league on Sunday, 179.18 points of it, and played 147.28. Mahomes and Goedert watched from the couch. That is the whole game, right there. The only mercy is that 147.28 cleared the median by 29.37, so Tom banked the half he did not have to think about and goes to 1-1."
   },
   {
    "winner": "7",
@@ -3952,7 +4061,7 @@
    "winner_points": 155.6,
    "loser_points": 125.58,
    "margin": 30.02,
-   "note": "Abhishek left 2.18 points on the bench, the best lineup management in the league that did not go clean, and it did not matter, because Darrius started Sam Darnold. Thirteen passing yards. 0.52 points. C.J. Stroud, also one dollar, also on the roster, threw for 274 and two scores from the bench. The $1 quarterback lottery has a losing ticket and Bend The Knee bought it."
+   "note": "Abhishek left 2.18 points on the bench, the best lineup management in the league that did not go clean, and it did not matter, because Darrius started Sam Darnold. Thirteen passing yards. 0.52 points. C.J. Stroud, also one dollar, also on the roster, threw for 274 and two scores from the bench. The $1 quarterback lottery has a losing ticket and Bend The Knee bought it. Darrius still cleared the median by 7.67, which is the fantasy equivalent of getting hit by a bus and keeping your wallet. 1-1."
   },
   {
    "winner": "10",
@@ -3968,7 +4077,7 @@
    "winner_points": 157.06,
    "loser_points": 104.48,
    "margin": 52.58,
-   "note": "The biggest beating of the week, 52.58, delivered by a man whose quarterback finished with 0.62 points. Barrett started Kyler Murray, watched him throw for 18 yards and an interception, and still put up 157.06 because Kenneth Walker went for 34.6 and Chuba Hubbard went for 22.2. Maclane got 24.96 from Lamar Jackson and then the rest of his roster filed for unemployment."
+   "note": "The biggest beating of the week, 52.58, delivered by a man whose quarterback finished with 0.62 points. Barrett started Kyler Murray, watched him throw for 18 yards and an interception, and still put up 157.06 because Kenneth Walker went for 34.6 and Chuba Hubbard went for 22.2. Maclane got 24.96 from Lamar Jackson and then the rest of his roster filed for unemployment, 13 points under the median, 0-2."
   }
  ],
  "top_starts": [
