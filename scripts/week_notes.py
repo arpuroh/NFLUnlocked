@@ -83,6 +83,10 @@ NOTES = {
 
     # section intros
     "sections": {
+        "awards": "Ten citations from a single Sunday. Every one of them is a number "
+                  "somebody chose on purpose.",
+        "games": "Now the long version, closest game first. Scores, lineups, and what "
+                 "each manager did to himself.",
         "median": "This league plays two games a week: your matchup, and the league "
                   "median. Week 1's line was 117.91. Seven teams cleared it and seven did "
                   "not, which is what a median is, and it is the one opponent that does not "
