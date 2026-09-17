@@ -13,7 +13,7 @@
   "uses_faab": true,
   "faab_budget": 100,
   "demo": false,
-  "last_updated": "2026-09-16T15:13:59.352642+00:00"
+  "last_updated": "2026-09-17T15:22:41.169433+00:00"
  },
  "teams": [
   {
@@ -64,7 +64,7 @@
    "name": "ShakeNBake",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/036413160a71a76b42890dd9196cf47fabbccda61f8f2394f8a7fb84ea186a0a.jpg",
-   "moves": 6,
+   "moves": 7,
    "trades": 0,
    "faab_balance": 43,
    "clinched_playoffs": false,
@@ -148,7 +148,7 @@
    "name": "Bend The Knee \ud83d\udc32\ud83d\udd25",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/9c8ddac63f5831a2c6bc9f69d07b6f17d1d82f639ec642752f29c2b6aa21cd9e.jpg",
-   "moves": 2,
+   "moves": 3,
    "trades": 0,
    "faab_balance": 100,
    "clinched_playoffs": false,
@@ -169,7 +169,7 @@
    "name": "FreeGucci",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/3e2185d5692aabbcb23e288139db28c90871d64e1046faac8f407f3bdcef814f.jpg",
-   "moves": 4,
+   "moves": 5,
    "trades": 0,
    "faab_balance": 100,
    "clinched_playoffs": false,
@@ -180,7 +180,7 @@
    "win_pct": 0.5,
    "streak": "W1",
    "points_for": 116.8,
-   "points_against": 93.1,
+   "points_against": 94.1,
    "week_points": 0.0,
    "trophies": []
   },
@@ -253,7 +253,7 @@
    "name": "Mac Daddy",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/87caae3ea27e5764afe50efbc5b1e3bc060b3f15b9cc206accd95983a6271104.jpg",
-   "moves": 3,
+   "moves": 4,
    "trades": 0,
    "faab_balance": 82,
    "clinched_playoffs": false,
@@ -305,7 +305,7 @@
    "ties": 0,
    "win_pct": 0.0,
    "streak": "L1",
-   "points_for": 93.1,
+   "points_for": 94.1,
    "points_against": 116.8,
    "week_points": 0.0,
    "trophies": []
@@ -325,7 +325,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.2",
-   "score": 0.6281,
+   "score": 0.6278,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 1.0,
@@ -336,7 +336,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.12",
-   "score": 0.6217,
+   "score": 0.6213,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 1.0,
@@ -347,7 +347,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.10",
-   "score": 0.6139,
+   "score": 0.6134,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 1.0,
@@ -358,7 +358,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.4",
-   "score": 0.4602,
+   "score": 0.4574,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 1.0,
@@ -369,7 +369,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.5",
-   "score": 0.4106,
+   "score": 0.4096,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.5,
@@ -380,7 +380,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.6",
-   "score": 0.3162,
+   "score": 0.3139,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.5,
@@ -391,7 +391,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.7",
-   "score": 0.278,
+   "score": 0.2751,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.5,
@@ -402,7 +402,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.14",
-   "score": 0.2291,
+   "score": 0.2255,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.5,
@@ -413,7 +413,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.13",
-   "score": 0.1056,
+   "score": 0.1027,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.0,
@@ -424,7 +424,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.11",
-   "score": 0.0724,
+   "score": 0.0691,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.0,
@@ -435,7 +435,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.8",
-   "score": 0.0495,
+   "score": 0.0458,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.0,
@@ -446,7 +446,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.9",
-   "score": 0.0217,
+   "score": 0.0176,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.0,
