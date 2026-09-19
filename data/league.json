@@ -13,7 +13,7 @@
   "uses_faab": true,
   "faab_budget": 100,
   "demo": false,
-  "last_updated": "2026-09-18T14:43:00.886440+00:00"
+  "last_updated": "2026-09-19T14:04:10.717738+00:00"
  },
  "teams": [
   {
@@ -64,9 +64,9 @@
    "name": "ShakeNBake",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/036413160a71a76b42890dd9196cf47fabbccda61f8f2394f8a7fb84ea186a0a.jpg",
-   "moves": 7,
+   "moves": 8,
    "trades": 0,
-   "faab_balance": 43,
+   "faab_balance": 30,
    "clinched_playoffs": false,
    "rank": 3,
    "wins": 2,
@@ -85,7 +85,7 @@
    "name": "Leo the Cleo",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/614cb36d46f9edc5aca35aaa803a8fa30dceed9bd1f10524d266052c83b8a924.jpg",
-   "moves": 4,
+   "moves": 5,
    "trades": 0,
    "faab_balance": 95,
    "clinched_playoffs": false,
@@ -190,7 +190,7 @@
    "name": "The Injured Reserved",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/6933584f04d1bde8d8c31369be63df7ade2c4c97999ba5fe2a6514d38ae42bb2.jpg",
-   "moves": 11,
+   "moves": 12,
    "trades": 0,
    "faab_balance": 95,
    "clinched_playoffs": false,
