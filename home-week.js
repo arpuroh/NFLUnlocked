@@ -7,7 +7,7 @@
    rankings, results) and data/week<N>.json (the writing).
    ══════════════════════════════════════════════════════════════ */
 (async function () {
-  const { $, esc, chrome, endband, stamps, wireStamps } = NU;
+  const { $, esc, endband, stamps, wireStamps } = NU;
 
   const cur = await fetch("data/current.json", { cache: "no-store" })
     .then((r) => (r.ok ? r.json() : null)).catch(() => null);
@@ -38,9 +38,6 @@
   const mv = (m) => m > 0 ? `<span class="mv up">▲${m}</span>`
     : m < 0 ? `<span class="mv dn">▼${Math.abs(m)}</span>` : `<span class="mv eq">—</span>`;
 
-  document.body.dataset.page = "home";
-  chrome({ ...(L.meta || {}), league_id: "675504", current_week: cur.week,
-           week_label: cur.label }, "home");
 
   $("#app").innerHTML = `
     <section class="dark roast-hero">
@@ -88,7 +85,7 @@
     <div class="body-grid">
       <div class="col-main">
         <div class="sec-top"><h2 class="h-sec">Power Rankings</h2>
-          <span class="note">Movement is off the draft model</span></div>
+          <span class="note">${cur.week === 1 ? "Movement is off the draft model" : "Movement is from last week"}</span></div>
         <hr class="rule-h">
         ${cur.power_rankings.map((r) => {
           const t = T[r.team_id] || {};
@@ -97,10 +94,10 @@
             ${logo(t) || ""}
             <span class="pr-team">
               <span class="nm">${esc(t.name || "")}</span>
-              <span class="mg">${esc(t.manager || "")} · ${esc(t.record)} · ${r.efficiency}% efficient</span>
+              <span class="mg">${esc(t.manager || "")} · ${esc((t.season || {}).record || t.record)} · ${r.efficiency}% efficient this week</span>
             </span>
             <span class="pr-stats">
-              <span class="stat-cell"><span class="k">Pts For</span><span class="v">${n1(t.points)}</span></span>
+              <span class="stat-cell"><span class="k">Pts For</span><span class="v">${n1((t.season || {}).points_for || t.points)}</span></span>
               <span class="stat-cell"><span class="k">All-Play</span><span class="v">${esc(r.all_play)}</span></span>
               <span class="stat-cell"><span class="k">Power</span>
                 <span class="power-bar"><i style="width:${(r.score / maxScore * 100).toFixed(1)}%"></i></span></span>

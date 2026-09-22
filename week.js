@@ -11,7 +11,11 @@
 (async function () {
   const { $, $$, esc, endband, stamps, wireStamps } = NU;
   const app = $("#app");
-  const wk = Math.max(1, parseInt(new URLSearchParams(location.search).get("w"), 10) || 1);
+  // data/weeks.json lists every recap on file. No ?w= means the latest one.
+  const IDX = await fetch("data/weeks.json", { cache: "no-store" })
+    .then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const asked = parseInt(new URLSearchParams(location.search).get("w"), 10);
+  const wk = asked > 0 ? asked : (IDX && IDX.latest) || 1;
 
   let W;
   try {
@@ -20,9 +24,13 @@
     W = await r.json();
   } catch {
     app.innerHTML = `<p class="empty pad" style="padding:40px 30px">
-      No recap filed for Week ${wk} yet. It lands the Monday after the games.</p>`;
+      No recap filed for Week ${wk} yet. It lands the Monday after the games.
+      ${IDX ? `<a class="see-all" style="color:var(--red)" href="week.html">Latest recap →</a>` : ""}</p>`;
     return;
   }
+  const weeksOnFile = IDX ? IDX.weeks : [{ week: W.week, headline: W.headline }];
+  const isLatest = !IDX || W.week === IDX.latest;
+  document.title = `Week ${W.week} Recap — NFL Unlocked`;
 
   const n1 = (v) => Number(v || 0).toFixed(1);
   const n2 = (v) => Number(v || 0).toFixed(2);
@@ -53,7 +61,8 @@
   const robbed = [...W.teams].sort((a, b) => a.luck - b.luck)[0];
   const ppRate = (p) => p.cost / p.pts;
   const worstBuy = W.money_pits.filter((p) => p.pts > 0).sort((a, b) => ppRate(b) - ppRate(a))[0];
-  const ghosts = W.money_pits.filter((p) => p.pts <= 0);
+  const ghosts = W.money_pits.filter((p) => p.pts === 0 && !p.stats);      // never took the field
+  const refunds = W.money_pits.filter((p) => p.pts < 0);                   // took it and went backwards
   const biggestCrime = W.bench_crimes[0];
   const crimeTeam = T[biggestCrime.team_id];
   const bestGame = Math.max(...W.games.map((g) => g.winner_points + g.loser_points));
@@ -63,9 +72,9 @@
   // The rail is the sticky sub-nav. Order here follows ORDER below; anything
   // not listed (the receipt, position weather) is an interstitial, not a stop.
   const RAIL = [
-    ["awards", "Awards"], ["standings", "Standings"], ["median", "The Median"],
-    ["bench", "Bench Crimes"], ["money", "Money"], ["studs", "Studs &amp; Duds"],
-    ["games", "The Seven"], ["wire", "The Wire"],
+    ["awards", "Awards"], ["power", "Power Rankings"], ["median", "The Median"],
+    ["standings", "Lineups"], ["bench", "Bench Crimes"], ["faab", "FAAB Audit"],
+    ["money", "Money"], ["studs", "Studs &amp; Duds"], ["games", "The Seven"],
   ];
   const num = Object.fromEntries(RAIL.map(([id], i) => [id, String(i + 1).padStart(2, "0")]));
   const head = (id, title, note) => `
@@ -77,7 +86,77 @@
       <hr class="rule-h">`;
 
   /* ══ SECTIONS ══════════════════════════════════════════ */
+  const PR = W.power_rankings || [];
+  const mvChip = (m) => m > 0 ? `<span class="mv up">▲${m}</span>`
+    : m < 0 ? `<span class="mv dn">▼${Math.abs(m)}</span>` : `<span class="mv eq">—</span>`;
+  const taxLeader = [...W.teams].filter((t) => t.season)
+    .sort((a, b) => (b.season.lineup_tax - a.season.lineup_tax) || (b.season.regret - a.season.regret))[0];
+  const audit = W.faab_audit || [];
+  const spentWeek = audit.reduce((s, a) => s + (a.bid || 0), 0);
+  const paid = audit.filter((a) => a.bid);                  // real FAAB money changed hands
+  const freeAgents = audit.filter((a) => a.bid === null);
+
   const SECTIONS = {
+
+    power: () => !PR.length ? "" : `${head("power", "Power Rankings", W.week === 1 ? "Movement is off the draft model" : "Season to date")}
+      ${sec("power")}
+    </section>
+    <div class="wk-table-wrap">
+      <table class="tbl pr-tbl">
+        <thead><tr>
+          <th>#</th><th>Team</th><th class="r">Record</th><th class="r hide-s">Points</th>
+          <th class="r hide-s">All-Play</th><th class="r hide-s">Best Lineup</th><th class="r">Tax</th>
+        </tr></thead>
+        <tbody>${PR.map((r) => {
+          const t = T[r.team_id], s = t.season || {};
+          return `<tr>
+            <td><span class="rk"><b>${r.rank}</b>${mvChip(r.movement)}</span></td>
+            <td><a href="${link(t)}" class="pr-name">${logo(t, "sm")}<span>
+              <span class="n">${esc(t.name)}</span>
+              <span class="m">${esc(t.manager)}<span class="only-s"> · ${n1(s.points_for || t.points)} pts${
+                s.optimal_record ? ` · best lineup ${esc(s.optimal_record)}` : ""}</span></span>
+              ${r.blurb ? `<span class="pr-blurb">${esc(r.blurb)}</span>` : ""}</span></a></td>
+            <td class="r"><span class="rec">${esc(s.record || t.record)}</span></td>
+            <td class="r hide-s"><span class="big">${n1(s.points_for || t.points)}</span></td>
+            <td class="r hide-s"><span class="m">${esc(s.all_play || t.all_play)}</span></td>
+            <td class="r hide-s"><span class="rec">${esc(s.optimal_record || "")}</span></td>
+            <td class="r">${s.lineup_tax ? `<span class="tax">−${s.lineup_tax}</span>` : `<span class="m">0</span>`}</td>
+          </tr>`;
+        }).join("")}</tbody>
+      </table>
+    </div>
+    ${taxLeader && taxLeader.season.lineup_tax >= 2 ? `<p class="wk-note">Top of the tax table:
+      ${esc(taxLeader.name)}, a ${esc(taxLeader.season.record)} team whose best lineup would be
+      ${esc(taxLeader.season.optimal_record)}. That is ${taxLeader.season.lineup_tax} wins left on
+      the bench, and ${n1(taxLeader.season.regret)} points.</p>` : ""}`,
+
+    faab: () => `${head("faab", "FAAB Audit", spentWeek ? `$${spentWeek} spent this week` : "Snapshot, not advice")}
+      ${sec("faab") || sec("waivers")}
+    </section>
+    ${paid.length ? `<div class="wk-table-wrap">
+      <table class="tbl">
+        <thead><tr><th class="r">Paid</th><th>Player</th><th>Bought By</th>
+          <th class="r">Week ${W.week}</th><th class="hide-s">Used</th></tr></thead>
+        <tbody>${paid.map((a) => `<tr>
+          <td class="r"><span class="${a.bid ? "cost" : "cost fa"}">${a.bid === null ? "FA" : "$" + a.bid}</span></td>
+          <td><span class="pos-chip">${esc(a.pos)}</span><span class="n">${esc(a.player)}</span></td>
+          <td><span class="m">${esc(a.team)}</span></td>
+          <td class="r">${a.pts === null || a.slot === "IR" ? `<span class="m">—</span>`
+            : `<span class="big ${a.started && a.pts >= 10 ? "" : "down"}">${n2(a.pts)}</span>`}</td>
+          <td class="hide-s"><span class="stat">${a.pts === null ? "not on the roster by Sunday"
+            : a.started ? "started" : a.slot === "IR" ? "on IR" : "benched"}</span></td>
+        </tr>`).join("")}</tbody>
+      </table>
+    </div>` : ""}
+    ${freeAgents.length ? `<p class="wk-note">Plus ${freeAgents.length} free-agent pickup${freeAgents.length === 1 ? "" : "s"}
+      at no cost. The ones that played for their new team: ${freeAgents.filter((a) => a.pts !== null)
+        .sort((a, b) => b.pts - a.pts).slice(0, 6)
+        .map((a) => `${esc(a.player)} ${n2(a.pts)} (${esc(a.team)}, ${a.started ? "started" : "benched"})`).join("; ")
+        || "none of them"}.</p>` : ""}
+    <div class="faab-strip">${[...W.teams].sort((a, b) => a.faab_left - b.faab_left).map((t) => `
+      <div class="fs-cell"><span class="fs-v ${t.faab_left < 50 ? "red" : ""}">$${t.faab_left}</span>
+        <span class="fs-n">${esc(t.name)}</span></div>`).join("")}</div>
+    <p class="wk-note">${esc(W.waiver_note)}</p>`,
 
     awards: () => `${head("awards", "The Awards", "No trophies, only records")}
       ${sec("awards")}
@@ -98,7 +177,9 @@
           <div class="r-s">${esc(worstBuy.name)} cost $${worstBuy.cost} at the auction and
             returned ${n2(worstBuy.pts)} points in ${esc(worstBuy.team)}'s starting lineup.${
             ghosts.length ? ` Unrankable: ${ghosts.map((g) => `${esc(g.name)} ($${g.cost}, ${esc(g.team)})`).join(", ")}
-            started and never took the field, which is not a rate, it is a donation.` : ""}</div>
+            started and never took the field, which is not a rate, it is a donation.` : ""}${
+            refunds.length ? ` Also unrankable: ${refunds.map((g) => `${esc(g.name)} ($${g.cost}, ${esc(g.team)}, ${n2(g.pts)})`).join(", ")}
+            played and finished below zero, which is not a rate, it is a refund request.` : ""}</div>
         </div>
         <div class="r-cell">
           <div class="r-k">Most expensive seat on a bench</div>
@@ -111,13 +192,13 @@
       </div>
     </section>`,
 
-    standings: () => `${head("standings", "Standings &amp; Efficiency", "One week of evidence")}
+    standings: () => `${head("standings", `Week ${W.week} Lineups`, "Who started what")}
       ${sec("standings")}
     </section>
     <div class="wk-table-wrap">
       <table class="tbl">
         <thead><tr>
-          <th>#</th><th>Team</th><th class="r">Points</th><th class="r">vs Median</th>
+          <th>#</th><th>Team</th><th class="r">Points</th><th class="r">Week</th><th class="r">vs Median</th>
           <th class="r">All-Play</th><th class="r">Lineup Eff.</th><th class="r">Left On Bench</th>
           <th class="r hide-s">Preseason</th><th class="r">Luck</th>
         </tr></thead>
@@ -128,8 +209,9 @@
             <td><span class="rk"><b>${i + 1}</b></span></td>
             <td><a href="${link(t)}" style="display:flex;align-items:center;gap:9px">
               ${logo(t, "sm")}<span><span class="n">${esc(t.name)}</span>
-              <span class="m">${esc(t.manager)} · ${esc(t.record)}</span></span></a></td>
+              <span class="m">${esc(t.manager)} · ${esc((t.season || {}).record || t.record)} season</span></span></a></td>
             <td class="r"><span class="big">${n2(t.points)}</span></td>
+            <td class="r"><span class="rec">${esc(t.record)}</span></td>
             <td class="r"><span class="${t.beat_median ? "up" : "down"}">${
               t.vs_median > 0 ? "+" : ""}${n2(t.vs_median)}</span></td>
             <td class="r"><span class="rec">${esc(t.all_play)}</span></td>
@@ -214,26 +296,35 @@
       </table>
     </div>`,
 
-    money: () => `${head("money", "Draft Money vs One Sunday", "Unfair on purpose")}
+    money: () => {
+      // From Week 2 on, money is season to date; Week 1 only ever had the one Sunday.
+      const season = W.week > 1 && (W.season_money_pits || []).length;
+      const pits = season ? W.season_money_pits : W.money_pits;
+      const bins = season ? W.season_bargains : W.bargains;
+      const title = season ? `Draft Money vs ${W.week} Sundays` : "Draft Money vs One Sunday";
+      return `${head("money", title, "Unfair on purpose")}
       ${sec("money")}
     </section>
     <div class="wk-two">
       <section>
         <h3 class="h-sec sub">The Money Pit</h3><hr class="rule-t">
-        <div class="wk-list">${W.money_pits.slice(0, 8).map((p) => `<div class="wk-li">
+        <div class="wk-list">${pits.slice(0, 8).map((p) => `<div class="wk-li">
           <span><span class="n">${esc(p.name)}</span>
             <span class="m">$${p.cost} · ${esc(p.team)} · ${p.pts > 0
-              ? "$" + ppRate(p).toFixed(2) + " per point" : "did not play"}</span></span>
+              ? "$" + (p.cost / p.pts).toFixed(2) + " per point" : "no points yet"}${
+              season ? ` · ${p.weeks} wk` : ""}</span></span>
           <span class="v bad">${n2(p.pts)}</span></div>`).join("")}</div>
       </section>
       <section>
         <h3 class="h-sec sub">The Bargain Bin</h3><hr class="rule-t">
-        <div class="wk-list">${W.bargains.slice(0, 8).map((p) => `<div class="wk-li">
+        <div class="wk-list">${bins.slice(0, 8).map((p) => `<div class="wk-li">
           <span><span class="n">${esc(p.name)}</span>
-            <span class="m">$${p.cost} · ${esc(p.team)} · ${p.started ? "started" : "on the bench"}</span></span>
+            <span class="m">$${p.cost} · ${esc(p.team)}${season ? ` · ${p.weeks} wk`
+              : ` · ${p.started ? "started" : "on the bench"}`}</span></span>
           <span class="v">${n2(p.pts)}</span></div>`).join("")}</div>
       </section>
-    </div>`,
+    </div>`;
+    },
 
     studs: () => `${head("studs", "Studs &amp; Duds", "Against the projection")}
       ${sec("studs")}
@@ -298,36 +389,11 @@
         <div class="v">${n1(v.avg)}</div>
         <div class="s">${n1(v.high)} hi · ${n1(v.low)} lo</div></div>`).join("")}</div>`,
 
-    wire: () => `${head("wire", "The Wire", "Snapshot, not advice")}
-      ${sec("waivers")}
-    </section>
-    <div class="wk-table-wrap">
-      <table class="tbl">
-        <thead><tr><th>Team</th><th class="r">Moves</th><th class="r">FAAB Left</th>
-          <th class="r">FAAB Spent</th><th class="hide-s">Best unowned-at-draft starter</th></tr></thead>
-        <tbody>${[...W.teams].sort((a, b) => b.moves - a.moves || b.faab_left - a.faab_left)
-          .map((t) => {
-            const fa = [...t.starters, ...t.bench].filter((p) => p.fa)
-              .sort((a, b) => b.pts - a.pts)[0];
-            return `<tr>
-              <td><a href="${link(t)}" style="display:flex;align-items:center;gap:9px">
-                ${logo(t, "sm")}<span><span class="n">${esc(t.name)}</span>
-                <span class="m">${esc(t.manager)}</span></span></a></td>
-              <td class="r"><span class="big">${t.moves}</span></td>
-              <td class="r"><span class="rec">$${t.faab_left}</span></td>
-              <td class="r"><span class="${100 - t.faab_left ? "down" : "m"}">$${100 - t.faab_left}</span></td>
-              <td class="hide-s"><span class="stat">${fa
-                ? esc(fa.name) + " · " + n2(fa.pts) : "none"}</span></td>
-            </tr>`;
-          }).join("")}</tbody>
-      </table>
-    </div>
-    <p class="wk-note">${esc(W.waiver_note)}</p>`,
   };
 
   // Running order of the page. Move a name here to move the section.
-  const ORDER = ["awards", "receipt", "standings", "median", "bench",
-                 "money", "studs", "games", "weather", "wire"];
+  const ORDER = ["awards", "receipt", "power", "median", "standings", "bench",
+                 "faab", "money", "studs", "games", "weather"];
 
   /* ══ RENDER ════════════════════════════════════════════ */
   app.innerHTML = `
@@ -335,20 +401,25 @@
     <div class="hero-grid">
       <div>
         <div class="filed">
-          <span class="tag-red">Week ${W.week} · Final</span>
+          <label class="wk-pick"><span class="sr">Choose a week</span>
+            <select id="wk-pick">${[...weeksOnFile].sort((a, b) => b.week - a.week).map((x) =>
+              `<option value="${x.week}"${x.week === W.week ? " selected" : ""}>Week ${x.week} · Final${
+                IDX && x.week === IDX.latest ? " (latest)" : ""}</option>`).join("")}</select>
+          </label>
           <span class="eyebrow">${W.season} season · all 14 rosters re-scored</span>
+          ${isLatest ? "" : `<a class="tag-red" href="week.html">Latest: Week ${IDX.latest} →</a>`}
         </div>
         <h1 class="display">${esc(W.headline)}<span class="kick">${esc(W.kicker)}</span></h1>
         <p class="wk-lede">${esc(W.lede)}</p>
       </div>
       <div class="board">
-        <div class="eyebrow">Final Scores</div>
+        <div class="eyebrow">Final Scores · season records</div>
         ${[...W.games].sort((a, b) => b.winner_points - a.winner_points).map((g) => {
           const w = T[g.winner], l = T[g.loser];
           return `<a class="board-row wk-bd" href="#games">
-            <span class="bt">${esc(w.name)} <em>${esc(w.record)}</em></span>
+            <span class="bt">${esc(w.name)} <em>${esc((w.season || {}).record || w.record)}</em></span>
             <span class="bn">${n1(g.winner_points)}</span>
-            <span class="bt lost">${esc(l.name)} <em>${esc(l.record)}</em></span>
+            <span class="bt lost">${esc(l.name)} <em>${esc((l.season || {}).record || l.record)}</em></span>
             <span class="bm">${n1(g.loser_points)}</span>
           </a>`;
         }).join("")}
@@ -381,6 +452,11 @@
   ${endband({ last_updated: W.built_at })}`;
 
   wireStamps();
+
+  const pick = $("#wk-pick");
+  if (pick) pick.addEventListener("change", () => {
+    location.href = `week.html?w=${pick.value}`;
+  });
 
   /* ── sticky rail: highlight the section you are in ───── */
   // Each section element is only its header block (the tables and grids that follow

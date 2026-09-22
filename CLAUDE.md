@@ -11,7 +11,7 @@ Do not introduce a bundler, a framework, or a package.json without being asked.
 | Path | What it is |
 |---|---|
 | `index.html` | This Week. Before any real score exists it is the **season opener** (`opener.js` + `opener.css`): Week 1 matchups with win probability, Monte Carlo playoff odds, live polls, season preview. Once `data/current.json` says a week is `final`, **`home-week.js`** owns the page instead |
-| `week.html` + `week.js` + `week.css` | **The weekly recap.** `week.html?w=<n>` reads `data/week<n>.json`: the seven games with written notes, standings and lineup efficiency, bench crimes, draft money against one Sunday, studs and duds, awards, the wire |
+| `week.html` + `week.js` + `week.css` | **The weekly recap.** Opens on the latest week; `week.html?w=<n>` (or the dropdown in the hero) shows any past week. Reads `data/weeks.json` + `data/week<n>.json`: awards, season power rankings with a one-line roast per team, the median, lineups, bench crimes, the FAAB audit, draft money season to date, studs and duds, the seven games |
 | `rankings.html` `scoreboard.html` `team.html` `feed.html` | league pages (`team.html?t=<team_key>`) |
 | `hall.html` `trophy.html` | Hall of Shame, Trophy Room |
 | `roast.html` + `roast.js` + `roast.css` | Roast Roulette, incl. the suggestion box |
@@ -20,7 +20,7 @@ Do not introduce a bundler, a framework, or a package.json without being asked.
 | `app.js` `styles.css` | shared shell: masthead, nav, formatting helpers |
 | `data/*.json` | all content. `league.json` is machine-written; the rest are hand-authored |
 | `scripts/fetch_yahoo.py` | Actions cron → rewrites `data/league.json` |
-| `scripts/build_week.py` | weekly box scores + draft + projections → `data/week<n>.json` and `data/current.json`. Prose lives in `scripts/week_notes.py` |
+| `scripts/build_week.py` | every week's box scores + pairings + transactions + draft + projections → `data/week<n>.json` for each week, `data/weeks.json`, `data/current.json`. Prose lives in `scripts/week_notes.py`, keyed by week |
 | `scripts/generate_roasts.py` | Claude API → weekly roast headline |
 | `scripts/fetch_schedule.py` | league home page → `data/schedule.json`. Yahoo only shows logged-out visitors the **current** week, so re-run this every Tuesday |
 | `scripts/fetch_draft.py` | public Yahoo draft-results page → `data/draft.json` (no OAuth; the league is public). `--fixture` rebuilds `data/draft_2025.json` from `data/draft_2025.txt` |
@@ -102,28 +102,46 @@ adding a poll to `data/season.json` also needs that constraint widened.
 
 ## The weekly recap
 
-`week.html` is the Monday page and it is meant to repeat every week. The pipeline:
+`week.html` is the Monday page. It opens on the latest week and keeps every past week one
+dropdown away. The whole job, every Monday:
 
-1. **Scrape the box scores.** There is no API (below), and Yahoo shows a logged-out visitor
-   only the current week, so the rosters come out of a logged-in Chrome session:
-   `/f1/675504/matchup?week=<n>&mid1=<a>&mid2=<b>` **loaded in a same-origin hidden iframe**
-   (a plain `fetch()` returns a 92-byte shell) and read out of `contentDocument` after about
-   4 seconds. Seven page loads cover all fourteen teams, because each page carries both
-   rosters with their real Week `n` points. The pairing you ask for does not have to be the
-   real matchup — Yahoo renders whatever two teams you name, each with its own true score.
-   Two gotchas: the FantasyPros extension injects extra columns, so the starter table is
-   **15 columns in a top-level tab and 11 inside an iframe** — detect, do not assume. And
-   Yahoo rate-limits at roughly 40 page loads in a burst.
-   Save the result as `data/weeks/<season>-wk<NN>-rosters.json`.
-2. **Build.** `python3 scripts/build_week.py --week <n>`. It re-identifies each scraped
-   roster by matching its starter total to `points_for` in `league.json` (unambiguous, and
-   it does not care which Yahoo team id the scrape happened to file it under), prices every
-   player off `draft.json`, solves each roster's best legal lineup for the efficiency and
-   bench-regret numbers, derives the matchups from the PF/PA mirror, and computes all-play
-   and luck.
-3. **Write.** Every line of prose — headline, lede, the note under each game, section
-   intros, the awards — lives in `scripts/week_notes.py`, so re-running the build never
-   overwrites the writing. Game notes are keyed by the **winning team id**, as ints.
+1. **Scrape the box scores** from a logged-in Chrome (no API; a logged-out visitor sees only
+   the current week). Load `/f1/675504/matchup?week=<n>&mid1=<id>` **in a same-origin hidden
+   iframe** (a plain `fetch()` returns a 92-byte shell), wait ~4.5 s, read `contentDocument`.
+   Each page carries both teams of the real matchup; read the two team ids from the header's
+   `/f1/675504/<id>` links in order. Skip any team already seen and seven loads cover the league.
+   - The starter table is **15 columns in a top-level tab, 11 in an iframe** (the FantasyPros
+     extension injects two). Detect the cell count.
+   - Yahoo always renders **"My Team" (12, ShakeNBake) on the left** whatever `mid1` says.
+     Read ids from the header, never from the URL.
+   - Rate limit: about 40 heavy loads in a burst, then "Request denied" for ~10 min.
+   Save `data/weeks/<season>-wk<NN>-rosters.json` keyed by team id
+   (`{team_id, total, starters[], bench[]}`) and add the week's pairs to
+   `data/weeks/<season>-pairings.json`.
+2. **Scrape the adds** from `/f1/675504/transactions?transactionsfilter=add` (and `&count=25`
+   for the next page) into `data/weeks/<season>-transactions.json`, each with the fantasy
+   `week` it belongs to (Tuesday through Monday). Bids must reconcile to every team's
+   `faab_balance` in `league.json` to the dollar.
+3. **Write** the week's prose as `WEEK<n>` in `scripts/week_notes.py` and add it to `NOTES`.
+   Game notes are keyed by the **winning team id as an int**; `blurbs` (one line per team for
+   the power rankings) by team id as an int. Never write "won this week" about a 1-1.
+4. **Build**: `python3 scripts/build_week.py`. It rebuilds **every** week on file (season
+   context has to accumulate in order), re-solves each roster's best legal lineup, and then
+   **tests itself**: cumulative records and points must equal `league.json` exactly, or it
+   prints the mismatch. A mismatch after a week that used to match is almost always a Yahoo
+   **stat correction** to an earlier week: Week 1 2026 had one (Roquan Smith +1 tackle, Good
+   Will Hunting 93.10 → 94.10). Re-scrape that team's old page and patch the raw file.
+5. **Ship** through the GitHub upload flow, one commit per directory.
+
+What the build derives, so the prose can lean on it: the median game, all-play, luck (head to
+head only), lineup efficiency and bench regret, **the best-lineup record** (what each team would
+be if it had started its best legal lineup every week, everyone else as played, with the median
+recomputed) and the **lineup tax** (wins left on the bench), power rankings with movement from
+last week (from the draft model in Week 1), draft money season to date, and the FAAB audit
+(every add, what it cost, what the player did that same week and whether he was started).
+
+A past week's page never changes its snapshot fields: `moves` is a live Yahoo counter, so an
+old week keeps the number it shipped with, while `faab_left` is recomputed from transactions.
 
 ### ⭐ THE MEDIAN GAME — two games a week
 

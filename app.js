@@ -105,11 +105,13 @@ const NU = (() => {
   /* ── page chrome ──────────────────────────────────── */
   function chrome(meta, page) {
     const live = meta.week_label || (meta.current_week ? `Week ${meta.current_week} · Live` : "Preseason");
+    // the recap tab is named for the latest finished week
+    const wkLabel = meta.week_status === "final" ? `Week ${meta.current_week}` : "Recap";
     $("#masthead").innerHTML = `
       <div class="inner">
         <a class="wordmark" href="index.html">NFL Unlocked <i></i></a>
         <nav class="mnav">${NAV.map(([h, l, k]) =>
-          `<a href="${h}" class="${k === page ? "on" : ""}">${l}</a>`).join("")}</nav>
+          `<a href="${h}" class="${k === page ? "on" : ""}">${k === "week" ? wkLabel : l}</a>`).join("")}</nav>
         <div class="mhead-right">
           <span class="league-id">Yahoo · ${esc(meta.league_id || "675504")}</span>
           <span class="badge-live">${esc(live)}</span>
@@ -118,7 +120,7 @@ const NU = (() => {
 
     // The masthead nav is hidden under 900px, so this bar is the only way around
     // the site on a phone — the Trophy Room and the Hall of Shame belong in it.
-    const tabs = [["index.html","Home","home"],["week.html","Wk 1","week"],["draft.html","Draft","draft"],["rankings.html","Ranks","ranks"],
+    const tabs = [["index.html","Home","home"],["week.html",meta.week_status === "final" ? `Wk ${meta.current_week}` : "Recap","week"],["draft.html","Draft","draft"],["rankings.html","Ranks","ranks"],
                   ["hall.html","Shame","hall"],["trophy.html","Trophy","trophy"],
                   ["trades.html","Trades","trades"],["roast.html","Roast","roast"]];
     const mt = document.createElement("nav");

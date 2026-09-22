@@ -18,6 +18,37 @@
 .wk-hero .board-row.wk-bd:hover .bt { color: var(--red-bright); }
 .wk-hero h1 .kick { display: block; color: var(--red-bright); font-size: 0.4em; margin-top: 12px; font-stretch: 86%; }
 .wk-lede { max-width: 66ch; margin: 20px 0 0; font-size: 15.5px; line-height: 1.52; color: var(--gray-faint); }
+/* ── week picker (dark form control, per the house rules) ── */
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.wk-pick select {
+  appearance: none; -webkit-appearance: none; border-radius: 0; cursor: pointer;
+  background: #2B2928 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23FF563C'/%3E%3C/svg%3E") no-repeat right 10px center;
+  border: 2px solid #4A4645; color: var(--white);
+  font: 800 11px/1 "Archivo", system-ui, sans-serif; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 8px 30px 8px 10px;
+}
+.wk-pick select:hover { border-color: var(--red-bright); }
+.wk-pick select:focus { outline: 2px solid var(--red-bright); outline-offset: 2px; }
+.wk-pick option { background: #2B2928; color: var(--white); }
+
+/* ── power rankings table ──────────────────────────────── */
+.pr-tbl td { vertical-align: top; }
+.pr-tbl .rk { padding-top: 2px; }
+.pr-name { display: flex; align-items: flex-start; gap: 10px; }
+.pr-name .tlogo { margin-top: 2px; }
+.pr-blurb { display: block; margin-top: 6px; max-width: 62ch; font-size: 12.5px; line-height: 1.45; color: var(--ink-2); }
+.tax { color: var(--red); font-weight: 900; font-size: 15px; font-variant-numeric: tabular-nums; }
+.only-s { display: none; }
+
+/* ── FAAB money left, every team ───────────────────────── */
+.faab-strip { display: grid; grid-template-columns: repeat(7, 1fr); border: 2px solid var(--ink); margin: 8px 30px 18px; }
+.fs-cell { padding: 10px 12px 12px; border-left: 1px solid var(--rule); border-top: 1px solid var(--rule); min-width: 0; }
+.fs-cell:nth-child(7n+1) { border-left: 0; }
+.fs-cell:nth-child(-n+7) { border-top: 0; }
+.fs-v { display: block; font-size: 20px; font-weight: 900; font-stretch: 84%; font-variant-numeric: tabular-nums; }
+.fs-v.red { color: var(--red); }
+.fs-n { display: block; font-size: 11px; color: var(--gray-mid); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
 /* ── sticky section rail ───────────────────────────────
    The page is long. This sits under the masthead (46px) and tracks the
    section you are in, so nobody has to scroll back to the top to move. */
@@ -126,6 +157,9 @@
   padding: 2px 5px; color: var(--gray); margin-right: 6px; min-width: 34px; text-align: center;
 }
 .tbl .cost { font-variant-numeric: tabular-nums; font-weight: 800; }
+/* chip and name on one line; the shared .tbl .n rule makes names block-level */
+.tbl td > .pos-chip { vertical-align: middle; }
+.tbl td > .pos-chip + .n { display: inline; vertical-align: middle; }
 .tbl .cost.fa { color: var(--gray-soft); font-weight: 700; }
 .tbl .stat { font-size: 11.5px; color: var(--gray-mid); }
 .tbl .down { color: var(--red); font-weight: 800; font-variant-numeric: tabular-nums; }
@@ -167,6 +201,10 @@
 }
 
 @media (max-width: 900px) {
+  .faab-strip { grid-template-columns: repeat(4, 1fr); }
+  .fs-cell { border-left: 1px solid var(--rule) !important; border-top: 1px solid var(--rule) !important; }
+  .fs-cell:nth-child(4n+1) { border-left: 0 !important; }
+  .fs-cell:nth-child(-n+4) { border-top: 0 !important; }
   .wk-bug5 { grid-template-columns: repeat(2, 1fr); }
   .wk-bug5 .cell:nth-child(2n+1) { border-left: 0; }
   .wk-bug5 .cell:nth-child(n+3) { border-top: 1px solid #3A3736; }
@@ -187,6 +225,14 @@
 @media (max-width: 640px) {
   .wk-hero, .wk-sec, .wk-games, .wk-table-wrap, .wk-awards, .wk-receipt, .med-chart { padding-left: 16px; padding-right: 16px; }
   .wk-rail .rail-inner { padding-left: 16px; padding-right: 16px; }
+  .wk-pick select { font-size: 16px; padding: 9px 32px 9px 10px; }   /* 16px: iOS will not zoom */
+  .faab-strip { margin-left: 16px; margin-right: 16px; grid-template-columns: repeat(2, 1fr); }
+  .fs-cell { border-left: 1px solid var(--rule) !important; border-top: 1px solid var(--rule) !important; }
+  .fs-cell:nth-child(2n+1) { border-left: 0 !important; }
+  .fs-cell:nth-child(-n+2) { border-top: 0 !important; }
+  .pr-blurb { font-size: 12px; }
+  .wk-table-wrap .tbl.pr-tbl { min-width: 0; }     /* four columns fit a phone; no sideways scroll */
+  .only-s { display: inline; }
   /* let the section title own the full width; the note drops beneath it */
   .wk-sec .sec-top { flex-direction: column; align-items: flex-start; gap: 5px; }
   .wk-sec .h-sec { font-size: 23px; }
