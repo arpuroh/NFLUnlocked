@@ -1,5 +1,7 @@
 {
  "1": {
+  "team_id": "1",
+  "total": 162.1,
   "starters": [
    {
     "slot": "QB",
@@ -159,6 +161,8 @@
   ]
  },
  "2": {
+  "team_id": "2",
+  "total": 157.06,
   "starters": [
    {
     "slot": "QB",
@@ -309,6 +313,8 @@
   ]
  },
  "3": {
+  "team_id": "3",
+  "total": 94.1,
   "starters": [
    {
     "slot": "QB",
@@ -406,8 +412,8 @@
     "nflTeam": "Bal",
     "pos": "LB",
     "proj": 7.19,
-    "pts": 12,
-    "stats": "5 Tack Solo, 6 Tack Ast, 1 Int"
+    "pts": 13,
+    "stats": "5 Tack Solo, 6 Tack Ast, 1 Int (stat correction +1.00)"
    }
   ],
   "bench": [
@@ -468,6 +474,8 @@
   ]
  },
  "4": {
+  "team_id": "4",
+  "total": 118.44,
   "starters": [
    {
     "slot": "QB",
@@ -618,6 +626,8 @@
   ]
  },
  "5": {
+  "team_id": "5",
+  "total": 147.28,
   "starters": [
    {
     "slot": "QB",
@@ -768,6 +778,8 @@
   ]
  },
  "6": {
+  "team_id": "6",
+  "total": 125.58,
   "starters": [
    {
     "slot": "QB",
@@ -927,6 +939,8 @@
   ]
  },
  "7": {
+  "team_id": "7",
+  "total": 116.8,
   "starters": [
    {
     "slot": "QB",
@@ -1095,6 +1109,8 @@
   ]
  },
  "8": {
+  "team_id": "8",
+  "total": 104.48,
   "starters": [
    {
     "slot": "QB",
@@ -1245,6 +1261,8 @@
   ]
  },
  "9": {
+  "team_id": "9",
+  "total": 98.1,
   "starters": [
    {
     "slot": "QB",
@@ -1395,6 +1413,8 @@
   ]
  },
  "10": {
+  "team_id": "10",
+  "total": 153.8,
   "starters": [
    {
     "slot": "QB",
@@ -1544,7 +1564,9 @@
    }
   ]
  },
- "11": {
+ "12": {
+  "team_id": "12",
+  "total": 155.6,
   "starters": [
    {
     "slot": "QB",
@@ -1703,7 +1725,9 @@
    }
   ]
  },
- "12": {
+ "11": {
+  "team_id": "11",
+  "total": 109.76,
   "starters": [
    {
     "slot": "QB",
@@ -1854,6 +1878,8 @@
   ]
  },
  "13": {
+  "team_id": "13",
+  "total": 117.38,
   "starters": [
    {
     "slot": "QB",
@@ -2004,6 +2030,8 @@
   ]
  },
  "14": {
+  "team_id": "14",
+  "total": 105.54,
   "starters": [
    {
     "slot": "QB",

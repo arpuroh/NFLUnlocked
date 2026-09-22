@@ -1,0 +1,446 @@
+{
+ "source": "football.fantasysports.yahoo.com/f1/675504/transactions?transactionsfilter=add (Eastern time)",
+ "scraped": "2026-09-22",
+ "adds": [
+  {
+   "when": "2026-09-21 18:46",
+   "week": 2,
+   "player": "Darnell Mooney",
+   "pos": "WR",
+   "nfl": "NYG",
+   "team_id": "9",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-09-20 19:15",
+   "week": 2,
+   "player": "Nate Landman",
+   "pos": "LB",
+   "nfl": "LAR",
+   "team_id": "14",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-09-20 15:54",
+   "week": 2,
+   "player": "Kendrick Bourne",
+   "pos": "WR",
+   "nfl": "Ari",
+   "team_id": "14",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-09-20 14:26",
+   "week": 2,
+   "player": "George Holani",
+   "pos": "RB",
+   "nfl": "Sea",
+   "team_id": "7",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-09-19 17:09",
+   "week": 2,
+   "player": "Kenyon Sadiq",
+   "pos": "TE",
+   "nfl": "NYJ",
+   "team_id": "14",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-09-19 03:41",
+   "week": 2,
+   "player": "Rashid Shaheed",
+   "pos": "WR",
+   "nfl": "Sea",
+   "team_id": "10",
+   "type": "waiver",
+   "bid": 0
+  },
+  {
+   "when": "2026-09-19 03:41",
+   "week": 2,
+   "player": "Tyjae Spears",
+   "pos": "RB",
+   "nfl": "Ten",
+   "team_id": "14",
+   "type": "waiver",
+   "bid": 0
+  },
+  {
+   "when": "2026-09-19 03:41",
+   "week": 2,
+   "player": "Kayshon Boutte",
+   "pos": "WR",
+   "nfl": "Hou",
+   "team_id": "12",
+   "type": "waiver",
+   "bid": 13
+  },
+  {
+   "when": "2026-09-18 03:24",
+   "week": 2,
+   "player": "Ja'Kobi Lane",
+   "pos": "WR",
+   "nfl": "Bal",
+   "team_id": "14",
+   "type": "waiver",
+   "bid": 1
+  },
+  {
+   "when": "2026-09-17 18:10",
+   "week": 2,
+   "player": "Carson Wentz",
+   "pos": "QB",
+   "nfl": "Min",
+   "team_id": "2",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-09-17 18:09",
+   "week": 2,
+   "player": "Pat Freiermuth",
+   "pos": "TE",
+   "nfl": "Pit",
+   "team_id": "2",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-09-17 11:49",
+   "week": 2,
+   "player": "Rashod Bateman",
+   "pos": "WR",
+   "nfl": "Bal",
+   "team_id": "14",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-09-16 20:09",
+   "week": 2,
+   "player": "Jaylin Noel",
+   "pos": "WR",
+   "nfl": "Hou",
+   "team_id": "12",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-09-16 15:29",
+   "week": 2,
+   "player": "Samaje Perine",
+   "pos": "RB",
+   "nfl": "Cin",
+   "team_id": "6",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-09-16 15:21",
+   "week": 2,
+   "player": "Demond Claiborne",
+   "pos": "RB",
+   "nfl": "Min",
+   "team_id": "7",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-09-16 11:53",
+   "week": 2,
+   "player": "Chiefs",
+   "pos": "DEF",
+   "nfl": "KC",
+   "team_id": "8",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-09-16 09:36",
+   "week": 2,
+   "player": "Ernest Jones IV",
+   "pos": "LB",
+   "nfl": "Sea",
+   "team_id": "7",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-09-16 08:26",
+   "week": 2,
+   "player": "Tyler Shough",
+   "pos": "QB",
+   "nfl": "NO",
+   "team_id": "10",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-09-16 08:23",
+   "week": 2,
+   "player": "Packers",
+   "pos": "DEF",
+   "nfl": "GB",
+   "team_id": "1",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-09-16 04:17",
+   "week": 2,
+   "player": "Kalif Raymond",
+   "pos": "WR",
+   "nfl": "Chi",
+   "team_id": "7",
+   "type": "waiver",
+   "bid": 0
+  },
+  {
+   "when": "2026-09-16 04:17",
+   "week": 2,
+   "player": "49ers",
+   "pos": "DEF",
+   "nfl": "SF",
+   "team_id": "5",
+   "type": "waiver",
+   "bid": 1
+  },
+  {
+   "when": "2026-09-16 04:17",
+   "week": 2,
+   "player": "Jordyn Tyson",
+   "pos": "WR",
+   "nfl": "NO",
+   "team_id": "14",
+   "type": "waiver",
+   "bid": 1
+  },
+  {
+   "when": "2026-09-16 04:17",
+   "week": 2,
+   "player": "Buccaneers",
+   "pos": "DEF",
+   "nfl": "TB",
+   "team_id": "14",
+   "type": "waiver",
+   "bid": 3
+  },
+  {
+   "when": "2026-09-16 04:17",
+   "week": 2,
+   "player": "Devin Singletary",
+   "pos": "RB",
+   "nfl": "NYG",
+   "team_id": "10",
+   "type": "waiver",
+   "bid": 5
+  },
+  {
+   "when": "2026-09-16 04:17",
+   "week": 2,
+   "player": "Josiah Trotter",
+   "pos": "LB",
+   "nfl": "TB",
+   "team_id": "12",
+   "type": "waiver",
+   "bid": 5
+  },
+  {
+   "when": "2026-09-16 04:17",
+   "week": 2,
+   "player": "Bryce Young",
+   "pos": "QB",
+   "nfl": "Car",
+   "team_id": "11",
+   "type": "waiver",
+   "bid": 10
+  },
+  {
+   "when": "2026-09-16 04:17",
+   "week": 2,
+   "player": "Mike Gesicki",
+   "pos": "TE",
+   "nfl": "Cin",
+   "team_id": "8",
+   "type": "waiver",
+   "bid": 18
+  },
+  {
+   "when": "2026-09-16 04:17",
+   "week": 2,
+   "player": "Raheim Sanders",
+   "pos": "RB",
+   "nfl": "Cle",
+   "team_id": "12",
+   "type": "waiver",
+   "bid": 25
+  },
+  {
+   "when": "2026-09-16 04:17",
+   "week": 2,
+   "player": "Antonio Williams",
+   "pos": "WR",
+   "nfl": "Was",
+   "team_id": "12",
+   "type": "waiver",
+   "bid": 27
+  },
+  {
+   "when": "2026-09-16 04:17",
+   "week": 2,
+   "player": "Romeo Doubs",
+   "pos": "WR",
+   "nfl": "NE",
+   "team_id": "3",
+   "type": "waiver",
+   "bid": 35
+  },
+  {
+   "when": "2026-09-13 15:18",
+   "week": 1,
+   "player": "Blake Cashman",
+   "pos": "LB",
+   "nfl": "Min",
+   "team_id": "7",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-09-13 12:38",
+   "week": 1,
+   "player": "Darnell Mooney",
+   "pos": "WR",
+   "nfl": "NYG",
+   "team_id": "10",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-09-13 11:56",
+   "week": 1,
+   "player": "Emari Demercado",
+   "pos": "RB",
+   "nfl": "Dal",
+   "team_id": "6",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-09-12 21:10",
+   "week": 1,
+   "player": "Derwin James Jr.",
+   "pos": "S",
+   "nfl": "LAC",
+   "team_id": "6",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-09-12 07:44",
+   "week": 1,
+   "player": "Kayshon Boutte",
+   "pos": "WR",
+   "nfl": "Hou",
+   "team_id": "12",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-09-12 03:22",
+   "week": 1,
+   "player": "Brenton Strange",
+   "pos": "TE",
+   "nfl": "Jax",
+   "team_id": "2",
+   "type": "waiver",
+   "bid": 2
+  },
+  {
+   "when": "2026-09-11 09:25",
+   "week": 1,
+   "player": "Dontayvion Wicks",
+   "pos": "WR",
+   "nfl": "Phi",
+   "team_id": "13",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-09-11 03:23",
+   "week": 1,
+   "player": "Cairo Santos",
+   "pos": "K",
+   "nfl": "Chi",
+   "team_id": "14",
+   "type": "waiver",
+   "bid": 0
+  },
+  {
+   "when": "2026-09-10 12:52",
+   "week": 1,
+   "player": "Tyler Bass",
+   "pos": "K",
+   "nfl": "Buf",
+   "team_id": "14",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-09-10 12:50",
+   "week": 1,
+   "player": "Nate Landman",
+   "pos": "LB",
+   "nfl": "LAR",
+   "team_id": "14",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-09-10 12:32",
+   "week": 1,
+   "player": "Titans",
+   "pos": "DEF",
+   "nfl": "Ten",
+   "team_id": "14",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-09-09 23:25",
+   "week": 1,
+   "player": "Michael Mayer",
+   "pos": "TE",
+   "nfl": "LV",
+   "team_id": "13",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-09-09 21:24",
+   "week": 1,
+   "player": "Zack Baun",
+   "pos": "LB",
+   "nfl": "Phi",
+   "team_id": "9",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-09-09 18:39",
+   "week": 1,
+   "player": "Jalen Nailor",
+   "pos": "WR",
+   "nfl": "LV",
+   "team_id": "3",
+   "type": "free agent",
+   "bid": null
+  }
+ ]
+}
