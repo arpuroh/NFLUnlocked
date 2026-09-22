@@ -13,7 +13,7 @@
   "uses_faab": true,
   "faab_budget": 100,
   "demo": false,
-  "last_updated": "2026-09-22T08:57:37.408673+00:00"
+  "last_updated": "2026-09-22T15:18:21.621183+00:00"
  },
  "teams": [
   {
@@ -320,8 +320,8 @@
    "luck_index": 1.0,
    "recent_form": 0.0,
    "rank": 1,
-   "prev_rank": 4,
-   "movement": 3
+   "prev_rank": 1,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.2",
@@ -342,8 +342,8 @@
    "luck_index": 0.75,
    "recent_form": 0.0,
    "rank": 3,
-   "prev_rank": 7,
-   "movement": 4
+   "prev_rank": 3,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.4",
@@ -353,8 +353,8 @@
    "luck_index": 1.0,
    "recent_form": 0.0,
    "rank": 4,
-   "prev_rank": 5,
-   "movement": 1
+   "prev_rank": 4,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.5",
@@ -364,8 +364,8 @@
    "luck_index": 0.75,
    "recent_form": 0.0,
    "rank": 5,
-   "prev_rank": 6,
-   "movement": 1
+   "prev_rank": 5,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.1",
@@ -375,8 +375,8 @@
    "luck_index": 0.5,
    "recent_form": 0.0,
    "rank": 6,
-   "prev_rank": 1,
-   "movement": -5
+   "prev_rank": 6,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.12",
@@ -386,8 +386,8 @@
    "luck_index": 0.5,
    "recent_form": 0.0,
    "rank": 7,
-   "prev_rank": 3,
-   "movement": -4
+   "prev_rank": 7,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.14",
@@ -397,8 +397,8 @@
    "luck_index": 0.5,
    "recent_form": 0.0,
    "rank": 8,
-   "prev_rank": 9,
-   "movement": 1
+   "prev_rank": 8,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.3",
@@ -408,8 +408,8 @@
    "luck_index": 0.5,
    "recent_form": 0.0,
    "rank": 9,
-   "prev_rank": 14,
-   "movement": 5
+   "prev_rank": 9,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.8",
@@ -419,8 +419,8 @@
    "luck_index": 0.25,
    "recent_form": 0.0,
    "rank": 10,
-   "prev_rank": 12,
-   "movement": 2
+   "prev_rank": 10,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.7",
@@ -430,8 +430,8 @@
    "luck_index": 0.25,
    "recent_form": 0.0,
    "rank": 11,
-   "prev_rank": 8,
-   "movement": -3
+   "prev_rank": 11,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.11",
@@ -441,8 +441,8 @@
    "luck_index": 0.0,
    "recent_form": 0.0,
    "rank": 12,
-   "prev_rank": 11,
-   "movement": -1
+   "prev_rank": 12,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.9",
@@ -463,8 +463,8 @@
    "luck_index": 0.0,
    "recent_form": 0.0,
    "rank": 14,
-   "prev_rank": 10,
-   "movement": -4
+   "prev_rank": 14,
+   "movement": 0
   }
  ],
  "matchups": [],
@@ -558,88 +558,7 @@
   ],
   "closing": "Connect the Yahoo league and the Executioner starts publishing for real. Until then, these demo managers take the bullets meant for you."
  },
- "feed": [
-  {
-   "id": "rank-scrape.l.675504.t.10-1",
-   "kind": "rankings",
-   "title": "Leo the Cleo jumps 3 spots to #1",
-   "body": "All-play 0-0 and a luck index of +1.000. The model likes them more than the standings do.",
-   "timestamp": 1790067457,
-   "team_key": "scrape.l.675504.t.10",
-   "reactions": {},
-   "reacted_by": 0
-  },
-  {
-   "id": "rank-scrape.l.675504.t.6-3",
-   "kind": "rankings",
-   "title": "Bend The Knee \ud83d\udc32\ud83d\udd25 jumps 4 spots to #3",
-   "body": "All-play 0-0 and a luck index of +0.750. The model likes them more than the standings do.",
-   "timestamp": 1790067457,
-   "team_key": "scrape.l.675504.t.6",
-   "reactions": {},
-   "reacted_by": 0
-  },
-  {
-   "id": "rank-scrape.l.675504.t.1-6",
-   "kind": "rankings",
-   "title": "Hail Mary drops 5 spots to #6",
-   "body": "All-play 0-0 and a luck index of +0.500. The model trusts them less than the standings do.",
-   "timestamp": 1790067457,
-   "team_key": "scrape.l.675504.t.1",
-   "reactions": {},
-   "reacted_by": 0
-  },
-  {
-   "id": "rank-scrape.l.675504.t.12-7",
-   "kind": "rankings",
-   "title": "ShakeNBake drops 4 spots to #7",
-   "body": "All-play 0-0 and a luck index of +0.500. The model trusts them less than the standings do.",
-   "timestamp": 1790067457,
-   "team_key": "scrape.l.675504.t.12",
-   "reactions": {},
-   "reacted_by": 0
-  },
-  {
-   "id": "rank-scrape.l.675504.t.3-9",
-   "kind": "rankings",
-   "title": "Good Will Hunting jumps 5 spots to #9",
-   "body": "All-play 0-0 and a luck index of +0.500. The model likes them more than the standings do.",
-   "timestamp": 1790067457,
-   "team_key": "scrape.l.675504.t.3",
-   "reactions": {},
-   "reacted_by": 0
-  },
-  {
-   "id": "rank-scrape.l.675504.t.8-10",
-   "kind": "rankings",
-   "title": "Mac Daddy jumps 2 spots to #10",
-   "body": "All-play 0-0 and a luck index of +0.250. The model likes them more than the standings do.",
-   "timestamp": 1790067457,
-   "team_key": "scrape.l.675504.t.8",
-   "reactions": {},
-   "reacted_by": 0
-  },
-  {
-   "id": "rank-scrape.l.675504.t.7-11",
-   "kind": "rankings",
-   "title": "FreeGucci drops 3 spots to #11",
-   "body": "All-play 0-0 and a luck index of +0.250. The model trusts them less than the standings do.",
-   "timestamp": 1790067457,
-   "team_key": "scrape.l.675504.t.7",
-   "reactions": {},
-   "reacted_by": 0
-  },
-  {
-   "id": "rank-scrape.l.675504.t.13-14",
-   "kind": "rankings",
-   "title": "Fwamming Gwaggon drops 4 spots to #14",
-   "body": "All-play 0-0 and a luck index of +0.000. The model trusts them less than the standings do.",
-   "timestamp": 1790067457,
-   "team_key": "scrape.l.675504.t.13",
-   "reactions": {},
-   "reacted_by": 0
-  }
- ],
+ "feed": [],
  "most_clowned": [],
  "history": {
   "established": 2016,
