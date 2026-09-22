@@ -1,41 +1,43 @@
 #!/usr/bin/env python3
 """
-Build data/week<N>.json — the weekly recap the site reads.
+Build the weekly recaps: data/week<N>.json for every week on file, data/weeks.json
+(the index the week picker reads) and data/current.json (the latest week, which every
+page merges over the Yahoo scrape).
 
-Input:
-  data/weeks/<season>-wk<NN>-rosters.json   raw Yahoo box scores, one entry per team,
-                                            scraped through a logged-in browser (Yahoo
-                                            gives a logged-out visitor only the current
-                                            week, and there is no API — see CLAUDE.md).
-                                            Keys are whatever Yahoo's mid1/mid2 happened
-                                            to be; teams are re-identified by matching
-                                            each starter total to points_for in
-                                            data/league.json, which is unambiguous.
-  data/league.json        standings, PF/PA, FAAB, move counts
-  data/draft.json         auction price and real position for every drafted player
-  data/projections.json   the preseason model (see scripts/project_draft.py)
+    python3 scripts/build_week.py              # rebuild every week that has a scrape
+    python3 scripts/build_week.py --season 2026
 
-THE MEDIAN GAME. This league plays two games a week: the head-to-head matchup and a
-second game against the league median score. So a weekly record is 2-0, 1-1 or 0-2, never
-1-0. With fourteen teams the median sits between the 7th and 8th scores, so nobody can tie
-it, and the two teams that set it are the two it decides. Verified against Yahoo: the
-median rule reproduces all fourteen scraped records exactly.
+Inputs, all under data/:
+  weeks/<season>-wk<NN>-rosters.json   one entry per team, keyed by Yahoo team id:
+                                       {team_id, total, starters[], bench[]}. Scraped from
+                                       /f1/675504/matchup?week=N&mid1=<id> in a logged-in
+                                       browser (no API, and a logged-out visitor only ever
+                                       sees the current week). Each page carries both teams.
+  weeks/<season>-pairings.json         the real matchups per week, by team id.
+  weeks/<season>-transactions.json     every add off the transactions page, with FAAB bids.
+  league.json                          the live scrape. Used for names, logos, move counts,
+                                       and as the TEST: cumulative records and points must
+                                       match it exactly or the build says so loudly.
+  draft.json, projections.json         auction prices, positions, the preseason model.
 
-Output: data/week<N>.json — numbers plus every line of prose, which lives in
-        scripts/week_notes.py so a re-run never clobbers the writing.
+THE MEDIAN GAME. This league plays two games a week: the head-to-head matchup and a game
+against the league median score. A weekly record is 2-0, 1-1 or 0-2, never 1-0. With
+fourteen teams the median sits between the 7th and 8th scores, nobody can tie it, and the
+two teams that set it are the two it decides. Luck is measured on the head-to-head only,
+because the median game is decided by your own score and nothing else.
 
-Usage:  python3 scripts/build_week.py --week 1
+All prose lives in scripts/week_notes.py, keyed by week, so a rebuild never touches it.
 """
-import argparse, json, os, re, statistics, unicodedata
+import argparse, glob, json, os, re, statistics, sys, unicodedata
 from datetime import datetime, timezone
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 D = lambda *p: os.path.join(ROOT, "data", *p)
+sys.path.insert(0, HERE)
 
 SLOT_ORDER = ["QB", "RB", "WR", "TE", "W/R/T", "K", "DEF", "D"]
 IDP_POS = {"LB", "DB", "DE", "DT", "CB", "S"}
-
 MANAGERS = {
     "Hail Mary": "Andrew", "ShakeNBake": "Abhishek", "A dad": "Barrett",
     "FreeGucci": "Nishil", "Kim Jong Nate": "Nathan", "Mac Daddy": "Maclane",
@@ -44,8 +46,7 @@ MANAGERS = {
     "Good Will Hunting": "Will", "Leo the Cleo": "Chris",
     "The Asshouse Always Wins": "Tom", "Fwamming Gwaggon": "Jon",
 }
-# teams that renamed after the draft; draft.json still carries the old spelling
-RENAMED = {"Poop Squad 💩": "Talk Darty to Me 🎯"}
+RENAMED = {"Poop Squad 💩": "Talk Darty to Me 🎯"}   # draft.json keeps the old spelling
 
 
 def norm(n):
@@ -56,13 +57,11 @@ def norm(n):
 
 
 def lookup(table, name):
-    """Exact first, then a prefix match either way (Yahoo and Yahoo's own draft page
-    disagree about suffixes: 'Kenneth Walker' vs 'Kenneth Walker III')."""
     n = norm(name)
     if n in table:
         return table[n]
     hits = [v for k, v in table.items() if k.startswith(n) or n.startswith(k)]
-    return hits[0] if len(hits) == 1 else (hits[0] if hits else None)
+    return hits[0] if hits else None
 
 
 def eligible(pos, slot, pl):
@@ -75,17 +74,16 @@ def eligible(pos, slot, pl):
     if slot == "DEF":   return pos == "DEF"
     if slot == "D":
         raw = str(pl.get("pos", ""))
-        return pl.get("slot") == "D" or any(p in IDP_POS for p in raw.split(","))
+        return pl.get("slot") == "D" or any(p.strip() in IDP_POS for p in raw.split(","))
     return False
 
 
 def best_lineup(players):
-    """Highest-scoring legal lineup out of everyone who was startable that week.
-    IR does not count: those players could not have been started, so holding an
-    injured star is never charged as a lineup mistake."""
+    """Highest-scoring legal lineup out of everyone startable that week. IR does not
+    count: an injured star who could not be started is never a lineup mistake."""
     cands = [p for p in players if p.get("slot") != "IR" and not p.get("empty")]
     order = ["QB", "K", "DEF", "D", "TE", "RB", "RB", "WR", "WR", "W/R/T", "W/R/T"]
-    best = {"total": -1, "picks": []}
+    best = {"total": -1e9, "picks": []}
 
     def rec(i, used, picks, tot):
         if i == len(order):
@@ -93,13 +91,13 @@ def best_lineup(players):
                 best.update(total=tot, picks=list(picks))
             return
         slot = order[i]
-        opts = [j for j, p in enumerate(cands)
-                if j not in used and eligible(p["_pos"], slot, p)]
-        opts.sort(key=lambda j: -cands[j]["pts"])
+        opts = sorted((j for j, p in enumerate(cands)
+                       if j not in used and eligible(p["_pos"], slot, p)),
+                      key=lambda j: -cands[j]["pts"])
         if not opts:
             rec(i + 1, used, picks, tot)
             return
-        for j in opts[:6]:                     # six deep is far past any real optimum
+        for j in opts[:6]:
             picks.append((slot, j))
             rec(i + 1, used | {j}, picks, tot + cands[j]["pts"])
             picks.pop()
@@ -108,276 +106,355 @@ def best_lineup(players):
     return best["total"], [(s, cands[j]) for s, j in best["picks"]]
 
 
+def streak(weekly):
+    if not weekly or weekly[-1] == 1:
+        return ""
+    k = weekly[-1]
+    n = 0
+    for w in reversed(weekly):
+        if w != k:
+            break
+        n += 2
+    return ("W" if k == 2 else "L") + str(n)
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--week", type=int, required=True)
     ap.add_argument("--season", type=int, default=2026)
+    ap.add_argument("--week", type=int, help="ignored; every week on file is rebuilt")
     args = ap.parse_args()
+    season = args.season
 
-    raw = json.load(open(D("weeks", f"{args.season}-wk{args.week:02d}-rosters.json")))
+    from week_notes import NOTES
+
     league = json.load(open(D("league.json")))
     draft = json.load(open(D("draft.json")))
     proj = json.load(open(D("projections.json")))
+    pairings = json.load(open(D("weeks", f"{season}-pairings.json")))
+    tx_path = D("weeks", f"{season}-transactions.json")
+    adds = json.load(open(tx_path))["adds"] if os.path.exists(tx_path) else []
 
-    import sys
-    sys.path.insert(0, HERE)
-    from week_notes import NOTES
+    files = sorted(glob.glob(D("weeks", f"{season}-wk*-rosters.json")))
+    weeks = sorted(int(re.search(r"wk(\d+)", f).group(1)) for f in files)
+    if not weeks:
+        raise SystemExit("no roster scrapes in data/weeks/")
+    latest = max(weeks)
 
     by_id = {t["team_id"]: t for t in league["teams"]}
-    # re-identify each scraped roster by its starter total
-    tot_to_id = {round(t["points_for"], 2): t["team_id"] for t in league["teams"]}
-    if len(tot_to_id) != len(league["teams"]):
-        raise SystemExit("two teams scored exactly the same — identify rosters by hand")
-    rosters = {}
-    for v in raw.values():
-        tot = round(sum(p["pts"] for p in v["starters"]), 2)
-        if tot not in tot_to_id:
-            raise SystemExit(f"starter total {tot} matches no team in league.json")
-        rosters[tot_to_id[tot]] = v
+    ids = list(by_id)
 
-    price, pos_of, drafted_by = {}, {}, {}
+    price, pos_of = {}, {}
     for t in draft["teams"]:
         for p in t["picks"]:
             k = norm(p["player"])
             price[k], pos_of[k] = p["cost"], p["pos"]
-            drafted_by[k] = RENAMED.get(t["team"], t["team"])
 
-    # preseason model rank
     pre = sorted(proj["teams"], key=lambda t: -t["weekly"])
-    pre_rank = {RENAMED.get(t["team"], t["team"]): i + 1 for i, t in enumerate(pre)}
-    pre_ppg = {RENAMED.get(t["team"], t["team"]): t["weekly"] for t in proj["teams"]}
+    pre_rank_by_name = {RENAMED.get(t["team"], t["team"]): i + 1 for i, t in enumerate(pre)}
+    pre_ppg_by_name = {RENAMED.get(t["team"], t["team"]): t["weekly"] for t in proj["teams"]}
 
-    # ── per team ────────────────────────────────────────────────
-    teams = {}
-    for tid, v in rosters.items():
-        meta = by_id[tid]
-        squad = v["starters"] + [p for p in v["bench"] if not p.get("empty")]
-        for p in squad:
-            k = norm(p["name"])
-            p["cost"] = lookup(price, p["name"])
-            p["_pos"] = lookup(pos_of, p["name"]) or (
-                p.get("pos") if p.get("pos") in ("QB", "RB", "WR", "TE", "K", "DEF") else p["slot"])
-            p["fa"] = p["cost"] is None
-        actual = round(sum(p["pts"] for p in v["starters"]), 2)
-        opt, opt_lineup = best_lineup(squad)
-        started = {id(p) for p in v["starters"]}
-        teams[tid] = {
-            "team_id": tid,
-            "team_key": meta["team_key"],
-            "name": meta["name"],
-            "manager": MANAGERS.get(meta["name"], ""),
-            "logo": meta.get("logo", ""),
-            "points": actual,
-            "optimal": round(opt, 2),
-            "regret": round(opt - actual, 2),
-            "efficiency": round(100 * actual / opt, 1) if opt else 0,
-            "projected": round(sum(p.get("proj") or 0 for p in v["starters"]), 2),
-            "bench_points": round(sum(p["pts"] for p in v["bench"]
-                                      if p.get("slot") == "BN" and not p.get("empty")), 2),
-            "moves": meta.get("moves", 0),
-            "faab_left": meta.get("faab_balance", 100),
-            "pre_rank": pre_rank.get(meta["name"]),
-            "pre_ppg": pre_ppg.get(meta["name"]),
-            "starters": [{"slot": p["slot"], "name": p["name"], "pos": p["_pos"],
-                          "nfl": p.get("nflTeam", ""), "pts": p["pts"],
-                          "proj": p.get("proj"), "cost": p["cost"], "fa": p["fa"],
-                          "stats": p.get("stats", "")} for p in v["starters"]],
-            "bench": [{"slot": p["slot"], "name": p["name"], "pos": p["_pos"],
-                       "nfl": p.get("nflTeam", ""), "pts": p["pts"], "proj": p.get("proj"),
-                       "cost": p["cost"], "fa": p["fa"], "stats": p.get("stats", "")}
-                      for p in v["bench"] if not p.get("empty")],
-            "best_lineup": [{"slot": s, "name": p["name"], "pts": p["pts"],
-                             "benched": id(p) not in started} for s, p in opt_lineup],
-        }
+    season_tot = {tid: dict(wins=0, losses=0, pf=0.0, pa=0.0, ap_w=0, ap_l=0,
+                            h2h_w=0, med_w=0, luck=0.0, scores=[], opt_w=0, regret=0.0, weekly_w=[])
+                  for tid in ids}
+    player_season = {}          # norm(name) -> {name, pts, weeks, cost, team_id (latest)}
+    prev_rank = {by_id[t]["team_id"]: pre_rank_by_name.get(by_id[t]["name"]) for t in ids}
+    index = []
 
-    # ── matchups, from the PF/PA mirror (the scrape has no schedule) ──
-    games, seen = [], set()
-    for t in league["teams"]:
-        if t["team_id"] in seen:
-            continue
-        opp = [o for o in league["teams"]
-               if o["team_id"] != t["team_id"]
-               and round(o["points_for"], 2) == round(t["points_against"], 2)]
-        if len(opp) != 1:
-            raise SystemExit(f"cannot pair {t['name']} from points against")
-        opp = opp[0]
-        seen |= {t["team_id"], opp["team_id"]}
-        w, l = (t, opp) if t["points_for"] > opp["points_for"] else (opp, t)
-        games.append({
-            "winner": w["team_id"], "loser": l["team_id"],
-            "winner_points": round(w["points_for"], 2),
-            "loser_points": round(l["points_for"], 2),
-            "margin": round(w["points_for"] - l["points_for"], 2),
-            "note": NOTES["games"].get(int(w["team_id"]), ""),
-        })
-    games.sort(key=lambda g: g["margin"])
+    for wk in weeks:
+        raw = json.load(open(D("weeks", f"{season}-wk{wk:02d}-rosters.json")))
+        notes = NOTES.get(wk, {})
+        pairs = pairings[f"{season}-wk{wk:02d}"]
+        old_path = D(f"week{wk}.json")
+        old = json.load(open(old_path)) if os.path.exists(old_path) else {}
+        old_moves = {t["team_id"]: t.get("moves") for t in old.get("teams", [])}
 
-    # ── the median game, all-play and luck ──────────────────────
-    scores = {tid: teams[tid]["points"] for tid in teams}
-    median = round(statistics.median(scores.values()), 2)
-    for tid in teams:
-        s = scores[tid]
-        wins = sum(1 for o, v in scores.items() if o != tid and s > v)
-        teams[tid]["all_play"] = f"{wins}-{len(scores) - 1 - wins}"
-        teams[tid]["all_play_wins"] = wins
-
-        # Two games a week: the matchup, and the league median.
-        h2h = any(g["winner"] == tid for g in games)
-        beat_median = s > median
-        teams[tid]["won"] = h2h                     # the head-to-head only
-        teams[tid]["beat_median"] = beat_median
-        teams[tid]["vs_median"] = round(s - median, 2)
-        w = int(h2h) + int(beat_median)
-        teams[tid]["wins"], teams[tid]["losses"] = w, 2 - w
-        teams[tid]["record"] = f"{w}-{2 - w}"
-
-        # Luck lives in the head-to-head only. The median game is decided by your own
-        # score alone, so half of this league's weekly schedule luck does not exist.
-        teams[tid]["luck"] = round(int(h2h) - wins / (len(scores) - 1), 3)
-
-    med_sorted = sorted(teams.values(), key=lambda t: -t["points"])
-    median_info = {
-        "value": median,
-        "beat": sum(1 for t in teams.values() if t["beat_median"]),
-        # the two teams that straddle the median are the two that set it
-        "closest_above": min((t for t in teams.values() if t["beat_median"]),
-                             key=lambda t: t["vs_median"])["team_id"],
-        "closest_below": max((t for t in teams.values() if not t["beat_median"]),
-                             key=lambda t: t["vs_median"])["team_id"],
-        # won the matchup, lost to the median, and vice versa
-        "saved_by_median": [t["team_id"] for t in med_sorted
-                            if not t["won"] and t["beat_median"]],
-        "sunk_by_median": [t["team_id"] for t in med_sorted
-                           if t["won"] and not t["beat_median"]],
-        "sweeps": [t["team_id"] for t in med_sorted if t["wins"] == 2],
-        "swept": [t["team_id"] for t in med_sorted if t["wins"] == 0],
-    }
-
-    # ── league-wide leaderboards ────────────────────────────────
-    everyone = []
-    for tid, t in teams.items():
-        for p in t["starters"]:
-            everyone.append({**p, "team": t["name"], "team_id": tid, "started": True})
-        for p in t["bench"]:
-            if p["slot"] == "BN":
-                everyone.append({**p, "team": t["name"], "team_id": tid, "started": False})
-    for p in everyone:
-        p["vs_proj"] = round(p["pts"] - (p["proj"] or 0), 2)
-
-    starters = [p for p in everyone if p["started"]]
-    benched = [p for p in everyone if not p["started"]]
-    drafted = [p for p in everyone if p["cost"]]
-
-    out = {
-        "season": args.season,
-        "week": args.week,
-        "built_at": datetime.now(timezone.utc).isoformat(),
-        "league_average": round(sum(scores.values()) / len(scores), 2),
-        "median": median_info,
-        "headline": NOTES["headline"],
-        "kicker": NOTES["kicker"],
-        "lede": NOTES["lede"],
-        "sections": NOTES["sections"],
-        "awards": NOTES["awards"],
-        "waiver_note": NOTES["waiver_note"],
-        "teams": sorted(teams.values(), key=lambda t: -t["points"]),
-        "games": games,
-        "top_starts": sorted(starters, key=lambda p: -p["pts"])[:12],
-        "worst_starts": sorted([p for p in starters if p["proj"]],
-                               key=lambda p: p["vs_proj"])[:12],
-        "bench_crimes": sorted(benched, key=lambda p: -p["pts"])[:12],
-        "money_pits": sorted([p for p in drafted if p["cost"] >= 18 and p["started"]],
-                             key=lambda p: p["pts"])[:12],
-        "bargains": sorted([p for p in drafted if p["cost"] <= 3 and p["pts"] >= 12],
-                           key=lambda p: -p["pts"])[:12],
-        "free_agents": sorted([p for p in everyone if p["fa"] and p["pts"] >= 8],
-                              key=lambda p: -p["pts"])[:10],
-        "slot_averages": {},
-    }
-    for slot in SLOT_ORDER:
-        vals = [p["pts"] for p in starters if p["slot"] == slot]
-        if vals:
-            out["slot_averages"][slot] = {
-                "n": len(vals), "avg": round(sum(vals) / len(vals), 2),
-                "high": max(vals), "low": min(vals),
+        # ── per team ────────────────────────────────────────────
+        teams = {}
+        for tid, v in raw.items():
+            meta = by_id[tid]
+            squad = v["starters"] + [p for p in v["bench"] if not p.get("empty")]
+            for p in squad:
+                p["cost"] = lookup(price, p["name"])
+                known = lookup(pos_of, p["name"])
+                raw_pos = str(p.get("pos") or "")
+                p["_pos"] = known or (raw_pos if raw_pos in ("QB", "RB", "WR", "TE", "K", "DEF")
+                                      else ("D" if any(x.strip() in IDP_POS for x in raw_pos.split(",")) else p["slot"]))
+                p["fa"] = p["cost"] is None
+            actual = round(sum(p["pts"] for p in v["starters"]), 2)
+            opt, opt_lineup = best_lineup(squad)
+            started = {id(p) for p in v["starters"]}
+            teams[tid] = {
+                "team_id": tid, "team_key": meta["team_key"], "name": meta["name"],
+                "manager": MANAGERS.get(meta["name"], ""), "logo": meta.get("logo", ""),
+                "points": actual, "optimal": round(opt, 2), "regret": round(opt - actual, 2),
+                "efficiency": round(100 * actual / opt, 1) if opt else 0,
+                "projected": round(sum(p.get("proj") or 0 for p in v["starters"]), 2),
+                "bench_points": round(sum(p["pts"] for p in v["bench"]
+                                          if p.get("slot") == "BN" and not p.get("empty")), 2),
+                # moves is a live counter on Yahoo; a past week keeps the number it shipped with
+                "moves": meta.get("moves", 0) if wk == latest else (old_moves.get(tid) or 0),
+                "faab_left": 100 - sum(a["bid"] or 0 for a in adds
+                                       if a["team_id"] == tid and a["week"] <= wk),
+                "faab_spent_week": sum(a["bid"] or 0 for a in adds
+                                       if a["team_id"] == tid and a["week"] == wk),
+                "adds_week": sum(1 for a in adds if a["team_id"] == tid and a["week"] == wk),
+                "pre_rank": pre_rank_by_name.get(meta["name"]),
+                "pre_ppg": pre_ppg_by_name.get(meta["name"]),
+                "starters": [{"slot": p["slot"], "name": p["name"], "pos": p["_pos"],
+                              "pts": p["pts"], "proj": p.get("proj"), "cost": p["cost"],
+                              "fa": p["fa"], "stats": p.get("stats", "")} for p in v["starters"]],
+                "bench": [{"slot": p["slot"], "name": p["name"], "pos": p["_pos"],
+                           "pts": p["pts"], "proj": p.get("proj"), "cost": p["cost"],
+                           "fa": p["fa"], "stats": p.get("stats", "")}
+                          for p in v["bench"] if not p.get("empty")],
+                "best_lineup": [{"slot": s, "name": p["name"], "pts": p["pts"],
+                                 "benched": id(p) not in started} for s, p in opt_lineup],
             }
+            for p in squad:
+                k = norm(p["name"])
+                ps = player_season.setdefault(k, {"name": p["name"], "pts": 0.0, "weeks": 0,
+                                                  "cost": p["cost"], "pos": p["_pos"]})
+                ps["pts"] = round(ps["pts"] + p["pts"], 2)
+                ps["weeks"] += 1
+                ps["team_id"] = tid
 
+        # ── games, median, all-play, luck ───────────────────────
+        games = []
+        for a, b in pairs:
+            w, l = (a, b) if teams[a]["points"] > teams[b]["points"] else (b, a)
+            games.append({"winner": w, "loser": l,
+                          "winner_points": teams[w]["points"], "loser_points": teams[l]["points"],
+                          "margin": round(teams[w]["points"] - teams[l]["points"], 2),
+                          "note": notes.get("games", {}).get(int(w), "")})
+        games.sort(key=lambda g: g["margin"])
+        scores = {tid: t["points"] for tid, t in teams.items()}
+        median = round(statistics.median(scores.values()), 2)
+        opp = {}
+        for g in games:
+            opp[g["winner"]], opp[g["loser"]] = g["loser"], g["winner"]
 
-    # ── data/current.json ────────────────────────────────────────
-    # The Yahoo scrape cannot see a schedule (no API, and a logged-out visitor is
-    # shown only the current week), so league.json ships with an empty matchup list
-    # and doubled win totals. Every page reads league.json through NU.load(), which
-    # merges this file over it — so standings, power rankings, the scoreboard and
-    # the team pages all come from the same re-derived truth as the recap.
-    W = {t["team_id"]: t for t in teams.values()}
-    lo = min(t["points"] for t in W.values())
-    hi = max(t["points"] for t in W.values())
-    span = (hi - lo) or 1
+        for tid, t in teams.items():
+            s = scores[tid]
+            apw = sum(1 for o, v in scores.items() if o != tid and s > v)
+            h2h = any(g["winner"] == tid for g in games)
+            beat = s > median
+            w = int(h2h) + int(beat)
+            t.update(all_play=f"{apw}-{len(scores) - 1 - apw}", all_play_wins=apw,
+                     won=h2h, beat_median=beat, vs_median=round(s - median, 2),
+                     wins=w, losses=2 - w, record=f"{w}-{2 - w}",
+                     luck=round(int(h2h) - apw / (len(scores) - 1), 3),
+                     opponent=opp[tid], points_against=scores[opp[tid]])
+            st = season_tot[tid]
+            st["wins"] += w; st["losses"] += 2 - w
+            st["pf"] = round(st["pf"] + s, 2); st["pa"] = round(st["pa"] + scores[opp[tid]], 2)
+            st["ap_w"] += apw; st["ap_l"] += len(scores) - 1 - apw
+            st["h2h_w"] += int(h2h); st["med_w"] += int(beat)
+            st["luck"] = round(st["luck"] + t["luck"], 3)
+            st["scores"].append(s)
+            st["weekly_w"].append(w)
 
-    standings, power = [], []
-    for tid, t in W.items():
-        won = t["won"]
-        g = next(g for g in games if tid in (g["winner"], g["loser"]))
-        against = g["loser_points"] if won else g["winner_points"]
+            # The record the best lineup would have earned, everyone else as played.
+            # The median is recomputed with this team's best score in place of its real one.
+            o = t["optimal"]
+            med_o = statistics.median([o if x == tid else v for x, v in scores.items()])
+            ow = int(o > scores[opp[tid]]) + int(o > med_o)
+            t["optimal_wins"] = ow
+            t["optimal_record"] = f"{ow}-{2 - ow}"
+            t["lineup_tax"] = ow - w          # wins left on the bench this week
+            st["opt_w"] += ow
+            st["regret"] = round(st["regret"] + t["regret"], 2)
+
+        for tid, t in teams.items():
+            st = season_tot[tid]
+            t["season"] = {"wins": st["wins"], "losses": st["losses"],
+                           "record": f"{st['wins']}-{st['losses']}",
+                           "points_for": st["pf"], "points_against": st["pa"],
+                           "all_play": f"{st['ap_w']}-{st['ap_l']}",
+                           "h2h": f"{st['h2h_w']}-{wk - st['h2h_w']}",
+                           "vs_median": f"{st['med_w']}-{wk - st['med_w']}",
+                           "luck": st["luck"],
+                           "optimal_record": f"{st['opt_w']}-{2 * wk - st['opt_w']}",
+                           "lineup_tax": st["opt_w"] - st["wins"],
+                           "regret": st["regret"]}
+
+        # ── power rankings as of this week ───────────────────────
+        pfs = [season_tot[t]["pf"] for t in ids]
+        lo_pf, hi_pf = min(pfs), max(pfs)
+        lo_s, hi_s = min(scores.values()), max(scores.values())
+        power = []
+        for tid in ids:
+            st = season_tot[tid]
+            games_played = st["wins"] + st["losses"]
+            ap = st["ap_w"] / max(1, st["ap_w"] + st["ap_l"])
+            scoring = (st["pf"] - lo_pf) / ((hi_pf - lo_pf) or 1)
+            form = (scores[tid] - lo_s) / ((hi_s - lo_s) or 1)
+            power.append({"team_id": tid, "team_key": teams[tid]["team_key"],
+                          "score": round(0.35 * st["wins"] / max(1, games_played)
+                                         + 0.30 * scoring + 0.20 * ap + 0.15 * form, 4),
+                          "all_play": f"{st['ap_w']}-{st['ap_l']}", "all_play_pct": round(ap, 4),
+                          "luck_index": st["luck"], "recent_form": round(form, 4),
+                          "efficiency": teams[tid]["efficiency"], "regret": teams[tid]["regret"],
+                          "prev_rank": prev_rank.get(tid)})
+        power.sort(key=lambda r: (-r["score"], -season_tot[r["team_id"]]["pf"]))
+        for i, r in enumerate(power):
+            r["rank"] = i + 1
+            r["movement"] = (r["prev_rank"] - r["rank"]) if r["prev_rank"] else 0
+            r["blurb"] = notes.get("blurbs", {}).get(int(r["team_id"]), "")
+        for r in power:
+            teams[r["team_id"]]["power_rank"] = r["rank"]
+            teams[r["team_id"]]["power_move"] = r["movement"]
+        prev_rank = {r["team_id"]: r["rank"] for r in power}
+
+        # ── leaderboards ────────────────────────────────────────
+        everyone = []
+        for tid, t in teams.items():
+            everyone += [{**p, "team": t["name"], "team_id": tid, "started": True} for p in t["starters"]]
+            everyone += [{**p, "team": t["name"], "team_id": tid, "started": False}
+                         for p in t["bench"] if p["slot"] == "BN"]
+        for p in everyone:
+            p["vs_proj"] = round(p["pts"] - (p["proj"] or 0), 2)
+        starters = [p for p in everyone if p["started"]]
+        benched = [p for p in everyone if not p["started"]]
+
+        # draft money, season to date (every point the player scored, started or not)
+        money = [dict(v, team=teams.get(v["team_id"], {}).get("name", ""))
+                 for v in player_season.values() if v.get("cost")]
+        for m in money:
+            m["per_point"] = round(m["cost"] / m["pts"], 2) if m["pts"] > 0 else None
+
+        # the FAAB audit: what each purchase this week actually returned this week
+        where = {}
+        for tid, t in teams.items():
+            for p in t["starters"]:
+                where[norm(p["name"])] = (tid, True, p["pts"], p["slot"])
+            for p in t["bench"]:
+                where.setdefault(norm(p["name"]), (tid, False, p["pts"], p["slot"]))
+        audit = []
+        for a in adds:
+            if a["week"] != wk:
+                continue
+            got = where.get(norm(a["player"]))
+            audit.append({**a, "team": by_id[a["team_id"]]["name"],
+                          "pts": got[2] if got and got[0] == a["team_id"] else None,
+                          "started": bool(got and got[0] == a["team_id"] and got[1]),
+                          "slot": got[3] if got and got[0] == a["team_id"] else None})
+        audit.sort(key=lambda a: (-(a["bid"] or 0), a["when"]))
+
+        out = {
+            "season": season, "week": wk,
+            "built_at": datetime.now(timezone.utc).isoformat(),
+            "league_average": round(sum(scores.values()) / len(scores), 2),
+            "median": {
+                "value": median,
+                "beat": sum(1 for t in teams.values() if t["beat_median"]),
+                "closest_above": min((t for t in teams.values() if t["beat_median"]),
+                                     key=lambda t: t["vs_median"])["team_id"],
+                "closest_below": max((t for t in teams.values() if not t["beat_median"]),
+                                     key=lambda t: t["vs_median"])["team_id"],
+                "saved_by_median": [t["team_id"] for t in sorted(teams.values(), key=lambda t: -t["points"])
+                                    if not t["won"] and t["beat_median"]],
+                "sunk_by_median": [t["team_id"] for t in sorted(teams.values(), key=lambda t: -t["points"])
+                                   if t["won"] and not t["beat_median"]],
+                "sweeps": [t["team_id"] for t in sorted(teams.values(), key=lambda t: -t["points"]) if t["wins"] == 2],
+                "swept": [t["team_id"] for t in sorted(teams.values(), key=lambda t: -t["points"]) if t["wins"] == 0],
+            },
+            "headline": notes.get("headline", f"Week {wk}"),
+            "kicker": notes.get("kicker", ""),
+            "lede": notes.get("lede", ""),
+            "sections": notes.get("sections", {}),
+            "awards": notes.get("awards", []),
+            "waiver_note": notes.get("waiver_note", ""),
+            "teams": sorted(teams.values(), key=lambda t: -t["points"]),
+            "power_rankings": power,
+            "games": games,
+            "top_starts": sorted(starters, key=lambda p: -p["pts"])[:12],
+            "worst_starts": sorted([p for p in starters if p["proj"]], key=lambda p: p["vs_proj"])[:12],
+            "bench_crimes": sorted(benched, key=lambda p: -p["pts"])[:12],
+            # this week, priced (the first week's view)
+            "money_pits": sorted([p for p in everyone if p["cost"] and p["cost"] >= 18 and p["started"]],
+                                 key=lambda p: p["pts"])[:12],
+            "bargains": sorted([p for p in everyone if p["cost"] and p["cost"] <= 3 and p["pts"] >= 12],
+                               key=lambda p: -p["pts"])[:12],
+            # season to date, priced
+            "season_money_pits": sorted([m for m in money if m["cost"] >= 18],
+                                        key=lambda m: (m["pts"] / max(1, m["weeks"])))[:10],
+            "season_bargains": sorted([m for m in money if m["cost"] <= 3],
+                                      key=lambda m: -m["pts"])[:10],
+            "faab_audit": audit,
+            "free_agents": sorted([p for p in everyone if p["fa"] and p["pts"] >= 8],
+                                  key=lambda p: -p["pts"])[:10],
+            "slot_averages": {s: {"n": len(v), "avg": round(sum(v) / len(v), 2),
+                                  "high": max(v), "low": min(v)}
+                              for s in SLOT_ORDER
+                              for v in [[p["pts"] for p in starters if p["slot"] == s]] if v},
+        }
+        # The page never reads the rosters (the raw scrape keeps them), so the published
+        # file drops them and ships compact: half the bytes on a phone.
+        for t in out["teams"]:
+            for k in ("starters", "bench", "best_lineup"):
+                t.pop(k, None)
+        out.pop("free_agents", None)
+        json.dump(out, open(D(f"week{wk}.json"), "w"), ensure_ascii=False, separators=(",", ":"))
+        index.append({"week": wk, "headline": out["headline"], "median": median,
+                      "high": out["teams"][0]["name"], "high_points": out["teams"][0]["points"]})
+        print(f"week {wk}: median {median}, average {out['league_average']}, "
+              f"{len(audit)} adds, high {out['teams'][0]['name']} {out['teams'][0]['points']}")
+
+    # ── the test: cumulative records and points against the live scrape ──
+    bad = []
+    for tid, t in by_id.items():
+        st = season_tot[tid]
+        if (st["wins"], st["losses"]) != (t["wins"], t["losses"]) or abs(st["pf"] - t["points_for"]) > 0.01:
+            bad.append(f"  {t['name']}: built {st['wins']}-{st['losses']} {st['pf']}  "
+                       f"yahoo {t['wins']}-{t['losses']} {t['points_for']}")
+    if bad:
+        print("!! MISMATCH against league.json (stat correction? missing week?):\n" + "\n".join(bad))
+    else:
+        print(f"checked: all {len(by_id)} season records and points match league.json")
+
+    # ── data/weeks.json and data/current.json ───────────────────
+    json.dump({"season": season, "latest": latest, "weeks": index},
+              open(D("weeks.json"), "w"), ensure_ascii=False, separators=(",", ":"))
+
+    W = json.load(open(D(f"week{latest}.json")))
+    standings = []
+    for r in W["power_rankings"]:
+        tid = r["team_id"]; t = next(x for x in W["teams"] if x["team_id"] == tid)
+        st = season_tot[tid]
         standings.append({
             "team_key": t["team_key"], "team_id": tid, "name": t["name"],
             "manager": t["manager"], "logo": t["logo"],
-            # two games a week: the matchup and the median
-            "wins": t["wins"], "losses": t["losses"], "ties": 0,
-            "win_pct": round(t["wins"] / 2, 3),
-            "streak": "W2" if t["wins"] == 2 else ("L2" if t["wins"] == 0 else ""),
-            "points_for": t["points"], "points_against": against,
-            "week_points": t["points"], "moves": t["moves"],
-            "faab_balance": t["faab_left"],
+            "wins": st["wins"], "losses": st["losses"], "ties": 0,
+            "win_pct": round(st["wins"] / max(1, st["wins"] + st["losses"]), 3),
+            # Two games a week and Yahoo never says which came first, so a streak only
+            # exists across whole sweeps: 2-0, 2-0 is W4; anything after a 1-1 is unknowable.
+            "streak": streak(st["weekly_w"]),
+            "points_for": st["pf"], "points_against": st["pa"],
+            "week_points": t["points"], "moves": t["moves"], "faab_balance": t["faab_left"],
+            "rank": r["rank"],
         })
-        ap = t["all_play_wins"] / (len(W) - 1)
-        scoring = (t["points"] - lo) / span
-        power.append({
-            "team_key": t["team_key"], "team_id": tid,
-            "score": round(0.35 * (t["wins"] / 2) + 0.30 * scoring
-                           + 0.20 * ap + 0.15 * scoring, 4),
-            "all_play": t["all_play"], "all_play_pct": round(ap, 4),
-            "luck_index": t["luck"], "recent_form": round(scoring, 4),
-            "efficiency": t["efficiency"], "regret": t["regret"],
-            "prev_rank": t["pre_rank"],          # movement is measured off the draft model
-        })
-    power.sort(key=lambda r: -r["score"])
-    for i, r in enumerate(power):
-        r["rank"] = i + 1
-        r["movement"] = (r["prev_rank"] - r["rank"]) if r["prev_rank"] else 0
-    rank_of = {r["team_id"]: r["rank"] for r in power}
-    for s_ in standings:
-        s_["rank"] = rank_of[s_["team_id"]]
-    standings.sort(key=lambda s_: s_["rank"])
-
-    matchups = [{
-        "week": args.week, "status": "postevent",
-        "winner_team_key": W[g["winner"]]["team_key"],
-        "teams": [
-            {"team_key": W[g["winner"]]["team_key"], "name": W[g["winner"]]["name"],
-             "points": g["winner_points"], "projected": W[g["winner"]]["projected"]},
-            {"team_key": W[g["loser"]]["team_key"], "name": W[g["loser"]]["name"],
-             "points": g["loser_points"], "projected": W[g["loser"]]["projected"]},
-        ],
-    } for g in games]
-
+    matchups = []
+    for wk in weeks:
+        Wk = json.load(open(D(f"week{wk}.json")))
+        T = {t["team_id"]: t for t in Wk["teams"]}
+        for g in Wk["games"]:
+            matchups.append({
+                "week": wk, "status": "postevent",
+                "winner_team_key": T[g["winner"]]["team_key"],
+                "teams": [{"team_key": T[x]["team_key"], "name": T[x]["name"],
+                           "points": T[x]["points"], "projected": T[x]["projected"]}
+                          for x in (g["winner"], g["loser"])],
+            })
     cur = {
-        "season": args.season, "week": args.week, "status": "final",
-        "label": f"Week {args.week} \u00b7 Final",
-        "recap": f"week.html?w={args.week}",
-        "built_at": out["built_at"],
-        "headline": NOTES["headline"], "kicker": NOTES["kicker"], "lede": NOTES["lede"],
-        "league_average": out["league_average"],
-        "median": median,
-        "teams": standings, "power_rankings": power, "matchups": matchups,
+        "season": season, "week": latest, "status": "final",
+        "label": f"Week {latest} · Final", "recap": f"week.html?w={latest}",
+        "built_at": W["built_at"], "headline": W["headline"], "kicker": W["kicker"],
+        "lede": W["lede"], "league_average": W["league_average"], "median": W["median"]["value"],
+        "weeks": weeks, "teams": standings, "power_rankings": W["power_rankings"],
+        "matchups": matchups,
     }
-    json.dump(cur, open(D("current.json"), "w"), indent=1, ensure_ascii=False)
-    print(f"wrote {D('current.json')}: week {args.week} marked final")
-
-    path = D(f"week{args.week}.json")
-    json.dump(out, open(path, "w"), indent=1, ensure_ascii=False)
-    print(f"wrote {path}: {len(out['teams'])} teams, {len(out['games'])} games, "
-          f"league average {out['league_average']}")
+    json.dump(cur, open(D("current.json"), "w"), ensure_ascii=False, separators=(",", ":"))
+    print(f"wrote current.json (week {latest}) and weeks.json ({len(weeks)} weeks)")
 
 
 if __name__ == "__main__":
