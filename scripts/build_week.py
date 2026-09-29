@@ -42,11 +42,21 @@ MANAGERS = {
     "Hail Mary": "Andrew", "ShakeNBake": "Abhishek", "A dad": "Barrett",
     "FreeGucci": "Nishil", "Kim Jong Nate": "Nathan", "Mac Daddy": "Maclane",
     "The Injured Reserved": "Greg (IR)", "Miley 💨LEO 5K Speedo Fan Club": "Greg (Miley)",
-    "Bend The Knee 🐲🔥": "Darrius", "Talk Darty to Me 🎯": "Anuj", "Poop Squad 💩": "Anuj",
+    "Bend The Knee 🐲🔥": "Darrius", "Talk Darty to Me 🎯": "Anuj", "Whole Milk 🥛": "Anuj", "Poop Squad 💩": "Anuj",
     "Good Will Hunting": "Will", "Leo the Cleo": "Chris",
     "The Asshouse Always Wins": "Tom", "Fwamming Gwaggon": "Jon",
 }
-RENAMED = {"Poop Squad 💩": "Talk Darty to Me 🎯"}   # draft.json keeps the old spelling
+# Yahoo's waiver log names a defense by city ("Carolina"), the box score by nickname ("Panthers")
+DEF_CITY = {"arizona": "cardinals", "atlanta": "falcons", "baltimore": "ravens", "buffalo": "bills",
+            "carolina": "panthers", "chicago": "bears", "cincinnati": "bengals", "cleveland": "browns",
+            "dallas": "cowboys", "denver": "broncos", "detroit": "lions", "green bay": "packers",
+            "houston": "texans", "indianapolis": "colts", "jacksonville": "jaguars", "kansas city": "chiefs",
+            "las vegas": "raiders", "miami": "dolphins", "minnesota": "vikings", "new england": "patriots",
+            "new orleans": "saints", "philadelphia": "eagles", "pittsburgh": "steelers",
+            "san francisco": "49ers", "seattle": "seahawks", "tampa bay": "buccaneers",
+            "tennessee": "titans", "washington": "commanders"}
+
+RENAMED = {"Poop Squad 💩": "Whole Milk 🥛", "Talk Darty to Me 🎯": "Whole Milk 🥛"}   # draft.json keeps the old spelling
 
 
 def norm(n):
@@ -334,6 +344,8 @@ def main():
             if a["week"] != wk:
                 continue
             got = where.get(norm(a["player"]))
+            if not got and a.get("pos") == "DEF":
+                got = where.get(DEF_CITY.get(norm(a["player"]), ""))
             audit.append({**a, "team": by_id[a["team_id"]]["name"],
                           "pts": got[2] if got and got[0] == a["team_id"] else None,
                           "started": bool(got and got[0] == a["team_id"] and got[1]),

@@ -182,7 +182,7 @@ WEEK2 = {
     "kicker": "(week 2, and we are bringing it up)",
     "lede": (
         "Last week this league averaged 126 points and fourteen people decided they were good "
-        "at this. This week it averaged 114.88 and the invoice arrived. Hail Mary went from "
+        "at this. This week it averaged 114.81 and the invoice arrived. Hail Mary went from "
         "162.10 to 97.72. ShakeNBake went from 155.60 to 72.04, the lowest score in the league, "
         "days after spending $70 of FAAB. Good Will Hunting went from last place to 2-0. "
         "Bend The Knee, ranked 14th of 14 in the preseason, played a perfect lineup, scored "
@@ -210,7 +210,7 @@ WEEK2 = {
         2: "Barrett is 4-0 with a quarterback room that has produced 6.94 points in two weeks. "
            "Kyler Murray gave him 0.62, so he picked Carson Wentz up off the street, and Wentz "
            "gave him 6.32. Amon-Ra St. Brown went for 31.7 and it turns out this roster does "
-           "not need a quarterback, and neither does Barrett. Greg (Miley) lost this by 20.78 "
+           "not need a quarterback, and neither does Barrett. Greg (Miley) lost this by 19.78 "
            "while his bench scored 100.72: Jared Goff 29.78, Bryce Young 24.08 (bought for $10 "
            "on Tuesday, benched on Sunday), Dalton Schultz 21.0 on twelve catches, Jonah Coleman "
            "13.3, Jalen Coker 12.56. His best lineup wins this game. It also would have won last "
@@ -373,4 +373,198 @@ WEEK2 = {
     ),
 }
 
-NOTES = {1: WEEK1, 2: WEEK2}
+
+WEEK3 = {
+    "headline": "The Median Was Decided By Two Cents. Everything Else Was Worse.",
+    "kicker": "(week 3, one cent up, one cent down)",
+    "lede": (
+        "The median this week was 120.95. Barrett (A dad) scored 120.96 and Nathan (Kim Jong Nate) "
+        "scored 120.94, so one of them cleared it by a penny and the other missed it by a penny, "
+        "and that penny is the only reason Kim Jong Nate is no longer undefeated. Barrett needed "
+        "his penny because he left 37.16 points on his own bench and lost his actual game by 0.46. "
+        "Leo the Cleo is the last unbeaten team in the league. Four managers benched a quarterback "
+        "who outscored the one they started, and one of them is Andrew, for the third week in a "
+        "row. ShakeNBake scored the league low again. Fwamming Gwaggon won a game. Nobody is "
+        "sure what to do with that."
+    ),
+
+    "games": {
+        1: "Andrew has now started the wrong quarterback three weeks running. Week 1 it was Caleb "
+           "Williams. Week 2 it was Dak Prescott. Week 3 it was Dak Prescott again: 18.94 on the "
+           "bench, Jalen Hurts 13.62 in the lineup. He won anyway, by 0.46, which is smaller than "
+           "the quarterback mistake and much smaller than the other guy's mistakes. Barrett "
+           "started Pat Freiermuth (4.1) over Brock Bowers (23.6), started Tyler Bass (5.8), a "
+           "kicker he picked up off the street on Tuesday, over Chris Boswell (14.3), and left "
+           "Brian Robinson's 13.16 on the bench. His best lineup scores 158.12 and wins by 36.70. "
+           "He lost by less than half a point, then beat the median by 0.01 and walked away 1-1 "
+           "like nothing happened.",
+        8: "Maclane scored 146.64, the high score of the week, and still managed to bench the "
+           "Vikings defense: 24.76 points, six sacks and a return touchdown, sitting behind a "
+           "Chiefs defense that scored 9.30. That is the second week running the Vikings have "
+           "outscored his starting defense from the bench. It cost him 15.46 points and he won "
+           "by 2.34, so this time it was free. Darrius lost it by the exact width of one swap: "
+           "Keenan Allen 15.3 on the bench, Stefon Diggs 5.3 in the lineup, a difference of 10.00 "
+           "points in a game decided by 2.34. Cameron Dicker, after two straight weeks of exactly "
+           "2.00 points, kicked for 9.50 and nobody said thank you.",
+        14: "Greg (IR) is 3-0 against his opponents and 0-3 against the median, which makes him "
+            "the only manager in the league who has beaten every person he played and lost to "
+            "arithmetic every single week. Brock Purdy threw four touchdowns for 31.28. Trey "
+            "Smack, the kicker Greg claimed on waivers for $0, scored exactly 2.00, which means "
+            "the Cameron Dicker curse did not end, it was traded. Greg is on 21 roster moves and "
+            "has now added Ja'Kobi Lane twice. Will finally started Denzel Boston, the rookie who "
+            "scored 30.9 on his bench in the first two weeks, and Boston scored 7.1. Terry "
+            "McLaurin scored 16.7 on the same bench. Will's best lineup wins this game by 24.36.",
+        10: "Chris is 6-0 and the last undefeated team in the league, and he got there by "
+            "benching Tyler Shough's four touchdowns and 24.80 points to start Josh Allen for "
+            "18.96. Jahmyr Gibbs scored 37.90 and covered for everything. Greg (Miley) is 0-6. "
+            "He benched Matthew Stafford's 390 yards (22.90) to start Jared Goff (19.36), and he "
+            "benched Bryce Young (14.64) as well, because Greg has three quarterbacks and a "
+            "deep conviction that the one on the field should be the second best. His best "
+            "lineup record for the season is 5-1. His real record is 0-6.",
+        4: "Nathan played a clean game, beat Whole Milk by 27.78, and lost his undefeated record "
+           "anyway, to the median, by one cent. The only change his best lineup makes is Chris "
+           "Bell (8.7) for Malachi Fields (2.9). That is 5.80 points, and he needed 0.02. Anuj "
+           "renamed his team from Talk Darty to Me to Whole Milk, then picked up Geno Smith on "
+           "Tuesday and benched him on Sunday. Geno threw three touchdowns for 26.04. Baker "
+           "Mayfield started and scored 12.28. The rebrand is 0-6 and already past its date.",
+        13: "Jon, whose team the preseason model ranked first, won his first head-to-head game of "
+            "the season. He did it while starting Adonai Mitchell at flex, a player Yahoo "
+            "projected for zero points, who scored zero points, with Michael Mayer's 10.7 on the "
+            "bench. He also spent $30 of FAAB on Rashod Bateman and benched him for 4.7. Bijan "
+            "Robinson ran for 194 yards and none of that mattered. Abhishek scored 85.16, the "
+            "lowest score in the league for the second week in a row. He is 0-26 in all-play "
+            "over the last two weeks, which means that in fourteen days he has not outscored a "
+            "single team in this league once. He made four free-agent adds between 8:49 and "
+            "9:39 on Sunday morning and started one of them, Terrance Ferguson, at flex, for "
+            "1.4, with Carnell Tate's 8.8 on the bench.",
+        5: "Tom played a perfect lineup, scored 146.00, and beat FreeGucci by 56.34, the "
+           "biggest margin of the week. Drake London caught nine balls for 194 yards. Tom has "
+           "made two roster moves all season and is 5-1. Nishil started Drake Maye, who threw "
+           "two interceptions and lost a fumble for 6.76, and benched Kalif Raymond (18.6) and "
+           "Wan'Dale Robinson (15.2). He paid $9 for Emanuel Wilson on Tuesday and got 1.4 "
+           "points on the bench. 1-5, 1-12 in all-play, eleven moves.",
+    },
+
+    "sections": {
+        "awards": "Ten citations. Two of them are for a single cent.",
+        "power": "Season to date: record, points, all-play and this week's form, weighted, with "
+                 "movement from last week. Best lineup is the record each team would own if it "
+                 "had started its best legal lineup every week, everyone else exactly as they "
+                 "played. The tax is the difference: wins left on your own bench.",
+        "median": "Week 3's line was 120.95. A dad made it by 0.01. Kim Jong Nate missed it by "
+                  "0.01. The top seven scores were separated from the bottom seven by two cents. "
+                  "Right of the line is a win.",
+        "standings": "Week 3 scoring, both results, and how much of your own roster you managed "
+                     "to start. Efficiency is what you scored over what your best legal lineup "
+                     "would have scored. Injured reserve does not count against you.",
+        "bench": "221.94 points of lineup regret this week, up from 194.22. Four benched "
+                 "quarterbacks outscored the quarterback started in front of them. The personal "
+                 "growth lasted one week.",
+        "faab": "Tuesday's waivers and the week's free agents, audited: every dollar, what it "
+                "bought, and what that player did the same Sunday. This is a receipt, not a "
+                "shopping list. Nobody here is telling you who to pick up.",
+        "money": "Auction dollars against everything each player has scored so far, started or "
+                 "not. Three weeks is a sample now. Plan your excuses accordingly.",
+        "studs": "The best and worst individual starts of Week 3, measured against what Yahoo "
+                 "thought they would do.",
+        "games": "The long version, closest game first.",
+    },
+
+    "blurbs": {
+        10: "6-0 and the last unbeaten team in the league, on a week Chris benched four touchdown "
+            "passes. Jahmyr Gibbs scored 37.9. The system still works when your running back is "
+            "a cheat code too.",
+        5: "Perfect lineup, 146.00, a 56-point win and two roster moves all season. Tom is doing "
+           "the thing everybody else claims they are doing.",
+        6: "Tied for the best all-play record in the league at 32-7 and lost this week by 2.34 "
+           "with Keenan Allen's 15.3 on the bench. The unluckiest good team in the building.",
+        2: "Lost by 0.46 with 37.16 points on the bench, the worst lineup efficiency in the "
+           "league at 76.5 percent, then beat the median by one cent. Barrett is not good at "
+           "this. Barrett is lucky at this.",
+        4: "Undefeated for three weeks and then undone by a single penny. The best lineup needed "
+           "one swap worth 5.80. Nathan needed 0.02. The accountant finally missed a decimal.",
+        1: "Started the wrong quarterback for the third straight week and won anyway, by 0.46. "
+           "Three quarterbacks, three weeks, zero correct starts. The commissioner is on a "
+           "streak.",
+        8: "Scored the most points in the league and benched the defense that outscored his "
+           "starting defense for the second week running. Up three spots. The Vikings would "
+           "like to be considered.",
+        14: "3-0 against his opponents, 0-3 against the median, 21 moves, one kicker who scored "
+            "exactly 2.00. Greg has beaten everybody he has played and lost to a number every "
+            "single week.",
+        13: "Up five spots for his first head-to-head win, earned while starting a player "
+            "projected for zero who scored zero. $30 of FAAB on Rashod Bateman, benched. The "
+            "preseason number one is now merely below average.",
+        3: "Finally started Denzel Boston and got 7.1, while Terry McLaurin scored 16.7 on the "
+           "bench. The best lineup wins this game by 24.36. Will has discovered the exact "
+           "opposite of timing.",
+        11: "0-6. The best-lineup version of this team is 5-1, the biggest lineup tax in the "
+            "league. Benched 390 passing yards this week. One roster move all season, and "
+            "somehow that is also too many.",
+        12: "League low for the second week running, 0-26 in all-play over two weeks, four "
+            "Sunday-morning pickups in fifty minutes. The man who runs this website now has "
+            "the worst recent form in it.",
+        7: "Drake Maye: two interceptions, a lost fumble, 6.76 points. Two receivers on the bench "
+           "scored 33.8 between them. 1-12 in all-play and eleven moves to show for it.",
+        9: "Renamed from Talk Darty to Me to Whole Milk, then benched Geno Smith's three "
+           "touchdowns two days after picking him up. 0-6. The new name has already gone off.",
+    },
+
+    "awards": [
+        {"title": "One Cent",
+         "winner": "Kim Jong Nate",
+         "line": "Median: 120.95. Nathan: 120.94. First loss of the season, by a penny, in a "
+                 "week he won his actual game by 27.78. Chris Bell scored 8.7 on his bench."},
+        {"title": "Also One Cent",
+         "winner": "A dad",
+         "line": "Lost the matchup by 0.46 with Brock Bowers' 23.6 on the bench, then cleared "
+                 "the median by 0.01 to stay 1-1. The worst lineup in the league bought itself "
+                 "a win with loose change."},
+        {"title": "Any Quarterback But That One, Part III",
+         "winner": "Hail Mary",
+         "line": "Caleb Williams in Week 1. Dak Prescott in Week 2. Dak Prescott in Week 3, "
+                 "18.94 on the bench while Jalen Hurts scored 13.62. Three weeks, three wrong "
+                 "quarterbacks, and somehow a 4-2 record."},
+        {"title": "Beat Everyone, Lost To A Number",
+         "winner": "The Injured Reserved",
+         "line": "3-0 head-to-head. 0-3 against the median. Greg has beaten every manager "
+                 "he has faced and lost to the middle of the league every single week."},
+        {"title": "Picked Him Up To Bench Him",
+         "winner": "Whole Milk 🥛",
+         "line": "Geno Smith, added Tuesday, benched Sunday: 321 yards, three touchdowns, 26.04. "
+                 "The highest-scoring bench player in the league, on a team that just renamed "
+                 "itself after a dairy product."},
+        {"title": "Bench Defense Of The Year (So Far)",
+         "winner": "Mac Daddy",
+         "line": "Vikings on the bench: 24.76, six sacks and a return touchdown. Chiefs in the "
+                 "lineup: 9.30. Second week running. Won by 2.34 anyway, which only encourages "
+                 "him."},
+        {"title": "$30 For The Bench",
+         "winner": "Fwamming Gwaggon",
+         "line": "The biggest FAAB bid of the week, $30 on Rashod Bateman, who sat on the bench "
+                 "and scored 4.7. The flex spot went to Adonai Mitchell: projected zero, scored "
+                 "zero, exactly as advertised."},
+        {"title": "Zero For Twenty-Six",
+         "winner": "ShakeNBake",
+         "line": "League low in Week 2, league low in Week 3, and in all-play across both he "
+                 "has beaten nobody: 0-26. Four free agents added on Sunday morning. One of them "
+                 "started at flex and scored 1.4."},
+        {"title": "The Five-Win Bench",
+         "winner": "Miley 💨LEO 5K Speedo Fan Club",
+         "line": "Best lineup record 5-1. Real record 0-6. This week's bench: Matthew Stafford, "
+                 "390 yards. Greg has made one roster move all season and not one correct "
+                 "start decision that we can find."},
+        {"title": "Nothing To Report",
+         "winner": "The Asshouse Always Wins",
+         "line": "Perfect lineup. 146.00. A 56.34-point win. Two moves all season. This award "
+                 "exists so the rest of you can see what it looks like."},
+    ],
+
+    "waiver_note": (
+        "Week 4 waivers process Tuesday night. Everything above already happened; none of it is "
+        "a recommendation. Figure out your own roster. Start the quarterback who scores more "
+        "points. That one is free."
+    ),
+}
+
+NOTES = {1: WEEK1, 2: WEEK2, 3: WEEK3}
