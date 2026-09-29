@@ -153,7 +153,7 @@
  },
  "2": {
   "team_id": "2",
-  "total": 130.74,
+  "total": 129.74,
   "starters": [
    {
     "slot": "QB",
@@ -251,7 +251,7 @@
     "pos": "LB",
     "nflTeam": "",
     "proj": 6.48,
-    "pts": 11.5,
+    "pts": 10.5,
     "stats": "7 Tack Solo, 1 Fum Force, 3 Tack Ast"
    }
   ],
