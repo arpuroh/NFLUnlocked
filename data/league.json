@@ -13,7 +13,7 @@
   "uses_faab": true,
   "faab_budget": 100,
   "demo": false,
-  "last_updated": "2026-09-29T10:19:26.990991+00:00"
+  "last_updated": "2026-09-29T16:42:24.965632+00:00"
  },
  "teams": [
   {
@@ -331,8 +331,8 @@
    "luck_index": 0.833,
    "recent_form": 0.0,
    "rank": 2,
-   "prev_rank": 5,
-   "movement": 3
+   "prev_rank": 2,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.6",
@@ -353,8 +353,8 @@
    "luck_index": 0.833,
    "recent_form": 0.0,
    "rank": 4,
-   "prev_rank": 2,
-   "movement": -2
+   "prev_rank": 4,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.4",
@@ -364,8 +364,8 @@
    "luck_index": 0.833,
    "recent_form": 0.0,
    "rank": 5,
-   "prev_rank": 4,
-   "movement": -1
+   "prev_rank": 5,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.1",
@@ -386,8 +386,8 @@
    "luck_index": 0.5,
    "recent_form": 0.0,
    "rank": 7,
-   "prev_rank": 10,
-   "movement": 3
+   "prev_rank": 7,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.14",
@@ -419,8 +419,8 @@
    "luck_index": 0.333,
    "recent_form": 0.0,
    "rank": 10,
-   "prev_rank": 14,
-   "movement": 4
+   "prev_rank": 10,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.12",
@@ -430,8 +430,8 @@
    "luck_index": 0.333,
    "recent_form": 0.0,
    "rank": 11,
-   "prev_rank": 7,
-   "movement": -4
+   "prev_rank": 11,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.11",
@@ -452,8 +452,8 @@
    "luck_index": 0.167,
    "recent_form": 0.0,
    "rank": 13,
-   "prev_rank": 11,
-   "movement": -2
+   "prev_rank": 13,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.9",
@@ -463,8 +463,8 @@
    "luck_index": 0.0,
    "recent_form": 0.0,
    "rank": 14,
-   "prev_rank": 13,
-   "movement": -1
+   "prev_rank": 14,
+   "movement": 0
   }
  ],
  "matchups": [],
@@ -558,68 +558,7 @@
   ],
   "closing": "Connect the Yahoo league and the Executioner starts publishing for real. Until then, these demo managers take the bullets meant for you."
  },
- "feed": [
-  {
-   "id": "rank-scrape.l.675504.t.5-2",
-   "kind": "rankings",
-   "title": "The Asshouse Always Wins jumps 3 spots to #2",
-   "body": "All-play 0-0 and a luck index of +0.833. The model likes them more than the standings do.",
-   "timestamp": 1790677166,
-   "team_key": "scrape.l.675504.t.5",
-   "reactions": {},
-   "reacted_by": 0
-  },
-  {
-   "id": "rank-scrape.l.675504.t.2-4",
-   "kind": "rankings",
-   "title": "A dad drops 2 spots to #4",
-   "body": "All-play 0-0 and a luck index of +0.833. The model trusts them less than the standings do.",
-   "timestamp": 1790677166,
-   "team_key": "scrape.l.675504.t.2",
-   "reactions": {},
-   "reacted_by": 0
-  },
-  {
-   "id": "rank-scrape.l.675504.t.8-7",
-   "kind": "rankings",
-   "title": "Mac Daddy jumps 3 spots to #7",
-   "body": "All-play 0-0 and a luck index of +0.500. The model likes them more than the standings do.",
-   "timestamp": 1790677166,
-   "team_key": "scrape.l.675504.t.8",
-   "reactions": {},
-   "reacted_by": 0
-  },
-  {
-   "id": "rank-scrape.l.675504.t.13-10",
-   "kind": "rankings",
-   "title": "Fwamming Gwaggon jumps 4 spots to #10",
-   "body": "All-play 0-0 and a luck index of +0.333. The model likes them more than the standings do.",
-   "timestamp": 1790677166,
-   "team_key": "scrape.l.675504.t.13",
-   "reactions": {},
-   "reacted_by": 0
-  },
-  {
-   "id": "rank-scrape.l.675504.t.12-11",
-   "kind": "rankings",
-   "title": "ShakeNBake drops 4 spots to #11",
-   "body": "All-play 0-0 and a luck index of +0.333. The model trusts them less than the standings do.",
-   "timestamp": 1790677166,
-   "team_key": "scrape.l.675504.t.12",
-   "reactions": {},
-   "reacted_by": 0
-  },
-  {
-   "id": "rank-scrape.l.675504.t.7-13",
-   "kind": "rankings",
-   "title": "FreeGucci drops 2 spots to #13",
-   "body": "All-play 0-0 and a luck index of +0.167. The model trusts them less than the standings do.",
-   "timestamp": 1790677166,
-   "team_key": "scrape.l.675504.t.7",
-   "reactions": {},
-   "reacted_by": 0
-  }
- ],
+ "feed": [],
  "most_clowned": [],
  "history": {
   "established": 2016,
