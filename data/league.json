@@ -13,7 +13,7 @@
   "uses_faab": true,
   "faab_budget": 100,
   "demo": false,
-  "last_updated": "2026-09-30T16:34:23.243150+00:00"
+  "last_updated": "2026-10-01T17:12:52.489020+00:00"
  },
  "teams": [
   {
@@ -22,7 +22,7 @@
    "name": "Leo the Cleo",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/614cb36d46f9edc5aca35aaa803a8fa30dceed9bd1f10524d266052c83b8a924.jpg",
-   "moves": 8,
+   "moves": 10,
    "trades": 0,
    "faab_balance": 95,
    "clinched_playoffs": false,
@@ -64,7 +64,7 @@
    "name": "A dad",
    "manager": "",
    "logo": "https://s.yimg.com/cv/apiv2/default/nfl/nfl_8_b.png",
-   "moves": 13,
+   "moves": 14,
    "trades": 0,
    "faab_balance": 86,
    "clinched_playoffs": false,
@@ -95,7 +95,7 @@
    "ties": 0,
    "win_pct": 0.833,
    "streak": "W3",
-   "points_for": 365.84,
+   "points_for": 365.34,
    "points_against": 300.64,
    "week_points": 0.0,
    "trophies": []
@@ -306,7 +306,7 @@
    "win_pct": 0.0,
    "streak": "L3",
    "points_for": 308.38,
-   "points_against": 350.12,
+   "points_against": 349.62,
    "week_points": 0.0,
    "trophies": []
   }
@@ -358,7 +358,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.4",
-   "score": 0.4419,
+   "score": 0.4409,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.833,
