@@ -13,7 +13,7 @@
   "uses_faab": true,
   "faab_budget": 100,
   "demo": false,
-  "last_updated": "2026-10-01T17:12:52.489020+00:00"
+  "last_updated": "2026-10-02T16:26:18.968045+00:00"
  },
  "teams": [
   {
@@ -295,7 +295,7 @@
    "name": "Whole Milk \ud83e\udd5b",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/faf4fd36c09bbc557200c768728b9c3271319a96985accb7ed164875449fc040.png",
-   "moves": 4,
+   "moves": 5,
    "trades": 0,
    "faab_balance": 90,
    "clinched_playoffs": false,
