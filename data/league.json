@@ -13,7 +13,7 @@
   "uses_faab": true,
   "faab_budget": 100,
   "demo": false,
-  "last_updated": "2026-10-03T15:00:28.694846+00:00"
+  "last_updated": "2026-10-04T15:35:24.381000+00:00"
  },
  "teams": [
   {
@@ -22,7 +22,7 @@
    "name": "Leo the Cleo",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/614cb36d46f9edc5aca35aaa803a8fa30dceed9bd1f10524d266052c83b8a924.jpg",
-   "moves": 10,
+   "moves": 11,
    "trades": 0,
    "faab_balance": 95,
    "clinched_playoffs": false,
@@ -190,7 +190,7 @@
    "name": "Good Will Hunting",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/294c101b0012ae2044dfb832be7a254d2ff520c34206ba46c2cb3c16d80b69da.jpg",
-   "moves": 4,
+   "moves": 5,
    "trades": 0,
    "faab_balance": 65,
    "clinched_playoffs": false,
