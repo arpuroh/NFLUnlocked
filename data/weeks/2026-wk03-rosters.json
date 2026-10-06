@@ -513,7 +513,7 @@
  },
  "4": {
   "team_id": "4",
-  "total": 120.94,
+  "total": 120.44,
   "starters": [
    {
     "slot": "QB",
@@ -611,8 +611,8 @@
     "pos": "LB",
     "nflTeam": "SF",
     "proj": 6.62,
-    "pts": 12.5,
-    "stats": "8 Tack Solo, 9 Tack Ast"
+    "pts": 12.0,
+    "stats": "8 Tack Solo, 8 Tack Ast"
    }
   ],
   "bench": [
