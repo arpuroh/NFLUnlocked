@@ -13,7 +13,7 @@
   "uses_faab": true,
   "faab_budget": 100,
   "demo": false,
-  "last_updated": "2026-10-07T17:36:59.555878+00:00"
+  "last_updated": "2026-10-08T17:40:04.703563+00:00"
  },
  "teams": [
   {
@@ -53,7 +53,7 @@
    "ties": 0,
    "win_pct": 0.875,
    "streak": "W3",
-   "points_for": 586.6,
+   "points_for": 585.6,
    "points_against": 535.18,
    "week_points": 0.0,
    "trophies": []
@@ -159,7 +159,7 @@
    "win_pct": 0.5,
    "streak": "L1",
    "points_for": 503.06,
-   "points_against": 466.86,
+   "points_against": 465.86,
    "week_points": 0.0,
    "trophies": []
   },
@@ -211,7 +211,7 @@
    "name": "Miley \ud83d\udca8LEO 5K Speedo Fan Club",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/db213c28a1c236ccc1d3f0f0ed6ce67143a732feb8045af35368e6b34a66858b.jpg",
-   "moves": 2,
+   "moves": 4,
    "trades": 0,
    "faab_balance": 90,
    "clinched_playoffs": false,
@@ -314,7 +314,7 @@
  "power_rankings": [
   {
    "team_key": "scrape.l.675504.t.10",
-   "score": 0.644,
+   "score": 0.6457,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 1.0,
@@ -336,7 +336,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.2",
-   "score": 0.5264,
+   "score": 0.5277,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.875,
@@ -347,7 +347,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.4",
-   "score": 0.4595,
+   "score": 0.4604,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.875,
@@ -358,7 +358,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.6",
-   "score": 0.4181,
+   "score": 0.4195,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.5,
@@ -369,7 +369,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.8",
-   "score": 0.3832,
+   "score": 0.3842,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.625,
@@ -380,7 +380,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.14",
-   "score": 0.332,
+   "score": 0.3329,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.5,
@@ -391,7 +391,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.1",
-   "score": 0.2947,
+   "score": 0.2954,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.5,
@@ -402,7 +402,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.11",
-   "score": 0.2033,
+   "score": 0.204,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.25,
@@ -413,7 +413,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.13",
-   "score": 0.1764,
+   "score": 0.1767,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.375,
@@ -424,7 +424,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.12",
-   "score": 0.1433,
+   "score": 0.1436,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.25,
@@ -435,7 +435,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.3",
-   "score": 0.1213,
+   "score": 0.1215,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.25,
@@ -457,7 +457,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.9",
-   "score": 0.031,
+   "score": 0.0312,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.0,
