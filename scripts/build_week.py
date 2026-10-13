@@ -376,6 +376,7 @@ def main():
             "sections": notes.get("sections", {}),
             "awards": notes.get("awards", []),
             "waiver_note": notes.get("waiver_note", ""),
+            "video": notes.get("video"),
             "teams": sorted(teams.values(), key=lambda t: -t["points"]),
             "power_rankings": power,
             "games": games,
