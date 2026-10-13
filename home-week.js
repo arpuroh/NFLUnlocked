@@ -52,6 +52,7 @@
           <p class="lede">${esc(W.lede)}</p>
           <div class="hero-actions">
             <a class="btn-red" href="${esc(cur.recap)}">Read the full Week ${cur.week} recap →</a>
+            ${W.video ? `<a class="btn-ghost reel-jump" href="#reel">▶ Watch the roast</a>` : ""}
             ${stamps(`wk${cur.week}-home`, {}, { min: 3 })}
           </div>
         </div>
@@ -70,6 +71,8 @@
         </div>
       </div>
     </section>
+
+    ${NU.reel(W.video, cur.week)}
 
     <section class="statbug">
       <div class="cell"><div class="eyebrow">Highest Wk ${cur.week}</div>

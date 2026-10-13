@@ -548,3 +548,38 @@ a { color: inherit; text-decoration: none; }
 .dark .tlogo { border-color: #3A3736; background: #2B2928; }
 .tlogo.sm { width: 22px; height: 22px; }
 .tlogo.lg { width: 46px; height: 46px; border-width: 2px; border-color: var(--ink); }
+
+/* ─────────────────── the roast reel (weekly video) ───────────────── */
+.reel { padding: 26px 30px; border-top: 2px solid var(--red); }
+.reel-grid { display: grid; grid-template-columns: minmax(0, 340px) 1fr; gap: 36px; align-items: center; }
+.reel-frame { position: relative; aspect-ratio: 9 / 16; background: #000; border: 2px solid #3A3736; }
+.reel-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #000; }
+.reel-play {
+  position: absolute; inset: 0; width: 100%; height: 100%; border: 0; cursor: pointer;
+  background: rgba(32, 30, 29, 0.35); color: var(--white);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+  font: inherit; font-size: 13px; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase;
+}
+.reel-play:hover { background: rgba(32, 30, 29, 0.15); }
+.reel-play:focus-visible, .reel-go:focus-visible { outline: 3px solid var(--red-bright); outline-offset: 2px; }
+.reel-tri {
+  width: 84px; height: 84px; background: var(--red); position: relative; display: block;
+}
+.reel-tri::after {
+  content: ""; position: absolute; left: 32px; top: 24px;
+  border-left: 28px solid var(--white); border-top: 18px solid transparent; border-bottom: 18px solid transparent;
+}
+.reel-play:hover .reel-tri { background: var(--red-bright); }
+.reel.on .reel-play { display: none; }
+.reel-copy h2 { font-size: clamp(30px, 4vw, 52px); margin: 14px 0 12px; }
+.reel-copy p { color: var(--gray-faint); font-size: 15px; line-height: 1.5; max-width: 46ch; margin: 0 0 20px; }
+@media (max-width: 900px) {
+  .reel-grid { grid-template-columns: 1fr; gap: 20px; }
+  .reel-frame { max-width: 360px; width: 100%; margin: 0 auto; max-height: 78vh; }
+  .reel-copy { order: -1; }
+  .reel-go { display: none; }
+}
+@media (max-width: 640px) { .reel { padding-left: 16px; padding-right: 16px; } }
+.wk-hero .reel-jump { margin-top: 20px; }
+.dark .btn-ghost.reel-jump { color: var(--paper); border-color: #4A4645; }
+.dark .btn-ghost.reel-jump:hover { border-color: var(--red-bright); color: var(--white); }

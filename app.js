@@ -188,8 +188,47 @@ const NU = (() => {
     return L;
   }
 
+  /* The weekly roast reel: a vertical video under the hero. Nothing autoplays;
+     the big button starts it with sound, and the native controls take over. */
+  function reel(v, week) {
+    if (!v || !v.src) return "";
+    return `<section class="dark reel" id="reel" aria-label="Week ${week} roast video">
+      <div class="reel-grid">
+        <div class="reel-frame">
+          <video class="reel-video" src="${esc(v.src)}" ${v.poster ? `poster="${esc(v.poster)}"` : ""}
+            preload="metadata" playsinline controls></video>
+          <button class="reel-play" type="button" aria-label="Play the Week ${week} roast">
+            <span class="reel-tri" aria-hidden="true"></span><span>Play</span>
+          </button>
+        </div>
+        <div class="reel-copy">
+          <span class="tag-red">The Roast Reel</span>
+          <h2 class="display">${esc(v.title || `Week ${week} in ${v.seconds || 40} seconds`)}</h2>
+          <p>${esc(v.blurb || "Every team, every crime, set to a beat. Sound on.")}</p>
+          <button class="btn-red reel-go" type="button">▶ Play with sound</button>
+        </div>
+      </div>
+    </section>`;
+  }
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest(".reel-play, .reel-go, .reel-jump");
+    if (!b) return;
+    if (b.classList.contains("reel-jump")) e.preventDefault();
+    const box = b.closest(".reel") || document.querySelector(".reel"), vid = box && box.querySelector("video");
+    if (!vid) return;
+    box.classList.add("on");
+    vid.muted = false;
+    const go = vid.play();
+    if (go && go.catch) go.catch(() => {});
+    if (!b.classList.contains("reel-play")) vid.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+  document.addEventListener("play", (e) => {
+    const box = e.target.closest && e.target.closest(".reel");
+    if (box) box.classList.add("on");
+  }, true);
+
   return { $, $$, esc, avatar, initials, ago, stamps, wireStamps, chrome,
-           endband, derive, load, NAV, REACTIONS };
+           endband, derive, load, reel, NAV, REACTIONS };
 })();
 
 /* ══════════════════════════════════════════════════════════════

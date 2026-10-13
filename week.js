@@ -411,6 +411,7 @@
         </div>
         <h1 class="display">${esc(W.headline)}<span class="kick">${esc(W.kicker)}</span></h1>
         <p class="wk-lede">${esc(W.lede)}</p>
+        ${W.video ? `<a class="btn-red reel-jump" href="#reel">▶ Watch the ${W.video.seconds || 40}-second roast</a>` : ""}
       </div>
       <div class="board">
         <div class="eyebrow">Final Scores · season records</div>
@@ -427,6 +428,8 @@
       </div>
     </div>
   </section>
+
+  ${NU.reel(W.video, W.week)}
 
   <section class="statbug wk-bug5">
     <div class="cell"><div class="eyebrow">The Median</div>
