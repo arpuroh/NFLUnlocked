@@ -116,16 +116,18 @@ def best_lineup(players):
     return best["total"], [(s, cands[j]) for s, j in best["picks"]]
 
 
-def streak(weekly):
-    if not weekly or weekly[-1] == 1:
+def streak(h2h):
+    """Head-to-head streak only: the median game never counts toward it.
+    h2h is the list of weekly matchup results, 1 = beat your opponent, 0 = lost."""
+    if not h2h:
         return ""
-    k = weekly[-1]
+    k = h2h[-1]
     n = 0
-    for w in reversed(weekly):
+    for w in reversed(h2h):
         if w != k:
             break
-        n += 2
-    return ("W" if k == 2 else "L") + str(n)
+        n += 1
+    return ("W" if k else "L") + str(n)
 
 
 def main():
@@ -164,7 +166,7 @@ def main():
     pre_ppg_by_name = {RENAMED.get(t["team"], t["team"]): t["weekly"] for t in proj["teams"]}
 
     season_tot = {tid: dict(wins=0, losses=0, pf=0.0, pa=0.0, ap_w=0, ap_l=0,
-                            h2h_w=0, med_w=0, luck=0.0, scores=[], opt_w=0, regret=0.0, weekly_w=[])
+                            h2h_w=0, med_w=0, luck=0.0, scores=[], opt_w=0, regret=0.0, weekly_w=[], weekly_h2h=[])
                   for tid in ids}
     player_season = {}          # norm(name) -> {name, pts, weeks, cost, team_id (latest)}
     prev_rank = {by_id[t]["team_id"]: pre_rank_by_name.get(by_id[t]["name"]) for t in ids}
@@ -262,6 +264,7 @@ def main():
             st["luck"] = round(st["luck"] + t["luck"], 3)
             st["scores"].append(s)
             st["weekly_w"].append(w)
+            st["weekly_h2h"].append(int(h2h))
 
             # The record the best lineup would have earned, everyone else as played.
             # The median is recomputed with this team's best score in place of its real one.
@@ -439,9 +442,8 @@ def main():
             "manager": t["manager"], "logo": t["logo"],
             "wins": st["wins"], "losses": st["losses"], "ties": 0,
             "win_pct": round(st["wins"] / max(1, st["wins"] + st["losses"]), 3),
-            # Two games a week and Yahoo never says which came first, so a streak only
-            # exists across whole sweeps: 2-0, 2-0 is W4; anything after a 1-1 is unknowable.
-            "streak": streak(st["weekly_w"]),
+            # Streaks count head-to-head games only (league rule), never the median game.
+            "streak": streak(st["weekly_h2h"]),
             "points_for": st["pf"], "points_against": st["pa"],
             "week_points": t["points"], "moves": t["moves"], "faab_balance": t["faab_left"],
             "rank": r["rank"],
