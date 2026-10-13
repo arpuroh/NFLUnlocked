@@ -654,7 +654,7 @@
  },
  "5": {
   "team_id": "5",
-  "total": 169.68,
+  "total": 168.68,
   "starters": [
    {
     "slot": "QB",
@@ -752,8 +752,8 @@
     "pos": "LB",
     "nflTeam": "Det",
     "proj": 7.9,
-    "pts": 10,
-    "stats": "6 Tack Solo, 8 Tack Ast"
+    "pts": 9,
+    "stats": "5 Tack Solo, 8 Tack Ast"
    }
   ],
   "bench": [
