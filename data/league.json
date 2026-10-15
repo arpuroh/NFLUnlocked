@@ -13,7 +13,7 @@
   "uses_faab": true,
   "faab_budget": 100,
   "demo": false,
-  "last_updated": "2026-10-14T15:39:01.806401+00:00"
+  "last_updated": "2026-10-15T15:24:58.926940+00:00"
  },
  "teams": [
   {
@@ -22,7 +22,7 @@
    "name": "Leo the Cleo",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/614cb36d46f9edc5aca35aaa803a8fa30dceed9bd1f10524d266052c83b8a924.jpg",
-   "moves": 14,
+   "moves": 15,
    "trades": 0,
    "faab_balance": 95,
    "clinched_playoffs": false,
@@ -117,7 +117,7 @@
    "win_pct": 0.6,
    "streak": "W1",
    "points_for": 631.8,
-   "points_against": 684.66,
+   "points_against": 685.16,
    "week_points": 0.0,
    "trophies": []
   },
@@ -158,7 +158,7 @@
    "ties": 0,
    "win_pct": 0.4,
    "streak": "L3",
-   "points_for": 690.9,
+   "points_for": 691.4,
    "points_against": 676.98,
    "week_points": 0.0,
    "trophies": []
@@ -190,7 +190,7 @@
    "name": "ShakeNBake",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/036413160a71a76b42890dd9196cf47fabbccda61f8f2394f8a7fb84ea186a0a.jpg",
-   "moves": 18,
+   "moves": 20,
    "trades": 0,
    "faab_balance": 30,
    "clinched_playoffs": false,
@@ -358,7 +358,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.6",
-   "score": 0.3652,
+   "score": 0.366,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.4,
