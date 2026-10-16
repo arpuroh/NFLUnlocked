@@ -13,7 +13,7 @@
   "uses_faab": true,
   "faab_budget": 100,
   "demo": false,
-  "last_updated": "2026-10-15T15:24:58.926940+00:00"
+  "last_updated": "2026-10-16T15:04:56.030630+00:00"
  },
  "teams": [
   {
@@ -106,7 +106,7 @@
    "name": "Hail Mary",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/25205944781_f55b83a6fa.jpg",
-   "moves": 11,
+   "moves": 13,
    "trades": 0,
    "faab_balance": 94,
    "clinched_playoffs": false,
@@ -148,7 +148,7 @@
    "name": "Bend The Knee \ud83d\udc32\ud83d\udd25",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/9c8ddac63f5831a2c6bc9f69d07b6f17d1d82f639ec642752f29c2b6aa21cd9e.jpg",
-   "moves": 11,
+   "moves": 13,
    "trades": 0,
    "faab_balance": 80,
    "clinched_playoffs": false,
@@ -190,7 +190,7 @@
    "name": "ShakeNBake",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/036413160a71a76b42890dd9196cf47fabbccda61f8f2394f8a7fb84ea186a0a.jpg",
-   "moves": 20,
+   "moves": 21,
    "trades": 0,
    "faab_balance": 30,
    "clinched_playoffs": false,
@@ -274,7 +274,7 @@
    "name": "Whole Milk \ud83e\udd5b",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/faf4fd36c09bbc557200c768728b9c3271319a96985accb7ed164875449fc040.png",
-   "moves": 7,
+   "moves": 8,
    "trades": 0,
    "faab_balance": 87,
    "clinched_playoffs": false,
@@ -295,7 +295,7 @@
    "name": "FreeGucci",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/3e2185d5692aabbcb23e288139db28c90871d64e1046faac8f407f3bdcef814f.jpg",
-   "moves": 27,
+   "moves": 28,
    "trades": 0,
    "faab_balance": 65,
    "clinched_playoffs": false,
