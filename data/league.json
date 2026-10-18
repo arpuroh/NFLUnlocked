@@ -13,7 +13,7 @@
   "uses_faab": true,
   "faab_budget": 100,
   "demo": false,
-  "last_updated": "2026-10-18T14:12:41.958005+00:00"
+  "last_updated": "2026-10-18T22:41:54.356346+00:00"
  },
  "teams": [
   {
@@ -43,7 +43,7 @@
    "name": "The Asshouse Always Wins",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/ff5082a8eca1faeba4a80d02bde690352bb8b967f9d08c2bef72b32ca2505e88.png",
-   "moves": 11,
+   "moves": 12,
    "trades": 0,
    "faab_balance": 70,
    "clinched_playoffs": false,
@@ -85,7 +85,7 @@
    "name": "Kim Jong Nate",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/35938214603_546a9a.jpg",
-   "moves": 9,
+   "moves": 10,
    "trades": 0,
    "faab_balance": 7,
    "clinched_playoffs": false,
@@ -232,7 +232,7 @@
    "name": "Miley \ud83d\udca8LEO 5K Speedo Fan Club",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/db213c28a1c236ccc1d3f0f0ed6ce67143a732feb8045af35368e6b34a66858b.jpg",
-   "moves": 5,
+   "moves": 6,
    "trades": 0,
    "faab_balance": 90,
    "clinched_playoffs": false,
