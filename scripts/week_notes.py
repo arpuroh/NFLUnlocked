@@ -792,10 +792,10 @@ WEEK5 = {
         "This week Barrett finally started him. He scored 4.04. Barrett also started Oronde "
         "Gadsden at flex, a free agent picked up at 1:34 on Sunday afternoon, who scored 0.00, "
         "the second straight week a Barrett flex has scored nothing. He went 2-0 anyway and is "
-        "9-1, because Barrett always gets away with it. The median hit 138.27, the highest line of "
-        "the season for the second week running. Tom cleared it by 75 cents and Darrius missed "
-        "it by 75 cents. Will paid $15 for Matthew Stafford at 3:19 on Sunday morning, benched "
-        "him, and lost by 2.84 while Stafford threw for 383 yards. Anuj won his first game of "
+        "9-1, because Barrett always gets away with it. The median hit 138.60, the highest line of "
+        "the season for the second week running. Tom cleared it by 42 cents and Will, the man he "
+        "was playing, missed it by 42 cents. Will paid $15 for Matthew Stafford at 3:19 on Sunday morning, benched "
+        "him, and lost by 0.84 while Stafford threw for 383 yards. Anuj won his first game of "
         "the season, against a number. Greg (Miley) played a perfect lineup because his entire "
         "bench was on bye. Leo the Cleo is 10-0."
     ),
@@ -808,15 +808,15 @@ WEEK5 = {
            "quarterback was not even the worst of it: Denzel Boston caught a touchdown for 12.62 "
            "on the bench and Terry McLaurin scored 10.2 there, while KC Concepcion (1.0) and "
            "Romeo Doubs (2.1) started. Boston for Concepcion alone wins this game. Will's best "
-           "lineup scores 158.62 and wins by 19.60. Instead he lost by 2.84, missed the median by "
-           "2.09 and went 0-2. Tom paid $9 for Jacoby Brissett with Patrick Mahomes on bye, got "
-           "25.78, cleared the median by 0.75 and is 9-1. Tom's waiver receipts this season: $7 "
+           "lineup scores 160.62 and wins by 21.60. Stafford for Burrow alone wins it. Instead he lost "
+           "by 0.84, missed the median by 0.42 and went 0-2. Tom paid $9 for Jacoby Brissett with Patrick Mahomes on bye, got "
+           "25.78, cleared the median by 0.42 and is 9-1. Tom's waiver receipts this season: $7 "
            "for Emanuel Wilson, $9 for Brissett, both started, both paid.",
         8: "Maclane spent $66 of FAAB in one waiver run on Wednesday morning: $41 on Keon "
            "Coleman, $21 on Dohnte Meyers and $4 on Aaron Rodgers. The $4 quarterback threw three "
            "touchdowns for 22.00. The $41 receiver scored 7.2. The $21 receiver sat on the bench "
            "and scored 7.36. Maclane has $16 left. He scored 113.38, the fourth-lowest score of "
-           "the week, missed the median by 24.89, and still won his game, because he drew Jon. "
+           "the week, missed the median by 25.22, and still won his game, because he drew Jon. "
            "Jon started Bo Nix (7.92) over Sam Darnold (10.30) for the second straight week, the "
            "$20 quarterback he bought to bench. Kendrick Bourne, a Wednesday free agent, scored "
            "9.5 on the bench and Rashod Bateman 8.7, while David Montgomery ($23) scored 1.1 and "
@@ -828,7 +828,7 @@ WEEK5 = {
            "holding him together. Barrett also picked up Oronde Gadsden on Sunday afternoon and "
            "started him at flex for 0.00, the second week in a row a Barrett flex has scored zero "
            "(Ladd McConkey, who did it last week, scored 0.00 again from the bench). Kendre Miller "
-           "scored 9.0 on the bench. Barrett won by 8.10 and cleared the median by 1.25, after "
+           "scored 9.0 on the bench. Barrett won by 8.10 and cleared the median by 0.92, after "
            "clearing it by 0.26 and then 0.56. He is 9-1 and nobody can explain it. Nishil got "
            "39.46 out of Drake Maye, the best start of the week, and lost both games anyway. He "
            "started the Commanders, a Wednesday free agent, for 9.86 while the Seahawks scored "
@@ -839,7 +839,7 @@ WEEK5 = {
             "FAAB all season and claimed two more players this week for $0. Anuj scored 146.36, "
             "the fourth-highest score of the week, went 10-3 in all-play, and lost to the one "
             "team that mattered. He still won his first game of the season, against the median, "
-            "by 8.09. Puka Nacua caught 17 balls. Anuj also picked up Jauan Jennings at 12:06 on "
+            "by 7.76. Puka Nacua caught 17 balls. Anuj also picked up Jauan Jennings at 12:06 on "
             "Sunday and started him at flex: 0.00. His best lineup scores 149.76 and still loses. "
             "1-9. The milk has turned into something that resembles a team, a week too late to "
             "matter against this opponent.",
@@ -848,9 +848,9 @@ WEEK5 = {
            "Christian Watson 30.3, and Andrew went 2-0 for the first time since Week 3. He found "
            "new places to hide points instead: J.K. Dobbins 14.4 and Kyle Pitts 12.7 on the bench, "
            "Jeremiyah Love 2.2 at flex and Harold Fannin 0.9 at tight end. 24.00 points of regret, "
-           "the most in the league, in a 13.02-point win. Darrius missed the median by 0.75 and "
+           "the most in the league, in a 12.52-point win. Darrius missed the median by 0.58 and "
            "went 0-2. His best lineup clears it: Keenan Allen's 7.0 on the bench for DK Metcalf's "
-           "3.8, Jaylen Wright's 3.22 for RJ Harvey's 0.7. Darrius has scored 690.90 points, the "
+           "3.8, Jaylen Wright's 3.22 for RJ Harvey's 0.7. Darrius has scored 691.40 points, the "
            "second most in the league, and is 4-6. His best-lineup record is 8-2. He has the "
            "worst luck in the league, and this week he helped it.",
         12: "Greg (Miley) played a perfect lineup: 100.0 percent efficiency, every call correct. "
@@ -881,10 +881,10 @@ WEEK5 = {
                  "movement from last week. Best lineup is the record each team would own if it "
                  "had started its best legal lineup every week, everyone else exactly as they "
                  "played. The tax is the difference: wins left on your own bench.",
-        "median": "Week 5's line was 138.27, the highest of the season for the second straight "
-                  "week. Tom made it by 0.75. Darrius missed it by 0.75. Anuj lost his game and "
+        "median": "Week 5's line was 138.60, the highest of the season for the second straight "
+                  "week. Tom made it by 0.42. Will, his opponent, missed it by 0.42. Anuj lost his game and "
                   "won his first game of the year here; Maclane won his game and lost here by "
-                  "24.89. Right of the line is a win.",
+                  "25.22. Right of the line is a win.",
         "standings": "Week 5 scoring, both results, and how much of your own roster you managed "
                      "to start. Efficiency is what you scored over what your best legal lineup "
                      "would have scored. Injured reserve does not count against you. Neither, "
@@ -905,15 +905,15 @@ WEEK5 = {
         10: "10-0, 13-0 in all-play, the high score of the week and $95 of FAAB still unspent. "
             "Nobody in this league has figured out how to make Chris spend money or lose a game.",
         5: "9-1. Paid $9 for Jacoby Brissett with Mahomes on bye and got 25.78. Cleared the median "
-           "by 0.75. Tom's waiver receipts: $7 Emanuel Wilson, $9 Brissett, both starters, both hits.",
+           "by 0.42. Tom's waiver receipts: $7 Emanuel Wilson, $9 Brissett, both starters, both hits.",
         2: "9-1. Finally started Brian Robinson: 4.04. Started a Sunday free agent at flex: 0.00. "
-           "Cleared the median by 1.25. Barrett does everything wrong in the most profitable way "
+           "Cleared the median by 0.92. Barrett does everything wrong in the most profitable way "
            "available.",
         4: "9-1, 5-0 head to head, $7 of FAAB and no plans for it. Benched Kenyon Sadiq for -0.70, "
            "the best $18 decision of his season.",
         1: "Right quarterback two weeks running, 2-0, up three spots. Also 24.00 points of bench "
            "regret, the most in the league. Andrew plugged one leak and drilled two more.",
-        6: "690.90 points, second most in the league, 4-6. Missed the median by 0.75 with Keenan "
+        6: "691.40 points, second most in the league, 4-6. Missed the median by 0.58 with Keenan "
            "Allen on the bench again. Best-lineup record 8-2. The best team nobody is scared of.",
         8: "$66 of FAAB in one night, 113.38 points, and a win, because the schedule handed him "
            "Jon. 1-1 on the week, $16 left, down two spots.",
@@ -923,9 +923,9 @@ WEEK5 = {
         14: "12-1 in all-play last week, 0-13 this week, league low. Started Roman Wilson after "
             "benching his 15.9 and got 0.00. 32 moves. $8 on Adonai Mitchell, the league's "
             "most reliable zero.",
-        9: "First win of the season, against the median, by 8.09. Scored 146.36 and lost the "
+        9: "First win of the season, against the median, by 7.76. Scored 146.36 and lost the "
            "game anyway. Jauan Jennings, Sunday pickup, started at flex: 0.00. 1-9.",
-        3: "Paid $15 for Matthew Stafford, benched 383 yards, lost by 2.84. Boston and McLaurin on "
+        3: "Paid $15 for Matthew Stafford, benched 383 yards, lost by 0.84. Boston and McLaurin on "
            "the bench too. Best-lineup record 7-3, real record 2-8. Will has built a good team "
            "and refuses to play it.",
         11: "Perfect lineup, 100.0 percent, because the whole bench was on bye. Scored 108.10 and "
@@ -945,19 +945,19 @@ WEEK5 = {
         {"title": "Stafford, Benched Again",
          "winner": "Good Will Hunting",
          "line": "$15 on waivers at 3:19 on Sunday morning, benched by kickoff: 383 yards, three "
-                 "touchdowns, 27.32. Lost by 2.84. Greg (Miley) benched Stafford's 390 yards in "
+                 "touchdowns, 27.32. Lost by 0.84. Greg (Miley) benched Stafford's 390 yards in "
                  "Week 3. Will has now matched him."},
         {"title": "Perfect, Technically",
          "winner": "Miley 💨LEO 5K Speedo Fan Club",
          "line": "100.0 percent efficiency. Every bench player on bye, so every decision made "
                  "itself. 108.10 points and a 37.20-point loss."},
-        {"title": "Seventy-Five Cents",
+        {"title": "Fifty-Eight Cents",
          "winner": "Bend The Knee 🐲🔥",
-         "line": "Missed the median by 0.75 with Keenan Allen's 7.0 on the bench. Second-most "
+         "line": "Missed the median by 0.58 with Keenan Allen's 7.0 on the bench. Second-most "
                  "points in the league. 4-6."},
-        {"title": "Also Seventy-Five Cents",
+        {"title": "Forty-Two Cents",
          "winner": "The Asshouse Always Wins",
-         "line": "Cleared the median by 0.75 and won by 2.84, with Deebo Samuel's 3.5 at flex and "
+         "line": "Cleared the median by 0.42 and won by 0.84, with Deebo Samuel's 3.5 at flex and "
                  "Khalil Shakir's 9.5 on the bench. The house got away with one."},
         {"title": "Sixty-Six Dollars, One Night",
          "winner": "Mac Daddy",
@@ -970,7 +970,7 @@ WEEK5 = {
                  "to score zero for a second franchise."},
         {"title": "First Win, Technically",
          "winner": "Whole Milk 🥛",
-         "line": "Lost to the undefeated team by 10.62, beat the median by 8.09. A win is a win. "
+         "line": "Lost to the undefeated team by 10.62, beat the median by 7.76. A win is a win. "
                  "The first one took five weeks."},
         {"title": "Five Touchdowns, Zero Wins",
          "winner": "FreeGucci",
@@ -1005,4 +1005,223 @@ WEEK5 = {
     ),
 }
 
-NOTES = {1: WEEK1, 2: WEEK2, 3: WEEK3, 4: WEEK4, 5: WEEK5}
+WEEK6 = {
+    "headline": "Kim Jong Nate Played A Perfect Lineup. It Scored 81.54.",
+    "video": {
+        "src": "video/2026-wk06.mp4",
+        "poster": "video/2026-wk06.jpg",
+        "seconds": 42,
+        "title": "Week 6 in 42 seconds",
+        "blurb": "All fourteen teams, a perfect lineup that lost, an empty roster spot, a 26.96 "
+                 "quarterback on the bench of a 12-0 team. Sound on.",
+    },
+    "kicker": "(100.0 percent efficiency, 2-11 in all-play, 0-2. Four of his bench players did not play.)",
+    "lede": (
+        "Nathan made every correct decision available to him and scored 81.54, because the "
+        "decisions available to him were Austin Ekeler, Trevor Etienne and Brian Thomas Jr., "
+        "all three picked up this week, all three started, 4.96 points between them. His bench "
+        "was four players who did not play and an empty slot. First 0-2 week of his season. The median fell to "
+        "113.97, the lowest line of the year, 24.63 below last week's. Greg (Miley) cleared it "
+        "by 2.35 and Andrew missed it by 2.35, with Caleb Williams' 16.5 on his bench. Nishil "
+        "made nine adds and still left his IDP slot empty. Jon finally started the right "
+        "quarterback and scored the league low anyway. Chris benched a 26.96 quarterback and "
+        "is 12-0. Barrett scored 170.18 and is 11-1. Abhishek played a perfect lineup too, and "
+        "his was worth 164.80."
+    ),
+
+    "games": {
+        5: "The closest game of the week, and nobody in it played well. Nathan scored 81.54 with "
+           "a perfect lineup: Judkins, Tyler Warren, Ollie Gordon and Justin Jefferson, none "
+           "of whom played, and one roster spot empty. So he started what he bought. Austin Ekeler, a Saturday "
+           "free agent, 1.7. Trevor Etienne, a Sunday free agent, 3.26. Brian Thomas Jr., "
+           "claimed for $0 after Jon cut him, 0.00 at flex, a week after scoring 1.0 for Jon "
+           "from one solo tackle. Brandon Aubrey kicked one extra point: 1.0. Kenyon Sadiq "
+           "started again: 1.7. Tom scored 95.16 and won by 13.62 with Derrick Henry ($45) at "
+           "4.5 and Tyler Higbee, a Sunday pickup, at 2.2 in the flex. Tom missed the median by "
+           "18.81, 3-10 in all-play, and is 10-2 on a five-game head-to-head streak. The house "
+           "does not need to be good. It needs you to be worse.",
+        8: "Maclane's $41 receiver finally paid: Keon Coleman, 13.9 and a touchdown. Then he "
+           "started KaVontae Turpin at flex for 1.0, the same Turpin who sat on ShakeNBake's "
+           "bench in Week 1 and returned 194 yards against him in Week 4. Rico Dowdle scored "
+           "6.4 on the bench. Cameron Dicker made 53 yards of field goals for 5.3. None of it "
+           "mattered, because Will is 2-10. Will finally started Matthew Stafford, after "
+           "benching his 383 yards last week: 16.88. Then he did the receiver thing in reverse. "
+           "Week 5: Romeo Doubs started for 2.1, Terry McLaurin (10.2) and Denzel Boston "
+           "(12.62) on the bench. Week 6: McLaurin started for 3.2, Boston for 2.0, Doubs on "
+           "the bench for 10.7. Will is not unlucky. He is perfectly wrong, on a one-week "
+           "delay. 0-2, four straight losses, best-lineup record 7-5.",
+        6: "Darrius went 2-0 and still left 39.5 points on his bench: Alvin Kamara 13.9, Stefon "
+           "Diggs 13.4, Keenan Allen 12.2, while Michael Wilson (5.2) and Parker Washington "
+           "(8.68) started. Keenan Allen has now been benched for 7.0 and 12.2 in back-to-back "
+           "weeks. Darrius has the third-most points in the league, a 10-2 best-lineup record, a "
+           "6-6 real one and the worst luck index in the league at -1.92. Anuj got 24.2 from Tre "
+           "Tucker and 13.8 from Hunter Henry, a Thursday free agent, and lost by 32.10 anyway. "
+           "He started Emmett Johnson at flex (5.4) with Jerry Jeudy (8.9) on the bench. Six "
+           "straight head-to-head losses. 0-6 against actual teams, 1-5 against a number. 1-11.",
+        2: "Barrett scored 170.18, the high score of the week, 13-0 in all-play, 98.7 percent "
+           "efficient. Brian Robinson went back to the bench and scored 2.56 there, the first "
+           "correct Brian Robinson decision of the season. Kenneth Walker 27.9. Chiefs, $4 on "
+           "waivers, 15.74. He also paid $3 for Michael Pittman and sent him straight to IR, and "
+           "$12 for Kimani Vidal to bench him. 11-1, 6-0 against the median, best-lineup record "
+           "12-0. Greg (IR) lost by 45.80 and still went 1-1, because 124.38 was 10.41 above "
+           "the lowest median of the season. Germie Bernard, $21 on waivers, started and scored "
+           "20.2: the best FAAB dollar of the week. Blake Corum scored 13.0 on his bench, a week "
+           "after scoring 14.7 on his bench. Juwan Johnson started at tight end for 0.00. 33 moves.",
+        11: "Greg (Miley) played a perfect lineup for the second straight week. Last week it was "
+            "because his whole bench was on bye. This week Cam Skattebo ($21) scored 0.00 at "
+            "running back and the lineup was still perfect, because nobody on the bench could "
+            "have replaced him. Trey Smack, picked up at 12:21 on Sunday, kicked for 11.8. "
+            "Travis Hunter scored 19.9 in the IDP slot by catching a touchdown. 116.32, cleared "
+            "the median by 2.35. Jon started Deshaun Watson, a Wednesday free agent, over Bo Nix: "
+            "9.46 to 4.48. After two straight weeks of benching the wrong quarterback, Jon got one right. He scored "
+            "68.94, the league low, 0-13 in all-play. Bijan Robinson ($69) scored 6.3 with "
+            "minus eight receiving yards. Michael Mayer scored 14.0 on the bench while Rashod "
+            "Bateman started at flex for 0.00. Chris Godwin, $21 on waivers, benched, 5.7. "
+            "T.J. Watt scored 1.0, an improvement on last week.",
+        10: "Chris benched Tyler Shough, who threw three touchdowns and ran one in for 26.96, and "
+            "started Josh Allen, 18.30. Wrong by 8.66. He also had Jahmyr Gibbs on bye. He won "
+            "by 50.12. Malik Nabers 25.5, the Saints, a Wednesday free agent, 17.62. 12-0, six "
+            "straight, $95 of FAAB untouched. Nishil scored 75.04, 1-12 in all-play. He made "
+            "nine adds this week and did not put anybody in his IDP slot. It sat empty all "
+            "Sunday. He picked up Najee Harris at 9:11 on Sunday morning and started him: 0.20, "
+            "on two rushing yards. Roschon Johnson, picked up Wednesday, scored 13.5 on the "
+            "bench. Nishil is "
+            "1-11, 0-6 against the median, and has made 30 moves to get there.",
+        12: "Abhishek played a perfect lineup: 164.80, 100.0 percent, 12-1 in all-play, beaten "
+            "only by Barrett. Trevor Lawrence threw four touchdowns for 28.34, the best start of "
+            "the week. Jaylin Noel, projected for 5.99, scored 22.38 at flex. Carnell Tate, 1.1 "
+            "at flex last week, scored 16.0. The 49ers and Evan Williams, both Wednesday free "
+            "agents, both started. He also picked up Jordan Addison at 9:15 on Sunday morning, "
+            "with the Vikings on bye. Andrew missed the median by 2.35 and Caleb Williams scored "
+            "16.5 on his bench while Dak Prescott started for 13.02. The quarterback alone clears "
+            "the median. Kyle Pitts caught two touchdowns on the bench for 20.5 while Harold "
+            "Fannin started at tight end for 1.4. Last week: Pitts 12.7 on the bench, Fannin 0.9 "
+            "starting. 24.68 points of regret, the most in the league for the second straight week.",
+    },
+
+    "sections": {
+        "awards": "Fourteen citations. Three perfect lineups this week, and they finished 2-0, "
+                  "2-0 and 0-2.",
+        "power": "Season to date: record, points, all-play and this week's form, weighted, with "
+                 "movement from last week. Best lineup is the record each team would own if it "
+                 "had started its best legal lineup every week, everyone else exactly as they "
+                 "played. The tax is the difference: wins left on your own bench.",
+        "median": "Week 6's line was 113.97, the lowest of the season, a week after the highest. "
+                  "Greg (Miley) made it by 2.35. Andrew missed it by 2.35 with a better "
+                  "quarterback on his bench. Greg (IR) lost his game by 45.80 and got a win here "
+                  "anyway; Tom won his game with 95.16 and lost here by 18.81. Right of the line "
+                  "is a win.",
+        "standings": "Week 6 scoring, both results, and how much of your own roster you managed "
+                     "to start. Efficiency is what you scored over what your best legal lineup "
+                     "would have scored. Injured reserve does not count against you. Players who "
+                     "did not play do not either, which is how 81.54 rates as perfect.",
+        "bench": "126.46 points of lineup regret this week, down from 129.24. Andrew and Nishil "
+                 "account for 43.68 of it. Leo the Cleo benched the best quarterback on his own "
+                 "roster and nobody could punish him for it.",
+        "faab": "Every dollar of Week 6, audited. $70 spent, 40 adds. Germie Bernard ($21) "
+                "returned 20.2. Chris Godwin ($21) returned 5.7 from the bench. Michael Pittman "
+                "($3) went straight to IR. Nishil made nine of the 40 adds.",
+        "money": "Auction dollars against everything each player has scored so far, started or "
+                 "not. A.J. Brown: $45, 8.3 points in six weeks, 4.2 of them this week from IR.",
+        "studs": "The best and worst starts of Week 6, measured against what Yahoo thought they "
+                 "would do. Bijan Robinson cost $69 and finished with minus eight receiving yards.",
+        "games": "The long version, closest game first.",
+    },
+
+    "blurbs": {
+        10: "12-0, six straight. Benched Tyler Shough's 26.96 for Josh Allen's 18.30 and won by "
+            "50.12. $95 of FAAB, still in the wrapper.",
+        2: "170.18, the high score, 13-0 in all-play. Benched Brian Robinson at the right time "
+           "for once. 11-1, 6-0 against the median, best-lineup record 12-0.",
+        5: "Scored 95.16, 3-10 in all-play, missed the median by 18.81, and won anyway because "
+           "Nathan scored 81.54. 10-2. Five straight head-to-head wins, at least one of them earned.",
+        6: "2-0 with 39.5 points on the bench, Keenan Allen's 12.2 among them. Third-most points "
+           "in the league, 6-6, best-lineup record 10-2, worst luck in the league.",
+        12: "Perfect lineup, 164.80, 12-1 in all-play. Second straight 2-0. Also picked up a "
+            "Viking on Sunday morning during the Vikings' bye. Up three spots.",
+        8: "Keon Coleman finally earned some of his $41. KaVontae Turpin, at flex: 1.0. 2-0, four "
+           "straight, 8-4 on $16 of FAAB.",
+        4: "Perfect lineup, 81.54, 0-2. Started three players he picked up this week for 4.96 "
+           "combined. First 0-2 of the season and a three-spot fall.",
+        1: "Missed the median by 2.35 with Caleb Williams' 16.5 on the bench. Kyle Pitts' 20.5 "
+           "too, again. Most bench regret in the league two weeks running. Down three.",
+        14: "Lost by 45.80, beat the median by 10.41. Germie Bernard ($21) delivered 20.2. Blake "
+            "Corum delivered 13.0 to the bench, again. 33 moves.",
+        11: "Perfect lineup two weeks running, and this time it counted: 2-0. Cam Skattebo "
+            "scored zero and it was still the best lineup available. Up two spots.",
+        9: "Six straight head-to-head losses. Tre Tucker 24.2, Hunter Henry 13.8, Jeudy 8.9 on "
+           "the bench. 1-11, and the milk is past its date.",
+        3: "Started Stafford this week, benched Doubs this week, and Doubs scored the touchdown. "
+           "Will makes every right decision exactly one week late. 2-10, four straight losses.",
+        13: "Finally started the right quarterback, scored 68.94, 0-13 in "
+            "all-play. Bijan ($69): 6.3. Mayer 14.0 on the bench, Bateman 0.00 at flex.",
+        7: "Nine adds, 30 moves, an empty IDP slot. Started a Sunday-morning Najee Harris for "
+           "0.20. 1-11, 0-6 against the median. Busiest manager in the league, least to show.",
+    },
+
+    "awards": [
+        {"title": "Perfect, And Still 0-2",
+         "winner": "Kim Jong Nate",
+         "line": "100.0 percent efficiency, 81.54 points, 2-11 in all-play. Four bench players who "
+                 "did not play, one empty slot, three new pickups started for 4.96 combined."},
+        {"title": "Perfect, And Actually Good",
+         "winner": "ShakeNBake",
+         "line": "100.0 percent, 164.80, 12-1 in all-play. Jaylin Noel, projected for 5.99, at "
+                 "flex for 22.38. The other perfect lineup this week lost by 13.62."},
+        {"title": "Perfect, Again",
+         "winner": "Miley 💨LEO 5K Speedo Fan Club",
+         "line": "Second straight 100.0 percent week. Cam Skattebo scored zero in it. Cleared the "
+                 "median by 2.35, which is the part that mattered."},
+        {"title": "Benched The Wrong Quarterback, Won By Fifty",
+         "winner": "Leo the Cleo",
+         "line": "Tyler Shough 26.96 on the bench, Josh Allen 18.30 starting, Gibbs on bye. Won "
+                 "by 50.12. 12-0. The rest of the league cannot even capitalize on his mistakes."},
+        {"title": "The Quarterback Was On The Bench",
+         "winner": "Hail Mary",
+         "line": "Caleb Williams 16.5 on the bench, Dak Prescott 13.02 starting, median missed by "
+                 "2.35. The swap alone clears it. Plus Kyle Pitts' two touchdowns, benched."},
+        {"title": "Nobody At Linebacker",
+         "winner": "FreeGucci",
+         "line": "Nine adds in one week. The IDP slot stayed empty. Najee Harris, added at 9:11 "
+                 "on Sunday and started: 0.20."},
+        {"title": "One Week Late, Every Week",
+         "winner": "Good Will Hunting",
+         "line": "Benched Stafford's 27.32 last week, started his 16.88 this week. Started Doubs "
+                 "for 2.1 last week, benched his 10.7 this week. 2-10."},
+        {"title": "High Score, No Notes",
+         "winner": "A dad",
+         "line": "170.18, 13-0 in all-play, 98.7 percent. Benched Brian Robinson the one week he "
+                 "deserved it. Best-lineup record 12-0."},
+        {"title": "Right Quarterback, Wrong Everything",
+         "winner": "Fwamming Gwaggon",
+         "line": "Deshaun Watson over Bo Nix, correct by 4.98, after two weeks of Nix over the "
+                 "better quarterback. League low 68.94. 0-13 in all-play."},
+        {"title": "The Third Option",
+         "winner": "Bend The Knee 🐲🔥",
+         "line": "Kamara 13.9, Diggs 13.4 and Keenan Allen 12.2 on the bench. Won both games "
+                 "anyway. Best-lineup record 10-2, real record 6-6."},
+        {"title": "Twenty-One Dollars Well Spent",
+         "winner": "The Injured Reserved",
+         "line": "Germie Bernard, $21 on waivers, started, 20.2. Lost by 45.80 and won the median "
+                 "by 10.41. Corum on the bench for 13.0, again."},
+        {"title": "Won With 95",
+         "winner": "The Asshouse Always Wins",
+         "line": "95.16 points, 3-10 in all-play, a 13.62-point win. Derrick Henry ($45), 4.5. "
+                 "Ten wins, and the schedule is starting to look like a co-manager."},
+        {"title": "Former Employee Of The Week",
+         "winner": "Mac Daddy",
+         "line": "KaVontae Turpin, cut by ShakeNBake, started at flex: 1.0. Keon Coleman, $41, "
+                 "finally scored a touchdown. 2-0 on four straight wins."},
+        {"title": "0-6",
+         "winner": "Whole Milk 🥛",
+         "line": "Six head-to-head games, six losses. Tre Tucker caught two touchdowns this week. "
+                 "Lost by 32.10."},
+    ],
+
+    "waiver_note": (
+        "Week 7 waivers process Tuesday night. Chris has $95 and a 12-0 record, so he will "
+        "probably not bid. Nathan has $7 and a bench that did not play a down in Week 6. Nishil has $65 and, as of Sunday, an open IDP slot. None of this is advice."
+    ),
+}
+
+NOTES = {1: WEEK1, 2: WEEK2, 3: WEEK3, 4: WEEK4, 5: WEEK5, 6: WEEK6}
