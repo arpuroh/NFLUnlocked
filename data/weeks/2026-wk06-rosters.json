@@ -1,0 +1,2335 @@
+{
+ "1": {
+  "team_id": "1",
+  "total": 111.62,
+  "starters": [
+   {
+    "slot": "QB",
+    "name": "Dak Prescott",
+    "pos": "QB",
+    "nflTeam": "Dal",
+    "proj": 19.4,
+    "pts": 13.02,
+    "stats": "258 Pass Yds, 1 Pass TD, 2 Int"
+   },
+   {
+    "slot": "RB",
+    "name": "D'Andre Swift",
+    "pos": "RB",
+    "nflTeam": "Chi",
+    "proj": 14.01,
+    "pts": 21,
+    "stats": "2 Rush TD, 44 Rush Yds, 26 Rec Yds"
+   },
+   {
+    "slot": "RB",
+    "name": "Bucky Irving",
+    "pos": "RB",
+    "nflTeam": "TB",
+    "proj": 13.04,
+    "pts": 5.9,
+    "stats": "46 Rush Yds, 2 Rec, 3 Rec Yds"
+   },
+   {
+    "slot": "WR",
+    "name": "Christian Watson",
+    "pos": "WR",
+    "nflTeam": "GB",
+    "proj": 15.12,
+    "pts": 7.9,
+    "stats": "64 Rec Yds, 3 Rec"
+   },
+   {
+    "slot": "WR",
+    "name": "Luther Burden III",
+    "pos": "WR",
+    "nflTeam": "Chi",
+    "proj": 10.81,
+    "pts": 13.5,
+    "stats": "95 Rec Yds, 8 Rec"
+   },
+   {
+    "slot": "TE",
+    "name": "Harold Fannin Jr.",
+    "pos": "TE",
+    "nflTeam": "Cle",
+    "proj": 8.71,
+    "pts": 1.4,
+    "stats": "9 Rec Yds, 1 Rec"
+   },
+   {
+    "slot": "W/R/T",
+    "name": "J.K. Dobbins",
+    "pos": "RB",
+    "nflTeam": "Den",
+    "proj": 7.77,
+    "pts": 12.1,
+    "stats": "1 Rush TD, 41 Rush Yds, 3 Rec"
+   },
+   {
+    "slot": "W/R/T",
+    "name": "Isaiah Williams",
+    "pos": "WR",
+    "nflTeam": "NYJ",
+    "proj": 6.08,
+    "pts": 0.4,
+    "stats": "4 Rush Yds"
+   },
+   {
+    "slot": "K",
+    "name": "Harrison Butker",
+    "pos": "K",
+    "nflTeam": "KC",
+    "proj": 9.35,
+    "pts": 13.4,
+    "stats": "124 FG Yds, 1 PAT Made"
+   },
+   {
+    "slot": "DEF",
+    "name": "Steelers",
+    "pos": "DEF",
+    "nflTeam": "Pit",
+    "proj": 12.04,
+    "pts": 16,
+    "stats": "5 Sack, 2 Int, 150 Ret Yds"
+   },
+   {
+    "slot": "D",
+    "name": "Arvell Reese",
+    "pos": "LB,DE",
+    "nflTeam": "NYG",
+    "proj": 4.63,
+    "pts": 7,
+    "stats": "4 Tack Solo, 1 Fum Rec, 2 Tack Ast"
+   }
+  ],
+  "bench": [
+   {
+    "slot": "BN",
+    "name": "TreVeyon Henderson",
+    "pos": "RB",
+    "nflTeam": "NE",
+    "proj": 6.01,
+    "pts": 2.5,
+    "stats": "31 Rush Yds, 1 Fum Lost, 9 Rec Yds"
+   },
+   {
+    "slot": "BN",
+    "name": "Kyle Pitts Sr.",
+    "pos": "TE",
+    "nflTeam": "Atl",
+    "proj": 6.42,
+    "pts": 20.5,
+    "stats": "2 Rec TD, 60 Rec Yds, 5 Rec"
+   },
+   {
+    "slot": "BN",
+    "name": "Jameson Williams",
+    "pos": "WR",
+    "nflTeam": "Det",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "BN",
+    "name": "Caleb Williams",
+    "pos": "QB",
+    "nflTeam": "Chi",
+    "proj": 18.62,
+    "pts": 16.5,
+    "stats": "305 Pass Yds, 1 Pass TD, 3 Rush Yds"
+   },
+   {
+    "slot": "BN",
+    "name": "Will Reichard",
+    "pos": "K",
+    "nflTeam": "Min",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "IR",
+    "name": "Jeremiyah Love",
+    "pos": "RB",
+    "nflTeam": "Ari",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "IR",
+    "name": "Alec Pierce",
+    "pos": "WR",
+    "nflTeam": "Ind",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   }
+  ]
+ },
+ "2": {
+  "team_id": "2",
+  "total": 170.18,
+  "starters": [
+   {
+    "slot": "QB",
+    "name": "Jordan Love",
+    "pos": "QB",
+    "nflTeam": "GB",
+    "proj": 20.74,
+    "pts": 21.24,
+    "stats": "276 Pass Yds, 1 Rush TD, 1 Pass TD"
+   },
+   {
+    "slot": "RB",
+    "name": "Braelon Allen",
+    "pos": "RB",
+    "nflTeam": "NYJ",
+    "proj": 12.82,
+    "pts": 11.4,
+    "stats": "78 Rush Yds, 26 Rec Yds, 2 Rec"
+   },
+   {
+    "slot": "RB",
+    "name": "Kenneth Walker III",
+    "pos": "RB",
+    "nflTeam": "KC",
+    "proj": 19.82,
+    "pts": 27.9,
+    "stats": "128 Rush Yds, 2 Rush TD, 11 Rec Yds"
+   },
+   {
+    "slot": "WR",
+    "name": "Matthew Golden",
+    "pos": "WR",
+    "nflTeam": "GB",
+    "proj": 13.94,
+    "pts": 21.4,
+    "stats": "104 Rec Yds, 1 Rec TD, 6 Rec"
+   },
+   {
+    "slot": "WR",
+    "name": "Xavier Worthy",
+    "pos": "WR",
+    "nflTeam": "KC",
+    "proj": 9.8,
+    "pts": 10.8,
+    "stats": "73 Rec Yds, 7 Rec"
+   },
+   {
+    "slot": "TE",
+    "name": "Brock Bowers",
+    "pos": "TE",
+    "nflTeam": "LV",
+    "proj": 14.46,
+    "pts": 9,
+    "stats": "70 Rec Yds, 4 Rec"
+   },
+   {
+    "slot": "W/R/T",
+    "name": "Devaughn Vele",
+    "pos": "WR",
+    "nflTeam": "NO",
+    "proj": 8.97,
+    "pts": 5.7,
+    "stats": "42 Rec Yds, 3 Rec"
+   },
+   {
+    "slot": "W/R/T",
+    "name": "Chuba Hubbard",
+    "pos": "RB",
+    "nflTeam": "Car",
+    "proj": 14.86,
+    "pts": 19.6,
+    "stats": "120 Rush Yds, 1 Rush TD, 1 Rec"
+   },
+   {
+    "slot": "K",
+    "name": "Chris Boswell",
+    "pos": "K",
+    "nflTeam": "Pit",
+    "proj": 8.96,
+    "pts": 19.9,
+    "stats": "169 FG Yds, 2 PAT Made, 1 Tack Solo"
+   },
+   {
+    "slot": "DEF",
+    "name": "Chiefs",
+    "pos": "DEF",
+    "nflTeam": "KC",
+    "proj": 12.33,
+    "pts": 15.74,
+    "stats": "4 Sack, Pts Allow 1-6, 1 Int"
+   },
+   {
+    "slot": "D",
+    "name": "Nakobe Dean",
+    "pos": "LB",
+    "nflTeam": "LV",
+    "proj": 7.39,
+    "pts": 7.5,
+    "stats": "9 Tack Ast, 3 Tack Solo"
+   }
+  ],
+  "bench": [
+   {
+    "slot": "BN",
+    "name": "Brian Robinson Jr.",
+    "pos": "RB",
+    "nflTeam": "Atl",
+    "proj": 6.18,
+    "pts": 2.56,
+    "stats": "2 Rec, 9 Rec Yds, 14 Ret Yds"
+   },
+   {
+    "slot": "BN",
+    "name": "Amon-Ra St. Brown",
+    "pos": "WR",
+    "nflTeam": "Det",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "BN",
+    "name": "Ladd McConkey",
+    "pos": "WR",
+    "nflTeam": "LAC",
+    "proj": 8.33,
+    "pts": 2.2,
+    "stats": "17 Rec Yds, 1 Rec"
+   },
+   {
+    "slot": "BN",
+    "name": "Kendre Miller",
+    "pos": "RB",
+    "nflTeam": "NO",
+    "proj": 7.77,
+    "pts": 8,
+    "stats": "70 Rush Yds, 2 Rec"
+   },
+   {
+    "slot": "BN",
+    "name": "Kimani Vidal",
+    "pos": "RB",
+    "nflTeam": "LAC",
+    "proj": 6.18,
+    "pts": 5.5,
+    "stats": "21 Rush Yds, 19 Rec Yds, 3 Rec"
+   },
+   {
+    "slot": "IR",
+    "name": "Michael Pittman Jr.",
+    "pos": "WR",
+    "nflTeam": "Pit",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "IR",
+    "name": "Christian Kirk",
+    "pos": "WR",
+    "nflTeam": "SF",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   }
+  ]
+ },
+ "3": {
+  "team_id": "3",
+  "total": 96.04,
+  "starters": [
+   {
+    "slot": "QB",
+    "name": "Matthew Stafford",
+    "pos": "QB",
+    "nflTeam": "LAR",
+    "proj": 20.77,
+    "pts": 16.88,
+    "stats": "222 Pass Yds, 2 Pass TD"
+   },
+   {
+    "slot": "RB",
+    "name": "Christian McCaffrey",
+    "pos": "RB",
+    "nflTeam": "SF",
+    "proj": 18.33,
+    "pts": 26.2,
+    "stats": "2 Rush TD, 64 Rush Yds, 53 Rec Yds"
+   },
+   {
+    "slot": "RB",
+    "name": "Keaton Mitchell",
+    "pos": "RB",
+    "nflTeam": "LAC",
+    "proj": 7.75,
+    "pts": 3.88,
+    "stats": "87 Ret Yds, 4 Rush Yds"
+   },
+   {
+    "slot": "WR",
+    "name": "Denzel Boston",
+    "pos": "WR",
+    "nflTeam": "Cle",
+    "proj": 9.77,
+    "pts": 2,
+    "stats": "15 Rec Yds, 1 Rec"
+   },
+   {
+    "slot": "WR",
+    "name": "Terry McLaurin",
+    "pos": "WR",
+    "nflTeam": "Was",
+    "proj": 0,
+    "pts": 3.2,
+    "stats": "27 Rec Yds, 1 Rec"
+   },
+   {
+    "slot": "TE",
+    "name": "Dalton Kincaid",
+    "pos": "TE",
+    "nflTeam": "Buf",
+    "proj": 10.19,
+    "pts": 7.3,
+    "stats": "38 Rec Yds, 7 Rec"
+   },
+   {
+    "slot": "W/R/T",
+    "name": "Josh Downs",
+    "pos": "WR",
+    "nflTeam": "Ind",
+    "proj": 11.57,
+    "pts": 6.7,
+    "stats": "40 Rec Yds, 4 Rec, 7 Rush Yds"
+   },
+   {
+    "slot": "W/R/T",
+    "name": "KC Concepcion Jr.",
+    "pos": "WR",
+    "nflTeam": "Cle",
+    "proj": 9.74,
+    "pts": 6.42,
+    "stats": "37 Rec Yds, 4 Rec, 13 Ret Yds"
+   },
+   {
+    "slot": "K",
+    "name": "Jason Myers",
+    "pos": "K",
+    "nflTeam": "Sea",
+    "proj": 9.24,
+    "pts": 8.9,
+    "stats": "89 FG Yds"
+   },
+   {
+    "slot": "DEF",
+    "name": "Jets",
+    "pos": "DEF",
+    "nflTeam": "NYJ",
+    "proj": 9.58,
+    "pts": 8.56,
+    "stats": "2 Fum Rec, 128 Ret Yds, Pts Allow 21-27"
+   },
+   {
+    "slot": "D",
+    "name": "Roquan Smith",
+    "pos": "LB",
+    "nflTeam": "Bal",
+    "proj": 6.82,
+    "pts": 6,
+    "stats": "3 Tack Solo, 1.0 Sack, 2 Tack Ast"
+   }
+  ],
+  "bench": [
+   {
+    "slot": "BN",
+    "name": "Romeo Doubs",
+    "pos": "WR",
+    "nflTeam": "NE",
+    "proj": 0,
+    "pts": 10.7,
+    "stats": "1 Rec TD, 42 Rec Yds, 1 Rec"
+   },
+   {
+    "slot": "BN",
+    "name": "Malik Washington",
+    "pos": "WR",
+    "nflTeam": "Mia",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "BN",
+    "name": "Ja'Marr Chase",
+    "pos": "WR",
+    "nflTeam": "Cin",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "BN",
+    "name": "Joe Burrow",
+    "pos": "QB",
+    "nflTeam": "Cin",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "BN",
+    "name": "Mike Washington Jr.",
+    "pos": "RB",
+    "nflTeam": "LV",
+    "proj": 4.16,
+    "pts": 5.5,
+    "stats": "43 Rush Yds, 7 Rec Yds, 1 Rec"
+   },
+   {
+    "slot": "IR",
+    "name": "Jadarian Price",
+    "pos": "RB",
+    "nflTeam": "Sea",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   }
+  ]
+ },
+ "4": {
+  "team_id": "4",
+  "total": 81.54,
+  "starters": [
+   {
+    "slot": "QB",
+    "name": "Jayden Daniels",
+    "pos": "QB",
+    "nflTeam": "Was",
+    "proj": 18.84,
+    "pts": 21,
+    "stats": "300 Pass Yds, 2 Pass TD, 10 Rush Yds"
+   },
+   {
+    "slot": "RB",
+    "name": "Austin Ekeler",
+    "pos": "RB",
+    "nflTeam": "Was",
+    "proj": 5.58,
+    "pts": 1.7,
+    "stats": "2 Rec, 4 Rec Yds, 3 Rush Yds"
+   },
+   {
+    "slot": "RB",
+    "name": "Trevor Etienne",
+    "pos": "RB",
+    "nflTeam": "Car",
+    "proj": 5.73,
+    "pts": 3.26,
+    "stats": "84 Ret Yds, -1 Rush Yds"
+   },
+   {
+    "slot": "WR",
+    "name": "CeeDee Lamb",
+    "pos": "WR",
+    "nflTeam": "Dal",
+    "proj": 16.08,
+    "pts": 11.5,
+    "stats": "70 Rec Yds, 9 Rec"
+   },
+   {
+    "slot": "WR",
+    "name": "Emeka Egbuka",
+    "pos": "WR",
+    "nflTeam": "TB",
+    "proj": 8.98,
+    "pts": 14.3,
+    "stats": "1 Rec TD, 48 Rec Yds, 7 Rec"
+   },
+   {
+    "slot": "TE",
+    "name": "Kenyon Sadiq",
+    "pos": "TE",
+    "nflTeam": "NYJ",
+    "proj": 5.16,
+    "pts": 1.7,
+    "stats": "12 Rec Yds, 1 Rec"
+   },
+   {
+    "slot": "W/R/T",
+    "name": "Brian Thomas Jr.",
+    "pos": "WR",
+    "nflTeam": "Jax",
+    "proj": 5.51,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "W/R/T",
+    "name": "Malachi Fields",
+    "pos": "WR",
+    "nflTeam": "NYG",
+    "proj": 4.91,
+    "pts": 4.9,
+    "stats": "2 Tack Solo, 19 Rec Yds, 2 Rec"
+   },
+   {
+    "slot": "K",
+    "name": "Brandon Aubrey",
+    "pos": "K",
+    "nflTeam": "Dal",
+    "proj": 10.1,
+    "pts": 1,
+    "stats": "1 PAT Made"
+   },
+   {
+    "slot": "DEF",
+    "name": "Broncos",
+    "pos": "DEF",
+    "nflTeam": "Den",
+    "proj": 10.25,
+    "pts": 15.18,
+    "stats": "5 Sack, 2 Int, 1 Fum Rec"
+   },
+   {
+    "slot": "D",
+    "name": "Fred Warner",
+    "pos": "LB",
+    "nflTeam": "SF",
+    "proj": 6.75,
+    "pts": 7,
+    "stats": "6 Tack Solo, 2 Tack Ast"
+   }
+  ],
+  "bench": [
+   {
+    "slot": "BN",
+    "name": "Quinshon Judkins",
+    "pos": "RB",
+    "nflTeam": "Cle",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "BN",
+    "name": "Tyler Warren",
+    "pos": "TE",
+    "nflTeam": "Ind",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "BN",
+    "name": "Ollie Gordon II",
+    "pos": "RB",
+    "nflTeam": "Mia",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "BN",
+    "name": "Justin Jefferson",
+    "pos": "WR",
+    "nflTeam": "Min",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "BN",
+    "name": "(Empty)",
+    "pos": "",
+    "nflTeam": "",
+    "proj": 0,
+    "pts": 0,
+    "stats": "",
+    "empty": true
+   },
+   {
+    "slot": "IR",
+    "name": "J. Croskey-Merritt",
+    "pos": "RB",
+    "nflTeam": "Was",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   }
+  ]
+ },
+ "5": {
+  "team_id": "5",
+  "total": 95.16,
+  "starters": [
+   {
+    "slot": "QB",
+    "name": "Patrick Mahomes",
+    "pos": "QB",
+    "nflTeam": "KC",
+    "proj": 18.06,
+    "pts": 11.48,
+    "stats": "272 Pass Yds, 16 Rush Yds, 1 Int"
+   },
+   {
+    "slot": "RB",
+    "name": "Derrick Henry",
+    "pos": "RB",
+    "nflTeam": "Bal",
+    "proj": 17.98,
+    "pts": 4.5,
+    "stats": "58 Rush Yds, 1 Fum Lost, 1 Rec"
+   },
+   {
+    "slot": "RB",
+    "name": "Emanuel Wilson",
+    "pos": "RB",
+    "nflTeam": "Sea",
+    "proj": 12.14,
+    "pts": 5.2,
+    "stats": "52 Rush Yds"
+   },
+   {
+    "slot": "WR",
+    "name": "Drake London",
+    "pos": "WR",
+    "nflTeam": "Atl",
+    "proj": 15.71,
+    "pts": 10.2,
+    "stats": "62 Rec Yds, 4 Rec, 1 2-PT"
+   },
+   {
+    "slot": "WR",
+    "name": "Chris Olave",
+    "pos": "WR",
+    "nflTeam": "NO",
+    "proj": 13.95,
+    "pts": 12.3,
+    "stats": "1 Rec TD, 43 Rec Yds, 4 Rec"
+   },
+   {
+    "slot": "TE",
+    "name": "Dallas Goedert",
+    "pos": "TE",
+    "nflTeam": "Phi",
+    "proj": 8.59,
+    "pts": 9.1,
+    "stats": "61 Rec Yds, 6 Rec"
+   },
+   {
+    "slot": "W/R/T",
+    "name": "Khalil Shakir",
+    "pos": "WR",
+    "nflTeam": "Buf",
+    "proj": 9.9,
+    "pts": 11.4,
+    "stats": "1 Rec TD, 34 Rec Yds, 4 Rec"
+   },
+   {
+    "slot": "W/R/T",
+    "name": "Tyler Higbee",
+    "pos": "TE",
+    "nflTeam": "LAR",
+    "proj": 7.42,
+    "pts": 2.2,
+    "stats": "22 Rec Yds, 4 Rec, 1 Fum Lost"
+   },
+   {
+    "slot": "K",
+    "name": "Matt Gay",
+    "pos": "K",
+    "nflTeam": "LV",
+    "proj": 9.17,
+    "pts": 12.5,
+    "stats": "85 FG Yds, 3 PAT Made, 1 Tack Solo"
+   },
+   {
+    "slot": "DEF",
+    "name": "Patriots",
+    "pos": "DEF",
+    "nflTeam": "NE",
+    "proj": 12.41,
+    "pts": 10.78,
+    "stats": "3 Sack, 139 Ret Yds, 1 Int"
+   },
+   {
+    "slot": "D",
+    "name": "Devin Lloyd",
+    "pos": "LB",
+    "nflTeam": "Car",
+    "proj": 7.91,
+    "pts": 5.5,
+    "stats": "3 Tack Solo, 1.0 Sack, 1 Tack Ast"
+   }
+  ],
+  "bench": [
+   {
+    "slot": "BN",
+    "name": "Breece Hall",
+    "pos": "RB",
+    "nflTeam": "NYJ",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "BN",
+    "name": "Jacoby Brissett",
+    "pos": "QB",
+    "nflTeam": "Ari",
+    "proj": 16.02,
+    "pts": 7.92,
+    "stats": "218 Pass Yds, 1 Int, 2 Rush Yds"
+   },
+   {
+    "slot": "BN",
+    "name": "Deebo Samuel Sr.",
+    "pos": "WR",
+    "nflTeam": "SF",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "BN",
+    "name": "Aaron Jones Sr.",
+    "pos": "RB",
+    "nflTeam": "Min",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "BN",
+    "name": "Marvin Harrison Jr.",
+    "pos": "WR",
+    "nflTeam": "Hou",
+    "proj": 3.4,
+    "pts": 4.9,
+    "stats": "34 Rec Yds, 3 Rec"
+   },
+   {
+    "slot": "IR",
+    "name": "(Empty)",
+    "pos": "",
+    "nflTeam": "",
+    "proj": 0,
+    "pts": 0,
+    "stats": "",
+    "empty": true
+   }
+  ]
+ },
+ "6": {
+  "team_id": "6",
+  "total": 140.72,
+  "starters": [
+   {
+    "slot": "QB",
+    "name": "C.J. Stroud",
+    "pos": "QB",
+    "nflTeam": "Hou",
+    "proj": 16.5,
+    "pts": 23.98,
+    "stats": "312 Pass Yds, 3 Pass TD, 1 Int"
+   },
+   {
+    "slot": "RB",
+    "name": "James Cook III",
+    "pos": "RB",
+    "nflTeam": "Buf",
+    "proj": 16.44,
+    "pts": 22.8,
+    "stats": "95 Rush Yds, 1 Rush TD, 58 Rec Yds"
+   },
+   {
+    "slot": "RB",
+    "name": "RJ Harvey",
+    "pos": "RB",
+    "nflTeam": "Den",
+    "proj": 8.43,
+    "pts": 13.1,
+    "stats": "1 Rush TD, 31 Rec Yds, 25 Rush Yds"
+   },
+   {
+    "slot": "WR",
+    "name": "Jaxon Smith-Njigba",
+    "pos": "WR",
+    "nflTeam": "Sea",
+    "proj": 19.42,
+    "pts": 20.4,
+    "stats": "134 Rec Yds, 12 Rec"
+   },
+   {
+    "slot": "WR",
+    "name": "Michael Wilson",
+    "pos": "WR",
+    "nflTeam": "Ari",
+    "proj": 11.19,
+    "pts": 5.2,
+    "stats": "32 Rec Yds, 4 Rec"
+   },
+   {
+    "slot": "TE",
+    "name": "Travis Kelce",
+    "pos": "TE",
+    "nflTeam": "KC",
+    "proj": 10.73,
+    "pts": 7.3,
+    "stats": "53 Rec Yds, 4 Rec"
+   },
+   {
+    "slot": "W/R/T",
+    "name": "Parker Washington",
+    "pos": "WR",
+    "nflTeam": "Jax",
+    "proj": 13.49,
+    "pts": 8.68,
+    "stats": "64 Rec Yds, 4 Rec, 7 Ret Yds"
+   },
+   {
+    "slot": "W/R/T",
+    "name": "DK Metcalf",
+    "pos": "WR",
+    "nflTeam": "Pit",
+    "proj": 10.4,
+    "pts": 14.8,
+    "stats": "93 Rec Yds, 11 Rec"
+   },
+   {
+    "slot": "K",
+    "name": "Eddy Pineiro",
+    "pos": "K",
+    "nflTeam": "SF",
+    "proj": 10.02,
+    "pts": 5.3,
+    "stats": "33 FG Yds, 2 PAT Made"
+   },
+   {
+    "slot": "DEF",
+    "name": "Ravens",
+    "pos": "DEF",
+    "nflTeam": "Bal",
+    "proj": 11.66,
+    "pts": 11.16,
+    "stats": "5 Sack, Pts Allow 7-13, Yds Allow 200-299"
+   },
+   {
+    "slot": "D",
+    "name": "Nate Landman",
+    "pos": "LB",
+    "nflTeam": "LAR",
+    "proj": 6.94,
+    "pts": 8,
+    "stats": "6 Tack Solo, 4 Tack Ast"
+   }
+  ],
+  "bench": [
+   {
+    "slot": "BN",
+    "name": "Alvin Kamara",
+    "pos": "RB",
+    "nflTeam": "NO",
+    "proj": 8.34,
+    "pts": 13.9,
+    "stats": "1 Rec TD, 35 Rec Yds, 34 Rush Yds"
+   },
+   {
+    "slot": "BN",
+    "name": "Jaylen Wright",
+    "pos": "RB",
+    "nflTeam": "Mia",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "BN",
+    "name": "Tyreek Hill",
+    "pos": "WR",
+    "nflTeam": "Mia",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "BN",
+    "name": "Keenan Allen",
+    "pos": "WR",
+    "nflTeam": "Ind",
+    "proj": 9.48,
+    "pts": 12.2,
+    "stats": "82 Rec Yds, 8 Rec"
+   },
+   {
+    "slot": "BN",
+    "name": "Stefon Diggs",
+    "pos": "WR",
+    "nflTeam": "Was",
+    "proj": 8.62,
+    "pts": 13.4,
+    "stats": "1 Rec TD, 44 Rec Yds, 6 Rec"
+   },
+   {
+    "slot": "IR",
+    "name": "Jonathon Brooks",
+    "pos": "RB",
+    "nflTeam": "Car",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   }
+  ]
+ },
+ "7": {
+  "team_id": "7",
+  "total": 75.04,
+  "starters": [
+   {
+    "slot": "QB",
+    "name": "Drake Maye",
+    "pos": "QB",
+    "nflTeam": "NE",
+    "proj": 20.48,
+    "pts": 23.8,
+    "stats": "3 Pass TD, 235 Pass Yds, 24 Rush Yds"
+   },
+   {
+    "slot": "RB",
+    "name": "Woody Marks",
+    "pos": "RB",
+    "nflTeam": "Hou",
+    "proj": 11.9,
+    "pts": 9.1,
+    "stats": "56 Rush Yds, 25 Rec Yds, 2 Rec"
+   },
+   {
+    "slot": "RB",
+    "name": "Najee Harris",
+    "pos": "RB",
+    "nflTeam": "NYG",
+    "proj": 7.6,
+    "pts": 0.2,
+    "stats": "2 Rush Yds"
+   },
+   {
+    "slot": "WR",
+    "name": "Wan'Dale Robinson",
+    "pos": "WR",
+    "nflTeam": "Ten",
+    "proj": 8.17,
+    "pts": 3.7,
+    "stats": "22 Rec Yds, 3 Rec"
+   },
+   {
+    "slot": "WR",
+    "name": "Kalif Raymond",
+    "pos": "WR",
+    "nflTeam": "Chi",
+    "proj": 7.07,
+    "pts": 4.96,
+    "stats": "54 Ret Yds, 18 Rec Yds, 2 Rec"
+   },
+   {
+    "slot": "TE",
+    "name": "Pat Freiermuth",
+    "pos": "TE",
+    "nflTeam": "Pit",
+    "proj": 7.73,
+    "pts": 2.1,
+    "stats": "11 Rec Yds, 2 Rec"
+   },
+   {
+    "slot": "W/R/T",
+    "name": "George Pickens",
+    "pos": "WR",
+    "nflTeam": "Dal",
+    "proj": 12.32,
+    "pts": 11.3,
+    "stats": "73 Rec Yds, 6 Rec, 1 Tack Solo"
+   },
+   {
+    "slot": "W/R/T",
+    "name": "Brandin Cooks",
+    "pos": "WR",
+    "nflTeam": "SF",
+    "proj": 4.02,
+    "pts": 1.8,
+    "stats": "13 Rec Yds, 1 Rec"
+   },
+   {
+    "slot": "K",
+    "name": "Dominic Zvada",
+    "pos": "K",
+    "nflTeam": "NYG",
+    "proj": 8.26,
+    "pts": 8.5,
+    "stats": "75 FG Yds, 1 PAT Made"
+   },
+   {
+    "slot": "DEF",
+    "name": "Seahawks",
+    "pos": "DEF",
+    "nflTeam": "Sea",
+    "proj": 9.78,
+    "pts": 9.58,
+    "stats": "Yds Allow 100-199, 129 Ret Yds, 2 Sack"
+   },
+   {
+    "slot": "D",
+    "name": "(Empty)",
+    "pos": "",
+    "nflTeam": "",
+    "proj": 0,
+    "pts": 0,
+    "stats": "",
+    "empty": true
+   }
+  ],
+  "bench": [
+   {
+    "slot": "BN",
+    "name": "DJ Moore",
+    "pos": "WR",
+    "nflTeam": "Buf",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "BN",
+    "name": "Chase Brown",
+    "pos": "RB",
+    "nflTeam": "Cin",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "BN",
+    "name": "T.J. Hockenson",
+    "pos": "TE",
+    "nflTeam": "Min",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "BN",
+    "name": "Roschon Johnson",
+    "pos": "RB",
+    "nflTeam": "Chi",
+    "proj": 5.86,
+    "pts": 13.5,
+    "stats": "1 Rush TD, 51 Rush Yds, 34 Rec Yds"
+   },
+   {
+    "slot": "BN",
+    "name": "Samaje Perine",
+    "pos": "RB",
+    "nflTeam": "Cin",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "BN",
+    "name": "Jaleel McLaughlin",
+    "pos": "RB",
+    "nflTeam": "Cle",
+    "proj": 8.65,
+    "pts": 7.5,
+    "stats": "41 Rush Yds, 4 Rec, 14 Rec Yds"
+   },
+   {
+    "slot": "IR",
+    "name": "Jordan Mason",
+    "pos": "RB",
+    "nflTeam": "Min",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "IR",
+    "name": "Zach Charbonnet",
+    "pos": "RB",
+    "nflTeam": "Sea",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   }
+  ]
+ },
+ "8": {
+  "team_id": "8",
+  "total": 120.58,
+  "starters": [
+   {
+    "slot": "QB",
+    "name": "Aaron Rodgers",
+    "pos": "QB",
+    "nflTeam": "Pit",
+    "proj": 16.51,
+    "pts": 17.02,
+    "stats": "253 Pass Yds, 2 Pass TD, 1 Int"
+   },
+   {
+    "slot": "RB",
+    "name": "Jonathan Taylor",
+    "pos": "RB",
+    "nflTeam": "Ind",
+    "proj": 18.47,
+    "pts": 20.1,
+    "stats": "94 Rush Yds, 1 Rush TD, 57 Rec Yds"
+   },
+   {
+    "slot": "RB",
+    "name": "Tyler Allgeier",
+    "pos": "RB",
+    "nflTeam": "Ari",
+    "proj": 11.01,
+    "pts": 5.3,
+    "stats": "38 Rush Yds, 10 Rec Yds, 1 Rec"
+   },
+   {
+    "slot": "WR",
+    "name": "Garrett Wilson",
+    "pos": "WR",
+    "nflTeam": "NYJ",
+    "proj": 12.98,
+    "pts": 6.4,
+    "stats": "44 Rec Yds, 4 Rec"
+   },
+   {
+    "slot": "WR",
+    "name": "Keon Coleman",
+    "pos": "WR",
+    "nflTeam": "Buf",
+    "proj": 8.35,
+    "pts": 13.9,
+    "stats": "1 Rec TD, 59 Rec Yds, 4 Rec"
+   },
+   {
+    "slot": "TE",
+    "name": "George Kittle",
+    "pos": "TE",
+    "nflTeam": "SF",
+    "proj": 12.56,
+    "pts": 15.4,
+    "stats": "69 Rec Yds, 1 Rec TD, 5 Rec"
+   },
+   {
+    "slot": "W/R/T",
+    "name": "DeVonta Smith",
+    "pos": "WR",
+    "nflTeam": "Phi",
+    "proj": 11.15,
+    "pts": 17,
+    "stats": "75 Rec Yds, 1 Rec TD, 7 Rec"
+   },
+   {
+    "slot": "W/R/T",
+    "name": "KaVontae Turpin",
+    "pos": "WR",
+    "nflTeam": "Dal",
+    "proj": 6.91,
+    "pts": 1,
+    "stats": "25 Ret Yds"
+   },
+   {
+    "slot": "K",
+    "name": "Cameron Dicker",
+    "pos": "K",
+    "nflTeam": "LAC",
+    "proj": 7.8,
+    "pts": 5.3,
+    "stats": "53 FG Yds"
+   },
+   {
+    "slot": "DEF",
+    "name": "Colts",
+    "pos": "DEF",
+    "nflTeam": "Ind",
+    "proj": 12.43,
+    "pts": 8.16,
+    "stats": "Yds Allow 100-199, 108 Ret Yds, 1 Int"
+   },
+   {
+    "slot": "D",
+    "name": "Carson Schwesinger",
+    "pos": "LB",
+    "nflTeam": "Cle",
+    "proj": 6.06,
+    "pts": 11,
+    "stats": "5 Tack Solo, 8 Tack Ast, 1 Fum Force"
+   }
+  ],
+  "bench": [
+   {
+    "slot": "BN",
+    "name": "Kenny Gainwell",
+    "pos": "RB",
+    "nflTeam": "TB",
+    "proj": 8.26,
+    "pts": 4.94,
+    "stats": "51 Ret Yds, 17 Rush Yds, 7 Rec Yds"
+   },
+   {
+    "slot": "BN",
+    "name": "Tee Higgins",
+    "pos": "WR",
+    "nflTeam": "Cin",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "BN",
+    "name": "Rico Dowdle",
+    "pos": "RB",
+    "nflTeam": "Pit",
+    "proj": 6.55,
+    "pts": 6.4,
+    "stats": "40 Rush Yds, 3 Rec, 9 Rec Yds"
+   },
+   {
+    "slot": "BN",
+    "name": "Justice Hill",
+    "pos": "RB",
+    "nflTeam": "Bal",
+    "proj": 5.19,
+    "pts": 2.4,
+    "stats": "3 Rec, 9 Rec Yds"
+   },
+   {
+    "slot": "BN",
+    "name": "Vikings",
+    "pos": "DEF",
+    "nflTeam": "Min",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "IR",
+    "name": "Lamar Jackson",
+    "pos": "QB",
+    "nflTeam": "Bal",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   }
+  ]
+ },
+ "9": {
+  "team_id": "9",
+  "total": 108.62,
+  "starters": [
+   {
+    "slot": "QB",
+    "name": "Geno Smith",
+    "pos": "QB",
+    "nflTeam": "NYJ",
+    "proj": 13.85,
+    "pts": 12.98,
+    "stats": "252 Pass Yds, 1 Pass TD, 1 Int"
+   },
+   {
+    "slot": "RB",
+    "name": "Rhamondre Stevenson",
+    "pos": "RB",
+    "nflTeam": "NE",
+    "proj": 13.41,
+    "pts": 3.6,
+    "stats": "36 Rush Yds"
+   },
+   {
+    "slot": "RB",
+    "name": "MarShawn Lloyd",
+    "pos": "RB",
+    "nflTeam": "GB",
+    "proj": 10.83,
+    "pts": 1,
+    "stats": "10 Rush Yds"
+   },
+   {
+    "slot": "WR",
+    "name": "Davante Adams",
+    "pos": "WR",
+    "nflTeam": "LAR",
+    "proj": 0,
+    "pts": 5.4,
+    "stats": "39 Rec Yds, 3 Rec"
+   },
+   {
+    "slot": "WR",
+    "name": "Puka Nacua",
+    "pos": "WR",
+    "nflTeam": "LAR",
+    "proj": 20.27,
+    "pts": 11,
+    "stats": "80 Rec Yds, 6 Rec"
+   },
+   {
+    "slot": "TE",
+    "name": "Hunter Henry",
+    "pos": "TE",
+    "nflTeam": "NE",
+    "proj": 6.65,
+    "pts": 13.8,
+    "stats": "1 Rec TD, 48 Rec Yds, 4 Rec"
+   },
+   {
+    "slot": "W/R/T",
+    "name": "Tre Tucker",
+    "pos": "WR",
+    "nflTeam": "LV",
+    "proj": 8.88,
+    "pts": 24.2,
+    "stats": "2 Rec TD, 97 Rec Yds, 5 Rec"
+   },
+   {
+    "slot": "W/R/T",
+    "name": "Emmett Johnson",
+    "pos": "RB",
+    "nflTeam": "KC",
+    "proj": 5.14,
+    "pts": 5.4,
+    "stats": "50 Ret Yds, 18 Rec Yds, 2 Rec"
+   },
+   {
+    "slot": "K",
+    "name": "Tyler Bass",
+    "pos": "K",
+    "nflTeam": "Buf",
+    "proj": 9.69,
+    "pts": 18.7,
+    "stats": "157 FG Yds, 3 PAT Made"
+   },
+   {
+    "slot": "DEF",
+    "name": "Rams",
+    "pos": "DEF",
+    "nflTeam": "LAR",
+    "proj": 11.03,
+    "pts": 6.04,
+    "stats": "1 Int, Pts Allow 14-20, 52 Ret Yds"
+   },
+   {
+    "slot": "D",
+    "name": "Kyle Hamilton",
+    "pos": "S",
+    "nflTeam": "Bal",
+    "proj": 6.33,
+    "pts": 6.5,
+    "stats": "6 Tack Solo, 1 Tack Ast"
+   }
+  ],
+  "bench": [
+   {
+    "slot": "BN",
+    "name": "Darnell Mooney",
+    "pos": "WR",
+    "nflTeam": "NYG",
+    "proj": 4.48,
+    "pts": 2,
+    "stats": "20 Rush Yds"
+   },
+   {
+    "slot": "BN",
+    "name": "Jauan Jennings",
+    "pos": "WR",
+    "nflTeam": "Min",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "BN",
+    "name": "Sam LaPorta",
+    "pos": "TE",
+    "nflTeam": "Det",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "BN",
+    "name": "Jerry Jeudy",
+    "pos": "WR",
+    "nflTeam": "Cle",
+    "proj": 3.41,
+    "pts": 8.9,
+    "stats": "69 Rec Yds, 4 Rec"
+   },
+   {
+    "slot": "BN",
+    "name": "(Empty)",
+    "pos": "",
+    "nflTeam": "",
+    "proj": 0,
+    "pts": 0,
+    "stats": "",
+    "empty": true
+   },
+   {
+    "slot": "IR",
+    "name": "De'Von Achane",
+    "pos": "RB",
+    "nflTeam": "Mia",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   }
+  ]
+ },
+ "10": {
+  "team_id": "10",
+  "total": 125.16,
+  "starters": [
+   {
+    "slot": "QB",
+    "name": "Josh Allen",
+    "pos": "QB",
+    "nflTeam": "Buf",
+    "proj": 26.17,
+    "pts": 18.3,
+    "stats": "255 Pass Yds, 2 Pass TD, 1 Rush Yds"
+   },
+   {
+    "slot": "RB",
+    "name": "Kyren Williams",
+    "pos": "RB",
+    "nflTeam": "LAR",
+    "proj": 18.62,
+    "pts": 8.2,
+    "stats": "50 Rush Yds, 17 Rec Yds, 3 Rec"
+   },
+   {
+    "slot": "RB",
+    "name": "Tony Pollard",
+    "pos": "RB",
+    "nflTeam": "Ten",
+    "proj": 10.73,
+    "pts": 8.6,
+    "stats": "76 Rush Yds, 1 Tack Solo"
+   },
+   {
+    "slot": "WR",
+    "name": "Malik Nabers",
+    "pos": "WR",
+    "nflTeam": "NYG",
+    "proj": 12.5,
+    "pts": 25.5,
+    "stats": "165 Rec Yds, 12 Rec, 1 Tack Solo"
+   },
+   {
+    "slot": "WR",
+    "name": "Jakobi Meyers",
+    "pos": "WR",
+    "nflTeam": "Jax",
+    "proj": 7.36,
+    "pts": 10.8,
+    "stats": "83 Rec Yds, 5 Rec"
+   },
+   {
+    "slot": "TE",
+    "name": "Jake Ferguson",
+    "pos": "TE",
+    "nflTeam": "Dal",
+    "proj": 6.59,
+    "pts": 3.3,
+    "stats": "13 Rec Yds, 2 Rec, 1 Tack Solo"
+   },
+   {
+    "slot": "W/R/T",
+    "name": "Rashid Shaheed",
+    "pos": "WR",
+    "nflTeam": "Sea",
+    "proj": 7.91,
+    "pts": 14.94,
+    "stats": "66 Rec Yds, 116 Ret Yds, 5 Rec"
+   },
+   {
+    "slot": "W/R/T",
+    "name": "Cooper Kupp",
+    "pos": "WR",
+    "nflTeam": "Sea",
+    "proj": 5.18,
+    "pts": 7.5,
+    "stats": "50 Rec Yds, 5 Rec"
+   },
+   {
+    "slot": "K",
+    "name": "Tyler Loop",
+    "pos": "K",
+    "nflTeam": "Bal",
+    "proj": 8.81,
+    "pts": 4.4,
+    "stats": "34 FG Yds, 1 PAT Made"
+   },
+   {
+    "slot": "DEF",
+    "name": "Saints",
+    "pos": "DEF",
+    "nflTeam": "NO",
+    "proj": 11.25,
+    "pts": 17.62,
+    "stats": "3 Int, 5 Sack, 181 Ret Yds"
+   },
+   {
+    "slot": "D",
+    "name": "Foyesade Oluokun",
+    "pos": "LB",
+    "nflTeam": "Jax",
+    "proj": 6.57,
+    "pts": 6,
+    "stats": "4 Tack Solo, 4 Tack Ast"
+   }
+  ],
+  "bench": [
+   {
+    "slot": "BN",
+    "name": "Jahmyr Gibbs",
+    "pos": "RB",
+    "nflTeam": "Det",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "BN",
+    "name": "Xavier Hutchinson",
+    "pos": "WR",
+    "nflTeam": "Hou",
+    "proj": 3.42,
+    "pts": 4.08,
+    "stats": "52 Ret Yds, 2 Rec, 10 Rec Yds"
+   },
+   {
+    "slot": "BN",
+    "name": "Tyler Shough",
+    "pos": "QB",
+    "nflTeam": "NO",
+    "proj": 17.79,
+    "pts": 26.96,
+    "stats": "3 Pass TD, 1 Rush TD, 144 Pass Yds"
+   },
+   {
+    "slot": "BN",
+    "name": "Skyy Moore",
+    "pos": "WR",
+    "nflTeam": "GB",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "BN",
+    "name": "Joe Mixon",
+    "pos": "RB",
+    "nflTeam": "Hou",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "BN",
+    "name": "(Empty)",
+    "pos": "",
+    "nflTeam": "",
+    "proj": 0,
+    "pts": 0,
+    "stats": "",
+    "empty": true
+   },
+   {
+    "slot": "IR",
+    "name": "(Empty)",
+    "pos": "",
+    "nflTeam": "",
+    "proj": 0,
+    "pts": 0,
+    "stats": "",
+    "empty": true
+   },
+   {
+    "slot": "IR",
+    "name": "(Empty)",
+    "pos": "",
+    "nflTeam": "",
+    "proj": 0,
+    "pts": 0,
+    "stats": "",
+    "empty": true
+   }
+  ]
+ },
+ "11": {
+  "team_id": "11",
+  "total": 116.32,
+  "starters": [
+   {
+    "slot": "QB",
+    "name": "Bryce Young",
+    "pos": "QB",
+    "nflTeam": "Car",
+    "proj": 16.94,
+    "pts": 19.84,
+    "stats": "281 Pass Yds, 2 Pass TD, 6 Rush Yds"
+   },
+   {
+    "slot": "RB",
+    "name": "Cam Skattebo",
+    "pos": "RB",
+    "nflTeam": "NYG",
+    "proj": 10.24,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "RB",
+    "name": "Javonte Williams",
+    "pos": "RB",
+    "nflTeam": "Dal",
+    "proj": 14.95,
+    "pts": 12,
+    "stats": "1 Rush TD, 41 Rush Yds, 2 Rec"
+   },
+   {
+    "slot": "WR",
+    "name": "Rome Odunze",
+    "pos": "WR",
+    "nflTeam": "Chi",
+    "proj": 8.6,
+    "pts": 5.4,
+    "stats": "39 Rec Yds, 3 Rec"
+   },
+   {
+    "slot": "WR",
+    "name": "Tetairoa McMillan",
+    "pos": "WR",
+    "nflTeam": "Car",
+    "proj": 11.66,
+    "pts": 11.6,
+    "stats": "86 Rec Yds, 6 Rec"
+   },
+   {
+    "slot": "TE",
+    "name": "Trey McBride",
+    "pos": "TE",
+    "nflTeam": "Ari",
+    "proj": 13.08,
+    "pts": 9.8,
+    "stats": "53 Rec Yds, 7 Rec, 1 Tack Solo"
+   },
+   {
+    "slot": "W/R/T",
+    "name": "Jalen Coker",
+    "pos": "WR",
+    "nflTeam": "Car",
+    "proj": 10.46,
+    "pts": 12.7,
+    "stats": "97 Rec Yds, 6 Rec"
+   },
+   {
+    "slot": "W/R/T",
+    "name": "Brenton Strange",
+    "pos": "TE",
+    "nflTeam": "Jax",
+    "proj": 8.02,
+    "pts": 6.9,
+    "stats": "44 Rec Yds, 5 Rec"
+   },
+   {
+    "slot": "K",
+    "name": "Trey Smack",
+    "pos": "K",
+    "nflTeam": "GB",
+    "proj": 9.22,
+    "pts": 11.8,
+    "stats": "98 FG Yds, 2 PAT Made"
+   },
+   {
+    "slot": "DEF",
+    "name": "Bills",
+    "pos": "DEF",
+    "nflTeam": "Buf",
+    "proj": 9.76,
+    "pts": 6.38,
+    "stats": "169 Ret Yds, 1 Int, Yds Allow 300-399"
+   },
+   {
+    "slot": "D",
+    "name": "Travis Hunter",
+    "pos": "WR,CB",
+    "nflTeam": "Jax",
+    "proj": 3.51,
+    "pts": 19.9,
+    "stats": "1 Rec TD, 59 Rec Yds, 1 Int"
+   }
+  ],
+  "bench": [
+   {
+    "slot": "BN",
+    "name": "Rashee Rice",
+    "pos": "WR",
+    "nflTeam": "KC",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "BN",
+    "name": "Dalton Schultz",
+    "pos": "TE",
+    "nflTeam": "Hou",
+    "proj": 6.56,
+    "pts": 5.3,
+    "stats": "33 Rec Yds, 4 Rec"
+   },
+   {
+    "slot": "BN",
+    "name": "Cody White",
+    "pos": "WR",
+    "nflTeam": "LV",
+    "proj": 4.12,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "BN",
+    "name": "Jared Goff",
+    "pos": "QB",
+    "nflTeam": "Det",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "BN",
+    "name": "Brycen Tremayne",
+    "pos": "WR",
+    "nflTeam": "Car",
+    "proj": 2.83,
+    "pts": 1.5,
+    "stats": "1 Tack Solo, 1 Tack Ast"
+   },
+   {
+    "slot": "IR",
+    "name": "Travis Etienne Jr.",
+    "pos": "RB",
+    "nflTeam": "NO",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   }
+  ]
+ },
+ "12": {
+  "team_id": "12",
+  "total": 164.8,
+  "starters": [
+   {
+    "slot": "QB",
+    "name": "Trevor Lawrence",
+    "pos": "QB",
+    "nflTeam": "Jax",
+    "proj": 17.7,
+    "pts": 28.34,
+    "stats": "4 Pass TD, 306 Pass Yds, 11 Rush Yds"
+   },
+   {
+    "slot": "RB",
+    "name": "Ashton Jeanty",
+    "pos": "RB",
+    "nflTeam": "LV",
+    "proj": 14.85,
+    "pts": 13.8,
+    "stats": "1 Rush TD, 36 Rec Yds, 22 Rush Yds"
+   },
+   {
+    "slot": "RB",
+    "name": "Dameon Pierce",
+    "pos": "RB",
+    "nflTeam": "Phi",
+    "proj": 10.85,
+    "pts": 13,
+    "stats": "1 Rush TD, 35 Rush Yds, 4 Rec"
+   },
+   {
+    "slot": "WR",
+    "name": "Nico Collins",
+    "pos": "WR",
+    "nflTeam": "Hou",
+    "proj": 14.36,
+    "pts": 9.4,
+    "stats": "74 Rec Yds, 3 Rec, 5 Rush Yds"
+   },
+   {
+    "slot": "WR",
+    "name": "Carnell Tate",
+    "pos": "WR",
+    "nflTeam": "Ten",
+    "proj": 9.39,
+    "pts": 16,
+    "stats": "70 Rec Yds, 1 Rec TD, 6 Rec"
+   },
+   {
+    "slot": "TE",
+    "name": "Isaiah Likely",
+    "pos": "TE",
+    "nflTeam": "NYG",
+    "proj": 11.24,
+    "pts": 20.9,
+    "stats": "99 Rec Yds, 1 Rec TD, 6 Rec"
+   },
+   {
+    "slot": "W/R/T",
+    "name": "Mike Evans",
+    "pos": "WR",
+    "nflTeam": "SF",
+    "proj": 13.74,
+    "pts": 10.9,
+    "stats": "94 Rec Yds, 3 Rec"
+   },
+   {
+    "slot": "W/R/T",
+    "name": "Jaylin Noel",
+    "pos": "WR",
+    "nflTeam": "Hou",
+    "proj": 5.99,
+    "pts": 22.38,
+    "stats": "107 Rec Yds, 1 Rec TD, 67 Ret Yds"
+   },
+   {
+    "slot": "K",
+    "name": "Ka'imi Fairbairn",
+    "pos": "K",
+    "nflTeam": "Hou",
+    "proj": 8.83,
+    "pts": 11.9,
+    "stats": "74 FG Yds, 4 PAT Made, 1 Tack Ast"
+   },
+   {
+    "slot": "DEF",
+    "name": "49ers",
+    "pos": "DEF",
+    "nflTeam": "SF",
+    "proj": 10.74,
+    "pts": 8.68,
+    "stats": "4 Sack, Pts Allow 14-20, 84 Ret Yds"
+   },
+   {
+    "slot": "D",
+    "name": "Evan Williams",
+    "pos": "DB,S",
+    "nflTeam": "GB",
+    "proj": 7.05,
+    "pts": 9.5,
+    "stats": "5 Tack Solo, 1 Int, 1 Pass Def"
+   }
+  ],
+  "bench": [
+   {
+    "slot": "BN",
+    "name": "Makai Lemon",
+    "pos": "WR",
+    "nflTeam": "Phi",
+    "proj": 4.57,
+    "pts": 3.4,
+    "stats": "19 Rec Yds, 3 Rec"
+   },
+   {
+    "slot": "BN",
+    "name": "Kaelon Black",
+    "pos": "RB",
+    "nflTeam": "SF",
+    "proj": 5.48,
+    "pts": 4.2,
+    "stats": "34 Rush Yds, 1 Rec, 3 Rec Yds"
+   },
+   {
+    "slot": "BN",
+    "name": "Antonio Williams",
+    "pos": "WR",
+    "nflTeam": "Was",
+    "proj": 4.29,
+    "pts": 6.5,
+    "stats": "50 Rec Yds, 3 Rec"
+   },
+   {
+    "slot": "BN",
+    "name": "Josh Cameron",
+    "pos": "WR",
+    "nflTeam": "Jax",
+    "proj": 3.65,
+    "pts": 1.84,
+    "stats": "46 Ret Yds"
+   },
+   {
+    "slot": "BN",
+    "name": "Jordan Addison",
+    "pos": "WR",
+    "nflTeam": "Min",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "IR",
+    "name": "Saquon Barkley",
+    "pos": "RB",
+    "nflTeam": "Phi",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "IR",
+    "name": "Tank Dell",
+    "pos": "WR",
+    "nflTeam": "Hou",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   }
+  ]
+ },
+ "13": {
+  "team_id": "13",
+  "total": 68.94,
+  "starters": [
+   {
+    "slot": "QB",
+    "name": "Deshaun Watson",
+    "pos": "QB",
+    "nflTeam": "Cle",
+    "proj": 16.46,
+    "pts": 9.46,
+    "stats": "164 Pass Yds, 29 Rush Yds"
+   },
+   {
+    "slot": "RB",
+    "name": "Bijan Robinson",
+    "pos": "RB",
+    "nflTeam": "Atl",
+    "proj": 21.02,
+    "pts": 6.3,
+    "stats": "61 Rush Yds, 2 Rec, -8 Rec Yds"
+   },
+   {
+    "slot": "RB",
+    "name": "Jaylen Warren",
+    "pos": "RB",
+    "nflTeam": "Pit",
+    "proj": 14.54,
+    "pts": 8.8,
+    "stats": "50 Rush Yds, 28 Rec Yds, 2 Rec"
+   },
+   {
+    "slot": "WR",
+    "name": "Courtland Sutton",
+    "pos": "WR",
+    "nflTeam": "Den",
+    "proj": 7.1,
+    "pts": 2.9,
+    "stats": "19 Rec Yds, 2 Rec"
+   },
+   {
+    "slot": "WR",
+    "name": "Dontayvion Wicks",
+    "pos": "WR",
+    "nflTeam": "Phi",
+    "proj": 5.3,
+    "pts": 3.4,
+    "stats": "24 Rec Yds, 2 Rec"
+   },
+   {
+    "slot": "TE",
+    "name": "Colston Loveland",
+    "pos": "TE",
+    "nflTeam": "Chi",
+    "proj": 7.87,
+    "pts": 15.5,
+    "stats": "65 Rec Yds, 1 Rec TD, 6 Rec"
+   },
+   {
+    "slot": "W/R/T",
+    "name": "Kendrick Bourne",
+    "pos": "WR",
+    "nflTeam": "Ari",
+    "proj": 6.56,
+    "pts": 7.2,
+    "stats": "47 Rec Yds, 5 Rec"
+   },
+   {
+    "slot": "W/R/T",
+    "name": "Rashod Bateman",
+    "pos": "WR",
+    "nflTeam": "Bal",
+    "proj": 5.05,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "K",
+    "name": "Cam Little",
+    "pos": "K",
+    "nflTeam": "Jax",
+    "proj": 9.33,
+    "pts": 10,
+    "stats": "60 FG Yds, 4 PAT Made"
+   },
+   {
+    "slot": "DEF",
+    "name": "Texans",
+    "pos": "DEF",
+    "nflTeam": "Hou",
+    "proj": 9.45,
+    "pts": 4.38,
+    "stats": "119 Ret Yds, 1 Int"
+   },
+   {
+    "slot": "D",
+    "name": "T.J. Watt",
+    "pos": "LB,DE",
+    "nflTeam": "Pit",
+    "proj": 3.99,
+    "pts": 1,
+    "stats": "2 Tack Ast"
+   }
+  ],
+  "bench": [
+   {
+    "slot": "BN",
+    "name": "Bo Nix",
+    "pos": "QB",
+    "nflTeam": "Den",
+    "proj": 15.11,
+    "pts": 4.48,
+    "stats": "107 Pass Yds, 2 Rush Yds"
+   },
+   {
+    "slot": "BN",
+    "name": "David Montgomery",
+    "pos": "RB",
+    "nflTeam": "Hou",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "BN",
+    "name": "Michael Mayer",
+    "pos": "TE",
+    "nflTeam": "LV",
+    "proj": 6.02,
+    "pts": 14,
+    "stats": "95 Rec Yds, 7 Rec, 1 Tack Solo"
+   },
+   {
+    "slot": "BN",
+    "name": "Isaac TeSlaa",
+    "pos": "WR",
+    "nflTeam": "Det",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "BN",
+    "name": "Chris Godwin Jr.",
+    "pos": "WR",
+    "nflTeam": "TB",
+    "proj": 7.1,
+    "pts": 5.7,
+    "stats": "37 Rec Yds, 4 Rec"
+   },
+   {
+    "slot": "IR",
+    "name": "A.J. Brown",
+    "pos": "WR",
+    "nflTeam": "NE",
+    "proj": 9.95,
+    "pts": 4.2,
+    "stats": "27 Rec Yds, 3 Rec"
+   }
+  ]
+ },
+ "14": {
+  "team_id": "14",
+  "total": 124.38,
+  "starters": [
+   {
+    "slot": "QB",
+    "name": "Brock Purdy",
+    "pos": "QB",
+    "nflTeam": "SF",
+    "proj": 21.16,
+    "pts": 17.36,
+    "stats": "264 Pass Yds, 1 Pass TD, 28 Rush Yds"
+   },
+   {
+    "slot": "RB",
+    "name": "Bhayshul Tuten",
+    "pos": "RB",
+    "nflTeam": "Jax",
+    "proj": 12.62,
+    "pts": 22.7,
+    "stats": "2 Rec TD, 48 Rec Yds, 39 Rush Yds"
+   },
+   {
+    "slot": "RB",
+    "name": "Rachaad White",
+    "pos": "RB",
+    "nflTeam": "Was",
+    "proj": 9.52,
+    "pts": 13.7,
+    "stats": "1 Rec TD, 30 Rec Yds, 27 Rush Yds"
+   },
+   {
+    "slot": "WR",
+    "name": "Jaylen Waddle",
+    "pos": "WR",
+    "nflTeam": "Den",
+    "proj": 9.3,
+    "pts": 4.4,
+    "stats": "24 Rec Yds, 4 Rec"
+   },
+   {
+    "slot": "WR",
+    "name": "Zay Flowers",
+    "pos": "WR",
+    "nflTeam": "Bal",
+    "proj": 13.38,
+    "pts": 9.7,
+    "stats": "66 Rec Yds, 6 Rec, 1 Rush Yds"
+   },
+   {
+    "slot": "TE",
+    "name": "Juwan Johnson",
+    "pos": "TE",
+    "nflTeam": "NO",
+    "proj": 8.37,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "W/R/T",
+    "name": "Tucker Kraft",
+    "pos": "TE",
+    "nflTeam": "GB",
+    "proj": 10.42,
+    "pts": 6.2,
+    "stats": "37 Rec Yds, 5 Rec"
+   },
+   {
+    "slot": "W/R/T",
+    "name": "Germie Bernard",
+    "pos": "WR",
+    "nflTeam": "Pit",
+    "proj": 8.85,
+    "pts": 20.2,
+    "stats": "87 Rec Yds, 1 Rec TD, 11 Rec"
+   },
+   {
+    "slot": "K",
+    "name": "Spencer Shrader",
+    "pos": "K",
+    "nflTeam": "Ind",
+    "proj": 9.94,
+    "pts": 10,
+    "stats": "70 FG Yds, 2 PAT Made, 1 Tack Solo"
+   },
+   {
+    "slot": "DEF",
+    "name": "Browns",
+    "pos": "DEF",
+    "nflTeam": "Cle",
+    "proj": 10.96,
+    "pts": 11.12,
+    "stats": "3 Sack, Pts Allow 7-13, 1 Fum Rec"
+   },
+   {
+    "slot": "D",
+    "name": "Ernest Jones IV",
+    "pos": "LB",
+    "nflTeam": "Sea",
+    "proj": 5.59,
+    "pts": 9,
+    "stats": "5 Tack Solo, 4 Tack Ast, 1.0 Sack"
+   }
+  ],
+  "bench": [
+   {
+    "slot": "BN",
+    "name": "Omarion Hampton",
+    "pos": "RB",
+    "nflTeam": "LAC",
+    "proj": 7.7,
+    "pts": 5.9,
+    "stats": "21 Rec Yds, 4 Rec, 18 Rush Yds"
+   },
+   {
+    "slot": "BN",
+    "name": "Blake Corum",
+    "pos": "RB",
+    "nflTeam": "LAR",
+    "proj": 7.98,
+    "pts": 13,
+    "stats": "1 Rec TD, 42 Rush Yds, 18 Rec Yds"
+   },
+   {
+    "slot": "BN",
+    "name": "Josh Jacobs",
+    "pos": "RB",
+    "nflTeam": "GB",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "BN",
+    "name": "Ja'Kobi Lane",
+    "pos": "WR",
+    "nflTeam": "Bal",
+    "proj": 2.84,
+    "pts": 6,
+    "stats": "40 Rec Yds, 4 Rec"
+   },
+   {
+    "slot": "BN",
+    "name": "Kyle Monangai",
+    "pos": "RB",
+    "nflTeam": "Chi",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "IR",
+    "name": "Adonai Mitchell",
+    "pos": "WR",
+    "nflTeam": "NYJ",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   },
+   {
+    "slot": "IR",
+    "name": "Jordyn Tyson",
+    "pos": "WR",
+    "nflTeam": "NO",
+    "proj": 0,
+    "pts": 0,
+    "stats": ""
+   }
+  ]
+ }
+}

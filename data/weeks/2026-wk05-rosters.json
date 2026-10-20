@@ -332,7 +332,7 @@
  },
  "3": {
   "team_id": "3",
-  "total": 136.18,
+  "total": 138.18,
   "starters": [
    {
     "slot": "QB",
@@ -367,7 +367,7 @@
     "pos": "WR",
     "nflTeam": "Cin",
     "proj": 17.33,
-    "pts": 17.7,
+    "pts": 19.7,
     "stats": "77 Rec Yds, 1 Rec TD, 6 Rec"
    },
    {
@@ -797,7 +797,7 @@
  },
  "6": {
   "team_id": "6",
-  "total": 137.52,
+  "total": 138.02,
   "starters": [
    {
     "slot": "QB",
@@ -895,8 +895,8 @@
     "pos": "LB",
     "nflTeam": "Den",
     "proj": 5.82,
-    "pts": 6,
-    "stats": "5 Tack Solo, 2 Tack Ast"
+    "pts": 6.5,
+    "stats": "5 Tack Solo, 3 Tack Ast"
    }
   ],
   "bench": [
