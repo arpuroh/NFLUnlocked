@@ -13,7 +13,7 @@
   "uses_faab": true,
   "faab_budget": 100,
   "demo": false,
-  "last_updated": "2026-10-21T15:46:49.062972+00:00"
+  "last_updated": "2026-10-22T15:45:03.023762+00:00"
  },
  "teams": [
   {
@@ -169,7 +169,7 @@
    "name": "Hail Mary",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/25205944781_f55b83a6fa.jpg",
-   "moves": 14,
+   "moves": 16,
    "trades": 0,
    "faab_balance": 94,
    "clinched_playoffs": false,
