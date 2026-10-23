@@ -13,7 +13,7 @@
   "uses_faab": true,
   "faab_budget": 100,
   "demo": false,
-  "last_updated": "2026-10-22T15:45:03.023762+00:00"
+  "last_updated": "2026-10-23T15:33:47.783585+00:00"
  },
  "teams": [
   {
@@ -64,7 +64,7 @@
    "name": "The Asshouse Always Wins",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/ff5082a8eca1faeba4a80d02bde690352bb8b967f9d08c2bef72b32ca2505e88.png",
-   "moves": 13,
+   "moves": 14,
    "trades": 0,
    "faab_balance": 59,
    "clinched_playoffs": false,
@@ -85,7 +85,7 @@
    "name": "Kim Jong Nate",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/35938214603_546a9a.jpg",
-   "moves": 10,
+   "moves": 11,
    "trades": 0,
    "faab_balance": 7,
    "clinched_playoffs": false,
@@ -169,7 +169,7 @@
    "name": "Hail Mary",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/25205944781_f55b83a6fa.jpg",
-   "moves": 16,
+   "moves": 17,
    "trades": 0,
    "faab_balance": 94,
    "clinched_playoffs": false,
@@ -232,7 +232,7 @@
    "name": "Fwamming Gwaggon",
    "manager": "",
    "logo": "https://s.yimg.com/ep/cx/blendr/v2/image-dragon-png_1721173946530.png",
-   "moves": 9,
+   "moves": 10,
    "trades": 0,
    "faab_balance": 28,
    "clinched_playoffs": false,
@@ -295,7 +295,7 @@
    "name": "FreeGucci",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/3e2185d5692aabbcb23e288139db28c90871d64e1046faac8f407f3bdcef814f.jpg",
-   "moves": 34,
+   "moves": 35,
    "trades": 0,
    "faab_balance": 49,
    "clinched_playoffs": false,
