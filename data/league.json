@@ -13,7 +13,7 @@
   "uses_faab": true,
   "faab_budget": 100,
   "demo": false,
-  "last_updated": "2026-10-24T14:11:01.967678+00:00"
+  "last_updated": "2026-10-25T14:42:21.686473+00:00"
  },
  "teams": [
   {
@@ -85,7 +85,7 @@
    "name": "Kim Jong Nate",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/35938214603_546a9a.jpg",
-   "moves": 12,
+   "moves": 13,
    "trades": 0,
    "faab_balance": 7,
    "clinched_playoffs": false,
@@ -106,7 +106,7 @@
    "name": "Mac Daddy",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/87caae3ea27e5764afe50efbc5b1e3bc060b3f15b9cc206accd95983a6271104.jpg",
-   "moves": 14,
+   "moves": 15,
    "trades": 0,
    "faab_balance": 12,
    "clinched_playoffs": false,
@@ -127,7 +127,7 @@
    "name": "Bend The Knee \ud83d\udc32\ud83d\udd25",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/9c8ddac63f5831a2c6bc9f69d07b6f17d1d82f639ec642752f29c2b6aa21cd9e.jpg",
-   "moves": 15,
+   "moves": 16,
    "trades": 0,
    "faab_balance": 77,
    "clinched_playoffs": false,
@@ -169,7 +169,7 @@
    "name": "Hail Mary",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/25205944781_f55b83a6fa.jpg",
-   "moves": 17,
+   "moves": 18,
    "trades": 0,
    "faab_balance": 94,
    "clinched_playoffs": false,
@@ -190,7 +190,7 @@
    "name": "The Injured Reserved",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/6933584f04d1bde8d8c31369be63df7ade2c4c97999ba5fe2a6514d38ae42bb2.jpg",
-   "moves": 34,
+   "moves": 36,
    "trades": 0,
    "faab_balance": 44,
    "clinched_playoffs": false,
@@ -211,7 +211,7 @@
    "name": "Miley \ud83d\udca8LEO 5K Speedo Fan Club",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/db213c28a1c236ccc1d3f0f0ed6ce67143a732feb8045af35368e6b34a66858b.jpg",
-   "moves": 6,
+   "moves": 8,
    "trades": 0,
    "faab_balance": 90,
    "clinched_playoffs": false,
@@ -468,7 +468,28 @@
   }
  ],
  "matchups": [],
- "transactions": [],
+ "transactions": [
+  {
+   "id": "scrape-0",
+   "type": "trade",
+   "status": "successful",
+   "timestamp": 0,
+   "faab_bid": 0,
+   "adds": [],
+   "drops": [],
+   "raw": "\ue037 | Browns Cle - DEF Jaylen Waddle Den - WR Rachaad White Was - RB | Traded to | Miley \ud83d\udca8LEO 5K Speedo Fan Club ( ) Oct 24, 8:09 pm"
+  },
+  {
+   "id": "scrape-1",
+   "type": "trade",
+   "status": "successful",
+   "timestamp": 0,
+   "faab_bid": 0,
+   "adds": [],
+   "drops": [],
+   "raw": "Jalen Coker Car - WR Panthers Car - DEF | Traded to | The Injured Reserved ( ) Oct 24, 8:09 pm"
+  }
+ ],
  "faab": {
   "budget": 100,
   "spent": {
