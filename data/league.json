@@ -13,7 +13,7 @@
   "uses_faab": true,
   "faab_budget": 100,
   "demo": false,
-  "last_updated": "2026-10-27T16:07:29.788064+00:00"
+  "last_updated": "2026-10-28T16:55:21.205757+00:00"
  },
  "teams": [
   {
@@ -22,7 +22,7 @@
    "name": "Leo the Cleo",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/614cb36d46f9edc5aca35aaa803a8fa30dceed9bd1f10524d266052c83b8a924.jpg",
-   "moves": 18,
+   "moves": 20,
    "trades": 0,
    "faab_balance": 95,
    "clinched_playoffs": false,
@@ -85,9 +85,9 @@
    "name": "The Asshouse Always Wins",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/ff5082a8eca1faeba4a80d02bde690352bb8b967f9d08c2bef72b32ca2505e88.png",
-   "moves": 14,
+   "moves": 16,
    "trades": 0,
-   "faab_balance": 59,
+   "faab_balance": 44,
    "clinched_playoffs": false,
    "rank": 4,
    "wins": 10,
@@ -106,9 +106,9 @@
    "name": "Hail Mary",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/25205944781_f55b83a6fa.jpg",
-   "moves": 20,
+   "moves": 23,
    "trades": 0,
-   "faab_balance": 94,
+   "faab_balance": 92,
    "clinched_playoffs": false,
    "rank": 5,
    "wins": 8,
@@ -117,7 +117,7 @@
    "win_pct": 0.571,
    "streak": "W1",
    "points_for": 912.54,
-   "points_against": 968.04,
+   "points_against": 967.94,
    "week_points": 0.0,
    "trophies": []
   },
@@ -148,9 +148,9 @@
    "name": "Bend The Knee \ud83d\udc32\ud83d\udd25",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/9c8ddac63f5831a2c6bc9f69d07b6f17d1d82f639ec642752f29c2b6aa21cd9e.jpg",
-   "moves": 16,
+   "moves": 18,
    "trades": 0,
-   "faab_balance": 77,
+   "faab_balance": 67,
    "clinched_playoffs": false,
    "rank": 7,
    "wins": 6,
@@ -190,7 +190,7 @@
    "name": "ShakeNBake",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/036413160a71a76b42890dd9196cf47fabbccda61f8f2394f8a7fb84ea186a0a.jpg",
-   "moves": 26,
+   "moves": 28,
    "trades": 0,
    "faab_balance": 30,
    "clinched_playoffs": false,
@@ -211,9 +211,9 @@
    "name": "The Injured Reserved",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/6933584f04d1bde8d8c31369be63df7ade2c4c97999ba5fe2a6514d38ae42bb2.jpg",
-   "moves": 37,
+   "moves": 38,
    "trades": 0,
-   "faab_balance": 44,
+   "faab_balance": 42,
    "clinched_playoffs": false,
    "rank": 10,
    "wins": 5,
@@ -253,7 +253,7 @@
    "name": "FreeGucci",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/3e2185d5692aabbcb23e288139db28c90871d64e1046faac8f407f3bdcef814f.jpg",
-   "moves": 36,
+   "moves": 37,
    "trades": 0,
    "faab_balance": 49,
    "clinched_playoffs": false,
@@ -284,7 +284,7 @@
    "ties": 0,
    "win_pct": 0.214,
    "streak": "L3",
-   "points_for": 730.24,
+   "points_for": 730.14,
    "points_against": 906.16,
    "week_points": 0.0,
    "trophies": []
@@ -380,7 +380,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.8",
-   "score": 0.3492,
+   "score": 0.3493,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.571,
@@ -391,7 +391,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.11",
-   "score": 0.2775,
+   "score": 0.2776,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.429,
@@ -402,7 +402,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.12",
-   "score": 0.2764,
+   "score": 0.2765,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.429,
@@ -424,7 +424,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.3",
-   "score": 0.156,
+   "score": 0.1561,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.214,
@@ -435,7 +435,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.9",
-   "score": 0.1371,
+   "score": 0.1372,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.143,
@@ -446,7 +446,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.7",
-   "score": 0.0957,
+   "score": 0.0958,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.214,
@@ -488,26 +488,6 @@
    "adds": [],
    "drops": [],
    "raw": "Geno Smith NYJ - QB Puka Nacua LAR - WR | Traded to | Hail Mary Oct 27, 9:49 am"
-  },
-  {
-   "id": "scrape-2",
-   "type": "trade",
-   "status": "successful",
-   "timestamp": 0,
-   "faab_bid": 0,
-   "adds": [],
-   "drops": [],
-   "raw": "\ue037 | Browns Cle - DEF Jaylen Waddle Den - WR Q Rachaad White Was - RB | Traded to | Miley \ud83d\udca8LEO 5K Speedo Fan Club ( ) Oct 24, 8:09 pm"
-  },
-  {
-   "id": "scrape-3",
-   "type": "trade",
-   "status": "successful",
-   "timestamp": 0,
-   "faab_bid": 0,
-   "adds": [],
-   "drops": [],
-   "raw": "Jalen Coker Car - WR Q Panthers Car - DEF | Traded to | The Injured Reserved ( ) Oct 24, 8:09 pm"
   }
  ],
  "faab": {
