@@ -13,7 +13,7 @@
   "uses_faab": true,
   "faab_budget": 100,
   "demo": false,
-  "last_updated": "2026-10-28T16:55:21.205757+00:00"
+  "last_updated": "2026-10-29T17:12:55.519166+00:00"
  },
  "teams": [
   {
@@ -74,7 +74,7 @@
    "ties": 0,
    "win_pct": 0.786,
    "streak": "W1",
-   "points_for": 869.3,
+   "points_for": 871.8,
    "points_against": 753.9,
    "week_points": 0.0,
    "trophies": []
@@ -190,7 +190,7 @@
    "name": "ShakeNBake",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/036413160a71a76b42890dd9196cf47fabbccda61f8f2394f8a7fb84ea186a0a.jpg",
-   "moves": 28,
+   "moves": 29,
    "trades": 0,
    "faab_balance": 30,
    "clinched_playoffs": false,
@@ -243,7 +243,7 @@
    "win_pct": 0.214,
    "streak": "L5",
    "points_for": 800.38,
-   "points_against": 819.36,
+   "points_against": 821.86,
    "week_points": 0.0,
    "trophies": []
   },
@@ -253,7 +253,7 @@
    "name": "FreeGucci",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/3e2185d5692aabbcb23e288139db28c90871d64e1046faac8f407f3bdcef814f.jpg",
-   "moves": 37,
+   "moves": 38,
    "trades": 0,
    "faab_balance": 49,
    "clinched_playoffs": false,
@@ -274,7 +274,7 @@
    "name": "Fwamming Gwaggon",
    "manager": "",
    "logo": "https://s.yimg.com/ep/cx/blendr/v2/image-dragon-png_1721173946530.png",
-   "moves": 11,
+   "moves": 12,
    "trades": 0,
    "faab_balance": 28,
    "clinched_playoffs": false,
@@ -295,7 +295,7 @@
    "name": "Whole Milk \ud83e\udd5b",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/faf4fd36c09bbc557200c768728b9c3271319a96985accb7ed164875449fc040.png",
-   "moves": 9,
+   "moves": 10,
    "trades": 0,
    "faab_balance": 84,
    "clinched_playoffs": false,
@@ -347,7 +347,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.4",
-   "score": 0.4359,
+   "score": 0.4388,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.786,
@@ -468,28 +468,7 @@
   }
  ],
  "matchups": [],
- "transactions": [
-  {
-   "id": "scrape-0",
-   "type": "trade",
-   "status": "successful",
-   "timestamp": 0,
-   "faab_bid": 0,
-   "adds": [],
-   "drops": [],
-   "raw": "\ue037 | Bucky Irving TB - RB Jameson Williams Det - WR Dak Prescott Dal - QB | Traded to | Whole Milk \ud83e\udd5b Oct 27, 9:49 am"
-  },
-  {
-   "id": "scrape-1",
-   "type": "trade",
-   "status": "successful",
-   "timestamp": 0,
-   "faab_bid": 0,
-   "adds": [],
-   "drops": [],
-   "raw": "Geno Smith NYJ - QB Puka Nacua LAR - WR | Traded to | Hail Mary Oct 27, 9:49 am"
-  }
- ],
+ "transactions": [],
  "faab": {
   "budget": 100,
   "spent": {
