@@ -13,7 +13,7 @@
   "uses_faab": true,
   "faab_budget": 100,
   "demo": false,
-  "last_updated": "2026-10-29T17:12:55.519166+00:00"
+  "last_updated": "2026-10-30T16:54:05.348510+00:00"
  },
  "teams": [
   {
@@ -22,7 +22,7 @@
    "name": "Leo the Cleo",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/614cb36d46f9edc5aca35aaa803a8fa30dceed9bd1f10524d266052c83b8a924.jpg",
-   "moves": 20,
+   "moves": 21,
    "trades": 0,
    "faab_balance": 95,
    "clinched_playoffs": false,
@@ -64,7 +64,7 @@
    "name": "Kim Jong Nate",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/35938214603_546a9a.jpg",
-   "moves": 13,
+   "moves": 14,
    "trades": 0,
    "faab_balance": 7,
    "clinched_playoffs": false,
@@ -127,7 +127,7 @@
    "name": "Mac Daddy",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/87caae3ea27e5764afe50efbc5b1e3bc060b3f15b9cc206accd95983a6271104.jpg",
-   "moves": 15,
+   "moves": 16,
    "trades": 0,
    "faab_balance": 12,
    "clinched_playoffs": false,
@@ -190,7 +190,7 @@
    "name": "ShakeNBake",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/036413160a71a76b42890dd9196cf47fabbccda61f8f2394f8a7fb84ea186a0a.jpg",
-   "moves": 29,
+   "moves": 30,
    "trades": 0,
    "faab_balance": 30,
    "clinched_playoffs": false,
