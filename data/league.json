@@ -13,7 +13,7 @@
   "uses_faab": true,
   "faab_budget": 100,
   "demo": false,
-  "last_updated": "2026-10-30T16:54:05.348510+00:00"
+  "last_updated": "2026-10-31T15:55:15.660652+00:00"
  },
  "teams": [
   {
@@ -148,7 +148,7 @@
    "name": "Bend The Knee \ud83d\udc32\ud83d\udd25",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/9c8ddac63f5831a2c6bc9f69d07b6f17d1d82f639ec642752f29c2b6aa21cd9e.jpg",
-   "moves": 18,
+   "moves": 19,
    "trades": 0,
    "faab_balance": 67,
    "clinched_playoffs": false,
