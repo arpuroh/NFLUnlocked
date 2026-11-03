@@ -1,7 +1,337 @@
 {
  "source": "football.fantasysports.yahoo.com/f1/675504/transactions?transactionsfilter=add (Eastern time)",
- "scraped": "2026-10-27",
+ "scraped": "2026-11-03",
  "adds": [
+  {
+   "when": "2026-11-01 13:43",
+   "week": 8,
+   "player": "Greg Dulcich",
+   "pos": "TE",
+   "nfl": "Mia",
+   "team_id": "10",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-01 13:19",
+   "week": 8,
+   "player": "Treylon Burks",
+   "pos": "WR",
+   "nfl": "Was",
+   "team_id": "12",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-01 13:08",
+   "week": 8,
+   "player": "AJ Barner",
+   "pos": "TE",
+   "nfl": "Sea",
+   "team_id": "5",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-01 08:09",
+   "week": 8,
+   "player": "Lions",
+   "pos": "DEF",
+   "nfl": "Det",
+   "team_id": "8",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-10-31 22:53",
+   "week": 8,
+   "player": "Roschon Johnson",
+   "pos": "RB",
+   "nfl": "Chi",
+   "team_id": "10",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-10-31 20:22",
+   "week": 8,
+   "player": "Kyle Williams",
+   "pos": "WR",
+   "nfl": "NE",
+   "team_id": "13",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-10-31 20:20",
+   "week": 8,
+   "player": "Efton Chism III",
+   "pos": "WR",
+   "nfl": "NE",
+   "team_id": "4",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-10-31 17:13",
+   "week": 8,
+   "player": "Corey Kiner",
+   "pos": "RB",
+   "nfl": "NE",
+   "team_id": "1",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-10-31 13:34",
+   "week": 8,
+   "player": "Justice Hill",
+   "pos": "RB",
+   "nfl": "Bal",
+   "team_id": "1",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-10-31 12:40",
+   "week": 8,
+   "player": "Ja'Kobi Lane",
+   "pos": "WR",
+   "nfl": "Bal",
+   "team_id": "1",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-10-31 12:35",
+   "week": 8,
+   "player": "Elic Ayomanor",
+   "pos": "WR",
+   "nfl": "Ten",
+   "team_id": "12",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-10-30 17:07",
+   "week": 8,
+   "player": "Tyler Goodson",
+   "pos": "RB",
+   "nfl": "Dal",
+   "team_id": "6",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-10-29 22:12",
+   "week": 8,
+   "player": "Marvin Mims Jr.",
+   "pos": "WR",
+   "nfl": "Den",
+   "team_id": "10",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-10-29 19:28",
+   "week": 8,
+   "player": "Savion Williams",
+   "pos": "WR",
+   "nfl": "GB",
+   "team_id": "12",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-10-29 18:37",
+   "week": 8,
+   "player": "Sonny Styles",
+   "pos": "LB",
+   "nfl": "Was",
+   "team_id": "4",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-10-29 18:34",
+   "week": 8,
+   "player": "Mark Andrews",
+   "pos": "TE",
+   "nfl": "Bal",
+   "team_id": "8",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-10-28 21:10",
+   "week": 8,
+   "player": "Packers",
+   "pos": "DEF",
+   "nfl": "GB",
+   "team_id": "13",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-10-28 17:39",
+   "week": 8,
+   "player": "Quentin Johnston",
+   "pos": "WR",
+   "nfl": "LAC",
+   "team_id": "9",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-10-28 17:37",
+   "week": 8,
+   "player": "Jaydon Blue",
+   "pos": "RB",
+   "nfl": "Phi",
+   "team_id": "7",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-10-28 15:49",
+   "week": 8,
+   "player": "Falcons",
+   "pos": "DEF",
+   "nfl": "Atl",
+   "team_id": "12",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-10-28 11:26",
+   "week": 8,
+   "player": "Foyesade Oluokun",
+   "pos": "LB",
+   "nfl": "Jax",
+   "team_id": "10",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-10-28 11:26",
+   "week": 8,
+   "player": "Commanders",
+   "pos": "DEF",
+   "nfl": "Was",
+   "team_id": "10",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-10-28 11:09",
+   "week": 8,
+   "player": "Blake Cashman",
+   "pos": "LB",
+   "nfl": "Min",
+   "team_id": "1",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-10-28 06:17",
+   "week": 8,
+   "player": "Cam Little",
+   "pos": "K",
+   "nfl": "Jax",
+   "team_id": "7",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-10-28 04:26",
+   "week": 8,
+   "player": "Chig Okonkwo",
+   "pos": "TE",
+   "nfl": "Was",
+   "team_id": "12",
+   "type": "waiver",
+   "bid": 0
+  },
+  {
+   "when": "2026-10-28 04:26",
+   "week": 8,
+   "player": "Baker Mayfield",
+   "pos": "QB",
+   "nfl": "TB",
+   "team_id": "1",
+   "type": "waiver",
+   "bid": 0
+  },
+  {
+   "when": "2026-10-28 04:26",
+   "week": 8,
+   "player": "Chad Ryland",
+   "pos": "K",
+   "nfl": "Ari",
+   "team_id": "12",
+   "type": "waiver",
+   "bid": 0
+  },
+  {
+   "when": "2026-10-28 04:26",
+   "week": 8,
+   "player": "Chris Rodriguez Jr.",
+   "pos": "RB",
+   "nfl": "Jax",
+   "team_id": "1",
+   "type": "waiver",
+   "bid": 2
+  },
+  {
+   "when": "2026-10-28 04:26",
+   "week": 8,
+   "player": "Mike Washington Jr.",
+   "pos": "RB",
+   "nfl": "LV",
+   "team_id": "14",
+   "type": "waiver",
+   "bid": 2
+  },
+  {
+   "when": "2026-10-28 04:26",
+   "week": 8,
+   "player": "Patriots",
+   "pos": "DEF",
+   "nfl": "NE",
+   "team_id": "5",
+   "type": "waiver",
+   "bid": 3
+  },
+  {
+   "when": "2026-10-28 04:26",
+   "week": 8,
+   "player": "Malik Willis",
+   "pos": "QB",
+   "nfl": "Mia",
+   "team_id": "6",
+   "type": "waiver",
+   "bid": 5
+  },
+  {
+   "when": "2026-10-28 04:26",
+   "week": 8,
+   "player": "Jaguars",
+   "pos": "DEF",
+   "nfl": "Jax",
+   "team_id": "6",
+   "type": "waiver",
+   "bid": 5
+  },
+  {
+   "when": "2026-10-28 04:26",
+   "week": 8,
+   "player": "Brenton Strange",
+   "pos": "TE",
+   "nfl": "Jax",
+   "team_id": "5",
+   "type": "waiver",
+   "bid": 12
+  },
   {
    "when": "2026-10-26 07:50",
    "week": 7,

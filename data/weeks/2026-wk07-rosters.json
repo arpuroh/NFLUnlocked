@@ -502,7 +502,7 @@
  },
  "4": {
   "team_id": "4",
-  "total": 136.72,
+  "total": 139.22,
   "starters": [
    {
     "slot": "QB",
@@ -600,8 +600,8 @@
     "pos": "LB",
     "nflTeam": "SF",
     "proj": 6.41,
-    "pts": 9.5,
-    "stats": "6 Tack Solo, 7 Tack Ast"
+    "pts": 12,
+    "stats": "6 Tack Solo, 8 Tack Ast, 1 Fum Force"
    }
   ],
   "bench": [
@@ -2011,7 +2011,7 @@
  },
  "13": {
   "team_id": "13",
-  "total": 118.08,
+  "total": 117.98,
   "starters": [
    {
     "slot": "QB",
@@ -2019,8 +2019,8 @@
     "pos": "QB",
     "nflTeam": "Den",
     "proj": 18.6,
-    "pts": 26.28,
-    "stats": "222 Pass Yds, 74 Rush Yds, 1 Rush TD"
+    "pts": 26.18,
+    "stats": "222 Pass Yds, 73 Rush Yds, 1 Rush TD"
    },
    {
     "slot": "RB",
