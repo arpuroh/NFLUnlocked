@@ -13,7 +13,7 @@
   "uses_faab": true,
   "faab_budget": 100,
   "demo": false,
-  "last_updated": "2026-11-03T11:32:35.408203+00:00"
+  "last_updated": "2026-11-03T18:10:48.323120+00:00"
  },
  "teams": [
   {
@@ -342,8 +342,8 @@
    "luck_index": 0.5,
    "recent_form": 0.0,
    "rank": 3,
-   "prev_rank": 6,
-   "movement": 3
+   "prev_rank": 3,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.1",
@@ -353,8 +353,8 @@
    "luck_index": 0.625,
    "recent_form": 0.0,
    "rank": 4,
-   "prev_rank": 5,
-   "movement": 1
+   "prev_rank": 4,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.5",
@@ -364,8 +364,8 @@
    "luck_index": 0.625,
    "recent_form": 0.0,
    "rank": 5,
-   "prev_rank": 3,
-   "movement": -2
+   "prev_rank": 5,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.4",
@@ -375,8 +375,8 @@
    "luck_index": 0.688,
    "recent_form": 0.0,
    "rank": 6,
-   "prev_rank": 4,
-   "movement": -2
+   "prev_rank": 6,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.8",
@@ -397,8 +397,8 @@
    "luck_index": 0.375,
    "recent_form": 0.0,
    "rank": 8,
-   "prev_rank": 10,
-   "movement": 2
+   "prev_rank": 8,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.11",
@@ -408,8 +408,8 @@
    "luck_index": 0.375,
    "recent_form": 0.0,
    "rank": 9,
-   "prev_rank": 8,
-   "movement": -1
+   "prev_rank": 9,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.12",
@@ -419,8 +419,8 @@
    "luck_index": 0.375,
    "recent_form": 0.0,
    "rank": 10,
-   "prev_rank": 9,
-   "movement": -1
+   "prev_rank": 10,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.3",
@@ -558,48 +558,7 @@
   ],
   "closing": "Connect the Yahoo league and the Executioner starts publishing for real. Until then, these demo managers take the bullets meant for you."
  },
- "feed": [
-  {
-   "id": "rank-scrape.l.675504.t.6-3",
-   "kind": "rankings",
-   "title": "Bend The Knee \ud83d\udc32\ud83d\udd25 jumps 3 spots to #3",
-   "body": "All-play 0-0 and a luck index of +0.500. The model likes them more than the standings do.",
-   "timestamp": 1793705555,
-   "team_key": "scrape.l.675504.t.6",
-   "reactions": {},
-   "reacted_by": 0
-  },
-  {
-   "id": "rank-scrape.l.675504.t.5-5",
-   "kind": "rankings",
-   "title": "The Asshouse Always Wins drops 2 spots to #5",
-   "body": "All-play 0-0 and a luck index of +0.625. The model trusts them less than the standings do.",
-   "timestamp": 1793705555,
-   "team_key": "scrape.l.675504.t.5",
-   "reactions": {},
-   "reacted_by": 0
-  },
-  {
-   "id": "rank-scrape.l.675504.t.4-6",
-   "kind": "rankings",
-   "title": "Kim Jong Nate drops 2 spots to #6",
-   "body": "All-play 0-0 and a luck index of +0.688. The model trusts them less than the standings do.",
-   "timestamp": 1793705555,
-   "team_key": "scrape.l.675504.t.4",
-   "reactions": {},
-   "reacted_by": 0
-  },
-  {
-   "id": "rank-scrape.l.675504.t.14-8",
-   "kind": "rankings",
-   "title": "The Injured Reserved jumps 2 spots to #8",
-   "body": "All-play 0-0 and a luck index of +0.375. The model likes them more than the standings do.",
-   "timestamp": 1793705555,
-   "team_key": "scrape.l.675504.t.14",
-   "reactions": {},
-   "reacted_by": 0
-  }
- ],
+ "feed": [],
  "most_clowned": [],
  "history": {
   "established": 2016,
