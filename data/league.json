@@ -13,7 +13,7 @@
   "uses_faab": true,
   "faab_budget": 100,
   "demo": false,
-  "last_updated": "2026-11-06T17:45:54.434335+00:00"
+  "last_updated": "2026-11-07T16:41:26.261083+00:00"
  },
  "teams": [
   {
@@ -64,7 +64,7 @@
    "name": "Kim Jong Nate",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/35938214603_546a9a.jpg",
-   "moves": 15,
+   "moves": 16,
    "trades": 0,
    "faab_balance": 7,
    "clinched_playoffs": false,
@@ -148,7 +148,7 @@
    "name": "Mac Daddy",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/87caae3ea27e5764afe50efbc5b1e3bc060b3f15b9cc206accd95983a6271104.jpg",
-   "moves": 18,
+   "moves": 19,
    "trades": 0,
    "faab_balance": 12,
    "clinched_playoffs": false,
@@ -211,7 +211,7 @@
    "name": "ShakeNBake",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/036413160a71a76b42890dd9196cf47fabbccda61f8f2394f8a7fb84ea186a0a.jpg",
-   "moves": 34,
+   "moves": 35,
    "trades": 0,
    "faab_balance": 30,
    "clinched_playoffs": false,
