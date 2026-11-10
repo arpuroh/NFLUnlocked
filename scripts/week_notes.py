@@ -1679,10 +1679,11 @@ WEEK9 = {
     "video": {
         "src": "video/2026-wk09.mp4",
         "poster": "video/2026-wk09.jpg",
-        "seconds": 42,
-        "title": "Week 9 in 42 seconds",
-        "blurb": "All fourteen teams, the end of 16-0, the highest score of the season, a $20 receiver who "
-                 "was famous for scoring zero, and a quarterback benched for 21.34. Sound on.",
+        "seconds": 68,
+        "title": "Week 9, narrated",
+        "blurb": "All fourteen teams, the end of 16-0, every score against the median, the highest score of "
+                 "the season and a $20 receiver famous for scoring zero. Now with a narrator. Sound on. "
+                 "Music: Funk Game Loop by Kevin MacLeod (incompetech.com), CC BY 4.0.",
     },
     "kicker": "(99.18, 0-13 in all-play. Tyler Shough 19.7 on the bench. Even the best lineup goes 0-2.)",
     "lede": (
@@ -1905,6 +1906,30 @@ WEEK9 = {
          "line": "Third straight 0-2. Derrick Henry ($45): 57 rushing yards, minus three passing, "
                  "5.58. $12 Kaelon Black, benched."},
     ],
+
+    # Unlocked & Loaded, the weekly newsletter (newsletter.html). Team cards come from the
+    # blurbs and awards above; this is only what the newsletter adds on top.
+    "newsletter": {
+        "intro": "Chris lost. Both games. To Nathan and to a number. Barrett scored the most points "
+                 "anyone has scored all year and now sits alone in first. Find your team below; "
+                 "everyone got one.",
+        "next": [
+            [2, 10, "17-1 against 16-2. First place against the guy who owned it for seven weeks. "
+                    "Chris has $95 of FAAB and one week to remember how to use it."],
+            [4, 6, "The luckiest team in the league against the unluckiest. Nathan, start Kirk Cousins "
+                   "or explain yourself."],
+            [1, 3, "Andrew's three-game streak against Will's worst luck in the league. Somebody's "
+                   "bench is about to outscore somebody's lineup."],
+            [12, 5, "Abhishek finally beat a worse team. Tom has lost six straight counting the "
+                    "median. One of these runs ends Sunday."],
+            [7, 8, "Nishil benched 27.7 points of fresh receivers. Maclane went from 67.9 percent to "
+                   "perfect. Start the guys you pick up, both of you."],
+            [9, 11, "Anuj has won three straight while benching Emmett Johnson. Greg has started the "
+                    "wrong quarterback two weeks running. Something has to give."],
+            [13, 14, "4-14 against six straight losses. Jon has $8 left after paying $20 for a zero. "
+                     "Greg has 40 moves. The loser owns the basement."],
+        ],
+    },
 
     "waiver_note": (
         "Week 10 waivers process Tuesday night. Chris has $95 and, for the first time, a reason. "
