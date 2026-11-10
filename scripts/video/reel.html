@@ -1,0 +1,145 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Arc;src:url(archivo-latin-wdth-normal.woff2) format('woff2');font-weight:100 900;font-stretch:62% 125%;}
+html,body{margin:0;background:#201E1D}
+</style></head><body><canvas id="c" width="1080" height="1920"></canvas>
+<script>
+const C=document.getElementById('c'),X=C.getContext('2d');
+const INK='#201E1D',INK2='#2B2928',INK3='#353231',RED='#EC3013',REDB='#FF563C',PAPER='#F3F2F2',GRAY='#9B9797',GRAYD='#605D5D',RULE='#4A4645',GREEN='#7BC97B';
+const W=1080,H=1920;
+const cl=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+const eo=t=>1-Math.pow(1-cl(t),3);
+const eb=t=>{t=cl(t);const c1=1.70158,c3=c1+1;return 1+c3*Math.pow(t-1,3)+c1*Math.pow(t-1,2);};
+function font(size,wt=800){X.font=`${wt} ${size}px Arc`;try{X.fontStretch='condensed';}catch(e){}}
+function T(txt,x,y,size,col,{wt=800,al='left',a=1}={}){if(a<=0)return;X.save();X.globalAlpha*=a;font(size,wt);X.fillStyle=col;X.textAlign=al;X.textBaseline='alphabetic';X.fillText(txt,x,y);X.restore();}
+function R(x,y,w,h,col,a=1){if(a<=0)return;X.save();X.globalAlpha*=a;X.fillStyle=col;X.fillRect(x,y,w,h);X.restore();}
+function tw(txt,size,wt=800){font(size,wt);return X.measureText(txt).width;}
+function fit(txt,size,maxw,wt=900){let s=size;while(s>20&&tw(txt,s,wt)>maxw)s-=4;return s;}
+function bg(ts){R(0,0,W,H,INK);
+  // slow diagonal stripes in the background, barely there
+  X.save();X.globalAlpha=0.035;X.fillStyle=PAPER;const off=(GT*40)%160;for(let x=-H;x<W+H;x+=160){X.beginPath();X.moveTo(x+off,0);X.lineTo(x+off+40,0);X.lineTo(x+off+40-H*0.6,H);X.lineTo(x+off-H*0.6,H);X.fill();}X.restore();}
+function topbar(ts,d){R(0,0,W*cl(ts/d),10,RED);}
+function label(s,ts){T(s.toUpperCase(),60,150,36,RED,{wt:800,a:eo(ts*4)});}
+const k=(ts,a,d=0.35)=>eo((ts-a)/d);
+function stamp(txt,cx,cy,q,size=96,rot=-0.07,col=RED){if(q<=0)return;const s=1+2.2*(1-eb(q));X.save();X.translate(cx,cy);X.rotate(rot);X.scale(s,s);X.globalAlpha=cl(q*3);font(size,900);const w=X.measureText(txt).width+60;X.strokeStyle=col;X.lineWidth=10;X.strokeRect(-w/2,-size*0.72,w,size*1.3);X.fillStyle=col;X.textAlign='center';X.textBaseline='middle';X.fillText(txt,0,-size*0.07);X.restore();}
+function pop(txt,x,y,size,col,q,al='left'){if(q<=0)return;const s=1+0.35*(1-eb(q));X.save();X.translate(x,y);X.scale(s,s);T(txt,0,0,size,col,{wt:900,al,a:cl(q*3)});X.restore();}
+let GT=0;
+
+// ---- data ----
+const WEEK=[["A DAD",178.78,"2-0"],["HAIL MARY",152.66,"2-0"],["BEND THE KNEE",143.96,"2-0"],["GOOD WILL HUNTING",140.42,"1-1"],["SHAKENBAKE",133.16,"2-0"],["WHOLE MILK",125.88,"2-0"],["MAC DADDY",114.92,"1-1"],["FWAMMING",113.16,"1-1"],["FREEGUCCI",111.82,"0-2"],["KIM JONG NATE",110.9,"1-1"],["MILEY",104.26,"0-2"],["INJURED RESERVED",101.68,"0-2"],["THE ASSHOUSE",99.68,"0-2"],["LEO THE CLEO",99.18,"0-2"]];
+const MED=114.04;
+const PR=[['A DAD','17-1',1,'SEASON HIGH. 178.78'],['LEO THE CLEO','16-2',-1,'0-13 IN ALL-PLAY'],['HAIL MARY','12-6',1,'PITTS AGAIN: 3.8'],['BEND THE KNEE','10-8',-1,'STROUD ($1): 5 TD'],['KIM JONG NATE','12-6',1,'KILLED THE STREAK'],['THE ASSHOUSE','10-8',-1,'THIRD STRAIGHT 0-2'],['MAC DADDY','9-9',2,'WORST TO PERFECT'],['GOOD WILL HUNTING','6-12',0,'LOST TO 178.78'],['SHAKENBAKE','8-10',2,'49ERS ($0): 21.24'],['WHOLE MILK','6-12',2,'3 STRAIGHT. EMMETT BENCHED'],['INJURED RESERVED','6-12',-4,'STARTED A PROJECTED 0'],['MILEY','6-12',-2,'BENCHED A 21.34 QB'],['FREEGUCCI','4-14',0,'27.7 ON THE BENCH'],['FWAMMING GWAGGON','4-14',0,'PAID $20 FOR A ZERO']];
+const RR=[['KIM JONG NATE','KIRK COUSINS, BENCHED. AGAIN.','15.64','STILL ENDED THE STREAK'],['INJURED RESERVED','STARTED JOSH JACOBS. YAHOO PROJECTED','0.00','HE SCORED 0.5'],['THE ASSHOUSE','DERRICK HENRY, PASSING YARDS','-3','THIRD STRAIGHT 0-2'],['HAIL MARY','STARTED KYLE PITTS AGAIN','3.8','JUSTICE HILL: 19.5 ON THE BENCH'],['FREEGUCCI','TWO NEW RECEIVERS, BOTH BENCHED','27.7','LOST BY 1.34'],['GOOD WILL HUNTING','SCORED 140.42 AND LOST BY','38.36','WORST LUCK IN THE LEAGUE'],['SHAKENBAKE','BEAT A TEAM WITH A WORSE RECORD','+31.48','FIRST TIME IN THREE WEEKS']];
+
+// ---- scenes: fn(ts, d, li, lt) : ts seconds into scene, d scene length, li active line, lt seconds into that line ----
+const SC={};
+SC.title=(ts,d)=>{bg();topbar(ts,d);
+ T('NFL UNLOCKED',W/2,520,64,GRAY,{al:'center',a:k(ts,0)});
+ T('WEEK',W/2,760,230,PAPER,{al:'center',wt:900,a:k(ts,0.05)});
+ const s=eb(cl((ts-0.15)/0.45));X.save();X.translate(W/2,1180);X.scale(s,s);T('9',0,0,560,RED,{al:'center',wt:900});X.restore();
+ T('THE ROAST CUT',W/2,1330,46,GRAYD,{al:'center',a:k(ts,0.5)});};
+SC.streak=(ts,d,li)=>{bg();topbar(ts,d);label('Leo the Cleo',ts);
+ // 18 games as squares: 16 wins then 2 losses
+ for(let i=0;i<18;i++){const x=60+(i%9)*108,y=260+Math.floor(i/9)*108,q=k(ts,0.04*i,0.25);const lost=i>=16;const show=lost?k(ts,1.3+(i-16)*0.12,0.2):q;
+   R(x,y,92,92,lost?RED:PAPER,show*(lost?1:0.9));T(lost?'L':'W',x+46,y+66,54,lost?PAPER:INK,{al:'center',wt:900,a:show});}
+ const kk=cl((ts-1.2)/0.3);
+ T('16-0',W/2,820,300,PAPER,{al:'center',wt:900,a:1-0.6*kk});
+ if(kk>0){X.save();X.strokeStyle=RED;X.lineWidth=26;X.beginPath();X.moveTo(150,760);X.lineTo(150+780*eo(kk),660);X.stroke();X.restore();}
+ pop('16-2',W/2,1250,300,RED,cl((ts-1.35)/0.4),'center');
+ stamp('STREAK OVER',W/2,1470,cl((ts-1.6)/0.45),92);};
+SC.low=(ts,d,li)=>{bg();topbar(ts,d);label('Leo the Cleo, Week 9',ts);
+ pop('99.18',60,560,290,RED,k(ts,0,0.4));
+ T('LOWEST SCORE IN THE LEAGUE',60,660,54,PAPER,{a:k(ts,0.3)});
+ const rows=[['ALL-PLAY','0-13'],['SHOUGH, BENCHED','19.7'],['HIGBEE AT TE','1.8'],['BEST LINEUP','LOSES TWICE']];
+ rows.forEach((r,i)=>{const q=k(ts,0.9+i*0.35,0.3);X.save();X.globalAlpha=q;X.translate((1-q)*300,0);R(60,780+i*160,960,135,i==3?RED:INK2);T(r[0],100,868+i*160,48,i==3?PAPER:GRAY);T(r[1],980,872+i*160,70,PAPER,{al:'right',wt:900});X.restore();});
+ T('$95 OF FAAB. NEVER OPENED.',60,1500,40,GRAYD,{a:k(ts,2.4)});};
+SC.chart=(ts,d)=>{bg();topbar(ts,d);label('Week 9, every score',ts);
+ const x0=420,x1=1000,mx=185,y0=230,rh=88,sc=v=>(x1-x0)*v/mx;
+ WEEK.forEach((r,i)=>{const y=y0+i*rh,q=k(ts,0.1+i*0.07,0.5);const above=r[1]>MED;
+   T(r[0],x0-24,y+48,38,above?PAPER:GRAY,{al:'right',wt:900,a:cl(q*2)});
+   R(x0,y+10,sc(r[1])*q,58,above?PAPER:RULE);
+   T(r[1].toFixed(2),x0+sc(r[1])*q-14,y+54,32,above?INK:PAPER,{al:'right',wt:900,a:cl((q-0.6)*3)});
+   T(r[2],1040,y+50,30,r[2]==='2-0'?GREEN:r[2]==='0-2'?REDB:GRAY,{al:'right',wt:800,a:cl((q-0.7)*3)});});
+ const mq=k(ts,1.4,0.5),mxp=x0+sc(MED);R(mxp-3,y0-20,6,(rh*14+30)*mq,RED);
+ T('MEDIAN 114.04',mxp,y0+rh*14+70,44,RED,{al:'center',wt:900,a:mq});
+ T('RIGHT OF THE LINE IS A WIN',W/2,y0+rh*14+130,34,GRAY,{al:'center',a:k(ts,1.8)});};
+SC.ranks=(ts,d)=>{bg();topbar(ts,d);label('Power rankings, all 14',ts);
+ const y0=200,rh=106;
+ PR.forEach((r,i)=>{const q=k(ts,0.1+i*0.12,0.3);if(q<=0)return;const y=y0+i*rh;X.save();X.globalAlpha=q;X.translate((1-q)*-400,0);
+  const top=i===0,hot=(r[2]<=-4);R(60,y,960,rh-12,top?RED:hot?'#4A1D16':INK2);
+  T(String(i+1),100,y+66,52,PAPER,{wt:900,al:'center'});
+  T(r[0],155,y+50,46,PAPER,{wt:900});
+  T(r[3],155,y+84,26,top?'#FFD9D2':GRAY,{wt:700});
+  T(r[1],880,y+64,48,PAPER,{wt:900,al:'right'});
+  if(r[2])T((r[2]>0?'▲':'▼')+Math.abs(r[2]),995,y+62,32,r[2]>0?(top?PAPER:GREEN):REDB,{wt:800,al:'right'});
+  X.restore();});};
+SC.high=(ts,d)=>{bg();topbar(ts,d);label('A dad',ts);
+ T('SEASON HIGH',60,330,84,GRAY,{a:k(ts,0)});
+ T((178.78*eo(cl(ts/1.1))).toFixed(2),60,620,290,RED,{wt:900});
+ [['13-0','IN ALL-PLAY'],['17-1','RECORD'],['9-0','VS THE MEDIAN'],['18-0','BEST-LINEUP RECORD']].forEach((r,i)=>{const q=k(ts,0.6+i*0.25);T(r[0],60,860+i*190,140,PAPER,{wt:900,a:q});T(r[1],560,830+i*190,44,GRAY,{a:q});});};
+SC.love=(ts,d)=>{bg();topbar(ts,d);label('A dad',ts);
+ T('JORDAN LOVE',60,330,110,PAPER,{wt:900,a:k(ts,0)});
+ pop('$2',W/2,880,500,RED,k(ts,0.1,0.4),'center');
+ T('IN THE AUCTION',W/2,980,56,GRAY,{al:'center',a:k(ts,0.3)});
+ T('36.18 THIS WEEK',W/2,1230,90,PAPER,{al:'center',wt:900,a:k(ts,0.7)});
+ T('192.02 THIS SEASON',W/2,1350,90,PAPER,{al:'center',wt:900,a:k(ts,1.0)});};
+SC.adonai=(ts,d,li)=>{bg();topbar(ts,d);label('Fwamming Gwaggon',ts);
+ T('PAID',60,400,150,PAPER,{wt:900,a:k(ts,0)});
+ pop('$20',60,700,320,RED,k(ts,0.2,0.4));
+ T('FOR ADONAI MITCHELL',60,800,64,PAPER,{wt:900,a:k(ts,0.5)});
+ T("THE LEAGUE'S MOST RELIABLE ZERO",60,870,40,GRAY,{a:k(ts,1.2)});
+ T('STARTED HIM.',60,1080,90,PAPER,{wt:900,a:li>=1?1:0});
+ if(li>=2){const q=cl(LT/0.35);const s=1+1.2*(1-eb(q));X.save();X.translate(W/2,1430);X.scale(s,s);T('0.00',0,0,330,RED,{al:'center',wt:900,a:cl(q*3)});X.restore();}};
+SC.goff=(ts,d,li)=>{bg();topbar(ts,d);label('Miley',ts);
+ T('WRONG QUARTERBACK',60,320,96,PAPER,{wt:900,a:k(ts,0)});
+ const a=k(ts,1.6),b=k(ts,0.3);
+ X.save();X.globalAlpha=b;X.translate((1-b)*500,0);R(560,460,460,820,RED);T('BENCHED',590,540,40,'#FFD9D2');T('B. YOUNG',590,640,100,PAPER,{wt:900});T('21.34',790,1120,190,PAPER,{wt:900,al:'center'});X.restore();
+ X.save();X.globalAlpha=a;X.translate(-(1-a)*500,0);R(60,460,460,820,INK2);T('STARTED',90,540,40,GRAY);T('GOFF',90,640,100,PAPER,{wt:900});T('6.30',290,1120,190,PAPER,{wt:900,al:'center'});X.restore();
+ if(li>=1){stamp('TWO WEEKS RUNNING',W/2,1450,cl(LT/0.4),80,0.04);}};
+SC.stroud=(ts,d,li)=>{bg();topbar(ts,d);label('Bend The Knee',ts);
+ T('C.J. STROUD',60,330,110,PAPER,{wt:900,a:k(ts,0)});
+ pop('36.36',60,640,280,RED,k(ts,0.15,0.4));
+ ['384 YARDS','5 PASSING TD','$1 IN THE AUCTION'].forEach((s,i)=>T(s,60,760+i*75,60,PAPER,{wt:900,a:k(ts,0.5+i*0.25)}));
+ if(li>=1){const q=cl(LT/0.3);R(60,1100,960,4,RULE,q);T('KEENAN ALLEN, BENCHED: 5.6',60,1200,62,PAPER,{wt:900,a:q});T('SAME 5.6 HE SCORED THE ONE WEEK HE STARTED',60,1265,34,GRAY,{a:q});stamp('FINALLY RIGHT',W/2,1460,cl((LT-1.0)/0.4),90,-0.06);}};
+SC.emmett=(ts,d)=>{bg();topbar(ts,d);label('Whole Milk',ts);
+ T('THE EMMETT',60,330,120,PAPER,{wt:900,a:k(ts,0)});T('JOHNSON FILE, VOL. 4',60,450,96,RED,{wt:900,a:k(ts,0.1)});
+ [['WK 6','STARTED','5.4'],['WK 7','BENCHED','6.94'],['WK 8','BENCHED','26.06'],['WK 9','BENCHED','10.56']].forEach((r,i)=>{const q=k(ts,0.4+i*0.3,0.3);X.save();X.globalAlpha=q;X.translate((1-q)*300,0);R(60,560+i*160,960,135,INK2);T(r[0],100,645+i*160,40,GRAY);T(r[1],260,648+i*160,54,PAPER,{wt:900});T(r[2],980,650+i*160,80,i==3?RED:PAPER,{wt:900,al:'right'});X.restore();});
+ T('WRONG FOUR WEEKS RUNNING.',60,1300,60,PAPER,{wt:900,a:k(ts,2.0)});T('WON THREE STRAIGHT ANYWAY.',60,1380,60,RED,{wt:900,a:k(ts,2.4)});};
+SC.roast=(ts,d,li)=>{bg();topbar(ts,d);const n=RR.length,i=Math.min(n-1,li),r=RR[i],q=LT;
+ T('ROAST ROUND',60,150,36,RED,{wt:800});T((i+1)+'/'+n,1020,150,36,GRAY,{al:'right'});
+ for(let j=0;j<n;j++)R(60+j*(960/n),180,960/n-8,8,j<=i?RED:RULE);
+ const a=eo(q/0.25);X.save();X.translate((1-a)*W*0.6,0);
+ T(r[0],60,560,fit(r[0],96,960),GRAY,{wt:900});
+ T(r[1],60,680,fit(r[1],56,960),PAPER,{wt:900});
+ pop(r[2],60,1080,fit(r[2],330,960),RED,cl((q-0.15)/0.35));
+ T(r[3],60,1220,52,PAPER,{wt:800,a:eo((q-0.6)/0.3)});X.restore();};
+SC.median=(ts,d,li)=>{bg();topbar(ts,d);label('The median',ts);
+ T('114.04',W/2,440,220,PAPER,{al:'center',wt:900,a:k(ts,0)});
+ T('THE LINE',W/2,520,48,GRAY,{al:'center',a:k(ts,0)});
+ const kk=k(ts,0.2,0.5);R(W/2-3,620,6,900*kk,RED);
+ T('BOTH 100.0% LINEUPS',W/2,600,40,GRAY,{al:'center',a:k(ts,0.8)});
+ const a=li>=1?cl(LT/0.3):0,b=li>=1?cl((LT-0.9)/0.3):0;
+ X.save();X.globalAlpha=a;T('MAC DADDY',W/2+40,820,56,PAPER,{wt:900});T('+0.88',W/2+40,980,150,GREEN,{wt:900});T('1-1. SAVED.',W/2+40,1050,36,GRAY);X.restore();
+ X.save();X.globalAlpha=b;T('FWAMMING',W/2-40,1180,56,PAPER,{wt:900,al:'right'});T('-0.88',W/2-40,1340,150,RED,{wt:900,al:'right'});T('1-1. SUNK.',W/2-40,1410,36,GRAY,{al:'right'});X.restore();};
+SC.outro=(ts,d,li)=>{bg();topbar(ts,d);
+ T('LEO THE CLEO',W/2,520,70,GRAY,{al:'center',a:k(ts,0)});
+ pop('$95',W/2,880,380,RED,k(ts,0.1,0.4),'center');
+ T('OF FAAB. STILL UNOPENED.',W/2,990,60,PAPER,{al:'center',wt:900,a:k(ts,0.4)});
+ const q=li>=1?cl(LT/0.4):0;R(60,1150,960,4,RED,q);
+ T('RECAP + NEWSLETTER',W/2,1260,52,GRAY,{al:'center',a:q});
+ T('NFLUNLOCKED.COM',W/2,1370,104,PAPER,{al:'center',wt:900,a:q});
+ T('MUSIC: "FUNK GAME LOOP" KEVIN MACLEOD (INCOMPETECH.COM), CC BY 4.0',W/2,1560,24,GRAYD,{al:'center',wt:700,a:q});};
+
+// ---- timeline, injected from the voice track ----
+let TL=null,LT=0;
+window.setTL=(tl)=>{TL=tl;let acc=0;TL.forEach(s=>{s.start=acc;acc+=s.dur;});window.TOTAL=acc;window.CUTS=TL.map(s=>s.start);return acc;};
+function caption(txt,q){if(!txt||q<=0)return;font(46,900);const words=txt.toUpperCase().replace('NFLUNLOCKED.COM','NFLUNLOCKED.COM').split(' ');const lines=[];let cur='';for(const w of words){const t=cur?cur+' '+w:w;if(X.measureText(t).width>900&&cur){lines.push(cur);cur=w;}else cur=t;}lines.push(cur);
+ const lh=58,h=lines.length*lh+34,y=1835-h;X.save();X.globalAlpha=q;X.fillStyle='rgba(0,0,0,0.78)';X.fillRect(60,y,960,h);X.fillStyle=RED;X.fillRect(60,y,8,h);X.restore();
+ lines.forEach((l,i)=>T(l,W/2,y+17+lh*(i+1)-12,46,PAPER,{al:'center',wt:900,a:q}));}
+window.render=function(t){GT=t;let i=TL.length-1;for(let j=0;j<TL.length;j++){if(t<TL[j].start+TL[j].dur){i=j;break;}}
+ const s=TL[i],ts=t-s.start;let li=0;for(let j=0;j<s.lines.length;j++)if(ts>=s.lines[j].at)li=j;LT=ts-s.lines[li].at;
+ X.setTransform(1,0,0,1,0,0);SC[s.name](ts,s.dur,li,LT);
+ const L=s.lines[li];const on=ts>=L.at-0.05&&ts<=L.at+L.len+0.25;caption(L.text,on?1:0);
+ if(ts<0.07&&i>0)R(0,0,W,H,PAPER,0.16*(1-ts/0.07));
+ return C.toDataURL('image/jpeg',0.9);};
+</script></body></html>
