@@ -13,7 +13,7 @@
   "uses_faab": true,
   "faab_budget": 100,
   "demo": false,
-  "last_updated": "2026-11-10T12:00:18.168412+00:00"
+  "last_updated": "2026-11-10T18:23:17.786287+00:00"
  },
  "teams": [
   {
@@ -320,8 +320,8 @@
    "luck_index": 0.944,
    "recent_form": 0.0,
    "rank": 1,
-   "prev_rank": 2,
-   "movement": 1
+   "prev_rank": 1,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.10",
@@ -331,8 +331,8 @@
    "luck_index": 0.889,
    "recent_form": 0.0,
    "rank": 2,
-   "prev_rank": 1,
-   "movement": -1
+   "prev_rank": 2,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.1",
@@ -342,8 +342,8 @@
    "luck_index": 0.667,
    "recent_form": 0.0,
    "rank": 3,
-   "prev_rank": 4,
-   "movement": 1
+   "prev_rank": 3,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.6",
@@ -353,8 +353,8 @@
    "luck_index": 0.556,
    "recent_form": 0.0,
    "rank": 4,
-   "prev_rank": 3,
-   "movement": -1
+   "prev_rank": 4,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.4",
@@ -364,8 +364,8 @@
    "luck_index": 0.667,
    "recent_form": 0.0,
    "rank": 5,
-   "prev_rank": 6,
-   "movement": 1
+   "prev_rank": 5,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.5",
@@ -375,8 +375,8 @@
    "luck_index": 0.556,
    "recent_form": 0.0,
    "rank": 6,
-   "prev_rank": 5,
-   "movement": -1
+   "prev_rank": 6,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.8",
@@ -397,8 +397,8 @@
    "luck_index": 0.444,
    "recent_form": 0.0,
    "rank": 8,
-   "prev_rank": 10,
-   "movement": 2
+   "prev_rank": 8,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.3",
@@ -408,8 +408,8 @@
    "luck_index": 0.333,
    "recent_form": 0.0,
    "rank": 9,
-   "prev_rank": 11,
-   "movement": 2
+   "prev_rank": 9,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.14",
@@ -419,8 +419,8 @@
    "luck_index": 0.333,
    "recent_form": 0.0,
    "rank": 10,
-   "prev_rank": 8,
-   "movement": -2
+   "prev_rank": 10,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.11",
@@ -430,8 +430,8 @@
    "luck_index": 0.333,
    "recent_form": 0.0,
    "rank": 11,
-   "prev_rank": 9,
-   "movement": -2
+   "prev_rank": 11,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.9",
@@ -558,48 +558,7 @@
   ],
   "closing": "Connect the Yahoo league and the Executioner starts publishing for real. Until then, these demo managers take the bullets meant for you."
  },
- "feed": [
-  {
-   "id": "rank-scrape.l.675504.t.12-8",
-   "kind": "rankings",
-   "title": "ShakeNBake jumps 2 spots to #8",
-   "body": "All-play 0-0 and a luck index of +0.444. The model likes them more than the standings do.",
-   "timestamp": 1794312018,
-   "team_key": "scrape.l.675504.t.12",
-   "reactions": {},
-   "reacted_by": 0
-  },
-  {
-   "id": "rank-scrape.l.675504.t.3-9",
-   "kind": "rankings",
-   "title": "Good Will Hunting jumps 2 spots to #9",
-   "body": "All-play 0-0 and a luck index of +0.333. The model likes them more than the standings do.",
-   "timestamp": 1794312018,
-   "team_key": "scrape.l.675504.t.3",
-   "reactions": {},
-   "reacted_by": 0
-  },
-  {
-   "id": "rank-scrape.l.675504.t.14-10",
-   "kind": "rankings",
-   "title": "The Injured Reserved drops 2 spots to #10",
-   "body": "All-play 0-0 and a luck index of +0.333. The model trusts them less than the standings do.",
-   "timestamp": 1794312018,
-   "team_key": "scrape.l.675504.t.14",
-   "reactions": {},
-   "reacted_by": 0
-  },
-  {
-   "id": "rank-scrape.l.675504.t.11-11",
-   "kind": "rankings",
-   "title": "Miley \ud83d\udca8LEO 5K Speedo Fan Club drops 2 spots to #11",
-   "body": "All-play 0-0 and a luck index of +0.333. The model trusts them less than the standings do.",
-   "timestamp": 1794312018,
-   "team_key": "scrape.l.675504.t.11",
-   "reactions": {},
-   "reacted_by": 0
-  }
- ],
+ "feed": [],
  "most_clowned": [],
  "history": {
   "established": 2016,
