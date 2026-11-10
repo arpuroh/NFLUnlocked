@@ -16,6 +16,7 @@ const NU = (() => {
   const NAV = [
     ["index.html",     "This Week",      "home"],
     ["week.html",      "Week 1",         "week"],
+    ["newsletter.html", "Letter",        "letter"],
     ["draft.html",     "Draft",          "draft"],
     ["rankings.html",  "Rankings",       "ranks"],
     ["hall.html",      "Hall of Shame",  "hall"],
@@ -120,7 +121,7 @@ const NU = (() => {
 
     // The masthead nav is hidden under 900px, so this bar is the only way around
     // the site on a phone — the Trophy Room and the Hall of Shame belong in it.
-    const tabs = [["index.html","Home","home"],["week.html",meta.week_status === "final" ? `Wk ${meta.current_week}` : "Recap","week"],["draft.html","Draft","draft"],["rankings.html","Ranks","ranks"],
+    const tabs = [["index.html","Home","home"],["week.html",meta.week_status === "final" ? `Wk ${meta.current_week}` : "Recap","week"],["newsletter.html","Letter","letter"],["draft.html","Draft","draft"],["rankings.html","Ranks","ranks"],
                   ["hall.html","Shame","hall"],["trophy.html","Trophy","trophy"],
                   ["trades.html","Trades","trades"],["roast.html","Roast","roast"]];
     const mt = document.createElement("nav");

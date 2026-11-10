@@ -525,7 +525,7 @@ a { color: inherit; text-decoration: none; }
   .luck { width: 84px; }
   body { padding-bottom: 52px; }
   .mobile-tabs {
-    display: grid; grid-template-columns: repeat(8, 1fr);
+    display: grid; grid-template-columns: repeat(9, 1fr);
     position: fixed; bottom: 0; left: 0; right: 0; z-index: 70;
     background: var(--ink); border-top: 2px solid var(--red);
   }
@@ -583,3 +583,6 @@ a { color: inherit; text-decoration: none; }
 .wk-hero .reel-jump { margin-top: 20px; }
 .dark .btn-ghost.reel-jump { color: var(--paper); border-color: #4A4645; }
 .dark .btn-ghost.reel-jump:hover { border-color: var(--red-bright); color: var(--white); }
+
+/* nine nav items: the league id gives way before the nav does */
+@media (max-width: 1360px) { .league-id { display: none; } }
