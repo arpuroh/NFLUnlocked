@@ -13,7 +13,7 @@
   "uses_faab": true,
   "faab_budget": 100,
   "demo": false,
-  "last_updated": "2026-11-11T18:15:14.694402+00:00"
+  "last_updated": "2026-11-12T18:39:28.787641+00:00"
  },
  "teams": [
   {
@@ -32,7 +32,7 @@
    "ties": 0,
    "win_pct": 0.944,
    "streak": "W6",
-   "points_for": 1313.3,
+   "points_for": 1313.8,
    "points_against": 1045.38,
    "week_points": 0.0,
    "trophies": []
@@ -64,7 +64,7 @@
    "name": "Hail Mary",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/25205944781_f55b83a6fa.jpg",
-   "moves": 32,
+   "moves": 33,
    "trades": 0,
    "faab_balance": 74,
    "clinched_playoffs": false,
@@ -201,7 +201,7 @@
    "win_pct": 0.333,
    "streak": "L1",
    "points_for": 1096.26,
-   "points_against": 1108.76,
+   "points_against": 1109.26,
    "week_points": 0.0,
    "trophies": []
   },
@@ -325,7 +325,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.10",
-   "score": 0.5464,
+   "score": 0.5461,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.889,
@@ -336,7 +336,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.1",
-   "score": 0.4341,
+   "score": 0.4338,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.667,
@@ -347,7 +347,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.6",
-   "score": 0.4281,
+   "score": 0.4277,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.556,
@@ -358,7 +358,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.4",
-   "score": 0.3384,
+   "score": 0.3382,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.667,
@@ -369,7 +369,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.5",
-   "score": 0.3243,
+   "score": 0.3241,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.556,
@@ -380,7 +380,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.8",
-   "score": 0.2826,
+   "score": 0.2825,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.5,
@@ -391,7 +391,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.12",
-   "score": 0.2524,
+   "score": 0.2523,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.444,
@@ -402,7 +402,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.3",
-   "score": 0.2359,
+   "score": 0.2358,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.333,
@@ -413,7 +413,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.14",
-   "score": 0.2251,
+   "score": 0.225,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.333,
@@ -424,7 +424,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.11",
-   "score": 0.1998,
+   "score": 0.1997,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.333,
@@ -435,7 +435,7 @@
   },
   {
    "team_key": "scrape.l.675504.t.9",
-   "score": 0.1924,
+   "score": 0.1923,
    "all_play": "0-0",
    "all_play_pct": 0.0,
    "luck_index": 0.333,
