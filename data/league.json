@@ -13,7 +13,7 @@
   "uses_faab": true,
   "faab_budget": 100,
   "demo": false,
-  "last_updated": "2026-11-12T18:39:28.787641+00:00"
+  "last_updated": "2026-11-13T18:18:56.616478+00:00"
  },
  "teams": [
   {
@@ -64,7 +64,7 @@
    "name": "Hail Mary",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/25205944781_f55b83a6fa.jpg",
-   "moves": 33,
+   "moves": 35,
    "trades": 0,
    "faab_balance": 74,
    "clinched_playoffs": false,
@@ -148,7 +148,7 @@
    "name": "Mac Daddy",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/87caae3ea27e5764afe50efbc5b1e3bc060b3f15b9cc206accd95983a6271104.jpg",
-   "moves": 20,
+   "moves": 21,
    "trades": 0,
    "faab_balance": 12,
    "clinched_playoffs": false,
@@ -295,7 +295,7 @@
    "name": "Fwamming Gwaggon",
    "manager": "",
    "logo": "https://s.yimg.com/ep/cx/blendr/v2/image-dragon-png_1721173946530.png",
-   "moves": 16,
+   "moves": 17,
    "trades": 0,
    "faab_balance": 8,
    "clinched_playoffs": false,
