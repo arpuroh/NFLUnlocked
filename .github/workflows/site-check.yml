@@ -1,0 +1,15 @@
+name: Site check
+
+# Every page must be in the nav (or deliberately off it) and carry Vercel Analytics.
+# A red X on a commit means a page went missing from the masthead or stopped being tracked.
+on:
+  push:
+    paths: ["*.html", "app.js", "scripts/check_site.py"]
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 scripts/check_site.py
