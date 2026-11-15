@@ -86,6 +86,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--season", type=int, default=2026)
     ap.add_argument("--refresh", action="store_true")
+    ap.add_argument("--audit", action="store_true", help="list rostered weeks with no stat line that were not counted")
     a = ap.parse_args()
     y = a.season
 
@@ -286,6 +287,28 @@ def main():
         bids = [b for aw, t, b in added.get(k, []) if t == tid and aw <= w]
         return (bids[-1] or 0) if bids else 0
 
+    # ── dropped while hurt ─────────────────────────────────
+    # A player cut because he got hurt still cost the team that cut him: losing him is the
+    # injury. If a player was on a roster in week w, is on nobody's roster in week w+1 and is
+    # hurt that week, he stays on that team's bill for as long as he stays hurt and unclaimed.
+    dropped = collections.defaultdict(dict)       # pkey -> week -> team_id
+    # Only players who mattered to that team carry: drafted ones, or ones it actually started.
+    # Waiver churn that happens to get hurt after being cut is not anyone's injury.
+    for k, ws in list(held.items()):
+        mattered = lambda tid: cost.get(k, 0) > 0 or any(
+            held[k].get(x) == tid and slot[k].get(x) not in ("BN", "IR") for x in held[k])
+        for w in sorted(ws):
+            if not mattered(ws[w]):
+                continue
+            nxt_w, tid = w + 1, ws[w]
+            while nxt_w <= W and nxt_w not in held[k] and status(k, nxt_w)[0] == "hurt":
+                dropped[k][nxt_w] = tid
+                nxt_w += 1
+    for k, ws in dropped.items():
+        for w, tid in ws.items():
+            held[k][w] = tid
+            slot[k][w] = "DROPPED"
+
     # ── tally ──────────────────────────────────────────────
     T = {tid: {"team_id": tid, "players": set(), "games": 0, "dollar_games": 0, "points": 0.0, "bill": 0.0,
                "weekly": collections.defaultdict(lambda: {"pts": 0, "dollars": 0, "games": 0, "who": []}),
@@ -323,6 +346,10 @@ def main():
                 c = {"name": p["name"], "pos": p["pos"], "_pos": pos_of(p), "slot": "BN", "k": k,
                      "pts": expect(k) if st == "hurt" else float(p.get("proj") or 0)}
                 (hurt if st == "hurt" else squad).append(c)
+            for k, dws in dropped.items():
+                if dws.get(w) == tid:
+                    hurt.append({"name": info[k]["name"], "pos": info[k]["pos"], "_pos": pos_of(info[k]),
+                                 "slot": "BN", "k": k, "pts": expect(k)})
             if not hurt:
                 continue
             base, full = lineup(squad), lineup(squad + hurt)
@@ -342,7 +369,7 @@ def main():
             sl = slot[k][w]
             if sl == "IR":
                 T[tid]["ir_weeks"] += 1
-            started = sl not in ("BN", "IR")
+            started = sl not in ("BN", "IR", "DROPPED")
             if started and st in ("hurt", "dnp", "nfa"):
                 T[tid]["ghosts"].append({"week": w, "name": info[k]["name"], "pos": info[k]["pos"],
                                          "why": d.get("why", "no team") if st != "hurt" else (d.get("why") or "Out"),
@@ -350,6 +377,10 @@ def main():
             if started and st == "bye":
                 T[tid]["byes"].append({"week": w, "name": info[k]["name"], "pos": info[k]["pos"]})
             if st != "hurt":
+                nflt = YAHOO_TEAM.get(info[k]["nfl"].upper(), info[k]["nfl"].upper())
+                if a.audit and st in ("dnp", "nfa") and not yahoo_line[k].get(w) and not yahoo_pts[k].get(w) \
+                        and (st == "dnp" or w in plays.get(nflt, set())):
+                    print(f"AUDIT not counted: wk{w} team {tid} {info[k]['name']} ({st}: {d.get('why', '')})")
                 continue
             c = capital(k, tid, w)
             part = body(d.get("part"))
@@ -446,7 +477,8 @@ def main():
                                "paid": max((m["capital"] for m in P[k]["missed"] if m["team_id"] == tid), default=0),
                                "weeks": [m["week"] for m in P[k]["missed"] if m["team_id"] == tid],
                                "part": next((m["part"] for m in reversed(P[k]["missed"]) if m["part"]), None),
-                               "how": how(k, tid)}
+                               "how": how(k, tid),
+                               "cut": sum(1 for m in P[k]["missed"] if m["team_id"] == tid and m["slot"] == "DROPPED")}
                               for k in t["players"]), key=lambda x: (-x["lost"], -x["dg"], x["name"])),
             "draft_spent": spent,
         })
@@ -471,7 +503,10 @@ def main():
                         "start_weeks": [m["week"] for m in p["missed"] if m["lost"] > 0.5],
                         "part": last, "body": bodies.most_common(1)[0][0],
                         "weeks": [m["week"] for m in p["missed"]],
-                        "owners": [{"team_id": t, "games": n, "dg": p["owner_dg"][t], "lost": round(p["owner_lost"][t], 1)} for t, n in p["owners"].most_common()],
+                        "owners": [{"team_id": t, "games": n, "dg": p["owner_dg"][t], "lost": round(p["owner_lost"][t], 1),
+                                    "weeks": [m["week"] for m in p["missed"] if m["team_id"] == t]}
+                                   for t, n in p["owners"].most_common()],
+                        "now_team": held[k].get(W) if slot[k].get(W) not in (None, "DROPPED") else None,
                         "traded": p["traded"]})
     players.sort(key=lambda x: (-x["lost"], -x["dollar_games"], -x["games"]))
 
@@ -520,7 +555,7 @@ def main():
         "unmatched": unmatched,
         "method": {
             "hurt": "A game counts when the player's NFL team played, he took no snap, and he was on injured reserve, PUP or NFI, listed Out or Doubtful on the official injury report, or listed Questionable and then inactive. Byes, healthy scratches, suspensions and unsigned players never count.",
-            "owner": "Each missed game is charged to whoever had the player on their Yahoo roster that week, so a traded player bills the team that holds him. Drop a hurt player and he stops costing you.",
+            "owner": "Each missed game is charged to whoever had the player on their Yahoo roster that week, so a traded player bills the team that holds him that week: games he missed before a trade stay with the old team, games after it go to the new one. A player cut because he got hurt keeps billing the team that cut him while he stays hurt and unclaimed, because losing him was the injury.",
             "bill": "The Injury Bill is starter points left on the table. Each week we build the best lineup a team could have set with its hurt players available, at their healthy average, and the best lineup it could set without them, with everyone else at Yahoo's projection for that week. The gap is the bill. A hurt player who would have been on the bench anyway costs nothing; a hurt stud who forces a waiver body into the lineup costs the difference. When several players are out the same week, the gap is split by how much each one alone would have added.",
             "dollars": "Dead money is the draft-capital view: what the player cost the team holding him (auction price if drafted or traded for, FAAB bid if claimed off waivers) times the games he missed.",
             "points": "Everything runs on projections, never on what happened later. A hurt player is valued at his preseason projection under this league's scoring, blended 50/50 with Yahoo's weekly projection for him once he has three active weeks; a pickup nobody projected uses Yahoo's weekly projections alone. Everyone else is valued at Yahoo's projection for that week. The ward's cost for next week uses the same projected values for the whole roster.",
