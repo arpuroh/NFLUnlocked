@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""The Injury Index: every game a rostered player missed hurt, priced in draft dollars.
+"""The Injury Index: every game a rostered player missed hurt, priced in starter points left on the table.
 
 Inputs
   data/weeks/<season>-wk<NN>-rosters.json   who held whom, week by week (Yahoo box scores)
@@ -40,7 +40,7 @@ DATA = os.path.join(ROOT, "data")
 CACHE = os.path.join(DATA, "raw", "nflverse")
 NFLVERSE = "https://github.com/nflverse/nflverse-data/releases/download/"
 sys.path.insert(0, HERE)
-from build_week import MANAGERS, RENAMED, norm  # noqa: E402
+from build_week import IDP_POS, MANAGERS, RENAMED, best_lineup, norm  # noqa: E402
 
 INJURY_RES = {"R01", "R04", "R05", "R40", "R48", "A01"}   # RES/A01 shows up mid-transition onto IR
 RES_LABEL = {"R01": "IR", "R48": "IR (return)", "R04": "PUP", "R05": "NFI", "R40": "IR", "A01": "IR"}
@@ -107,7 +107,7 @@ def main():
     proj = {}
     for t in json.load(open(os.path.join(DATA, "projections.json")))["teams"]:
         for row in t.get("lineup", []) + t.get("bench", []):
-            n = row.get("player")
+            n = row.get("player") or row.get("name")    # lineup rows say "player", bench rows "name"
             if n and row.get("ppg") is not None:
                 proj[norm(n)] = row["ppg"]
     adds = json.load(open(os.path.join(DATA, "weeks", f"{y}-transactions.json")))["adds"]
@@ -163,6 +163,7 @@ def main():
     info = {}
     yahoo_pts = collections.defaultdict(dict)  # pkey -> week -> pts
     yahoo_line = collections.defaultdict(dict) # pkey -> week -> stat line ("" when he did nothing)
+    yahoo_proj = collections.defaultdict(dict) # pkey -> week -> Yahoo's projection that week (0 when out)
     for w, teams in weeks.items():
         for tid, t in teams.items():
             for p in t["starters"] + t["bench"]:
@@ -173,6 +174,7 @@ def main():
                 slot[k][w] = p["slot"]
                 yahoo_pts[k][w] = p["pts"]
                 yahoo_line[k][w] = (p.get("stats") or "").strip()
+                yahoo_proj[k][w] = float(p.get("proj") or 0)
                 info[k] = {"name": p["name"], "pos": p["pos"], "nfl": p["nflTeam"]}
                 if k not in ids:
                     ids[k] = gsis(p["name"], p["nflTeam"], p["pos"])
@@ -220,7 +222,15 @@ def main():
         return "dnp", {"team": team, "why": r.status}
 
     # healthy ppg: Yahoo points in weeks he took a snap, whoever held him
+    _ppg = {}
+
     def ppg(k):
+        if k in _ppg:
+            return _ppg[k]
+        _ppg[k] = _ppg_raw(k)
+        return _ppg[k]
+
+    def _ppg_raw(k):
         pts = [yahoo_pts[k][w] for w in yahoo_pts[k] if status(k, w)[0] == "played"]
         if len(pts) >= 2:
             return round(sum(pts) / len(pts), 2), "season"
@@ -229,6 +239,19 @@ def main():
         if pts:
             return round(pts[0], 2), "season"
         return 0.0, "none"
+
+    def expect(k):
+        """What a hurt player was projected to score, never what he scored after the fact: his
+        preseason projection under this league's scoring, blended 50/50 with Yahoo's own weekly
+        projection for him (averaged over the weeks he was active) once there are three of those.
+        A pickup nobody projected preseason uses Yahoo's weekly projections alone."""
+        yp = [v for v in yahoo_proj[k].values() if v > 0]
+        ym = sum(yp) / len(yp) if yp else None
+        if k in proj:
+            return round((proj[k] + ym) / 2, 2) if ym is not None and len(yp) >= 3 else proj[k]
+        if ym is not None:
+            return round(ym, 2)
+        return ppg(k)[0]
 
     # ── trades: a player changes fantasy team without an add to explain it ──
     trades = collections.defaultdict(lambda: {"week": None, "sides": collections.defaultdict(list)})
@@ -264,14 +287,50 @@ def main():
         return (bids[-1] or 0) if bids else 0
 
     # ── tally ──────────────────────────────────────────────
-    T = {tid: {"team_id": tid, "players": set(), "games": 0, "dollar_games": 0, "points": 0.0,
-               "weekly": collections.defaultdict(lambda: {"dollars": 0, "games": 0, "who": []}),
+    T = {tid: {"team_id": tid, "players": set(), "games": 0, "dollar_games": 0, "points": 0.0, "bill": 0.0,
+               "weekly": collections.defaultdict(lambda: {"pts": 0, "dollars": 0, "games": 0, "who": []}),
                "ghosts": [], "byes": [], "ir_weeks": 0, "parts": collections.Counter(),
                "drafted_dollars": 0}
          for tid in tmeta}
     P = {}
     parts = collections.Counter()
-    league_week = collections.defaultdict(lambda: {"dollars": 0, "games": 0, "players": 0})
+    league_week = collections.defaultdict(lambda: {"pts": 0.0, "dollars": 0, "games": 0})
+
+    # ── the bill: starter points left on the table ─────────
+    # Each week, the best lineup the team could have set with its hurt players available
+    # (at their healthy average) against the best lineup it could set without them (everyone
+    # else at Yahoo's projection for that week). The gap is what the injuries cost. A hurt
+    # bench player who would not have started costs nothing. A week's gap is split between
+    # that week's hurt players by how much each one alone would have added.
+    def pos_of(p):
+        raw = str(p.get("pos") or "")
+        if raw in ("QB", "RB", "WR", "TE", "K", "DEF"):
+            return raw
+        return "D" if any(x.strip() in IDP_POS for x in raw.split(",")) else raw
+
+    def lineup(cands):
+        return max(best_lineup(cands)[0], 0.0) if cands else 0.0
+
+    lost = {}
+    for w, teams_w in weeks.items():
+        for tid, t in teams_w.items():
+            squad, hurt = [], []
+            for p in t["starters"] + t["bench"]:
+                if p.get("empty") or p["name"] == "(Empty)":
+                    continue
+                k = norm(p["name"])
+                st = "played" if p["pos"] == "DEF" else status(k, w)[0]
+                c = {"name": p["name"], "pos": p["pos"], "_pos": pos_of(p), "slot": "BN", "k": k,
+                     "pts": expect(k) if st == "hurt" else float(p.get("proj") or 0)}
+                (hurt if st == "hurt" else squad).append(c)
+            if not hurt:
+                continue
+            base, full = lineup(squad), lineup(squad + hurt)
+            loss = max(0.0, full - base)
+            marg = {id(c): max(0.0, full - lineup(squad + [h for h in hurt if h is not c])) for c in hurt}
+            tot = sum(marg.values())
+            for c in hurt:
+                lost[(c["k"], tid, w)] = round(loss * marg[id(c)] / tot, 2) if tot else 0.0
     for k, ws in held.items():
         val, src = ppg(k)
         rec = P.setdefault(k, {"name": info[k]["name"], "pos": info[k]["pos"], "nfl": info[k]["nfl"],
@@ -295,15 +354,19 @@ def main():
             c = capital(k, tid, w)
             part = body(d.get("part"))
             rec["missed"].append({"week": w, "team_id": tid, "why": d.get("why"), "part": d.get("part") or None,
-                                  "body": part, "slot": sl, "capital": c})
+                                  "body": part, "slot": sl, "capital": c, "lost": lost.get((k, tid, w), 0.0)})
             rec["owners"][tid] += 1
             rec.setdefault("owner_dg", collections.Counter())[tid] += c
             rec["dollar_games"] += c
+            rec.setdefault("owner_lost", collections.Counter())[tid] += lost.get((k, tid, w), 0.0)
             tt = T[tid]
             tt["players"].add(k)
             tt["games"] += 1
             tt["dollar_games"] += c
             tt["points"] += val
+            tt["bill"] += lost.get((k, tid, w), 0.0)
+            tt["weekly"][w]["pts"] += lost.get((k, tid, w), 0.0)
+            league_week[w]["pts"] += lost.get((k, tid, w), 0.0)
             tt["parts"][part] += 1
             tt["weekly"][w]["dollars"] += c
             tt["weekly"][w]["games"] += 1
@@ -334,6 +397,24 @@ def main():
             now.append({"team_id": tid, "name": p["name"], "pos": p["pos"], "nfl": p["nflTeam"],
                         "status": tag, "part": part, "cost": capital(k, tid, W), "slot": p["slot"],
                         "missed": len(P.get(k, {}).get("missed", []))})
+    # what next week's ward costs: best lineup at everyone's healthy average, with and without them
+    OUT = ("IR", "IR (return)", "PUP", "NFI", "Out", "Doubtful")
+    due_pts = {}
+    for tid, t in weeks[W].items():
+        squad = []
+        for p in t["starters"] + t["bench"]:
+            if p.get("empty") or p["name"] == "(Empty)":
+                continue
+            k = norm(p["name"])
+            v = float(p.get("proj") or 0) if p["pos"] == "DEF" else expect(k)
+            squad.append({"name": p["name"], "pos": p["pos"], "_pos": pos_of(p), "slot": "BN", "k": k, "pts": v})
+        outs = {norm(x["name"]) for x in now if x["team_id"] == tid and x["status"] in OUT}
+        full = lineup(squad)
+        healthy = [c for c in squad if c["k"] not in outs]
+        due_pts[tid] = round(max(0.0, full - lineup(healthy)), 1)
+        for x in now:
+            if x["team_id"] == tid:
+                x["starter"] = full - lineup([c for c in squad if c["k"] != norm(x["name"])]) > 0.05
     order = {"IR": 0, "IR (return)": 1, "PUP": 2, "NFI": 3, "Out": 4, "Doubtful": 5, "Questionable": 6}
     now.sort(key=lambda x: (order.get(x["status"], 9), -x["cost"]))
 
@@ -347,24 +428,31 @@ def main():
             "logo": m.get("logo", ""), "record": m["season"]["record"], "wins": m["season"]["wins"],
             "points_for": m["season"]["points_for"], "power_rank": m.get("power_rank"),
             "injured": len(t["players"]), "games": t["games"], "dollar_games": t["dollar_games"],
+            "bill": round(t["bill"], 1), "per_game": round(t["bill"] / t["games"], 1) if t["games"] else 0,
+            "due_pts": due_pts.get(tid, 0.0),
             "per_week": round(t["dollar_games"] / W, 1), "points": round(t["points"], 1),
             "ir_weeks": t["ir_weeks"],
             "now": sum(1 for x in now if x["team_id"] == tid and x["status"] not in ("Questionable",)),
             "due": sum(x["cost"] for x in now if x["team_id"] == tid and x["status"] not in ("Questionable",)),
-            "weekly": [{"week": w, **t["weekly"][w]} for w in range(1, W + 1)],
+            "weekly": [{"week": w, **t["weekly"][w], "pts": round(t["weekly"][w]["pts"], 1)} for w in range(1, W + 1)],
             "ghosts": sorted(t["ghosts"], key=lambda g: g["week"]),
             "byes": sorted(t["byes"], key=lambda g: g["week"]),
             "parts": t["parts"].most_common(),
             "ledger": sorted(({"name": P[k]["name"], "pos": P[k]["pos"], "nfl": P[k]["nfl"], "cost": P[k]["cost"],
                                "games": P[k]["owners"][tid], "dg": P[k]["owner_dg"][tid],
+                               "lost": round(P[k]["owner_lost"][tid], 1),
+                               "started": sum(1 for m in P[k]["missed"] if m["team_id"] == tid and m["lost"] > 0.5),
+                               "start_weeks": [m["week"] for m in P[k]["missed"] if m["team_id"] == tid and m["lost"] > 0.5],
                                "paid": max((m["capital"] for m in P[k]["missed"] if m["team_id"] == tid), default=0),
                                "weeks": [m["week"] for m in P[k]["missed"] if m["team_id"] == tid],
                                "part": next((m["part"] for m in reversed(P[k]["missed"]) if m["part"]), None),
                                "how": how(k, tid)}
-                              for k in t["players"]), key=lambda x: (-x["dg"], -x["games"], x["name"])),
+                              for k in t["players"]), key=lambda x: (-x["lost"], -x["dg"], x["name"])),
             "draft_spent": spent,
         })
-    teams.sort(key=lambda x: (-x["dollar_games"], -x["games"]))
+    for t in teams:
+        t["started"] = sum(x["started"] for x in t["ledger"])
+    teams.sort(key=lambda x: (-x["bill"], -x["dollar_games"]))
     for i, t in enumerate(teams):
         t["rank"] = i + 1
 
@@ -378,11 +466,14 @@ def main():
                         "drafted_by": p["drafted_by"], "games": len(p["missed"]),
                         "dollar_games": p["dollar_games"], "ppg": p["ppg"], "ppg_src": p["ppg_src"],
                         "points": round(p["ppg"] * len(p["missed"]), 1),
+                        "lost": round(sum(m["lost"] for m in p["missed"]), 1),
+                        "started": sum(1 for m in p["missed"] if m["lost"] > 0.5),
+                        "start_weeks": [m["week"] for m in p["missed"] if m["lost"] > 0.5],
                         "part": last, "body": bodies.most_common(1)[0][0],
                         "weeks": [m["week"] for m in p["missed"]],
-                        "owners": [{"team_id": t, "games": n, "dg": p["owner_dg"][t]} for t, n in p["owners"].most_common()],
+                        "owners": [{"team_id": t, "games": n, "dg": p["owner_dg"][t], "lost": round(p["owner_lost"][t], 1)} for t, n in p["owners"].most_common()],
                         "traded": p["traded"]})
-    players.sort(key=lambda x: (-x["dollar_games"], -x["games"], -x["points"]))
+    players.sort(key=lambda x: (-x["lost"], -x["dollar_games"], -x["games"]))
 
     trade_out = []
     for (w, pair), tr in sorted(trades.items()):
@@ -394,7 +485,8 @@ def main():
                 after = sum(1 for m in P[k]["missed"] if m["week"] >= w and m["team_id"] == tid)
                 got.append({"name": info[k]["name"], "pos": info[k]["pos"], "cost": cost.get(k, 0),
                             "missed_before": before, "missed_after": after,
-                            "dg_after": sum(m["capital"] for m in P[k]["missed"] if m["week"] >= w and m["team_id"] == tid)})
+                            "dg_after": sum(m["capital"] for m in P[k]["missed"] if m["week"] >= w and m["team_id"] == tid),
+                            "lost_after": round(sum(m["lost"] for m in P[k]["missed"] if m["week"] >= w and m["team_id"] == tid), 1)})
             sides.append({"team_id": tid, "got": got})
         trade_out.append({"week": w, "sides": sides})
 
@@ -413,13 +505,14 @@ def main():
         "season": y, "through_week": W, "report_week": nxt,
         "built_at": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "totals": {"injured": len(players), "games": sum(t["games"] for t in teams),
-                   "dollar_games": tot_dg, "points": round(sum(t["points"] for t in teams), 1),
+                   "dollar_games": tot_dg, "started": sum(t["started"] for t in teams), "bill": round(sum(t["bill"] for t in teams), 1),
+                   "due_pts": round(sum(due_pts.values()), 1), "points": round(sum(t["points"] for t in teams), 1),
                    "ghosts": sum(len(t["ghosts"]) for t in teams), "byes": sum(len(t["byes"]) for t in teams),
                    "now": len([x for x in now if x["status"] != "Questionable"])},
         "teams": teams,
         "players": players,
         "parts": parts.most_common(),
-        "league_weekly": [{"week": w, "dollars": league_week[w]["dollars"], "games": league_week[w]["games"]}
+        "league_weekly": [{"week": w, "pts": round(league_week[w]["pts"], 1), "dollars": league_week[w]["dollars"], "games": league_week[w]["games"]}
                           for w in range(1, W + 1)],
         "now": now,
         "trades": trade_out,
@@ -427,9 +520,10 @@ def main():
         "unmatched": unmatched,
         "method": {
             "hurt": "A game counts when the player's NFL team played, he took no snap, and he was on injured reserve, PUP or NFI, listed Out or Doubtful on the official injury report, or listed Questionable and then inactive. Byes, healthy scratches, suspensions and unsigned players never count.",
-            "owner": "Each missed game is charged to whoever had the player on their Yahoo roster that week. Traded players carry their draft price to the new team. Drop a hurt player and he stops costing you.",
-            "bill": "The Injury Bill is what a player cost you times the games he missed: a $40 player out three weeks is a 120 bill. Drafted players cost their auction price. Traded-for players bring their auction price with them, so the buyer inherits it. Waiver and free-agent pickups cost their FAAB bid, usually next to nothing, so they count toward the injured-player tally while adding little to the bill.",
-            "points": "Points on the shelf: games missed times the player's healthy average this season (Yahoo points in the games he played), or his preseason projection if he has fewer than two games.",
+            "owner": "Each missed game is charged to whoever had the player on their Yahoo roster that week, so a traded player bills the team that holds him. Drop a hurt player and he stops costing you.",
+            "bill": "The Injury Bill is starter points left on the table. Each week we build the best lineup a team could have set with its hurt players available, at their healthy average, and the best lineup it could set without them, with everyone else at Yahoo's projection for that week. The gap is the bill. A hurt player who would have been on the bench anyway costs nothing; a hurt stud who forces a waiver body into the lineup costs the difference. When several players are out the same week, the gap is split by how much each one alone would have added.",
+            "dollars": "Dead money is the draft-capital view: what the player cost the team holding him (auction price if drafted or traded for, FAAB bid if claimed off waivers) times the games he missed.",
+            "points": "Everything runs on projections, never on what happened later. A hurt player is valued at his preseason projection under this league's scoring, blended 50/50 with Yahoo's weekly projection for him once he has three active weeks; a pickup nobody projected uses Yahoo's weekly projections alone. Everyone else is valued at Yahoo's projection for that week. The ward's cost for next week uses the same projected values for the whole roster.",
             "source": "Injury reports, NFL roster status and snap counts from nflverse. Rosters from the league's Yahoo box scores. Draft prices from the 2026 auction.",
         },
     }
@@ -446,10 +540,10 @@ def main():
     else:
         print("no change")
     print(f"through week {W}: {out['totals']['injured']} injured players, {out['totals']['games']} games, "
-          f"bill {tot_dg}, {len(trade_out)} trades, unmatched {unmatched}")
+          f"bill {out['totals']['bill']} pts, dead money {tot_dg}, {len(trade_out)} trades, unmatched {unmatched}")
     for t in teams:
-        print(f"{t['rank']:>2} {t['name'][:24]:<24} inj {t['injured']:>2} gm {t['games']:>3} bill {t['dollar_games']:>4} "
-              f"pts {t['points']:>6} ghosts {len(t['ghosts'])} byes {len(t['byes'])} {t['record']}")
+        print(f"{t['rank']:>2} {t['name'][:24]:<24} inj {t['injured']:>2} gm {t['games']:>3} bill {t['bill']:>6} $ {t['dollar_games']:>4} "
+              f"due {t['due_pts']:>5} shelf {t['points']:>6} ghosts {len(t['ghosts'])} byes {len(t['byes'])} {t['record']}")
 
 
 if __name__ == "__main__":
