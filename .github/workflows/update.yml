@@ -40,6 +40,11 @@ jobs:
           pip install --quiet pandas
           python scripts/build_injuries.py --refresh
 
+      # The Rivalry Index picks up each new week of box scores the recap job commits.
+      - name: Rebuild the Rivalry Index
+        continue-on-error: true
+        run: python scripts/build_rivalries.py
+
       - name: Commit and push updated data
         run: |
           git config user.name "nfl-unlocked-bot"
