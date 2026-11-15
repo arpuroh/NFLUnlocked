@@ -28,7 +28,16 @@
   const statusChip = (s) => `<span class="ix-st ${SEV[s] || "q"}" title="${esc(s)}">${esc(SHORT[s] || s)}</span>`;
   const OUT = (s) => s !== "Questionable";
 
-  let D, TM, NOW;
+  let D, TM, NOW, PL;
+  const who = (tid) => TM[tid] ? `${clean(TM[tid].name)} (${TM[tid].manager})` : "";
+  // "(now with Andrew)" when a player has since moved on from the team being described
+  const since = (name, tid) => {
+    const p = PL[name];
+    if (!p || p.now_team === tid) return "";
+    const mv = (p.traded || []).find((m) => m.from === tid);
+    if (mv) return ` (traded to ${TM[mv.to].manager} in Week ${mv.week})`;
+    return p.now_team ? ` (now with ${TM[p.now_team].manager})` : " (since dropped)";
+  };
 
   /* ── little building blocks ───────────────────────────── */
   // a square per week: red = missed and would have started, dark = missed from the bench
@@ -44,7 +53,7 @@
     let s;
     if (top.lost > 0.5) {
       const via = top.how === "trade" ? " after the trade" : "";
-      s = `${top.name} has cost ${f1(top.lost)} starter points${via}: ${pl(top.started, "week")} he would have been in the lineup and wasn't.`;
+      s = `${top.name}${since(top.name, t.team_id)} has cost ${f1(top.lost)} starter points${via}: ${pl(top.started, "week")} he would have been in the lineup and wasn't.`;
       if (t.ledger.length > 1 && t.ledger[1].lost > 0.5) s += ` ${t.ledger[1].name} adds ${f1(t.ledger[1].lost)}.`;
     } else {
       s = `${pl(t.injured, "player")} hurt and ${pl(t.games, "game")} missed, and the bench covered almost all of it. Depth pays.`;
@@ -155,7 +164,7 @@
         <div class="ix-led-hd"><span>Player</span><span>How</span><span>Dead $</span><span>Missed · <i class="k-on"></i> start <i class="k-bn"></i> bench</span><span>Injury</span><span>Pts lost</span></div>
         ${t.ledger.map((p) => `<div class="ix-led-r">
           <span class="nm">${pos(p.pos)} <b>${esc(p.name)}</b></span>
-          <span class="how ${p.how}">${HOW[p.how]}</span>
+          <span class="how ${p.how}" title="${p.cut ? `Cut while hurt: ${p.cut} of these games came after he was dropped` : ""}">${HOW[p.how]}${p.cut ? " · cut" : ""}</span>
           <span class="paid">${p.dg ? money(p.dg) : "–"}</span>
           <span class="wk">${dots(p.weeks, W, p.start_weeks)} <i>${p.started}/${p.games}</i></span>
           <span class="inj">${esc(p.part || "Not disclosed")}</span>
@@ -201,7 +210,7 @@
     const wTeam = TM[worst.owners[0].team_id];
     const A = [
       { k: "The Mash Unit", who: T[0], v: f1(T[0].bill), u: "pts lost",
-        s: `Most starter points lost to injury. ${T[0].ledger[0].name}${T[0].ledger.length > 1 ? ` and ${T[0].ledger[1].name}` : ""} did most of the damage.` },
+        s: `Most starter points lost to injury. ${T[0].ledger[0].name}${since(T[0].ledger[0].name, T[0].team_id)}${T[0].ledger.length > 1 ? ` and ${T[0].ledger[1].name}${since(T[0].ledger[1].name, T[0].team_id)}` : ""} did most of the damage.` },
       { k: "Most Expensive Injury", who: wTeam, v: f1(worst.lost), u: "pts lost",
         s: `${worst.name}: ${pl(worst.started, "week")} he would have started and sat, ${(worst.part || "undisclosed").toLowerCase()}.` },
       { k: "Body Count", who: bodies, v: bodies.injured, u: "players",
@@ -329,14 +338,17 @@
       <div class="sec-top"><h2 class="h-sec">The Most Expensive Injuries</h2><span class="note">Starter points lost · red squares = would have started</span></div>
       <hr class="rule-h">
       <div class="ix-pg">${list.map((p, i) => {
-        const owners = p.owners.map((o) => `${esc(clean(TM[o.team_id].name))}${p.owners.length > 1 ? ` (${o.games})` : ""}`).join(", ");
+        const span = (ws) => ws.length > 1 && ws[ws.length - 1] - ws[0] === ws.length - 1 ? `Wk ${ws[0]}–${ws[ws.length - 1]}` : `Wk ${ws.join(", ")}`;
+        const owners = p.owners.map((o) => `${span(o.weeks)} with ${esc(who(o.team_id))}`).join("; ");
+        const nowLine = p.now_team && !p.owners.some((o) => o.team_id === p.now_team) ? `Now on ${esc(who(p.now_team))}` : p.now_team ? `Still on ${esc(who(p.now_team))}` : "Not on a roster now";
         const now = NOW.find((n) => n.name === p.name);
         return `<article class="pc${i === 0 ? " lead" : ""}">
           <div class="pc-top"><span class="pc-n">${i + 1}</span>${pos(p.pos)}<b class="pc-name">${esc(p.name)}</b>${now ? statusChip(now.status) : ""}</div>
           <div class="pc-math"><span>${p.started} of ${p.games} missed as a starter</span><b>${f1(p.lost)}</b></div>
           <div class="pc-wk">${dots(p.weeks, W, p.start_weeks)}</div>
-          <div class="pc-meta"><span>${esc(p.part || "Not disclosed")}</span><span>${owners}</span></div>
-          <div class="pc-meta"><span>Dead money ${money(p.dollar_games)}</span><span>${p.cost ? `${money(p.cost)} at the draft` : "Undrafted"}</span></div>
+          <div class="pc-own">Missed ${owners}</div>
+          <div class="pc-own now">${nowLine}</div>
+          <div class="pc-meta"><span>${esc(p.part || "Not disclosed")}</span><span>Dead money ${money(p.dollar_games)}${p.cost ? ` · ${money(p.cost)} at the draft` : ""}</span></div>
         </article>`;
       }).join("")}</div>
       <details class="ix-all">
@@ -345,7 +357,7 @@
           <div class="ix-led-hd"><span>Player</span><span>Held by</span><span>Dead $</span><span>Missed</span><span>Injury</span><span>Pts lost</span></div>
           ${D.players.map((p) => `<div class="ix-led-r">
             <span class="nm">${pos(p.pos)} <b>${esc(p.name)}</b></span>
-            <span class="how">${p.owners.map((o) => esc(TM[o.team_id].manager)).join(", ")}</span>
+            <span class="how" title="${esc(p.owners.map((o) => `Wk ${o.weeks.join(", ")}: ${who(o.team_id)}`).join("; "))}">${p.owners.map((o) => esc(TM[o.team_id].manager)).join(", ")}</span>
             <span class="paid">${p.dollar_games ? money(p.dollar_games) : "–"}</span>
             <span class="wk">${dots(p.weeks, W, p.start_weeks)} <i>${p.started}/${p.games}</i></span>
             <span class="inj">${esc(p.part || "Not disclosed")}</span>
@@ -518,6 +530,7 @@
     D = db;
     TM = Object.fromEntries(db.teams.map((t) => [t.team_id, t]));
     NOW = db.now || [];
+    PL = Object.fromEntries(db.players.map((p) => [p.name, p]));
     $("#app").innerHTML = `<div class="ix">
       ${hero()}${index()}${awards()}${scatter()}${calendar()}${expensive()}${clinic()}${ward()}${oddities()}${method()}
     </div>`;
