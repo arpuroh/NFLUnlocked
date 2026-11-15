@@ -23,6 +23,7 @@ const NU = (() => {
     ["trophy.html",    "Trophy Room",    "trophy"],
     ["trades.html",    "Trades",         "trades"],
     ["injuries.html",  "Injuries",       "injuries"],
+    ["rivalries.html", "Rivalries",      "rivals"],
     ["roast.html",     "Roast Roulette", "roast"],
   ];
   const REACTIONS = ["🤡", "🔥", "💀", "😂"];
@@ -124,12 +125,15 @@ const NU = (() => {
     // the site on a phone — the Trophy Room and the Hall of Shame belong in it.
     const tabs = [["index.html","Home","home"],["week.html",meta.week_status === "final" ? `Wk ${meta.current_week}` : "Recap","week"],["newsletter.html","Letter","letter"],["draft.html","Draft","draft"],["rankings.html","Ranks","ranks"],
                   ["hall.html","Shame","hall"],["trophy.html","Trophy","trophy"],
-                  ["trades.html","Trades","trades"],["injuries.html","IR","injuries"],["roast.html","Roast","roast"]];
+                  ["trades.html","Trades","trades"],["injuries.html","IR","injuries"],["rivalries.html","Rivals","rivals"],["roast.html","Roast","roast"]];
     const mt = document.createElement("nav");
     mt.className = "mobile-tabs";
     mt.innerHTML = tabs.map(([h, l, k]) =>
       `<a href="${h}" class="${k === page ? "on" : ""}">${l}</a>`).join("");
     document.body.appendChild(mt);
+    // the bar scrolls sideways on narrow phones: bring the current page's tab into view
+    const onTab = mt.querySelector("a.on");
+    if (onTab && mt.scrollWidth > mt.clientWidth) mt.scrollLeft = onTab.offsetLeft - (mt.clientWidth - onTab.clientWidth) / 2;
 
     if (meta.demo) {
       const bar = document.createElement("div");

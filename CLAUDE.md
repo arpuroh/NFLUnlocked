@@ -18,6 +18,7 @@ Do not introduce a bundler, a framework, or a package.json without being asked.
 | `draft.html` + `draft.js` + `draft.css` | Draft Central: auction ledger, grades, preseason rankings. Three states from data alone: pending / complete / graded |
 | `trades.html` + `trades.js` + `trades.css` | Trade Court: every trade since 2011 re-scored. Robberies, trader rankings, title trades, veto files, rentals, filterable archive (`#m=<manager key>` deep-links a manager) |
 | `injuries.html` + `injuries.js` + `injuries.css` | **The Injury Index**: every game a rostered player missed hurt, charged to whoever held him that week. The Injury Bill = what he cost that team (auction price if drafted or traded for, FAAB bid if claimed) × games missed. Sortable index with per-team ledgers, awards, bill vs wins, ward calendar, most expensive injuries, trade clinic, this week's ward. `#t-<team_id>` opens a team |
+| `rivalries.html` + `rivalries.js` + `rivalries.css` | **The Rivalry Index**: every head-to-head game since 2011 by manager (renames merged, median games and consolation games left out). Hottest rivalries ranked by heat, the active-manager grid, a head-to-head finder (`#vs=Andrew,Barrett`), who owns whom, series records, manager files, this week's grudge matches |
 | `app.js` `styles.css` | shared shell: masthead, nav, formatting helpers |
 | `data/*.json` | all content. `league.json` is machine-written; the rest are hand-authored |
 | `scripts/fetch_yahoo.py` | Actions cron → rewrites `data/league.json` |
@@ -28,6 +29,7 @@ Do not introduce a bundler, a framework, or a package.json without being asked.
 | `scripts/project_draft.py` | Sleeper 2026 projections re-scored under this league's rules → `data/projections.json`. **This is what the power rankings are built on.** `--refresh` re-downloads the feed |
 | `scripts/build_trades.py` | `data/trades_yahoo.json` (scraped) + nflverse weekly stats → `data/trades.json`. Prose lives in `scripts/trade_notes.py` |
 | `scripts/build_injuries.py` | weekly box scores + transactions + draft + nflverse injury report / roster status / snap counts → `data/injuries.json`. Re-run after each weekly scrape; the daily cron also runs it with `--refresh` so the ward stays current. Writes nothing when only the timestamp would change |
+| `scripts/build_rivalries.py` | `data/rivalries_yahoo.json` (2011–2025 matchups, scraped once from `/<year>/f1/<league_id>?matchup_week=<w>&module=matchups`, which returns JSON to a plain logged-in `fetch`) + `data/ledger.json` (team name → manager) + this season's box scores → `data/rivalries.json`. The daily cron re-runs it. After a season ends, scrape that year into the raw file once |
 | `scripts/generate_draft_grades.py` | `data/draft.json` → `data/draft_grades.json` via the Claude API. Grades live apart from the ledger so a re-scrape never clobbers the writing |
 | `.github/workflows/draft.yml` | polls the draft page every 15 min on draft night; `workflow_dispatch` any time |
 | `.github/workflows/update.yml` | the cron |
