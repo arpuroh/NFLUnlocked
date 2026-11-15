@@ -13,7 +13,7 @@
   "uses_faab": true,
   "faab_budget": 100,
   "demo": false,
-  "last_updated": "2026-11-14T16:48:25.294619+00:00"
+  "last_updated": "2026-11-15T17:30:21.068565+00:00"
  },
  "teams": [
   {
@@ -64,7 +64,7 @@
    "name": "Hail Mary",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/25205944781_f55b83a6fa.jpg",
-   "moves": 38,
+   "moves": 40,
    "trades": 0,
    "faab_balance": 74,
    "clinched_playoffs": false,
@@ -169,7 +169,7 @@
    "name": "ShakeNBake",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/036413160a71a76b42890dd9196cf47fabbccda61f8f2394f8a7fb84ea186a0a.jpg",
-   "moves": 37,
+   "moves": 39,
    "trades": 0,
    "faab_balance": 29,
    "clinched_playoffs": false,
