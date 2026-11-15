@@ -32,6 +32,14 @@ jobs:
           YAHOO_REFRESH_TOKEN: ${{ secrets.YAHOO_REFRESH_TOKEN }}
         run: python scripts/fetch_yahoo.py
 
+      # The Injury Index: re-pull the nflverse injury report and NFL roster status so
+      # "This week's ward" stays current between Tuesday recaps. Never blocks the Yahoo commit.
+      - name: Rebuild the Injury Index
+        continue-on-error: true
+        run: |
+          pip install --quiet pandas
+          python scripts/build_injuries.py --refresh
+
       - name: Commit and push updated data
         run: |
           git config user.name "nfl-unlocked-bot"
