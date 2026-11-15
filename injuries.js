@@ -1,7 +1,9 @@
 /* NFL Unlocked · The Injury Index.
    Renders data/injuries.json (built by scripts/build_injuries.py): every game a rostered
-   player missed hurt, charged to whoever held him that week and priced in what he cost them.
-   The Injury Bill = dollars paid x games missed. Traded players carry their auction price.
+   player missed hurt, charged to whoever held him that week.
+   The Injury Bill = starter points left on the table: each week, the best lineup a team could
+   have set with its hurt players against the best it could set without them. A hurt bench guy
+   costs nothing. Dead money (draft dollars x games missed) is the secondary, draft-capital view.
    Sections: hero, the index (sortable, expandable), awards, bill vs standings, the ward
    calendar, the most expensive injuries, where it hurts, the trade clinic, this week's ward,
    ghost starts and phantom stashes, method. Uses NU.stamps / NU.wireStamps from app.js. */
@@ -11,47 +13,54 @@
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const fmt = (n) => Math.round(Number(n) || 0).toLocaleString("en-US");
+  const f1 = (n) => (Math.round((Number(n) || 0) * 10) / 10).toFixed(1);
   const money = (n) => "$" + fmt(n);
   const pl = (n, w, p) => `${n} ${n === 1 ? w : (p || w + "s")}`;
+  const ord = (i) => { const s = ["th", "st", "nd", "rd"], v = i % 100; return i + (s[(v - 20) % 10] || s[v] || s[0]); };
   const hasNU = () => typeof NU !== "undefined" && NU && NU.stamps;
   const stamps = (id) => (hasNU() ? NU.stamps(id, {}, { min: 3 }) : "");
   const clean = (n) => String(n || "").replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}\u{200D}]/gu, "").replace(/\s+/g, " ").trim();
   const logo = (t, cls = "sm") => t && t.logo ? `<img class="tlogo ${cls}" src="${esc(t.logo)}" alt="" loading="lazy">` : "";
   const pos = (p) => `<span class="ix-pp pos-${esc(String(p || "").toLowerCase())}">${esc(p)}</span>`;
-  const ord = (i) => { const s = ["th", "st", "nd", "rd"], v = i % 100; return i + (s[(v - 20) % 10] || s[v] || s[0]); };
   const HOW = { draft: "Drafted", trade: "Traded for", waivers: "Waivers" };
   const SEV = { "IR": "ir", "IR (return)": "ir", "PUP": "ir", "NFI": "ir", "Out": "out", "Doubtful": "dbt", "Questionable": "q" };
   const SHORT = { "IR (return)": "IR-R", "Doubtful": "Dbt", "Questionable": "Q" };
   const statusChip = (s) => `<span class="ix-st ${SEV[s] || "q"}" title="${esc(s)}">${esc(SHORT[s] || s)}</span>`;
+  const OUT = (s) => s !== "Questionable";
 
   let D, TM, NOW;
 
   /* ── little building blocks ───────────────────────────── */
-  const dots = (weeks, W) => `<span class="ix-dots" aria-label="missed weeks ${weeks.join(", ")}">${
-    Array.from({ length: W }, (_, i) => `<i class="${weeks.includes(i + 1) ? "on" : ""}" title="Week ${i + 1}"></i>`).join("")}</span>`;
+  // a square per week: red = missed and would have started, dark = missed from the bench
+  const dots = (weeks, W, starts) => `<span class="ix-dots" aria-label="missed weeks ${weeks.join(", ")}">${
+    Array.from({ length: W }, (_, i) => {
+      const w = i + 1, on = weeks.includes(w), st = starts && starts.includes(w);
+      return `<i class="${on ? (st || !starts ? "on" : "bn") : ""}" title="Week ${w}${on ? (st ? ": would have started" : starts ? ": bench" : "") : ""}"></i>`;
+    }).join("")}</span>`;
 
   function teamLine(t) {
     if (!t.injured) return "Not one game lost to injury. Either the healthiest roster in the league or nobody here plays.";
     const top = t.ledger[0];
     let s;
-    if (top.dg > 0) {
-      const via = top.how === "trade" ? " after trading for him" : top.how === "waivers" ? ` after a ${money(top.paid)} claim` : "";
-      s = `${top.name} (${money(top.paid)}) has sat ${pl(top.games, "game")}${via}, a ${fmt(top.dg)} bill on his own.`;
-      if (t.ledger.length > 1 && t.ledger[1].dg > 0) s += ` ${t.ledger[1].name} adds ${fmt(t.ledger[1].dg)}.`;
+    if (top.lost > 0.5) {
+      const via = top.how === "trade" ? " after the trade" : "";
+      s = `${top.name} has cost ${f1(top.lost)} starter points${via}: ${pl(top.started, "week")} he would have been in the lineup and wasn't.`;
+      if (t.ledger.length > 1 && t.ledger[1].lost > 0.5) s += ` ${t.ledger[1].name} adds ${f1(t.ledger[1].lost)}.`;
     } else {
-      s = `${pl(t.injured, "player")} hurt and ${pl(t.games, "game")} missed, every one of them on a player who cost nothing. Volume, no price tag.`;
+      s = `${pl(t.injured, "player")} hurt and ${pl(t.games, "game")} missed, and the bench covered almost all of it. Depth pays.`;
     }
+    if (t.games >= 8 && t.bill < t.games * 1.2) s += ` ${t.games} games missed for a ${f1(t.bill)}-point bill: the backups did their job.`;
     if (t.now) {
-      const big = NOW.filter((n) => n.team_id === t.team_id && n.status !== "Questionable").sort((a, b) => b.cost - a.cost)[0];
-      s += ` ${t.now} in the ward for Week ${D.report_week}${t.due ? `, ${money(t.due)} of roster on the shelf` : ""}`;
-      s += big && big.cost >= 10 ? `, led by ${big.name} (${big.status}).` : ".";
+      const big = NOW.filter((n) => n.team_id === t.team_id && OUT(n.status) && n.starter)[0];
+      s += ` ${t.now} in the ward for Week ${D.report_week}${t.due_pts ? `, about ${f1(t.due_pts)} starter points out` : ""}`;
+      s += big ? `, led by ${big.name} (${big.status}).` : ".";
     }
     return s;
   }
 
   /* ── hero ─────────────────────────────────────────────── */
   function hero() {
-    const T = D.totals, top = D.teams[0], clean_ = D.teams[D.teams.length - 1];
+    const T = D.totals, top = D.teams[0], last = D.teams[D.teams.length - 1];
     const worst = D.players[0];
     const most = [...D.teams].sort((a, b) => b.injured - a.injured || b.games - a.games)[0];
     return `
@@ -62,12 +71,12 @@
               <span class="tag-red">The Injury Index</span>
               <span class="eyebrow">${D.season} · Weeks 1–${D.through_week} · ${T.injured} players · ${T.games} games missed</span>
             </div>
-            <h1 class="display">The league's injury bill: ${fmt(T.dollar_games)}.
-              <span class="kick">${esc(clean(top.name))} is on the hook for ${fmt(top.dollar_games)} of it.</span></h1>
-            <p class="lede">Every game a rostered player sat out hurt, charged to whoever had him that week and priced at
-              what he cost them. ${esc(worst.name)} alone has run up ${fmt(worst.dollar_games)}. ${esc(clean(most.name))}
-              has lost ${pl(most.injured, "player")} to the infirmary, and ${esc(clean(clean_.name))} has barely noticed
-              there is one.</p>
+            <h1 class="display">${f1(T.bill)} starter points, gone.
+              <span class="kick">${esc(clean(top.name))} has lost ${f1(top.bill)} of them.</span></h1>
+            <p class="lede">Every week, the best lineup each team could have set with its hurt players against the best it
+              could set without them. The gap is the bill. Of ${T.games} games missed, ${T.started} were starters; the rest were
+              bench bodies who cost nothing. ${esc(worst.name)} alone has cost ${f1(worst.lost)} points. ${esc(clean(most.name))}
+              has lost ${pl(most.injured, "player")} to the infirmary, and ${esc(clean(last.name))} has barely noticed.</p>
             <div class="hero-actions">
               <a class="btn-red" href="#index">The Index →</a>
               <a class="btn-ghost" href="#ward">This week's ward →</a>
@@ -75,11 +84,11 @@
             </div>
           </div>
           <div class="board">
-            <div class="eyebrow">Injury Bill · Top 5</div>
+            <div class="eyebrow">Injury Bill · starter points lost</div>
             ${D.teams.slice(0, 5).map((t, i) => `<a class="board-row" href="#t-${esc(t.team_id)}" data-open="${esc(t.team_id)}">
               <span class="bn">${i + 1}</span>
-              <span class="bt">${esc(clean(t.name))}<small>${esc(t.manager)} · ${pl(t.injured, "player")} · ${t.games} gm</small></span>
-              <span class="bm">${fmt(t.dollar_games)}</span></a>`).join("")}
+              <span class="bt">${esc(clean(t.name))}<small>${esc(t.manager)} · ${pl(t.injured, "player")} · ${t.started} starter games</small></span>
+              <span class="bm">${f1(t.bill)}</span></a>`).join("")}
             <a class="see-all" href="#index">All 14 teams →</a>
           </div>
         </div>
@@ -88,16 +97,17 @@
         <div class="cell"><div class="eyebrow">Players hurt</div><div class="v">${T.injured}</div>
           <div class="s">missed at least one game on a roster</div></div>
         <div class="cell"><div class="eyebrow">Games missed</div><div class="v">${T.games}</div>
-          <div class="s">${fmt(T.points)} points on the shelf</div></div>
-        <div class="cell"><div class="eyebrow">League injury bill</div><div class="v red">${fmt(T.dollar_games)}</div>
-          <div class="s">dollars paid × games missed</div></div>
-        <div class="cell"><div class="eyebrow">In the ward now</div><div class="v">${T.now}</div>
-          <div class="s">IR or ruled out, Week ${D.report_week} report</div></div>
+          <div class="s">${T.started} of them by would-be starters</div></div>
+        <div class="cell"><div class="eyebrow">League injury bill</div><div class="v red">${f1(T.bill)}</div>
+          <div class="s">starter points left on the table</div></div>
+        <div class="cell"><div class="eyebrow">Out for Week ${D.report_week}</div><div class="v">${f1(T.due_pts)}</div>
+          <div class="s">starter points already ruled out · ${T.now} players</div></div>
       </section>
       <div class="ix-scale">
         <span class="k">How the bill works</span>
-        <span>Dollars paid × games missed. A $45 receiver out six weeks is a <b>270</b> bill.</span>
-        <span>Drafted: auction price. Traded for: his auction price comes with him. Waivers: the FAAB bid.</span>
+        <span>Best lineup with your hurt players minus best lineup without them, every week. A hurt starter costs the gap to
+          whoever filled in; a hurt bench guy costs <b>0</b>.</span>
+        <span>Dead money ($ paid × games missed) is the draft-capital view.</span>
         <a href="#method" class="go">Full method ↓</a>
       </div>`;
   }
@@ -106,22 +116,22 @@
   const COLS = [
     ["injured", "Hurt", "Players who missed a game on your roster"],
     ["games", "Games", "Player-games missed"],
-    ["dollar_games", "Bill", "Dollars paid × games missed"],
-    ["per_week", "$/wk", "Average dollars sidelined per week"],
-    ["points", "Shelf", "Points on the shelf: games missed × healthy average"],
-    ["due", "Due", "Dollars already ruled out for next week"],
+    ["started", "Starts", "Missed games by players who would have started"],
+    ["bill", "Bill", "Starter points left on the table"],
+    ["dollar_games", "Dead $", "Draft dollars × games missed"],
+    ["due_pts", "Due", "Starter points already ruled out for next week"],
   ];
-  let sortKey = "dollar_games";
+  let sortKey = "bill";
+  const cell = (t, k) => k === "bill" || k === "due_pts" ? (t[k] ? f1(t[k]) : "–") : fmt(t[k]);
 
   function indexRows() {
-    const rows = [...D.teams].sort((a, b) => (b[sortKey] - a[sortKey]) || (b.dollar_games - a.dollar_games) || (b.games - a.games));
+    const rows = [...D.teams].sort((a, b) => (b[sortKey] - a[sortKey]) || (b.bill - a.bill) || (b.games - a.games));
     return rows.map((t, i) => `<details class="ix-row" id="t-${esc(t.team_id)}" data-id="${esc(t.team_id)}">
       <summary>
         <span class="ix-n">${i + 1}</span>
         <span class="ix-team">${logo(t)}<span><b>${esc(t.name)}</b><small>${esc(t.manager)} · ${esc(t.record)}</small></span></span>
-        ${COLS.map(([k]) => `<span class="ix-c${k === sortKey ? " on" : ""}${k === "dollar_games" ? " big" : ""}" data-k="${k}">${
-          k === "per_week" ? money(t[k]) : k === "due" ? (t.due ? money(t.due) : "–") : fmt(t[k])}</span>`).join("")}
-        <span class="ix-sub">${t.injured} hurt · ${t.games} games · ${t.now} in the ward</span>
+        ${COLS.map(([k]) => `<span class="ix-c${k === sortKey ? " on" : ""}${k === "bill" ? " big" : ""}" data-k="${k}">${cell(t, k)}</span>`).join("")}
+        <span class="ix-sub">${t.injured} hurt · ${t.games} games (${t.started} starts) · ${money(t.dollar_games)} dead</span>
         <span class="ix-caret">▸</span>
       </summary>
       <div class="ix-body" data-lazy="1"></div>
@@ -136,24 +146,25 @@
     return `
       <p class="ix-line">${esc(teamLine(t))}</p>
       <div class="ix-facts">
-        <span>Bill <b>${fmt(t.dollar_games)}</b></span><span>Rank by bill <b>${t.rank} of 14</b></span>
-        <span>Players hurt <b>${t.injured}</b></span><span>Games <b>${t.games}</b></span>
-        <span>Points on the shelf <b>${fmt(t.points)}</b></span><span>IR slot used <b>${pl(t.ir_weeks, "week")}</b></span>
+        <span>Bill <b>${f1(t.bill)} pts</b></span><span>Rank <b>${t.rank} of 14</b></span>
+        <span>Players hurt <b>${t.injured}</b></span><span>Games <b>${t.games}</b> (${t.started} starts)</span>
+        <span>Per game missed <b>${f1(t.per_game)}</b></span><span>Dead money <b>${money(t.dollar_games)}</b></span>
+        <span>IR slot used <b>${pl(t.ir_weeks, "week")}</b></span>
       </div>
       ${t.ledger.length ? `<div class="ix-led">
-        <div class="ix-led-hd"><span>Player</span><span>How</span><span>Paid</span><span>Missed (wk 1–${W})</span><span>Injury</span><span>Bill</span></div>
+        <div class="ix-led-hd"><span>Player</span><span>How</span><span>Dead $</span><span>Missed · <i class="k-on"></i> start <i class="k-bn"></i> bench</span><span>Injury</span><span>Pts lost</span></div>
         ${t.ledger.map((p) => `<div class="ix-led-r">
           <span class="nm">${pos(p.pos)} <b>${esc(p.name)}</b></span>
           <span class="how ${p.how}">${HOW[p.how]}</span>
-          <span class="paid">${money(p.paid)}</span>
-          <span class="wk">${dots(p.weeks, W)} <i>${p.games}</i></span>
+          <span class="paid">${p.dg ? money(p.dg) : "–"}</span>
+          <span class="wk">${dots(p.weeks, W, p.start_weeks)} <i>${p.started}/${p.games}</i></span>
           <span class="inj">${esc(p.part || "Not disclosed")}</span>
-          <span class="bill${p.dg ? "" : " z"}">${fmt(p.dg)}</span>
+          <span class="bill${p.lost > 0.05 ? "" : " z"}">${f1(p.lost)}</span>
         </div>`).join("")}
       </div>` : ""}
       ${ghosts}
       ${ward.length ? `<div class="ix-ward-mini"><span class="k">Week ${D.report_week} report</span>${ward.map((n) =>
-        `<span>${statusChip(n.status)} ${esc(n.name)}</span>`).join("")}</div>` : ""}
+        `<span>${statusChip(n.status)} ${esc(n.name)}${n.starter ? " <em>starter</em>" : ""}</span>`).join("")}</div>` : ""}
       <div class="ix-foot">${stamps("inj-" + t.team_id)}</div>`;
   }
 
@@ -161,13 +172,14 @@
     return `<section class="ix-sec" id="index">
       <div class="sec-top"><h2 class="h-sec">The Index</h2><span class="note">Click a column to re-rank · click a team for the ledger</span></div>
       <hr class="rule-h">
-      <p class="ix-lede">The <b>Bill</b> is the headline number: what each injured player cost the team that held him, times the games
-        he sat. <b>Hurt</b> is the raw count of players. <b>Shelf</b> is the points those players would have scored at their healthy
-        average. <b>Due</b> is what is already ruled out for Week ${D.report_week}.</p>
+      <p class="ix-lede">The <b>Bill</b> is the headline: starter points left on the table. <b>Hurt</b> is the raw count of
+        injured players and <b>Games</b> the games they missed; <b>Starts</b> counts the ones where he would have been in the lineup.
+        <b>Dead $</b> is draft dollars times games missed, including players acquired by trade. <b>Due</b> is starter points
+        already ruled out for Week ${D.report_week}.</p>
       <div class="ix-table">
         <div class="ix-hd">
           <span>#</span><span>Team</span>
-          ${COLS.map(([k, l, tip]) => `<button type="button" class="ix-sort${k === sortKey ? " on" : ""}" data-k="${k}" title="${esc(k === "due" ? `Dollars ruled out for Week ${D.report_week}` : tip)}">${l}</button>`).join("")}
+          ${COLS.map(([k, l, tip]) => `<button type="button" class="ix-sort${k === sortKey ? " on" : ""}" data-k="${k}" title="${esc(tip)}">${l}</button>`).join("")}
           <span></span>
         </div>
         <div id="ix-rows">${indexRows()}</div>
@@ -181,35 +193,37 @@
     const by = (f) => [...T].sort(f)[0];
     const bodies = by((a, b) => b.injured - a.injured || b.games - a.games);
     const tiedBodies = T.filter((t) => t.injured === bodies.injured);
-    const iron = by((a, b) => a.dollar_games - b.dollar_games || a.games - b.games);
-    const due = by((a, b) => b.due - a.due);
-    const cheap = [...T].filter((t) => t.games >= 10).sort((a, b) => (a.dollar_games / a.games) - (b.dollar_games / b.games))[0];
+    const iron = by((a, b) => a.games - b.games || a.bill - b.bill);
+    const due = by((a, b) => b.due_pts - a.due_pts);
+    const depth = [...T].filter((t) => t.games >= 10 && t !== iron && !/injured reserved/i.test(t.name)).sort((a, b) => a.per_game - b.per_game)[0];
+    const dead = by((a, b) => b.dollar_games - a.dollar_games);
     const worst = D.players[0];
     const wTeam = TM[worst.owners[0].team_id];
-    const shelf = by((a, b) => b.points - a.points);
     const A = [
-      { k: "The Mash Unit", who: T[0], v: fmt(T[0].dollar_games), u: "bill",
-        s: `Biggest injury bill in the league. ${T[0].ledger[0].name} and ${T[0].ledger.length > 1 ? T[0].ledger[1].name : "friends"} did most of the damage.` },
+      { k: "The Mash Unit", who: T[0], v: f1(T[0].bill), u: "pts lost",
+        s: `Most starter points lost to injury. ${T[0].ledger[0].name}${T[0].ledger.length > 1 ? ` and ${T[0].ledger[1].name}` : ""} did most of the damage.` },
+      { k: "Most Expensive Injury", who: wTeam, v: f1(worst.lost), u: "pts lost",
+        s: `${worst.name}: ${pl(worst.started, "week")} he would have started and sat, ${(worst.part || "undisclosed").toLowerCase()}.` },
       { k: "Body Count", who: bodies, v: bodies.injured, u: "players",
         s: tiedBodies.length > 1 ? `Tied with ${tiedBodies.filter((t) => t !== bodies).map((t) => clean(t.name)).join(" and ")} for the most players lost.` : `Most players lost to injury. ${bodies.games} games missed between them.` },
-      { k: "Iron Man", who: iron, v: fmt(iron.dollar_games), u: "bill",
-        s: `Smallest bill in the league, and a ${iron.record} record. Health is a skill until it isn't.` },
-      { k: "Clearance Rack", who: cheap, v: (cheap.dollar_games / cheap.games).toFixed(1), u: "$ per game lost",
-        s: `${cheap.games} games missed and almost none of them cost anything. Only bargain-bin players get hurt here.` },
-      { k: "Most Expensive Injury", who: wTeam, v: fmt(worst.dollar_games), u: "bill",
-        s: `${worst.name}: ${money(worst.cost)} at the draft, ${pl(worst.games, "game")} missed, ${(worst.part || "undisclosed").toLowerCase()}.` },
-      { k: "Bill Due", who: due, v: money(due.due), u: `out for wk ${D.report_week}`,
-        s: `The most money already ruled out for Week ${D.report_week}: ${NOW.filter((n) => n.team_id === due.team_id && n.status !== "Questionable").map((n) => n.name).join(", ")}.` },
-      { k: "Points on the Shelf", who: shelf, v: fmt(shelf.points), u: "points",
-        s: `More healthy-average points sitting in street clothes than anyone else.` },
+      { k: "Iron Man", who: iron, v: iron.games, u: "games missed",
+        s: `Fewest games lost to injury in the league, and a ${iron.record} record. Health is a skill until it isn't.` },
+      { k: "Depth Chart", who: depth, v: f1(depth.per_game), u: "pts per game lost",
+        s: `${depth.games} games missed and the bench barely noticed. The backups started and the lineup held.` },
+      { k: "Dead Money", who: dead, v: money(dead.dollar_games), u: "$ × games",
+        s: `The most draft capital in street clothes. ${dead.ledger.slice().sort((a, b) => b.dg - a.dg)[0].name} is most of it.` },
+      { k: "Bill Due", who: due, v: f1(due.due_pts), u: `pts out wk ${D.report_week}`,
+        s: `The most starter points already ruled out for Week ${D.report_week}: ${NOW.filter((n) => n.team_id === due.team_id && OUT(n.status) && n.starter).map((n) => n.name).join(", ") || "the whole ward"}.` },
     ];
-    // The team named after the injured reserve list gets its own line if it earned one
+    // the team named after the injured reserve list gets its own line if it earned one
     const ir = T.find((t) => /injured reserved/i.test(t.name));
     if (ir) {
       const gr = [...T].sort((a, b) => b.games - a.games).findIndex((t) => t === ir) + 1;
       A.push({ k: "Nominative Determinism", who: ir, v: ir.games, u: "games missed",
-        s: gr === 1 ? `The team named The Injured Reserved has missed more games than anyone. ${ir.rank === 14 ? "" : `Its bill ranks ${ord(ir.rank)} because it only ever loses the cheap guys.`}`
-                    : `Named for the IR, ranked ${gr} in games missed. Living up to it.` });
+        s: gr === 1 ? (ir.rank === T.length
+                      ? `The team named The Injured Reserved has missed more games than anyone and has the smallest bill in the league (${f1(ir.bill)}). It only loses players it can afford to lose.`
+                      : `The team named The Injured Reserved has missed more games than anyone. Its bill ranks ${ord(ir.rank)}.`)
+                    : `Named for the IR, ${ord(gr)} in games missed. Living up to it.` });
     }
     return `<section class="ix-sec" id="awards">
       <div class="sec-top"><h2 class="h-sec">The Infirmary Awards</h2><span class="note">Through Week ${D.through_week}</span></div>
@@ -234,15 +248,15 @@
   function scatter() {
     const T = D.teams, games = T.map((t) => t.wins + Number(String(t.record).split("-")[1] || 0));
     const G = Math.max(...games);
-    const xs = T.map((t) => t.dollar_games), ys = T.map((t) => t.wins);
+    const xs = T.map((t) => t.bill), ys = T.map((t) => t.wins);
     const { r, a, b } = corr(xs, ys);
     const W = 640, H = 330, L = 44, R = 18, Tp = 16, B = 40;
-    const xmax = Math.ceil(Math.max(...xs) / 100) * 100;
+    const step = Math.max(...xs) > 60 ? 20 : 10;
+    const xmax = Math.ceil(Math.max(...xs) / step) * step;
     const X = (v) => L + (v / xmax) * (W - L - R), Y = (v) => Tp + (1 - v / G) * (H - Tp - B);
-    const ticks = []; for (let v = 0; v <= xmax; v += 100) ticks.push(v);
+    const ticks = []; for (let v = 0; v <= xmax; v += step) ticks.push(v);
     const yt = []; for (let v = 0; v <= G; v += 3) yt.push(v);
-    // label placement: nudge labels so neighbours do not collide
-    const pts = T.map((t) => ({ t, x: X(t.dollar_games), y: Y(t.wins) })).sort((p, q) => p.y - q.y || p.x - q.x);
+    const pts = T.map((t) => ({ t, x: X(t.bill), y: Y(t.wins) })).sort((p, q) => p.y - q.y || p.x - q.x);
     const placed = [];
     pts.forEach((p) => {
       let dy = -9, side = "start", dx = 9;
@@ -255,21 +269,22 @@
       p.lx = p.x + dx; p.ly = p.y + dy; p.side = side;
       placed.push(p);
     });
+    const rr = r.toFixed(2).replace("-", "−");
     const verdict = r < -0.6 ? "a strong link" : r < -0.35 ? "a real link, but a loose one" : r < -0.15 ? "a weak link" : "next to no link";
     return `<section class="ix-sec" id="standings">
-      <div class="sec-top"><h2 class="h-sec">Does It Explain the Standings?</h2><span class="note">r = ${r.toFixed(2).replace("-", "−")}</span></div>
+      <div class="sec-top"><h2 class="h-sec">Does It Explain the Standings?</h2><span class="note">r = ${rr}</span></div>
       <hr class="rule-h">
-      <p class="ix-lede">Injury bill against wins, median game included. The correlation is ${r.toFixed(2).replace("-", "−")}: ${verdict}.
-        Every 100 points of bill is worth about ${Math.abs(b * 100).toFixed(1)} wins the wrong way. Teams above the line are winning
-        through it; teams below it have no excuse in the trainer's room.</p>
+      <p class="ix-lede">Injury bill against wins, median game included. The correlation is ${rr}: ${verdict}.
+        ${b < 0 ? `Every 10 starter points lost is worth about ${Math.abs(b * 10).toFixed(1)} wins the wrong way.` : "Injuries have not been the story of this season."}
+        Teams above the line are winning through it; teams below it have no excuse in the trainer's room.</p>
       <div class="ix-chart">
         <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Injury bill against wins for all 14 teams">
           ${ticks.map((v) => `<line x1="${X(v)}" x2="${X(v)}" y1="${Tp}" y2="${H - B}" class="g"/><text x="${X(v)}" y="${H - B + 16}" class="tx" text-anchor="middle">${v}</text>`).join("")}
           ${yt.map((v) => `<line x1="${L}" x2="${W - R}" y1="${Y(v)}" y2="${Y(v)}" class="g"/><text x="${L - 8}" y="${Y(v) + 4}" class="tx" text-anchor="end">${v}</text>`).join("")}
           <line x1="${X(0)}" y1="${Y(a)}" x2="${X(xmax)}" y2="${Y(a + b * xmax)}" class="fit"/>
-          <text x="${(L + W - R) / 2}" y="${H - 6}" class="ax" text-anchor="middle">INJURY BILL →</text>
+          <text x="${(L + W - R) / 2}" y="${H - 6}" class="ax" text-anchor="middle">STARTER POINTS LOST →</text>
           <text x="12" y="${(Tp + H - B) / 2}" class="ax" text-anchor="middle" transform="rotate(-90 12 ${(Tp + H - B) / 2})">WINS →</text>
-          ${pts.map((p) => `<g class="pt${p.t.rank <= 3 ? " hot" : ""}"><title>${esc(clean(p.t.name))}: bill ${fmt(p.t.dollar_games)}, ${esc(p.t.record)}</title>
+          ${pts.map((p) => `<g class="pt${p.t.rank <= 3 ? " hot" : ""}"><title>${esc(clean(p.t.name))}: bill ${f1(p.t.bill)}, ${esc(p.t.record)}</title>
             <rect x="${p.x - 5}" y="${p.y - 5}" width="10" height="10"/>
             <text x="${p.lx}" y="${p.ly + 4}" text-anchor="${p.side}" class="lb">${esc(p.t.manager)}</text></g>`).join("")}
         </svg>
@@ -280,27 +295,28 @@
   /* ── the ward calendar (heatmap) ──────────────────────── */
   function calendar() {
     const W = D.through_week;
-    const max = Math.max(1, ...D.teams.flatMap((t) => t.weekly.map((w) => w.dollars)));
+    const max = Math.max(1, ...D.teams.flatMap((t) => t.weekly.map((w) => w.pts)));
     const lw = D.league_weekly;
-    const lmax = Math.max(...lw.map((w) => w.dollars));
+    const lmax = Math.max(1, ...lw.map((w) => w.pts));
     return `<section class="ix-sec" id="calendar">
-      <div class="sec-top"><h2 class="h-sec">The Ward Calendar</h2><span class="note">Dollars sidelined, team by week</span></div>
+      <div class="sec-top"><h2 class="h-sec">The Ward Calendar</h2><span class="note">Starter points lost, team by week</span></div>
       <hr class="rule-h">
-      <p class="ix-lede">Each cell is what that team had in street clothes that week. Darker red, more money on the shelf. A gray cell
-        means bodies were missing but none of them cost anything. Hover a cell for the names.</p>
+      <p class="ix-lede">Each cell is what injuries cost that team's best lineup that week. Darker red, bigger hit. A gray cell
+        means players were hurt but none of them would have started. Hover a cell for the names.</p>
       <div class="ix-heat" style="--w:${W}">
         <div class="hh"><span></span>${Array.from({ length: W }, (_, i) => `<span>W${i + 1}</span>`).join("")}<span>Bill</span></div>
         ${D.teams.map((t) => `<div class="hr">
           <span class="ht">${logo(t)}<b>${esc(clean(t.name))}</b></span>
           ${t.weekly.map((w) => {
-            const a = w.dollars ? 0.16 + 0.84 * (w.dollars / max) : 0;
-            const cls = w.dollars ? (a > 0.55 ? " dk" : "") : w.games ? " free" : " none";
-            return `<span class="hc${cls}" style="${w.dollars ? `--a:${a.toFixed(3)}` : ""}" title="${esc(`Week ${w.week}: ${w.games ? w.who.join(", ") : "nobody hurt"}${w.dollars ? ` (${money(w.dollars)})` : ""}`)}">${w.dollars ? fmt(w.dollars) : w.games ? w.games + "×" : ""}</span>`;
+            const hit = w.pts >= 0.05;
+            const a = hit ? 0.16 + 0.84 * (w.pts / max) : 0;
+            const cls = hit ? (a > 0.55 ? " dk" : "") : w.games ? " free" : " none";
+            return `<span class="hc${cls}" style="${hit ? `--a:${a.toFixed(3)}` : ""}" title="${esc(`Week ${w.week}: ${w.games ? w.who.join(", ") : "nobody hurt"}${hit ? ` (${f1(w.pts)} starter pts)` : w.games ? " (bench only)" : ""}`)}">${hit ? f1(w.pts) : w.games ? w.games + "×" : ""}</span>`;
           }).join("")}
-          <span class="hb">${fmt(t.dollar_games)}</span>
+          <span class="hb">${f1(t.bill)}</span>
         </div>`).join("")}
-        <div class="hr tot"><span class="ht"><b>League</b></span>${lw.map((w) => `<span class="hc lg" title="Week ${w.week}: ${w.games} games missed">
-          <i style="height:${Math.round(100 * w.dollars / lmax)}%"></i><em>${fmt(w.dollars)}</em></span>`).join("")}<span class="hb">${fmt(D.totals.dollar_games)}</span></div>
+        <div class="hr tot"><span class="ht"><b>League</b></span>${lw.map((w) => `<span class="hc lg" title="Week ${w.week}: ${w.games} games missed, ${f1(w.pts)} starter points">
+          <i style="height:${Math.round(100 * w.pts / lmax)}%"></i><em>${f1(w.pts)}</em></span>`).join("")}<span class="hb">${f1(D.totals.bill)}</span></div>
       </div>
     </section>`;
   }
@@ -310,30 +326,30 @@
     const W = D.through_week;
     const list = D.players.slice(0, 12);
     return `<section class="ix-sec" id="players">
-      <div class="sec-top"><h2 class="h-sec">The Most Expensive Injuries</h2><span class="note">Bill = what he cost × games missed</span></div>
+      <div class="sec-top"><h2 class="h-sec">The Most Expensive Injuries</h2><span class="note">Starter points lost · red squares = would have started</span></div>
       <hr class="rule-h">
       <div class="ix-pg">${list.map((p, i) => {
         const owners = p.owners.map((o) => `${esc(clean(TM[o.team_id].name))}${p.owners.length > 1 ? ` (${o.games})` : ""}`).join(", ");
         const now = NOW.find((n) => n.name === p.name);
         return `<article class="pc${i === 0 ? " lead" : ""}">
           <div class="pc-top"><span class="pc-n">${i + 1}</span>${pos(p.pos)}<b class="pc-name">${esc(p.name)}</b>${now ? statusChip(now.status) : ""}</div>
-          <div class="pc-math"><span>${money(p.cost)}</span><i>×</i><span>${p.games} gm</span><i>=</i><b>${fmt(p.dollar_games)}</b></div>
-          <div class="pc-wk">${dots(p.weeks, W)}</div>
+          <div class="pc-math"><span>${p.started} of ${p.games} missed as a starter</span><b>${f1(p.lost)}</b></div>
+          <div class="pc-wk">${dots(p.weeks, W, p.start_weeks)}</div>
           <div class="pc-meta"><span>${esc(p.part || "Not disclosed")}</span><span>${owners}</span></div>
-          <div class="pc-meta"><span>Healthy avg ${p.ppg.toFixed(1)}</span><span>${fmt(p.points)} pts on the shelf</span></div>
+          <div class="pc-meta"><span>Dead money ${money(p.dollar_games)}</span><span>${p.cost ? `${money(p.cost)} at the draft` : "Undrafted"}</span></div>
         </article>`;
       }).join("")}</div>
       <details class="ix-all">
         <summary>All ${D.players.length} injured players</summary>
         <div class="ix-led all">
-          <div class="ix-led-hd"><span>Player</span><span>Held by</span><span>Draft $</span><span>Missed</span><span>Injury</span><span>Bill</span></div>
+          <div class="ix-led-hd"><span>Player</span><span>Held by</span><span>Dead $</span><span>Missed</span><span>Injury</span><span>Pts lost</span></div>
           ${D.players.map((p) => `<div class="ix-led-r">
             <span class="nm">${pos(p.pos)} <b>${esc(p.name)}</b></span>
             <span class="how">${p.owners.map((o) => esc(TM[o.team_id].manager)).join(", ")}</span>
-            <span class="paid">${p.cost ? money(p.cost) : "–"}</span>
-            <span class="wk">${dots(p.weeks, W)} <i>${p.games}</i></span>
+            <span class="paid">${p.dollar_games ? money(p.dollar_games) : "–"}</span>
+            <span class="wk">${dots(p.weeks, W, p.start_weeks)} <i>${p.started}/${p.games}</i></span>
             <span class="inj">${esc(p.part || "Not disclosed")}</span>
-            <span class="bill${p.dollar_games ? "" : " z"}">${fmt(p.dollar_games)}</span>
+            <span class="bill${p.lost > 0.05 ? "" : " z"}">${f1(p.lost)}</span>
           </div>`).join("")}
         </div>
       </details>
@@ -366,18 +382,17 @@
           <div class="cl-team">${logo(t)}<span><b>${esc(clean(t.name))}</b><small>${esc(t.manager)} received</small></span></div>
           <ul>${s.got.map((p) => {
             const now = NOW.find((n) => n.name === p.name);
-            return `<li>${pos(p.pos)}<span class="pn"><b>${esc(p.name)}</b><small>${money(p.cost)} · missed ${p.missed_before} before the deal, ${p.missed_after} since</small></span>${now ? statusChip(now.status) : `<span class="ix-st ok">Healthy</span>`}</li>`;
+            return `<li>${pos(p.pos)}<span class="pn"><b>${esc(p.name)}</b><small>${money(p.cost)} · missed ${p.missed_before} before the deal, ${p.missed_after} since${p.lost_after ? ` (${f1(p.lost_after)} pts)` : ""}</small></span>${now ? statusChip(now.status) : `<span class="ix-st ok">Healthy</span>`}</li>`;
           }).join("")}</ul>
         </div>`;
       });
-      // the line: who bought a player that is now hurt
       const bad = [];
       tr.sides.forEach((s) => s.got.forEach((p) => {
         const now = NOW.find((n) => n.name === p.name);
-        if (now && now.status !== "Questionable") bad.push({ team: TM[s.team_id], p, now });
+        if (now && OUT(now.status)) bad.push({ team: TM[s.team_id], p, now });
       }));
       const note = bad.length
-        ? bad.map((x) => `${x.team.manager} traded for ${x.p.name} in Week ${tr.week}. ${x.now.status === "Out" || x.now.status === "Doubtful" ? `He is ${x.now.status.toLowerCase()} for Week ${D.report_week}` : `He is on ${x.now.status} for Week ${D.report_week}`}${x.now.part ? ` (${x.now.part.toLowerCase()})` : ""}, which makes him ${money(x.p.cost)} of injury bill every week he sits from here.`).join(" ")
+        ? bad.map((x) => `${x.team.manager} traded for ${x.p.name} in Week ${tr.week}. ${x.now.status === "Out" || x.now.status === "Doubtful" ? `He is ${x.now.status.toLowerCase()} for Week ${D.report_week}` : `He is on ${x.now.status} for Week ${D.report_week}`}${x.now.part ? ` (${x.now.part.toLowerCase()})` : ""}${x.now.starter ? ", and he was a starter: that hole goes straight on the bill" : ""}.`).join(" ")
         : `Nobody in this deal has missed a game since. Clean bill of health, for now.`;
       return `<article class="cl">
         <div class="cl-bar"><span class="tc-when">${D.season} · Week ${tr.week}</span></div>
@@ -388,8 +403,9 @@
     return `<section class="ix-sec" id="clinic">
       <div class="sec-top"><h2 class="h-sec">The Trade Clinic</h2><span class="note">${D.season} trades, medically reviewed</span></div>
       <hr class="rule-h">
-      <p class="ix-lede">A traded player's draft price travels with him, so his missed games bill whoever holds him that week. Games he
-        missed before the deal stay on the seller's tab. The full trade verdicts live in <a href="trades.html">Trade Court</a>.</p>
+      <p class="ix-lede">A traded player's missed games go on the bill of whoever holds him that week, and his draft price travels
+        with him into dead money. Games he missed before the deal stay on the seller's tab. The full trade verdicts live in
+        <a href="trades.html">Trade Court</a>.</p>
       <div class="cl-grid">${cards}</div>
     </section>`;
   }
@@ -398,19 +414,20 @@
   function ward() {
     const by = {};
     NOW.forEach((n) => (by[n.team_id] = by[n.team_id] || []).push(n));
-    const teams = [...D.teams].sort((a, b) => b.due - a.due || b.now - a.now || (by[b.team_id] || []).length - (by[a.team_id] || []).length);
+    const teams = [...D.teams].sort((a, b) => b.due_pts - a.due_pts || b.now - a.now || (by[b.team_id] || []).length - (by[a.team_id] || []).length);
     return `<section class="ix-sec" id="ward">
       <div class="sec-top"><h2 class="h-sec">This Week's Ward</h2><span class="note">Week ${D.report_week} injury report</span></div>
       <hr class="rule-h">
       <p class="ix-lede">Everyone on a Week ${D.through_week} roster who is on injured reserve or carries a game status for Week ${D.report_week}.
-        <span class="ix-st ir">IR</span> and <span class="ix-st out">Out</span> are already on the bill;
-        <span class="ix-st dbt">Dbt</span> (doubtful) almost certainly will be; <span class="ix-st q">Q</span> (questionable) is a coin flip.</p>
+        The number is the starter points already ruled out (IR, Out and Doubtful). <span class="ix-st ir">IR</span> and
+        <span class="ix-st out">Out</span> are certain; <span class="ix-st dbt">Dbt</span> almost; <span class="ix-st q">Q</span> is a coin flip.
+        <em class="wd-tag">Starter</em> marks a player who would be in the best lineup.</p>
       <div class="wd-grid">${teams.map((t) => {
         const list = by[t.team_id] || [];
-        return `<div class="wd${t.due ? " hot" : ""}">
+        return `<div class="wd${t.due_pts >= 0.5 ? " hot" : ""}">
           <div class="wd-hd">${logo(t)}<span><b>${esc(clean(t.name))}</b><small>${esc(t.manager)}</small></span>
-            <span class="wd-due">${t.due ? money(t.due) : "–"}<small>out</small></span></div>
-          ${list.length ? `<ul>${list.map((n) => `<li>${statusChip(n.status)}<span class="pn">${esc(n.name)}<small>${esc(n.pos)} · ${esc(n.part || "undisclosed")}${n.cost ? ` · ${money(n.cost)}` : ""}</small></span></li>`).join("")}</ul>`
+            <span class="wd-due">${t.due_pts >= 0.05 ? f1(t.due_pts) : "–"}<small>pts out</small></span></div>
+          ${list.length ? `<ul>${list.map((n) => `<li>${statusChip(n.status)}<span class="pn">${esc(n.name)}${n.starter ? ` <em class="wd-tag">Starter</em>` : ""}<small>${esc(n.pos)} · ${esc(n.part || "undisclosed")}${n.cost ? ` · ${money(n.cost)}` : ""}</small></span></li>`).join("")}</ul>`
             : `<p class="wd-none">Nobody on the report. Enjoy it.</p>`}
         </div>`;
       }).join("")}</div>
@@ -449,12 +466,13 @@
         <dt>A missed game</dt><dd>${esc(m.hurt)}</dd>
         <dt>Who pays</dt><dd>${esc(m.owner)}</dd>
         <dt>The bill</dt><dd>${esc(m.bill)}</dd>
-        <dt>On the shelf</dt><dd>${esc(m.points)}</dd>
+        <dt>Player values</dt><dd>${esc(m.points)}</dd>
+        <dt>Dead money</dt><dd>${esc(m.dollars)}</dd>
         <dt>Source</dt><dd>${esc(m.source)}</dd>
       </dl>
     </section>
     <section class="ix-band">
-      <h2 class="display">Draft day is a promise. The trainer's room is the bill.</h2>
+      <h2 class="display">Draft day is a promise. The trainer's room sends the bill.</h2>
       <div class="meta"><div>Weeks 1–${D.through_week} · ${D.season}</div><div>${D.totals.injured} players · ${D.totals.games} games</div><div>Built ${esc(built.toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "America/New_York" }))}</div></div>
     </section>`;
   }

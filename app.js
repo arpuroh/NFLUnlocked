@@ -13,18 +13,20 @@ const NU = (() => {
 
   // Scoreboard, Teams and The Feed are parked for the offseason - there is nothing
   // live behind them until Week 1. The pages still resolve at their own URLs.
+  // ONE list drives both the desktop masthead and the phone tab bar, so a page added
+  // here shows up everywhere. [href, label, key, phone label, full name for the tooltip]
   const NAV = [
-    ["index.html",     "This Week",      "home"],
-    ["week.html",      "Week 1",         "week"],
-    ["newsletter.html", "Letter",        "letter"],
-    ["draft.html",     "Draft",          "draft"],
-    ["rankings.html",  "Rankings",       "ranks"],
-    ["hall.html",      "Hall of Shame",  "hall"],
-    ["trophy.html",    "Trophy Room",    "trophy"],
-    ["trades.html",    "Trades",         "trades"],
-    ["injuries.html",  "Injuries",       "injuries"],
-    ["rivalries.html", "Rivalries",      "rivals"],
-    ["roast.html",     "Roast Roulette", "roast"],
+    ["index.html",      "This Week", "home",     "Home"],
+    ["week.html",       "Week 1",    "week",     "Recap"],
+    ["newsletter.html", "Letter",    "letter",   "Letter"],
+    ["draft.html",      "Draft",     "draft",    "Draft"],
+    ["rankings.html",   "Rankings",  "ranks",    "Ranks"],
+    ["hall.html",       "Shame",     "hall",     "Shame",  "Hall of Shame"],
+    ["trophy.html",     "Trophies",  "trophy",   "Trophy", "Trophy Room"],
+    ["trades.html",     "Trades",    "trades",   "Trades", "Trade Court"],
+    ["injuries.html",   "Injuries",  "injuries", "IR",     "The Injury Index"],
+    ["rivalries.html",  "Rivalries", "rivals",   "Rivals", "The Rivalry Index"],
+    ["roast.html",      "Roast",     "roast",    "Roast",  "Roast Roulette"],
   ];
   const REACTIONS = ["🤡", "🔥", "💀", "😂"];
 
@@ -105,33 +107,72 @@ const NU = (() => {
     });
   }
 
+  /* ── masthead overflow ──────────────────────────────
+     Every link sits in the bar when there is room. When the window is too narrow,
+     links move from the right end into a "More" menu, never the current page's,
+     so nothing is ever hidden off the edge of the bar. */
+  function fitNav() {
+    const nav = $(".mnav"), more = $(".mmore"), menu = $(".mmore-menu");
+    if (!nav || !more) return;
+    [...menu.children].forEach((a) => nav.appendChild(a));
+    [...nav.children].sort((a, b) => +a.dataset.i - +b.dataset.i).forEach((a) => nav.appendChild(a));
+    [...nav.children].forEach((a, i) => { if (a.dataset.i === undefined) a.dataset.i = i; });
+    more.hidden = true;
+    if (!nav.offsetParent || nav.scrollWidth <= nav.clientWidth + 1) return;
+    more.hidden = false;
+    const moved = [];
+    while (nav.scrollWidth > nav.clientWidth + 1) {
+      const cand = [...nav.children].reverse().find((a) => !a.classList.contains("on"));
+      if (!cand) break;
+      moved.unshift(cand);
+      cand.remove();
+    }
+    moved.forEach((a) => menu.appendChild(a));
+    more.classList.toggle("has-on", false);
+  }
+
   /* ── page chrome ──────────────────────────────────── */
   function chrome(meta, page) {
     const live = meta.week_label || (meta.current_week ? `Week ${meta.current_week} · Live` : "Preseason");
     // the recap tab is named for the latest finished week
     const wkLabel = meta.week_status === "final" ? `Week ${meta.current_week}` : "Recap";
+    const final = meta.week_status === "final";
+    const link = (n, phone) => {
+      const text = n[2] === "week" ? (final ? (phone ? `Wk ${meta.current_week}` : wkLabel) : "Recap") : (phone ? n[3] : n[1]);
+      return `<a href="${n[0]}" class="${n[2] === page ? "on" : ""}"${n[4] ? ` title="${esc(n[4])}"` : ""}>${esc(text)}</a>`;
+    };
     $("#masthead").innerHTML = `
       <div class="inner">
         <a class="wordmark" href="index.html">NFL Unlocked <i></i></a>
-        <nav class="mnav">${NAV.map(([h, l, k]) =>
-          `<a href="${h}" class="${k === page ? "on" : ""}">${k === "week" ? wkLabel : l}</a>`).join("")}</nav>
+        <nav class="mnav">${NAV.map((n) => link(n)).join("")}</nav>
+        <div class="mmore" hidden>
+          <button type="button" class="mmore-btn" aria-expanded="false" aria-haspopup="true">More ▾</button>
+          <div class="mmore-menu" role="menu"></div>
+        </div>
         <div class="mhead-right">
-          <span class="league-id">Yahoo · ${esc(meta.league_id || "675504")}</span>
           <span class="badge-live">${esc(live)}</span>
         </div>
       </div>`;
+    fitNav();
+    window.addEventListener("resize", () => { clearTimeout(fitNav.t); fitNav.t = setTimeout(fitNav, 80); });
+    document.fonts && document.fonts.ready && document.fonts.ready.then(fitNav);
+    const more = $(".mmore"), btn = $(".mmore-btn");
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const open = more.classList.toggle("open");
+      btn.setAttribute("aria-expanded", open);
+    });
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".mmore")) { more.classList.remove("open"); btn.setAttribute("aria-expanded", "false"); }
+    });
 
     // The masthead nav is hidden under 900px, so this bar is the only way around
-    // the site on a phone — the Trophy Room and the Hall of Shame belong in it.
-    const tabs = [["index.html","Home","home"],["week.html",meta.week_status === "final" ? `Wk ${meta.current_week}` : "Recap","week"],["newsletter.html","Letter","letter"],["draft.html","Draft","draft"],["rankings.html","Ranks","ranks"],
-                  ["hall.html","Shame","hall"],["trophy.html","Trophy","trophy"],
-                  ["trades.html","Trades","trades"],["injuries.html","IR","injuries"],["rivalries.html","Rivals","rivals"],["roast.html","Roast","roast"]];
+    // the site on a phone. It scrolls sideways when it runs out of room.
     const mt = document.createElement("nav");
     mt.className = "mobile-tabs";
-    mt.innerHTML = tabs.map(([h, l, k]) =>
-      `<a href="${h}" class="${k === page ? "on" : ""}">${l}</a>`).join("");
+    mt.innerHTML = NAV.map((n) => link(n, true)).join("");
     document.body.appendChild(mt);
-    // the bar scrolls sideways on narrow phones: bring the current page's tab into view
+    // bring the current page's tab into view
     const onTab = mt.querySelector("a.on");
     if (onTab && mt.scrollWidth > mt.clientWidth) mt.scrollLeft = onTab.offsetLeft - (mt.clientWidth - onTab.clientWidth) / 2;
 

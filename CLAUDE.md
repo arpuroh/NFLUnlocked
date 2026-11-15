@@ -17,7 +17,7 @@ Do not introduce a bundler, a framework, or a package.json without being asked.
 | `roast.html` + `roast.js` + `roast.css` | Roast Roulette, incl. the suggestion box |
 | `draft.html` + `draft.js` + `draft.css` | Draft Central: auction ledger, grades, preseason rankings. Three states from data alone: pending / complete / graded |
 | `trades.html` + `trades.js` + `trades.css` | Trade Court: every trade since 2011 re-scored. Robberies, trader rankings, title trades, veto files, rentals, filterable archive (`#m=<manager key>` deep-links a manager) |
-| `injuries.html` + `injuries.js` + `injuries.css` | **The Injury Index**: every game a rostered player missed hurt, charged to whoever held him that week. The Injury Bill = what he cost that team (auction price if drafted or traded for, FAAB bid if claimed) × games missed. Sortable index with per-team ledgers, awards, bill vs wins, ward calendar, most expensive injuries, trade clinic, this week's ward. `#t-<team_id>` opens a team |
+| `injuries.html` + `injuries.js` + `injuries.css` | **The Injury Index**: every game a rostered player missed hurt, charged to whoever held him that week. The Injury Bill = starter points left on the table: each week, best projected lineup with the hurt players available minus best lineup without them (hurt bench players cost nothing). Values are projections only (preseason projection blended with Yahoo weekly projections). Dead money (draft $ × games missed, traded players carry their price) is the secondary view. `#t-<team_id>` opens a team |
 | `rivalries.html` + `rivalries.js` + `rivalries.css` | **The Rivalry Index**: every head-to-head game since 2011 by manager (renames merged, median games and consolation games left out). Hottest rivalries ranked by heat, the active-manager grid, a head-to-head finder (`#vs=Andrew,Barrett`), who owns whom, series records, manager files, this week's grudge matches |
 | `app.js` `styles.css` | shared shell: masthead, nav, formatting helpers |
 | `data/*.json` | all content. `league.json` is machine-written; the rest are hand-authored |
@@ -36,6 +36,12 @@ Do not introduce a bundler, a framework, or a package.json without being asked.
 
 Each page is a thin shell: `<header class="masthead">` + `<main id="app">`, filled in by JS
 that fetches from `data/`. Follow that pattern for new pages rather than writing static markup.
+
+**Adding a page:** add one row to `NAV` in `app.js` (that single list drives the desktop masthead
+and the phone tab bar; give it a phone label), and copy the two Vercel Analytics `<script>` lines
+before `</body>`. `scripts/check_site.py` enforces both and runs on every push
+(`.github/workflows/site-check.yml`). The masthead never scrolls: links that do not fit move into
+a "More" menu (`fitNav()` in app.js), and the current page always stays in the bar.
 
 ## Design system — non-negotiable
 
