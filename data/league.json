@@ -13,7 +13,7 @@
   "uses_faab": true,
   "faab_budget": 100,
   "demo": false,
-  "last_updated": "2026-11-17T12:42:15.604476+00:00"
+  "last_updated": "2026-11-17T19:29:47.926170+00:00"
  },
  "teams": [
   {
@@ -342,8 +342,8 @@
    "luck_index": 0.6,
    "recent_form": 0.0,
    "rank": 3,
-   "prev_rank": 4,
-   "movement": 1
+   "prev_rank": 3,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.1",
@@ -353,8 +353,8 @@
    "luck_index": 0.6,
    "recent_form": 0.0,
    "rank": 4,
-   "prev_rank": 3,
-   "movement": -1
+   "prev_rank": 4,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.5",
@@ -364,8 +364,8 @@
    "luck_index": 0.6,
    "recent_form": 0.0,
    "rank": 5,
-   "prev_rank": 6,
-   "movement": 1
+   "prev_rank": 5,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.4",
@@ -375,8 +375,8 @@
    "luck_index": 0.6,
    "recent_form": 0.0,
    "rank": 6,
-   "prev_rank": 5,
-   "movement": -1
+   "prev_rank": 6,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.3",
@@ -386,8 +386,8 @@
    "luck_index": 0.4,
    "recent_form": 0.0,
    "rank": 7,
-   "prev_rank": 9,
-   "movement": 2
+   "prev_rank": 7,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.8",
@@ -397,8 +397,8 @@
    "luck_index": 0.45,
    "recent_form": 0.0,
    "rank": 8,
-   "prev_rank": 7,
-   "movement": -1
+   "prev_rank": 8,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.14",
@@ -408,8 +408,8 @@
    "luck_index": 0.4,
    "recent_form": 0.0,
    "rank": 9,
-   "prev_rank": 10,
-   "movement": 1
+   "prev_rank": 9,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.12",
@@ -419,8 +419,8 @@
    "luck_index": 0.4,
    "recent_form": 0.0,
    "rank": 10,
-   "prev_rank": 8,
-   "movement": -2
+   "prev_rank": 10,
+   "movement": 0
   },
   {
    "team_key": "scrape.l.675504.t.11",
@@ -558,28 +558,7 @@
   ],
   "closing": "Connect the Yahoo league and the Executioner starts publishing for real. Until then, these demo managers take the bullets meant for you."
  },
- "feed": [
-  {
-   "id": "rank-scrape.l.675504.t.3-7",
-   "kind": "rankings",
-   "title": "Good Will Hunting jumps 2 spots to #7",
-   "body": "All-play 0-0 and a luck index of +0.400. The model likes them more than the standings do.",
-   "timestamp": 1794919335,
-   "team_key": "scrape.l.675504.t.3",
-   "reactions": {},
-   "reacted_by": 0
-  },
-  {
-   "id": "rank-scrape.l.675504.t.12-10",
-   "kind": "rankings",
-   "title": "ShakeNBake drops 2 spots to #10",
-   "body": "All-play 0-0 and a luck index of +0.400. The model trusts them less than the standings do.",
-   "timestamp": 1794919335,
-   "team_key": "scrape.l.675504.t.12",
-   "reactions": {},
-   "reacted_by": 0
-  }
- ],
+ "feed": [],
  "most_clowned": [],
  "history": {
   "established": 2016,
