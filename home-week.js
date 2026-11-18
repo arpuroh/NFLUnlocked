@@ -49,7 +49,9 @@
               { weekday: "long", month: "long", day: "numeric" }))}</span>
           </div>
           <h1 class="display">${esc(W.headline)}<span class="kick">${esc(W.kicker)}</span></h1>
-          <p class="lede">${esc(W.lede)}</p>
+          ${(W.tldr || []).length ? `<ul class="wk-tldr">${W.tldr.map(([e, t]) =>
+            `<li><span class="e" aria-hidden="true">${e}</span><span>${esc(t)}</span></li>`).join("")}</ul>`
+            : `<p class="lede">${esc(W.lede)}</p>`}
           <div class="hero-actions">
             <a class="btn-red" href="${esc(cur.recap)}">Read the full Week ${cur.week} recap →</a>
             ${W.video ? `<a class="btn-ghost reel-jump" href="#reel">▶ Watch the roast</a>` : ""}
@@ -127,7 +129,7 @@
         <div class="mod">
           <h2 class="h-sec">Superlatives</h2><hr class="rule-h">
           ${W.awards.slice(0, 4).map((a) => `<div class="sup">
-            <div class="award">${esc(a.title)}</div>
+            <div class="award">${a.emoji ? `<span class="sup-e" aria-hidden="true">${a.emoji}</span> ` : ""}${esc(a.title)}</div>
             <div class="who">${esc(a.winner)}</div>
             <div class="note">${esc(a.line)}</div></div>`).join("")}
           <a class="see-all" href="${esc(cur.recap)}#awards">All ${W.awards.length} awards →</a>

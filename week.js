@@ -72,9 +72,8 @@
   // The rail is the sticky sub-nav. Order here follows ORDER below; anything
   // not listed (the receipt, position weather) is an interstitial, not a stop.
   const RAIL = [
-    ["awards", "Awards"], ["power", "Power Rankings"], ["median", "The Median"],
-    ["standings", "Lineups"], ["bench", "Bench Crimes"], ["faab", "FAAB Audit"],
-    ["money", "Money"], ["studs", "Studs &amp; Duds"], ["games", "The Seven"],
+    ["awards", "Awards"], ["power", "Rankings"], ["median", "The Median"],
+    ["games", "The Seven"], ["deep", "Deep Dive"],
   ];
   const num = Object.fromEntries(RAIL.map(([id], i) => [id, String(i + 1).padStart(2, "0")]));
   const head = (id, title, note) => `
@@ -161,10 +160,17 @@
     awards: () => `${head("awards", "The Awards", "No trophies, only records")}
       ${sec("awards")}
     </section>
-    <div class="wk-awards">${W.awards.map((a) => `<div class="sup">
-      <div class="award">${esc(a.title)}</div>
-      <div class="who">${esc(a.winner)}</div>
-      <div class="note">${esc(a.line)}</div></div>`).join("")}</div>`,
+    <div class="aw-grid">${W.awards.map((a, i) => {
+      const t = W.teams.find((x) => x.name === a.winner);
+      const e = a.emoji || ["🏆", "🤡", "💀", "🔥", "🧯", "🪦", "🚨"][i % 7];
+      return `<article class="aw-card${i === 0 ? " lead" : ""}">
+        <div class="aw-top"><span class="aw-emoji" aria-hidden="true">${e}</span>
+          ${t ? `<a class="aw-team" href="${link(t)}">${logo(t, "sm")}<span>${esc(a.winner)}</span></a>`
+              : `<span class="aw-team"><span>${esc(a.winner)}</span></span>`}</div>
+        <h3 class="aw-title">${esc(a.title)}</h3>
+        <p class="aw-line">${esc(a.line)}</p>
+      </article>`;
+    }).join("")}</div>`,
 
     receipt: () => `
     <section class="dark wk-receipt">
@@ -372,11 +378,27 @@
               <span class="who"><span class="n">${esc(l.name)}</span>
               <span class="m">${esc(l.manager)} · ${esc(l.record)} · left ${n2(l.regret)} on the bench</span></span></a>
           </div>
-          <p class="wk-g-note">${esc(g.note)}</p>
+          ${(() => {
+            const parts = (g.note || "").match(/[^.!?]+[.!?]+(\s|$)/g) || [g.note || ""];
+            const tease = parts.slice(0, 2).join("").trim();
+            const rest = parts.slice(2).join("").trim();
+            return `<p class="wk-g-note">${esc(tease)}</p>${rest ? `<details class="wk-more">
+              <summary>Full write-up</summary><p class="wk-g-note">${esc(rest)}</p></details>` : ""}`;
+          })()}
           ${stamps(`wk${W.week}-g${i}`, {}, { min: 3 })}
         </article>`;
       }).join("")}
     </div>`,
+
+    deep: () => `
+    <section class="wk-sec" id="deep">
+      <div class="sec-top"><h2 class="h-sec"><span class="secno">${num.deep}</span>Deep Dive</h2>
+        <span class="note">For the nerds</span></div><hr class="rule-h">
+    </section>
+    <details class="wk-deep">
+      <summary><span>Lineups, bench crimes, the FAAB audit, draft money, studs &amp; duds</span><b>Open</b></summary>
+      ${["receipt", "standings", "bench", "faab", "money", "studs", "weather"].map((k) => SECTIONS[k]()).join("")}
+    </details>`,
 
     weather: () => `
     <section class="wk-sec">
@@ -392,8 +414,7 @@
   };
 
   // Running order of the page. Move a name here to move the section.
-  const ORDER = ["awards", "receipt", "power", "median", "standings", "bench",
-                 "faab", "money", "studs", "games", "weather"];
+  const ORDER = ["awards", "power", "median", "games", "deep"];
 
   /* ══ RENDER ════════════════════════════════════════════ */
   app.innerHTML = `
@@ -410,7 +431,10 @@
           ${isLatest ? "" : `<a class="tag-red" href="week.html">Latest: Week ${IDX.latest} →</a>`}
         </div>
         <h1 class="display">${esc(W.headline)}<span class="kick">${esc(W.kicker)}</span></h1>
-        <p class="wk-lede">${esc(W.lede)}</p>
+        ${(W.tldr || []).length ? `<ul class="wk-tldr">${W.tldr.map(([e, t]) =>
+          `<li><span class="e" aria-hidden="true">${e}</span><span>${esc(t)}</span></li>`).join("")}</ul>
+          <details class="wk-more dark-more"><summary>The full story</summary><p class="wk-lede">${esc(W.lede)}</p></details>`
+          : `<p class="wk-lede">${esc(W.lede)}</p>`}
         ${W.video ? `<a class="btn-red reel-jump" href="#reel">▶ Watch the ${W.video.seconds || 40}-second roast</a>` : ""}
       </div>
       <div class="board">

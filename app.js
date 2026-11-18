@@ -18,10 +18,8 @@ const NU = (() => {
   const NAV = [
     ["index.html",      "This Week", "home",     "Home"],
     ["week.html",       "Week 1",    "week",     "Recap"],
-    ["newsletter.html", "Letter",    "letter",   "Letter"],
     ["draft.html",      "Draft",     "draft",    "Draft"],
     ["rankings.html",   "Rankings",  "ranks",    "Ranks"],
-    ["hall.html",       "Shame",     "hall",     "Shame",  "Hall of Shame"],
     ["trophy.html",     "Trophies",  "trophy",   "Trophy", "Trophy Room"],
     ["trades.html",     "Trades",    "trades",   "Trades", "Trade Court"],
     ["injuries.html",   "Injuries",  "injuries", "IR",     "The Injury Index"],

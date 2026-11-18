@@ -200,6 +200,47 @@
   font-size: 13.5px; color: var(--gray); max-width: 72ch; line-height: 1.5;
 }
 
+.wk-more { margin: 12px 0 0; }
+.wk-more summary { cursor: pointer; list-style: none; display: inline-block;
+  font: 800 11px/1 "Archivo", system-ui, sans-serif; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--red); padding: 6px 0; }
+.wk-more summary::-webkit-details-marker { display: none; }
+.wk-more summary::after { content: " +"; }
+.wk-more[open] summary::after { content: " −"; }
+.dark-more summary { color: var(--red-bright); }
+.dark-more .wk-lede { margin-top: 8px; }
+
+/* ── award cards ───────────────────────────────────────── */
+.aw-grid { padding: 10px 30px 34px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.aw-card { background: var(--white); border: 2px solid var(--ink); padding: 16px 16px 14px;
+  display: flex; flex-direction: column; gap: 8px; transition: transform .12s ease, box-shadow .12s ease; }
+.aw-card:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--red); }
+.aw-card.lead { grid-column: span 2; background: var(--ink); color: var(--white); border-color: var(--ink); }
+.aw-card.lead .aw-title { color: var(--white); font-size: 30px; }
+.aw-card.lead .aw-line { color: var(--gray-faint); font-size: 15px; }
+.aw-card.lead .aw-team { color: var(--white); }
+.aw-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.aw-emoji { font-size: 40px; line-height: 1; }
+.aw-card.lead .aw-emoji { font-size: 56px; }
+.aw-team { display: flex; align-items: center; gap: 8px; min-width: 0;
+  font: 800 11px/1.2 "Archivo", system-ui, sans-serif; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); text-align: right; }
+.aw-team span { overflow: hidden; text-overflow: ellipsis; }
+.aw-title { margin: 2px 0 0; font-size: 21px; line-height: 1.02; font-weight: 900; font-stretch: 80%;
+  text-transform: uppercase; color: var(--ink); }
+.aw-line { margin: 0; font-size: 13.5px; line-height: 1.45; color: var(--ink-2); }
+
+/* ── deep dive: everything numeric, one tap away ───────── */
+.wk-deep { margin: 0 0 20px; }
+.wk-deep > summary { cursor: pointer; list-style: none; margin: 4px 30px 26px; padding: 16px 18px;
+  border: 2px solid var(--ink); display: flex; justify-content: space-between; align-items: center; gap: 14px;
+  font-weight: 800; font-size: 14px; background: var(--white); }
+.wk-deep > summary::-webkit-details-marker { display: none; }
+.wk-deep > summary b { background: var(--red); color: var(--white); padding: 7px 12px;
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
+.wk-deep[open] > summary b { font-size: 0; }
+.wk-deep[open] > summary b::after { content: "Close"; font-size: 11px; }
+.wk-deep > summary:hover { box-shadow: 4px 4px 0 var(--red); }
+
 @media (max-width: 900px) {
   .faab-strip { grid-template-columns: repeat(4, 1fr); }
   .fs-cell { border-left: 1px solid var(--rule) !important; border-top: 1px solid var(--rule) !important; }
@@ -214,6 +255,7 @@
   .wk-two { grid-template-columns: 1fr; }
   .wk-two > section { border-right: 0; border-bottom: 1px solid var(--rule); }
   .wk-awards { grid-template-columns: 1fr; }
+  .aw-grid { grid-template-columns: 1fr 1fr; }
   .wk-slots { grid-template-columns: repeat(4, 1fr); }
   .wk-slot:nth-child(4n+1) { border-left: 0; }
   .wk-slot:nth-child(n+5) { border-top: 1px solid var(--rule); }
@@ -223,7 +265,12 @@
 }
 
 @media (max-width: 640px) {
-  .wk-hero, .wk-sec, .wk-games, .wk-table-wrap, .wk-awards, .wk-receipt, .med-chart { padding-left: 16px; padding-right: 16px; }
+  .wk-hero, .wk-sec, .wk-games, .wk-table-wrap, .wk-awards, .wk-receipt, .med-chart, .aw-grid { padding-left: 16px; padding-right: 16px; }
+  .aw-grid { grid-template-columns: 1fr; gap: 10px; }
+  .aw-card.lead { grid-column: auto; }
+  .aw-card.lead .aw-title { font-size: 25px; }
+  .wk-deep > summary { margin-left: 16px; margin-right: 16px; font-size: 13px; }
+  .wk-tldr li { font-size: 15px; }
   .wk-rail .rail-inner { padding-left: 16px; padding-right: 16px; }
   .wk-pick select { font-size: 16px; padding: 9px 32px 9px 10px; }   /* 16px: iOS will not zoom */
   .faab-strip { margin-left: 16px; margin-right: 16px; grid-template-columns: repeat(2, 1fr); }
