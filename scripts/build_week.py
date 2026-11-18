@@ -467,6 +467,7 @@ def main():
             "headline": notes.get("headline", f"Week {wk}"),
             "kicker": notes.get("kicker", ""),
             "lede": notes.get("lede", ""),
+            "tldr": notes.get("tldr", []),
             "sections": notes.get("sections", {}),
             "awards": notes.get("awards", []),
             "waiver_note": notes.get("waiver_note", ""),

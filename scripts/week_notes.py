@@ -1950,6 +1950,13 @@ WEEK10 = {
                  "Music: Funk Game Loop by Kevin MacLeod (incompetech.com), CC BY 4.0.",
     },
     "kicker": "(110.56, a perfect lineup, 1-12 in all-play. Lost by 63.84, the biggest blowout of the week.)",
+    "tldr": [
+        ["🛒", "Andrew made 16 adds. Two were Broncos. Denver was on bye. He lost by 63.84."],
+        ["🪑", "Will scored 174.40 and still left a 194.64 lineup on his bench, 15.36 above the season high."],
+        ["👑", "Chris beat Barrett. Both are 18-2."],
+        ["📁", "Anuj finally started Emmett Johnson: 33.1. Lost by 3.42."],
+        ["⚖️", "The median split 0.95 both ways. Last week it was 0.88."],
+    ],
     "lede": (
         "Andrew added sixteen players in Week 10. At 9:18 on Sunday morning he cut CJ Daniels, added "
         "the day before, for J.K. Dobbins. At 1:00 he cut Reggie Virgil, a $1 waiver claim, for Pat "
@@ -2056,13 +2063,9 @@ WEEK10 = {
     },
 
     "sections": {
-        "awards": "Fourteen citations. Sixteen adds, two first-place teams, one season high left on a bench "
-                  "and a $30 running back.",
-        "power": "Season to date: record, points, all-play and this week's form, weighted, with "
-                 "movement from last week. Best lineup is the record each team would own if it "
-                 "had started its best legal lineup every week, everyone else exactly as they "
-                 "played. The tax is the difference: wins left on your own bench. Barrett keeps first "
-                 "on a loss. Chris is tied with him at 18-2. Darrius was ranked fourteenth in August.",
+        "awards": "One per team. Nobody got off.",
+        "power": "Season to date. Best lineup is your record if you had started your best possible lineup "
+                 "every week. The tax is the wins you left on your own bench.",
         "median": "Week 10's line was 124.57. Barrett cleared it by 0.95 and Nathan missed it by 0.95. "
                   "Last week it split 0.88 both ways. Barrett lost his game and got a win here; Greg "
                   "(Miley) won his and lost here. Six teams swept, six got swept. Right of the line is a win.",
@@ -2113,63 +2116,59 @@ WEEK10 = {
     },
 
     "awards": [
-        {"title": "Sixteen Adds, Two Byes",
+        {"title": "Sixteen Adds, Two Byes", "emoji": "🛒",
          "winner": "Hail Mary",
          "line": "Sixteen pickups in one week. On Sunday he added J.K. Dobbins and Pat Bryant. Denver was "
                  "on bye. Perfect lineup, 110.56, lost by 63.84."},
-        {"title": "The Season High On The Bench",
-         "winner": "Good Will Hunting",
-         "line": "Scored 174.40 and won by 63.84. The best lineup was 194.64, 15.36 above the season high. "
-                 "Stafford 20.76 and McGowan 17.64 on the bench."},
-        {"title": "The 13.7 Swap",
+        {"title": "The 13.7 Swap", "emoji": "🔄",
          "winner": "Good Will Hunting",
          "line": "Week 9: Downs started for 3.9, Douglas benched for 13.7. Week 10: Douglas started for "
                  "0.9, Downs benched for 13.7."},
-        {"title": "The Monument Opens",
+        {"title": "The Monument Opens", "emoji": "💸",
          "winner": "Leo the Cleo",
          "line": "Sat on $95 for weeks. Spent $6: Waller 3.4 and the Ravens 7.04. Beat Barrett by "
                  "16.96 anyway. 18-2."},
-        {"title": "Saved By 0.95",
+        {"title": "Saved By 0.95", "emoji": "🛟",
          "winner": "A dad",
          "line": "Perfect lineup, lost the game, cleared the median by 0.95. 10-0 against the median. "
                  "Brock Bowers ($39) 2.8."},
-        {"title": "Right Quarterback, Wrong Week",
+        {"title": "Right Quarterback, Wrong Week", "emoji": "🎯",
          "winner": "Kim Jong Nate",
          "line": "Benched Cousins (16.38), started Daniels (22.76). First correct call in three weeks. "
                  "Lost by 40.86, missed the median by 0.95."},
-        {"title": "Fourteenth In August",
+        {"title": "Fourteenth In August", "emoji": "📈",
          "winner": "Bend The Knee 🐲🔥",
          "line": "The model's last-place team is third. 164.48, three straight wins. Kamara ($1) 14.9 and "
                  "Freiermuth 10.5 on the bench."},
-        {"title": "The House Reopened",
+        {"title": "The House Reopened", "emoji": "🏠",
          "winner": "The Asshouse Always Wins",
          "line": "Mahomes ($3) five touchdowns, 35.42. 155.24, 2-0 after three straight 0-2 weeks. "
                  "Kaelon Black benched for 13.6, again."},
-        {"title": "The Emmett Johnson File, Final Entry",
+        {"title": "The Emmett Johnson File, Final Entry", "emoji": "📁",
          "winner": "Whole Milk 🥛",
          "line": "Started him at last. 33.1. Lost by 3.42. $30 Corey Kiner started for 6.14. Three tight "
                  "ends for 6.7."},
-        {"title": "Perfect And Sunk",
+        {"title": "Perfect And Sunk", "emoji": "⚓",
          "winner": "Miley 💨LEO 5K Speedo Fan Club",
          "line": "Goff over Young, Hunter over Bolton, 100.0 percent. 116.82. Missed the median by 7.75, "
                  "the only team it sunk."},
-        {"title": "Benched On Arrival",
+        {"title": "Benched On Arrival", "emoji": "🪑",
          "winner": "FreeGucci",
          "line": "Added Justin Herbert Monday afternoon and benched him for 16.26. Started Drake Maye: 48 "
                  "yards, 3.02. Won by 24.2."},
-        {"title": "The Hampton Exemption",
+        {"title": "The Hampton Exemption", "emoji": "🧊",
          "winner": "The Injured Reserved",
          "line": "Omarion Hampton ($47) 18.0 on the bench. Jalen Coker 0.3 and Germie Bernard 1.0 "
                  "started. Won by 26.32 anyway."},
-        {"title": "Other People's Bench",
+        {"title": "Other People's Bench", "emoji": "🗑️",
          "winner": "Mac Daddy",
          "line": "Claimed Justice Hill (third time) and KaVontae Turpin (second) for $0. Benched both. "
                  "Four straight losses."},
-        {"title": "Sunday Morning Specials",
+        {"title": "Sunday Morning Specials", "emoji": "🥞",
          "winner": "ShakeNBake",
          "line": "Khalil Herbert at 8:53, Barion Brown at 9:00, both started. 10.42 and 1.12. Beat the "
                  "league's lowest projection by 20, 0-2."},
-        {"title": "Perfect, Three Times",
+        {"title": "Perfect, Three Times", "emoji": "💯",
          "winner": "Fwamming Gwaggon",
          "line": "Third straight 100.0 percent lineup. 100.86, league low, 0-13. Adonai Mitchell finally "
                  "scored: 7.4."},

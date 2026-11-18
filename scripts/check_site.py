@@ -24,6 +24,8 @@ OFF_NAV = {
     "feed.html": "parked for the offseason, still resolves",
     "scoreboard.html": "parked for the offseason, still resolves",
     "setup.html": "commissioner setup, linked from the demo banner",
+    "newsletter.html": "archived 18 Nov (owner's call), still resolves",
+    "hall.html": "archived 18 Nov (owner's call), still resolves",
 }
 ANALYTICS = "/_vercel/insights/script.js"
 
