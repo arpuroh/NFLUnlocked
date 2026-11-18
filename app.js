@@ -231,6 +231,10 @@ const NU = (() => {
     L.matchups = cur.matchups || L.matchups;
     L.meta = { ...(L.meta || {}), current_week: cur.week, week_status: cur.status,
                week_label: cur.label, recap: cur.recap };
+    // The scrape never fills these; build_week.py does (see site_feeds()).
+    if (cur.transactions && cur.transactions.length) L.transactions = cur.transactions;
+    if (cur.feed && cur.feed.length) L.feed = cur.feed;
+    if (cur.roast) L.roast = cur.roast;
     L.current = cur;
     return L;
   }
@@ -606,7 +610,7 @@ const NU = (() => {
             return `<div class="rap-row">
               <span class="amt ${tx.faab_bid > 0 ? "" : "zero"}">$${Math.max(0, tx.faab_bid)}</span>
               <span><span class="t">${add ? "Added " + esc(add.player) + (add.position ? ` (${esc(add.position)}${add.nfl_team ? ", " + esc(add.nfl_team) : ""})` : "") : "Dropped " + esc(drop?.player || "")}</span>
-                <span class="s">${add && drop ? "Dropped " + esc(drop.player) : "No replacement claimed"}</span></span>
+                <span class="s">${tx.note ? esc(tx.note) : add && drop ? "Dropped " + esc(drop.player) : "No replacement claimed"}</span></span>
               <span class="when">${esc(ago(tx.timestamp))}</span></div>`;
           }).join("") : `<p class="empty">A clean sheet. Suspicious.</p>`}
         </div>
