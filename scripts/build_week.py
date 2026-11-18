@@ -130,6 +130,97 @@ def streak(h2h):
     return ("W" if k else "L") + str(n)
 
 
+def site_feeds(weeks, latest, W):
+    """What the scrape can never fill: the wire (every add, with what the player then did),
+    the Feed, and the Executioner's per-team roast. All three ride in current.json and
+    NU.load() swaps them in over league.json's empty or sample versions."""
+    from zoneinfo import ZoneInfo
+    ET = ZoneInfo("America/New_York")
+    def epoch(s):
+        return int(datetime.strptime(s, "%Y-%m-%d %H:%M").replace(tzinfo=ET).timestamp())
+    built = {wk: json.load(open(D(f"week{wk}.json"))) for wk in weeks}
+    keys = {t["team_id"]: t["team_key"] for t in W["teams"]}
+    names = {t["team_id"]: t["name"] for t in W["teams"]}
+
+    # The wire: every add this season, newest first, with the same-week result.
+    tx = []
+    for wk in reversed(weeks):
+        for a in built[wk].get("faab_audit", []):
+            if a.get("pts") is None:
+                note = f"Week {wk} · gone before he played"
+            elif a.get("started"):
+                note = f"Week {wk} · started at {a.get('slot')}: {a['pts']:g} pts"
+            else:
+                note = f"Week {wk} · benched: {a['pts']:g} pts"
+            tx.append({
+                "timestamp": epoch(a["when"]), "faab_bid": a.get("bid") or 0, "week": wk,
+                "note": note, "drops": [],
+                "adds": [{"team_key": keys.get(a["team_id"], ""), "team_name": names.get(a["team_id"], ""),
+                          "player": a["player"], "position": a.get("pos", ""), "nfl_team": a.get("nfl", "")}],
+            })
+    tx.sort(key=lambda t: -t["timestamp"])
+
+    # The Feed: per week, the scores, the rankings, the roast and the wire, newest first.
+    feed = []
+    for wk in reversed(weeks):
+        B = built[wk]; T = {t["team_id"]: t for t in B["teams"]}
+        ts = int(datetime.fromisoformat(B["built_at"]).timestamp()) if wk == latest else None
+        if ts is None:   # older weeks: the Tuesday after the week, 6am Eastern
+            first = datetime(2026, 9, 15, 6, 0, tzinfo=ET)
+            ts = int(first.timestamp()) + (wk - 1) * 7 * 86400
+        hi = max(B["teams"], key=lambda t: t["points"]); lo = min(B["teams"], key=lambda t: t["points"])
+        close = min(B["games"], key=lambda g: g["margin"]); blow = max(B["games"], key=lambda g: g["margin"])
+        feed.append({"id": f"w{wk}-scores", "kind": "scores", "timestamp": ts,
+                     "title": f"Week {wk} is final. Median {B['median']['value']:.2f}.",
+                     "body": f"High: {hi['name']} {hi['points']:.2f}. Low: {lo['name']} {lo['points']:.2f}. "
+                             f"Closest: {T[close['winner']]['name']} by {close['margin']:.2f}. "
+                             f"Biggest: {T[blow['winner']]['name']} by {blow['margin']:.2f}."})
+        pr = B["power_rankings"]
+        up = max(pr, key=lambda r: r.get("movement") or 0); dn = min(pr, key=lambda r: r.get("movement") or 0)
+        body = f"No. 1: {T[pr[0]['team_id']]['name']}."
+        if (up.get("movement") or 0) > 0:
+            body += f" Biggest climb: {T[up['team_id']]['name']}, up {up['movement']} to {up['rank']}."
+        if (dn.get("movement") or 0) < 0:
+            body += f" Biggest drop: {T[dn['team_id']]['name']}, down {-dn['movement']} to {dn['rank']}."
+        feed.append({"id": f"w{wk}-ranks", "kind": "rankings", "timestamp": ts - 60,
+                     "title": f"Week {wk} power rankings", "body": body})
+        if B.get("headline") and not B["headline"].startswith("Week "):
+            feed.append({"id": f"w{wk}-roast", "kind": "roast", "timestamp": ts - 120,
+                         "title": B["headline"], "body": B.get("kicker", "")})
+        if wk == latest:
+            for i, a in enumerate(B.get("awards", [])):
+                feed.append({"id": f"w{wk}-award{i}", "kind": "roast", "timestamp": ts - 180 - i,
+                             "title": f"{a['title']}: {a['winner']}", "body": a["line"]})
+        bids = sorted([a for a in B.get("faab_audit", []) if a.get("bid")], key=lambda a: -a["bid"])[:3]
+        if bids:
+            spent = sum(a.get("bid") or 0 for a in B.get("faab_audit", []))
+            feed.append({"id": f"w{wk}-wire", "kind": "wire", "timestamp": ts - 240,
+                         "title": f"Week {wk} wire: ${spent} spent, {len(B['faab_audit'])} adds",
+                         "body": " ".join(f"{a['team']} paid ${a['bid']} for {a['player']}: "
+                                          f"{'did not play for them' if a.get('pts') is None else ('%g' % a['pts']) + (' started' if a.get('started') else ' on the bench')}."
+                                          for a in bids)})
+    feed.sort(key=lambda f: -f["timestamp"])
+
+    # The Executioner, per team: this week's award and blurb.
+    blurbs = {r["team_id"]: r.get("blurb", "") for r in W["power_rankings"]}
+    award = {}
+    for a in W.get("awards", []):
+        award.setdefault(a["winner"], a)
+    tb = []
+    for t in W["teams"]:
+        a = award.get(t["name"])
+        if not (a or blurbs.get(t["team_id"])):
+            continue
+        tb.append({"team_key": t["team_key"], "title": a["title"] if a else f"Week {latest}",
+                   "body": a["line"] if a else blurbs.get(t["team_id"], "")})
+    roast = {"week": latest, "generated_at": W["built_at"], "headline": W["headline"],
+             "intro": W.get("lede", ""), "team_blurbs": tb} if tb else None
+    out = {"transactions": tx, "feed": feed}
+    if roast:
+        out["roast"] = roast
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--season", type=int, default=2026)
@@ -469,6 +560,7 @@ def main():
         "weeks": weeks, "teams": standings, "power_rankings": W["power_rankings"],
         "matchups": matchups,
     }
+    cur.update(site_feeds(weeks, latest, W))
     json.dump(cur, open(D("current.json"), "w"), ensure_ascii=False, separators=(",", ":"))
     print(f"wrote current.json (week {latest}) and weeks.json ({len(weeks)} weeks)")
 
