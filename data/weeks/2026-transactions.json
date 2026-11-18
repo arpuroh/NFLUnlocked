@@ -1,7 +1,477 @@
 {
  "source": "football.fantasysports.yahoo.com/f1/675504/transactions?transactionsfilter=add (Eastern time)",
- "scraped": "2026-11-10",
+ "scraped": "2026-11-17",
  "adds": [
+  {
+   "when": "2026-11-16 16:10",
+   "week": 10,
+   "player": "David Njoku",
+   "pos": "TE",
+   "nfl": "LAC",
+   "team_id": "14",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-16 15:38",
+   "week": 10,
+   "player": "Justin Herbert",
+   "pos": "QB",
+   "nfl": "LAC",
+   "team_id": "7",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-16 13:00",
+   "week": 10,
+   "player": "Pat Bryant",
+   "pos": "WR",
+   "nfl": "Den",
+   "team_id": "1",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-16 09:18",
+   "week": 10,
+   "player": "J.K. Dobbins",
+   "pos": "RB",
+   "nfl": "Den",
+   "team_id": "1",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-15 18:56",
+   "week": 10,
+   "player": "Samaje Perine",
+   "pos": "RB",
+   "nfl": "Cin",
+   "team_id": "14",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-15 18:21",
+   "week": 10,
+   "player": "Tre' Harris",
+   "pos": "WR",
+   "nfl": "LAC",
+   "team_id": "2",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-15 15:54",
+   "week": 10,
+   "player": "CJ Daniels",
+   "pos": "WR",
+   "nfl": "LAR",
+   "team_id": "1",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-15 12:56",
+   "week": 10,
+   "player": "Myles Price",
+   "pos": "WR",
+   "nfl": "Min",
+   "team_id": "1",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-15 09:28",
+   "week": 10,
+   "player": "Sione Vaki",
+   "pos": "RB",
+   "nfl": "Det",
+   "team_id": "1",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-15 09:00",
+   "week": 10,
+   "player": "Barion Brown",
+   "pos": "WR",
+   "nfl": "NO",
+   "team_id": "12",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-15 08:53",
+   "week": 10,
+   "player": "Khalil Herbert",
+   "pos": "RB",
+   "nfl": "Atl",
+   "team_id": "12",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-14 13:16",
+   "week": 10,
+   "player": "Ernest Jones IV",
+   "pos": "LB",
+   "nfl": "Sea",
+   "team_id": "1",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-14 09:34",
+   "week": 10,
+   "player": "Nate Landman",
+   "pos": "LB",
+   "nfl": "LAR",
+   "team_id": "9",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-14 04:04",
+   "week": 10,
+   "player": "Bengals",
+   "pos": "DEF",
+   "nfl": "Cin",
+   "team_id": "12",
+   "type": "waiver",
+   "bid": 0
+  },
+  {
+   "when": "2026-11-14 04:04",
+   "week": 10,
+   "player": "Alex Singleton",
+   "pos": "LB",
+   "nfl": "Den",
+   "team_id": "1",
+   "type": "waiver",
+   "bid": 0
+  },
+  {
+   "when": "2026-11-14 04:04",
+   "week": 10,
+   "player": "MarShawn Lloyd",
+   "pos": "RB",
+   "nfl": "GB",
+   "team_id": "1",
+   "type": "waiver",
+   "bid": 0
+  },
+  {
+   "when": "2026-11-14 04:04",
+   "week": 10,
+   "player": "Tyler Higbee",
+   "pos": "TE",
+   "nfl": "LAR",
+   "team_id": "13",
+   "type": "waiver",
+   "bid": 0
+  },
+  {
+   "when": "2026-11-14 04:04",
+   "week": 10,
+   "player": "Justice Hill",
+   "pos": "RB",
+   "nfl": "Bal",
+   "team_id": "8",
+   "type": "waiver",
+   "bid": 0
+  },
+  {
+   "when": "2026-11-14 04:04",
+   "week": 10,
+   "player": "Keon Coleman",
+   "pos": "WR",
+   "nfl": "Buf",
+   "team_id": "2",
+   "type": "waiver",
+   "bid": 0
+  },
+  {
+   "when": "2026-11-13 17:29",
+   "week": 10,
+   "player": "Geno Smith",
+   "pos": "QB",
+   "nfl": "NYJ",
+   "team_id": "1",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-13 16:13",
+   "week": 10,
+   "player": "Darnell Washington",
+   "pos": "TE",
+   "nfl": "Pit",
+   "team_id": "7",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-13 08:26",
+   "week": 10,
+   "player": "Charlie Smyth",
+   "pos": "K",
+   "nfl": "NO",
+   "team_id": "13",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-13 04:05",
+   "week": 10,
+   "player": "KaVontae Turpin",
+   "pos": "WR",
+   "nfl": "Dal",
+   "team_id": "8",
+   "type": "waiver",
+   "bid": 0
+  },
+  {
+   "when": "2026-11-12 23:41",
+   "week": 10,
+   "player": "Chimere Dike",
+   "pos": "WR",
+   "nfl": "Ten",
+   "team_id": "1",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-12 23:38",
+   "week": 10,
+   "player": "Emari Demercado",
+   "pos": "RB",
+   "nfl": "Hou",
+   "team_id": "1",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-11 18:07",
+   "week": 10,
+   "player": "Dohnte Meyers",
+   "pos": "WR",
+   "nfl": "Cin",
+   "team_id": "1",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-11 12:54",
+   "week": 10,
+   "player": "Evan McPherson",
+   "pos": "K",
+   "nfl": "Cin",
+   "team_id": "5",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-11 10:53",
+   "week": 10,
+   "player": "Amani Hooker",
+   "pos": "DB,S",
+   "nfl": "Buf",
+   "team_id": "7",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-11 09:37",
+   "week": 10,
+   "player": "Pat Freiermuth",
+   "pos": "TE",
+   "nfl": "Pit",
+   "team_id": "6",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-11 08:01",
+   "week": 10,
+   "player": "Commanders",
+   "pos": "DEF",
+   "nfl": "Was",
+   "team_id": "2",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-11 07:59",
+   "week": 10,
+   "player": "Spencer Shrader",
+   "pos": "K",
+   "nfl": "Ind",
+   "team_id": "2",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-11 05:21",
+   "week": 10,
+   "player": "Ashton Dulin",
+   "pos": "WR",
+   "nfl": "Ind",
+   "team_id": "4",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-11 04:37",
+   "week": 10,
+   "player": "Colts",
+   "pos": "DEF",
+   "nfl": "Ind",
+   "team_id": "4",
+   "type": "waiver",
+   "bid": 0
+  },
+  {
+   "when": "2026-11-11 04:37",
+   "week": 10,
+   "player": "Drew Lock",
+   "pos": "QB",
+   "nfl": "Sea",
+   "team_id": "1",
+   "type": "waiver",
+   "bid": 0
+  },
+  {
+   "when": "2026-11-11 04:37",
+   "week": 10,
+   "player": "Dylan Laube",
+   "pos": "RB",
+   "nfl": "LV",
+   "team_id": "12",
+   "type": "waiver",
+   "bid": 1
+  },
+  {
+   "when": "2026-11-11 04:37",
+   "week": 10,
+   "player": "Reggie Virgil",
+   "pos": "WR",
+   "nfl": "Ari",
+   "team_id": "1",
+   "type": "waiver",
+   "bid": 1
+  },
+  {
+   "when": "2026-11-11 04:37",
+   "week": 10,
+   "player": "Ravens",
+   "pos": "DEF",
+   "nfl": "Bal",
+   "team_id": "10",
+   "type": "waiver",
+   "bid": 1
+  },
+  {
+   "when": "2026-11-11 04:37",
+   "week": 10,
+   "player": "Arvell Reese",
+   "pos": "LB,DE",
+   "nfl": "NYG",
+   "team_id": "14",
+   "type": "waiver",
+   "bid": 2
+  },
+  {
+   "when": "2026-11-11 04:37",
+   "week": 10,
+   "player": "Chris Boswell",
+   "pos": "K",
+   "nfl": "Pit",
+   "team_id": "6",
+   "type": "waiver",
+   "bid": 3
+  },
+  {
+   "when": "2026-11-11 04:37",
+   "week": 10,
+   "player": "Bills",
+   "pos": "DEF",
+   "nfl": "Buf",
+   "team_id": "14",
+   "type": "waiver",
+   "bid": 4
+  },
+  {
+   "when": "2026-11-11 04:37",
+   "week": 10,
+   "player": "Kaleb Johnson",
+   "pos": "RB",
+   "nfl": "GB",
+   "team_id": "1",
+   "type": "waiver",
+   "bid": 4
+  },
+  {
+   "when": "2026-11-11 04:37",
+   "week": 10,
+   "player": "Konata Mumpfield",
+   "pos": "WR",
+   "nfl": "LAR",
+   "team_id": "5",
+   "type": "waiver",
+   "bid": 5
+  },
+  {
+   "when": "2026-11-11 04:37",
+   "week": 10,
+   "player": "Vikings",
+   "pos": "DEF",
+   "nfl": "Min",
+   "team_id": "1",
+   "type": "waiver",
+   "bid": 5
+  },
+  {
+   "when": "2026-11-11 04:37",
+   "week": 10,
+   "player": "Darren Waller",
+   "pos": "TE",
+   "nfl": "Car",
+   "team_id": "10",
+   "type": "waiver",
+   "bid": 5
+  },
+  {
+   "when": "2026-11-11 04:37",
+   "week": 10,
+   "player": "Tutu Atwell",
+   "pos": "WR",
+   "nfl": "LAR",
+   "team_id": "4",
+   "type": "waiver",
+   "bid": 7
+  },
+  {
+   "when": "2026-11-11 04:37",
+   "week": 10,
+   "player": "Audric Estime",
+   "pos": "RB",
+   "nfl": "NO",
+   "team_id": "9",
+   "type": "waiver",
+   "bid": 10
+  },
+  {
+   "when": "2026-11-11 04:37",
+   "week": 10,
+   "player": "Corey Kiner",
+   "pos": "RB",
+   "nfl": "NE",
+   "team_id": "9",
+   "type": "waiver",
+   "bid": 30
+  },
   {
    "when": "2026-11-08 12:40",
    "week": 9,
