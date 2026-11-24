@@ -1,7 +1,337 @@
 {
  "source": "football.fantasysports.yahoo.com/f1/675504/transactions?transactionsfilter=add (Eastern time)",
- "scraped": "2026-11-17",
+ "scraped": "2026-11-24",
  "adds": [
+  {
+   "when": "2026-11-23 10:50",
+   "week": 11,
+   "player": "Dohnte Meyers",
+   "pos": "WR",
+   "nfl": "Cin",
+   "team_id": "1",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-22 12:17",
+   "week": 11,
+   "player": "Evan Engram",
+   "pos": "TE",
+   "nfl": "Den",
+   "team_id": "2",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-21 13:32",
+   "week": 11,
+   "player": "Tyjae Spears",
+   "pos": "RB",
+   "nfl": "Ten",
+   "team_id": "4",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-20 13:55",
+   "week": 11,
+   "player": "Mike Washington Jr.",
+   "pos": "RB",
+   "nfl": "LV",
+   "team_id": "1",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-20 11:45",
+   "week": 11,
+   "player": "Drue Tranquill",
+   "pos": "LB",
+   "nfl": "KC",
+   "team_id": "7",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-20 11:34",
+   "week": 11,
+   "player": "Gunnar Helm",
+   "pos": "TE",
+   "nfl": "Ten",
+   "team_id": "3",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-20 03:51",
+   "week": 11,
+   "player": "Justice Hill",
+   "pos": "RB",
+   "nfl": "Bal",
+   "team_id": "7",
+   "type": "waiver",
+   "bid": 3
+  },
+  {
+   "when": "2026-11-19 19:46",
+   "week": 11,
+   "player": "49ers",
+   "pos": "DEF",
+   "nfl": "SF",
+   "team_id": "11",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-19 17:46",
+   "week": 11,
+   "player": "Jauan Jennings",
+   "pos": "WR",
+   "nfl": "Min",
+   "team_id": "7",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-19 17:38",
+   "week": 11,
+   "player": "Samaje Perine",
+   "pos": "RB",
+   "nfl": "Cin",
+   "team_id": "5",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-19 05:32",
+   "week": 11,
+   "player": "Chase McLaughlin",
+   "pos": "K",
+   "nfl": "TB",
+   "team_id": "13",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-19 05:32",
+   "week": 11,
+   "player": "Panthers",
+   "pos": "DEF",
+   "nfl": "Car",
+   "team_id": "13",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-18 19:10",
+   "week": 11,
+   "player": "Cowboys",
+   "pos": "DEF",
+   "nfl": "Dal",
+   "team_id": "12",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-18 16:55",
+   "week": 11,
+   "player": "Kalif Raymond",
+   "pos": "WR",
+   "nfl": "Chi",
+   "team_id": "7",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-18 10:20",
+   "week": 11,
+   "player": "Chargers",
+   "pos": "DEF",
+   "nfl": "LAC",
+   "team_id": "7",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-18 10:14",
+   "week": 11,
+   "player": "Elic Ayomanor",
+   "pos": "WR",
+   "nfl": "Ten",
+   "team_id": "10",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-18 10:12",
+   "week": 11,
+   "player": "Wil Lutz",
+   "pos": "K",
+   "nfl": "Den",
+   "team_id": "10",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-18 06:13",
+   "week": 11,
+   "player": "Cairo Santos",
+   "pos": "K",
+   "nfl": "Chi",
+   "team_id": "3",
+   "type": "free agent",
+   "bid": null
+  },
+  {
+   "when": "2026-11-18 04:41",
+   "week": 11,
+   "player": "Payton Wilson",
+   "pos": "LB",
+   "nfl": "Pit",
+   "team_id": "1",
+   "type": "waiver",
+   "bid": 0
+  },
+  {
+   "when": "2026-11-18 04:41",
+   "week": 11,
+   "player": "Michael Mayer",
+   "pos": "TE",
+   "nfl": "LV",
+   "team_id": "1",
+   "type": "waiver",
+   "bid": 0
+  },
+  {
+   "when": "2026-11-18 04:41",
+   "week": 11,
+   "player": "Devin Bush",
+   "pos": "LB",
+   "nfl": "Chi",
+   "team_id": "8",
+   "type": "waiver",
+   "bid": 0
+  },
+  {
+   "when": "2026-11-18 04:41",
+   "week": 11,
+   "player": "Jahan Dotson",
+   "pos": "WR",
+   "nfl": "Atl",
+   "team_id": "8",
+   "type": "waiver",
+   "bid": 0
+  },
+  {
+   "when": "2026-11-18 04:41",
+   "week": 11,
+   "player": "Cam Ward",
+   "pos": "QB",
+   "nfl": "Ten",
+   "team_id": "2",
+   "type": "waiver",
+   "bid": 1
+  },
+  {
+   "when": "2026-11-18 04:41",
+   "week": 11,
+   "player": "Patrick Queen",
+   "pos": "LB",
+   "nfl": "Pit",
+   "team_id": "12",
+   "type": "waiver",
+   "bid": 1
+  },
+  {
+   "when": "2026-11-18 04:41",
+   "week": 11,
+   "player": "Laquon Treadwell",
+   "pos": "WR",
+   "nfl": "Ind",
+   "team_id": "3",
+   "type": "waiver",
+   "bid": 2
+  },
+  {
+   "when": "2026-11-18 04:41",
+   "week": 11,
+   "player": "Alex Singleton",
+   "pos": "LB",
+   "nfl": "Den",
+   "team_id": "1",
+   "type": "waiver",
+   "bid": 3
+  },
+  {
+   "when": "2026-11-18 04:41",
+   "week": 11,
+   "player": "Steelers",
+   "pos": "DEF",
+   "nfl": "Pit",
+   "team_id": "10",
+   "type": "waiver",
+   "bid": 3
+  },
+  {
+   "when": "2026-11-18 04:41",
+   "week": 11,
+   "player": "Caleb Downs",
+   "pos": "S",
+   "nfl": "Dal",
+   "team_id": "9",
+   "type": "waiver",
+   "bid": 3
+  },
+  {
+   "when": "2026-11-18 04:41",
+   "week": 11,
+   "player": "Bears",
+   "pos": "DEF",
+   "nfl": "Chi",
+   "team_id": "2",
+   "type": "waiver",
+   "bid": 4
+  },
+  {
+   "when": "2026-11-18 04:41",
+   "week": 11,
+   "player": "Ja'Kobi Lane",
+   "pos": "WR",
+   "nfl": "Bal",
+   "team_id": "2",
+   "type": "waiver",
+   "bid": 6
+  },
+  {
+   "when": "2026-11-18 04:41",
+   "week": 11,
+   "player": "Emari Demercado",
+   "pos": "RB",
+   "nfl": "Hou",
+   "team_id": "7",
+   "type": "waiver",
+   "bid": 6
+  },
+  {
+   "when": "2026-11-18 04:41",
+   "week": 11,
+   "player": "Mark Andrews",
+   "pos": "TE",
+   "nfl": "Bal",
+   "team_id": "14",
+   "type": "waiver",
+   "bid": 8
+  },
+  {
+   "when": "2026-11-18 04:41",
+   "week": 11,
+   "player": "Chiefs",
+   "pos": "DEF",
+   "nfl": "KC",
+   "team_id": "9",
+   "type": "waiver",
+   "bid": 8
+  },
   {
    "when": "2026-11-16 16:10",
    "week": 10,
