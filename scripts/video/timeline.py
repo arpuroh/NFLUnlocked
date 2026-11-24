@@ -1,6 +1,6 @@
 import json, numpy as np, soundfile as sf
 V=json.load(open('vo.json'))
-MIN={'title':2.2,'adds':3.6,'blowout':3.2,'chart':4.0,'ranks':4.8,'tie':2.6,'monument':3.0,'willbench':3.0,'swap':3.4,'emmett':3.4,'median':3.2,'outro':4.2}
+MIN={'title':2.2,'fourcents':3.6,'metcalf':3.4,'chart':4.0,'ranks':4.8,'justice':3.4,'zero':3.4,'median':3.2,'outro':4.2}
 GAP={'roast':0.06}
 tl=[];t=0;sr=24000
 for name,lines in V:
