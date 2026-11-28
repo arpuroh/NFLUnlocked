@@ -13,7 +13,7 @@
   "uses_faab": true,
   "faab_budget": 100,
   "demo": false,
-  "last_updated": "2026-11-27T19:44:56.322796+00:00"
+  "last_updated": "2026-11-28T18:36:31.310554+00:00"
  },
  "teams": [
   {
@@ -148,7 +148,7 @@
    "name": "The Injured Reserved",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/6933584f04d1bde8d8c31369be63df7ade2c4c97999ba5fe2a6514d38ae42bb2.jpg",
-   "moves": 49,
+   "moves": 50,
    "trades": 0,
    "faab_balance": 12,
    "clinched_playoffs": false,
@@ -169,7 +169,7 @@
    "name": "ShakeNBake",
    "manager": "",
    "logo": "https://yahoofantasysports-res.cloudinary.com/image/upload/t_s90sq/fantasy-logos/036413160a71a76b42890dd9196cf47fabbccda61f8f2394f8a7fb84ea186a0a.jpg",
-   "moves": 43,
+   "moves": 44,
    "trades": 0,
    "faab_balance": 28,
    "clinched_playoffs": false,
